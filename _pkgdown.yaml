@@ -1,23 +1,23 @@
 title: ReLTER
-url: https://oggioniale.github.io/ReLTER/. 
+url: https://oggioniale.github.io/ReLTER/
 template:
   params:
-  bootswatch: journal
-#ganalytics: UA-12345678-0
+    bootswatch: litera
+    #ganalytics: UA-12345678-0
 navbar:
   type: inverse
   left: []
   right:
     - icon: fa-home fa-lg
       href: index.html
-    - text: "\u2000Reference"
+    - text: "Reference"
       icon: fa-file-code
       href: reference/index.html
-    - text: "\u2000Articles"
+    - text: "Articles"
       icon: fa-book
       menu:
-      #-  text: "Installation"
-      #   href: articles/installation.html
+      -  text: "Installation"
+         href: articles/installation.html
       #-  text: "Run in a Docker container"
       #   href: articles/docker.html
       #-  text: "Using sen2r() from the GUI"
@@ -26,7 +26,7 @@ navbar:
       #   href: articles/sen2r_cmd.html
       #-  text: "Output file structure"
       #   href: articles/outstructure.html
-    - text: "\u2000Changelog"
+    - text: "Changelog"
       icon: fa-newspaper
       href: news/index.html
     - icon: fa-user
