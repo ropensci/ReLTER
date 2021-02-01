@@ -2,7 +2,7 @@ title: ReLTER
 url: https://oggioniale.github.io/ReLTER/
 template:
   params:
-    bootswatch: litera
+    bootswatch: minty
     #ganalytics: UA-12345678-0
 navbar:
   type: inverse
