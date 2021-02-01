@@ -20,3 +20,6 @@ devtools::build_vignettes()
 devtools::install_githb("hadley/pkgdown")
 library(pkgdown)
 build_site()
+
+usethis::use_readme_md()
+usethis::use_readme_rmd()

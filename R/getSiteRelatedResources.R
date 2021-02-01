@@ -2,8 +2,8 @@
 #' @description This function allows to obtain the list of related resources collected in the eLTER site througth the DEIMS-SDR sites API.
 #' @param deimsid
 #' @return The output of the function is a tibble with main features of the site and the related resources collected by site.
-#' @author Alessandro Oggioni, phD (2020) <oggioniale@gmail.com>
-#' @import jsonlite
+#' @author Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
+#' @import tibble httr
 #' @export
 #' @examples
 #' getSiteRelatedResources(deimsid = 'https://deims.org/ede67a31-079a-4db5-b3a2-83b22054c661')

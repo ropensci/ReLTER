@@ -3,7 +3,7 @@
 #' @param deimsid
 #' @return The output of the function is a tibble with main features of the site and the environmental characteristics information, such as: air temperature, precipitation, biogeographical region, biome, ecosystem land use, EUNIS habitat, geoBon biome, geology, hydrology, soils and vegetation.
 #' @author Alessandro Oggioni, phD (2021) <oggioni.a@irea.cnr.it>
-#' @import jsonlite
+#' @import tibble httr
 #' @export
 #' @examples
 #' getSiteEnvCharacts(deimsid = 'https://deims.org/17210eba-d832-4759-89fa-9ff127cbdf6e')

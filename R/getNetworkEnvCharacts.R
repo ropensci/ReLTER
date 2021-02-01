@@ -2,8 +2,8 @@
 #' @description This function ...
 #' @param ...
 #' @return The output of the function is a dataframe containing all the Environmental Characteristics of the network's sites.
-#' @author Alessandro Oggioni, phD (2020) <oggioniale@gmail.com>
-#' @import jsonlite
+#' @author Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
+#' @import jsonlite ReLTER
 #' @export
 #' @examples
 #' getNetworkEnvCharacts(networkDEIMSID = 'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3')

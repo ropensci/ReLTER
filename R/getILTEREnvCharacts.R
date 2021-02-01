@@ -2,8 +2,8 @@
 #' @description This function ...
 #' @param ...
 #' @return The output of the function is a dataframe containing all the Environmental Characteristics of the all ILTER's sites.
-#' @author Alessandro Oggioni, phD (2020) <oggioniale@gmail.com>
-#' @import jsonlite
+#' @author Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
+#' @import jsonlite ReLTER
 #' @export
 #' @examples
 #' getILTEREnvCharacts()

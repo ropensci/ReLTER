@@ -6,13 +6,13 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • ReLTER</title>
+<title>Function reference • MODIStsp</title>
 
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/minty/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
@@ -56,6 +56,16 @@
 <![endif]-->
 
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-12345678-0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-12345678-0');
+</script>
+
 
   </head>
 
@@ -72,7 +82,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">ReLTER</a>
+        <a class="navbar-link" href="../index.html">MODIStsp</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
@@ -94,20 +104,6 @@
      
     Reference
   </a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fas fa-book"></span>
-     
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/installation.html">Installation</a>
-    </li>
-  </ul>
 </li>
 <li>
   <a href="../news/index.html">
@@ -155,8 +151,8 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
+          <h2 id="section-deims-sdr-interaction-functions" class="hasAnchor"><a href="#section-deims-sdr-interaction-functions" class="anchor"></a>DEIMS-SDR interaction functions</h2>
+          <p class="section-desc"><p>Functions able to get info from DEIMS-SDR website</p></p>
         </th>
       </tr>
       
@@ -165,66 +161,6 @@
       
       
       <tr>
-        
-        <td>
-          <p><code><a href="fProduceMapOfSiteFromDEIMS.html">fProduceMapOfSiteFromDEIMS()</a></code> </p>
-        </td>
-        <td><p>eLTER_spatial_points_of_sites</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="getILTEREnvCharacts.html">getILTEREnvCharacts()</a></code> </p>
-        </td>
-        <td><p>eLTER_getILTEREnvCharacts</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="getILTERParameters.html">getILTERParameters()</a></code> </p>
-        </td>
-        <td><p>eLTER_getILTERParameters</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="getILTERResearchTopics.html">getILTERResearchTopics()</a></code> </p>
-        </td>
-        <td><p>eLTER_getILTERResearchTopics</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="getNetworkEnvCharacts.html">getNetworkEnvCharacts()</a></code> </p>
-        </td>
-        <td><p>eLTER_getNetworkEnvCharacts</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="getNetworkParameters.html">getNetworkParameters()</a></code> </p>
-        </td>
-        <td><p>eLTER_getNetworkParameters</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="getNetworkRelatedResources.html">getNetworkRelatedResources()</a></code> </p>
-        </td>
-        <td><p>eLTER_getNetworkRelatedResources</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="getNetworkResearchTopics.html">getNetworkResearchTopics()</a></code> </p>
-        </td>
-        <td><p>eLTER_getNetworkResearchTopics</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="getNetworkSites.html">getNetworkSites()</a></code> </p>
-        </td>
-        <td><p>eLTER_spatial_points_of_sites</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="getSOSProcedureList.html">getSOSProcedureList()</a></code> </p>
-        </td>
-        <td><p>eLTER_getNetworkParameters</p></td>
-      </tr><tr>
         
         <td>
           <p><code><a href="getSiteAffiliations.html">getSiteAffiliations()</a></code> </p>
@@ -251,6 +187,18 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="getNetworkEnvCharacts.html">getNetworkEnvCharacts()</a></code> </p>
+        </td>
+        <td><p>eLTER_getNetworkEnvCharacts</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getILTEREnvCharacts.html">getILTEREnvCharacts()</a></code> </p>
+        </td>
+        <td><p>eLTER_getILTEREnvCharacts</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="getSiteGeneral.html">getSiteGeneral()</a></code> </p>
         </td>
         <td><p>eLTER_getSiteGeneral</p></td>
@@ -269,6 +217,18 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="getNetworkParameters.html">getNetworkParameters()</a></code> </p>
+        </td>
+        <td><p>eLTER_getNetworkParameters</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getILTERParameters.html">getILTERParameters()</a></code> </p>
+        </td>
+        <td><p>eLTER_getILTERParameters</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="getSiteRelatedResources.html">getSiteRelatedResources()</a></code> </p>
         </td>
         <td><p>eLTER_getSiteRelatedResources</p></td>
@@ -281,10 +241,54 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="getNetworkResearchTopics.html">getNetworkResearchTopics()</a></code> </p>
+        </td>
+        <td><p>eLTER_getNetworkResearchTopics</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getILTERResearchTopics.html">getILTERResearchTopics()</a></code> </p>
+        </td>
+        <td><p>eLTER_getILTERResearchTopics</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-graphical-functions" class="hasAnchor"><a href="#section-graphical-functions" class="anchor"></a>Graphical functions</h2>
+          <p class="section-desc"><p>Functions able of producing geographical images of sites and national networks</p></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
           <p><code><a href="mapNetworkPoint.html">mapNetworkPoint()</a></code> </p>
         </td>
         <td><p>eLTER_map_of_network_points</p></td>
       </tr><tr>
+        
+        <td>
+          <p><code><a href="fProduceMapOfSiteFromDEIMS.html">fProduceMapOfSiteFromDEIMS()</a></code> </p>
+        </td>
+        <td><p>eLTER_spatial_points_of_sites</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-other-functions" class="hasAnchor"><a href="#section-other-functions" class="anchor"></a>Other functions</h2>
+          <p class="section-desc"><p>Functions able to some other interactions</p></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
         
         <td>
           <p><code><a href="taxonIDPesi.html">taxonIDPesi()</a></code> </p>
@@ -305,7 +309,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by The package maintainer Alessandro Oggioni.</p>
+  <p>Developed by Alessandro Oggioni, Tagliolato Paolo.</p>
 </div>
 
 <div class="pkgdown">

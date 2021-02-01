@@ -2,8 +2,8 @@
 #' @description This function allows to obtain the list of parameters measured in the eLTER site througth the DEIMS-SDR sites API.
 #' @param deimsid
 #' @return The output of the function is a tibble with main features of the site and the parameters collected by site.
-#' @author Alessandro Oggioni, phD (2020) <oggioniale@gmail.com>
-#' @import jsonlite
+#' @author Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
+#' @import tibble httr
 #' @export
 #' @examples
 #' getSiteParameters(deimsid = 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe')

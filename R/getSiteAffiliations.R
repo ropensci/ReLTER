@@ -2,8 +2,8 @@
 #' @description This function allows to obtain the information about affiliations of the eLTER site througth the DEIMS-SDR sites API.
 #' @param deimsid
 #' @return The output of the function is a tibble with main features of the site and the affiliations information, such as: networks and projects in which the site is involved.
-#' @author Alessandro Oggioni, phD (2020) <oggioniale@gmail.com>
-#' @import jsonlite
+#' @author Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
+#' @import tibble httr
 #' @export
 #' @examples
 #' getSiteAffiliations(deimsid = 'https://deims.org/17210eba-d832-4759-89fa-9ff127cbdf6e')

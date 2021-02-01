@@ -5,7 +5,7 @@
 #' @param table `data.frame` containing at least one column with a taxa (e.g. Sphaerosoma seidlitzi, Malthinus, etc.).
 #' @param taxaColumn `numeric` that identify the column containing taxa value.
 #' @return the output of the function is a `data.frame` containing all the columns provided as input plus 'canonicalName', 'authorship', 'synonyms', 'LSID', 'url', 'accordingTo', 'checkStatus' gathered from PESI.
-#' @author Alessandro Oggioni, phD (2020) <oggioniale@gmail.com>
+#' @author Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
 #' @import taxize dplyr
 #' @export
 #' @examples

@@ -2,8 +2,8 @@
 #' @description This function allows to obtain the contact information of the eLTER site througth the DEIMS-SDR sites API.
 #' @param deimsid
 #' @return The output of the function is a tibble with main features of the site and the contact information, such as: site manager, operation organaization, metadata provider, founding agency and site url.
-#' @author Alessandro Oggioni, phD (2020) <oggioniale@gmail.com>
-#' @import jsonlite
+#' @author Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
+#' @import tibble httr
 #' @export
 #' @examples
 #' getSiteContact(deimsid = 'https://deims.org/17210eba-d832-4759-89fa-9ff127cbdf6e')

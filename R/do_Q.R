@@ -3,7 +3,7 @@
 #' @param ...
 #' @return The output of the function is ...
 #' @author Paolo Tagliolato, phD (2021) <tagliolato.p@irea.cnr.it>
-#' @import jsonlite
+#' @import jsonlite jqr dtplyr
 #' @export
 #' @examples
 #' deimsid <- 'https://deims.org/17210eba-d832-4759-89fa-9ff127cbdf6e'
@@ -22,7 +22,6 @@
 #'
 #' do_Q(q, jj)
 ### function do_Q
-library(dplyr)
 do_Q <- function(q, jj){
   jj %>%
   jqr::jq(as.character(q)) %>%

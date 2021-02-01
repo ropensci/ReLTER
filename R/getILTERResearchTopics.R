@@ -2,8 +2,8 @@
 #' @description This function ...
 #' @param ...
 #' @return The output of the function is ...
-#' @author Alessandro Oggioni, phD (2020) <oggioniale@gmail.com>
-#' @import jsonlite
+#' @author Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
+#' @import jsonlite ReLTER dplyr
 #' @export
 #' @examples
 #' getILTERResearchTopics()

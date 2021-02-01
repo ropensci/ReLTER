@@ -2,8 +2,8 @@
 #' @description This function allows to obtain the general info of the eLTER site througth the DEIMS-SDR sites API.
 #' @param deimsid
 #' @return The output of the function is a tibble with main features of the site and the general information, such as: abstract, keywords, porpose, status, yearEstablished, yearClosed, hierarchy, siteName, short name, site type, protection level, images.
-#' @author Alessandro Oggioni, phD (2020) <oggioniale@gmail.com>
-#' @import jsonlite
+#' @author Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
+#' @import tibble httr
 #' @export
 #' @examples
 #' getSiteGeneral(deimsid = 'https://deims.org/17210eba-d832-4759-89fa-9ff127cbdf6e')
