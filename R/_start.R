@@ -5,7 +5,7 @@ use_readme_rmd()
 use_news_md()
 use_vignette("ReLTER")  #substitute with the name of your package
 
-use_github_links()
+# use_github_links()
 
 # use_travis()
 use_cran_badge() 
@@ -16,11 +16,11 @@ devtools::document()
 # my_package.Rmd:
 devtools::build_vignettes()
 
+#usethis::use_readme_md()
+usethis::use_readme_rmd()
+usethis::use_package("dplyr")
+
 # bare_bones website
-devtools::install_githb("hadley/pkgdown")
+# devtools::install_githb("hadley/pkgdown")
 library(pkgdown)
 build_site()
-
-usethis::use_readme_md()
-usethis::use_readme_rmd()
-usethis::usepackage("dplyr")

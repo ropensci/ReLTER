@@ -5,8 +5,6 @@
 
 <!-- badges: start -->
 
-[![CRAN
-status](https://www.r-pkg.org/badges/version/ReLTER)](https://CRAN.R-project.org/package=ReLTER)
 <!-- badges: end -->
 
 The goal of ReLTER is to …
