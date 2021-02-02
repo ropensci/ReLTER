@@ -17,5 +17,5 @@ getSiteGeneral(deimsid = 'https://deims.org/17210eba-d832-4759-89fa-9ff127cbdf6e
 
 }
 \author{
-Alessandro Oggioni, phD (2020) <oggioniale@gmail.com>
+Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
 }

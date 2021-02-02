@@ -17,5 +17,5 @@ getNetworkResearchTopics(networkDEIMSID = 'https://deims.org/network/7fef6b73-e5
 
 }
 \author{
-Alessandro Oggioni, phD (2020) <oggioniale@gmail.com>
+Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
 }

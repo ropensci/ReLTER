@@ -1,72 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://lbusett.github.io/MODIStsp/index.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//index.html</loc>
   </url>
   <url>
-    <loc>http://lbusett.github.io/MODIStsp/reference/fProduceMapOfSiteFromDEIMS.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/do_Q.html</loc>
   </url>
   <url>
-    <loc>http://lbusett.github.io/MODIStsp/reference/getILTEREnvCharacts.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/fProduceMapOfSiteFromDEIMS.html</loc>
   </url>
   <url>
-    <loc>http://lbusett.github.io/MODIStsp/reference/getILTERParameters.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/getILTEREnvCharacts.html</loc>
   </url>
   <url>
-    <loc>http://lbusett.github.io/MODIStsp/reference/getILTERResearchTopics.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/getILTERParameters.html</loc>
   </url>
   <url>
-    <loc>http://lbusett.github.io/MODIStsp/reference/getNetworkEnvCharacts.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/getILTERResearchTopics.html</loc>
   </url>
   <url>
-    <loc>http://lbusett.github.io/MODIStsp/reference/getNetworkParameters.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/getNetworkEnvCharacts.html</loc>
   </url>
   <url>
-    <loc>http://lbusett.github.io/MODIStsp/reference/getNetworkRelatedResources.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/getNetworkParameters.html</loc>
   </url>
   <url>
-    <loc>http://lbusett.github.io/MODIStsp/reference/getNetworkResearchTopics.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/getNetworkRelatedResources.html</loc>
   </url>
   <url>
-    <loc>http://lbusett.github.io/MODIStsp/reference/getNetworkSites.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/getNetworkResearchTopics.html</loc>
   </url>
   <url>
-    <loc>http://lbusett.github.io/MODIStsp/reference/getSOSProcedureList.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/getNetworkSites.html</loc>
   </url>
   <url>
-    <loc>http://lbusett.github.io/MODIStsp/reference/getSiteAffiliations.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/getSOSProcedureList.html</loc>
   </url>
   <url>
-    <loc>http://lbusett.github.io/MODIStsp/reference/getSiteBoundaries.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/getSiteAffiliations.html</loc>
   </url>
   <url>
-    <loc>http://lbusett.github.io/MODIStsp/reference/getSiteContact.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/getSiteBoundaries.html</loc>
   </url>
   <url>
-    <loc>http://lbusett.github.io/MODIStsp/reference/getSiteEnvCharacts.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/getSiteContact.html</loc>
   </url>
   <url>
-    <loc>http://lbusett.github.io/MODIStsp/reference/getSiteGeneral.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/getSiteEnvCharacts.html</loc>
   </url>
   <url>
-    <loc>http://lbusett.github.io/MODIStsp/reference/getSiteInfrastructure.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/getSiteGeneral.html</loc>
   </url>
   <url>
-    <loc>http://lbusett.github.io/MODIStsp/reference/getSiteParameters.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/getSiteInfrastructure.html</loc>
   </url>
   <url>
-    <loc>http://lbusett.github.io/MODIStsp/reference/getSiteRelatedResources.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/getSiteParameters.html</loc>
   </url>
   <url>
-    <loc>http://lbusett.github.io/MODIStsp/reference/getSiteResearchTopics.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/getSiteRelatedResources.html</loc>
   </url>
   <url>
-    <loc>http://lbusett.github.io/MODIStsp/reference/mapNetworkPoint.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/getSiteResearchTopics.html</loc>
   </url>
   <url>
-    <loc>http://lbusett.github.io/MODIStsp/reference/taxonIDPesi.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/mapNetworkPoint.html</loc>
   </url>
   <url>
-    <loc>http://lbusett.github.io/MODIStsp/articles/ReLTER.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/taxonIDPesi.html</loc>
+  </url>
+  <url>
+    <loc>https://oggioniale.github.io/ReLTER//articles/ReLTER.html</loc>
   </url>
 </urlset>

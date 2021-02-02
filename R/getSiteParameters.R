@@ -20,7 +20,7 @@ getSiteParameters <- function(deimsid) {
   url <- paste0("https://deims.org/", "api/sites/", substring(deimsid, 19))
   export <- httr::GET(url = url)
   jj <- httr::content(export, "text")
-  parameters <- tibble::as_tibble(do_Q(q, jj))
+  parameters <- tibble::as_tibble(ReLTER::do_Q(q, jj))
   colnames(parameters$parameter[[1]]) <- c("parameterLabel", "parameterUri")
   parameters
 }

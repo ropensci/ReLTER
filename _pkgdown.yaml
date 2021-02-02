@@ -1,5 +1,5 @@
-title: MODIStsp
-url: http://lbusett.github.io/MODIStsp
+title: ReLTER
+url: https://oggioniale.github.io/ReLTER/
 template:
   params:
     bootswatch: flatly
@@ -32,6 +32,7 @@ reference:
     desc: Functions able to some other interactions
     contents:
       - '`taxonIDPesi`'
+      - '`do_Q`'
 navbar:
   type: inverse
   left: []

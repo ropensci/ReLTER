@@ -23,3 +23,4 @@ build_site()
 
 usethis::use_readme_md()
 usethis::use_readme_rmd()
+usethis::usepackage("dplyr")

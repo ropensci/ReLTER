@@ -69,5 +69,5 @@ write.csv(datasetMerged, "importedDataset.csv", row.names = FALSE, fileEncoding 
 # 10. Excel should now show you the CSV file and display the characters correctly.
 }
 \author{
-Alessandro Oggioni, phD (2020) <oggioniale@gmail.com>
+Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
 }
