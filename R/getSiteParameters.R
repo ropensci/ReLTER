@@ -21,6 +21,13 @@ getSiteParameters <- function(deimsid) {
   export <- httr::GET(url = url)
   jj <- httr::content(export, "text")
   parameters <- tibble::as_tibble(ReLTER::do_Q(q, jj))
-  colnames(parameters$parameter[[1]]) <- c("parameterLabel", "parameterUri")
+  if (!is.na(parameters$parameter)) {
+    colnames(parameters$parameter[[1]]) <- c("parameterLabel", "parameterUri")
+  } else {
+    parameterLabel <- NULL
+    parameterUri <- NULL
+    parameters$parameter <- list(data.frame(parameterLabel, parameterUri))
+  }
   parameters
 }
+

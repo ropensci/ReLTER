@@ -18,8 +18,8 @@ getSiteBoundaries <- function(deimsid) {
   
   if (!is.null(boundaries)) {
     geoBoundaries <- sf::st_as_sf(boundaries, wkt = "boundaries", crs = 4326)
-    sf::write_sf(geoBoundaries, paste0("sites_", gsub(' ', '_', boundaries$title), ".gpkg"))
-    sf::st_write(geoBoundaries, paste0("sites_", gsub(' ', '_', boundaries$title), ".shp"))
+    sf::write_sf(geoBoundaries, paste0("sites_", gsub(' ', '_', boundaries$title), ".gpkg"), append=FALSE)
+    sf::st_write(geoBoundaries, paste0("sites_", gsub(' ', '_', boundaries$title), ".shp"), append=FALSE)
     leaflet::leaflet(geoBoundaries) %>%
       leaflet::addTiles() %>%
       leaflet::addPolygons(color = "red")

@@ -23,6 +23,8 @@ reference:
       - '`getSiteResearchTopics`'
       - '`getNetworkResearchTopics`'
       - '`getILTERResearchTopics`'
+      - '`getActivity`'
+      - '`getDataset`'
   - title: Graphical functions
     desc: Functions able of producing geographical images of  sites and national networks
     contents:

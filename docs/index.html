@@ -94,21 +94,178 @@
 <a href="#relter" class="anchor"></a>ReLTER</h1></div>
 <!-- badges: start -->
 <!-- badges: end -->
-<p>The goal of ReLTER is to …</p>
+<p>Nell’ambito della rete eLTER</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the released version of ReLTER from <a href="https://CRAN.R-project.org">CRAN</a> with:</p>
+<p>You can install the development version of ReLTER from <a href="https://github.com/">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"ReLTER"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"oggioniale/ReLTER"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="example" class="section level2">
+<div id="examples" class="section level2">
 <h2 class="hasAnchor">
-<a href="#example" class="anchor"></a>Example</h2>
-<p>This is a basic example which shows you how to solve a common problem:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/oggioniale/ReLTER">ReLTER</a></span><span class="op">)</span>
-<span class="co">## basic example code</span></code></pre></div>
+<a href="#examples" class="anchor"></a>Examples</h2>
+<p>An examples of the possible capabilities of this library is given below. In these examples you can see interaction, througth API, with DEIMS-SDR.</p>
+<p>First example creates a map overlaying the boundaries of the site (Lake Maggiore) thanks to the information on geographical aspects provided by DEIMS-SDR. by function getSiteBoundaries.</p>
+<p><img src="reference/figures/README-exampleSiteBoundaries-1.png" width="100%"></p>
+<p>Second example creates a list of parameters collected by a network (LTER-Italy) information always gathered from what is indicated in the different sites on DEIMS-SDR. by function getNetworkParameters</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-17"><a href="#cb2-17"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-18"><a href="#cb2-18"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-19"><a href="#cb2-19"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-20"><a href="#cb2-20"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-21"><a href="#cb2-21"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-22"><a href="#cb2-22"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-23"><a href="#cb2-23"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-24"><a href="#cb2-24"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-25"><a href="#cb2-25"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-26"><a href="#cb2-26"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-27"><a href="#cb2-27"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-28"><a href="#cb2-28"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-29"><a href="#cb2-29"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-30"><a href="#cb2-30"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-31"><a href="#cb2-31"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-32"><a href="#cb2-32"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-33"><a href="#cb2-33"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-34"><a href="#cb2-34"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-35"><a href="#cb2-35"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-36"><a href="#cb2-36"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-37"><a href="#cb2-37"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-38"><a href="#cb2-38"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-39"><a href="#cb2-39"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-40"><a href="#cb2-40"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-41"><a href="#cb2-41"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-42"><a href="#cb2-42"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-43"><a href="#cb2-43"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-44"><a href="#cb2-44"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-45"><a href="#cb2-45"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-46"><a href="#cb2-46"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-47"><a href="#cb2-47"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-48"><a href="#cb2-48"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-49"><a href="#cb2-49"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-50"><a href="#cb2-50"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-51"><a href="#cb2-51"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-52"><a href="#cb2-52"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-53"><a href="#cb2-53"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-54"><a href="#cb2-54"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-55"><a href="#cb2-55"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-56"><a href="#cb2-56"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-57"><a href="#cb2-57"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-58"><a href="#cb2-58"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-59"><a href="#cb2-59"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-60"><a href="#cb2-60"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-61"><a href="#cb2-61"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-62"><a href="#cb2-62"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-63"><a href="#cb2-63"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-64"><a href="#cb2-64"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-65"><a href="#cb2-65"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-66"><a href="#cb2-66"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-67"><a href="#cb2-67"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-68"><a href="#cb2-68"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-69"><a href="#cb2-69"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-70"><a href="#cb2-70"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-71"><a href="#cb2-71"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-72"><a href="#cb2-72"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-73"><a href="#cb2-73"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-74"><a href="#cb2-74"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-75"><a href="#cb2-75"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-76"><a href="#cb2-76"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-77"><a href="#cb2-77"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-78"><a href="#cb2-78"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-79"><a href="#cb2-79"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-80"><a href="#cb2-80"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-81"><a href="#cb2-81"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-82"><a href="#cb2-82"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-83"><a href="#cb2-83"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-84"><a href="#cb2-84"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-85"><a href="#cb2-85"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-86"><a href="#cb2-86"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-87"><a href="#cb2-87"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-88"><a href="#cb2-88"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-89"><a href="#cb2-89"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-90"><a href="#cb2-90"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-91"><a href="#cb2-91"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-92"><a href="#cb2-92"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-93"><a href="#cb2-93"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-94"><a href="#cb2-94"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-95"><a href="#cb2-95"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-96"><a href="#cb2-96"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-97"><a href="#cb2-97"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-98"><a href="#cb2-98"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-99"><a href="#cb2-99"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-100"><a href="#cb2-100"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-101"><a href="#cb2-101"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-102"><a href="#cb2-102"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-103"><a href="#cb2-103"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb2-104"><a href="#cb2-104"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span></code></pre></div>
+<table class="table">
+<colgroup>
+<col width="42%">
+<col width="57%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">parameterLabel</th>
+<th align="left">parameterUri</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">atmospheric parameter</td>
+<td align="left"><a href="http://vocabs.lter-europe.net/EnvThes/20937" class="uri">http://vocabs.lter-europe.net/EnvThes/20937</a></td>
+</tr>
+<tr class="even">
+<td align="left">ecosystem parameter</td>
+<td align="left"><a href="http://vocabs.lter-europe.net/EnvThes/20939" class="uri">http://vocabs.lter-europe.net/EnvThes/20939</a></td>
+</tr>
+<tr class="odd">
+<td align="left">conductivity</td>
+<td align="left"><a href="http://vocabs.lter-europe.net/EnvThes/22089" class="uri">http://vocabs.lter-europe.net/EnvThes/22089</a></td>
+</tr>
+<tr class="even">
+<td align="left">dissolved nutrient</td>
+<td align="left"><a href="http://vocabs.lter-europe.net/EnvThes/22107" class="uri">http://vocabs.lter-europe.net/EnvThes/22107</a></td>
+</tr>
+<tr class="odd">
+<td align="left">dissolved organic carbon in water</td>
+<td align="left"><a href="http://vocabs.lter-europe.net/EnvThes/10307" class="uri">http://vocabs.lter-europe.net/EnvThes/10307</a></td>
+</tr>
+<tr class="even">
+<td align="left">ecosystem structure</td>
+<td align="left"><a href="http://vocabs.lter-europe.net/EnvThes/21475" class="uri">http://vocabs.lter-europe.net/EnvThes/21475</a></td>
+</tr>
+<tr class="odd">
+<td align="left">inorganic nutrient content</td>
+<td align="left"><a href="http://vocabs.lter-europe.net/EnvThes/22137" class="uri">http://vocabs.lter-europe.net/EnvThes/22137</a></td>
+</tr>
+<tr class="even">
+<td align="left">percent carbon</td>
+<td align="left"><a href="http://vocabs.lter-europe.net/EnvThes/22181" class="uri">http://vocabs.lter-europe.net/EnvThes/22181</a></td>
+</tr>
+<tr class="odd">
+<td align="left">percent organic carbon</td>
+<td align="left"><a href="http://vocabs.lter-europe.net/EnvThes/22183" class="uri">http://vocabs.lter-europe.net/EnvThes/22183</a></td>
+</tr>
+<tr class="even">
+<td align="left">total carbon</td>
+<td align="left"><a href="http://vocabs.lter-europe.net/EnvThes/22296" class="uri">http://vocabs.lter-europe.net/EnvThes/22296</a></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
   </div>
