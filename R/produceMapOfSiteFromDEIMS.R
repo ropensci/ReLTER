@@ -6,7 +6,7 @@
 #' @import jsonlite sf sp tibble rgeos rosm raster tmap grid
 #' @export
 #' @examples
-#' sitesNetwork <- getNetworkSites(networkDEIMSID = 'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3')
+#' sitesNetwork <- ReLTER::getNetworkSites(networkDEIMSID = 'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3')
 #' sitesNetwork <- (sitesNetwork[!grepl('^IT', sitesNetwork$title),])
 #' fProduceMapOfSiteFromDEIMS(
 #'   deimsid = 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe',
@@ -23,8 +23,6 @@
 #'   bboxYMax = 0
 #' )
 #'
-# example
-
 ### function fProduceMapOfSiteFromDEIMS
 fProduceMapOfSiteFromDEIMS <- function(deimsid, countryCode, listOfSites, gridNx, gridNy, width, height, siteName, bboxXMin, bboxXMax, bboxYMin, bboxYMax) {
   siteSelected <- sf::as_Spatial(sf::st_as_sfc(jsonlite::fromJSON(paste0("https://deims.org/", "api/sites/", substring(deimsid, 19)))$attributes$geographic$coordinates),)

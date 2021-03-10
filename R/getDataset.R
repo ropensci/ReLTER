@@ -1,6 +1,6 @@
 #' @title eLTER_getDataset
 #' @description This function allows to obtain the info of dataset provided in DEIMS-SDR.
-#' @param datasetid
+#' @param datasetid is a DEIMS iD of dataset make from DEIMS-SDR website. More information about DEIMS iD in this page https://deims.org/docs/deimsid.html.
 #' @return The output of the function is a tibble with main features of the site and the related resources collected by site.
 #' @author Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
 #' @import tibble httr

@@ -7,13 +7,13 @@
 #' @import jsonlite sf raster rgeos tmap
 #' @export
 #' @examples
-#' mapNetworkPoint(networkDEIMSID = 'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3',
-#' countryCode = 'ITA')
+#' mapNetworkPoint(networkDEIMSID = 'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3', countryCode = 'ITA')
 #'
 ### function mapNetworkPoint
 mapNetworkPoint <- function(networkDEIMSID, countryCode) {
   lterNetworkSitesCoords <- jsonlite::fromJSON(paste0("https://deims.org/", "api/sites?network=", substring(networkDEIMSID, 27)))
   lterSitesNetworkPointDEIMS <- sf::as_Spatial(sf::st_as_sf(lterNetworkSitesCoords, wkt = 'coordinates'))
+  lterSitesNetworkPointDEIMS@proj4string <- sp::CRS('+proj=longlat +datum=WGS84 +no_defs')
   country <- raster::getData(country = countryCode, level = 0)
   country <- rgeos::gSimplify(country, tol = 0.01, topologyPreserve = TRUE)
   mapOfSites <- tmap::tm_shape(country) +

@@ -6,6 +6,9 @@
 \usage{
 getSiteContact(deimsid)
 }
+\arguments{
+\item{deimsid}{is a DEIMS iD of network make from DEIMS-SDR website. More information about DEIMS iD in this page https://deims.org/docs/deimsid.html.}
+}
 \value{
 The output of the function is a tibble with main features of the site and the contact information, such as: site manager, operation organaization, metadata provider, founding agency and site url.
 }

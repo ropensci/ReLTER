@@ -6,6 +6,9 @@
 \usage{
 getSiteAffiliations(deimsid)
 }
+\arguments{
+\item{deimsid}{is a DEIMS iD of network make from DEIMS-SDR website. More information about DEIMS iD in this page https://deims.org/docs/deimsid.html.}
+}
 \value{
 The output of the function is a tibble with main features of the site and the affiliations information, such as: networks and projects in which the site is involved.
 }
@@ -13,7 +16,7 @@ The output of the function is a tibble with main features of the site and the af
 This function allows to obtain the information about affiliations of the eLTER site througth the DEIMS-SDR sites API.
 }
 \examples{
-getSiteAffiliations(deimsid = 'https://deims.org/17210eba-d832-4759-89fa-9ff127cbdf6e')
+getSiteAffiliations(deimsid = 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe')
 
 }
 \author{

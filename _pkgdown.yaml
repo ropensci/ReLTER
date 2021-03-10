@@ -25,11 +25,15 @@ reference:
       - '`getILTERResearchTopics`'
       - '`getActivity`'
       - '`getDataset`'
+      - '`createSiteReport`'
   - title: Graphical functions
-    desc: Functions able of producing geographical images of  sites and national networks
+    desc: Functions able of producing geographical images of sites and national networks or charts
     contents:
       - '`mapNetworkPoint`'
       - '`fProduceMapOfSiteFromDEIMS`'
+      - '`eLTER_QRCode`'
+      - '`parametersChartPie`'
+      - '`parametersChartWaffle`'
   - title: Other functions
     desc: Functions able to some other interactions
     contents:

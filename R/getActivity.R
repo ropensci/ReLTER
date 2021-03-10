@@ -1,6 +1,6 @@
 #' @title eLTER_getActivity
 #' @description This function allows to obtain the info of activity provided in DEIMS-SDR.
-#' @param activityid
+#' @param activityid is a DEIMS iD of activity make from DEIMS-SDR website. More information about DEIMS iD in this page https://deims.org/docs/deimsid.html.
 #' @return The output of the function is a tibble with main features of the activity make in a site.
 #' @author Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
 #' @import tibble httr

@@ -6,6 +6,9 @@
 \usage{
 getDataset(datasetid)
 }
+\arguments{
+\item{datasetid}{is a DEIMS iD of dataset make from DEIMS-SDR website. More information about DEIMS iD in this page https://deims.org/docs/deimsid.html.}
+}
 \value{
 The output of the function is a tibble with main features of the site and the related resources collected by site.
 }

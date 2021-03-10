@@ -1,6 +1,6 @@
 #' @title eLTER_getSiteRelatedResources
 #' @description This function allows to obtain the list of related resources collected in the eLTER site througth the DEIMS-SDR sites API.
-#' @param deimsid
+#' @param deimsid is a DEIMS iD of network make from DEIMS-SDR website. More information about DEIMS iD in this page https://deims.org/docs/deimsid.html.
 #' @return The output of the function is a tibble with main features of the site and the related resources collected by site.
 #' @author Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
 #' @import tibble httr
@@ -19,8 +19,8 @@ getSiteRelatedResources <- function(deimsid) {
       }'
   url <- paste0("https://deims.org/", "api/sites/", substring(deimsid, 19))
   export <- httr::GET(url = url)
-  jj <- httr::content(export, "text")
-  relatedResources <- tibble::as_tibble(do_Q(q, jj))
+  jj <- suppressMessages(httr::content(export, "text"))
+  invisible(capture.output(relatedResources <- tibble::as_tibble(ReLTER::do_Q(q, jj))))
   if (!is.na(relatedResources$relatedResources)) {
     colnames(relatedResources$relatedResources[[1]]) <- c("relatedResourcesId", "relatedResourcesTitle", "relatedResourcesChanged")
   } else {

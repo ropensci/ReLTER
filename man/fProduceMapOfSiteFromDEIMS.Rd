@@ -29,7 +29,7 @@ The output of the function is SpatialPointsDataFrame (package sp).
 This function provide a SpatialPointsDataFrame (sp) of sites in a network provided by DEIMS-SDR.
 }
 \examples{
-sitesNetwork <- getNetworkSites(networkDEIMSID = 'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3')
+sitesNetwork <- ReLTER::getNetworkSites(networkDEIMSID = 'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3')
 sitesNetwork <- (sitesNetwork[!grepl('^IT', sitesNetwork$title),])
 fProduceMapOfSiteFromDEIMS(
   deimsid = 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe',

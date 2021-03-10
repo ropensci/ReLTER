@@ -6,6 +6,9 @@
 \usage{
 getNetworkResearchTopics(networkDEIMSID)
 }
+\arguments{
+\item{networkDEIMSID}{is a DEIMS iD of network make from DEIMS-SDR website. More information about DEIMS iD in this page https://deims.org/docs/deimsid.html, and at this page https://deims.org/search?f%5B0%5D=result_type%3Anetwork the complete list of iLTER networks.}
+}
 \value{
 The output of the function is ...
 }
@@ -13,7 +16,8 @@ The output of the function is ...
 This function ...
 }
 \examples{
-getNetworkResearchTopics(networkDEIMSID = 'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3')
+listResearchTopics <- getNetworkResearchTopics(networkDEIMSID = 'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3')
+knitr::kable(listResearchTopics[1:10, ] \%>\% dplyr::rows_insert(tibble(researchTopicsLabel = "...", researchTopicsUri = "...")))
 
 }
 \author{

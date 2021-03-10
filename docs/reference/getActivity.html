@@ -45,8 +45,6 @@
 
 
 
-
-
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -149,6 +147,14 @@
 
     <pre class="usage"><span class='fu'>getActivity</span><span class='op'>(</span><span class='va'>activityid</span><span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>activityid</th>
+      <td><p>is a DEIMS iD of activity make from DEIMS-SDR website. More information about DEIMS iD in this page https://deims.org/docs/deimsid.html.</p></td>
+    </tr>
+    </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
@@ -158,9 +164,9 @@
     <p>Alessandro Oggioni, phD (2020) &lt;oggioni.a@irea.cnr.it&gt;</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='fu'><a href='getDataset.html'>getDataset</a></span><span class='op'>(</span>activityid <span class='op'>=</span> <span class='st'>'https://deims.org/activity/8689b125-ee46-4d09-9e46-640f9c5c6eab'</span><span class='op'>)</span>
-
-</pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='getDataset.html'>getDataset</a></span><span class='op'>(</span>activityid <span class='op'>=</span> <span class='st'>'https://deims.org/activity/8689b125-ee46-4d09-9e46-640f9c5c6eab'</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='error'>Error in getDataset(activityid = "https://deims.org/activity/8689b125-ee46-4d09-9e46-640f9c5c6eab"): unused argument (activityid = "https://deims.org/activity/8689b125-ee46-4d09-9e46-640f9c5c6eab")</span></div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -176,7 +182,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

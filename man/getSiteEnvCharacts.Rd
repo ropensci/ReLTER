@@ -6,6 +6,9 @@
 \usage{
 getSiteEnvCharacts(deimsid)
 }
+\arguments{
+\item{deimsid}{is a DEIMS iD of network make from DEIMS-SDR website. More information about DEIMS iD in this page https://deims.org/docs/deimsid.html.}
+}
 \value{
 The output of the function is a tibble with main features of the site and the environmental characteristics information, such as: air temperature, precipitation, biogeographical region, biome, ecosystem land use, EUNIS habitat, geoBon biome, geology, hydrology, soils and vegetation.
 }

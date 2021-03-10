@@ -1,12 +1,13 @@
 #' @title eLTER_getILTERParameters
 #' @description This function ...
-#' @param ...
+#' @param
 #' @return The output of the function is ...
 #' @author Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
 #' @import jsonlite ReLTER dplyr
 #' @export
 #' @examples
-#' getILTERParameters()
+#' listParams <- getILTERParameters()
+#' knitr::kable(listParams[1:10, ] %>% dplyr::rows_insert(tibble(parameterLabel = "...", parameterUri = "...")))
 #'
 ### function getILTERParameters
 getILTERParameters <- function() {
@@ -24,5 +25,5 @@ getILTERParameters <- function() {
   parametersILTERList <- uniteSiteParameters$parameter
   parametersILTERDF <- dplyr::bind_rows(parametersILTERList)
   uniqueSitesParameters <- dplyr::distinct(parametersILTERDF)
-  uniqueSiteParameters
+  uniqueSitesParameters
 }

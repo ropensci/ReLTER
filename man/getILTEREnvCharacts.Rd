@@ -13,7 +13,8 @@ The output of the function is a dataframe containing all the Environmental Chara
 This function ...
 }
 \examples{
-getILTEREnvCharacts()
+listEnvCharacts <- getILTEREnvCharacts()
+knitr::kable(listEnvCharacts[1:5, ])
 
 }
 \author{

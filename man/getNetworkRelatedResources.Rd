@@ -6,6 +6,9 @@
 \usage{
 getNetworkRelatedResources(networkDEIMSID)
 }
+\arguments{
+\item{networkDEIMSID}{is a DEIMS iD of network make from DEIMS-SDR website. More information about DEIMS iD in this page https://deims.org/docs/deimsid.html, and at this page https://deims.org/search?f%5B0%5D=result_type%3Anetwork the complete list of iLTER networks.}
+}
 \value{
 The output of the function is ...
 }

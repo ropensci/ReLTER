@@ -1,5 +1,6 @@
 ---
 output: github_document
+always_allow_html: true
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -18,32 +19,33 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-Nell'ambito della rete eLTER
+ReLTER is an R package that allows interact with software (e.g. [DEIMS-SDR](https://deims.org/)) implemented by eLTER Research Infrastructure (RI) and manage the data/information shared by them.
 
 ## Installation
 
-You can install the development version of ReLTER from [GitHub](https://github.com/) with:
+You can install the development version of ReLTER from [GitHub](https://github.com/oggioniale/ReLTER) with:
 
-``` r
-# install.packages("devtools")
+```{r, installationInfo, eval = FALSE}
+install.packages("devtools")
 devtools::install_github("oggioniale/ReLTER")
 ```
 ## Examples
 
-An examples of the possible capabilities of this library is given below. In these examples you can see interaction, througth API, with DEIMS-SDR.
+Some examples of the possible capabilities of this library is given below. In these examples you can see the interaction, througth [API](https://deims.org/api), with [DEIMS-SDR](https://deims.org/).
 
-First example creates a map overlaying the boundaries of the site (Lake Maggiore) thanks to the information on geographical aspects provided by DEIMS-SDR. by function getSiteBoundaries.
+The *getSiteBoundaries* function creates a map overlaying the boundaries of the site (e.g. Lake Maggiore) thanks to the information on geographical aspects provided by [DEIMS-SDR](https://deims.org/).
 
-```{r, echo = FALSE, message = FALSE, warning = FALSE, results = FALSE, exampleSiteBoundaries}
+```{r, message = FALSE, warning = FALSE, dev = 'png', fig.show =' hide', exampleSiteBoundaries}
 library(dplyr)
 ReLTER::getSiteBoundaries(deimsid = 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe')
 ```
 
+--------------------------------
 
-Second example creates a list of parameters collected by a network (LTER-Italy) information always gathered from what is indicated in the different sites on DEIMS-SDR. by function getNetworkParameters
+The *getNetworkParameters* function creates a list of parameters collected by a network (LTER-Italy) information always gathered from what is indicated in the different sites on DEIMS-SDR.
 
-```{r, echo = FALSE, message = FALSE, warning = FALSE, exampleSiteParameters}
+```{r, message = FALSE, warning = FALSE, exampleSiteParameters}
 library(dplyr)
 listParams <- ReLTER::getNetworkParameters(networkDEIMSID = 'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3')
-knitr::kable(listParams[1:10, ])
+knitr::kable(listParams[1:10, ] %>% dplyr::rows_insert(tibble(parameterLabel = "...", parameterUri = "...")))
 ```

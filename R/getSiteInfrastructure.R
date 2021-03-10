@@ -1,6 +1,6 @@
 #' @title eLTER_getSiteInfrastructure
 #' @description This function allows to obtain the information about infrastructure of the eLTER site througth the DEIMS-SDR sites API.
-#' @param deimsid
+#' @param deimsid is a DEIMS iD of network make from DEIMS-SDR website. More information about DEIMS iD in this page https://deims.org/docs/deimsid.html.
 #' @return The output of the function is a tibble with main features of the site and the general information, such as: abstract, keywords, porpose, status, yearEstablished, yearClosed, hierarchy, siteName, short name, site type, protection level, images.
 #' @author Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
 #' @import tibble httr
@@ -19,8 +19,8 @@ getSiteInfrastructure <- function(deimsid) {
       }'
   url <- paste0("https://deims.org/", "api/sites/", substring(deimsid, 19))
   export <- httr::GET(url = url)
-  jj <- httr::content(export, "text")
-  infrastructure <- tibble::as_tibble(do_Q(q, jj))
+  jj <- suppressMessages(httr::content(export, "text"))
+  invisible(capture.output(infrastructure <- tibble::as_tibble(ReLTER::do_Q(q, jj))))
   colnames(infrastructure$generalInfo.collection[[1]]) <- c('collectionLabel', 'collectionURI')
   infrastructure
 }

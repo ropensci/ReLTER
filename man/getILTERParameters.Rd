@@ -13,7 +13,8 @@ The output of the function is ...
 This function ...
 }
 \examples{
-getILTERParameters()
+listParams <- getILTERParameters()
+knitr::kable(listParams[1:10, ] \%>\% dplyr::rows_insert(tibble(parameterLabel = "...", parameterUri = "...")))
 
 }
 \author{

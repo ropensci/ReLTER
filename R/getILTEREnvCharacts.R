@@ -1,12 +1,13 @@
 #' @title eLTER_getILTEREnvCharacts
 #' @description This function ...
-#' @param ...
+#' @param
 #' @return The output of the function is a dataframe containing all the Environmental Characteristics of the all ILTER's sites.
 #' @author Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
 #' @import jsonlite ReLTER
 #' @export
 #' @examples
-#' getILTEREnvCharacts()
+#' listEnvCharacts <- getILTEREnvCharacts()
+#' knitr::kable(listEnvCharacts[1:5, ])
 #'
 ### function getILTEREnvCharacts
 getILTEREnvCharacts <- function() {

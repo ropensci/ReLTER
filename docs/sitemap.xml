@@ -4,7 +4,13 @@
     <loc>https://oggioniale.github.io/ReLTER//index.html</loc>
   </url>
   <url>
+    <loc>https://oggioniale.github.io/ReLTER//reference/createSiteReport.html</loc>
+  </url>
+  <url>
     <loc>https://oggioniale.github.io/ReLTER//reference/do_Q.html</loc>
+  </url>
+  <url>
+    <loc>https://oggioniale.github.io/ReLTER//reference/eLTER_QRCode.html</loc>
   </url>
   <url>
     <loc>https://oggioniale.github.io/ReLTER//reference/fProduceMapOfSiteFromDEIMS.html</loc>
@@ -71,6 +77,12 @@
   </url>
   <url>
     <loc>https://oggioniale.github.io/ReLTER//reference/mapNetworkPoint.html</loc>
+  </url>
+  <url>
+    <loc>https://oggioniale.github.io/ReLTER//reference/parameterChartsPie.html</loc>
+  </url>
+  <url>
+    <loc>https://oggioniale.github.io/ReLTER//reference/parameterChartsWaffle.html</loc>
   </url>
   <url>
     <loc>https://oggioniale.github.io/ReLTER//reference/taxonIDPesi.html</loc>

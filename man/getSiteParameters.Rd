@@ -6,6 +6,9 @@
 \usage{
 getSiteParameters(deimsid)
 }
+\arguments{
+\item{deimsid}{is a DEIMS iD of network make from DEIMS-SDR website. More information about DEIMS iD in this page https://deims.org/docs/deimsid.html.}
+}
 \value{
 The output of the function is a tibble with main features of the site and the parameters collected by site.
 }
@@ -13,6 +16,7 @@ The output of the function is a tibble with main features of the site and the pa
 This function allows to obtain the list of parameters measured in the eLTER site througth the DEIMS-SDR sites API.
 }
 \examples{
+require('dplyr')
 getSiteParameters(deimsid = 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe')
 
 }

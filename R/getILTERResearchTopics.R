@@ -1,12 +1,13 @@
 #' @title eLTER_getILTERResearchTopics
 #' @description This function ...
-#' @param ...
+#' @param
 #' @return The output of the function is ...
 #' @author Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
 #' @import jsonlite ReLTER dplyr
 #' @export
 #' @examples
-#' getILTERResearchTopics()
+#' listResearchTopics <- getILTERResearchTopics()
+#' knitr::kable(listResearchTopics[1:10, ] %>% dplyr::rows_insert(tibble(researchTopicsLabel = "...", researchTopicsUri = "...")))
 #'
 ### function getILTERResearchTopics
 getILTERResearchTopics <- function() {

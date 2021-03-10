@@ -1,6 +1,6 @@
 Package: ReLTER
 Type: Package
-Title: What the Package Does (Title Case)
+Title: An interface to the eLTER  for the R statistical programming environment
 Version: 0.1.0
 Authors@R: c(
         person("Alessandro", "Oggioni", email = "oggioni.a@irea.cnr.it", role = c("aut", "cre"),
@@ -13,9 +13,10 @@ Authors@R: c(
 Maintainer: The package maintainer Alessandro Oggioni, phD (2020) <oggioniale@gmail.com>
 Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
+Depends: R (>= 3.5.0)
 Imports:
     dplyr (>= 1.0.0),
     jsonlite (>= 1.7.2),
@@ -29,7 +30,8 @@ Imports:
     raster (>= 3.3-13),
     tmap (>= 3.1),
     grid (>= 3.5.1),
-    leaflet (>= 2.0.3)
+    leaflet (>= 2.0.3),
+    dtplyr
 RoxygenNote: 7.1.1
 Suggests: 
     knitr,

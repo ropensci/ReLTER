@@ -1,9 +1,9 @@
 pandoc: 2.9.2.1
-pkgdown: 1.6.1.9000
-pkgdown_sha: 84f234cf19153ce99bf1bcf875dc56248ddf0cbe
+pkgdown: 1.6.1
+pkgdown_sha: ~
 articles:
   ReLTER: ReLTER.html
-last_built: 2021-02-03T22:42Z
+last_built: 2021-03-10T16:20Z
 urls:
   reference: https://oggioniale.github.io/ReLTER//reference
   article: https://oggioniale.github.io/ReLTER//articles

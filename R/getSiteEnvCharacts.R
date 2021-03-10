@@ -1,6 +1,6 @@
 #' @title eLTER_getSiteEnvCharacts
 #' @description This function allows to obtain the information acout environmental characteristics of the eLTER site througth the DEIMS-SDR sites API.
-#' @param deimsid
+#' @param deimsid is a DEIMS iD of network make from DEIMS-SDR website. More information about DEIMS iD in this page https://deims.org/docs/deimsid.html.
 #' @return The output of the function is a tibble with main features of the site and the environmental characteristics information, such as: air temperature, precipitation, biogeographical region, biome, ecosystem land use, EUNIS habitat, geoBon biome, geology, hydrology, soils and vegetation.
 #' @author Alessandro Oggioni, phD (2021) <oggioni.a@irea.cnr.it>
 #' @import tibble httr
@@ -20,7 +20,7 @@ getSiteEnvCharacts <- function(deimsid) {
 
   url <- paste0("https://deims.org/", "api/sites/", substring(deimsid, 19))
   export <- httr::GET(url = url)
-  jj <- httr::content(export, "text")
-  envCharacteristics <- tibble::as_tibble(do_Q(q, jj))
+  jj <- suppressMessages(httr::content(export, "text"))
+  invisible(capture.output(envCharacteristics <- tibble::as_tibble(ReLTER::do_Q(q, jj))))
   envCharacteristics
 }

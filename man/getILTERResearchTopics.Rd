@@ -13,7 +13,8 @@ The output of the function is ...
 This function ...
 }
 \examples{
-getILTERResearchTopics()
+listResearchTopics <- getILTERResearchTopics()
+knitr::kable(listResearchTopics[1:10, ] \%>\% dplyr::rows_insert(tibble(researchTopicsLabel = "...", researchTopicsUri = "...")))
 
 }
 \author{

@@ -6,11 +6,14 @@
 \usage{
 getSiteBoundaries(deimsid)
 }
+\arguments{
+\item{deimsid}{is a DEIMS iD of network make from DEIMS-SDR website. More information about DEIMS iD in this page https://deims.org/docs/deimsid.html.}
+}
 \value{
-The output of the function is a xxx with boundaries of the site.
+The output of the function is a gpkg, a shapefile (shp) and a html map with boundaries of the site.
 }
 \description{
-This function allows to obtain a gpkg and a shp version (saved in the actual workdir) of the eLTER site boundaries, a view of the site boundaries on a leaflet map is also showed. All the info are taken from the DEIMS-SDR sites API. If the boundaries is missing an worning message will be proposed in the R console.
+This function allows to obtain a gpkg, a shp and a png versions (saved in the actual workdir) of the eLTER site boundaries, a view of the site boundaries on a leaflet map is also showed. All the info are taken from the DEIMS-SDR sites API. If the boundaries is missing an worning message will be proposed in the R console.
 }
 \examples{
 getSiteBoundaries(deimsid = 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe')

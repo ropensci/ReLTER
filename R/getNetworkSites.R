@@ -11,6 +11,9 @@
 ### function getNetworkSites
 getNetworkSites <- function(networkDEIMSID) {
   lterNetworkSitesCoords <- jsonlite::fromJSON(paste0("https://deims.org/", "api/sites?network=", substring(networkDEIMSID, 27)))
-  lterSitesNetworkPointDEIMS <- sf::as_Spatial(sf::st_as_sf(lterNetworkSitesCoords, wkt = 'coordinates'))
+  lterSitesNetworkPointDEIMS <- # sf::as_Spatial(
+    sf::st_as_sf(lterNetworkSitesCoords, wkt = 'coordinates')
+    # )
   lterSitesNetworkPointDEIMS
 }
+

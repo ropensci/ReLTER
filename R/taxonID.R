@@ -56,7 +56,7 @@
 #' # 8. Select “Comma”
 #' # 9. Click “Finish”
 #' # 10. Excel should now show you the CSV file and display the characters correctly.
-
+### function taxonIDPesi
 taxonIDPesi <- function (table, taxaColumn) {
     importedDataset[, c('canonicalName', 'authorship', 'synonyms', 'LSID', 'url', 'accordingTo', 'checkStatus')] <- NA
     importedDataset <- as.list(importedDataset)

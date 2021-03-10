@@ -45,8 +45,6 @@
 
 
 
-
-
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -158,9 +156,24 @@
     <p>Alessandro Oggioni, phD (2020) &lt;oggioni.a@irea.cnr.it&gt;</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='fu'>getILTERParameters</span><span class='op'>(</span><span class='op'>)</span>
-
-</pre>
+    <pre class="examples"><div class='input'><span class='va'>listParams</span> <span class='op'>&lt;-</span> <span class='fu'>getILTERParameters</span><span class='op'>(</span><span class='op'>)</span>
+<span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>listParams</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, <span class='op'>]</span> <span class='op'>%&gt;%</span> <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/rows.html'>rows_insert</a></span><span class='op'>(</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>parameterLabel <span class='op'>=</span> <span class='st'>"..."</span>, parameterUri <span class='op'>=</span> <span class='st'>"..."</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Matching, by = "parameterLabel"</span></div><div class='output co'>#&gt; 
+#&gt; 
+#&gt; |parameterLabel                      |parameterUri                                |
+#&gt; |:-----------------------------------|:-------------------------------------------|
+#&gt; |abiotic heterogeneity               |http://vocabs.lter-europe.net/EnvThes/21476 |
+#&gt; |age class                           |http://vocabs.lter-europe.net/EnvThes/21353 |
+#&gt; |allele frequency                    |http://vocabs.lter-europe.net/EnvThes/22039 |
+#&gt; |atmospheric parameter               |http://vocabs.lter-europe.net/EnvThes/20937 |
+#&gt; |benthic invertebrates abundance     |http://vocabs.lter-europe.net/EnvThes/22027 |
+#&gt; |benthic invertebrates presence      |http://vocabs.lter-europe.net/EnvThes/10123 |
+#&gt; |biological parameter                |http://vocabs.lter-europe.net/EnvThes/20940 |
+#&gt; |birds abundance                     |http://vocabs.lter-europe.net/EnvThes/10020 |
+#&gt; |birds presence                      |http://vocabs.lter-europe.net/EnvThes/10082 |
+#&gt; |change in population size over time |http://vocabs.lter-europe.net/EnvThes/22085 |
+#&gt; |...                                 |...                                         |</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -176,7 +189,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
