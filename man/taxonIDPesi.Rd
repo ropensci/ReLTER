@@ -15,9 +15,9 @@ taxonIDPesi(table, taxaColumn)
 the output of the function is a `data.frame` containing all the columns provided as input plus 'canonicalName', 'authorship', 'synonyms', 'LSID', 'url', 'accordingTo', 'checkStatus' gathered from PESI.
 }
 \description{
-This function provide a taxon ID, usually a LSID (https://en.wikipedia.org/wiki/LSID), to a taxon. The input of the function is a csv file with a list
-of taxon and the provider is currently A Pan-European Species directories Infrastructure - PESI (http://eu-nomen.eu/pesi/).
-`taxonID` takes advantage of taxize's `eubon_search` function (https://docs.ropensci.org/taxize/) and the PESI RestAPI (http://www.eu-nomen.eu/portal/rest/).
+This function provide a taxon ID, usually a \href{https://en.wikipedia.org/wiki/LSID}{LSID}, to a taxon. The input of the function is a csv file with a list
+of taxon and the provider is currently A Pan-European Species directories Infrastructure - \href{http://eu-nomen.eu/pesi/}{PESI}.
+`taxonID` takes advantage of taxize's `eubon_search` function \url{https://docs.ropensci.org/taxize/} and the \href{http://www.eu-nomen.eu/portal/rest/}{PESI RestAPI}.
 }
 \examples{
 importedDataset <- data.frame(
@@ -69,5 +69,5 @@ write.csv(datasetMerged, "importedDataset.csv", row.names = FALSE, fileEncoding 
 # 10. Excel should now show you the CSV file and display the characters correctly.
 }
 \author{
-Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
+Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
 }

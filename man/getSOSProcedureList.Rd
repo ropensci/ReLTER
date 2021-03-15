@@ -2,18 +2,21 @@
 % Please edit documentation in R/getSOSProcedureList.R
 \name{getSOSProcedureList}
 \alias{getSOSProcedureList}
-\title{eLTER_getNetworkParameters}
+\title{getSOSProcedureList}
 \usage{
 getSOSProcedureList(sosHost)
 }
+\arguments{
+\item{sosHost}{a `character`. It is a SOS endpoint.}
+}
 \value{
-The output of the function is ...
+The output of the function is a `list` with the name and URI (Uniform Resource Identifier) of each procedure.
 }
 \description{
-This function ...
+This function list the procedures of a Sensor Observations Service (SOS).
 }
 \examples{
-getSOSProcedureList(sosHost = 'https://...')
+getSOSProcedureList(sosHost = 'http://getit.lteritalia.it')
 
 }
 \author{

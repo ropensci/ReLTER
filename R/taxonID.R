@@ -1,11 +1,11 @@
 #' @title eLTER_add_taxon_id
-#' @description This function provide a taxon ID, usually a LSID (https://en.wikipedia.org/wiki/LSID), to a taxon. The input of the function is a csv file with a list
-#' of taxon and the provider is currently A Pan-European Species directories Infrastructure - PESI (http://eu-nomen.eu/pesi/).
-#' `taxonID` takes advantage of taxize's `eubon_search` function (https://docs.ropensci.org/taxize/) and the PESI RestAPI (http://www.eu-nomen.eu/portal/rest/).
+#' @description This function provide a taxon ID, usually a \href{https://en.wikipedia.org/wiki/LSID}{LSID}, to a taxon. The input of the function is a csv file with a list
+#' of taxon and the provider is currently A Pan-European Species directories Infrastructure - \href{http://eu-nomen.eu/pesi/}{PESI}.
+#' `taxonID` takes advantage of taxize's `eubon_search` function \url{https://docs.ropensci.org/taxize/} and the \href{http://www.eu-nomen.eu/portal/rest/}{PESI RestAPI}.
 #' @param table `data.frame` containing at least one column with a taxa (e.g. Sphaerosoma seidlitzi, Malthinus, etc.).
 #' @param taxaColumn `numeric` that identify the column containing taxa value.
 #' @return the output of the function is a `data.frame` containing all the columns provided as input plus 'canonicalName', 'authorship', 'synonyms', 'LSID', 'url', 'accordingTo', 'checkStatus' gathered from PESI.
-#' @author Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
+#' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @import taxize dplyr
 #' @export
 #' @examples

@@ -7,9 +7,7 @@
 mapNetworkPoint(networkDEIMSID, countryCode)
 }
 \arguments{
-\item{networkDEIMSID}{is a DEIMS iD of network make from DEIMS-SDR website. More information about DEIMS iD in this page https://deims.org/docs/deimsid.html, and at this page https://deims.org/search?f%5B0%5D=result_type%3Anetwork the complete list of iLTER networks.}
-
-\item{countryCode}{follow the SO 3166-1 alpha-3 codes. This ISO convention are three-letter country codes defined in ISO 3166-1, part of the ISO 3166 standard published by the International Organization for Standardization (ISO), to represent countries, dependent territories, and special areas of geographical interest. The map produced by this function will be limited only to the contry indicated in this parameter, if the network has a extraterritorial sites those will not represented.}
+\item{countryCode}{A `character` follow the SO 3166-1 alpha-3 codes. This ISO convention are three-letter country codes defined in ISO 3166-1, part of the ISO 3166 standard published by the International Organization for Standardization (ISO), to represent countries, dependent territories, and special areas of geographical interest. The map produced by this function will be limited only to the contry indicated in this parameter, if the network has a extraterritorial sites those will not represented.}
 }
 \value{
 The output of the function is a tmap plot containing an image of geographic distribution of the network sites present in the chosen country.
@@ -22,5 +20,5 @@ mapNetworkPoint(networkDEIMSID = 'https://deims.org/network/7fef6b73-e5cb-4cd2-b
 
 }
 \author{
-Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
+Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
 }

@@ -6,11 +6,14 @@
 \usage{
 getILTERResearchTopics()
 }
+\arguments{
+\item{null}{function witout parameter}
+}
 \value{
-The output of the function is ...
+The output of the function is a `tibble` containing the research topics and their URI (Uniform Resource Identifier) of all ILTER sites.
 }
 \description{
-This function ...
+This function allows to obtain the information about the Research Topics collected in all sites of ILTER, througth the DEIMS-SDR sites API.
 }
 \examples{
 listResearchTopics <- getILTERResearchTopics()
@@ -18,5 +21,5 @@ knitr::kable(listResearchTopics[1:10, ] \%>\% dplyr::rows_insert(tibble(research
 
 }
 \author{
-Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
+Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
 }

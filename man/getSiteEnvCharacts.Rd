@@ -7,10 +7,10 @@
 getSiteEnvCharacts(deimsid)
 }
 \arguments{
-\item{deimsid}{is a DEIMS iD of network make from DEIMS-SDR website. More information about DEIMS iD in this page https://deims.org/docs/deimsid.html.}
+\item{deimsid}{A `character`. It is the DEIMS iD of network make from DEIMS-SDR website. More information about DEIMS iD in this \href{https://deims.org/docs/deimsid.html}{page}.}
 }
 \value{
-The output of the function is a tibble with main features of the site and the environmental characteristics information, such as: air temperature, precipitation, biogeographical region, biome, ecosystem land use, EUNIS habitat, geoBon biome, geology, hydrology, soils and vegetation.
+The output of the function is a `tibble` with main features of the site and the environmental characteristics information, such as: air temperature, precipitation, biogeographical region, biome, ecosystem land use, EUNIS habitat, geoBon biome, geology, hydrology, soils and vegetation.
 }
 \description{
 This function allows to obtain the information acout environmental characteristics of the eLTER site througth the DEIMS-SDR sites API.
@@ -20,5 +20,5 @@ getSiteEnvCharacts(deimsid = 'https://deims.org/17210eba-d832-4759-89fa-9ff127cb
 
 }
 \author{
-Alessandro Oggioni, phD (2021) <oggioni.a@irea.cnr.it>
+Alessandro Oggioni, phD (2021) \email{oggioni.a@irea.cnr.it}
 }

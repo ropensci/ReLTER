@@ -7,10 +7,10 @@
 getSiteInfrastructure(deimsid)
 }
 \arguments{
-\item{deimsid}{is a DEIMS iD of network make from DEIMS-SDR website. More information about DEIMS iD in this page https://deims.org/docs/deimsid.html.}
+\item{deimsid}{A `character`. It is the DEIMS iD of network make from DEIMS-SDR website. More information about DEIMS iD in this \href{https://deims.org/docs/deimsid.html}{page}.}
 }
 \value{
-The output of the function is a tibble with main features of the site and the general information, such as: abstract, keywords, porpose, status, yearEstablished, yearClosed, hierarchy, siteName, short name, site type, protection level, images.
+The output of the function is a `tibble` with main features of the site and the general information, such as: abstract, keywords, porpose, status, yearEstablished, yearClosed, hierarchy, siteName, short name, site type, protection level, images.
 }
 \description{
 This function allows to obtain the information about infrastructure of the eLTER site througth the DEIMS-SDR sites API.
@@ -20,5 +20,5 @@ getSiteInfrastructure(deimsid = 'https://deims.org/17210eba-d832-4759-89fa-9ff12
 
 }
 \author{
-Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
+Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/produceMapOfSiteFromDEIMS.R
 \name{fProduceMapOfSiteFromDEIMS}
 \alias{fProduceMapOfSiteFromDEIMS}
-\title{eLTER_spatial_points_of_sites}
+\title{fProduceMapOfSiteFromDEIMS}
 \usage{
 fProduceMapOfSiteFromDEIMS(
   deimsid,
@@ -19,14 +19,11 @@ fProduceMapOfSiteFromDEIMS(
   bboxYMax
 )
 }
-\arguments{
-\item{networkDEIMSID}{is a DEIMS iD of network make from DEIMS-SDR website. More information about DEIMS iD in this page https://deims.org/docs/deimsid.html, and at this page https://deims.org/search?f%5B0%5D=result_type%3Anetwork the complete list of iLTER networks.}
-}
 \value{
-The output of the function is SpatialPointsDataFrame (package sp).
+The output of the function is a distribution `image`.
 }
 \description{
-This function provide a SpatialPointsDataFrame (sp) of sites in a network provided by DEIMS-SDR.
+This function provide a `map` of the site boundaries provided by site manager in the DEIMS-SDR.
 }
 \examples{
 sitesNetwork <- ReLTER::getNetworkSites(networkDEIMSID = 'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3')
@@ -48,5 +45,5 @@ fProduceMapOfSiteFromDEIMS(
 
 }
 \author{
-Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
+Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
 }

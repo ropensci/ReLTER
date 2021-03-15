@@ -7,9 +7,9 @@
 do_Q(q, jj)
 }
 \arguments{
-\item{q}{character}
+\item{q}{a character}
 
-\item{jj}{character}
+\item{jj}{a character}
 }
 \value{
 The output of the function is ...
@@ -36,5 +36,5 @@ q = '{title: .title,
 do_Q(q, jj)
 }
 \author{
-Paolo Tagliolato, phD (2021) <tagliolato.p@irea.cnr.it>
+Paolo Tagliolato, phD (2021) \email{tagliolato.p@irea.cnr.it}
 }

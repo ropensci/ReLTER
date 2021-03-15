@@ -1,8 +1,8 @@
-#' @title Waffle chart of parameter collected in the site/network
+#' @title parameterChartsWaffle
 #' @description This function allows to obtain a waffle chart of the parameter collected in a site or network grouped into compounds.
-#' @param deimsid is a DEIMS iD of network make from DEIMS-SDR website. More information about DEIMS iD in this page https://deims.org/docs/deimsid.html.
+#' @param deimsid A `character`. It is the DEIMS iD of network make from DEIMS-SDR website. More information about DEIMS iD in this \href{https://deims.org/docs/deimsid.html}{page}.
 #' @return The output of the function is a waffle chart.
-#' @author Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
+#' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @import dplyr graphics data.table tibble scales grDevices RColorBrewer waffle
 #' @export 
 #' @examples

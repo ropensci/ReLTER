@@ -1,8 +1,8 @@
 #' @title eLTER_getILTERResearchTopics
-#' @description This function ...
-#' @param
-#' @return The output of the function is ...
-#' @author Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
+#' @description This function allows to obtain the information about the Research Topics collected in all sites of ILTER, througth the DEIMS-SDR sites API.
+#' @param null function witout parameter
+#' @return The output of the function is a `tibble` containing the research topics and their URI (Uniform Resource Identifier) of all ILTER sites.
+#' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @import jsonlite ReLTER dplyr
 #' @export
 #' @examples
@@ -19,6 +19,6 @@ getILTERResearchTopics <- function() {
   uniteSiteResearchTopics <- dplyr::bind_rows(allSiteResearchTopics)
   researchTopicsILTERList <- uniteSiteResearchTopics$researchTopics
   researchTopicsILTERDF <- dplyr::bind_rows(researchTopicsILTERList)
-  uniqueSiteResearchTopics <- dplyr::distinct(researchTopicsILTERDF)
+  uniqueSiteResearchTopics <- tibble::as_tibble(dplyr::distinct(researchTopicsILTERDF))
   uniqueSiteResearchTopics
 }

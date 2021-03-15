@@ -1,8 +1,9 @@
 #' @title eLTER_getILTEREnvCharacts
-#' @description This function ...
-#' @param
-#' @return The output of the function is a dataframe containing all the Environmental Characteristics of the all ILTER's sites.
-#' @author Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
+#' @description This function allows to obtain the information about the Environmental Characteristics of all sites of ILTER, througth the DEIMS-SDR sites API.
+#' @param null function witout parameter
+#' @return The output of the function is a `tibble` containing all the Environmental 
+#'  Characteristics of all ILTER's sites.
+#' @author Alessandro Oggioni, phD (2020) <oggioni.a@@irea.cnr.it>
 #' @import jsonlite ReLTER
 #' @export
 #' @examples
@@ -22,6 +23,6 @@ getILTEREnvCharacts <- function() {
     ReLTER::getSiteEnvCharacts
   )
   allSiteEnvCharacts_matrix <- do.call(rbind, allSiteEnvCharacts)
-  allSiteEnvCharacts_df <- as_tibble(as.data.frame(allSiteEnvCharacts_matrix))
-  allSiteEnvCharacts_df
+  allSiteEnvCharacts <- tibble::as_tibble(as.data.frame(allSiteEnvCharacts_matrix))
+  allSiteEnvCharacts
 }

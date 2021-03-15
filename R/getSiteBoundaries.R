@@ -1,8 +1,8 @@
 #' @title eLTER_getSiteBoundaries
 #' @description This function allows to obtain a gpkg, a shp and a png versions (saved in the actual workdir) of the eLTER site boundaries, a view of the site boundaries on a leaflet map is also showed. All the info are taken from the DEIMS-SDR sites API. If the boundaries is missing an worning message will be proposed in the R console.
-#' @param deimsid is a DEIMS iD of network make from DEIMS-SDR website. More information about DEIMS iD in this page https://deims.org/docs/deimsid.html.
-#' @return The output of the function is a gpkg, a shapefile (shp) and a html map with boundaries of the site.
-#' @author Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
+#' @param deimsid A `character`. It is the DEIMS iD of network make from DEIMS-SDR website. More information about DEIMS iD in this \href{https://deims.org/docs/deimsid.html}{page}.
+#' @return The output of the function is a `gpkg`, a `shapefile` (shp) and a `html map` with boundaries of the site.
+#' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @import jsonlite httr tibble sf leaflet mapview
 #' @export
 #' @examples

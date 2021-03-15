@@ -1,8 +1,11 @@
 #' @title eLTER_getNetworkEnvCharacts
-#' @description This function ...
-#' @param  networkDEIMSID is a DEIMS iD of network make from DEIMS-SDR website. More information about DEIMS iD in this page https://deims.org/docs/deimsid.html, and at this page https://deims.org/search?f%5B0%5D=result_type%3Anetwork the complete list of iLTER networks.
-#' @return The output of the function is a dataframe containing all the Environmental Characteristics of the network's sites.
-#' @author Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
+#' @description This function allows to obtain the information about the Envinronmental Characteristics of the eLTER Network (e.g. Italy) througth the DEIMS-SDR sites API.
+#' @param  networkDEIMSID A `character`. It is the DEIMS iD of network make from DEIMS-SDR website.
+#'  More information about DEIMS iD in this \href{https://deims.org/docs/deimsid.html}{page}, and at this \href{https://deims.org/search?f%5B0%5D=result_type%3Anetwork}{page} the complete 
+#'  list of ILTER networks.
+#' @return The output of the function is a `tibble` containing all the Environmental 
+#'  Characteristics of the network's sites.
+#' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @import jsonlite ReLTER
 #' @export
 #' @examples
@@ -22,6 +25,6 @@ getNetworkEnvCharacts <- function(networkDEIMSID) {
     ReLTER::getSiteEnvCharacts
   )
   allSiteEnvCharacts_matrix <- do.call(rbind, allSiteEnvCharacts)
-  allSiteEnvCharacts_df <- as.data.frame(allSiteEnvCharacts_matrix)
-  allSiteEnvCharacts_df
+  allSiteEnvCharacts <- tibble::as_tibble(allSiteEnvCharacts_matrix)
+  allSiteEnvCharacts
 }

@@ -1,8 +1,10 @@
 #' @title eLTER_getNetworkResearchTopics
-#' @description This function ...
-#' @param networkDEIMSID is a DEIMS iD of network make from DEIMS-SDR website. More information about DEIMS iD in this page https://deims.org/docs/deimsid.html, and at this page https://deims.org/search?f%5B0%5D=result_type%3Anetwork the complete list of iLTER networks.
-#' @return The output of the function is ...
-#' @author Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
+#' @description This function allows to obtain the information about the Research Topics collected in the eLTER Network  (e.g. Italy) througth the DEIMS-SDR sites API.
+#' @param  networkDEIMSID A `character`. It is the DEIMS iD of network make from DEIMS-SDR website.
+#'  More information about DEIMS iD in this \href{https://deims.org/docs/deimsid.html}{page}, and at this \href{https://deims.org/search?f%5B0%5D=result_type%3Anetwork}{page} the complete 
+#'  list of ILTER networks.
+#' @return The output of the function is a `tibble` containing the research topics and their URI (Uniform Resource Identifier) collected by network's sites.
+#' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @import jsonlite ReLTER dplyr
 #' @export
 #' @examples
@@ -19,6 +21,6 @@ getNetworkResearchTopics <- function(networkDEIMSID) {
   uniteSiteResearchTopics <- dplyr::bind_rows(allSiteResearchTopics)
   researchTopicsNetworkList <- uniteSiteResearchTopics$researchTopics
   researchTopicsNetworkDF <- dplyr::bind_rows(researchTopicsNetworkList)
-  uniqueSiteResearchTopics <- dplyr::distinct(researchTopicsNetworkDF)
+  uniqueSiteResearchTopics <- tibble::as_tibble(dplyr::distinct(researchTopicsNetworkDF))
   uniqueSiteResearchTopics
 }

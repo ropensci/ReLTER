@@ -7,10 +7,10 @@
 getActivity(activityid)
 }
 \arguments{
-\item{activityid}{is a DEIMS iD of activity make from DEIMS-SDR website. More information about DEIMS iD in this page https://deims.org/docs/deimsid.html.}
+\item{activityid}{A character. It is the DEIMS iD of activity make from DEIMS-SDR website. More information about DEIMS iD in this \href{https://deims.org/docs/deimsid.html}{page}.}
 }
 \value{
-The output of the function is a tibble with main features of the activity make in a site.
+The output of the function is a `tibble` with main features of the activity make in a site.
 }
 \description{
 This function allows to obtain the info of activity provided in DEIMS-SDR.
@@ -20,5 +20,5 @@ getDataset(activityid = 'https://deims.org/activity/8689b125-ee46-4d09-9e46-640f
 
 }
 \author{
-Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
+Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
 }

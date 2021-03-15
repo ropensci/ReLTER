@@ -1,8 +1,8 @@
 #' @title eLTER_QRCode
 #' @description This function allows to obtain the QRCode of any DEIMS-SDR entities of the eLTER.
-#' @param deimsid is a DEIMS iD of site make from DEIMS-SDR website. More information about DEIMS iD in this page https://deims.org/docs/deimsid.html.
-#' @return The output of the function is a QRcode image in a png (saved in the actual workdir).
-#' @author Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
+#' @param deimsid A `character`. It is the DEIMS iD of site make from DEIMS-SDR website. More information about DEIMS iD in this \href{https://deims.org/docs/deimsid.html}{page}.
+#' @return The output of the function is a QRcode `image` in a png (saved in the workdir).
+#' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @import qrencoder
 #' @export
 #' @examples

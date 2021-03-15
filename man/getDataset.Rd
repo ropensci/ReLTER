@@ -7,10 +7,10 @@
 getDataset(datasetid)
 }
 \arguments{
-\item{datasetid}{is a DEIMS iD of dataset make from DEIMS-SDR website. More information about DEIMS iD in this page https://deims.org/docs/deimsid.html.}
+\item{datasetid}{A character. It is the DEIMS iD of dataset make from DEIMS-SDR website. More information about DEIMS iD in this \href{https://deims.org/docs/deimsid.html}{page}.}
 }
 \value{
-The output of the function is a tibble with main features of the site and the related resources collected by site.
+The output of the function is a `tibble` with main features of the site and the related resources collected by site.
 }
 \description{
 This function allows to obtain the info of dataset provided in DEIMS-SDR.
@@ -20,5 +20,5 @@ getDataset(datasetid = 'https://deims.org/datasets/75a7f938-7c77-11e3-8832-00505
 
 }
 \author{
-Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
+Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
 }

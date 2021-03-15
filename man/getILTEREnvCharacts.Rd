@@ -6,11 +6,15 @@
 \usage{
 getILTEREnvCharacts()
 }
+\arguments{
+\item{null}{function witout parameter}
+}
 \value{
-The output of the function is a dataframe containing all the Environmental Characteristics of the all ILTER's sites.
+The output of the function is a `tibble` containing all the Environmental 
+ Characteristics of all ILTER's sites.
 }
 \description{
-This function ...
+This function allows to obtain the information about the Environmental Characteristics of all sites of ILTER, througth the DEIMS-SDR sites API.
 }
 \examples{
 listEnvCharacts <- getILTEREnvCharacts()

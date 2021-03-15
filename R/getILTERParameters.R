@@ -1,8 +1,8 @@
 #' @title eLTER_getILTERParameters
-#' @description This function ...
-#' @param
-#' @return The output of the function is ...
-#' @author Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
+#' @description This function allows to obtain the information about the parameters collected in all sites of ILTER, througth the DEIMS-SDR sites API.
+#' @param null function witout parameter
+#' @return The output of the function is a `tibble` containing the list of parameters and their URI (Uniform Resource Identifier) collected in all ILTER sites.
+#' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @import jsonlite ReLTER dplyr
 #' @export
 #' @examples
@@ -24,6 +24,6 @@ getILTERParameters <- function() {
   uniteSiteParameters <- dplyr::bind_rows(allSiteParameters)
   parametersILTERList <- uniteSiteParameters$parameter
   parametersILTERDF <- dplyr::bind_rows(parametersILTERList)
-  uniqueSitesParameters <- dplyr::distinct(parametersILTERDF)
+  uniqueSitesParameters <- tibble::as_tibble(dplyr::distinct(parametersILTERDF))
   uniqueSitesParameters
 }

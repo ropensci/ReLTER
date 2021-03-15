@@ -1,8 +1,10 @@
 #' @title eLTER_getNetworkParameters
-#' @description This function ...
-#' @param  networkDEIMSID is a DEIMS iD of network make from DEIMS-SDR website. More information about DEIMS iD in this page https://deims.org/docs/deimsid.html, and at this page https://deims.org/search?f%5B0%5D=result_type%3Anetwork the complete list of iLTER networks.
-#' @return The output of the function is ...
-#' @author Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
+#' @description This function allows to obtain the information about the parameters collected in the eLTER Network (e.g. Italy) througth the DEIMS-SDR sites API.
+#' @param  networkDEIMSID A `character`. It is the DEIMS iD of network make from DEIMS-SDR website.
+#'  More information about DEIMS iD in this \href{https://deims.org/docs/deimsid.html}{page}, and at this \href{https://deims.org/search?f%5B0%5D=result_type%3Anetwork}{page} the complete 
+#'  list of ILTER networks.
+#' @return The output of the function is a `tibble` containing the list of parameters and their URI (Uniform Resource Identifier) collected by the network's sites.
+#' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @import jsonlite ReLTER dplyr
 #' @export
 #' @examples
@@ -24,6 +26,6 @@ getNetworkParameters <- function(networkDEIMSID) {
   uniteSiteParameters <- dplyr::bind_rows(allSiteParameters)
   parametersNetworkList <- uniteSiteParameters$parameter
   parametersNetworkDF <- dplyr::bind_rows(parametersNetworkList)
-  uniqueSiteParameters <- dplyr::distinct(parametersNetworkDF)
+  uniqueSiteParameters <- tibble::as_tibble(dplyr::distinct(parametersNetworkDF))
   uniqueSiteParameters
 }

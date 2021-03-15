@@ -1,8 +1,8 @@
 #' @title eLTER_getSiteRelatedResources
 #' @description This function allows to obtain the list of related resources collected in the eLTER site througth the DEIMS-SDR sites API.
-#' @param deimsid is a DEIMS iD of network make from DEIMS-SDR website. More information about DEIMS iD in this page https://deims.org/docs/deimsid.html.
-#' @return The output of the function is a tibble with main features of the site and the related resources collected by site.
-#' @author Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
+#' @param deimsid A `character`. It is the DEIMS iD of network make from DEIMS-SDR website. More information about DEIMS iD in this \href{https://deims.org/docs/deimsid.html}{page}.
+#' @return The output of the function is a `tibble` with main features of the site and the related resources collected by site.
+#' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @import tibble httr
 #' @export
 #' @examples

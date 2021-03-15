@@ -6,19 +6,16 @@
 \usage{
 getNetworkRelatedResources(networkDEIMSID)
 }
-\arguments{
-\item{networkDEIMSID}{is a DEIMS iD of network make from DEIMS-SDR website. More information about DEIMS iD in this page https://deims.org/docs/deimsid.html, and at this page https://deims.org/search?f%5B0%5D=result_type%3Anetwork the complete list of iLTER networks.}
-}
 \value{
-The output of the function is ...
+The output of the function is a `tibble` containing the related resources shared by the network's sites.
 }
 \description{
-This function ...
+This function allows to obtain the information about the related resources (e.g. dataset) shared in the eLTER Network (e.g. Italy) througth the DEIMS-SDR sites API.
 }
 \examples{
 getNetworkRelatedResources(networkDEIMSID = 'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3')
 
 }
 \author{
-Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
+Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
 }

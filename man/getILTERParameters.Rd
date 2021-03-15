@@ -6,11 +6,14 @@
 \usage{
 getILTERParameters()
 }
+\arguments{
+\item{null}{function witout parameter}
+}
 \value{
-The output of the function is ...
+The output of the function is a `tibble` containing the list of parameters and their URI (Uniform Resource Identifier) collected in all ILTER sites.
 }
 \description{
-This function ...
+This function allows to obtain the information about the parameters collected in all sites of ILTER, througth the DEIMS-SDR sites API.
 }
 \examples{
 listParams <- getILTERParameters()
@@ -18,5 +21,5 @@ knitr::kable(listParams[1:10, ] \%>\% dplyr::rows_insert(tibble(parameterLabel =
 
 }
 \author{
-Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
+Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
 }

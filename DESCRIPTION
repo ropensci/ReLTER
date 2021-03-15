@@ -1,6 +1,6 @@
 Package: ReLTER
 Type: Package
-Title: An interface to the eLTER  for the R statistical programming environment
+Title: An interface to the eLTER for the R statistical programming environment
 Version: 0.1.0
 Authors@R: c(
         person("Alessandro", "Oggioni", email = "oggioni.a@irea.cnr.it", role = c("aut", "cre"),

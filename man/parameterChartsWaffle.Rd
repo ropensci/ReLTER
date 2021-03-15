@@ -2,12 +2,12 @@
 % Please edit documentation in R/parametersChartWaffle.R
 \name{parameterChartsWaffle}
 \alias{parameterChartsWaffle}
-\title{Waffle chart of parameter collected in the site/network}
+\title{parameterChartsWaffle}
 \usage{
 parameterChartsWaffle(deimsid)
 }
 \arguments{
-\item{deimsid}{is a DEIMS iD of network make from DEIMS-SDR website. More information about DEIMS iD in this page https://deims.org/docs/deimsid.html.}
+\item{deimsid}{A `character`. It is the DEIMS iD of network make from DEIMS-SDR website. More information about DEIMS iD in this \href{https://deims.org/docs/deimsid.html}{page}.}
 }
 \value{
 The output of the function is a waffle chart.
@@ -20,5 +20,5 @@ parameterChartsWaffle(deimsid = 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db
 
 }
 \author{
-Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
+Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
 }

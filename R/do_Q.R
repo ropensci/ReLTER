@@ -1,9 +1,9 @@
 #' @title do_Q
 #' @description This function ...
-#' @param q character
-#' @param jj character
+#' @param q a character
+#' @param jj a character
 #' @return The output of the function is ...
-#' @author Paolo Tagliolato, phD (2021) <tagliolato.p@irea.cnr.it>
+#' @author Paolo Tagliolato, phD (2021) \email{tagliolato.p@@irea.cnr.it}
 #' @import jsonlite jqr dtplyr dplyr
 #' @export
 #' @examples
