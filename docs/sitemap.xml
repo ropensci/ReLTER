@@ -4,16 +4,10 @@
     <loc>https://oggioniale.github.io/ReLTER//index.html</loc>
   </url>
   <url>
-    <loc>https://oggioniale.github.io/ReLTER//reference/createSiteReport.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/createQRCode.html</loc>
   </url>
   <url>
     <loc>https://oggioniale.github.io/ReLTER//reference/do_Q.html</loc>
-  </url>
-  <url>
-    <loc>https://oggioniale.github.io/ReLTER//reference/eLTER_QRCode.html</loc>
-  </url>
-  <url>
-    <loc>https://oggioniale.github.io/ReLTER//reference/fProduceMapOfSiteFromDEIMS.html</loc>
   </url>
   <url>
     <loc>https://oggioniale.github.io/ReLTER//reference/getActivity.html</loc>
@@ -79,10 +73,13 @@
     <loc>https://oggioniale.github.io/ReLTER//reference/mapNetworkPoint.html</loc>
   </url>
   <url>
-    <loc>https://oggioniale.github.io/ReLTER//reference/parameterChartsPie.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/parametersChartPie.html</loc>
   </url>
   <url>
-    <loc>https://oggioniale.github.io/ReLTER//reference/parameterChartsWaffle.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/parametersChartWaffle.html</loc>
+  </url>
+  <url>
+    <loc>https://oggioniale.github.io/ReLTER//reference/produceMapOfSiteFromDEIMS.html</loc>
   </url>
   <url>
     <loc>https://oggioniale.github.io/ReLTER//reference/taxonIDPesi.html</loc>

@@ -2,7 +2,7 @@
 % Please edit documentation in R/do_Q.R
 \name{do_Q}
 \alias{do_Q}
-\title{do_Q}
+\title{eLTER do_Q function}
 \usage{
 do_Q(q, jj)
 }
@@ -34,6 +34,7 @@ q = '{title: .title,
   }'
 
 do_Q(q, jj)
+
 }
 \author{
 Paolo Tagliolato, phD (2021) \email{tagliolato.p@irea.cnr.it}

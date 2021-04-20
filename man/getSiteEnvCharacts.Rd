@@ -2,7 +2,7 @@
 % Please edit documentation in R/getSiteEnvCharacts.R
 \name{getSiteEnvCharacts}
 \alias{getSiteEnvCharacts}
-\title{eLTER_getSiteEnvCharacts}
+\title{eLTER getSiteEnvCharacts function}
 \usage{
 getSiteEnvCharacts(deimsid)
 }
@@ -16,7 +16,8 @@ The output of the function is a `tibble` with main features of the site and the 
 This function allows to obtain the information acout environmental characteristics of the eLTER site througth the DEIMS-SDR sites API.
 }
 \examples{
-getSiteEnvCharacts(deimsid = 'https://deims.org/17210eba-d832-4759-89fa-9ff127cbdf6e')
+tSiteEnvCharacts <- getSiteEnvCharacts(deimsid = 'https://deims.org/17210eba-d832-4759-89fa-9ff127cbdf6e')
+tSiteEnvCharacts
 
 }
 \author{

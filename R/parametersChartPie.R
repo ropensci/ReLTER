@@ -1,4 +1,4 @@
-#' @title parameterChartsPie
+#' @title eLTER parametersChartPie function
 #' @description This function allows to obtain a pie chart of the parameter collected in a site or network grouped into compounds.
 #' @param deimsid A `character`. It is the DEIMS iD of network make from DEIMS-SDR website. More information about DEIMS iD in this \href{https://deims.org/docs/deimsid.html}{page}.
 #' @return The output of the function is a pie chart.
@@ -6,10 +6,11 @@
 #' @import dplyr graphics data.table tibble scales grDevices RColorBrewer
 #' @export 
 #' @examples
-#' parameterChartsPie(deimsid = 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe')
+#' pie <- parametersChartPie(deimsid = 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe')
+#' print(pie)
 #'
-### function parameterChartsPie
-parameterChartsPie <- function(deimsid) {
+### function parametersChartPie
+parametersChartPie <- function(deimsid) {
   # TODO add this by SPARQL query
   data(envThesParams)
   
@@ -50,7 +51,7 @@ parameterChartsPie <- function(deimsid) {
     message(
       'This parameters are not included, please contact the development of the package by GitHub.\n',
       'Paste this message into the GitHub issue.\n',
-      'I am using the parameterCharts function and need to add the following parameters in the mapping:\n',
+      'I am using the parametersChart function and need to add the following parameters in the mapping:\n',
       paste(groupsIsNa$parameterLabel, collapse = '\n')
     )
   }

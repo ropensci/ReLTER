@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>eLTER_map_of_network_points — mapNetworkPoint • ReLTER</title>
+<title>eLTER mapNetworkPoint function — mapNetworkPoint • ReLTER</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,8 @@
 
 
 
-<meta property="og:title" content="eLTER_map_of_network_points — mapNetworkPoint" />
+<meta property="og:title" content="eLTER mapNetworkPoint function — mapNetworkPoint" />
+<meta property="og:description" content="This function provide a map (image) of site LTER network started from DEIMS iD of network." />
 
 
 
@@ -81,7 +82,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ReLTER</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -135,12 +136,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>eLTER_map_of_network_points</h1>
+    <h1>eLTER mapNetworkPoint function</h1>
     <small class="dont-index">Source: <a href='https://github.com/oggioniale/ReLTER/blob/master/R/mapNetworkPoint.R'><code>R/mapNetworkPoint.R</code></a></small>
     <div class="hidden name"><code>mapNetworkPoint.Rd</code></div>
     </div>
 
     <div class="ref-description">
+    <p>This function provide a map (image) of site LTER network started from DEIMS iD of network.</p>
     </div>
 
     <pre class="usage"><span class='fu'>mapNetworkPoint</span><span class='op'>(</span><span class='va'>networkDEIMSID</span>, <span class='va'>countryCode</span><span class='op'>)</span></pre>
@@ -149,13 +151,23 @@
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>networkDEIMSID</th>
-      <td><p>is a DEIMS iD of network make from DEIMS-SDR website. More information about DEIMS iD in this page https://deims.org/docs/deimsid.html, and at this page https://deims.org/search?f<!-- %5B0%5D=result_type%3Anetwork the complete list of iLTER networks.} --></p>
-<p>countryCodefollow the SO 3166-1 alpha-3 codes. This ISO convention are three-letter country codes defined in ISO 3166-1, part of the ISO 3166 standard published by the International Organization for Standardization (ISO), to represent countries, dependent territories, and special areas of geographical interest. The map produced by this function will be limited only to the contry indicated in this parameter, if the network has a extraterritorial sites those will not represented.</p></td>
+      <th>countryCode</th>
+      <td><p>A `character` follow the SO 3166-1 alpha-3 codes. This ISO convention are three-letter country codes defined in ISO 3166-1, part of the ISO 3166 standard published by the International Organization for Standardization (ISO), to represent countries, dependent territories, and special areas of geographical interest. The map produced by this function will be limited only to the contry indicated in this parameter, if the network has a extraterritorial sites those will not represented.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
+    <p>The output of the function is a tmap plot containing an image of geographic distribution of the network sites present in the chosen country.</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Alessandro Oggioni, phD (2020) <a href='mailto:oggioni.a@irea.cnr.it'>oggioni.a@irea.cnr.it</a></p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><span class='va'>map</span> <span class='op'>&lt;-</span> <span class='fu'>mapNetworkPoint</span><span class='op'>(</span>networkDEIMSID <span class='op'>=</span> <span class='st'>'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3'</span>, countryCode <span class='op'>=</span> <span class='st'>'ITA'</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>map</span><span class='op'>)</span>
+
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -167,7 +179,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Alessandro Oggioni, Tagliolato Paolo.</p>
+  <p>Developed by Alessandro Oggioni, Paolo Tagliolato.</p>
 </div>
 
 <div class="pkgdown">

@@ -2,7 +2,7 @@
 % Please edit documentation in R/getActivity.R
 \name{getActivity}
 \alias{getActivity}
-\title{eLTER_getActivity}
+\title{eLTER getActivity function}
 \usage{
 getActivity(activityid)
 }
@@ -13,10 +13,10 @@ getActivity(activityid)
 The output of the function is a `tibble` with main features of the activity make in a site.
 }
 \description{
-This function allows to obtain the info of activity provided in DEIMS-SDR.
+This function allows to obtain the info of activity (actually only title) provided in DEIMS-SDR.
 }
 \examples{
-getDataset(activityid = 'https://deims.org/activity/8689b125-ee46-4d09-9e46-640f9c5c6eab')
+getActivity(activityid = 'https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845')
 
 }
 \author{

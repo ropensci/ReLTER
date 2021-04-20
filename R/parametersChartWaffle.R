@@ -1,4 +1,4 @@
-#' @title parameterChartsWaffle
+#' @title eLTER parametersChartWaffle function
 #' @description This function allows to obtain a waffle chart of the parameter collected in a site or network grouped into compounds.
 #' @param deimsid A `character`. It is the DEIMS iD of network make from DEIMS-SDR website. More information about DEIMS iD in this \href{https://deims.org/docs/deimsid.html}{page}.
 #' @return The output of the function is a waffle chart.
@@ -6,10 +6,11 @@
 #' @import dplyr graphics data.table tibble scales grDevices RColorBrewer waffle
 #' @export 
 #' @examples
-#' parameterChartsWaffle(deimsid = 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe')
+#' waffle <- parametersChartWaffle(deimsid = 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe')
+#' print(waffle)
 #'
-### function parameterChartsWaffle
-parameterChartsWaffle <- function(deimsid) {
+### function parametersChartWaffle
+parametersChartWaffle <- function(deimsid) {
   # TODO add this by SPARQL query
   data(envThesParams)
   
@@ -31,6 +32,7 @@ parameterChartsWaffle <- function(deimsid) {
   
   # Waffle charth
   # TODO: verify because for some site (e.g. Moor House - Upper Teesdale) the UI provide this error: "Insufficient values in manual scale. 10 needed but only 9 provided."
+  pieGraphPalette <- grDevices::colorRampPalette(RColorBrewer::brewer.pal(8, "Set2"))(nrow(params))
   p <- waffle::waffle(
     obsPropWaffle,
     rows = 8,
@@ -47,7 +49,7 @@ parameterChartsWaffle <- function(deimsid) {
     message(
       'This parameters are not included, please contact the development of the package by GitHub.\n',
       'Paste this message into the GitHub issue.\n',
-      'I am using the parameterCharts function and need to add the following parameters in the mapping:\n',
+      'I am using the parametersChart function and need to add the following parameters in the mapping:\n',
       paste(groupsIsNa$parameterLabel, collapse = '\n')
     )
   }

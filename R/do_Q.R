@@ -1,4 +1,4 @@
-#' @title do_Q
+#' @title eLTER do_Q function
 #' @description This function ...
 #' @param q a character
 #' @param jj a character
@@ -23,6 +23,7 @@
 #'   }'
 #'
 #' do_Q(q, jj)
+#' 
 ### function do_Q
 do_Q <- function(q, jj) {
   require('dplyr')

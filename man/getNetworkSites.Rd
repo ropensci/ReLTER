@@ -2,7 +2,7 @@
 % Please edit documentation in R/getNetworkSites.R
 \name{getNetworkSites}
 \alias{getNetworkSites}
-\title{eLTER_spatial_points_of_sites}
+\title{eLTER getNetworkSites function}
 \usage{
 getNetworkSites(networkDEIMSID)
 }
@@ -13,7 +13,8 @@ The output of the function is `SpatialPointsDataFrame` (package sp) of the netwo
 This function provide a SpatialPointsDataFrame (sp) of sites in a network provided by DEIMS-SDR.
 }
 \examples{
-getNetworkSites(networkDEIMSID = 'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3')
+listSites <- getNetworkSites(networkDEIMSID = 'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3')
+listSites[1:5, ]
 
 }
 \author{

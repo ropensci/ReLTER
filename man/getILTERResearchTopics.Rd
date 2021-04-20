@@ -2,7 +2,7 @@
 % Please edit documentation in R/getILTERResearchTopics.R
 \name{getILTERResearchTopics}
 \alias{getILTERResearchTopics}
-\title{eLTER_getILTERResearchTopics}
+\title{eLTER getILTERResearchTopics function}
 \usage{
 getILTERResearchTopics()
 }
@@ -16,8 +16,9 @@ The output of the function is a `tibble` containing the research topics and thei
 This function allows to obtain the information about the Research Topics collected in all sites of ILTER, througth the DEIMS-SDR sites API.
 }
 \examples{
+require('dplyr')
 listResearchTopics <- getILTERResearchTopics()
-knitr::kable(listResearchTopics[1:10, ] \%>\% dplyr::rows_insert(tibble(researchTopicsLabel = "...", researchTopicsUri = "...")))
+listResearchTopics[1:10, ] \%>\% dplyr::rows_insert(dplyr::tibble(researchTopicsLabel = "...", researchTopicsUri = "..."))
 
 }
 \author{

@@ -2,7 +2,7 @@
 % Please edit documentation in R/getNetworkParameters.R
 \name{getNetworkParameters}
 \alias{getNetworkParameters}
-\title{eLTER_getNetworkParameters}
+\title{eLTER getNetworkParameters function}
 \usage{
 getNetworkParameters(networkDEIMSID)
 }
@@ -13,8 +13,9 @@ The output of the function is a `tibble` containing the list of parameters and t
 This function allows to obtain the information about the parameters collected in the eLTER Network (e.g. Italy) througth the DEIMS-SDR sites API.
 }
 \examples{
+require('dplyr')
 listParams <- getNetworkParameters(networkDEIMSID = 'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3')
-knitr::kable(listParams[1:10, ] \%>\% dplyr::rows_insert(tibble(parameterLabel = "...", parameterUri = "...")))
+listParams[1:10, ] \%>\% dplyr::rows_insert(dplyr::tibble(parameterLabel = "...", parameterUri = "..."))
 
 }
 \author{

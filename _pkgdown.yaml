@@ -6,37 +6,49 @@ template:
     ganalytics: UA-12345678-0
 reference:
   - title: DEIMS-SDR interaction functions
-    desc: Functions able to get info from DEIMS-SDR website
+  - subtitle: Sites
+    desc: For retrive information about sites stored in DEIMS-SDR website
     contents:
       - '`getSiteAffiliations`'
       - '`getSiteBoundaries`'
       - '`getSiteContact`'
       - '`getSiteEnvCharacts`'
-      - '`getNetworkEnvCharacts`'
-      - '`getILTEREnvCharacts`'
+      - '`getSiteRelatedResources`'
+      - '`getSiteResearchTopics`'
       - '`getSiteGeneral`'
       - '`getSiteInfrastructure`'
       - '`getSiteParameters`'
+  - subtitle: Networks
+    desc: For retrive information about networksstored in DEIMS-SDR website
+    contents:
+      - '`getNetworkEnvCharacts`'
       - '`getNetworkParameters`'
-      - '`getILTERParameters`'
-      - '`getSiteRelatedResources`'
-      - '`getSiteResearchTopics`'
       - '`getNetworkResearchTopics`'
+      - '`getNetworkRelatedResources`'
+      - '`getNetworkSites`'
+  - subtitle: All ILTER
+    desc: For retrive information about all ILTER network stored in DEIMS-SDR website
+    contents:
+      - '`getILTERParameters`'
+      - '`getILTEREnvCharacts`'
       - '`getILTERResearchTopics`'
+  - subtitle: Other entities
+    desc: For retrive information about other entities stored in DEIMS-SDR website
+    contents:
       - '`getActivity`'
       - '`getDataset`'
-      - '`createSiteReport`'
   - title: Graphical functions
     desc: Functions able of producing geographical images of sites and national networks or charts
     contents:
       - '`mapNetworkPoint`'
-      - '`fProduceMapOfSiteFromDEIMS`'
-      - '`eLTER_QRCode`'
+      - '`produceMapOfSiteFromDEIMS`'
+      - '`createQRCode`'
       - '`parametersChartPie`'
       - '`parametersChartWaffle`'
   - title: Other functions
     desc: Functions able to some other interactions
     contents:
+      - '`getSOSProcedureList`'
       - '`taxonIDPesi`'
       - '`do_Q`'
 navbar:

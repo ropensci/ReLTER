@@ -2,7 +2,7 @@
 % Please edit documentation in R/getSiteBoundaries.R
 \name{getSiteBoundaries}
 \alias{getSiteBoundaries}
-\title{eLTER_getSiteBoundaries}
+\title{eLTER getSiteBoundaries function}
 \usage{
 getSiteBoundaries(deimsid)
 }
@@ -16,7 +16,8 @@ The output of the function is a `gpkg`, a `shapefile` (shp) and a `html map` wit
 This function allows to obtain a gpkg, a shp and a png versions (saved in the actual workdir) of the eLTER site boundaries, a view of the site boundaries on a leaflet map is also showed. All the info are taken from the DEIMS-SDR sites API. If the boundaries is missing an worning message will be proposed in the R console.
 }
 \examples{
-getSiteBoundaries(deimsid = 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe')
+tSiteBoundaries <- getSiteBoundaries(deimsid = 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe')
+tSiteBoundaries
 
 }
 \author{

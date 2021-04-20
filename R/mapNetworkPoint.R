@@ -1,4 +1,4 @@
-#' @title eLTER_map_of_network_points
+#' @title eLTER mapNetworkPoint function
 #' @description This function provide a map (image) of site LTER network started from DEIMS iD of network.
 #' @param networkDEIMSID A `character`. It is the DEIMS iD of network make from DEIMS-SDR website. More information about DEIMS iD in this \href{https://deims.org/docs/deimsid.html}{page}, and at this \href{https://deims.org/search?f%5B0%5D=result_type%3Anetwork}{page} the complete list of iLTER networks.
 #' @param countryCode A `character` follow the SO 3166-1 alpha-3 codes. This ISO convention are three-letter country codes defined in ISO 3166-1, part of the ISO 3166 standard published by the International Organization for Standardization (ISO), to represent countries, dependent territories, and special areas of geographical interest. The map produced by this function will be limited only to the contry indicated in this parameter, if the network has a extraterritorial sites those will not represented.
@@ -7,7 +7,8 @@
 #' @import jsonlite sf raster rgeos tmap
 #' @export
 #' @examples
-#' mapNetworkPoint(networkDEIMSID = 'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3', countryCode = 'ITA')
+#' map <- mapNetworkPoint(networkDEIMSID = 'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3', countryCode = 'ITA')
+#' print(map)
 #'
 ### function mapNetworkPoint
 mapNetworkPoint <- function(networkDEIMSID, countryCode) {

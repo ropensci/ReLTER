@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>eLTER_getSiteRelatedResources — getSiteRelatedResources • ReLTER</title>
+<title>eLTER getSiteRelatedResources function — getSiteRelatedResources • ReLTER</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="eLTER_getSiteRelatedResources — getSiteRelatedResources" />
+<meta property="og:title" content="eLTER getSiteRelatedResources function — getSiteRelatedResources" />
 <meta property="og:description" content="This function allows to obtain the list of related resources collected in the eLTER site througth the DEIMS-SDR sites API." />
 
 
@@ -82,7 +82,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ReLTER</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -136,7 +136,7 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>eLTER_getSiteRelatedResources</h1>
+    <h1>eLTER getSiteRelatedResources function</h1>
     <small class="dont-index">Source: <a href='https://github.com/oggioniale/ReLTER/blob/master/R/getSiteRelatedResources.R'><code>R/getSiteRelatedResources.R</code></a></small>
     <div class="hidden name"><code>getSiteRelatedResources.Rd</code></div>
     </div>
@@ -152,25 +152,22 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>deimsid</th>
-      <td><p>is a DEIMS iD of network make from DEIMS-SDR website. More information about DEIMS iD in this page https://deims.org/docs/deimsid.html.</p></td>
+      <td><p>A `character`. It is the DEIMS iD of network make from DEIMS-SDR website. More information about DEIMS iD in this <a href='https://deims.org/docs/deimsid.html'>page</a>.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The output of the function is a tibble with main features of the site and the related resources collected by site.</p>
+    <p>The output of the function is a `tibble` with main features of the site and the related resources collected by site.</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
-    <p>Alessandro Oggioni, phD (2020) &lt;oggioni.a@irea.cnr.it&gt;</p>
+    <p>Alessandro Oggioni, phD (2020) <a href='mailto:oggioni.a@irea.cnr.it'>oggioni.a@irea.cnr.it</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>getSiteRelatedResources</span><span class='op'>(</span>deimsid <span class='op'>=</span> <span class='st'>'https://deims.org/ede67a31-079a-4db5-b3a2-83b22054c661'</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 x 9</span><span>
-#&gt;   title  uri   geoCoord country geoElev.avg geoElev.min geoElev.max geoElev.unit
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> IT02-… http… POINT (… </span><span style='color: #949494;'>&lt;chr [</span><span>…        </span><span style='text-decoration: underline;'>1</span><span>481         820        </span><span style='text-decoration: underline;'>1</span><span>880 msl         
-#&gt; </span><span style='color: #949494;'># … with 1 more variable: relatedResources &lt;list&gt;</span><span></div><div class='input'>
-</div></span></pre>
+    <pre class="examples"><span class='va'>tSiteRelatedResources</span> <span class='op'>&lt;-</span> <span class='fu'>getSiteRelatedResources</span><span class='op'>(</span>deimsid <span class='op'>=</span> <span class='st'>'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe'</span><span class='op'>)</span>
+<span class='va'>tSiteRelatedResources</span>
+
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -182,7 +179,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Alessandro Oggioni, Tagliolato Paolo.</p>
+  <p>Developed by Alessandro Oggioni, Paolo Tagliolato.</p>
 </div>
 
 <div class="pkgdown">

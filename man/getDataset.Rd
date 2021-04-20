@@ -2,7 +2,7 @@
 % Please edit documentation in R/getDataset.R
 \name{getDataset}
 \alias{getDataset}
-\title{eLTER_getDataset}
+\title{eLTER getDataset function}
 \usage{
 getDataset(datasetid)
 }
@@ -16,7 +16,8 @@ The output of the function is a `tibble` with main features of the site and the 
 This function allows to obtain the info of dataset provided in DEIMS-SDR.
 }
 \examples{
-getDataset(datasetid = 'https://deims.org/datasets/75a7f938-7c77-11e3-8832-005056ab003f')
+tDataset <- getDataset(datasetid = 'https://deims.org/datasets/75a7f938-7c77-11e3-8832-005056ab003f')
+tDataset
 
 }
 \author{

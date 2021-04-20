@@ -1,14 +1,13 @@
-#' @title eLTER_getILTEREnvCharacts
+#' @title eLTER getILTEREnvCharacts function
 #' @description This function allows to obtain the information about the Environmental Characteristics of all sites of ILTER, througth the DEIMS-SDR sites API.
 #' @param null function witout parameter
-#' @return The output of the function is a `tibble` containing all the Environmental 
-#'  Characteristics of all ILTER's sites.
+#' @return The output of the function is a `tibble` containing all the Environmental Characteristics of all ILTER's sites.
 #' @author Alessandro Oggioni, phD (2020) <oggioni.a@@irea.cnr.it>
-#' @import jsonlite ReLTER
+#' @import jsonlite
 #' @export
 #' @examples
 #' listEnvCharacts <- getILTEREnvCharacts()
-#' knitr::kable(listEnvCharacts[1:5, ])
+#' listEnvCharacts[1:5, ]
 #'
 ### function getILTEREnvCharacts
 getILTEREnvCharacts <- function() {

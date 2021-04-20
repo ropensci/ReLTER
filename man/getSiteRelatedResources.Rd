@@ -2,7 +2,7 @@
 % Please edit documentation in R/getSiteRelatedResources.R
 \name{getSiteRelatedResources}
 \alias{getSiteRelatedResources}
-\title{eLTER_getSiteRelatedResources}
+\title{eLTER getSiteRelatedResources function}
 \usage{
 getSiteRelatedResources(deimsid)
 }
@@ -16,7 +16,8 @@ The output of the function is a `tibble` with main features of the site and the 
 This function allows to obtain the list of related resources collected in the eLTER site througth the DEIMS-SDR sites API.
 }
 \examples{
-getSiteRelatedResources(deimsid = 'https://deims.org/ede67a31-079a-4db5-b3a2-83b22054c661')
+tSiteRelatedResources <- getSiteRelatedResources(deimsid = 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe')
+tSiteRelatedResources
 
 }
 \author{

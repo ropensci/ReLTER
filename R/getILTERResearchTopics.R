@@ -1,13 +1,14 @@
-#' @title eLTER_getILTERResearchTopics
+#' @title eLTER getILTERResearchTopics function
 #' @description This function allows to obtain the information about the Research Topics collected in all sites of ILTER, througth the DEIMS-SDR sites API.
 #' @param null function witout parameter
 #' @return The output of the function is a `tibble` containing the research topics and their URI (Uniform Resource Identifier) of all ILTER sites.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @import jsonlite ReLTER dplyr
+#' @import jsonlite dplyr
 #' @export
 #' @examples
+#' require('dplyr')
 #' listResearchTopics <- getILTERResearchTopics()
-#' knitr::kable(listResearchTopics[1:10, ] %>% dplyr::rows_insert(tibble(researchTopicsLabel = "...", researchTopicsUri = "...")))
+#' listResearchTopics[1:10, ] %>% dplyr::rows_insert(dplyr::tibble(researchTopicsLabel = "...", researchTopicsUri = "..."))
 #'
 ### function getILTERResearchTopics
 getILTERResearchTopics <- function() {

@@ -2,7 +2,7 @@
 % Please edit documentation in R/getSiteGeneral.R
 \name{getSiteGeneral}
 \alias{getSiteGeneral}
-\title{eLTER_getSiteGeneral}
+\title{eLTER getSiteGeneral function}
 \usage{
 getSiteGeneral(deimsid)
 }
@@ -16,7 +16,8 @@ The output of the function is a `tibble` with main features of the site and the 
 This function allows to obtain the general info of the eLTER site througth the DEIMS-SDR sites API.
 }
 \examples{
-getSiteGeneral(deimsid = 'https://deims.org/17210eba-d832-4759-89fa-9ff127cbdf6e')
+tSiteGeneral <- getSiteGeneral(deimsid = 'https://deims.org/17210eba-d832-4759-89fa-9ff127cbdf6e')
+tSiteGeneral
 
 }
 \author{

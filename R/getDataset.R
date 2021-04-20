@@ -1,4 +1,4 @@
-#' @title eLTER_getDataset
+#' @title eLTER getDataset function
 #' @description This function allows to obtain the info of dataset provided in DEIMS-SDR.
 #' @param datasetid A character. It is the DEIMS iD of dataset make from DEIMS-SDR website. More information about DEIMS iD in this \href{https://deims.org/docs/deimsid.html}{page}.
 #' @return The output of the function is a `tibble` with main features of the site and the related resources collected by site.
@@ -6,7 +6,8 @@
 #' @import tibble httr
 #' @export
 #' @examples
-#' getDataset(datasetid = 'https://deims.org/datasets/75a7f938-7c77-11e3-8832-005056ab003f')
+#' tDataset <- getDataset(datasetid = 'https://deims.org/datasets/75a7f938-7c77-11e3-8832-005056ab003f')
+#' tDataset
 #'
 ### function getDataset
 getDataset <- function(datasetid) {

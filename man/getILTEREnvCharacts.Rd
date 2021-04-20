@@ -2,7 +2,7 @@
 % Please edit documentation in R/getILTEREnvCharacts.R
 \name{getILTEREnvCharacts}
 \alias{getILTEREnvCharacts}
-\title{eLTER_getILTEREnvCharacts}
+\title{eLTER getILTEREnvCharacts function}
 \usage{
 getILTEREnvCharacts()
 }
@@ -10,15 +10,14 @@ getILTEREnvCharacts()
 \item{null}{function witout parameter}
 }
 \value{
-The output of the function is a `tibble` containing all the Environmental 
- Characteristics of all ILTER's sites.
+The output of the function is a `tibble` containing all the Environmental Characteristics of all ILTER's sites.
 }
 \description{
 This function allows to obtain the information about the Environmental Characteristics of all sites of ILTER, througth the DEIMS-SDR sites API.
 }
 \examples{
 listEnvCharacts <- getILTEREnvCharacts()
-knitr::kable(listEnvCharacts[1:5, ])
+listEnvCharacts[1:5, ]
 
 }
 \author{

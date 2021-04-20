@@ -2,7 +2,7 @@
 % Please edit documentation in R/getSiteAffiliations.R
 \name{getSiteAffiliations}
 \alias{getSiteAffiliations}
-\title{eLTER_getSiteAffiliations}
+\title{eLTER getSiteAffiliations function}
 \usage{
 getSiteAffiliations(deimsid)
 }
@@ -16,7 +16,8 @@ The output of the function is a `tibble` with main features of the site and the 
 This function allows to obtain the information about affiliations of the eLTER site througth the DEIMS-SDR sites API.
 }
 \examples{
-getSiteAffiliations(deimsid = 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe')
+tSiteAffiliation <- getSiteAffiliations(deimsid = 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe')
+tSiteAffiliation
 
 }
 \author{

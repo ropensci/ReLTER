@@ -2,7 +2,7 @@
 % Please edit documentation in R/mapNetworkPoint.R
 \name{mapNetworkPoint}
 \alias{mapNetworkPoint}
-\title{eLTER_map_of_network_points}
+\title{eLTER mapNetworkPoint function}
 \usage{
 mapNetworkPoint(networkDEIMSID, countryCode)
 }
@@ -16,7 +16,8 @@ The output of the function is a tmap plot containing an image of geographic dist
 This function provide a map (image) of site LTER network started from DEIMS iD of network.
 }
 \examples{
-mapNetworkPoint(networkDEIMSID = 'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3', countryCode = 'ITA')
+map <- mapNetworkPoint(networkDEIMSID = 'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3', countryCode = 'ITA')
+print(map)
 
 }
 \author{

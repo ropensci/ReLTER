@@ -1,8 +1,8 @@
-#' @title getSOSProcedureList
+#' @title eLTER getSOSProcedureList function
 #' @description This function list the procedures of a Sensor Observations Service (SOS).
-#' @param sosHost a `character`. It is a SOS endpoint.
+#' @param sosHost a `character`. It is a SOS endpoint (e.g. http://getit.lteritalia.it). In particular is the path before '/observations/service?' 
 #' @return The output of the function is a `list` with the name and URI (Uniform Resource Identifier) of each procedure.
-#' @author Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
+#' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @import jsonlite
 #' @export
 #' @examples
@@ -10,8 +10,7 @@
 #'
 ### function getProcedureList
 getSOSProcedureList <- function(sosHost) {
-  # xslProcUrl.url <- "https://www.get-it.it/objects/sensors/xslt/Capabilities_proceduresUrlList.xsl"
-  xslProcUrl.url <- "xslt/Capabilities_proceduresUrlList.xsl"
+  xslProcUrl.url <- "https://www.get-it.it/objects/sensors/xslt/Capabilities_proceduresUrlList.xsl"
   styleProcUrl <- xml2::read_xml(xslProcUrl.url, package = "xslt")
 
   listProcedure <- read.csv(text = xslt::xml_xslt((

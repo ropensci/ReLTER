@@ -1,15 +1,14 @@
-#' @title eLTER_getNetworkParameters
+#' @title eLTER getNetworkParameters function
 #' @description This function allows to obtain the information about the parameters collected in the eLTER Network (e.g. Italy) througth the DEIMS-SDR sites API.
-#' @param  networkDEIMSID A `character`. It is the DEIMS iD of network make from DEIMS-SDR website.
-#'  More information about DEIMS iD in this \href{https://deims.org/docs/deimsid.html}{page}, and at this \href{https://deims.org/search?f%5B0%5D=result_type%3Anetwork}{page} the complete 
-#'  list of ILTER networks.
+#' @param  networkDEIMSID A `character`. It is the DEIMS iD of network make from DEIMS-SDR website. More information about DEIMS iD in this \href{https://deims.org/docs/deimsid.html}{page}, and at this \href{https://deims.org/search?f%5B0%5D=result_type%3Anetwork}{page} the complete list of ILTER networks.
 #' @return The output of the function is a `tibble` containing the list of parameters and their URI (Uniform Resource Identifier) collected by the network's sites.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @import jsonlite ReLTER dplyr
+#' @import jsonlite dplyr
 #' @export
 #' @examples
+#' require('dplyr')
 #' listParams <- getNetworkParameters(networkDEIMSID = 'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3')
-#' knitr::kable(listParams[1:10, ] %>% dplyr::rows_insert(tibble(parameterLabel = "...", parameterUri = "...")))
+#' listParams[1:10, ] %>% dplyr::rows_insert(dplyr::tibble(parameterLabel = "...", parameterUri = "..."))
 #'
 ### function getNetworkParameters
 getNetworkParameters <- function(networkDEIMSID) {

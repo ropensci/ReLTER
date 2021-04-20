@@ -2,12 +2,12 @@
 % Please edit documentation in R/getSOSProcedureList.R
 \name{getSOSProcedureList}
 \alias{getSOSProcedureList}
-\title{getSOSProcedureList}
+\title{eLTER getSOSProcedureList function}
 \usage{
 getSOSProcedureList(sosHost)
 }
 \arguments{
-\item{sosHost}{a `character`. It is a SOS endpoint.}
+\item{sosHost}{a `character`. It is a SOS endpoint (e.g. http://getit.lteritalia.it). In particular is the path before '/observations/service?'}
 }
 \value{
 The output of the function is a `list` with the name and URI (Uniform Resource Identifier) of each procedure.
@@ -20,5 +20,5 @@ getSOSProcedureList(sosHost = 'http://getit.lteritalia.it')
 
 }
 \author{
-Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
+Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
 }

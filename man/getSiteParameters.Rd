@@ -2,7 +2,7 @@
 % Please edit documentation in R/getSiteParameters.R
 \name{getSiteParameters}
 \alias{getSiteParameters}
-\title{eLTER_getSiteParameters}
+\title{eLTER getSiteParameters function}
 \usage{
 getSiteParameters(deimsid)
 }
@@ -16,8 +16,8 @@ The output of the function is a `tibble` with main features of the site and the 
 This function allows to obtain the list of parameters measured in the eLTER site througth the DEIMS-SDR sites API.
 }
 \examples{
-require('dplyr')
-getSiteParameters(deimsid = 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe')
+tSiteParameters <- getSiteParameters(deimsid = 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe')
+tSiteParameters
 
 }
 \author{

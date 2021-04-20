@@ -1,4 +1,4 @@
-#' @title eLTER_getSiteParameters
+#' @title eLTER getSiteParameters function
 #' @description This function allows to obtain the list of parameters measured in the eLTER site througth the DEIMS-SDR sites API.
 #' @param deimsid A `character`. It is the DEIMS iD of network make from DEIMS-SDR website. More information about DEIMS iD in this \href{https://deims.org/docs/deimsid.html}{page}.
 #' @return The output of the function is a `tibble` with main features of the site and the parameters collected by site.
@@ -6,8 +6,8 @@
 #' @import tibble httr
 #' @export
 #' @examples
-#' require('dplyr')
-#' getSiteParameters(deimsid = 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe')
+#' tSiteParameters <- getSiteParameters(deimsid = 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe')
+#' tSiteParameters
 #'
 ### function getParameters
 getSiteParameters <- function(deimsid) {

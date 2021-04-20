@@ -1,12 +1,12 @@
-#' @title eLTER_getActivity
-#' @description This function allows to obtain the info of activity provided in DEIMS-SDR.
+#' @title eLTER getActivity function
+#' @description This function allows to obtain the info of activity (actually only title) provided in DEIMS-SDR.
 #' @param activityid A character. It is the DEIMS iD of activity make from DEIMS-SDR website. More information about DEIMS iD in this \href{https://deims.org/docs/deimsid.html}{page}.
 #' @return The output of the function is a `tibble` with main features of the activity make in a site.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @import tibble httr
 #' @export
 #' @examples
-#' getDataset(activityid = 'https://deims.org/activity/8689b125-ee46-4d09-9e46-640f9c5c6eab')
+#' getActivity(activityid = 'https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845')
 #'
 ### function getActivity
 getActivity <- function(activityid) {
@@ -14,10 +14,10 @@ getActivity <- function(activityid) {
       }'
   # TODO add this field:
   # boundaries: .attributes.geographic.boundaries,
-  url <- paste0("https://deims.org/", "api/", substring(datasetid, 19))
+  url <- paste0("https://deims.org/", "api/activities/", substring(activityid, 28))
   export <- httr::GET(url = url)
   jj <- httr::content(export, "text")
-  activity <- tibble::as_tibble(do_Q(q, jj))
+  activity <- tibble::as_tibble(ReLTER::do_Q(q, jj))
   # TODO add if loops in order to filling the null fields into activity tibble
   # if (!is.na(activity$xxxxxxxxx)) {
   #   xxxxx

@@ -2,20 +2,20 @@
 % Please edit documentation in R/getNetworkEnvCharacts.R
 \name{getNetworkEnvCharacts}
 \alias{getNetworkEnvCharacts}
-\title{eLTER_getNetworkEnvCharacts}
+\title{eLTER getNetworkEnvCharacts function}
 \usage{
 getNetworkEnvCharacts(networkDEIMSID)
 }
 \value{
-The output of the function is a `tibble` containing all the Environmental 
- Characteristics of the network's sites.
+The output of the function is a `tibble` containing all the Environmental Characteristics of the network's sites.
 }
 \description{
 This function allows to obtain the information about the Envinronmental Characteristics of the eLTER Network (e.g. Italy) througth the DEIMS-SDR sites API.
 }
 \examples{
+require('dplyr')
 listEnvCharacts <- getNetworkEnvCharacts(networkDEIMSID = 'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3')
-knitr::kable(listEnvCharacts[1:5, ])
+listEnvCharacts[1:5, ]
 
 }
 \author{

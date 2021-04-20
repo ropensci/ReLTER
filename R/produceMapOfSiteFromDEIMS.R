@@ -1,4 +1,4 @@
-#' @title fProduceMapOfSiteFromDEIMS
+#' @title eLTER produceMapOfSiteFromDEIMS function
 #' @description This function provide a `map` of the site boundaries provided by site manager in the DEIMS-SDR.
 #' @param networkDEIMSID A `character`. It is the DEIMS iD of network make from DEIMS-SDR website. More information about DEIMS iD in this \href{https://deims.org/docs/deimsid.html}{page}, and at this \href{https://deims.org/search?f%5B0%5D=result_type%3Anetwork}{page} the complete list of ILTER networks.
 #' @return The output of the function is a distribution `image`.
@@ -6,9 +6,9 @@
 #' @import jsonlite sf sp tibble rgeos rosm raster tmap grid
 #' @export
 #' @examples
-#' sitesNetwork <- ReLTER::getNetworkSites(networkDEIMSID = 'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3')
+#' sitesNetwork <- getNetworkSites(networkDEIMSID = 'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3')
 #' sitesNetwork <- (sitesNetwork[!grepl('^IT', sitesNetwork$title),])
-#' fProduceMapOfSiteFromDEIMS(
+#' map <- produceMapOfSiteFromDEIMS(
 #'   deimsid = 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe',
 #'   countryCode = 'ITA',
 #'   listOfSites = sitesNetwork,
@@ -23,8 +23,8 @@
 #'   bboxYMax = 0
 #' )
 #'
-### function fProduceMapOfSiteFromDEIMS
-fProduceMapOfSiteFromDEIMS <- function(deimsid, countryCode, listOfSites, gridNx, gridNy, width, height, siteName, bboxXMin, bboxXMax, bboxYMin, bboxYMax) {
+### function produceMapOfSiteFromDEIMS
+produceMapOfSiteFromDEIMS <- function(deimsid, countryCode, listOfSites, gridNx, gridNy, width, height, siteName, bboxXMin, bboxXMax, bboxYMin, bboxYMax) {
   siteSelected <- sf::as_Spatial(sf::st_as_sfc(jsonlite::fromJSON(paste0("https://deims.org/", "api/sites/", substring(deimsid, 19)))$attributes$geographic$coordinates),)
   siteSelected@proj4string <- sp::CRS('+proj=longlat +datum=WGS84 +no_defs')
 
@@ -157,7 +157,7 @@ fProduceMapOfSiteFromDEIMS <- function(deimsid, countryCode, listOfSites, gridNx
       tmap::tm_shape(siteSelected) +
       tmap::tm_dots(col = color, size = 0.1, shape = 16, title = NA, legend.show = FALSE)
 
-    mapOfSite
+    print(mapOfSite)
     print(mapOfCentroids, vp = grid::viewport(gridNx, gridNy, width = width, height = height))
     # tmap::tmap_save(
     #   tm = mapOfSite,

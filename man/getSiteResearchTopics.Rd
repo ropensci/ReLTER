@@ -2,7 +2,7 @@
 % Please edit documentation in R/getSiteResearchTopics.R
 \name{getSiteResearchTopics}
 \alias{getSiteResearchTopics}
-\title{eLTER_getSiteResearchTopics}
+\title{eLTER getSiteResearchTopics function}
 \usage{
 getSiteResearchTopics(deimsid)
 }
@@ -16,7 +16,8 @@ The output of the function is a `tibble` with main features of the site and the 
 This function allows to obtain the list of research topics of the eLTER site througth the DEIMS-SDR sites API.
 }
 \examples{
-getSiteResearchTopics(deimsid = 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe')
+tSiteResearchTopics <- getSiteResearchTopics(deimsid = 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe')
+tSiteResearchTopics
 
 }
 \author{
