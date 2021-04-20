@@ -156,11 +156,24 @@
     <p>Alessandro Oggioni, phD (2020) <a href='mailto:oggioni.a@irea.cnr.it'>oggioni.a@irea.cnr.it</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='st'><a href='https://dplyr.tidyverse.org'>'dplyr'</a></span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='st'><a href='https://dplyr.tidyverse.org'>'dplyr'</a></span><span class='op'>)</span>
 <span class='va'>listParams</span> <span class='op'>&lt;-</span> <span class='fu'>getNetworkParameters</span><span class='op'>(</span>networkDEIMSID <span class='op'>=</span> <span class='st'>'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3'</span><span class='op'>)</span>
 <span class='va'>listParams</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, <span class='op'>]</span> <span class='op'>%&gt;%</span> <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/rows.html'>rows_insert</a></span><span class='op'>(</span><span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>parameterLabel <span class='op'>=</span> <span class='st'>"..."</span>, parameterUri <span class='op'>=</span> <span class='st'>"..."</span><span class='op'>)</span><span class='op'>)</span>
-
-</pre>
+</div><div class='output co'>#&gt; <span class='message'>Matching, by = "parameterLabel"</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 11 x 2</span><span>
+#&gt;    parameterLabel                    parameterUri                               
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                             </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                      
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> atmospheric parameter             http://vocabs.lter-europe.net/EnvThes/20937
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> ecosystem parameter               http://vocabs.lter-europe.net/EnvThes/20939
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> conductivity                      http://vocabs.lter-europe.net/EnvThes/22089
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> dissolved nutrient                http://vocabs.lter-europe.net/EnvThes/22107
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> dissolved organic carbon in water http://vocabs.lter-europe.net/EnvThes/10307
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> ecosystem structure               http://vocabs.lter-europe.net/EnvThes/21475
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> inorganic nutrient content        http://vocabs.lter-europe.net/EnvThes/22137
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> percent carbon                    http://vocabs.lter-europe.net/EnvThes/22181
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> percent organic carbon            http://vocabs.lter-europe.net/EnvThes/22183
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> total carbon                      http://vocabs.lter-europe.net/EnvThes/22296
+#&gt; </span><span style='color: #BCBCBC;'>11</span><span> ...                               ...                                        </div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

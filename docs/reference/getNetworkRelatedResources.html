@@ -156,10 +156,17 @@
     <p>Alessandro Oggioni, phD (2020) <a href='mailto:oggioni.a@irea.cnr.it'>oggioni.a@irea.cnr.it</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='va'>listRelatedResources</span> <span class='op'>&lt;-</span> <span class='fu'>getNetworkRelatedResources</span><span class='op'>(</span>networkDEIMSID <span class='op'>=</span> <span class='st'>'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3'</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='va'>listRelatedResources</span> <span class='op'>&lt;-</span> <span class='fu'>getNetworkRelatedResources</span><span class='op'>(</span>networkDEIMSID <span class='op'>=</span> <span class='st'>'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3'</span><span class='op'>)</span>
 <span class='va'>listRelatedResources</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span>, <span class='op'>]</span>
-
-</pre>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 5 x 3</span><span>
+#&gt;   relatedResourcesId… $suffix        relatedResourcesTitle    relatedResourcesC…
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>               </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>             
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> </span><span style='color: #BB0000;'>NA</span><span>                  </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>                       </span><span style='color: #BB0000;'>NA</span><span>                
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> https://deims.org/… d9e90cf2-e7a8… IT_SI001243_Gulf of Tri… 2019-12-20T13:21:…
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> https://deims.org/… d9e91530-e7a8… Dissolved Oxygen-Gulf o… 2019-12-20T13:21:…
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> https://deims.org/… d9e91c38-e7a8… Salinity-Gulf of Triest… 2020-01-27T11:16:…
+#&gt; </span><span style='color: #BCBCBC;'>5</span><span> https://deims.org/… f271ca9e-cdfd… IT_SI001243_Gulf of Tri… 2019-12-20T13:21:…</div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

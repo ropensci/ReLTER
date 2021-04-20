@@ -164,10 +164,32 @@
     <p>Alessandro Oggioni, phD (2020) &lt;oggioni.a@irea.cnr.it&gt;</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='va'>listEnvCharacts</span> <span class='op'>&lt;-</span> <span class='fu'>getILTEREnvCharacts</span><span class='op'>(</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='va'>listEnvCharacts</span> <span class='op'>&lt;-</span> <span class='fu'>getILTEREnvCharacts</span><span class='op'>(</span><span class='op'>)</span>
 <span class='va'>listEnvCharacts</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span>, <span class='op'>]</span>
-
-</pre>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 5 x 26</span><span>
+#&gt;   title  uri   geoCoord country geoElev.avg geoElev.min geoElev.max geoElev.unit
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Kosut… http… POINT (… </span><span style='color: #949494;'>&lt;chr [</span><span>…          </span><span style='color: #BB0000;'>NA</span><span>          </span><span style='color: #BB0000;'>NA</span><span>          </span><span style='color: #BB0000;'>NA</span><span> msl         
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> Pance… http… POINT (… </span><span style='color: #949494;'>&lt;chr [</span><span>…          </span><span style='color: #BB0000;'>NA</span><span>          </span><span style='color: #BB0000;'>NA</span><span>          </span><span style='color: #BB0000;'>NA</span><span> msl         
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> Lazar… http… POINT (… </span><span style='color: #949494;'>&lt;chr [</span><span>…          </span><span style='color: #BB0000;'>NA</span><span>          </span><span style='color: #BB0000;'>NA</span><span>          </span><span style='color: #BB0000;'>NA</span><span> msl         
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> Lands… http… POINT (… </span><span style='color: #949494;'>&lt;chr [</span><span>…          </span><span style='color: #BB0000;'>NA</span><span>          </span><span style='color: #BB0000;'>NA</span><span>          </span><span style='color: #BB0000;'>NA</span><span> msl         
+#&gt; </span><span style='color: #BCBCBC;'>5</span><span> Derda… http… POINT (… </span><span style='color: #949494;'>&lt;chr [</span><span>…          </span><span style='color: #BB0000;'>NA</span><span>          </span><span style='color: #BB0000;'>NA</span><span>          </span><span style='color: #BB0000;'>NA</span><span> msl         
+#&gt; </span><span style='color: #949494;'># … with 18 more variables: envCharacteristics.airTemperature.avg &lt;dbl&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   envCharacteristics.airTemperature.min &lt;dbl&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   envCharacteristics.airTemperature.max &lt;dbl&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   envCharacteristics.airTemperature.unit &lt;chr&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   envCharacteristics.precipitation.annual &lt;dbl&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   envCharacteristics.precipitation.min &lt;dbl&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   envCharacteristics.precipitation.max &lt;dbl&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   envCharacteristics.precipitation.unit &lt;chr&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   envCharacteristics.biogeographicalRegion &lt;chr&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   envCharacteristics.biome &lt;chr&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   envCharacteristics.ecosystemAndLanduse &lt;list&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   envCharacteristics.eunisHabitat &lt;list&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   envCharacteristics.landforms &lt;list&gt;, envCharacteristics.geoBonBiome &lt;chr&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   envCharacteristics.geology &lt;chr&gt;, envCharacteristics.hydrology &lt;chr&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   envCharacteristics.soils &lt;chr&gt;, envCharacteristics.vegetation &lt;chr&gt;</span><span></div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

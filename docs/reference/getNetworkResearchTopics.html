@@ -156,11 +156,24 @@
     <p>Alessandro Oggioni, phD (2020) <a href='mailto:oggioni.a@irea.cnr.it'>oggioni.a@irea.cnr.it</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='st'><a href='https://dplyr.tidyverse.org'>'dplyr'</a></span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='st'><a href='https://dplyr.tidyverse.org'>'dplyr'</a></span><span class='op'>)</span>
 <span class='va'>listResearchTopics</span> <span class='op'>&lt;-</span> <span class='fu'>getNetworkResearchTopics</span><span class='op'>(</span>networkDEIMSID <span class='op'>=</span> <span class='st'>'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3'</span><span class='op'>)</span>
 <span class='va'>listResearchTopics</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, <span class='op'>]</span> <span class='op'>%&gt;%</span> <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/rows.html'>rows_insert</a></span><span class='op'>(</span><span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>researchTopicsLabel <span class='op'>=</span> <span class='st'>"..."</span>, researchTopicsUri <span class='op'>=</span> <span class='st'>"..."</span><span class='op'>)</span><span class='op'>)</span>
-
-</pre>
+</div><div class='output co'>#&gt; <span class='message'>Matching, by = "researchTopicsLabel"</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 11 x 2</span><span>
+#&gt;    researchTopicsLabel researchTopicsUri                          
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>               </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                      
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> ecology             http://vocabs.lter-europe.net/EnvThes/21672
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> plant ecology       http://vocabs.lter-europe.net/EnvThes/21710
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> aquatic ecology     http://vocabs.lter-europe.net/EnvThes/80   
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> biodiversity        http://vocabs.lter-europe.net/EnvThes/21673
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> biogeochemistry     http://vocabs.lter-europe.net/EnvThes/21609
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> biology             http://vocabs.lter-europe.net/EnvThes/21611
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> chemistry           http://vocabs.lter-europe.net/EnvThes/21656
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> geology             http://vocabs.lter-europe.net/EnvThes/21740
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> marine ecology      http://vocabs.lter-europe.net/EnvThes/68   
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> oceanography        http://vocabs.lter-europe.net/EnvThes/21759
+#&gt; </span><span style='color: #BCBCBC;'>11</span><span> ...                 ...                                        </div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

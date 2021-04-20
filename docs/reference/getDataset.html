@@ -164,10 +164,24 @@
     <p>Alessandro Oggioni, phD (2020) <a href='mailto:oggioni.a@irea.cnr.it'>oggioni.a@irea.cnr.it</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='va'>tDataset</span> <span class='op'>&lt;-</span> <span class='fu'>getDataset</span><span class='op'>(</span>datasetid <span class='op'>=</span> <span class='st'>'https://deims.org/datasets/75a7f938-7c77-11e3-8832-005056ab003f'</span><span class='op'>)</span>
-<span class='va'>tDataset</span>
-
-</pre>
+    <pre class="examples"><div class='input'><span class='va'>tDataset</span> <span class='op'>&lt;-</span> <span class='fu'>getDataset</span><span class='op'>(</span>datasetid <span class='op'>=</span> <span class='st'>'https://deims.org/datasets/75a7f938-7c77-11e3-8832-005056ab003f'</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>No encoding supplied: defaulting to UTF-8.</span></div><div class='output co'>#&gt;  Found 1 records... Imported 1 records. Simplifying...</div><div class='input'><span class='va'>tDataset</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 x 32</span><span>
+#&gt;   title  abstract   keywords uri   type  dateRange.from dateRange.to relatedSite
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;lgl&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> LTER … Air chemi… </span><span style='color: #949494;'>&lt;df[,2]</span><span>… http… data… 2000-12-31     </span><span style='color: #BB0000;'>NA</span><span>           </span><span style='color: #949494;'>&lt;df[,4] [1</span><span>…
+#&gt; </span><span style='color: #949494;'># … with 24 more variables: contacts.corresponding &lt;list&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   contacts.creator &lt;list&gt;, contacts.metadataProvider &lt;list&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   observationParameters &lt;list&gt;, observationSpecies &lt;list&gt;, dataPolicy &lt;lgl&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   doi &lt;lgl&gt;, onlineLocation &lt;list&gt;, legal.accessUse &lt;list&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   legal.rights &lt;lgl&gt;, legal.legalAct &lt;lgl&gt;, legal.citation &lt;lgl&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   method.instrumentation &lt;list&gt;, method.qualityAssurance &lt;lgl&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   method.methodUrl &lt;list&gt;, method.methodDescription &lt;list&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   method.samplingTimeUnit.label &lt;chr&gt;, method.samplingTimeUnit.uri &lt;lgl&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   method.spatialDesign.label &lt;chr&gt;, method.spatialDesign.uri &lt;lgl&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   method.spatialScale.label &lt;chr&gt;, method.spatialScale.uri &lt;lgl&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   method.temporalResolution.label &lt;chr&gt;, method.temporalResolution.uri &lt;lgl&gt;</span><span></div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
