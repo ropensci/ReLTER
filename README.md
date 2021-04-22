@@ -11,6 +11,12 @@ ReLTER is an R package that allows interact with software
 (e.g. [DEIMS-SDR](https://deims.org/)) implemented by eLTER Research
 Infrastructure (RI) and manage the data/information shared by them.
 
+## Documentation
+
+You can visit {ReLTER} website at
+[oggioniale.github.io/ReLTER/](https://oggioniale.github.io/ReLTER/) for
+obtain more information, documentation and examples of use.
+
 ## Installation
 
 You can install the development version of ReLTER from
@@ -34,7 +40,6 @@ geographical aspects provided by [DEIMS-SDR](https://deims.org/).
 ``` r
 library(dplyr)
 ReLTER::getSiteBoundaries(deimsid = 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe')
-#> Deleting layer `sites_Lago_Maggiore_-_Italy' using driver `ESRI Shapefile'
 #> Writing layer `sites_Lago_Maggiore_-_Italy' to data source `sites_Lago_Maggiore_-_Italy.shp' using driver `ESRI Shapefile'
 #> Writing 1 features with 2 fields and geometry type Multi Polygon.
 ```

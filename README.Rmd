@@ -21,6 +21,10 @@ knitr::opts_chunk$set(
 
 ReLTER is an R package that allows interact with software (e.g. [DEIMS-SDR](https://deims.org/)) implemented by eLTER Research Infrastructure (RI) and manage the data/information shared by them.
 
+## Documentation
+
+You can visit {ReLTER} website at [oggioniale.github.io/ReLTER/](https://oggioniale.github.io/ReLTER/) for obtain more information, documentation and examples of use.  
+
 ## Installation
 
 You can install the development version of ReLTER from [GitHub](https://github.com/oggioniale/ReLTER) with:
@@ -29,6 +33,7 @@ You can install the development version of ReLTER from [GitHub](https://github.c
 install.packages("devtools")
 devtools::install_github("oggioniale/ReLTER")
 ```
+
 ## Examples
 
 Some examples of the possible capabilities of this library is given below. In these examples you can see the interaction, througth [API](https://deims.org/api), with [DEIMS-SDR](https://deims.org/).
