@@ -1,25 +1,36 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# ReLTER
+# ReLTER <!--img src='man/figures/logo.png' align="right" height="139" /-->
 
 <!-- badges: start -->
 
+<!-- other badges https://github.com/GuangchuangYu/badger -->
+
+[![](https://img.shields.io/badge/devel%20version-0.1.1-blue.svg)](https://github.com/oggioniale/ReLTER)
+[![](https://img.shields.io/github/languages/code-size/oggioniale/ReLTER.svg)](https://github.com/oggioniale/ReLTER)
+[![](https://img.shields.io/github/last-commit/oggioniale/ReLTER.svg)](https://github.com/oggioniale/ReLTER/commits/main)
 <!-- badges: end -->
 
-ReLTER is an R package that allows interact with software
+`{ReLTER}` is an R package that allows interact with software
 (e.g. [DEIMS-SDR](https://deims.org/)) implemented by eLTER Research
 Infrastructure (RI) and manage the data/information shared by them.
 
-## Documentation
+<!-- ## Citation -->
 
-You can visit {ReLTER} website at
+<!-- To cite `{ReLTER}` please use: -->
+
+<!-- ... -->
+
+## :book: Documentation
+
+You can visit `{ReLTER}` website at
 [oggioniale.github.io/ReLTER/](https://oggioniale.github.io/ReLTER/) for
 obtain more information, documentation and examples of use.
 
-## Installation
+## :arrow\_double\_down: Installation
 
-You can install the development version of ReLTER from
+You can install the development version of `{ReLTER}` from
 [GitHub](https://github.com/oggioniale/ReLTER) with:
 
 ``` r
@@ -40,6 +51,7 @@ geographical aspects provided by [DEIMS-SDR](https://deims.org/).
 ``` r
 library(dplyr)
 ReLTER::getSiteBoundaries(deimsid = 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe')
+#> Deleting layer `sites_Lago_Maggiore_-_Italy' using driver `ESRI Shapefile'
 #> Writing layer `sites_Lago_Maggiore_-_Italy' to data source `sites_Lago_Maggiore_-_Italy.shp' using driver `ESRI Shapefile'
 #> Writing 1 features with 2 fields and geometry type Multi Polygon.
 ```
@@ -71,3 +83,15 @@ knitr::kable(listParams[1:10, ] %>% dplyr::rows_insert(tibble(parameterLabel = "
 | percent organic carbon            | <http://vocabs.lter-europe.net/EnvThes/22183> |
 | total carbon                      | <http://vocabs.lter-europe.net/EnvThes/22296> |
 | …                                 | …                                             |
+
+## :writing\_hand: Authors
+
+Alessandro Oggioni <http://www.cnr.it/people/alessandro.oggioni>
+
+Paolo Tagliolato \<…\>
+
+CNR - Institute for Electromagnetic Sensing of the Environment (IREA)
+
+## Contributing organizations
+
+<a href="http://www.irea.cnr.it/en/"><img src="man/figures/irea_logo.png" height="40" align="left" /></a>
