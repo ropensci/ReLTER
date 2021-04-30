@@ -15,8 +15,8 @@ getILTEREnvCharacts <- function() {
   allSiteEnvCharacts <- lapply(
     as.list(
       paste0(
-        lterILTERSites$id$prefix,
-        lterILTERSites$id$suffix
+        lterILTERSites$id$prefix[1:1217],
+        lterILTERSites$id$suffix[1:1217]
       )
     ),
     ReLTER::getSiteEnvCharacts

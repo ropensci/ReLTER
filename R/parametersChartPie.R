@@ -3,7 +3,7 @@
 #' @param deimsid A `character`. It is the DEIMS iD of network make from DEIMS-SDR website. More information about DEIMS iD in this \href{https://deims.org/docs/deimsid.html}{page}.
 #' @return The output of the function is a pie chart.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @import dplyr graphics data.table tibble scales grDevices RColorBrewer
+#' @import dplyr graphics tibble scales grDevices RColorBrewer
 #' @export 
 #' @examples
 #' pie <- parametersChartPie(deimsid = 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe')
