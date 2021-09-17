@@ -10,15 +10,24 @@ getILTERResearchTopics()
 \item{null}{function witout parameter}
 }
 \value{
-The output of the function is a `tibble` containing the research topics and their URI (Uniform Resource Identifier) of all ILTER sites.
+The output of the function is a `tibble` containing the research
+topics and their URI (Uniform Resource Identifier) of all ILTER sites.
 }
 \description{
-This function allows to obtain the information about the Research Topics collected in all sites of ILTER, througth the DEIMS-SDR sites API.
+This function allows to obtain the information about the
+Research Topics collected in all sites of ILTER, througth the DEIMS-SDR
+sites API.
 }
 \examples{
 require('dplyr')
 listResearchTopics <- getILTERResearchTopics()
-listResearchTopics[1:10, ] \%>\% dplyr::rows_insert(dplyr::tibble(researchTopicsLabel = "...", researchTopicsUri = "..."))
+listResearchTopics[1:10, ] \%>\%
+  dplyr::rows_insert(
+  dplyr::tibble(
+    researchTopicsLabel = "...",
+    researchTopicsUri = "..."
+  )
+)
 
 }
 \author{

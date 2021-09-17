@@ -10,15 +10,24 @@ getILTERParameters()
 \item{null}{function witout parameter}
 }
 \value{
-The output of the function is a `tibble` containing the list of parameters and their URI (Uniform Resource Identifier) collected in all ILTER sites.
+The output of the function is a `tibble` containing the list
+of parameters and their URI (Uniform Resource Identifier) collected
+in all ILTER sites.
 }
 \description{
-This function allows to obtain the information about the parameters collected in all sites of ILTER, througth the DEIMS-SDR sites API.
+This function allows to obtain the information about the
+parameters collected in all sites of ILTER, througth the DEIMS-SDR
+sites API.
 }
 \examples{
 require('dplyr')
 listParams <- getILTERParameters()
-listParams[1:10, ] \%>\% dplyr::rows_insert(dplyr::tibble(parameterLabel = "...", parameterUri = "..."))
+listParams[1:10, ] \%>\%
+  dplyr::rows_insert(
+  dplyr::tibble(
+    parameterLabel = "...", parameterUri = "..."
+  )
+)
 
 }
 \author{

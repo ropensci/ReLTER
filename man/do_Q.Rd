@@ -18,13 +18,13 @@ The output of the function is ...
 This function ...
 }
 \examples{
-require('dplyr')
-deimsid <- 'https://deims.org/17210eba-d832-4759-89fa-9ff127cbdf6e'
+require("dplyr")
+deimsid <- "https://deims.org/17210eba-d832-4759-89fa-9ff127cbdf6e"
 url <- paste0("https://deims.org/", "api/sites/", substring(deimsid, 19))
 export <- httr::GET(url = url)
 jj <- httr::content(export, "text")
 
-q = '{title: .title,
+q <- '{title: .title,
     uri: "\\\\(.id.prefix)\\\\(.id.suffix)",
     geoBoundaries: .attributes.geographic.boundaries,
     geoCoord: .attributes.geographic.coordinates,

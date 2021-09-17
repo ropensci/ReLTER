@@ -32,11 +32,15 @@ Imports:
     tmap (>= 3.1),
     grid (>= 3.5.1),
     leaflet (>= 2.0.3),
+    qrencoder (>= 0.1.0),
+    waffle (>= 1.0.1),
     dtplyr
 RoxygenNote: 7.1.1
 Suggests: 
+    testthat (>= 3.0.0),
     knitr,
     rmarkdown
 VignetteBuilder: knitr
 URL: https://github.com/oggioniale/ReLTER
 BugReports: https://github.com/oggioniale/ReLTER/issues
+Config/testthat/edition: 3

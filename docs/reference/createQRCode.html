@@ -6,8 +6,15 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>eLTER QRCode function — createQRCode • ReLTER</title>
+<title>eLTER createQRCode function — createQRCode • ReLTER</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -39,8 +46,10 @@
 
 
 
-<meta property="og:title" content="eLTER QRCode function — createQRCode" />
-<meta property="og:description" content="This function allows to obtain the QRCode of any DEIMS-SDR entities of the eLTER." />
+<meta property="og:title" content="eLTER createQRCode function — createQRCode" />
+<meta property="og:description" content="This function allows to obtain the QRCode of any DEIMS-SDR
+entities of the eLTER." />
+<meta property="og:image" content="https://oggioniale.github.io/ReLTER/logo.png" />
 
 
 
@@ -136,13 +145,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>eLTER QRCode function</h1>
+    <h1>eLTER createQRCode function</h1>
     <small class="dont-index">Source: <a href='https://github.com/oggioniale/ReLTER/blob/master/R/createQRCode.R'><code>R/createQRCode.R</code></a></small>
     <div class="hidden name"><code>createQRCode.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function allows to obtain the QRCode of any DEIMS-SDR entities of the eLTER.</p>
+    <p>This function allows to obtain the QRCode of any DEIMS-SDR
+entities of the eLTER.</p>
     </div>
 
     <pre class="usage"><span class='fu'>createQRCode</span><span class='op'>(</span><span class='va'>deimsid</span><span class='op'>)</span></pre>
@@ -152,29 +162,24 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>deimsid</th>
-      <td><p>A `character`. It is the DEIMS iD of site make from DEIMS-SDR website. More information about DEIMS iD in this <a href='https://deims.org/docs/deimsid.html'>page</a>.</p></td>
+      <td><p>A `character`. It is the DEIMS iD of site make from
+DEIMS-SDR website. More information about DEIMS iD in this
+<a href='https://deims.org/docs/deimsid.html'>page</a>.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The output of the function is a QRcode `image` in a png (saved in the workdir).</p>
+    <p>The output of the function is a QRcode `image` in a png
+(saved in the workdir).</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Alessandro Oggioni, phD (2020) <a href='mailto:oggioni.a@irea.cnr.it'>oggioni.a@irea.cnr.it</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>createQRCode</span><span class='op'>(</span>deimsid <span class='op'>=</span> <span class='st'>'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe'</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Loading required package: qrencoder</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: raster</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: sp</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: dplyr</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: ‘dplyr’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:raster’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    intersect, select, union</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:stats’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:base’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='output co'>#&gt; agg_png 
-#&gt;       2 </div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='fu'>createQRCode</span><span class='op'>(</span>deimsid <span class='op'>=</span> <span class='st'>"https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fie"</span><span class='op'>)</span>
+
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

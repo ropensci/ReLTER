@@ -3,7 +3,8 @@ pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   ReLTER: ReLTER.html
-last_built: 2021-04-20T09:02Z
+  longtable: longtable.html
+last_built: 2021-09-17T13:11Z
 urls:
   reference: https://oggioniale.github.io/ReLTER//reference
   article: https://oggioniale.github.io/ReLTER//articles

@@ -8,6 +8,13 @@
 
 <title>eLTER getActivity function — getActivity • ReLTER</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -40,7 +47,9 @@
 
 
 <meta property="og:title" content="eLTER getActivity function — getActivity" />
-<meta property="og:description" content="This function allows to obtain the info of activity (actually only title) provided in DEIMS-SDR." />
+<meta property="og:description" content="This function allows to obtain the info of activity (actually
+ only title) provided in DEIMS-SDR." />
+<meta property="og:image" content="https://oggioniale.github.io/ReLTER/logo.png" />
 
 
 
@@ -142,7 +151,8 @@
     </div>
 
     <div class="ref-description">
-    <p>This function allows to obtain the info of activity (actually only title) provided in DEIMS-SDR.</p>
+    <p>This function allows to obtain the info of activity (actually
+ only title) provided in DEIMS-SDR.</p>
     </div>
 
     <pre class="usage"><span class='fu'>getActivity</span><span class='op'>(</span><span class='va'>activityid</span><span class='op'>)</span></pre>
@@ -152,24 +162,24 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>activityid</th>
-      <td><p>A character. It is the DEIMS iD of activity make from DEIMS-SDR website. More information about DEIMS iD in this <a href='https://deims.org/docs/deimsid.html'>page</a>.</p></td>
+      <td><p>A character. It is the DEIMS iD of activity make from
+DEIMS-SDR website. More information about DEIMS iD in this
+<a href='https://deims.org/docs/deimsid.html'>page</a>.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The output of the function is a `tibble` with main features of the activity make in a site.</p>
+    <p>The output of the function is a `tibble` with main features of
+the activity make in a site.</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Alessandro Oggioni, phD (2020) <a href='mailto:oggioni.a@irea.cnr.it'>oggioni.a@irea.cnr.it</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>getActivity</span><span class='op'>(</span>activityid <span class='op'>=</span> <span class='st'>'https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845'</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>No encoding supplied: defaulting to UTF-8.</span></div><div class='output co'>#&gt;  Found 1 records... Imported 1 records. Simplifying...</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 x 1</span><span>
-#&gt;   title                                                                
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                                                
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Study of non-indigenous (alien) species in the Mar Piccolo of Taranto</div><div class='input'>
-</div></span></pre>
+    <pre class="examples"><span class='fu'>getActivity</span><span class='op'>(</span>activityid <span class='op'>=</span> <span class='st'>"https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845"</span><span class='op'>)</span>
+
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -7,16 +7,20 @@
 getSOSProcedureList(sosHost)
 }
 \arguments{
-\item{sosHost}{a `character`. It is a SOS endpoint (e.g. http://getit.lteritalia.it). In particular is the path before '/observations/service?'}
+\item{sosHost}{a `character`. It is a SOS endpoint (e.g.
+http://getit.lteritalia.it). In particular is the path before
+'/observations/service?'}
 }
 \value{
-The output of the function is a `list` with the name and URI (Uniform Resource Identifier) of each procedure.
+The output of the function is a `list` with the name and URI (Uniform
+Resource Identifier) of each procedure.
 }
 \description{
-This function list the procedures of a Sensor Observations Service (SOS).
+This function list the procedures of a Sensor
+Observations Service (SOS).
 }
 \examples{
-getSOSProcedureList(sosHost = 'http://getit.lteritalia.it')
+getSOSProcedureList(sosHost = "http://getit.lteritalia.it")
 
 }
 \author{

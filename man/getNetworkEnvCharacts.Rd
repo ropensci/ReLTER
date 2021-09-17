@@ -6,15 +6,27 @@
 \usage{
 getNetworkEnvCharacts(networkDEIMSID)
 }
+\arguments{
+\item{networkDEIMSID}{A `character`. It is the DEIMS iD of network make
+from DEIMS-SDR website. More information about DEIMS iD in this
+\href{https://deims.org/docs/deimsid.html}{page}, and at this
+\href{https://deims.org/search?f[0]=result_type:network}{page}
+the complete list of ILTER networks.}
+}
 \value{
-The output of the function is a `tibble` containing all the Environmental Characteristics of the network's sites.
+The output of the function is a `tibble` containing all the
+Environmental Characteristics of the network's sites.
 }
 \description{
-This function allows to obtain the information about the Envinronmental Characteristics of the eLTER Network (e.g. Italy) througth the DEIMS-SDR sites API.
+This function allows to obtain the information about the
+Envinronmental Characteristics of the eLTER Network (e.g. Italy) througth
+the DEIMS-SDR sites API.
 }
 \examples{
 require('dplyr')
-listEnvCharacts <- getNetworkEnvCharacts(networkDEIMSID = 'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3')
+listEnvCharacts <- getNetworkEnvCharacts(
+  networkDEIMSID = "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
+)
 listEnvCharacts[1:5, ]
 
 }

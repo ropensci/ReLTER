@@ -8,6 +8,13 @@
 
 <title>eLTER getNetworkSites function — getNetworkSites • ReLTER</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -40,7 +47,9 @@
 
 
 <meta property="og:title" content="eLTER getNetworkSites function — getNetworkSites" />
-<meta property="og:description" content="This function provide a SpatialPointsDataFrame (sp) of sites in a network provided by DEIMS-SDR." />
+<meta property="og:description" content="This function provide a SpatialPointsDataFrame (sp) of sites in
+a network provided by DEIMS-SDR." />
+<meta property="og:image" content="https://oggioniale.github.io/ReLTER/logo.png" />
 
 
 
@@ -142,46 +151,40 @@
     </div>
 
     <div class="ref-description">
-    <p>This function provide a SpatialPointsDataFrame (sp) of sites in a network provided by DEIMS-SDR.</p>
+    <p>This function provide a SpatialPointsDataFrame (sp) of sites in
+a network provided by DEIMS-SDR.</p>
     </div>
 
     <pre class="usage"><span class='fu'>getNetworkSites</span><span class='op'>(</span><span class='va'>networkDEIMSID</span><span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>networkDEIMSID</th>
+      <td><p>A `character`. It is the DEIMS iD of network make from
+DEIMS-SDR website. More information about DEIMS iD in this
+<a href='https://deims.org/docs/deimsid.html'>page</a>, and at this
+<a href='https://deims.org/search?f[0]=result_type:network'>page</a> the
+complete list of iLTER networks.</p></td>
+    </tr>
+    </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The output of the function is `SpatialPointsDataFrame` (package sp) of the network's sites.</p>
+    <p>The output of the function is `SpatialPointsDataFrame` (package sp)
+of the network's sites.</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Alessandro Oggioni, phD (2020) <a href='mailto:oggioni.a@irea.cnr.it'>oggioni.a@irea.cnr.it</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>listSites</span> <span class='op'>&lt;-</span> <span class='fu'>getNetworkSites</span><span class='op'>(</span>networkDEIMSID <span class='op'>=</span> <span class='st'>'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3'</span><span class='op'>)</span>
+    <pre class="examples"><span class='va'>listSites</span> <span class='op'>&lt;-</span> <span class='fu'>getNetworkSites</span><span class='op'>(</span>
+  networkDEIMSID <span class='op'>=</span> <span class='st'>"https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"</span>
+<span class='op'>)</span>
 <span class='va'>listSites</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span>, <span class='op'>]</span>
-</div><div class='output co'>#&gt; Simple feature collection with 5 features and 3 fields
-#&gt; Geometry type: POINT
-#&gt; Dimension:     XY
-#&gt; Bounding box:  xmin: 8.94383 ymin: -75.6957 xmax: 171.517 ymax: 46.3879
-#&gt; CRS:           NA
-#&gt;                                           title          id.prefix
-#&gt; 1              IT02-Forests of the Alps - Italy https://deims.org/
-#&gt; 2 IT17-Antarctica Research Station - Antarctica https://deims.org/
-#&gt; 3                 IT16-Lagoon of Venice - Italy https://deims.org/
-#&gt; 4            IT12-Northern Adriatic Sea - Italy https://deims.org/
-#&gt; 5      IT10-Lake ecosystems of Sardinia - Italy https://deims.org/
-#&gt;                              id.suffix                  changed
-#&gt; 1 ede67a31-079a-4db5-b3a2-83b22054c661 2020-12-18T10:29:46+0100
-#&gt; 2 a0df48f6-bd2b-42b2-919a-77cb41220440 2021-02-26T16:20:08+0100
-#&gt; 3 cda8c930-378e-44f7-82aa-ea58bf57b611 2020-12-18T10:29:49+0100
-#&gt; 4 92fd6fad-99cd-4972-93bd-c491f0be1301 2020-12-18T10:29:49+0100
-#&gt; 5 67757ba9-c40c-4e2c-bdad-bc26905a738e 2021-02-01T10:30:57+0100
-#&gt;                coordinates
-#&gt; 1  POINT (11.5623 46.3879)
-#&gt; 2 POINT (171.517 -75.6957)
-#&gt; 3   POINT (12.2747 45.337)
-#&gt; 4  POINT (12.8145 45.3075)
-#&gt; 5  POINT (8.94383 40.5448)</div><div class='input'>
-</div></pre>
+
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

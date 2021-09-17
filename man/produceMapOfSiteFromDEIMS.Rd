@@ -19,24 +19,34 @@ produceMapOfSiteFromDEIMS(
   bboxYMax
 )
 }
+\arguments{
+\item{networkDEIMSID}{A `character`. It is the DEIMS iD of network make from
+DEIMS-SDR website. More information about DEIMS iD in this
+\href{https://deims.org/docs/deimsid.html}{page}, and at this
+\href{https://deims.org/search?f[0]=result_type:network}{page} the
+complete list of ILTER networks.}
+}
 \value{
 The output of the function is a distribution `image`.
 }
 \description{
-This function provide a `map` of the site boundaries provided by site manager in the DEIMS-SDR.
+This function provide a `map` of the site boundaries provided
+by site manager in the DEIMS-SDR.
 }
 \examples{
-sitesNetwork <- getNetworkSites(networkDEIMSID = 'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3')
+sitesNetwork <- getNetworkSites(
+  networkDEIMSID = "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
+)
 sitesNetwork <- (sitesNetwork[!grepl('^IT', sitesNetwork$title),])
 map <- produceMapOfSiteFromDEIMS(
-  deimsid = 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe',
-  countryCode = 'ITA',
+  deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
+  countryCode = "ITA",
   listOfSites = sitesNetwork,
   gridNx = 0.7,
   gridNy = 0.35,
   width = 0.25,
   height = 0.25,
-  siteName = 'Lago Maggiore',
+  siteName = "Lago Maggiore",
   bboxXMax = 0,
   bboxXMin = 0,
   bboxYMin = 0,

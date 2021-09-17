@@ -1,0 +1,40 @@
+---
+title: "Test"
+output: 
+  pagedown::html_paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+library(tidyverse)
+library(gt)
+```
+
+```{css}
+.gt_table{
+  break-inside: avoid;
+}
+```
+
+```{r}
+# this one is ok
+iris %>%
+  filter(Species == "setosa") %>%
+  select(Species, Sepal.Length) %>%
+  head(10) %>%
+  gt()
+
+# this one is too long
+iris %>%
+  filter(Species == "setosa") %>%
+  select(Species, Sepal.Length) %>%
+  head(20) %>%
+  gt()
+
+# this one is too large and too long
+iris %>%
+  filter(Species == "setosa") %>%
+  head(20) %>%
+  gt()
+```

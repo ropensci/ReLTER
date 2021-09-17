@@ -7,16 +7,20 @@
 getActivity(activityid)
 }
 \arguments{
-\item{activityid}{A character. It is the DEIMS iD of activity make from DEIMS-SDR website. More information about DEIMS iD in this \href{https://deims.org/docs/deimsid.html}{page}.}
+\item{activityid}{A character. It is the DEIMS iD of activity make from
+DEIMS-SDR website. More information about DEIMS iD in this
+\href{https://deims.org/docs/deimsid.html}{page}.}
 }
 \value{
-The output of the function is a `tibble` with main features of the activity make in a site.
+The output of the function is a `tibble` with main features of
+the activity make in a site.
 }
 \description{
-This function allows to obtain the info of activity (actually only title) provided in DEIMS-SDR.
+This function allows to obtain the info of activity (actually
+ only title) provided in DEIMS-SDR.
 }
 \examples{
-getActivity(activityid = 'https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845')
+getActivity(activityid = "https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845")
 
 }
 \author{

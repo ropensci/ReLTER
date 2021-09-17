@@ -6,14 +6,25 @@
 \usage{
 getNetworkSites(networkDEIMSID)
 }
+\arguments{
+\item{networkDEIMSID}{A `character`. It is the DEIMS iD of network make from
+DEIMS-SDR website. More information about DEIMS iD in this
+\href{https://deims.org/docs/deimsid.html}{page}, and at this
+\href{https://deims.org/search?f[0]=result_type:network}{page} the
+complete list of iLTER networks.}
+}
 \value{
-The output of the function is `SpatialPointsDataFrame` (package sp) of the network's sites.
+The output of the function is `SpatialPointsDataFrame` (package sp)
+of the network's sites.
 }
 \description{
-This function provide a SpatialPointsDataFrame (sp) of sites in a network provided by DEIMS-SDR.
+This function provide a SpatialPointsDataFrame (sp) of sites in
+a network provided by DEIMS-SDR.
 }
 \examples{
-listSites <- getNetworkSites(networkDEIMSID = 'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3')
+listSites <- getNetworkSites(
+  networkDEIMSID = "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
+)
 listSites[1:5, ]
 
 }

@@ -40,7 +40,9 @@ The *getSiteBoundaries* function creates a map overlaying the boundaries of the 
 
 ```{r, message = FALSE, warning = FALSE, dev = 'png', fig.show =' hide', exampleSiteBoundaries}
 library(dplyr)
-ReLTER::getSiteBoundaries(deimsid = 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe')
+ReLTER::getSiteBoundaries(
+  deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
+)
 ```
 
 --------------------------------
@@ -49,6 +51,12 @@ The *getNetworkParameters* function creates a list of parameters collected by a 
 
 ```{r, message = FALSE, warning = FALSE, exampleSiteParameters}
 library(dplyr)
-listParams <- ReLTER::getNetworkParameters(networkDEIMSID = 'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3')
-knitr::kable(listParams[1:10, ] %>% dplyr::rows_insert(tibble(parameterLabel = "...", parameterUri = "...")))
+listParams <- ReLTER::getNetworkParameters(
+  networkDEIMSID = "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
+)
+knitr::kable(listParams[1:10, ] %>%
+               dplyr::rows_insert(
+                 tibble(parameterLabel = "...", parameterUri = "...")
+               )
+             )
 ```

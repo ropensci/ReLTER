@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# ReLTER <!--img src='man/figures/logo.png' align="right" height="139" /-->
+# ReLTER <img src='man/figures/logo.png' align="right" height="139" />
 
 <!-- badges: start -->
 
@@ -10,17 +10,22 @@
 [![](https://img.shields.io/badge/devel%20version-0.1.1-blue.svg)](https://github.com/oggioniale/ReLTER)
 [![](https://img.shields.io/github/languages/code-size/oggioniale/ReLTER.svg)](https://github.com/oggioniale/ReLTER)
 [![](https://img.shields.io/github/last-commit/oggioniale/ReLTER.svg)](https://github.com/oggioniale/ReLTER/commits/main)
+[![Project Status: Active – The project has reached a stable, usable
+state and is being actively
+developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 <!-- badges: end -->
 
 `{ReLTER}` is an R package that allows interact with software
 (e.g. [DEIMS-SDR](https://deims.org/)) implemented by eLTER Research
 Infrastructure (RI) and manage the data/information shared by them.
 
-<!-- ## Citation -->
+<!-- about the icons https://github.com/ikatyang/emoji-cheat-sheet  -->
 
-<!-- To cite `{ReLTER}` please use: -->
+## :notebook_with_decorative_cover: Citation
 
-<!-- ... -->
+To cite `{ReLTER}` please use:
+
+…
 
 ## :book: Documentation
 
@@ -28,7 +33,7 @@ You can visit `{ReLTER}` website at
 [oggioniale.github.io/ReLTER/](https://oggioniale.github.io/ReLTER/) for
 obtain more information, documentation and examples of use.
 
-## :arrow\_double\_down: Installation
+## :arrow_double_down: Installation
 
 You can install the development version of `{ReLTER}` from
 [GitHub](https://github.com/oggioniale/ReLTER) with:
@@ -38,7 +43,7 @@ install.packages("devtools")
 devtools::install_github("oggioniale/ReLTER")
 ```
 
-## Examples
+## :memo: Examples
 
 Some examples of the possible capabilities of this library is given
 below. In these examples you can see the interaction, througth
@@ -84,14 +89,14 @@ knitr::kable(listParams[1:10, ] %>% dplyr::rows_insert(tibble(parameterLabel = "
 | total carbon                      | <http://vocabs.lter-europe.net/EnvThes/22296> |
 | …                                 | …                                             |
 
-## :writing\_hand: Authors
+## :writing_hand: Authors
 
-Alessandro Oggioni <http://www.cnr.it/people/alessandro.oggioni>
+Alessandro Oggioni <https://orcid.org/0000-0002-7997-219X>
 
-Paolo Tagliolato \<…\>
+Paolo Tagliolato <https://orcid.org/0000-0002-0261-313X>
 
 CNR - Institute for Electromagnetic Sensing of the Environment (IREA)
 
-## Contributing organizations
+## :office: Contributing organizations
 
 <a href="http://www.irea.cnr.it/en/"><img src="man/figures/irea_logo.png" height="40" align="left" /></a>

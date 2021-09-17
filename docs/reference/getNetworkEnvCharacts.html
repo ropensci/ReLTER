@@ -8,6 +8,13 @@
 
 <title>eLTER getNetworkEnvCharacts function — getNetworkEnvCharacts • ReLTER</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -40,7 +47,10 @@
 
 
 <meta property="og:title" content="eLTER getNetworkEnvCharacts function — getNetworkEnvCharacts" />
-<meta property="og:description" content="This function allows to obtain the information about the Envinronmental Characteristics of the eLTER Network (e.g. Italy) througth the DEIMS-SDR sites API." />
+<meta property="og:description" content="This function allows to obtain the information about the
+Envinronmental Characteristics of the eLTER Network (e.g. Italy) througth
+the DEIMS-SDR sites API." />
+<meta property="og:image" content="https://oggioniale.github.io/ReLTER/logo.png" />
 
 
 
@@ -142,47 +152,42 @@
     </div>
 
     <div class="ref-description">
-    <p>This function allows to obtain the information about the Envinronmental Characteristics of the eLTER Network (e.g. Italy) througth the DEIMS-SDR sites API.</p>
+    <p>This function allows to obtain the information about the
+Envinronmental Characteristics of the eLTER Network (e.g. Italy) througth
+the DEIMS-SDR sites API.</p>
     </div>
 
     <pre class="usage"><span class='fu'>getNetworkEnvCharacts</span><span class='op'>(</span><span class='va'>networkDEIMSID</span><span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>networkDEIMSID</th>
+      <td><p>A `character`. It is the DEIMS iD of network make
+from DEIMS-SDR website. More information about DEIMS iD in this
+<a href='https://deims.org/docs/deimsid.html'>page</a>, and at this
+<a href='https://deims.org/search?f[0]=result_type:network'>page</a>
+the complete list of ILTER networks.</p></td>
+    </tr>
+    </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The output of the function is a `tibble` containing all the Environmental Characteristics of the network's sites.</p>
+    <p>The output of the function is a `tibble` containing all the
+Environmental Characteristics of the network's sites.</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Alessandro Oggioni, phD (2020) <a href='mailto:oggioni.a@irea.cnr.it'>oggioni.a@irea.cnr.it</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='st'><a href='https://dplyr.tidyverse.org'>'dplyr'</a></span><span class='op'>)</span>
-<span class='va'>listEnvCharacts</span> <span class='op'>&lt;-</span> <span class='fu'>getNetworkEnvCharacts</span><span class='op'>(</span>networkDEIMSID <span class='op'>=</span> <span class='st'>'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3'</span><span class='op'>)</span>
+    <pre class="examples"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='st'><a href='https://dplyr.tidyverse.org'>'dplyr'</a></span><span class='op'>)</span>
+<span class='va'>listEnvCharacts</span> <span class='op'>&lt;-</span> <span class='fu'>getNetworkEnvCharacts</span><span class='op'>(</span>
+  networkDEIMSID <span class='op'>=</span> <span class='st'>"https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"</span>
+<span class='op'>)</span>
 <span class='va'>listEnvCharacts</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span>, <span class='op'>]</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 5 x 26</span><span>
-#&gt;   title  uri   geoCoord country geoElev.avg geoElev.min geoElev.max geoElev.unit
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> IT02-… http… POINT (… </span><span style='color: #949494;'>&lt;chr [</span><span>…        </span><span style='text-decoration: underline;'>1</span><span>481         820        </span><span style='text-decoration: underline;'>1</span><span>880 msl         
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> IT17-… http… POINT (… </span><span style='color: #949494;'>&lt;chr [</span><span>…        -</span><span style='color: #BB0000;'>350</span><span>        -</span><span style='color: #BB0000;'>700</span><span>           0 msl         
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> IT16-… http… POINT (… </span><span style='color: #949494;'>&lt;chr [</span><span>…           0           0           0 msl         
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> IT12-… http… POINT (… </span><span style='color: #949494;'>&lt;chr [</span><span>…         -</span><span style='color: #BB0000;'>25</span><span>         -</span><span style='color: #BB0000;'>50</span><span>           0 msl         
-#&gt; </span><span style='color: #BCBCBC;'>5</span><span> IT10-… http… POINT (… </span><span style='color: #949494;'>&lt;chr [</span><span>…         408         103         714 msl         
-#&gt; </span><span style='color: #949494;'># … with 18 more variables: envCharacteristics.airTemperature.avg &lt;dbl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   envCharacteristics.airTemperature.min &lt;dbl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   envCharacteristics.airTemperature.max &lt;dbl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   envCharacteristics.airTemperature.unit &lt;chr&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   envCharacteristics.precipitation.annual &lt;dbl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   envCharacteristics.precipitation.min &lt;dbl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   envCharacteristics.precipitation.max &lt;dbl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   envCharacteristics.precipitation.unit &lt;chr&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   envCharacteristics.biogeographicalRegion &lt;chr&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   envCharacteristics.biome &lt;chr&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   envCharacteristics.ecosystemAndLanduse &lt;list&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   envCharacteristics.eunisHabitat &lt;list&gt;, envCharacteristics.landforms &lt;lgl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   envCharacteristics.geoBonBiome &lt;chr&gt;, envCharacteristics.geology &lt;chr&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   envCharacteristics.hydrology &lt;chr&gt;, envCharacteristics.soils &lt;chr&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   envCharacteristics.vegetation &lt;chr&gt;</span><span></div><div class='input'>
-</div></span></pre>
+
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

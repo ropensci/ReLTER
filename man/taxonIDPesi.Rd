@@ -7,15 +7,24 @@
 taxonIDPesi(table, taxaColumn)
 }
 \arguments{
-\item{table}{`data.frame` containing at least one column with a taxa (e.g. Sphaerosoma seidlitzi, Malthinus, etc.).}
+\item{table}{`data.frame` containing at least one column with a taxa
+(e.g. Sphaerosoma seidlitzi, Malthinus, etc.).}
 
 \item{taxaColumn}{`numeric` that identify the column containing taxa value.}
 }
 \value{
-the output of the function is a `data.frame` containing all the columns provided as input plus 'canonicalName', 'authorship', 'synonyms', 'LSID', 'url', 'accordingTo', 'checkStatus' gathered from PESI.
+the output of the function is a `data.frame` containing all the
+columns provided as input plus 'canonicalName', 'authorship', 'synonyms',
+'LSID', 'url', 'accordingTo', 'checkStatus' gathered from PESI.
 }
 \description{
-This function provide a taxon ID, usually a \href{https://en.wikipedia.org/wiki/LSID}{LSID}, to a taxon. The input of the function is a csv file with a list of taxon and the provider is currently A Pan-European Species directories Infrastructure - \href{http://eu-nomen.eu/pesi/}{PESI}. `taxonID` takes advantage of taxize's `eubon_search` function \url{https://docs.ropensci.org/taxize/} and the \href{http://www.eu-nomen.eu/portal/rest/}{PESI RestAPI}.
+This function provide a taxon ID, usually a
+\href{https://en.wikipedia.org/wiki/LSID}{LSID}, to a taxon. The input of
+the function is a csv file with a list of taxon and the provider is
+currently A Pan-European Species directories Infrastructure -
+\href{http://eu-nomen.eu/pesi/}{PESI}. `taxonID` takes advantage of taxize's
+`eubon_search` function \url{https://docs.ropensci.org/taxize/} and the
+\href{http://www.eu-nomen.eu/portal/rest/}{PESI RestAPI}.
 }
 \examples{
 importedDataset <- data.frame(

@@ -7,16 +7,21 @@
 parametersChartPie(deimsid)
 }
 \arguments{
-\item{deimsid}{A `character`. It is the DEIMS iD of network make from DEIMS-SDR website. More information about DEIMS iD in this \href{https://deims.org/docs/deimsid.html}{page}.}
+\item{deimsid}{A `character`. It is the DEIMS iD of network make from
+DEIMS-SDR website. More information about DEIMS iD in this
+\href{https://deims.org/docs/deimsid.html}{page}.}
 }
 \value{
 The output of the function is a pie chart.
 }
 \description{
-This function allows to obtain a pie chart of the parameter collected in a site or network grouped into compounds.
+This function allows to obtain a pie chart of the parameter
+collected in a site or network grouped into compounds.
 }
 \examples{
-pie <- parametersChartPie(deimsid = 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe')
+pie <- parametersChartPie(
+  deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
+)
 print(pie)
 
 }
