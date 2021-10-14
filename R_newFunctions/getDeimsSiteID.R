@@ -6,11 +6,15 @@ getDeimsSiteID <- function(sites_filtered, idx = 1) {
   #' @param sites_filtered A `data.frame`. 
   #' @param idx An `integer` index in the data.frame for the desired site id
   #' @return the deims site id (url)
-  #' @author Micha Silver, phD (2020) \email{silverm@post.bgu.ac.il}
+  #' @author Micha Silver, \email{silverm@post.bgu.ac.il}
   #' @examples
   #' deimsid <- getDeimsSitesID(sites_filtered, 3)
   #' deimsid
-  
+
+  if (length(sites_filtered$title) < idx) {
+    print("Index is larger than filtered sites list.")
+    return(NA)
+  }
   site <- sites_filtered[idx,]
   deimsid = paste0(site$id$prefix, site$id$suffix)
   return(deimsid)

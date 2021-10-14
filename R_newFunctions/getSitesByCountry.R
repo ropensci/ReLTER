@@ -7,7 +7,7 @@ getSitesByCountry <- function(country_name) {
   #' However the partial string should be unique.
   #' i.e. "United" can match "United States" and "United Kingdom"
   #' @return A `data.frame` of the sites within the given country
-  #' @author Micha Silver, phD (2020) \email{silverm@post.bgu.ac.il}
+  #' @author Micha Silver, \email{silverm@post.bgu.ac.il}
   #' @import jsonlite httr tibble sf leaflet
   #' @export
   #' @examples
@@ -21,6 +21,10 @@ getSitesByCountry <- function(country_name) {
   sites_filtered <- sites_df[grep(x = sites_df$title,
                                   pattern = country_name,
                                   ignore.case = TRUE),]
+  if (length(sites_filtered$title) == 0) {
+    print(paste("No sites in country:", country_name))
+    return(NA)
+  }
   #print(sites_filtered$title)
   return(sites_filtered)
 }
