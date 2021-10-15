@@ -8,7 +8,10 @@
 #' site and the contact information, such as: site manager, operation
 #' organaization, metadata provider, founding agency and site url.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @import tibble httr
+#' @import
+#' @importFrom httr GET content
+#' @importFrom utils capture.output
+#' @importFrom dplyr as_tibble
 #' @export
 #' @examples
 #' tSiteContact <- getSiteContact(
@@ -25,9 +28,30 @@ getSiteContact <- function(deimsid) {
        geoElev: .attributes.geographic.elevation,
        generalInfo: .attributes.contact
       }'
-  url <- paste0("https://deims.org/", "api/sites/", substring(deimsid, 19))
+  url <- paste0(
+    "https://deims.org/",
+    "api/sites/",
+    sub("^.+/", "", deimsid)
+  )
   export <- httr::GET(url = url)
   jj <- suppressMessages(httr::content(export, "text"))
-  invisible(capture.output(contact <- tibble::as_tibble(ReLTER::do_Q(q, jj))))
+  status <- jj %>% 
+    jqr::jq(as.character('{status: .errors.status}')) %>% 
+    textConnection() %>%
+    jsonlite::stream_in(simplifyDataFrame = TRUE) %>%
+    dtplyr::lazy_dt() %>% 
+    dplyr::as_tibble()
+  if (is.na(status)) {
+    invisible(
+      utils::capture.output(
+        contact <- dplyr::as_tibble(
+          ReLTER::do_Q(q, jj)
+        )
+      )
+    )
+  } else {
+    message("\n---- The requested page could not be found. Please check again the DEIMS.iD ----\n")
+    contact <- NULL
+  }
   contact
 }

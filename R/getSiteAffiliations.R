@@ -8,8 +8,13 @@
 #' site and the affiliations information, such as: networks and projects in
 #' which the site is involved.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @import tibble httr
-#' @importFrom 
+#' @import
+#' @importFrom httr GET content
+#' @importFrom jqr jq
+#' @importFrom jsonlite stream_in
+#' @importFrom dtplyr lazy_dt
+#' @importFrom dplyr as_tibble
+#' @importFrom utils capture.output
 #' @export
 #' @examples
 #' tSiteAffiliation <- getSiteAffiliations(
@@ -26,7 +31,11 @@ getSiteAffiliations <- function(deimsid) {
        geoElev: .attributes.geographic.elevation,
        affiliation: .attributes.affiliation
       }'
-  url <- paste0("https://deims.org/", "api/sites/", substring(deimsid, 19))
+  url <- paste0(
+    "https://deims.org/",
+    "api/sites/",
+    sub("^.+/", "", deimsid)
+  )
   export <- httr::GET(url = url)
   jj <- suppressMessages(httr::content(export, "text"))
   status <- jj %>% 
@@ -34,20 +43,18 @@ getSiteAffiliations <- function(deimsid) {
     textConnection() %>%
     jsonlite::stream_in(simplifyDataFrame = TRUE) %>%
     dtplyr::lazy_dt() %>% 
-    as_tibble()
+    dplyr::as_tibble()
   if (is.na(status)) {
     invisible(
-      capture.output(
-        affiliations <- tibble::as_tibble(
-          ReLTER::do_Q(
-            q,
-            jj
-          )
+      utils::capture.output(
+        affiliations <- dplyr::as_tibble(
+          ReLTER::do_Q(q, jj)
         )
       )
     )
   } else {
     message("\n---- The requested page could not be found. Please check again the DEIMS.iD ----\n")
+    affiliations <- NULL
   }
   affiliations
 }

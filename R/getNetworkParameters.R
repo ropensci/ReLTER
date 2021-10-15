@@ -11,9 +11,13 @@
 #' of parameters and their URI (Uniform Resource Identifier) collected
 #' by the network's sites.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @import jsonlite dplyr
+#' @import
+#' @importFrom jsonlite fromJSON
+#' @importFrom dplyr bind_rows distinct
+#' @importFrom dplyr as_tibble
 #' @export
 #' @examples
+#' \donttest
 #' require('dplyr')
 #' listParams <- getNetworkParameters(
 #'   networkDEIMSID = "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
@@ -22,6 +26,7 @@
 #' dplyr::rows_insert(
 #'   dplyr::tibble(parameterLabel = "...", parameterUri = "...")
 #' )
+#' \donttest
 #'
 ### function getNetworkParameters
 getNetworkParameters <- function(networkDEIMSID) {
@@ -29,9 +34,7 @@ getNetworkParameters <- function(networkDEIMSID) {
     jsonlite::fromJSON(
       paste0("https://deims.org/",
              "api/sites?network=",
-             substring(
-               networkDEIMSID, 27
-              )
+             sub("^.+/", "", networkDEIMSID)
             )
     )
   )
@@ -44,13 +47,18 @@ getNetworkParameters <- function(networkDEIMSID) {
     ),
     ReLTER::getSiteParameters
   )
-  uniteSiteParameters <- dplyr::bind_rows(allSiteParameters)
-  parametersNetworkList <- uniteSiteParameters$parameter
-  parametersNetworkDF <- dplyr::bind_rows(parametersNetworkList)
-  uniqueSiteParameters <- tibble::as_tibble(
-    dplyr::distinct(
-      parametersNetworkDF
+  if (length(allSiteParameters) != 0) {
+    uniteSiteParameters <- dplyr::bind_rows(allSiteParameters)
+    parametersNetworkList <- uniteSiteParameters$parameter
+    parametersNetworkDF <- dplyr::bind_rows(parametersNetworkList)
+    uniqueSiteParameters <- dplyr::as_tibble(
+      dplyr::distinct(
+        parametersNetworkDF
+      )
     )
-  )
-  uniqueSiteParameters
+    uniqueSiteParameters
+  } else {
+    message("\n---- The requested page could not be found. Please check again the Network.iD ----\n")
+    uniqueSiteParameters <- NULL
+  }
 }

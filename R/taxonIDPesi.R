@@ -13,9 +13,12 @@
 #' columns provided as input plus 'canonicalName', 'authorship', 'synonyms',
 #' 'LSID', 'url', 'accordingTo', 'checkStatus' gathered from PESI.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @import taxize dplyr
+#' @import
+#' @importFrom taxize eubon_search
+#' @importFrom dplyr bind_rows
 #' @export
 #' @examples
+#' \donttest
 #' importedDataset <- data.frame(
 #'    taxonID = c(1, 2, 3, 4, 5, 6),
 #'    family = c("Alexiidae", "Anthicidae", "Anthribidae", "Anthribidae", "Biphyllidae", "Brentidae"),
@@ -24,7 +27,8 @@
 #'
 #' # We perform a query from the `importedDataset` in order to associate the taxon identifier (LSID) to the list of species present in the thirth column.
 #' taxonIDPesi(importedDataset, 3)
-#'
+#' \donttest
+#' 
 #' # the output is:
 #' # A tibble: 6 x 10
 #' # taxonID family   scientificName         canonicalName       authorship     synonyms LSID           url                          accordingTo     checkStatus

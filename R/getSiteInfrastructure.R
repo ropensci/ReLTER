@@ -9,7 +9,10 @@
 #' status, yearEstablished, yearClosed, hierarchy, siteName, short name, site
 #' type, protection level, images.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @import tibble httr
+#' @import
+#' @importFrom httr GET content
+#' @importFrom utils capture.output
+#' @importFrom dplyr as_tibble
 #' @export
 #' @examples
 #' tSiteInfrastructure <- getSiteInfrastructure(
@@ -26,15 +29,34 @@ getSiteInfrastructure <- function(deimsid) {
        geoElev: .attributes.geographic.elevation,
        generalInfo: .attributes.infrastructure
       }'
-  url <- paste0("https://deims.org/", "api/sites/", substring(deimsid, 19))
+  url <- paste0(
+    "https://deims.org/",
+    "api/sites/",
+    sub("^.+/", "", deimsid)
+  )
   export <- httr::GET(url = url)
   jj <- suppressMessages(httr::content(export, "text"))
-  invisible(capture.output(infrastructure <- tibble::as_tibble(
-    ReLTER::do_Q(q, jj)
-  )))
-  colnames(infrastructure$generalInfo.collection[[1]]) <- c(
-    "collectionLabel",
-    "collectionURI"
-  )
+  status <- jj %>% 
+    jqr::jq(as.character('{status: .errors.status}')) %>% 
+    textConnection() %>%
+    jsonlite::stream_in(simplifyDataFrame = TRUE) %>%
+    dtplyr::lazy_dt() %>% 
+    dplyr::as_tibble()
+  if (is.na(status)) {
+    invisible(
+      utils::capture.output(
+        infrastructure <- dplyr::as_tibble(
+          ReLTER::do_Q(q, jj)
+        )
+      )
+    )
+    colnames(infrastructure$generalInfo.collection[[1]]) <- c(
+      "collectionLabel",
+      "collectionURI"
+    )
+  } else {
+    message("\n---- The requested page could not be found. Please check again the DEIMS.iD ----\n")
+    infrastructure <- NULL
+  }
   infrastructure
 }

@@ -10,7 +10,10 @@
 #' temperature, precipitation, biogeographical region, biome, ecosystem land
 #' use, EUNIS habitat, geoBon biome, geology, hydrology, soils and vegetation.
 #' @author Alessandro Oggioni, phD (2021) \email{oggioni.a@@irea.cnr.it}
-#' @import tibble httr
+#' @import
+#' @importFrom httr GET content
+#' @importFrom utils capture.output
+#' @importFrom dplyr as_tibble
 #' @export
 #' @examples
 #' tSiteEnvCharacts <- getSiteEnvCharacts(
@@ -28,13 +31,30 @@ getSiteEnvCharacts <- function(deimsid) {
        envCharacteristics: .attributes.environmentalCharacteristics
       }'
 
-  url <- paste0("https://deims.org/", "api/sites/", substring(deimsid, 19))
+  url <- paste0(
+    "https://deims.org/",
+    "api/sites/",
+    sub("^.+/", "", deimsid)
+  )
   export <- httr::GET(url = url)
   jj <- suppressMessages(httr::content(export, "text"))
-  invisible(
-    capture.output(
-      envCharacteristics <- tibble::as_tibble(ReLTER::do_Q(q, jj))
+  status <- jj %>% 
+    jqr::jq(as.character('{status: .errors.status}')) %>% 
+    textConnection() %>%
+    jsonlite::stream_in(simplifyDataFrame = TRUE) %>%
+    dtplyr::lazy_dt() %>% 
+    dplyr::as_tibble()
+  if (is.na(status)) {
+    invisible(
+      utils::capture.output(
+        envCharacteristics <- dplyr::as_tibble(
+          ReLTER::do_Q(q, jj)
+        )
+      )
     )
-  )
+  } else {
+    message("\n---- The requested page could not be found. Please check again the DEIMS.iD ----\n")
+    envCharacteristics <- NULL
+  }
   envCharacteristics
 }

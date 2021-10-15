@@ -4,7 +4,6 @@
 # ReLTER <img src='man/figures/logo.png' align="right" height="139" />
 
 <!-- badges: start -->
-
 <!-- other badges https://github.com/GuangchuangYu/badger -->
 
 [![](https://img.shields.io/badge/devel%20version-0.1.1-blue.svg)](https://github.com/oggioniale/ReLTER)
@@ -56,14 +55,11 @@ geographical aspects provided by [DEIMS-SDR](https://deims.org/).
 ``` r
 library(dplyr)
 ReLTER::getSiteBoundaries(deimsid = 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe')
-#> Deleting layer `sites_Lago_Maggiore_-_Italy' using driver `ESRI Shapefile'
-#> Writing layer `sites_Lago_Maggiore_-_Italy' to data source `sites_Lago_Maggiore_-_Italy.shp' using driver `ESRI Shapefile'
-#> Writing 1 features with 2 fields and geometry type Multi Polygon.
 ```
 
 <img src="man/figures/README-exampleSiteBoundaries-1.png" width="100%" />
 
------
+------------------------------------------------------------------------
 
 The *getNetworkParameters* function creates a list of parameters
 collected by a network (LTER-Italy) information always gathered from
@@ -76,7 +72,7 @@ knitr::kable(listParams[1:10, ] %>% dplyr::rows_insert(tibble(parameterLabel = "
 ```
 
 | parameterLabel                    | parameterUri                                  |
-| :-------------------------------- | :-------------------------------------------- |
+|:----------------------------------|:----------------------------------------------|
 | atmospheric parameter             | <http://vocabs.lter-europe.net/EnvThes/20937> |
 | ecosystem parameter               | <http://vocabs.lter-europe.net/EnvThes/20939> |
 | conductivity                      | <http://vocabs.lter-europe.net/EnvThes/22089> |
@@ -93,9 +89,12 @@ knitr::kable(listParams[1:10, ] %>% dplyr::rows_insert(tibble(parameterLabel = "
 
 Alessandro Oggioni <https://orcid.org/0000-0002-7997-219X>
 
-Paolo Tagliolato <https://orcid.org/0000-0002-0261-313X>
-
 CNR - Institute for Electromagnetic Sensing of the Environment (IREA)
+
+<!-- Add authors, reviewers including those who, within eLTER network, reviewed the package and add acknowledgements 
+     in accordance with this https://ropensci.org/blog/2018/03/16/thanking-reviewers-in-metadata/ and this
+     https://devguide.ropensci.org/building.html#authorship.
+     Add the same in DESCRIPTION file -->
 
 ## :office: Contributing organizations
 

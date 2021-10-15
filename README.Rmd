@@ -76,8 +76,6 @@ knitr::kable(listParams[1:10, ] %>% dplyr::rows_insert(tibble(parameterLabel = "
 
 Alessandro Oggioni <https://orcid.org/0000-0002-7997-219X>
 
-Paolo Tagliolato <https://orcid.org/0000-0002-0261-313X>
-
 CNR - Institute for Electromagnetic Sensing of the Environment (IREA)
 
 <!-- Add authors, reviewers including those who, within eLTER network, reviewed the package and add acknowledgements 

@@ -10,14 +10,17 @@
 #' @return The output of the function is a `tibble` containing all the
 #' Environmental Characteristics of the network's sites.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @import jsonlite
+#' @import
+#' @importFrom jsonlite fromJSON
+#' @importFrom dplyr as_tibble
 #' @export
 #' @examples
-#' require('dplyr')
+#' \donttest
 #' listEnvCharacts <- getNetworkEnvCharacts(
 #'   networkDEIMSID = "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 #' )
-#' listEnvCharacts[1:5, ]
+#' listEnvCharacts[1:10, ]
+#' \donttest
 #'
 ### function getNetworkEnvCharacts
 getNetworkEnvCharacts <- function(networkDEIMSID) {
@@ -26,10 +29,7 @@ getNetworkEnvCharacts <- function(networkDEIMSID) {
       paste0(
         "https://deims.org/",
         "api/sites?network=",
-        substring(
-          networkDEIMSID,
-          27
-        )
+        sub("^.+/", "", networkDEIMSID)
       )
     )
   )
@@ -42,7 +42,12 @@ getNetworkEnvCharacts <- function(networkDEIMSID) {
     ),
     ReLTER::getSiteEnvCharacts
   )
-  allSiteEnvCharacts_matrix <- do.call(rbind, allSiteEnvCharacts)
-  allSiteEnvCharacts <- tibble::as_tibble(allSiteEnvCharacts_matrix)
-  allSiteEnvCharacts
+  if (length(allSiteEnvCharacts) != 0) {
+    allSiteEnvCharacts_matrix <- do.call(rbind, allSiteEnvCharacts)
+    allSiteEnvCharacts <- dplyr::as_tibble(allSiteEnvCharacts_matrix)
+    allSiteEnvCharacts
+  } else {
+    message("\n---- The requested page could not be found. Please check again the Network.iD ----\n")
+    allSiteEnvCharacts <- NULL
+  }
 }

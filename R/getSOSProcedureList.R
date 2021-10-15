@@ -7,12 +7,15 @@
 #' @return The output of the function is a `list` with the name and URI (Uniform
 #' Resource Identifier) of each procedure.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @import jsonlite
+#' @import
+#' @importFrom xml2 read_xml xml_ns xml_find_all
+#' @importFrom 
 #' @export
 #' @examples
 #' getSOSProcedureList(sosHost = "http://getit.lteritalia.it")
 #'
 ### function getProcedureList
+# TODO: testare questo quando il GET-IT è attivo
 getSOSProcedureList <- function(sosHost) {
   xslProcUrl.url <- "https://www.get-it.it/objects/sensors/xslt/Capabilities_proceduresUrlList.xsl"
   styleProcUrl <- xml2::read_xml(xslProcUrl.url, package = "xslt")
@@ -40,11 +43,13 @@ getSOSProcedureList <- function(sosHost) {
       )
     )
     ns <- xml2::xml_ns(SensorML)
-    sensorName[i] <- as.character(xml2::xml_find_all(
-      SensorML,
-      "//sml:identification/sml:IdentifierList/sml:identifier[@name='short name']/sml:Term/sml:value/text()",
-      ns
-    ))
+    sensorName[i] <- as.character(
+      xml2::xml_find_all(
+        SensorML,
+        "//sml:identification/sml:IdentifierList/sml:identifier[@name='short name']/sml:Term/sml:value/text()",
+        ns
+      )
+    )
   }
   listProcedure <- as.list(listProcedure$uri)
   names(listProcedure) <- sensorName

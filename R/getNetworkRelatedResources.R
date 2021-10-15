@@ -10,13 +10,17 @@
 #' @return The output of the function is a `tibble` containing the related
 #' resources shared by the network's sites.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @import jsonlite dplyr
+#' @import
+#' @importFrom jsonlite fromJSON
+#' @importFrom dplyr bind_rows distinct as_tibble
 #' @export
 #' @examples
+#' \donttest
 #' listRelatedResources <- getNetworkRelatedResources(
 #'   networkDEIMSID = "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 #' )
-#' listRelatedResources[1:5, ]
+#' listRelatedResources[1:10, ]
+#' \donttest
 #'
 ### function getNetworkRelatedResources
 getNetworkRelatedResources <- function(networkDEIMSID) {
@@ -25,10 +29,7 @@ getNetworkRelatedResources <- function(networkDEIMSID) {
       paste0(
         "https://deims.org/",
         "api/sites?network=",
-        substring(
-          networkDEIMSID,
-          27
-        )
+        sub("^.+/", "", networkDEIMSID)
       )
     )
   )
@@ -41,13 +42,20 @@ getNetworkRelatedResources <- function(networkDEIMSID) {
     ),
     ReLTER::getSiteRelatedResources
   )
-  uniteSiteRelatedResources <- dplyr::bind_rows(allSiteRelatedResources)
-  relatedResourcesNetworkList <- uniteSiteRelatedResources$relatedResources
-  relatedResourcesNetworkDF <- dplyr::bind_rows(relatedResourcesNetworkList)
-  uniqueSiteRelatedResources <- tibble::as_tibble(
-    dplyr::distinct(
-      relatedResourcesNetworkDF
+  if (length(allSiteRelatedResources) != 0) {
+    uniteSiteRelatedResources <- dplyr::bind_rows(allSiteRelatedResources)
+    relatedResourcesNetworkList <- uniteSiteRelatedResources$relatedResources
+    relatedResourcesNetworkDF <- dplyr::bind_rows(relatedResourcesNetworkList)
+    relatedResourcesNetworkDF$uri <- paste0(relatedResourcesNetworkDF$relatedResourcesId$prefix, relatedResourcesNetworkDF$relatedResourcesId$suffix)
+    relatedResourcesNetworkDF <- relatedResourcesNetworkDF %>% dplyr::select(relatedResourcesTitle, uri, relatedResourcesChanged)
+    uniqueSiteRelatedResources <- dplyr::as_tibble(
+      dplyr::distinct(
+        relatedResourcesNetworkDF
+      )
     )
-  )
-  uniqueSiteRelatedResources
+    uniqueSiteRelatedResources
+  } else {
+    message("\n---- The requested page could not be found. Please check again the Network.iD ----\n")
+    uniqueSiteParameters <- NULL
+  }
 }

@@ -7,7 +7,10 @@
 #' @return The output of the function is a `tibble` with main features of the
 #' site and the parameters collected by site.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @import tibble httr
+#' @import
+#' @importFrom httr GET content
+#' @importFrom utils capture.output
+#' @importFrom dplyr as_tibble
 #' @export
 #' @examples
 #' tSiteParameters <- getSiteParameters(
@@ -24,26 +27,45 @@ getSiteParameters <- function(deimsid) {
        geoElev: .attributes.geographic.elevation,
        parameter: .attributes.focusDesignScale.parameters
       }'
-  url <- paste0("https://deims.org/", "api/sites/", substring(deimsid, 19))
+  url <- paste0(
+    "https://deims.org/",
+    "api/sites/",
+    sub("^.+/", "", deimsid)
+  )
   export <- httr::GET(url = url)
   jj <- suppressMessages(httr::content(export, "text"))
-  invisible(capture.output(parameters <- tibble::as_tibble(
-    ReLTER::do_Q(q, jj)
-  )))
-  if (!is.na(parameters$parameter)) {
-    colnames(parameters$parameter[[1]]) <- c(
-      "parameterLabel",
-      "parameterUri"
-    )
-  } else {
-    parameterLabel <- NULL
-    parameterUri <- NULL
-    parameters$parameter <- list(
-      data.frame(
-        parameterLabel,
-        parameterUri
+  status <- jj %>% 
+    jqr::jq(as.character('{status: .errors.status}')) %>% 
+    textConnection() %>%
+    jsonlite::stream_in(simplifyDataFrame = TRUE) %>%
+    dtplyr::lazy_dt() %>% 
+    dplyr::as_tibble()
+  if (is.na(status)) {
+    invisible(
+      utils::capture.output(
+        parameters <- dplyr::as_tibble(
+          ReLTER::do_Q(q, jj)
+        )
       )
     )
+    if (!is.na(parameters$parameter)) {
+      colnames(parameters$parameter[[1]]) <- c(
+        "parameterLabel",
+        "parameterUri"
+      )
+    } else {
+      parameterLabel <- NULL
+      parameterUri <- NULL
+      parameters$parameter <- list(
+        data.frame(
+          parameterLabel,
+          parameterUri
+        )
+      )
+    }
+  } else {
+    message("\n---- The requested page could not be found. Please check again the DEIMS.iD ----\n")
+    parameters <- NULL
   }
   parameters
 }

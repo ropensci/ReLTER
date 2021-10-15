@@ -6,64 +6,88 @@
 #' \href{https://deims.org/docs/deimsid.html}{page}.
 #' @return The output of the function is a waffle chart.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @import dplyr graphics tibble grDevices
+#' @import
+#' @importFrom tibble as_tibble
+#' @importFrom dplyr group_by tally mutate filter
+#' @importFrom scales percent
+#' @importFrom grDevices colorRampPalette
+#' @importFrom RColorBrewer brewer.pal
+#' @importFrom waffle waffle
+#' @importFrom utils data
 #' @export
 #' @examples
+#' \donttest
 #' waffle <- parametersChartWaffle(
 #'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
 #' )
 #' print(waffle)
+#' \donttest
 #'
 ### function parametersChartWaffle
 parametersChartWaffle <- function(deimsid) {
   # TODO add this by SPARQL query
-  data(envThesParams)
+  utils::data(envThesParams)
   paramsDeims <- ReLTER::getSiteParameters(deimsid)
   paramsDeims <- tibble::as_tibble(paramsDeims$parameter[[1]])
-  params <- tibble::as_tibble(paramsDeims)
-  params$parameterGroups <- parametersStructureEnvThes$category[
-    match(params$parameterLabel, parametersStructureEnvThes$parameter)
-  ]
-  groupsIsNa <- params %>% dplyr::filter(is.na(parameterGroups))
-  # plot of parameters ----
-  params <- params %>%
-    dplyr::group_by(parameterGroups) %>%
-    dplyr::tally() %>%
-    dplyr::mutate(freq = n / sum(n))
-  params$label <- scales::percent(params$freq)
-  obsPropWaffle <- params$n
-  names(obsPropWaffle) <- params$parameterGroups
-  # Waffle charth ----
-  # TODO: verify because for some site (e.g. Moor House - Upper Teesdale) the
-  # UI provide this error: "Insufficient values in manual scale. 10 needed but
-  # only 9 provided."
-  pieGraphPalette <- grDevices::colorRampPalette(
-    RColorBrewer::brewer.pal(8, "Set2")
-  )(nrow(params))
-  p <- waffle::waffle(
-    obsPropWaffle,
-    rows = 8,
-    size = 3,
-    xlab = paste0(
-      "1 square is 1 parameter. Total of ",
-      sum(params$n),
-      " parameters"
-    ),
-    keep = FALSE,
-    colors = pieGraphPalette
-  )
-  print(p)
-  # warning about the Insufficient values in manual scale
-  if (length(groupsIsNa$parameterLabel) == 0) {
-    message("")
-  } else {
-    message(
-      "This parameters are not included, please contact the development of the
-      package by GitHub.\n",
-      "Paste this message into the GitHub issue.\n",
-      "I am using the parametersChart function and need to add the following
-      parameters in the mapping:\n",
-      paste(groupsIsNa$parameterLabel, collapse = "\n")
+  if (length(paramsDeims) != 0) {
+    params <- tibble::as_tibble(paramsDeims)
+    params$parameterGroups <- parametersStructureEnvThes$category[
+      match(params$parameterLabel, parametersStructureEnvThes$parameter)
+    ]
+    groupsIsNa <- params %>% dplyr::filter(is.na(parameterGroups))
+    # plot of parameters ----
+    params <- params %>%
+      dplyr::group_by(parameterGroups) %>%
+      dplyr::tally() %>%
+      dplyr::mutate(freq = n / sum(n))
+    params$label <- scales::percent(params$freq)
+    obsPropWaffle <- params$n
+    names(obsPropWaffle) <- params$parameterGroups
+    # Waffle charth ----
+    mycolors <- c(
+      RColorBrewer::brewer.pal(
+        name ="Set1",
+        n = 9
+      ),
+      RColorBrewer::brewer.pal(
+        name ="Set2",
+        n = 8
+      ),
+      RColorBrewer::brewer.pal(
+        name ="Set3",
+        n = 12
+      )
     )
+    waffle <- waffle::waffle(
+      obsPropWaffle,
+      rows = 8,
+      size = 3,
+      xlab = paste0(
+        "1 square is 1 parameter. Total of ",
+        sum(params$n),
+        " parameters"
+      ),
+      keep = FALSE,
+      colors = mycolors
+    )
+    # warning about the Insufficient values in manual scale
+    if (length(groupsIsNa$parameterLabel) == 0) {
+      message("")
+    } else {
+      message(
+        "This parameters are not included, please contact the development of the
+        package by GitHub.\n",
+        "Paste this message into the GitHub issue.\n",
+        "I am using the parametersChart function and need to add the following
+        parameters in the mapping:\n",
+        paste(groupsIsNa$parameterLabel, collapse = "\n")
+      )
+    }
+    print(waffle)
+    params
+  } else {
+    message("\n---- The requested page could not be found. Please check again the DEIMS.iD ----\n")
+    waffle <- NULL
+    params <- NULL
   }
 }

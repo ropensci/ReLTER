@@ -11,20 +11,24 @@
 #' topics and their URI (Uniform Resource Identifier) collected by network's
 #' sites.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @import jsonlite dplyr
+#' @import
+#' @importFrom jsonlite fromJSON
+#' @importFrom dplyr bind_rows distinct as_tibble
 #' @export
 #' @examples
+#' \donttest
 #' require('dplyr')
 #' listResearchTopics <- getNetworkResearchTopics(
 #'   networkDEIMSID = "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 #' )
 #' listResearchTopics[1:10, ] %>%
-#' dplyr::rows_insert(
-#' dplyr::tibble(
-#' researchTopicsLabel = "...",
-#' researchTopicsUri = "..."
-#' )
-#' )
+#'   dplyr::rows_insert(
+#'     dplyr::tibble(
+#'       researchTopicsLabel = "...",
+#'       researchTopicsUri = "..."
+#'     )
+#'   )
+#' \donttest
 #'
 ### function getNetworkResearchTopics
 getNetworkResearchTopics <- function(networkDEIMSID) {
@@ -33,10 +37,7 @@ getNetworkResearchTopics <- function(networkDEIMSID) {
       paste0(
         "https://deims.org/",
         "api/sites?network=",
-        substring(
-          networkDEIMSID,
-          27
-        )
+        sub("^.+/", "", networkDEIMSID)
       )
     )
   )
@@ -49,13 +50,18 @@ getNetworkResearchTopics <- function(networkDEIMSID) {
     ),
     ReLTER::getSiteResearchTopics
   )
-  uniteSiteResearchTopics <- dplyr::bind_rows(allSiteResearchTopics)
-  researchTopicsNetworkList <- uniteSiteResearchTopics$researchTopics
-  researchTopicsNetworkDF <- dplyr::bind_rows(researchTopicsNetworkList)
-  uniqueSiteResearchTopics <- tibble::as_tibble(
-    dplyr::distinct(
-      researchTopicsNetworkDF
+  if (length(allSiteResearchTopics) != 0) {
+    uniteSiteResearchTopics <- dplyr::bind_rows(allSiteResearchTopics)
+    researchTopicsNetworkList <- uniteSiteResearchTopics$researchTopics
+    researchTopicsNetworkDF <- dplyr::bind_rows(researchTopicsNetworkList)
+    uniqueSiteResearchTopics <- dplyr::as_tibble(
+      dplyr::distinct(
+        researchTopicsNetworkDF
+      )
     )
-  )
-  uniqueSiteResearchTopics
+    uniqueSiteResearchTopics
+  } else {
+    message("\n---- The requested page could not be found. Please check again the Network.iD ----\n")
+    uniqueSiteParameters <- NULL
+  }
 }
