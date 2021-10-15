@@ -7,8 +7,6 @@
 #' @return The output of the function is a QRcode `image` in a png
 #' (saved in the workdir).
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @import 
-#' @importFrom 
 #' @export
 #' @examples
 #' createQRCode(deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fie")

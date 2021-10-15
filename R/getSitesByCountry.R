@@ -2,7 +2,7 @@ getSitesByCountry <- function(country_name) {
   #' @title eLTER getSitesByCountry function
   #' @description This function allows the user to retrieve a list of sites
   #' associated with a country name. The user supplied country_name
-  #' must appear in the 'title' string of the site metadata
+  #' must appear in the 'title' string of the site in DEIMS metadata
   #' @param country_name A `character`. Partial names are also matched.
   #' However the partial string should be unique.
   #' i.e. "United" can match "United States" and "United Kingdom"

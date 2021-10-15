@@ -9,7 +9,6 @@
 #' which the site is involved.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @import tibble httr
-#' @importFrom 
 #' @export
 #' @examples
 #' tSiteAffiliation <- getSiteAffiliations(

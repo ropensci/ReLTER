@@ -35,7 +35,7 @@ Imports:
     qrencoder (>= 0.1.0),
     waffle (>= 1.0.1),
     dtplyr
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Suggests: 
     testthat (>= 3.0.0),
     knitr,
