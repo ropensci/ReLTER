@@ -13,7 +13,6 @@
 #' columns provided as input plus 'canonicalName', 'authorship', 'synonyms',
 #' 'LSID', 'url', 'accordingTo', 'checkStatus' gathered from PESI.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @import
 #' @importFrom taxize eubon_search
 #' @importFrom dplyr bind_rows
 #' @export

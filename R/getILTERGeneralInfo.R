@@ -9,10 +9,10 @@
 #' name, longitude, latitude, average altitude, DEIMS.iD and affiliation
 #' of all ILTER sites.
 #' @author Alessandro Oggioni, phD (2021) \email{oggioni.a@@irea.cnr.it}
-#' @import
 #' @importFrom jsonlite fromJSON
 #' @importFrom dplyr bind_rows
 #' @importFrom sf st_as_sf
+#' @export
 #' @examples
 #' \donttest
 #' require('dplyr')

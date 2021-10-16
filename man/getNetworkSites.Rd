@@ -22,10 +22,12 @@ This function provide a SpatialPointsDataFrame (sp) of sites in
 a network provided by DEIMS-SDR.
 }
 \examples{
+\donttest
 listSites <- getNetworkSites(
   networkDEIMSID = "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 )
-listSites[1:5, ]
+listSites[1:10, ]
+\donttest
 
 }
 \author{

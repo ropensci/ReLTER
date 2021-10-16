@@ -4,10 +4,12 @@
 \alias{getILTERParameters}
 \title{eLTER getILTERParameters function}
 \usage{
-getILTERParameters()
+getILTERParameters(sitesNum = NULL)
 }
 \arguments{
-\item{null}{function witout parameter}
+\item{sitesNum}{A `integer`. It is the number of the sites that are 
+read to get the information. Use this parameters oreover for provide
+example of this function.}
 }
 \value{
 The output of the function is a `tibble` containing the list
@@ -20,14 +22,16 @@ parameters collected in all sites of ILTER, througth the DEIMS-SDR
 sites API.
 }
 \examples{
+\donttest
 require('dplyr')
-listParams <- getILTERParameters()
+listParams <- getILTERParameters(sitesNum = 20)
 listParams[1:10, ] \%>\%
   dplyr::rows_insert(
   dplyr::tibble(
     parameterLabel = "...", parameterUri = "..."
   )
 )
+\donttest
 
 }
 \author{

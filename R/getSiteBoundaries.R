@@ -1,15 +1,15 @@
 #' @title eLTER getSiteBoundaries function
-#' @description This function allows to obtain html map of the eLTER site
-#' boundaries, a view of the site boundaries on a leaflet map is also
-#' showed. All the info are taken from the DEIMS-SDR sites API. If the
-#' boundaries is missing an warning message will be proposed in the R console.
-#' @param deimsid A `character`. It is the DEIMS iD of network make from
+#' @description This function retrieves the boundary of a specified eLTER site
+#' then a view of the site boundaries on a leaflet map is shown.
+#' All the info are taken from the DEIMS-SDR sites API. 
+#' If the boundary is missing, a warning message will be printed in the R console.
+#' @param deimsid A `character`. It is the DEIMS ID of the site from
 #' DEIMS-SDR website. More information about DEIMS iD in this
 #' \href{https://deims.org/docs/deimsid.html}{page}.
-#' @return The output of the function is a
-#' `html map` with boundaries of the site.
+#' @return The output of the function is an `sf` object, the boundary of the site
+#' or NA if the boundary is missing from DEIMS-SDR.
+#' In addition, as `html map` with boundaries of the site is plotted.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @import
 #' @importFrom tibble tribble 
 #' @importFrom dplyr as_tibble
 #' @importFrom jsonlite fromJSON
@@ -75,7 +75,7 @@ getSiteBoundaries <- function(deimsid) {
     if (!is.null(boundaries)) {
       if (is.na(boundaries$boundaries)) {
         warning(
-          "\n ----This site has not boundaries yet uploaded in DEIMS-SDR.
+          "\n ----This site does not have boundaries uploaded to DEIMS-SDR.
       Please verify in the site page (",
           deimsid,
           ")---- \n"
@@ -98,6 +98,7 @@ getSiteBoundaries <- function(deimsid) {
         map <- leaflet::leaflet(geoBoundaries) %>%
           leaflet::addTiles() %>%
           leaflet::addPolygons(fillColor = color, color = colorBorder)
+        print(map)
         # mapview::mapshot(
         #   map,
         #   file = paste0("sites_", gsub(" ", "_", boundaries$title), ".png"),
@@ -106,7 +107,7 @@ getSiteBoundaries <- function(deimsid) {
       }
     } else {
       warning(
-        "\n ----This site has not boundaries yet uploaded in DEIMS-SDR.
+        "\n ----This site does not have boundaries uploaded to DEIMS-SDR.
       Please verify in the site page (",
         deimsid,
         ")---- \n"
@@ -115,10 +116,9 @@ getSiteBoundaries <- function(deimsid) {
       map <- NULL
     }
   } else {
-    message("\n---- The requested page could not be found. Please check again the DEIMS.iD ----\n")
+    message("\n---- The requested page could not be found. Please check the DEIMS ID ----\n")
     geoBoundaries <- NULL
     map <- NULL
   }
-  print(map)
-  geoBoundaries
+  return(geoBoundaries)
 }

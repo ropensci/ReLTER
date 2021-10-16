@@ -6,7 +6,6 @@
 #' \href{https://deims.org/docs/deimsid.html}{page}.
 #' @return The output of the function is a pie chart.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @import
 #' @importFrom tibble as_tibble
 #' @importFrom dplyr group_by tally mutate filter
 #' @importFrom scales percent

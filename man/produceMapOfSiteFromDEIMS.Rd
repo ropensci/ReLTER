@@ -10,21 +10,53 @@ produceMapOfSiteFromDEIMS(
   listOfSites,
   gridNx,
   gridNy,
-  width,
-  height,
-  siteName,
-  bboxXMin,
-  bboxXMax,
-  bboxYMin,
-  bboxYMax
+  width = 0.25,
+  height = 0.25,
+  bboxXMin = 0,
+  bboxXMax = 0,
+  bboxYMin = 0,
+  bboxYMax = 0
 )
 }
 \arguments{
-\item{networkDEIMSID}{A `character`. It is the DEIMS iD of network make from
+\item{deimsid}{a character. It is the DEIMS iD of network make from
 DEIMS-SDR website. More information about DEIMS iD in this
-\href{https://deims.org/docs/deimsid.html}{page}, and at this
-\href{https://deims.org/search?f[0]=result_type:network}{page} the
-complete list of ILTER networks.}
+\href{https://deims.org/docs/deimsid.html}{page}.}
+
+\item{countryCode}{a `character` follow the SO 3166-1 alpha-3 codes. This
+ISO convention are three-letter country codes defined in ISO 3166-1, part of
+the ISO 3166 standard published by the International Organization for
+Standardization (ISO), to represent countries, dependent territories, and
+special areas of geographical interest. The map produced by this function
+will be limited only to the country indicated in this parameter, if the
+network has a extraterritorial sites those will not represented.}
+
+\item{listOfSites}{a `sf`. List of sites of specific network. This list
+needs for show the another points into map.}
+
+\item{gridNx}{a `double`. A numeric vector or unit object specifying 
+x-location of viewports about country provided by countryCode parameter.}
+
+\item{gridNy}{a `double`. A numeric vector or unit object specifying 
+y-location of viewports about country provided by countryCode parameter.}
+
+\item{width}{a `double`. A numeric vector or unit object specifying width
+of viewports about country provided by countryCode parameter. Default 0.25.}
+
+\item{height}{a `double`. A numeric vector or unit object specifying height
+of viewports about country provided by countryCode parameter. Default 0.25.}
+
+\item{bboxXMin}{a `double`. A numeric for add some unit of a bbox provided 
+by centroid of the site. Default 0.}
+
+\item{bboxXMax}{a `double`. A numeric for add some unit of a bbox provided 
+by centroid of the site. Default 0.}
+
+\item{bboxYMin}{a `double`. A numeric for add some unit of a bbox provided 
+by centroid of the site. Default 0.}
+
+\item{bboxYMax}{a `double`. A numeric for add some unit of a bbox provided 
+by centroid of the site. Default 0.}
 }
 \value{
 The output of the function is a distribution `image`.
@@ -34,24 +66,33 @@ This function provide a `map` of the site boundaries provided
 by site manager in the DEIMS-SDR.
 }
 \examples{
+\donttest
+sitesNetwork <- getNetworkSites(
+  networkDEIMSID = "https://deims.org/networks/e904354a-f3a0-40ce-a9b5-61741f66c824"
+)
+map <- produceMapOfSiteFromDEIMS(
+  deimsid = "https://deims.org/8e24d4f8-d6f6-4463-83e9-73cac2fd3f38",
+  countryCode = "DEU",
+  listOfSites = sitesNetwork,
+  gridNx = 0.7,
+  gridNy = 0.2
+)
+\donttest
+
+\donttest
 sitesNetwork <- getNetworkSites(
   networkDEIMSID = "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 )
+# In the case of Italian sites are selected only true sites and exclused the macrosites.
 sitesNetwork <- (sitesNetwork[!grepl('^IT', sitesNetwork$title),])
 map <- produceMapOfSiteFromDEIMS(
   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
   countryCode = "ITA",
   listOfSites = sitesNetwork,
   gridNx = 0.7,
-  gridNy = 0.35,
-  width = 0.25,
-  height = 0.25,
-  siteName = "Lago Maggiore",
-  bboxXMax = 0,
-  bboxXMin = 0,
-  bboxYMin = 0,
-  bboxYMax = 0
+  gridNy = 0.35
 )
+\donttest
 
 }
 \author{

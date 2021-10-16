@@ -7,7 +7,6 @@
 #' @return The output of the function is a `tibble` with main features of
 #' the activity make in a site.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @import
 #' @importFrom httr GET content
 #' @importFrom dplyr as_tibble
 #' @importFrom utils capture.output

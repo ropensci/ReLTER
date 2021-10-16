@@ -31,7 +31,6 @@
 #' by centroid of the site. Default 0.
 #' @return The output of the function is a distribution `image`.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @import
 #' @importFrom sf as_Spatial st_as_sfc CRS
 #' @importFrom sf bbox
 #' @importFrom jsonlite fromJSON
