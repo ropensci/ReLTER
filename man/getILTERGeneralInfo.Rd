@@ -4,28 +4,39 @@
 \alias{getILTERGeneralInfo}
 \title{eLTER getILTERGeneralInfo function}
 \usage{
-getILTERGeneralInfo(sitesNum = NULL)
+getILTERGeneralInfo(country_name = NA, site_name = NA)
 }
 \arguments{
-\item{sitesNum}{A `integer`. It is the number of the sites that are 
-read to get the information. Use this parameters oreover for provide
-example of this function.}
+\item{country_name}{A `character`. This character string filters the full set
+of DEIMS sites by country name. Partial matching is supported.}
+
+\item{site_name}{A `character`. This character string filters by site name
+where, again, partial matching is supported}
 }
 \value{
-The output of the function is a `sf` containing the
-name, longitude, latitude, average altitude, DEIMS.iD and affiliation
-of all ILTER sites.
+An `sf` object of the bounding boxes of sites in the filtered list,
+containing the name, DEIMS ID, longitude, latitude, average altitude, 
+and affiliation of the filtered ILTER sites. If no bounding box is available,
+the centroid is returned.
 }
 \description{
-This function allows to obtain the generic information
-collected in all sites of ILTER, througth the DEIMS-SDR
-sites API.
+This function downloads generic information
+of all sites, or a subset of sites of ILTER, through the DEIMS-SDR
+API. If no `country_name` or `site_name` are specified, 
+the whole list of sites is returned. If either or both of the filtering strings
+is specified, then a filtered subset of the sites is acquired.
 }
 \examples{
 \donttest
 require('dplyr')
-listOfAllSites <- getILTERGeneralInfo(sitesNum = 20)
-listOfAllSites[1:10, ]
+listOfAllSites <- getILTERGeneralInfo()
+length(listOfAllSites$geom)
+sitesAustria <- getILTERGeneralInfo(country_name = "Austri")
+# (matches Austria, but not Australia)
+length(sitesAustria$title)
+eisenwurzen <- getILTERGeneralInfo(country_name="Austri", site_name="Eisen")
+eisenwurzen[,1:2]
+eisenwurzen_deimsid <- eisenwurzen$uri
 \donttest
 
 }

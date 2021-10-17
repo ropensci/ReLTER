@@ -11,7 +11,6 @@
 #' of parameters and their URI (Uniform Resource Identifier) collected
 #' by the network's sites.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @import
 #' @importFrom jsonlite fromJSON
 #' @importFrom dplyr bind_rows distinct
 #' @importFrom dplyr as_tibble

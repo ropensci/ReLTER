@@ -10,7 +10,6 @@
 #' @return The output of the function is a `tibble` containing the related
 #' resources shared by the network's sites.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @import
 #' @importFrom jsonlite fromJSON
 #' @importFrom dplyr bind_rows distinct as_tibble
 #' @export

@@ -11,7 +11,6 @@
 #' topics and their URI (Uniform Resource Identifier) collected by network's
 #' sites.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @import
 #' @importFrom jsonlite fromJSON
 #' @importFrom dplyr bind_rows distinct as_tibble
 #' @export

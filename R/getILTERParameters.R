@@ -9,7 +9,6 @@
 #' of parameters and their URI (Uniform Resource Identifier) collected
 #' in all ILTER sites.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @import
 #' @importFrom jsonlite fromJSON
 #' @importFrom dplyr as_tibble bind_rows distinct
 #' @export

@@ -16,7 +16,6 @@
 #' @return The output of the function is a tmap plot containing an image of
 #' geographic distribution of the network sites present in the chosen country.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @import
 #' @importFrom jsonlite fromJSON 
 #' @importFrom sf as_Spatial st_as_sf st_crs
 #' @importFrom raster getData

@@ -8,7 +8,6 @@
 #' @return The output of the function is a `tibble` containing the research
 #' topics and their URI (Uniform Resource Identifier) of all ILTER sites.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @import
 #' @importFrom jsonlite fromJSON
 #' @importFrom dplyr bind_rows distinct as_tibble
 #' @examples

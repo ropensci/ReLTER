@@ -6,7 +6,6 @@
 #' \href{https://deims.org/docs/deimsid.html}{page}.
 #' @return The output of the function is a QRcode `image`.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @import
 #' @importFrom qrcode qrcode_gen
 #' @export
 #' @examples

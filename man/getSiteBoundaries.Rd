@@ -7,19 +7,20 @@
 getSiteBoundaries(deimsid)
 }
 \arguments{
-\item{deimsid}{A `character`. It is the DEIMS iD of network make from
+\item{deimsid}{A `character`. It is the DEIMS ID of the site from
 DEIMS-SDR website. More information about DEIMS iD in this
 \href{https://deims.org/docs/deimsid.html}{page}.}
 }
 \value{
-The output of the function is a
-`html map` with boundaries of the site.
+The output of the function is an `sf` object, the boundary of the site
+or NA if the boundary is missing from DEIMS-SDR.
+In addition, as `html map` with boundaries of the site is plotted.
 }
 \description{
-This function allows to obtain html map of the eLTER site
-boundaries, a view of the site boundaries on a leaflet map is also
-showed. All the info are taken from the DEIMS-SDR sites API. If the
-boundaries is missing an warning message will be proposed in the R console.
+This function retrieves the boundary of a specified eLTER site
+then a view of the site boundaries on a leaflet map is shown.
+All the info are taken from the DEIMS-SDR sites API. 
+If the boundary is missing, a warning message will be printed in the R console.
 }
 \examples{
 tSiteBoundaries <- getSiteBoundaries(

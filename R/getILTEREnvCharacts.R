@@ -8,7 +8,6 @@
 #' @return The output of the function is a `tibble` containing all the
 #' Environmental Characteristics of all ILTER's sites.
 #' @author Alessandro Oggioni, phD (2020) <oggioni.a@@irea.cnr.it>
-#' @import
 #' @importFrom jsonlite fromJSON
 #' @importFrom dplyr as_tibble
 #' @importFrom base as.data.frame
