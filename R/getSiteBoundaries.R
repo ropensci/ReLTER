@@ -22,11 +22,19 @@
 #' tSiteBoundaries <- getSiteBoundaries(
 #'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
 #' )
+#' mapA <- leaflet::leaflet(tSiteBoundaries) %>% 
+#'  leaflet::addTiles() %>% 
+#'  leaflet::addPolygons()
+#' print(mapA)
 #' tSiteBoundaries
 #' 
 #' eisenwurzen <- getSiteBoundaries(
 #'   deimsid = "https://deims.org/d0a8da18-0881-4ebe-bccf-bc4cb4e25701"
 #' )
+#' mapB <- leaflet::leaflet(eisenwurzen) %>% 
+#'  leaflet::addTiles() %>% 
+#'  leaflet::addPolygons()
+#' print(mapB)
 #' eisenwurzen
 #' 
 ### function getSiteBoundaries
@@ -102,6 +110,8 @@ getSiteBoundaries <- function(deimsid) {
         #   file = paste0("sites_", gsub(" ", "_", boundaries$title), ".png"),
         #   append = FALSE
         # )
+        print(map)
+        geoBoundaries
       }
     } else {
       warning(
@@ -118,6 +128,4 @@ getSiteBoundaries <- function(deimsid) {
     geoBoundaries <- NULL
     map <- NULL
   }
-  print(map)
-  geoBoundaries
 }

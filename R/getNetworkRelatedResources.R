@@ -46,7 +46,8 @@ getNetworkRelatedResources <- function(networkDEIMSID) {
     relatedResourcesNetworkList <- uniteSiteRelatedResources$relatedResources
     relatedResourcesNetworkDF <- dplyr::bind_rows(relatedResourcesNetworkList)
     relatedResourcesNetworkDF$uri <- paste0(relatedResourcesNetworkDF$relatedResourcesId$prefix, relatedResourcesNetworkDF$relatedResourcesId$suffix)
-    relatedResourcesNetworkDF <- relatedResourcesNetworkDF %>% dplyr::select(relatedResourcesTitle, uri, relatedResourcesChanged)
+    relatedResourcesNetworkDF <- relatedResourcesNetworkDF %>% 
+      dplyr::select(relatedResourcesTitle, uri, relatedResourcesChanged)
     uniqueSiteRelatedResources <- dplyr::as_tibble(
       dplyr::distinct(
         relatedResourcesNetworkDF

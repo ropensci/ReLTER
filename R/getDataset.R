@@ -15,6 +15,10 @@
 #' @export
 #' @examples
 #' tDataset <- getDataset(datasetid = "https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef")
+#' map <- leaflet::leaflet(tDataset) %>% 
+#'  leaflet::addTiles() %>% 
+#'  leaflet::addPolygons()
+#' print(map)
 #' tDataset
 #'
 ### function getDataset

@@ -131,14 +131,25 @@
 <p>The <em>getSiteBoundaries</em> function creates a map overlaying the boundaries of the site (e.g. Lake Maggiore) thanks to the information on geographical aspects provided by <a href="https://deims.org/">DEIMS-SDR</a>.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
-<span class="fu">ReLTER</span><span class="fu">::</span><span class="fu"><a href="reference/getSiteBoundaries.html">getSiteBoundaries</a></span><span class="op">(</span>deimsid <span class="op">=</span> <span class="st">'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe'</span><span class="op">)</span></code></pre></div>
+<span class="va">siteBoundaries</span> <span class="op">&lt;-</span> <span class="fu">ReLTER</span><span class="fu">::</span><span class="fu"><a href="reference/getSiteBoundaries.html">getSiteBoundaries</a></span><span class="op">(</span>deimsid <span class="op">=</span> <span class="st">'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe'</span><span class="op">)</span>
+<span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span>
+<span class="fu">leaflet</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/leaflet.html">leaflet</a></span><span class="op">(</span><span class="va">siteBoundaries</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">leaflet</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/map-layers.html">addTiles</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">leaflet</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/map-layers.html">addPolygons</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-exampleSiteBoundaries-1.png" width="100%"></p>
-<hr>
-<p>The <em>getNetworkParameters</em> function creates a list of parameters collected by a network (LTER-Italy) information always gathered from what is indicated in the different sites on DEIMS-SDR.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
-<span class="va">listParams</span> <span class="op">&lt;-</span> <span class="fu">ReLTER</span><span class="fu">::</span><span class="fu"><a href="reference/getNetworkParameters.html">getNetworkParameters</a></span><span class="op">(</span>networkDEIMSID <span class="op">=</span> <span class="st">'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3'</span><span class="op">)</span>
-<span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">listParams</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="op">]</span> <span class="op">%&gt;%</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rows.html">rows_insert</a></span><span class="op">(</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>parameterLabel <span class="op">=</span> <span class="st">"..."</span>, parameterUri <span class="op">=</span> <span class="st">"..."</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">siteBoundaries</span>
+<span class="co">#&gt; Simple feature collection with 1 feature and 2 fields</span>
+<span class="co">#&gt; Geometry type: MULTIPOLYGON</span>
+<span class="co">#&gt; Dimension:     XY</span>
+<span class="co">#&gt; Bounding box:  xmin: 8.47803 ymin: 45.72556 xmax: 8.860755 ymax: 46.18081</span>
+<span class="co">#&gt; Geodetic CRS:  WGS 84</span>
+<span class="co">#&gt; # A tibble: 1 × 3</span>
+<span class="co">#&gt;   title                 uri                                           boundaries</span>
+<span class="co">#&gt; * &lt;chr&gt;                 &lt;chr&gt;                                 &lt;MULTIPOLYGON [°]&gt;</span>
+<span class="co">#&gt; 1 Lago Maggiore - Italy https://deims.org… (((8.615976 45.72628, 8.614418 45.72…</span></code></pre></div>
+<hr>
+<p>The <em>getNetworkParameters</em> function creates a list of parameters collected by a network (e.g. LTER-Italy). Information always gathered from what is indicated in the different sites on <a href="https://deims.org/">DEIMS-SDR</a>.</p>
 <table class="table">
 <colgroup>
 <col width="42%">
@@ -195,19 +206,88 @@
 </tr>
 </tbody>
 </table>
+<hr>
+<p>The <em>getDataset</em> function provides to a table with information about specific dataset shared through <a href="https://deims.org/">DEIMS-SDR</a>.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span></code></pre></div>
+<p><img src="reference/figures/README-exampleGetDataset-1.png" width="100%"></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Simple feature collection with 1 feature and 33 fields</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Geometry type: POLYGON</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Dimension:     XY</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Bounding box:  xmin: 11.88721 ymin: 43.20518 xmax: 15.86426 ymax: 45.91294</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Geodetic CRS:  WGS 84</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 1 × 34</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   title  abstract   keywords uri   type  dateRange.from dateRange.to relatedSite</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; * &lt;chr&gt;  &lt;chr&gt;      &lt;list&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;          &lt;lgl&gt;        &lt;list&gt;     </span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 LTER … The prese… &lt;df [5 … http… data… 1965-01-01     NA           &lt;df [1 × 4…</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # … with 26 more variables: contacts.corresponding &lt;list&gt;,</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   contacts.creator &lt;list&gt;, contacts.metadataProvider &lt;lgl&gt;,</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   observationParameters &lt;list&gt;, observationSpecies &lt;list&gt;, dataPolicy &lt;list&gt;,</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   doi &lt;chr&gt;, onlineLocation &lt;list&gt;, legal.accessUse &lt;list&gt;,</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   legal.rights &lt;lgl&gt;, legal.legalAct &lt;lgl&gt;, legal.citation &lt;lgl&gt;,</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   method.instrumentation &lt;lgl&gt;, method.qualityAssurance &lt;lgl&gt;,</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   method.methodUrl &lt;list&gt;, method.methodDescription &lt;list&gt;, …</span></span></code></pre></div>
+<hr>
+<p>The <em>getSiteRelatedResources</em> function provides a list of related resources associated with a site within <a href="https://deims.org/">DEIMS-SDR</a>.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    relatedResourcesId.prefix            relatedResourcesId.suffix</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 https://deims.org/dataset/ d9e94776-e7a8-11e2-a655-005056ab003f</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 https://deims.org/dataset/ 0ce46362-0aab-482a-b1f0-a444a5dada39</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 https://deims.org/dataset/ 0ab8425a-d574-4575-8ba9-5275c607b0c5</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 https://deims.org/dataset/ 69564188-89de-4879-ad88-4aa97c1d005d</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 https://deims.org/dataset/ e538c743-2149-49e3-9025-14a04ea7c90d</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 https://deims.org/dataset/ c857c8e2-48aa-4dcd-a7fb-e089bd4c5c4e</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7 https://deims.org/dataset/ fb3a8fec-0c1f-4c3a-81d5-364c7e6078c4</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                                              relatedResourcesTitle</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Biovolume of Phytoplankton in Lake Maggiore site code  IT_SI001137_within the period 1981 - 2010</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2                           Atmospheric deposition in Pallanza, Lake Maggiore watershed, 1980-2018</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3                                     Phytoplankton_Biomass_Lake Maggiore_Ghiffa_station-1984-2018</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4                                      Water chemistry of Lake Maggiore, Ghiffa station, 1988-2018</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5                          Transparency (Secchi depth) of Lake Maggiore, Ghiffa station, 1988-2018</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6                                             Chlorophyll a_Lake_Maggiore_Ghiffa_Station-1984-2018</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7                                 Water discharge of River Ticino, Lake Maggiore outlet, 1988-2018</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    relatedResourcesChanged</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 2021-08-25T16:38:25+0200</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 2020-12-13T20:06:48+0100</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 2020-12-16T10:46:15+0100</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 2021-08-04T10:00:49+0200</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 2020-12-13T20:10:34+0100</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 2021-01-10T21:48:49+0100</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7 2021-07-21T12:35:07+0200</span></span></code></pre></div>
+<hr>
+<p>The <em>parametersChartWaffle</em> function provides a grouping of parameters, declared as measured within a site, in a waffle chart representation.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ReLTER</span><span class="fu">::</span><span class="fu"><a href="reference/parametersChartWaffle.html">parametersChartWaffle</a></span><span class="op">(</span>
+  deimsid <span class="op">=</span> <span class="st">"https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"</span>
+<span class="op">)</span>
+<span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></code></pre></div>
+<p><img src="reference/figures/README-exampleparametersChartWaffle-1.png" width="100%"></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 11 × 4</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    parameterGroups              n   freq label</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;                    &lt;int&gt;  &lt;dbl&gt; &lt;chr&gt;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 agricultural parameter       1 0.0105 1.1% </span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 atmospheric parameter       14 0.147  14.7%</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 biological parameter         8 0.0842 8.4% </span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 chemical parameter          24 0.253  25.3%</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 ecosystem parameter         23 0.242  24.2%</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 genetic parameter            2 0.0211 2.1% </span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 landscape parameter          4 0.0421 4.2% </span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 physical parameter           1 0.0105 1.1% </span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 remote sensing parameter     1 0.0105 1.1% </span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 soil parameter               1 0.0105 1.1% </span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11 water parameter             16 0.168  16.8%</span></span></code></pre></div>
 </div>
-<div id="writing_hand-authors-and-other-contributors" class="section level2">
+<div id="writing_hand-authors" class="section level2">
 <h2 class="hasAnchor">
-<a href="#writing_hand-authors-and-other-contributors" class="anchor"></a><span class="emoji" data-emoji="writing_hand">✍️</span> Authors and other contributors</h2>
+<a href="#writing_hand-authors" class="anchor"></a><span class="emoji" data-emoji="writing_hand">✍️</span> Authors</h2>
 <p>Alessandro Oggioni <a href="https://orcid.org/0000-0002-7997-219X" class="uri">https://orcid.org/0000-0002-7997-219X</a></p>
+<p>Paolo Tagliolato <a href="https:://orcid.org/0000-0002-0261-313X" class="uri">https:://orcid.org/0000-0002-0261-313X</a></p>
 <p>CNR - Institute for Electromagnetic Sensing of the Environment (IREA)</p>
 <!-- Add authors, reviewers including those who, within eLTER network, reviewed the package and add acknowledgements 
      in accordance with this https://ropensci.org/blog/2018/03/16/thanking-reviewers-in-metadata/ and this
      https://devguide.ropensci.org/building.html#authorship.
      Add the same in DESCRIPTION file -->
-<p>Paolo Tagliolato <a href="https:://orcid.org/0000-0002-0261-313X" class="uri">https:://orcid.org/0000-0002-0261-313X</a></p>
-<p>CNR - Institute for Electromagnetic Sensing of the Environment (IREA)</p>
-<p>For a exhaustive list of contributors please visit <a href="https://oggioniale.github.io/ReLTER/authors">“author page”</a>.</p>
+<hr>
+<p>For a exhaustive list of contributors please visit <a href="https://oggioniale.github.io/ReLTER/authors">authors page</a>.</p>
 </div>
 <div id="office-contributing-organizations" class="section level2">
 <h2 class="hasAnchor">
