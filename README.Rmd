@@ -82,6 +82,12 @@ CNR - Institute for Electromagnetic Sensing of the Environment (IREA)
      in accordance with this https://ropensci.org/blog/2018/03/16/thanking-reviewers-in-metadata/ and this
      https://devguide.ropensci.org/building.html#authorship.
      Add the same in DESCRIPTION file -->
+     
+Paolo Tagliolato <https:://orcid.org/0000-0002-0261-313X>
+
+CNR - Institute for Electromagnetic Sensing of the Environment (IREA)
+
+For a exhaustive list of contributors please visit [authors page](https://oggioniale.github.io/ReLTER/authors).
 
 ## :office: Contributing organizations
 
