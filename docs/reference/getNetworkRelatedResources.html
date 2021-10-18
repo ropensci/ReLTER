@@ -103,33 +103,33 @@ througth the DEIMS-SDR sites API." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
+    <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
   <a href="../reference/index.html">
-    <span class="fas fa-file-code"></span>
+    <span class="fa fa-file-code"></span>
      
     Reference
   </a>
 </li>
 <li>
   <a href="../news/index.html">
-    <span class="fas fa-newspaper"></span>
+    <span class="fa fa-newspaper"></span>
      
     Changelog
   </a>
 </li>
 <li>
   <a href="https://www.cnr.it/people/alessandro.oggioni">
-    <span class="fas fa-user"></span>
+    <span class="fa fa-user"></span>
      
   </a>
 </li>
 <li>
   <a href="https://github.com/oggioniale/ReLTER/">
-    <span class="fas fa-github fa-lg"></span>
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -181,10 +181,12 @@ resources shared by the network's sites.</p>
     <p>Alessandro Oggioni, phD (2020) <a href='mailto:oggioni.a@irea.cnr.it'>oggioni.a@irea.cnr.it</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='va'>listRelatedResources</span> <span class='op'>&lt;-</span> <span class='fu'>getNetworkRelatedResources</span><span class='op'>(</span>
+    <pre class="examples"><span class='co'># \dontrun{</span>
+<span class='va'>listRelatedResources</span> <span class='op'>&lt;-</span> <span class='fu'>getNetworkRelatedResources</span><span class='op'>(</span>
   networkDEIMSID <span class='op'>=</span> <span class='st'>"https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"</span>
 <span class='op'>)</span>
-<span class='va'>listRelatedResources</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span>, <span class='op'>]</span>
+<span class='va'>listRelatedResources</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, <span class='op'>]</span>
+<span class='co'># }</span>
 
 </pre>
   </div>
@@ -198,7 +200,7 @@ resources shared by the network's sites.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Alessandro Oggioni, Paolo Tagliolato.</p>
+  <p>Developed by Alessandro Oggioni.</p>
 </div>
 
 <div class="pkgdown">

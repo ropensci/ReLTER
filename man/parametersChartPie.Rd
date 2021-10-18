@@ -19,10 +19,12 @@ This function allows to obtain a pie chart of the parameter
 collected in a site or network grouped into compounds.
 }
 \examples{
+\dontrun{
 pie <- parametersChartPie(
   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
 )
-print(pie)
+pie
+}
 
 }
 \author{

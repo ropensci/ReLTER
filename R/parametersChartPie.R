@@ -6,7 +6,6 @@
 #' \href{https://deims.org/docs/deimsid.html}{page}.
 #' @return The output of the function is a pie chart.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @import
 #' @importFrom tibble as_tibble
 #' @importFrom dplyr group_by tally mutate filter
 #' @importFrom scales percent
@@ -16,12 +15,12 @@
 #' @importFrom ggforce geom_arc_bar
 #' @export
 #' @examples
-#' \donttest
+#' \dontrun{
 #' pie <- parametersChartPie(
 #'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
 #' )
 #' pie
-#' \donttest
+#' }
 #' 
 ### function parametersChartPie
 parametersChartPie <- function(deimsid) {

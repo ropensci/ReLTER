@@ -4,10 +4,12 @@
 \alias{getILTEREnvCharacts}
 \title{eLTER getILTEREnvCharacts function}
 \usage{
-getILTEREnvCharacts()
+getILTEREnvCharacts(sitesNum = NULL)
 }
 \arguments{
-\item{null}{function witout parameter}
+\item{sitesNum}{A `integer`. It is the number of the sites that are 
+read to get the information. Use this parameters moreover for provide
+example of this function.}
 }
 \value{
 The output of the function is a `tibble` containing all the
@@ -15,12 +17,14 @@ Environmental Characteristics of all ILTER's sites.
 }
 \description{
 This function allows to obtain the information about the
-Environmental Characteristics of all sites of ILTER, througth the
+Environmental Characteristics of all sites of ILTER, through the
 DEIMS-SDR sites API.
 }
 \examples{
-listEnvCharacts <- getILTEREnvCharacts()
-listEnvCharacts[1:5, ]
+\dontrun{
+listEnvCharacts <- getILTEREnvCharacts(sitesNum = 10)
+listEnvCharacts[1:20, ]
+}
 
 }
 \author{

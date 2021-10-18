@@ -11,12 +11,11 @@
 #' topics and their URI (Uniform Resource Identifier) collected by network's
 #' sites.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @import
 #' @importFrom jsonlite fromJSON
 #' @importFrom dplyr bind_rows distinct as_tibble
 #' @export
 #' @examples
-#' \donttest
+#' \dontrun{
 #' require('dplyr')
 #' listResearchTopics <- getNetworkResearchTopics(
 #'   networkDEIMSID = "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
@@ -28,7 +27,7 @@
 #'       researchTopicsUri = "..."
 #'     )
 #'   )
-#' \donttest
+#' }
 #'
 ### function getNetworkResearchTopics
 getNetworkResearchTopics <- function(networkDEIMSID) {

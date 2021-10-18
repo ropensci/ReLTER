@@ -48,7 +48,7 @@
 
 <meta property="og:title" content="eLTER getILTEREnvCharacts function — getILTEREnvCharacts" />
 <meta property="og:description" content="This function allows to obtain the information about the
-Environmental Characteristics of all sites of ILTER, througth the
+Environmental Characteristics of all sites of ILTER, through the
 DEIMS-SDR sites API." />
 <meta property="og:image" content="https://oggioniale.github.io/ReLTER/logo.png" />
 
@@ -103,33 +103,33 @@ DEIMS-SDR sites API." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
+    <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
   <a href="../reference/index.html">
-    <span class="fas fa-file-code"></span>
+    <span class="fa fa-file-code"></span>
      
     Reference
   </a>
 </li>
 <li>
   <a href="../news/index.html">
-    <span class="fas fa-newspaper"></span>
+    <span class="fa fa-newspaper"></span>
      
     Changelog
   </a>
 </li>
 <li>
   <a href="https://www.cnr.it/people/alessandro.oggioni">
-    <span class="fas fa-user"></span>
+    <span class="fa fa-user"></span>
      
   </a>
 </li>
 <li>
   <a href="https://github.com/oggioniale/ReLTER/">
-    <span class="fas fa-github fa-lg"></span>
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -153,18 +153,20 @@ DEIMS-SDR sites API." />
 
     <div class="ref-description">
     <p>This function allows to obtain the information about the
-Environmental Characteristics of all sites of ILTER, througth the
+Environmental Characteristics of all sites of ILTER, through the
 DEIMS-SDR sites API.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>getILTEREnvCharacts</span><span class='op'>(</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>getILTEREnvCharacts</span><span class='op'>(</span>sitesNum <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>null</th>
-      <td><p>function witout parameter</p></td>
+      <th>sitesNum</th>
+      <td><p>A `integer`. It is the number of the sites that are 
+read to get the information. Use this parameters moreover for provide
+example of this function.</p></td>
     </tr>
     </table>
 
@@ -177,8 +179,10 @@ Environmental Characteristics of all ILTER's sites.</p>
     <p>Alessandro Oggioni, phD (2020) &lt;oggioni.a@irea.cnr.it&gt;</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='va'>listEnvCharacts</span> <span class='op'>&lt;-</span> <span class='fu'>getILTEREnvCharacts</span><span class='op'>(</span><span class='op'>)</span>
-<span class='va'>listEnvCharacts</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span>, <span class='op'>]</span>
+    <pre class="examples"><span class='co'># \dontrun{</span>
+<span class='va'>listEnvCharacts</span> <span class='op'>&lt;-</span> <span class='fu'>getILTEREnvCharacts</span><span class='op'>(</span>sitesNum <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>
+<span class='va'>listEnvCharacts</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>20</span>, <span class='op'>]</span>
+<span class='co'># }</span>
 
 </pre>
   </div>
@@ -192,7 +196,7 @@ Environmental Characteristics of all ILTER's sites.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Alessandro Oggioni, Paolo Tagliolato.</p>
+  <p>Developed by Alessandro Oggioni.</p>
 </div>
 
 <div class="pkgdown">

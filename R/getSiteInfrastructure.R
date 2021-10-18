@@ -9,7 +9,6 @@
 #' status, yearEstablished, yearClosed, hierarchy, siteName, short name, site
 #' type, protection level, images.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @import
 #' @importFrom httr GET content
 #' @importFrom utils capture.output
 #' @importFrom dplyr as_tibble
@@ -46,7 +45,7 @@ getSiteInfrastructure <- function(deimsid) {
     invisible(
       utils::capture.output(
         infrastructure <- dplyr::as_tibble(
-          ReLTER::do_Q(q, jj)
+          ReLTER:::do_Q(q, jj)
         )
       )
     )

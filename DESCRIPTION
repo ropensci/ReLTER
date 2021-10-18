@@ -4,10 +4,10 @@ Title: An interface to the eLTER for the R statistical programming environment
 Version: 0.1.1
 Date: 2021-02-20
 Authors@R: c(
-        person("Alessandro", "Oggioni", email = "oggioni.a@irea.cnr.it", role = c("aut", "cre"),
+        person("Alessandro", "Oggioni", email = "oggioni.a@irea.cnr.it", role = c("aut", "cre", "fnd"),
           comment = c(ORCID = "0000-0002-7997-219X")
         ),
-        person("Paolo", "Tagliolato", email = "tagliolato.a@irea.cnr.it", role = "aut",
+        person("Paolo", "Tagliolato", email = "tagliolato.a@irea.cnr.it", role = "ctb",
           comment = c(ORCID = "0000-0002-0261-313X")
         )
       )

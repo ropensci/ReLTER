@@ -32,6 +32,7 @@ reference:
       - '`getILTERParameters`'
       - '`getILTEREnvCharacts`'
       - '`getILTERResearchTopics`'
+      - '`getILTERGeneralInfo`'
   - subtitle: Other entities
     desc: For retrive information about other entities stored in DEIMS-SDR website
     contents:
@@ -50,7 +51,6 @@ reference:
     contents:
       - '`getSOSProcedureList`'
       - '`taxonIDPesi`'
-      - '`do_Q`'
 navbar:
   type: inverse
   left: []

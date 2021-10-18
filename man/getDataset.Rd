@@ -20,7 +20,7 @@ This function allows to obtain the info of dataset provided in
 DEIMS-SDR.
 }
 \examples{
-tDataset <- getDataset(datasetid = "https://deims.org/datasets/75a7f938-7c77-11e3-8832-005056ab003f")
+tDataset <- getDataset(datasetid = "https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef")
 tDataset
 
 }

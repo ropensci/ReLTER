@@ -8,7 +8,6 @@
 #' site and the affiliations information, such as: networks and projects in
 #' which the site is involved.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @import
 #' @importFrom httr GET content
 #' @importFrom jqr jq
 #' @importFrom jsonlite stream_in
@@ -48,7 +47,7 @@ getSiteAffiliations <- function(deimsid) {
     invisible(
       utils::capture.output(
         affiliations <- dplyr::as_tibble(
-          ReLTER::do_Q(q, jj)
+          ReLTER:::do_Q(q, jj)
         )
       )
     )

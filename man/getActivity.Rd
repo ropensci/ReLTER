@@ -20,7 +20,8 @@ This function allows to obtain the info of activity (actually
  only title) provided in DEIMS-SDR.
 }
 \examples{
-getActivity(activityid = "https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845")
+activities <- getActivity(activityid = "https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845")
+activities
 
 }
 \author{

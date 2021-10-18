@@ -7,7 +7,6 @@
 #' @return The output of the function is a `tibble` with main features of the
 #' site and the parameters collected by site.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @import
 #' @importFrom httr GET content
 #' @importFrom utils capture.output
 #' @importFrom dplyr as_tibble
@@ -44,7 +43,7 @@ getSiteParameters <- function(deimsid) {
     invisible(
       utils::capture.output(
         parameters <- dplyr::as_tibble(
-          ReLTER::do_Q(q, jj)
+          ReLTER:::do_Q(q, jj)
         )
       )
     )

@@ -18,7 +18,7 @@ ISO convention are three-letter country codes defined in ISO 3166-1, part of
 the ISO 3166 standard published by the International Organization for
 Standardization (ISO), to represent countries, dependent territories, and
 special areas of geographical interest. The map produced by this function
-will be limited only to the contry indicated in this parameter, if the
+will be limited only to the country indicated in this parameter, if the
 network has a extraterritorial sites those will not represented.}
 }
 \value{
@@ -30,8 +30,20 @@ This function provide a map (image) of site LTER network
 started from DEIMS iD of network.
 }
 \examples{
-map <- mapNetworkPoint(networkDEIMSID = 'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3', countryCode = 'ITA')
-print(map)
+\dontrun{
+# Italian sites
+map <- mapNetworkPoint(
+  networkDEIMSID = 'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3',
+  countryCode = 'ITA'
+)
+map
+
+# German sites
+mapNetworkPoint(
+  networkDEIMSID = 'https://deims.org/networks/e904354a-f3a0-40ce-a9b5-61741f66c824',
+  countryCode = 'DEU'
+)
+}
 
 }
 \author{

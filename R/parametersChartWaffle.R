@@ -6,7 +6,6 @@
 #' \href{https://deims.org/docs/deimsid.html}{page}.
 #' @return The output of the function is a waffle chart.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @import
 #' @importFrom tibble as_tibble
 #' @importFrom dplyr group_by tally mutate filter
 #' @importFrom scales percent
@@ -16,12 +15,12 @@
 #' @importFrom utils data
 #' @export
 #' @examples
-#' \donttest
+#' \dontrun{
 #' waffle <- parametersChartWaffle(
 #'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
 #' )
 #' print(waffle)
-#' \donttest
+#' }
 #'
 ### function parametersChartWaffle
 parametersChartWaffle <- function(deimsid) {
@@ -43,7 +42,7 @@ parametersChartWaffle <- function(deimsid) {
     params$label <- scales::percent(params$freq)
     obsPropWaffle <- params$n
     names(obsPropWaffle) <- params$parameterGroups
-    # Waffle charth ----
+    # Waffle chart ----
     mycolors <- c(
       RColorBrewer::brewer.pal(
         name ="Set1",

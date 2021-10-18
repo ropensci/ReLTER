@@ -1,20 +1,19 @@
 #' @title eLTER getILTERParameters function
 #' @description This function allows to obtain the information about the
-#' parameters collected in all sites of ILTER, througth the DEIMS-SDR
+#' parameters collected in all sites of ILTER, through the DEIMS-SDR
 #' sites API.
 #' @param sitesNum A `integer`. It is the number of the sites that are 
-#' read to get the information. Use this parameters oreover for provide
-#' example of this function.
+#' read to get the information. Use this parameters moreover for provide
+#' example of this function. Default 0.
 #' @return The output of the function is a `tibble` containing the list
 #' of parameters and their URI (Uniform Resource Identifier) collected
 #' in all ILTER sites.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @import
 #' @importFrom jsonlite fromJSON
 #' @importFrom dplyr as_tibble bind_rows distinct
 #' @export
 #' @examples
-#' \donttest
+#' \dontrun{
 #' require('dplyr')
 #' listParams <- getILTERParameters(sitesNum = 20)
 #' listParams[1:10, ] %>%
@@ -23,11 +22,11 @@
 #'     parameterLabel = "...", parameterUri = "..."
 #'   )
 #' )
-#' \donttest
+#' }
 #'
 ### function getILTERParameters
-getILTERParameters <- function(sitesNum = NULL) {
-  if (is.na(sitesNum)) {
+getILTERParameters <- function(sitesNum = 0) {
+  if (sitesNum == 0) {
     lterILTERSites <- as.list(jsonlite::fromJSON("https://deims.org/api/sites"))
     allSiteParameters <- lapply(
       as.list(

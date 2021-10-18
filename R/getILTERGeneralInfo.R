@@ -1,28 +1,28 @@
 #' @title eLTER getILTERGeneralInfo function
 #' @description This function allows to obtain the generic information
-#' collected in all sites of ILTER, througth the DEIMS-SDR
+#' collected in all sites of ILTER, through the DEIMS-SDR
 #' sites API.
 #' @param sitesNum A `integer`. It is the number of the sites that are 
-#' read to get the information. Use this parameters oreover for provide
-#' example of this function.
+#' read to get the information. Use this parameters moreover for provide
+#' example of this function. Default 0.
 #' @return The output of the function is a `sf` containing the
 #' name, longitude, latitude, average altitude, DEIMS.iD and affiliation
 #' of all ILTER sites.
 #' @author Alessandro Oggioni, phD (2021) \email{oggioni.a@@irea.cnr.it}
-#' @import
 #' @importFrom jsonlite fromJSON
 #' @importFrom dplyr bind_rows
 #' @importFrom sf st_as_sf
+#' @export
 #' @examples
-#' \donttest
+#' \dontrun{
 #' require('dplyr')
 #' listOfAllSites <- getILTERGeneralInfo(sitesNum = 20)
 #' listOfAllSites[1:10, ]
-#' \donttest
+#' }
 #' 
 ### function getILTERGeneralInfo
-getILTERGeneralInfo <- function(sitesNum = NULL) {
-  if (is.na(sitesNum)) {
+getILTERGeneralInfo <- function(sitesNum = 0) {
+  if (sitesNum == 0) {
     lterILTERSites <- as.list(
       jsonlite::fromJSON("https://deims.org/api/sites")
     )

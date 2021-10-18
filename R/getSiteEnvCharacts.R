@@ -10,7 +10,6 @@
 #' temperature, precipitation, biogeographical region, biome, ecosystem land
 #' use, EUNIS habitat, geoBon biome, geology, hydrology, soils and vegetation.
 #' @author Alessandro Oggioni, phD (2021) \email{oggioni.a@@irea.cnr.it}
-#' @import
 #' @importFrom httr GET content
 #' @importFrom utils capture.output
 #' @importFrom dplyr as_tibble
@@ -48,7 +47,7 @@ getSiteEnvCharacts <- function(deimsid) {
     invisible(
       utils::capture.output(
         envCharacteristics <- dplyr::as_tibble(
-          ReLTER::do_Q(q, jj)
+          ReLTER:::do_Q(q, jj)
         )
       )
     )

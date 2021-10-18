@@ -9,19 +9,18 @@
 #' @return The output of the function is `SpatialPointsDataFrame` (package sp)
 #' of the network's sites.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @import
 #' @importFrom jsonlite fromJSON
 #' @importFrom sf st_as_sf
 #' @importFrom dplyr select
 #' @importFrom leaflet leaflet addTiles addMarkers
 #' @export
 #' @examples
-#' \donttest
+#' \dontrun{
 #' listSites <- getNetworkSites(
 #'   networkDEIMSID = "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 #' )
 #' listSites[1:10, ]
-#' \donttest
+#' }
 #' 
 ### function getNetworkSites
 getNetworkSites <- function(networkDEIMSID) {

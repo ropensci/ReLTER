@@ -10,17 +10,16 @@
 #' @return The output of the function is a `tibble` containing the related
 #' resources shared by the network's sites.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @import
 #' @importFrom jsonlite fromJSON
 #' @importFrom dplyr bind_rows distinct as_tibble
 #' @export
 #' @examples
-#' \donttest
+#' \dontrun{
 #' listRelatedResources <- getNetworkRelatedResources(
 #'   networkDEIMSID = "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 #' )
 #' listRelatedResources[1:10, ]
-#' \donttest
+#' }
 #'
 ### function getNetworkRelatedResources
 getNetworkRelatedResources <- function(networkDEIMSID) {

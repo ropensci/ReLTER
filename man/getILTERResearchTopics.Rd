@@ -4,10 +4,12 @@
 \alias{getILTERResearchTopics}
 \title{eLTER getILTERResearchTopics function}
 \usage{
-getILTERResearchTopics()
+getILTERResearchTopics(sitesNum = NULL)
 }
 \arguments{
-\item{null}{function witout parameter}
+\item{sitesNum}{A `integer`. It is the number of the sites that are 
+read to get the information. Use this parameters moreover for provide
+example of this function.}
 }
 \value{
 The output of the function is a `tibble` containing the research
@@ -15,12 +17,13 @@ topics and their URI (Uniform Resource Identifier) of all ILTER sites.
 }
 \description{
 This function allows to obtain the information about the
-Research Topics collected in all sites of ILTER, througth the DEIMS-SDR
+Research Topics collected in all sites of ILTER, through the DEIMS-SDR
 sites API.
 }
 \examples{
+\dontrun{
 require('dplyr')
-listResearchTopics <- getILTERResearchTopics()
+listResearchTopics <- getILTERResearchTopics(sitesNum = 20)
 listResearchTopics[1:10, ] \%>\%
   dplyr::rows_insert(
   dplyr::tibble(
@@ -28,6 +31,7 @@ listResearchTopics[1:10, ] \%>\%
     researchTopicsUri = "..."
   )
 )
+}
 
 }
 \author{

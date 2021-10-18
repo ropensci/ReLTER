@@ -7,9 +7,7 @@
 #' @return The output of the function is a `list` with the name and URI (Uniform
 #' Resource Identifier) of each procedure.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @import
 #' @importFrom xml2 read_xml xml_ns xml_find_all
-#' @importFrom 
 #' @export
 #' @examples
 #' getSOSProcedureList(sosHost = "http://getit.lteritalia.it")

@@ -4,11 +4,10 @@
 #' @param jj a character
 #' @return The output of the function is ...
 #' @author Paolo Tagliolato, phD (2021) \email{tagliolato.p@@irea.cnr.it}
-#' @import
 #' @importFrom jsonlite stream_in
 #' @importFrom jqr jq
 #' @importFrom dtplyr lazy_dt
-#' @export
+#' @keywords internal
 #' @examples
 #' require("dplyr")
 #' deimsid <- "https://deims.org/17210eba-d832-4759-89fa-9ff127cbdf6e"

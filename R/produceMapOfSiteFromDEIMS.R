@@ -31,9 +31,8 @@
 #' by centroid of the site. Default 0.
 #' @return The output of the function is a distribution `image`.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @import
-#' @importFrom sf as_Spatial st_as_sfc CRS
-#' @importFrom sf bbox
+#' @import ISOcodes
+#' @importFrom sf as_Spatial st_as_sfc st_bbox st_crs
 #' @importFrom jsonlite fromJSON
 #' @importFrom tibble tribble
 #' @importFrom raster getData reclassify
@@ -43,7 +42,8 @@
 #' @importFrom grid viewport
 #' @export
 #' @examples
-#' \donttest
+#' \dontrun{
+#' # Example of LTER-Germay site
 #' sitesNetwork <- getNetworkSites(
 #'   networkDEIMSID = "https://deims.org/networks/e904354a-f3a0-40ce-a9b5-61741f66c824"
 #' )
@@ -54,9 +54,8 @@
 #'   gridNx = 0.7,
 #'   gridNy = 0.2
 #' )
-#' \donttest
 #' 
-#' \donttest
+#' # Example of LTER-Italy site
 #' sitesNetwork <- getNetworkSites(
 #'   networkDEIMSID = "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 #' )
@@ -69,7 +68,7 @@
 #'   gridNx = 0.7,
 #'   gridNy = 0.35
 #' )
-#' \donttest
+#' }
 #' 
 ### function produceMapOfSiteFromDEIMS
 produceMapOfSiteFromDEIMS <-
@@ -85,15 +84,16 @@ produceMapOfSiteFromDEIMS <-
            bboxYMin = 0,
            bboxYMax = 0) {
     deimsidExa <- sub("^.+/", "", deimsid)
-    siteSelected <- sf::as_Spatial(sf::st_as_sfc(
-      jsonlite::fromJSON(paste0(
-        "https://deims.org/",
-        "api/sites/",
-        deimsidExa
-      ))$attributes$geographic$coordinates
-    ))
-    siteSelected@proj4string <-
-      sp::CRS("+proj=longlat +datum=WGS84 +no_defs")
+    siteSelected <- sf::as_Spatial(
+      sf::st_as_sfc(
+        jsonlite::fromJSON(paste0(
+          "https://deims.org/",
+          "api/sites/",
+          deimsidExa
+        ))$attributes$geographic$coordinates,
+        crs = "+proj=longlat +datum=WGS84 +no_defs"
+      )
+    )
     biomeColor <- tibble::tribble(
       ~ geoBonBiome,
       ~ fill,
@@ -125,20 +125,29 @@ produceMapOfSiteFromDEIMS <-
                                                deimsidExa))$attributes$geographic$boundaries
     
     if (countryCode %in% ISOcodes::ISO_3166_1$Alpha_3 == TRUE) {
-      country <- raster::getData(country = countryCode, level = 0)
+      country <- raster::getData(
+        country = countryCode,
+        level = 0
+      )
       country <-
         rgeos::gSimplify(country, tol = 0.01, topologyPreserve = TRUE)
       if (is.null(geoBoundaries)) {
         lterCoords <- siteSelected
         lterSitesFeaturePointDEIMS <-
-          sf::as_Spatial(sf::st_as_sfc(lterCoords), )
-        lterSitesFeaturePointDEIMS@proj4string <-
-          sp::CRS("+proj=longlat +datum=WGS84 +no_defs")
+          sf::as_Spatial(
+            sf::st_as_sfc(
+              lterCoords,
+              crs = "+proj=longlat +datum=WGS84 +no_defs"
+            ),
+          )
         baseMap <-
           rosm::osm.raster(lterSitesFeaturePointDEIMS, zoomin = -8)
         newBaseMap <- raster::reclassify(baseMap, cbind(NA, 255))
         mapOfSite <-
-          tmap::tm_shape(newBaseMap, ) +
+          tmap::tm_shape(
+            newBaseMap,
+            raster.downsample = TRUE
+          ) +
           tmap::tm_rgb() +
           tmap::tm_shape(lterSitesFeaturePointDEIMS) +
           tmap::tm_dots(
@@ -201,22 +210,22 @@ produceMapOfSiteFromDEIMS <-
                                   width = width,
                                   height = height))
       } else {
+        geoBoundaries_sf <- sf::st_as_sfc(geoBoundaries)
+        sf::st_crs(geoBoundaries_sf) <- "+proj=longlat +datum=WGS84 +no_defs"
         lterSitesFeatureDEIMS <-
-          sf::as_Spatial(sf::st_as_sfc(geoBoundaries), )
-        lterSitesFeatureDEIMS@proj4string <-
-          sp::CRS("+proj=longlat +datum=WGS84 +no_defs")
-        bboxlterItalySitesFeature <- sp::bbox(lterSitesFeatureDEIMS)
+          sf::as_Spatial(geoBoundaries_sf, )
+        bboxlterItalySitesFeature <- sf::st_bbox(lterSitesFeatureDEIMS)
         bboxlterItalySitesFeature[1] <-
-          sp::bbox(lterSitesFeatureDEIMS)[1] +
+          sf::st_bbox(lterSitesFeatureDEIMS)[1] +
           bboxXMin
         bboxlterItalySitesFeature[3] <-
-          sp::bbox(lterSitesFeatureDEIMS)[3] +
+          sf::st_bbox(lterSitesFeatureDEIMS)[3] +
           bboxXMax
         bboxlterItalySitesFeature[2] <-
-          sp::bbox(lterSitesFeatureDEIMS)[2] +
+          sf::st_bbox(lterSitesFeatureDEIMS)[2] +
           bboxYMin
         bboxlterItalySitesFeature[4] <-
-          sp::bbox(lterSitesFeatureDEIMS)[4] +
+          sf::st_bbox(lterSitesFeatureDEIMS)[4] +
           bboxYMax
         baseMap <- rosm::osm.raster(bboxlterItalySitesFeature)
         newBaseMap <- raster::reclassify(baseMap, cbind(NA, 255))

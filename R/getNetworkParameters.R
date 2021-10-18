@@ -11,13 +11,12 @@
 #' of parameters and their URI (Uniform Resource Identifier) collected
 #' by the network's sites.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @import
 #' @importFrom jsonlite fromJSON
 #' @importFrom dplyr bind_rows distinct
 #' @importFrom dplyr as_tibble
 #' @export
 #' @examples
-#' \donttest
+#' \dontrun{
 #' require('dplyr')
 #' listParams <- getNetworkParameters(
 #'   networkDEIMSID = "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
@@ -26,7 +25,7 @@
 #' dplyr::rows_insert(
 #'   dplyr::tibble(parameterLabel = "...", parameterUri = "...")
 #' )
-#' \donttest
+#' }
 #'
 ### function getNetworkParameters
 getNetworkParameters <- function(networkDEIMSID) {

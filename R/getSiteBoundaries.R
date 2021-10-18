@@ -9,7 +9,6 @@
 #' @return The output of the function is a
 #' `html map` with boundaries of the site.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @import
 #' @importFrom tibble tribble 
 #' @importFrom dplyr as_tibble
 #' @importFrom jsonlite fromJSON
@@ -69,7 +68,7 @@ getSiteBoundaries <- function(deimsid) {
   if (is.na(status)) {
     invisible(
       utils::capture.output(
-        boundaries <- dplyr::as_tibble(ReLTER::do_Q(q, jj))
+        boundaries <- dplyr::as_tibble(ReLTER:::do_Q(q, jj))
       )
     )
     if (!is.null(boundaries)) {

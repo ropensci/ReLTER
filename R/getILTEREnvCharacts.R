@@ -1,23 +1,21 @@
 #' @title eLTER getILTEREnvCharacts function
 #' @description This function allows to obtain the information about the
-#' Environmental Characteristics of all sites of ILTER, througth the
+#' Environmental Characteristics of all sites of ILTER, through the
 #' DEIMS-SDR sites API.
 #' @param sitesNum A `integer`. It is the number of the sites that are 
-#' read to get the information. Use this parameters oreover for provide
+#' read to get the information. Use this parameters moreover for provide
 #' example of this function.
 #' @return The output of the function is a `tibble` containing all the
 #' Environmental Characteristics of all ILTER's sites.
 #' @author Alessandro Oggioni, phD (2020) <oggioni.a@@irea.cnr.it>
-#' @import
 #' @importFrom jsonlite fromJSON
 #' @importFrom dplyr as_tibble
-#' @importFrom base as.data.frame
 #' @export
 #' @examples
-#' \donttest
+#' \dontrun{
 #' listEnvCharacts <- getILTEREnvCharacts(sitesNum = 10)
 #' listEnvCharacts[1:20, ]
-#' \donttest
+#' }
 #' 
 ### function getILTEREnvCharacts
 getILTEREnvCharacts <- function(sitesNum = NULL) {
@@ -36,7 +34,7 @@ getILTEREnvCharacts <- function(sitesNum = NULL) {
     )
     allSiteEnvCharacts_matrix <- do.call(rbind, allSiteEnvCharacts)
     allSiteEnvCharacts <- dplyr::as_tibble(
-      base::as.data.frame(
+      as.data.frame(
         allSiteEnvCharacts_matrix
       )
     )
@@ -56,7 +54,7 @@ getILTEREnvCharacts <- function(sitesNum = NULL) {
     )
     allSiteEnvCharacts_matrix <- do.call(rbind, allSiteEnvCharacts)
     allSiteEnvCharacts <- dplyr::as_tibble(
-      base::as.data.frame(
+      as.data.frame(
         allSiteEnvCharacts_matrix
       )
     )
