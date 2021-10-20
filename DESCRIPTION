@@ -33,8 +33,19 @@ Imports:
     grid (>= 3.5.1),
     leaflet (>= 2.0.3),
     qrencoder (>= 0.1.0),
-    waffle (>= 1.0.1),
-    dtplyr
+    waffle (>= 0.7.0),
+    dtplyr (>=1.1.0),
+    ISOcodes (>= 2021.02.24),
+    RColorBrewer (>= 1.1-2),
+    ggforce (>= 0.3.2),
+    ggplot2 (>= 3.3.5.9000),
+    jqr (>= 1.2.0),
+    mapview (>= 2.9.0),
+    qrcode (>= 0.1.3),
+    scales (>= 1.1.1),
+    xml2 (>= 1.3.2),
+    magrittr (>= 2.0.1),
+    stats (>= 4.0.3)
 RoxygenNote: 7.1.1
 Suggests: 
     testthat (>= 3.0.0),
