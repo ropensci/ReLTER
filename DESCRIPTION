@@ -34,7 +34,7 @@ Imports:
     leaflet (>= 2.0.3),
     qrencoder (>= 0.1.0),
     waffle (>= 0.7.0),
-    dtplyr (>=1.1.0),
+    dtplyr,
     ISOcodes (>= 2021.02.24),
     RColorBrewer (>= 1.1-2),
     ggforce (>= 0.3.2),
