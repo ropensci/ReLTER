@@ -39,6 +39,7 @@
 #' 
 ### function getSiteBoundaries
 getSiteBoundaries <- function(deimsid) {
+  require(dplyr)
   biomeColor <- tibble::tribble(
     ~geoBonBiome, ~fill, ~border,
     "marine", "#055ca8", "#057ae1",

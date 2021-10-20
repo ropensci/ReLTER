@@ -43,6 +43,7 @@
 #' 
 ### function mapNetworkPoint
 mapNetworkPoint <- function(networkDEIMSID, countryCode) {
+  require(dplyr)
   lterNetworkSitesCoords <- jsonlite::fromJSON(
     paste0(
       "https://deims.org/",

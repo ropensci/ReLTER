@@ -23,6 +23,7 @@
 #'
 ### function getDataset
 getDataset <- function(datasetid) {
+  require(dplyr)
   q <- '{
        title: .title,
        abstract: .attributes.general.abstract,

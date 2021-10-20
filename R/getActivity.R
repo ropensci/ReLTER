@@ -24,6 +24,7 @@
 #'
 ### function getActivity
 getActivity <- function(activityid) {
+  require(dplyr)
   q <- "{
         title: .title,
         boundaries: .attributes.geographic.boundaries

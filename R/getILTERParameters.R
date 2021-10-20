@@ -14,7 +14,6 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' require('dplyr')
 #' listParams <- getILTERParameters(sitesNum = 20)
 #' listParams[1:10, ] %>%
 #'   dplyr::rows_insert(
@@ -26,6 +25,7 @@
 #'
 ### function getILTERParameters
 getILTERParameters <- function(sitesNum = 0) {
+  require(dplyr)
   if (sitesNum == 0) {
     lterILTERSites <- as.list(jsonlite::fromJSON("https://deims.org/api/sites"))
     allSiteParameters <- lapply(

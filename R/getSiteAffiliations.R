@@ -23,6 +23,7 @@
 #'
 ### function getSiteAffiliations
 getSiteAffiliations <- function(deimsid) {
+  require(dplyr)
   q <- '{title: .title,
        uri: "\\(.id.prefix)\\(.id.suffix)",
        geoCoord: .attributes.geographic.coordinates,

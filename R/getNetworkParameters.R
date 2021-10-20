@@ -17,7 +17,6 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' require('dplyr')
 #' listParams <- getNetworkParameters(
 #'   networkDEIMSID = "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 #' )
@@ -29,6 +28,7 @@
 #'
 ### function getNetworkParameters
 getNetworkParameters <- function(networkDEIMSID) {
+  require(dplyr)
   lterNetworkSites <- as.list(
     jsonlite::fromJSON(
       paste0("https://deims.org/",

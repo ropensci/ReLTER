@@ -24,6 +24,7 @@
 #'
 ### function parametersChartWaffle
 parametersChartWaffle <- function(deimsid) {
+  require(dplyr)
   # TODO add this by SPARQL query
   utils::data(envThesParams)
   paramsDeims <- ReLTER::getSiteParameters(deimsid)

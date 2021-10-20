@@ -20,6 +20,7 @@
 #'
 ### function getSiteContact
 getSiteContact <- function(deimsid) {
+  require(dplyr)
   q <- '{title: .title,
        uri: "\\(.id.prefix)\\(.id.suffix)",
        geoCoord: .attributes.geographic.coordinates,

@@ -24,6 +24,7 @@
 #' 
 ### function getNetworkSites
 getNetworkSites <- function(networkDEIMSID) {
+  require(dplyr)
   lterNetworkSitesCoords <- jsonlite::fromJSON(
     paste0(
       "https://deims.org/",

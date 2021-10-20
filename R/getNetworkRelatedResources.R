@@ -23,6 +23,7 @@
 #'
 ### function getNetworkRelatedResources
 getNetworkRelatedResources <- function(networkDEIMSID) {
+  require(dplyr)
   lterNetworkSites <- as.list(
     jsonlite::fromJSON(
       paste0(

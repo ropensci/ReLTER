@@ -13,7 +13,6 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' require('dplyr')
 #' listResearchTopics <- getILTERResearchTopics(sitesNum = 20)
 #' listResearchTopics[1:10, ] %>%
 #'   dplyr::rows_insert(
@@ -26,6 +25,7 @@
 #' 
 ### function getILTERResearchTopics
 getILTERResearchTopics <- function(sitesNum = NULL) {
+  require(dplyr)
   if (is.na(sitesNum)) {
     lterILTERSites <- as.list(jsonlite::fromJSON("https://deims.org/api/sites"))
     allSiteResearchTopics <- lapply(
