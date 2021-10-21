@@ -23,12 +23,12 @@ related resources (e.g. dataset) shared in the eLTER Network (e.g. Italy)
 througth the DEIMS-SDR sites API.
 }
 \examples{
-\donttest
+\dontrun{
 listRelatedResources <- getNetworkRelatedResources(
   networkDEIMSID = "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 )
 listRelatedResources[1:10, ]
-\donttest
+}
 
 }
 \author{

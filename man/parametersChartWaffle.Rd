@@ -19,12 +19,12 @@ This function allows to obtain a waffle chart of the parameter
 collected in a site or network grouped into compounds.
 }
 \examples{
-\donttest
+\dontrun{
 waffle <- parametersChartWaffle(
   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
 )
 print(waffle)
-\donttest
+}
 
 }
 \author{

@@ -21,6 +21,7 @@
 #'
 ### function getSiteGeneral
 getSiteGeneral <- function(deimsid) {
+  require(dplyr)
   q <- '{title: .title,
        uri: "\\(.id.prefix)\\(.id.suffix)",
        geoCoord: .attributes.geographic.coordinates,
@@ -45,7 +46,7 @@ getSiteGeneral <- function(deimsid) {
     invisible(
       utils::capture.output(
         general <- dplyr::as_tibble(
-          ReLTER::do_Q(q, jj)
+          ReLTER:::do_Q(q, jj)
         )
       )
     )

@@ -21,7 +21,9 @@
       "familyName": "Oggioni",
       "email": "oggioni.a@irea.cnr.it",
       "@id": "https://orcid.org/0000-0002-7997-219X"
-    },
+    }
+  ],
+  "contributor": [
     {
       "@type": "Person",
       "givenName": "Paolo",
@@ -30,9 +32,16 @@
       "@id": "https://orcid.org/0000-0002-0261-313X"
     }
   ],
-  "contributor": {},
   "copyrightHolder": {},
-  "funder": {},
+  "funder": [
+    {
+      "@type": "Person",
+      "givenName": "Alessandro",
+      "familyName": "Oggioni",
+      "email": "oggioni.a@irea.cnr.it",
+      "@id": "https://orcid.org/0000-0002-7997-219X"
+    }
+  ],
   "maintainer": [
     {
       "@type": "Person",

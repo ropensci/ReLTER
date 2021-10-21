@@ -19,6 +19,7 @@
 #'
 ### function getParameters
 getSiteParameters <- function(deimsid) {
+  require(dplyr)
   q <- '{title: .title,
        uri: "\\(.id.prefix)\\(.id.suffix)",
        geoCoord: .attributes.geographic.coordinates,
@@ -43,7 +44,7 @@ getSiteParameters <- function(deimsid) {
     invisible(
       utils::capture.output(
         parameters <- dplyr::as_tibble(
-          ReLTER::do_Q(q, jj)
+          ReLTER:::do_Q(q, jj)
         )
       )
     )

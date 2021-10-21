@@ -17,7 +17,7 @@
 #' @importFrom dplyr bind_rows
 #' @export
 #' @examples
-#' \donttest
+#' \dontrun{
 #' importedDataset <- data.frame(
 #'    taxonID = c(1, 2, 3, 4, 5, 6),
 #'    family = c("Alexiidae", "Anthicidae", "Anthribidae", "Anthribidae", "Biphyllidae", "Brentidae"),
@@ -26,7 +26,7 @@
 #'
 #' # We perform a query from the `importedDataset` in order to associate the taxon identifier (LSID) to the list of species present in the thirth column.
 #' taxonIDPesi(importedDataset, 3)
-#' \donttest
+#' }
 #' 
 #' # the output is:
 #' # A tibble: 6 x 10

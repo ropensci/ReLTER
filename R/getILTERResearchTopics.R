@@ -1,18 +1,18 @@
 #' @title eLTER getILTERResearchTopics function
 #' @description This function allows to obtain the information about the
-#' Research Topics collected in all sites of ILTER, througth the DEIMS-SDR
+#' Research Topics collected in all sites of ILTER, through the DEIMS-SDR
 #' sites API.
 #' @param sitesNum A `integer`. It is the number of the sites that are 
-#' read to get the information. Use this parameters oreover for provide
+#' read to get the information. Use this parameters moreover for provide
 #' example of this function.
 #' @return The output of the function is a `tibble` containing the research
 #' topics and their URI (Uniform Resource Identifier) of all ILTER sites.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom jsonlite fromJSON
 #' @importFrom dplyr bind_rows distinct as_tibble
+#' @export
 #' @examples
-#' \donttest
-#' require('dplyr')
+#' \dontrun{
 #' listResearchTopics <- getILTERResearchTopics(sitesNum = 20)
 #' listResearchTopics[1:10, ] %>%
 #'   dplyr::rows_insert(
@@ -21,10 +21,11 @@
 #'     researchTopicsUri = "..."
 #'   )
 #' )
-#' \donttest
+#' }
 #' 
 ### function getILTERResearchTopics
 getILTERResearchTopics <- function(sitesNum = NULL) {
+  require(dplyr)
   if (is.na(sitesNum)) {
     lterILTERSites <- as.list(jsonlite::fromJSON("https://deims.org/api/sites"))
     allSiteResearchTopics <- lapply(

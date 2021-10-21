@@ -102,33 +102,33 @@ site througth the DEIMS-SDR sites API." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
+    <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
   <a href="../reference/index.html">
-    <span class="fas fa-file-code"></span>
+    <span class="fa fa-file-code"></span>
      
     Reference
   </a>
 </li>
 <li>
   <a href="../news/index.html">
-    <span class="fas fa-newspaper"></span>
+    <span class="fa fa-newspaper"></span>
      
     Changelog
   </a>
 </li>
 <li>
   <a href="https://www.cnr.it/people/alessandro.oggioni">
-    <span class="fas fa-user"></span>
+    <span class="fa fa-user"></span>
      
   </a>
 </li>
 <li>
   <a href="https://github.com/oggioniale/ReLTER/">
-    <span class="fas fa-github fa-lg"></span>
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -179,12 +179,22 @@ type, protection level, images.</p>
     <p>Alessandro Oggioni, phD (2020) <a href='mailto:oggioni.a@irea.cnr.it'>oggioni.a@irea.cnr.it</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='va'>tSiteGeneral</span> <span class='op'>&lt;-</span> <span class='fu'>getSiteGeneral</span><span class='op'>(</span>
+    <pre class="examples"><div class='input'><span class='va'>tSiteGeneral</span> <span class='op'>&lt;-</span> <span class='fu'>getSiteGeneral</span><span class='op'>(</span>
   deimsid <span class='op'>=</span> <span class='st'>"https://deims.org/17210eba-d832-4759-89fa-9ff127cbdf6e"</span>
 <span class='op'>)</span>
-<span class='va'>tSiteGeneral</span>
-
-</pre>
+</div><div class='output co'>#&gt;  Found 1 records... Imported 1 records. Simplifying...</div><div class='input'><span class='va'>tSiteGeneral</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 × 22</span>
+#&gt;   title  uri   geoCoord country geoElev.avg geoElev.min geoElev.max geoElev.unit
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       
+#&gt; <span style='color: #BCBCBC;'>1</span> Istit… http… POINT (… <span style='color: #949494;'>&lt;chr [</span>…        <span style='text-decoration: underline;'>2</span>700        <span style='text-decoration: underline;'>2</span>500        <span style='text-decoration: underline;'>3</span>100 msl         
+#&gt; <span style='color: #949494;'># … with 14 more variables: generalInfo.abstract &lt;chr&gt;,</span>
+#&gt; <span style='color: #949494;'>#   generalInfo.keywords &lt;list&gt;, generalInfo.status.label &lt;chr&gt;,</span>
+#&gt; <span style='color: #949494;'>#   generalInfo.status.uri &lt;chr&gt;, generalInfo.yearEstablished &lt;int&gt;,</span>
+#&gt; <span style='color: #949494;'>#   generalInfo.yearClosed &lt;lgl&gt;, generalInfo.hierarchy.parent &lt;list&gt;,</span>
+#&gt; <span style='color: #949494;'>#   generalInfo.hierarchy.children &lt;lgl&gt;, generalInfo.siteName &lt;chr&gt;,</span>
+#&gt; <span style='color: #949494;'>#   generalInfo.shortName &lt;chr&gt;, generalInfo.siteType &lt;chr&gt;,</span>
+#&gt; <span style='color: #949494;'>#   generalInfo.protectionLevel &lt;lgl&gt;, generalInfo.landUse &lt;lgl&gt;, …</span></div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -196,7 +206,7 @@ type, protection level, images.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Alessandro Oggioni, Paolo Tagliolato.</p>
+  <p>Developed by Alessandro Oggioni.</p>
 </div>
 
 <div class="pkgdown">

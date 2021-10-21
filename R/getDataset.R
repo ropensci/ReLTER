@@ -15,10 +15,15 @@
 #' @export
 #' @examples
 #' tDataset <- getDataset(datasetid = "https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef")
+#' map <- leaflet::leaflet(tDataset) %>% 
+#'  leaflet::addTiles() %>% 
+#'  leaflet::addPolygons()
+#' print(map)
 #' tDataset
 #'
 ### function getDataset
 getDataset <- function(datasetid) {
+  require(dplyr)
   q <- '{
        title: .title,
        abstract: .attributes.general.abstract,
@@ -54,7 +59,7 @@ getDataset <- function(datasetid) {
   if (is.na(status)) {
     invisible(
       utils::capture.output(
-        dataset <- dplyr::as_tibble(ReLTER::do_Q(q, jj))
+        dataset <- dplyr::as_tibble(ReLTER:::do_Q(q, jj))
       )
     )
     # fix the observationParameters columns name

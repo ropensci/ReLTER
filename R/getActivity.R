@@ -12,13 +12,19 @@
 #' @importFrom utils capture.output
 #' @importFrom sf st_as_sf
 #' @importFrom leaflet leaflet addTiles addPolygons
+#' @importFrom rgeos gIsValid
 #' @export
 #' @examples
 #' activities <- getActivity(activityid = "https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845")
+#' map <- leaflet::leaflet(activities) %>% 
+#'  leaflet::addTiles() %>% 
+#'  leaflet::addPolygons()
+#' print(map)
 #' activities
 #'
 ### function getActivity
 getActivity <- function(activityid) {
+  require(dplyr)
   q <- "{
         title: .title,
         boundaries: .attributes.geographic.boundaries
@@ -39,7 +45,7 @@ getActivity <- function(activityid) {
   if (is.na(status)) {
     invisible(
       utils::capture.output(
-        activity <- dplyr::as_tibble(ReLTER::do_Q(q, jj))
+        activity <- dplyr::as_tibble(ReLTER:::do_Q(q, jj))
       )
     )
     if (!is.null(activity)) {
@@ -56,7 +62,7 @@ getActivity <- function(activityid) {
         geoActivity_SP <- sf::as_Spatial(
           geoActivity$boundaries
         )
-        geoActivity_valid <- gIsValid(
+        geoActivity_valid <- rgeos::gIsValid(
           geoActivity_SP,
           byid = FALSE,
           reason = TRUE

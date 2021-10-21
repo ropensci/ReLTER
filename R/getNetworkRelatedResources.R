@@ -14,15 +14,16 @@
 #' @importFrom dplyr bind_rows distinct as_tibble
 #' @export
 #' @examples
-#' \donttest
+#' \dontrun{
 #' listRelatedResources <- getNetworkRelatedResources(
 #'   networkDEIMSID = "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 #' )
 #' listRelatedResources[1:10, ]
-#' \donttest
+#' }
 #'
 ### function getNetworkRelatedResources
 getNetworkRelatedResources <- function(networkDEIMSID) {
+  require(dplyr)
   lterNetworkSites <- as.list(
     jsonlite::fromJSON(
       paste0(
@@ -46,7 +47,8 @@ getNetworkRelatedResources <- function(networkDEIMSID) {
     relatedResourcesNetworkList <- uniteSiteRelatedResources$relatedResources
     relatedResourcesNetworkDF <- dplyr::bind_rows(relatedResourcesNetworkList)
     relatedResourcesNetworkDF$uri <- paste0(relatedResourcesNetworkDF$relatedResourcesId$prefix, relatedResourcesNetworkDF$relatedResourcesId$suffix)
-    relatedResourcesNetworkDF <- relatedResourcesNetworkDF %>% dplyr::select(relatedResourcesTitle, uri, relatedResourcesChanged)
+    relatedResourcesNetworkDF <- relatedResourcesNetworkDF %>% 
+      dplyr::select(relatedResourcesTitle, uri, relatedResourcesChanged)
     uniqueSiteRelatedResources <- dplyr::as_tibble(
       dplyr::distinct(
         relatedResourcesNetworkDF

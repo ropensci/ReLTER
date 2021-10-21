@@ -17,7 +17,7 @@ site and the related resources collected by site.
 }
 \description{
 This function allows to obtain the list of related resources
-collected in the eLTER site througth the DEIMS-SDR sites API.
+collected in the eLTER site through the DEIMS-SDR sites API.
 }
 \examples{
 tSiteRelatedResources <- getSiteRelatedResources(

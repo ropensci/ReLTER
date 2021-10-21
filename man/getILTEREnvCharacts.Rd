@@ -8,7 +8,7 @@ getILTEREnvCharacts(sitesNum = NULL)
 }
 \arguments{
 \item{sitesNum}{A `integer`. It is the number of the sites that are 
-read to get the information. Use this parameters oreover for provide
+read to get the information. Use this parameters moreover for provide
 example of this function.}
 }
 \value{
@@ -17,14 +17,14 @@ Environmental Characteristics of all ILTER's sites.
 }
 \description{
 This function allows to obtain the information about the
-Environmental Characteristics of all sites of ILTER, througth the
+Environmental Characteristics of all sites of ILTER, through the
 DEIMS-SDR sites API.
 }
 \examples{
-\donttest
+\dontrun{
 listEnvCharacts <- getILTEREnvCharacts(sitesNum = 10)
 listEnvCharacts[1:20, ]
-\donttest
+}
 
 }
 \author{

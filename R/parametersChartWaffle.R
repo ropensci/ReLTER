@@ -15,15 +15,16 @@
 #' @importFrom utils data
 #' @export
 #' @examples
-#' \donttest
+#' \dontrun{
 #' waffle <- parametersChartWaffle(
 #'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
 #' )
 #' print(waffle)
-#' \donttest
+#' }
 #'
 ### function parametersChartWaffle
 parametersChartWaffle <- function(deimsid) {
+  require(dplyr)
   # TODO add this by SPARQL query
   utils::data(envThesParams)
   paramsDeims <- ReLTER::getSiteParameters(deimsid)
@@ -42,7 +43,7 @@ parametersChartWaffle <- function(deimsid) {
     params$label <- scales::percent(params$freq)
     obsPropWaffle <- params$n
     names(obsPropWaffle) <- params$parameterGroups
-    # Waffle charth ----
+    # Waffle chart ----
     mycolors <- c(
       RColorBrewer::brewer.pal(
         name ="Set1",

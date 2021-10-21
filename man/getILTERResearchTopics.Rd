@@ -8,7 +8,7 @@ getILTERResearchTopics(sitesNum = NULL)
 }
 \arguments{
 \item{sitesNum}{A `integer`. It is the number of the sites that are 
-read to get the information. Use this parameters oreover for provide
+read to get the information. Use this parameters moreover for provide
 example of this function.}
 }
 \value{
@@ -17,12 +17,11 @@ topics and their URI (Uniform Resource Identifier) of all ILTER sites.
 }
 \description{
 This function allows to obtain the information about the
-Research Topics collected in all sites of ILTER, througth the DEIMS-SDR
+Research Topics collected in all sites of ILTER, through the DEIMS-SDR
 sites API.
 }
 \examples{
-\donttest
-require('dplyr')
+\dontrun{
 listResearchTopics <- getILTERResearchTopics(sitesNum = 20)
 listResearchTopics[1:10, ] \%>\%
   dplyr::rows_insert(
@@ -31,7 +30,7 @@ listResearchTopics[1:10, ] \%>\%
     researchTopicsUri = "..."
   )
 )
-\donttest
+}
 
 }
 \author{

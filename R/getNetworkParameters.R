@@ -16,8 +16,7 @@
 #' @importFrom dplyr as_tibble
 #' @export
 #' @examples
-#' \donttest
-#' require('dplyr')
+#' \dontrun{
 #' listParams <- getNetworkParameters(
 #'   networkDEIMSID = "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 #' )
@@ -25,10 +24,11 @@
 #' dplyr::rows_insert(
 #'   dplyr::tibble(parameterLabel = "...", parameterUri = "...")
 #' )
-#' \donttest
+#' }
 #'
 ### function getNetworkParameters
 getNetworkParameters <- function(networkDEIMSID) {
+  require(dplyr)
   lterNetworkSites <- as.list(
     jsonlite::fromJSON(
       paste0("https://deims.org/",

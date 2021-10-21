@@ -66,7 +66,8 @@ This function provide a `map` of the site boundaries provided
 by site manager in the DEIMS-SDR.
 }
 \examples{
-\donttest
+\dontrun{
+# Example of LTER-Germay site
 sitesNetwork <- getNetworkSites(
   networkDEIMSID = "https://deims.org/networks/e904354a-f3a0-40ce-a9b5-61741f66c824"
 )
@@ -77,9 +78,8 @@ map <- produceMapOfSiteFromDEIMS(
   gridNx = 0.7,
   gridNy = 0.2
 )
-\donttest
 
-\donttest
+# Example of LTER-Italy site
 sitesNetwork <- getNetworkSites(
   networkDEIMSID = "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 )
@@ -92,7 +92,7 @@ map <- produceMapOfSiteFromDEIMS(
   gridNx = 0.7,
   gridNy = 0.35
 )
-\donttest
+}
 
 }
 \author{

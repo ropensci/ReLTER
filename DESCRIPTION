@@ -1,13 +1,13 @@
 Package: ReLTER
 Type: Package
 Title: An interface to the eLTER for the R statistical programming environment
-Version: 0.1.1
-Date: 2021-02-20
+Version: 0.2.0
+Date: 2021-10-19
 Authors@R: c(
-        person("Alessandro", "Oggioni", email = "oggioni.a@irea.cnr.it", role = c("aut", "cre"),
+        person("Alessandro", "Oggioni", email = "oggioni.a@irea.cnr.it", role = c("aut", "cre", "fnd"),
           comment = c(ORCID = "0000-0002-7997-219X")
         ),
-        person("Paolo", "Tagliolato", email = "tagliolato.a@irea.cnr.it", role = "aut",
+        person("Paolo", "Tagliolato", email = "tagliolato.a@irea.cnr.it", role = "ctb",
           comment = c(ORCID = "0000-0002-0261-313X")
         )
       )
@@ -33,9 +33,19 @@ Imports:
     grid (>= 3.5.1),
     leaflet (>= 2.0.3),
     qrencoder (>= 0.1.0),
-    waffle (>= 1.0.1),
-    dtplyr
-RoxygenNote: 7.1.2
+    waffle (>= 0.7.0),
+    dtplyr,
+    ISOcodes (>= 2021.02.24),
+    RColorBrewer (>= 1.1-2),
+    ggforce (>= 0.3.2),
+    ggplot2 (>= 3.3.5.9000),
+    jqr (>= 1.2.0),
+    mapview (>= 2.9.0),
+    qrcode (>= 0.1.3),
+    scales (>= 1.1.1),
+    xml2 (>= 1.3.2),
+    magrittr (>= 2.0.1),
+    stats (>= 4.0.3)
 Suggests: 
     testthat (>= 3.0.0),
     knitr,
@@ -44,3 +54,4 @@ VignetteBuilder: knitr
 URL: https://github.com/oggioniale/ReLTER
 BugReports: https://github.com/oggioniale/ReLTER/issues
 Config/testthat/edition: 3
+RoxygenNote: 7.1.2

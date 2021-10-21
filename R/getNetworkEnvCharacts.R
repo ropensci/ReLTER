@@ -14,12 +14,12 @@
 #' @importFrom dplyr as_tibble
 #' @export
 #' @examples
-#' \donttest
+#' \dontrun{
 #' listEnvCharacts <- getNetworkEnvCharacts(
 #'   networkDEIMSID = "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 #' )
 #' listEnvCharacts[1:10, ]
-#' \donttest
+#' }
 #'
 ### function getNetworkEnvCharacts
 getNetworkEnvCharacts <- function(networkDEIMSID) {

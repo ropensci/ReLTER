@@ -15,8 +15,7 @@
 #' @importFrom dplyr bind_rows distinct as_tibble
 #' @export
 #' @examples
-#' \donttest
-#' require('dplyr')
+#' \dontrun{
 #' listResearchTopics <- getNetworkResearchTopics(
 #'   networkDEIMSID = "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 #' )
@@ -27,10 +26,11 @@
 #'       researchTopicsUri = "..."
 #'     )
 #'   )
-#' \donttest
+#' }
 #'
 ### function getNetworkResearchTopics
 getNetworkResearchTopics <- function(networkDEIMSID) {
+  require(dplyr)
   lterNetworkSites <- as.list(
     jsonlite::fromJSON(
       paste0(

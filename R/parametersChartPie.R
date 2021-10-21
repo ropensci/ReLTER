@@ -15,15 +15,16 @@
 #' @importFrom ggforce geom_arc_bar
 #' @export
 #' @examples
-#' \donttest
+#' \dontrun{
 #' pie <- parametersChartPie(
 #'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
 #' )
 #' pie
-#' \donttest
+#' }
 #' 
 ### function parametersChartPie
 parametersChartPie <- function(deimsid) {
+  require(dplyr)
   # TODO add this by SPARQL query
   utils::data(envThesParams)
   paramsDeims <- ReLTER::getSiteParameters(deimsid)

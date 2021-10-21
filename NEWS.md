@@ -1,6 +1,25 @@
+## ReLTER 0.2.0 Release Notes
+
+v0.2.0 was released on 18/10/2021
+
+### Major changes
+
+After the first minor release big improvements are been done:
+* all functions have been re-engineered with harmonized metadata, testing and evaluation of error-causing situations,
+* all situation where the functions writing something in the local environment have been removed,
+* some test to the functions have been added,
+* the logo and thumbnails have been created,
+* a new function getILTERGeneralInfo have been added to the package.
+
+### Bug Fixes
+
+* all the warnings, generated during installation, have been removed.
+
+________________________________________________________________________________
+
 ## ReLTER 0.1.1 Release Notes
 
-v0.1.1 was released on 28/01/2019
+v0.1.1 was released on 28/01/2021
 
 ### Major changes
 
@@ -53,6 +72,5 @@ Beta release of ReLTER package!
 20. mapNetworkPoint
 21. produceMapOfSiteFromDEIMS
 22. taxonIDPesi
-23. do_Q
 * Documentation and application site have been created.
 * The whole package is released on GitHub and available to the developer community.

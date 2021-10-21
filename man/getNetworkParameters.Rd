@@ -24,8 +24,7 @@ parameters collected in the eLTER Network (e.g. Italy) througth the
 DEIMS-SDR sites API.
 }
 \examples{
-\donttest
-require('dplyr')
+\dontrun{
 listParams <- getNetworkParameters(
   networkDEIMSID = "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 )
@@ -33,7 +32,7 @@ listParams[1:10, ] \%>\%
 dplyr::rows_insert(
   dplyr::tibble(parameterLabel = "...", parameterUri = "...")
 )
-\donttest
+}
 
 }
 \author{

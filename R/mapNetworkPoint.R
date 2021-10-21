@@ -16,33 +16,34 @@
 #' @return The output of the function is a tmap plot containing an image of
 #' geographic distribution of the network sites present in the chosen country.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
+#' @import ISOcodes
 #' @importFrom jsonlite fromJSON 
 #' @importFrom sf as_Spatial st_as_sf st_crs
 #' @importFrom raster getData
-#' @importFrom rgeos gSimplify
+#' @importFrom rgeos gSimplify gIsValid
 #' @importFrom tmap tm_shape tm_borders tm_dots
 #' @importFrom dplyr select
-#' @importFrom ISOcodes ISO_3166_1
 #' @importFrom tibble as_tibble
 #' @export
 #' @examples
-#' \donttest
+#' \dontrun{
 #' # Italian sites
 #' map <- mapNetworkPoint(
 #'   networkDEIMSID = 'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3',
 #'   countryCode = 'ITA'
 #' )
-#' print(map)
+#' map
 #' 
 #' # German sites
 #' mapNetworkPoint(
 #'   networkDEIMSID = 'https://deims.org/networks/e904354a-f3a0-40ce-a9b5-61741f66c824',
 #'   countryCode = 'DEU'
 #' )
-#' \donttest
+#' }
 #' 
 ### function mapNetworkPoint
 mapNetworkPoint <- function(networkDEIMSID, countryCode) {
+  require(dplyr)
   lterNetworkSitesCoords <- jsonlite::fromJSON(
     paste0(
       "https://deims.org/",
@@ -65,12 +66,12 @@ mapNetworkPoint <- function(networkDEIMSID, countryCode) {
     networkSitesGeo_SP <- sf::as_Spatial(
       networkSitesGeo$coordinates
     )
-    networkSitesGeo_valid <- gIsValid(
+    networkSitesGeo_valid <- rgeos::gIsValid(
       networkSitesGeo_SP,
       byid = FALSE,
       reason = TRUE
     )
-    if (lterSitesNetworkPointDEIMS_valid == "Valid Geometry") {
+    if (networkSitesGeo_valid == "Valid Geometry") {
       if (countryCode %in% ISOcodes::ISO_3166_1$Alpha_3 == TRUE) {
         country <- raster::getData(country = countryCode, level = 0)
         country <- rgeos::gSimplify(country, tol = 0.01, topologyPreserve = TRUE)
@@ -108,7 +109,7 @@ mapNetworkPoint <- function(networkDEIMSID, countryCode) {
     }
   } else {
     message("\n---- The requested page could not be found. Please check again the Network.iD ----\n")
-    lterNetworkSitesCoords <- NULL
+    networkSitesGeo <- NULL
     mapOfSites <- NULL
   }
 }

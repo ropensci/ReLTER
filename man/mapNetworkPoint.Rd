@@ -30,20 +30,20 @@ This function provide a map (image) of site LTER network
 started from DEIMS iD of network.
 }
 \examples{
-\donttest
+\dontrun{
 # Italian sites
 map <- mapNetworkPoint(
   networkDEIMSID = 'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3',
   countryCode = 'ITA'
 )
-print(map)
+map
 
 # German sites
 mapNetworkPoint(
   networkDEIMSID = 'https://deims.org/networks/e904354a-f3a0-40ce-a9b5-61741f66c824',
   countryCode = 'DEU'
 )
-\donttest
+}
 
 }
 \author{

@@ -23,6 +23,7 @@
 #'
 ### function getSiteAffiliations
 getSiteAffiliations <- function(deimsid) {
+  require(dplyr)
   q <- '{title: .title,
        uri: "\\(.id.prefix)\\(.id.suffix)",
        geoCoord: .attributes.geographic.coordinates,
@@ -47,7 +48,7 @@ getSiteAffiliations <- function(deimsid) {
     invisible(
       utils::capture.output(
         affiliations <- dplyr::as_tibble(
-          ReLTER::do_Q(q, jj)
+          ReLTER:::do_Q(q, jj)
         )
       )
     )

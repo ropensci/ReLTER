@@ -20,6 +20,7 @@
 #'
 ### function getSiteContact
 getSiteContact <- function(deimsid) {
+  require(dplyr)
   q <- '{title: .title,
        uri: "\\(.id.prefix)\\(.id.suffix)",
        geoCoord: .attributes.geographic.coordinates,
@@ -44,7 +45,7 @@ getSiteContact <- function(deimsid) {
     invisible(
       utils::capture.output(
         contact <- dplyr::as_tibble(
-          ReLTER::do_Q(q, jj)
+          ReLTER:::do_Q(q, jj)
         )
       )
     )

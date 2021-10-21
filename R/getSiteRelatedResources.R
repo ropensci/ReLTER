@@ -1,6 +1,6 @@
 #' @title eLTER getSiteRelatedResources function
 #' @description This function allows to obtain the list of related resources
-#' collected in the eLTER site througth the DEIMS-SDR sites API.
+#' collected in the eLTER site through the DEIMS-SDR sites API.
 #' @param deimsid A `character`. It is the DEIMS iD of network make from
 #' DEIMS-SDR website. More information about DEIMS iD in this
 #' \href{https://deims.org/docs/deimsid.html}{page}.
@@ -19,6 +19,7 @@
 #'
 ### function getSiteRelatedResources
 getSiteRelatedResources <- function(deimsid) {
+  require(dplyr)
   q <- '{title: .title,
        uri: "\\(.id.prefix)\\(.id.suffix)",
        geoCoord: .attributes.geographic.coordinates,
@@ -43,7 +44,7 @@ getSiteRelatedResources <- function(deimsid) {
     invisible(
       utils::capture.output(
         relatedResources <- dplyr::as_tibble(
-          ReLTER::do_Q(q, jj)
+          ReLTER:::do_Q(q, jj)
         )
       )
     )
@@ -53,6 +54,10 @@ getSiteRelatedResources <- function(deimsid) {
         "relatedResourcesTitle",
         "relatedResourcesChanged"
       )
+      relatedResources$relatedResources[[1]]$uri <- paste0(relatedResources$relatedResources[[1]]$relatedResourcesId$prefix, relatedResources$relatedResources[[1]]$relatedResourcesId$suffix)
+      relatedResources$relatedResources[[1]] <- relatedResources$relatedResources[[1]] %>% 
+        dplyr::select(relatedResourcesTitle, relatedResourcesChanged, uri)
+      relatedResources
     } else {
       relatedResourcesId <- NA
       relatedResourcesTitle <- NA
@@ -64,10 +69,10 @@ getSiteRelatedResources <- function(deimsid) {
           relatedResourcesChanged
         )
       )
+      relatedResources
     }
   } else {
     message("\n---- The requested page could not be found. Please check again the DEIMS.iD ----\n")
     relatedResources <- NULL
   }
-  relatedResources
 }

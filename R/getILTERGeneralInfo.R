@@ -18,7 +18,7 @@
 #' @importFrom sf st_as_sf
 #' @export
 #' @examples
-#' \donttest
+#' \dontrun{
 #' require('dplyr')
 #' listOfAllSites <- getILTERGeneralInfo()
 #' length(listOfAllSites$geom)
