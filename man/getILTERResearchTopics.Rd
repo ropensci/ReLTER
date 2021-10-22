@@ -22,7 +22,6 @@ sites API.
 }
 \examples{
 \dontrun{
-require('dplyr')
 listResearchTopics <- getILTERResearchTopics(sitesNum = 20)
 listResearchTopics[1:10, ] \%>\%
   dplyr::rows_insert(

@@ -23,7 +23,6 @@ sites API.
 }
 \examples{
 \dontrun{
-require('dplyr')
 listParams <- getILTERParameters(sitesNum = 20)
 listParams[1:10, ] \%>\%
   dplyr::rows_insert(
