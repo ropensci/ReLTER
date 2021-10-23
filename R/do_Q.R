@@ -1,5 +1,5 @@
 #' @title eLTER do_Q function
-#' @description This function ...
+#' @description This function parses json content returned from an HTTP request
 #' @param q a character
 #' @param jj a character
 #' @return The output of the function is ...

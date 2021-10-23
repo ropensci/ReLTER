@@ -7,19 +7,18 @@
 getSiteInfrastructure(deimsid)
 }
 \arguments{
-\item{deimsid}{A `character`. It is the DEIMS iD of network make from
-DEIMS-SDR website. More information about DEIMS iD in this
+\item{deimsid}{A `character`. The DEIMS ID of the site from
+DEIMS-SDR website. More information about DEIMS ID from:
 \href{https://deims.org/docs/deimsid.html}{page}.}
 }
 \value{
 The output of the function is a `tibble` with main features of the
-site and the general information, such as: abstract, keywords, porpose,
-status, yearEstablished, yearClosed, hierarchy, siteName, short name, site
-type, protection level, images.
+site and infrastructure information where available, such as:
+power supply, accessibility, maintenaince interval, etc.
 }
 \description{
-This function allows to obtain the information about
-infrastructure of the eLTER site througth the DEIMS-SDR sites API.
+This function obtains infrastructure information 
+of an eLTER site througth the DEIMS-SDR sites API.
 }
 \examples{
 tSiteInfrastructure <- getSiteInfrastructure(

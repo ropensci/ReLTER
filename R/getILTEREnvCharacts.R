@@ -1,12 +1,11 @@
 #' @title eLTER getILTEREnvCharacts function
-#' @description This function allows to obtain the information about the
-#' Environmental Characteristics of all sites of ILTER, through the
-#' DEIMS-SDR sites API.
+#' @description This function obtains the information about the
+#' Environmental Characteristics of ILTER sites, through the DEIMS-SDR sites API.
 #' @param sitesNum A `integer`. It is the number of the sites that are 
 #' read to get the information. Use this parameters moreover for provide
 #' example of this function.
 #' @return The output of the function is a `tibble` containing all the
-#' Environmental Characteristics of all ILTER's sites.
+#' Environmental Characteristics of ILTER's sites.
 #' @author Alessandro Oggioni, phD (2020) <oggioni.a@@irea.cnr.it>
 #' @importFrom jsonlite fromJSON
 #' @importFrom dplyr as_tibble

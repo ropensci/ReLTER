@@ -17,9 +17,8 @@ of parameters and their URI (Uniform Resource Identifier) collected
 in all ILTER sites.
 }
 \description{
-This function allows to obtain the information about the
-parameters collected in all sites of ILTER, through the DEIMS-SDR
-sites API.
+This function obtains information about the
+parameters collected in ILTER sites, through the DEIMS-SDR sites API.
 }
 \examples{
 \dontrun{

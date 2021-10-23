@@ -1,12 +1,12 @@
 #' @title eLTER getSiteContact function
-#' @description This function allows to obtain the contact information of the
+#' @description This function obtains the contact information for an
 #' eLTER site througth the DEIMS-SDR sites API.
-#' @param deimsid A `character`. It is the DEIMS iD of network make from
-#' DEIMS-SDR website. More information about DEIMS iD in this
+#' @param deimsid A `character`. It is the DEIMS ID of the site from
+#' DEIMS-SDR website. More information about DEIMS ID from:
 #' \href{https://deims.org/docs/deimsid.html}{page}.
 #' @return The output of the function is a `tibble` with main features of the
 #' site and the contact information, such as: site manager, operation
-#' organaization, metadata provider, founding agency and site url.
+#' organization, metadata provider, founding agency and site url.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom httr GET content
 #' @importFrom utils capture.output
