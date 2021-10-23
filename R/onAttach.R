@@ -2,10 +2,10 @@
   # to show a startup message
   startMessage <- c(
     "ReLTER is specially drafted for the LTER community.\n\n",
-    "Contribute to the improvement of it, join the group of developers
+    "To contribute to the improvement of this package, join the group of developers
     (https://github.com/oggioniale/ReLTER).\n\n",
-    "If you use this package, please cite it.\n",
-    "for references type 'citation('ReLTER')'.\n"
+    "If you use this package, please cite as:\n",
+    "'citation('ReLTER')'.\n"
   )
   packageStartupMessage(startMessage)
 }

@@ -7,7 +7,7 @@
 createQRCode(deimsid)
 }
 \arguments{
-\item{deimsid}{A `character`. It is the DEIMS iD of site make from
+\item{deimsid}{A `character`. The DEIMS ID of site from
 DEIMS-SDR website. More information about DEIMS iD in this
 \href{https://deims.org/docs/deimsid.html}{page}.}
 }
@@ -15,7 +15,7 @@ DEIMS-SDR website. More information about DEIMS iD in this
 The output of the function is a QRcode `image`.
 }
 \description{
-This function allows to obtain the QRCode of any DEIMS-SDR
+This function obtain the QRCode of any DEIMS-SDR
 entities of the eLTER.
 }
 \examples{

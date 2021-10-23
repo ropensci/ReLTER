@@ -7,17 +7,17 @@
 getSiteContact(deimsid)
 }
 \arguments{
-\item{deimsid}{A `character`. It is the DEIMS iD of network make from
-DEIMS-SDR website. More information about DEIMS iD in this
+\item{deimsid}{A `character`. It is the DEIMS ID of the site from
+DEIMS-SDR website. More information about DEIMS ID from:
 \href{https://deims.org/docs/deimsid.html}{page}.}
 }
 \value{
 The output of the function is a `tibble` with main features of the
 site and the contact information, such as: site manager, operation
-organaization, metadata provider, founding agency and site url.
+organization, metadata provider, founding agency and site url.
 }
 \description{
-This function allows to obtain the contact information of the
+This function obtains the contact information for an
 eLTER site througth the DEIMS-SDR sites API.
 }
 \examples{

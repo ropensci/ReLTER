@@ -7,16 +7,16 @@
 getSiteParameters(deimsid)
 }
 \arguments{
-\item{deimsid}{A `character`. It is the DEIMS iD of network make from
-DEIMS-SDR website. More information about DEIMS iD in this
+\item{deimsid}{A `character`. It is the DEIMS ID of the site from
+DEIMS-SDR website. More information about DEIMS ID from:
 \href{https://deims.org/docs/deimsid.html}{page}.}
 }
 \value{
 The output of the function is a `tibble` with main features of the
-site and the parameters collected by site.
+site and the parameters collected.
 }
 \description{
-This function allows to obtain the list of parameters measured
+This function obtains the list of parameters measured
 in the eLTER site througth the DEIMS-SDR sites API.
 }
 \examples{

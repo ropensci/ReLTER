@@ -15,7 +15,7 @@ do_Q(q, jj)
 The output of the function is ...
 }
 \description{
-This function ...
+This function parses json content returned from an HTTP request
 }
 \examples{
 deimsid <- "https://deims.org/17210eba-d832-4759-89fa-9ff127cbdf6e"

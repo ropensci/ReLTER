@@ -1,20 +1,19 @@
 #' @title eLTER mapNetworkPoint function
-#' @description This function provide a map (image) of site LTER network
-#' started from DEIMS iD of network.
-#' @param networkDEIMSID A `character`. It is the DEIMS iD of network make
-#' from DEIMS-SDR website. More information about DEIMS iD in this
-#' \href{https://deims.org/docs/deimsid.html}{page}, and at this
-#' \href{https://deims.org/search?f[0]=result_type:network}{page} the
-#' complete list of iLTER networks.
-#' @param countryCode A `character` follow the SO 3166-1 alpha-3 codes. This
-#' ISO convention are three-letter country codes defined in ISO 3166-1, part of
+#' @description This function provides a map (image) of sites in an LTER network
+#' @param networkDEIMSID A `character`. The DEIMS ID of the network 
+#' from DEIMS-SDR website. More information about DEIMS network ID from:
+#' \href{https://deims.org/docs/deimsid.html}{page}, and
+#' \href{https://deims.org/search?f[0]=result_type:network}{page} 
+#' (the complete list of iLTER networks.)
+#' @param countryCode A `character` following the ISO 3166-1 alpha-3 codes. This
+#' ISO convention consists of three-letter country codes as defined in ISO 3166-1.
 #' the ISO 3166 standard published by the International Organization for
 #' Standardization (ISO), to represent countries, dependent territories, and
 #' special areas of geographical interest. The map produced by this function
 #' will be limited only to the country indicated in this parameter, if the
 #' network has a extraterritorial sites those will not represented.
-#' @return The output of the function is a tmap plot containing an image of
-#' geographic distribution of the network sites present in the chosen country.
+#' @return The output of the function is a `tmap` plot containing an image of
+#' geographic distribution of the network of sites present in the chosen country.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @import ISOcodes
 #' @importFrom jsonlite fromJSON 

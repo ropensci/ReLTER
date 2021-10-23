@@ -1,10 +1,10 @@
 #' @title eLTER getNetworkEnvCharacts function
-#' @description This function allows to obtain the information about the
-#' Envinronmental Characteristics of the eLTER Network (e.g. Italy) througth
-#' the DEIMS-SDR sites API.
-#' @param networkDEIMSID A `character`. It is the DEIMS iD of network make
-#' from DEIMS-SDR website. More information about DEIMS iD in this
-#' \href{https://deims.org/docs/deimsid.html}{page}, and at this
+#' @description This function obtains several Envinronmental Characteristics:
+#' title, URI, geocoordinates, country name, and elevation
+#' of sites in an eLTER Network (e.g. Italy) through the DEIMS-SDR sites API.
+#' @param networkDEIMSID A `character`. DEIMS ID of network 
+#' from DEIMS-SDR website. More information about DEIMS ID refer to these pages:
+#' \href{https://deims.org/docs/deimsid.html}{page}, and 
 #' \href{https://deims.org/search?f[0]=result_type:network}{page}
 #' the complete list of ILTER networks.
 #' @return The output of the function is a `tibble` containing all the

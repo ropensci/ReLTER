@@ -1,11 +1,11 @@
 #' @title eLTER getSiteResearchTopics function
-#' @description This function allows to obtain the list of research topics of
-#' the eLTER site througth the DEIMS-SDR sites API.
-#' @param deimsid  A `character`. It is the DEIMS iD of network make from
-#' DEIMS-SDR website. More information about DEIMS iD in this
+#' @description This function obtains a list of research topics handled 
+#' at an eLTER site througth the DEIMS-SDR sites API.
+#' @param deimsid  A `character`. The DEIMS ID of the site from
+#' DEIMS-SDR website. More information about DEIMS ID from:
 #' \href{https://deims.org/docs/deimsid.html}{page}.
 #' @return The output of the function is a `tibble` with main features of the
-#' site and the research topics envisaged into site.
+#' site and a list of the research topics handled in this site.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom httr GET content
 #' @importFrom utils capture.output

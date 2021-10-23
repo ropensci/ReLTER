@@ -1,7 +1,7 @@
 #' @title eLTER getActivity function
-#' @description This function allows to obtain the info of activity (actually
+#' @description This function obtains the info of activity (actually
 #'  only title) provided in DEIMS-SDR.
-#' @param activityid A character. It is the DEIMS iD of activity make from
+#' @param activityid A character. The DEIMS activity ID from
 #' DEIMS-SDR website. More information about DEIMS iD in this
 #' \href{https://deims.org/docs/deimsid.html}{page}.
 #' @return The output of the function is a `tibble` with main features of

@@ -18,7 +18,7 @@ The output of the function is a `tibble` containing the related
 resources shared by the network's sites.
 }
 \description{
-This function allows to obtain the information about the
+This function obtains information about the
 related resources (e.g. dataset) shared in the eLTER Network (e.g. Italy)
 througth the DEIMS-SDR sites API.
 }

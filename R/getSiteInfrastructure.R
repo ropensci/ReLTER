@@ -1,13 +1,12 @@
 #' @title eLTER getSiteInfrastructure function
-#' @description This function allows to obtain the information about
-#' infrastructure of the eLTER site througth the DEIMS-SDR sites API.
-#' @param deimsid A `character`. It is the DEIMS iD of network make from
-#' DEIMS-SDR website. More information about DEIMS iD in this
+#' @description This function obtains infrastructure information 
+#' of an eLTER site througth the DEIMS-SDR sites API.
+#' @param deimsid A `character`. The DEIMS ID of the site from
+#' DEIMS-SDR website. More information about DEIMS ID from:
 #' \href{https://deims.org/docs/deimsid.html}{page}.
 #' @return The output of the function is a `tibble` with main features of the
-#' site and the general information, such as: abstract, keywords, porpose,
-#' status, yearEstablished, yearClosed, hierarchy, siteName, short name, site
-#' type, protection level, images.
+#' site and infrastructure information where available, such as:
+#' power supply, accessibility, maintenaince interval, etc.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom httr GET content
 #' @importFrom utils capture.output
