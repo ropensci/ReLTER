@@ -103,9 +103,6 @@ parametersChartPie <- function(deimsid) {
         paste(groupsIsNa$parameterLabel, collapse = "\n")
       )
     }
-    # TODO: in questo caso ma anche in altri penso che sia importante avere sia il grafico che la tibble associata. E' possibile ottenere un result con tutti e due?
-    #  Con le due righe seguenti avviene che: 1. si esegue il codice come in esempio, 2. viene scritta in console la tabella (params) e visualizzata in Plots il grafico, 3. richiamando result si ottiene solo la tabella (params).
-    #  Come si può ottenere tutte e due le cose quando si richiama 'result'?
     print(pie)
     params
   } else {
