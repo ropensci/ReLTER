@@ -1,10 +1,10 @@
 #' @title eLTER getSiteBoundaries function
 #' @description This function retrieves the boundary of a specified eLTER site
-#' then a view of the site boundaries on a leaflet map is shown.
+#' and a view of the site boundaries on a leaflet map is shown.
 #' All the info are taken from the DEIMS-SDR sites API. 
-#' If the boundary is missing, a warning message will be printed in the R console.
-#' @param deimsid A `character`. It is the DEIMS ID of the site from
-#' DEIMS-SDR website. More information about DEIMS iD in this
+#' If the boundary is missing, a warning message is printed in the R console.
+#' @param deimsid A `character`. The DEIMS ID of the site from
+#' DEIMS-SDR website. More information about DEIMS ID in this page:
 #' \href{https://deims.org/docs/deimsid.html}{page}.
 #' @return The output of the function is an `sf` object, the boundary of the site
 #' or NA if the boundary is missing from DEIMS-SDR.

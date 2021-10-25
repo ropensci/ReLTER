@@ -1,8 +1,8 @@
 #' @title eLTER parametersChartWaffle function
-#' @description This function allows to obtain a waffle chart of the parameter
+#' @description This function produces a waffle chart of the parameters
 #' collected in a site or network grouped into compounds.
-#' @param deimsid A `character`. It is the DEIMS iD of network make from
-#' DEIMS-SDR website. More information about DEIMS iD in this
+#' @param deimsid A `character`. The DEIMS ID of site/network from:
+#' DEIMS-SDR website. More information about DEIMS ID from:
 #' \href{https://deims.org/docs/deimsid.html}{page}.
 #' @return The output of the function is a waffle chart.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}

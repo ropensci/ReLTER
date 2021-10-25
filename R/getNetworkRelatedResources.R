@@ -1,5 +1,5 @@
 #' @title eLTER getNetworkRelatedResources function
-#' @description This function allows to obtain the information about the
+#' @description This function obtains information about the
 #' related resources (e.g. dataset) shared in the eLTER Network (e.g. Italy)
 #' througth the DEIMS-SDR sites API.
 #' @param networkDEIMSID A `character`. It is the DEIMS iD of network make

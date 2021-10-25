@@ -1,18 +1,19 @@
 #' @title eLTER produceMapOfSiteFromDEIMS function
-#' @description This function provide a `map` of the site boundaries provided
-#' by site manager in the DEIMS-SDR.
-#' @param deimsid a character. It is the DEIMS iD of network make from
+#' @description This function produces a `map` of the site boundaries 
+#' as provided by the DEIMS-SDR, within a given country and network.
+#' @param deimsid a `character`. The DEIMS ID of network from
 #' DEIMS-SDR website. More information about DEIMS iD in this
 #' \href{https://deims.org/docs/deimsid.html}{page}.
-#' @param countryCode a `character` follow the SO 3166-1 alpha-3 codes. This
-#' ISO convention are three-letter country codes defined in ISO 3166-1, part of
-#' the ISO 3166 standard published by the International Organization for
-#' Standardization (ISO), to represent countries, dependent territories, and
-#' special areas of geographical interest. The map produced by this function
-#' will be limited only to the country indicated in this parameter, if the
-#' network has a extraterritorial sites those will not represented.
+#' @param countryCode a `character` following the SO 3166-1 alpha-3 codes. 
+#' This ISO convention consists of three-letter country codes 
+#' as defined in ISO 3166-1, part of the ISO 3166 standard published by the 
+#' International Organization for Standardization (ISO), to represent countries, 
+#' dependent territories, and special areas of geographical interest. 
+#' The map produced by this function will be limited to the country 
+#' indicated in this parameter; if the network has a extraterritorial sites
+#' those will not represented.
 #' @param listOfSites a `sf`. List of sites of specific network. This list
-#' needs for show the another points into map.
+#' is needed for showing another points on the map.
 #' @param gridNx a `double`. A numeric vector or unit object specifying 
 #' x-location of viewports about country provided by countryCode parameter.
 #' @param gridNy a `double`. A numeric vector or unit object specifying 

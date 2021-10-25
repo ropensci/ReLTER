@@ -13,12 +13,11 @@ example of this function.}
 }
 \value{
 The output of the function is a `tibble` containing all the
-Environmental Characteristics of all ILTER's sites.
+Environmental Characteristics of ILTER's sites.
 }
 \description{
-This function allows to obtain the information about the
-Environmental Characteristics of all sites of ILTER, through the
-DEIMS-SDR sites API.
+This function obtains the information about the
+Environmental Characteristics of ILTER sites, through the DEIMS-SDR sites API.
 }
 \examples{
 \dontrun{

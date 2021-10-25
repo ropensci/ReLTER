@@ -7,17 +7,17 @@
 getSiteRelatedResources(deimsid)
 }
 \arguments{
-\item{deimsid}{A `character`. It is the DEIMS iD of network make from
-DEIMS-SDR website. More information about DEIMS iD in this
+\item{deimsid}{A `character`. The DEIMS ID of the site from
+DEIMS-SDR website. More information about DEIMS ID from:
 \href{https://deims.org/docs/deimsid.html}{page}.}
 }
 \value{
 The output of the function is a `tibble` with main features of the
-site and the related resources collected by site.
+site and a list of the related resources collected by site.
 }
 \description{
-This function allows to obtain the list of related resources
-collected in the eLTER site through the DEIMS-SDR sites API.
+This function obtains a list of related resources
+collected in an eLTER site through the DEIMS-SDR sites API.
 }
 \examples{
 tSiteRelatedResources <- getSiteRelatedResources(

@@ -1,9 +1,9 @@
 #' @title eLTER getNetworkSites function
-#' @description This function provide a SpatialPointsDataFrame (sp) of sites in
-#' a network provided by DEIMS-SDR.
-#' @param networkDEIMSID A `character`. It is the DEIMS iD of network make from
-#' DEIMS-SDR website. More information about DEIMS iD in this
-#' \href{https://deims.org/docs/deimsid.html}{page}, and at this
+#' @description This function retrieves a list of sites in the provided network
+#' including title, date late updated, URI, and coordinates
+#' @param networkDEIMSID A `character`. The DEIMS ID of the network from
+#' DEIMS-SDR website. More information about DEIMS network ID from these pages: 
+#' \href{https://deims.org/docs/deimsid.html}{page}, and
 #' \href{https://deims.org/search?f[0]=result_type:network}{page} the
 #' complete list of iLTER networks.
 #' @return The output of the function is `SpatialPointsDataFrame` (package sp)

@@ -1,9 +1,8 @@
 #' @title eLTER getSOSProcedureList function
-#' @description This function list the procedures of a Sensor
-#' Observations Service (SOS).
-#' @param sosHost a `character`. It is a SOS endpoint (e.g.
-#' http://getit.lteritalia.it). In particular is the path before
-#' '/observations/service?'
+#' @description This function lists the procedures 
+#' of a Sensor Observations Service (SOS).
+#' @param sosHost a `character`. An SOS endpoint (e.g. http://getit.lteritalia.it).
+#' In particular is the path before  '/observations/service?'
 #' @return The output of the function is a `list` with the name and URI (Uniform
 #' Resource Identifier) of each procedure.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}

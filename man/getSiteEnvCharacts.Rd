@@ -7,20 +7,19 @@
 getSiteEnvCharacts(deimsid)
 }
 \arguments{
-\item{deimsid}{A `character`. It is the DEIMS iD of network make from
-DEIMS-SDR website. More information about DEIMS iD in this
+\item{deimsid}{A `character`. The DEIMS ID of a site from
+DEIMS-SDR website. More information about DEIMS I from:
 \href{https://deims.org/docs/deimsid.html}{page}.}
 }
 \value{
 The output of the function is a `tibble` with main features of the
-site and the environmental characteristics information, such as: air
-temperature, precipitation, biogeographical region, biome, ecosystem land
-use, EUNIS habitat, geoBon biome, geology, hydrology, soils and vegetation.
+site and the environmental characteristics where available,
+such as: air temperature, precipitation, biogeographical region, biome,
+ecosystem land use, EUNIS habitat, geoBon biome, geology, hydrology, soils and vegetation.
 }
 \description{
-This function allows to obtain the information about
-environmental characteristics of the eLTER site througth the DEIMS-SDR
-sites API.
+This function obtains Environmental Characteristics 
+of an eLTER site through the DEIMS-SDR sites API.
 }
 \examples{
 tSiteEnvCharacts <- getSiteEnvCharacts(

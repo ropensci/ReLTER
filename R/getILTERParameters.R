@@ -1,7 +1,6 @@
 #' @title eLTER getILTERParameters function
-#' @description This function allows to obtain the information about the
-#' parameters collected in all sites of ILTER, through the DEIMS-SDR
-#' sites API.
+#' @description This function obtains information about the
+#' parameters collected in ILTER sites, through the DEIMS-SDR sites API.
 #' @param sitesNum A `integer`. It is the number of the sites that are 
 #' read to get the information. Use this parameters moreover for provide
 #' example of this function. Default 0.
