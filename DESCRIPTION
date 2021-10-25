@@ -38,7 +38,7 @@ Imports:
     ISOcodes (>= 2021.02.24),
     RColorBrewer (>= 1.1-2),
     ggforce (>= 0.3.2),
-    ggplot2 (>= 3.3.5.9000),
+    ggplot2 (>= 3.3.5),
     jqr (>= 1.2.0),
     mapview (>= 2.9.0),
     qrcode (>= 0.1.3),

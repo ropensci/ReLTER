@@ -66,7 +66,3 @@ getILTERParameters <- function(sitesNum = 0) {
     uniqueSitesParameters <- NULL
   }
 }
-
-# TODO: occorre mettere un controllo di errore tipo "status" nelle funzioni getSite...?
-# In questo caso l'URL su cui viene fatta la chiamata non è parametrizzata e quindi
-#   non credo che sia da inserire alcun controllo. Vero?

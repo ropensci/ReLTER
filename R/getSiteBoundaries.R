@@ -10,6 +10,7 @@
 #' or NA if the boundary is missing from DEIMS-SDR.
 #' In addition, as `html map` with boundaries of the site is plotted.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
+#' @author  Micha Silver, ... \email{silverm@@post.bgu.ac.il}
 #' @importFrom tibble tribble 
 #' @importFrom dplyr as_tibble
 #' @importFrom jsonlite fromJSON
@@ -23,19 +24,11 @@
 #' tSiteBoundaries <- getSiteBoundaries(
 #'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
 #' )
-#' mapA <- leaflet::leaflet(tSiteBoundaries) %>% 
-#'  leaflet::addTiles() %>% 
-#'  leaflet::addPolygons()
-#' print(mapA)
 #' tSiteBoundaries
 #' 
 #' eisenwurzen <- getSiteBoundaries(
 #'   deimsid = "https://deims.org/d0a8da18-0881-4ebe-bccf-bc4cb4e25701"
 #' )
-#' mapB <- leaflet::leaflet(eisenwurzen) %>% 
-#'  leaflet::addTiles() %>% 
-#'  leaflet::addPolygons()
-#' print(mapB)
 #' eisenwurzen
 #' 
 ### function getSiteBoundaries

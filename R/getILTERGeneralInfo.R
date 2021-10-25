@@ -13,6 +13,7 @@
 #' and affiliation of the filtered ILTER sites. If no bounding box is available,
 #' the centroid is returned.
 #' @author Alessandro Oggioni, phD (2021) \email{oggioni.a@@irea.cnr.it}
+#' @author  Micha Silver, ... \email{silverm@@post.bgu.ac.il}
 #' @importFrom jsonlite fromJSON
 #' @importFrom dplyr bind_rows
 #' @importFrom sf st_as_sf
@@ -21,66 +22,74 @@
 #' \dontrun{
 #' require('dplyr')
 #' listOfAllSites <- getILTERGeneralInfo()
-#' length(listOfAllSites$geom)
+#' nrow(listOfAllSites)
+#' 
 #' sitesAustria <- getILTERGeneralInfo(country_name = "Austri")
 #' # (matches Austria, but not Australia)
 #' length(sitesAustria$title)
-#' eisenwurzen <- getILTERGeneralInfo(country_name="Austri", site_name="Eisen")
+#' 
+#' eisenwurzen <- getILTERGeneralInfo(country_name = "Austri", site_name =" Eisen")
 #' eisenwurzen[,1:2]
 #' eisenwurzen_deimsid <- eisenwurzen$uri
-#' \donttest
+#' eisenwurzen_deimsid
+#'
+#' }
 #' 
 ### function getILTERGeneralInfo
-getILTERGeneralInfo <- function(country_name = NA, site_name = NA) {
+getILTERGeneralInfo <- function(country_name = NA,
+                                site_name = NA) {
   # Get full set of sites
-  lterILTERSites <- as.data.frame(
-      jsonlite::fromJSON("https://deims.org/api/sites")
-  )
-  # First filter by country_name 
+  lterILTERSites <- as.data.frame(jsonlite::fromJSON("https://deims.org/api/sites"))
+  # First filter by country_name
   # (Getting site affiliations for all 1200 sites takes too long...)
   if (!is.na(country_name) & typeof(country_name) == "character") {
     idx <- grep(x = lterILTERSites$title,
                 pattern = country_name,
                 ignore.case = TRUE)
-    filteredILTERSites <- lterILTERSites[idx,]
+    filteredILTERSites <- lterILTERSites[idx, ]
   } else {
     # No country filtering
     filteredILTERSites <- lterILTERSites
   }
   # Now get affiliations, general info
-  filteredSitesGeneralInfo <- lapply(
-      as.list(paste0(filteredILTERSites$id$prefix,
-                     filteredILTERSites$id$suffix)),
-      ReLTER::getSiteAffiliations
-  )
+  filteredSitesGeneralInfo <- lapply(as.list(
+    paste0(
+      filteredILTERSites$id$prefix,
+      filteredILTERSites$id$suffix
+    )
+  ),
+  ReLTER::getSiteAffiliations)
   uniteSitesGeneralInfo <- do.call(rbind, filteredSitesGeneralInfo)
   
   # Now filter by site name
   if (!is.na(site_name) & typeof(site_name) == "character") {
     idx <- grep(pattern = site_name,
-                x=uniteSitesGeneralInfo$title, ignore.case = TRUE)
-    uniteSitesGeneralInfo <- uniteSitesGeneralInfo[idx,]
+                x = uniteSitesGeneralInfo$title,
+                ignore.case = TRUE)
+    uniteSitesGeneralInfo <- uniteSitesGeneralInfo[idx, ]
   }
   
   # Make sure we have some rows
-  if (length(uniteSitesGeneralInfo) == 0 | # No rows after country filter
-      length(uniteSitesGeneralInfo$title) == 0) { # No rows left after site filter
-    warning("\n" ,paste("No matches found for country name:",
-                      country_name, "and site name:", site_name), 
-            "\n")
-    return(NA)
+  if (nrow(uniteSitesGeneralInfo) == 0 |
+      # No rows after country filter
+      length(uniteSitesGeneralInfo$title) == 0) {
+    # No rows left after site filter
+    warning(
+      "\n" ,
+      paste(
+        "No matches found for country name:",
+        country_name,
+        "and site name:",
+        site_name
+      ),
+      "\n"
+    )
+    uniteSitesGeneralInfoGeo <- NULL
   } else {
     # Now convert to sf object
-    uniteSitesGeneralInfoGeo <- sf::st_as_sf(
-      uniteSitesGeneralInfo, 
-      wkt = "geoCoord", 
-      crs = 4326
-    )
-  } 
-
-  return(uniteSitesGeneralInfoGeo)
-}
-
-# TODO: occorre mettere un controllo di errore tipo "status" nelle funzioni getSite...?
-# In questo caso l'URL su cui viene fatta la chiamata non è parametrizzata e quindi
-#   non credo che sia da inserire alcun controllo. Vero?
+    uniteSitesGeneralInfoGeo <- sf::st_as_sf(uniteSitesGeneralInfo,
+                                             wkt = "geoCoord",
+                                             crs = 4326)
+  }
+  uniteSitesGeneralInfoGeo
+}˙
