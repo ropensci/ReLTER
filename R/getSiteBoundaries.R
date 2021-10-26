@@ -19,6 +19,7 @@
 #' @importFrom sf st_as_sf write_sf st_write
 #' @importFrom leaflet leaflet addTiles addPolygons
 #' @importFrom mapview mapshot
+#' @importFrom magrittr %>%
 #' @export
 #' @examples
 #' tSiteBoundaries <- getSiteBoundaries(
@@ -33,7 +34,6 @@
 #' 
 ### function getSiteBoundaries
 getSiteBoundaries <- function(deimsid) {
-  require(dplyr)
   biomeColor <- tibble::tribble(
     ~geoBonBiome, ~fill, ~border,
     "marine", "#055ca8", "#057ae1",

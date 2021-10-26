@@ -23,6 +23,7 @@
 #' @importFrom tmap tm_shape tm_borders tm_dots
 #' @importFrom dplyr select
 #' @importFrom tibble as_tibble
+#' @importFrom magrittr %>%
 #' @export
 #' @examples
 #' \dontrun{
@@ -42,7 +43,6 @@
 #' 
 ### function mapNetworkPoint
 mapNetworkPoint <- function(networkDEIMSID, countryCode) {
-  require(dplyr)
   lterNetworkSitesCoords <- jsonlite::fromJSON(
     paste0(
       "https://deims.org/",

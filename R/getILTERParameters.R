@@ -10,6 +10,7 @@
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom jsonlite fromJSON
 #' @importFrom dplyr as_tibble bind_rows distinct
+#' @importFrom magrittr %>%
 #' @export
 #' @examples
 #' \dontrun{
@@ -24,7 +25,6 @@
 #'
 ### function getILTERParameters
 getILTERParameters <- function(sitesNum = 0) {
-  require(dplyr)
   if (sitesNum == 0) {
     lterILTERSites <- as.list(jsonlite::fromJSON("https://deims.org/api/sites"))
     allSiteParameters <- lapply(

@@ -13,6 +13,7 @@
 #' @importFrom sf st_as_sf
 #' @importFrom dplyr select
 #' @importFrom leaflet leaflet addTiles addMarkers
+#' @importFrom magrittr %>%
 #' @export
 #' @examples
 #' \dontrun{
@@ -24,7 +25,6 @@
 #' 
 ### function getNetworkSites
 getNetworkSites <- function(networkDEIMSID) {
-  require(dplyr)
   lterNetworkSitesCoords <- jsonlite::fromJSON(
     paste0(
       "https://deims.org/",

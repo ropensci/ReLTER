@@ -13,6 +13,7 @@
 #' @importFrom utils data
 #' @importFrom ggplot2 theme_minimal theme element_blank element_text ggplot geom_text aes coord_fixed scale_x_continuous scale_y_continuous scale_color_manual
 #' @importFrom ggforce geom_arc_bar
+#' @importFrom magrittr %>%
 #' @export
 #' @examples
 #' \dontrun{
@@ -24,7 +25,6 @@
 #' 
 ### function parametersChartPie
 parametersChartPie <- function(deimsid) {
-  require(dplyr)
   # TODO add this by SPARQL query
   utils::data(envThesParams)
   paramsDeims <- ReLTER::getSiteParameters(deimsid)
