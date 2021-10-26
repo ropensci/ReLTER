@@ -10,7 +10,7 @@
 #' or NA if the boundary is missing from DEIMS-SDR.
 #' In addition, as `html map` with boundaries of the site is plotted.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @author  Micha Silver, ... \email{silverm@@post.bgu.ac.il}
+#' @author  Micha Silver, phD (2021) \email{silverm@@post.bgu.ac.il}
 #' @importFrom tibble tribble 
 #' @importFrom dplyr as_tibble
 #' @importFrom jsonlite fromJSON

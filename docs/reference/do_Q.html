@@ -47,7 +47,7 @@
 
 
 <meta property="og:title" content="eLTER do_Q function — do_Q" />
-<meta property="og:description" content="This function ..." />
+<meta property="og:description" content="This function parses json content returned from an HTTP request" />
 <meta property="og:image" content="https://oggioniale.github.io/ReLTER/logo.png" />
 
 
@@ -90,7 +90,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ReLTER</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -150,7 +150,7 @@
     </div>
 
     <div class="ref-description">
-    <p>This function ...</p>
+    <p>This function parses json content returned from an HTTP request</p>
     </div>
 
     <pre class="usage"><span class='fu'>do_Q</span><span class='op'>(</span><span class='va'>q</span>, <span class='va'>jj</span><span class='op'>)</span></pre>
@@ -176,13 +176,7 @@
     <p>Paolo Tagliolato, phD (2021) <a href='mailto:tagliolato.p@irea.cnr.it'>tagliolato.p@irea.cnr.it</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='st'><a href='https://dplyr.tidyverse.org'>"dplyr"</a></span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Loading required package: dplyr</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: ‘dplyr’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:stats’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:base’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='input'><span class='va'>deimsid</span> <span class='op'>&lt;-</span> <span class='st'>"https://deims.org/17210eba-d832-4759-89fa-9ff127cbdf6e"</span>
+    <pre class="examples"><div class='input'><span class='va'>deimsid</span> <span class='op'>&lt;-</span> <span class='st'>"https://deims.org/17210eba-d832-4759-89fa-9ff127cbdf6e"</span>
 <span class='va'>url</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"https://deims.org/"</span>, <span class='st'>"api/sites/"</span>, <span class='fu'><a href='https://rdrr.io/r/base/substr.html'>substring</a></span><span class='op'>(</span><span class='va'>deimsid</span>, <span class='fl'>19</span><span class='op'>)</span><span class='op'>)</span>
 <span class='va'>export</span> <span class='op'>&lt;-</span> <span class='fu'>httr</span><span class='fu'>::</span><span class='fu'><a href='https://httr.r-lib.org/reference/GET.html'>GET</a></span><span class='op'>(</span>url <span class='op'>=</span> <span class='va'>url</span><span class='op'>)</span>
 <span class='va'>jj</span> <span class='op'>&lt;-</span> <span class='fu'>httr</span><span class='fu'>::</span><span class='fu'><a href='https://httr.r-lib.org/reference/content.html'>content</a></span><span class='op'>(</span><span class='va'>export</span>, <span class='st'>"text"</span><span class='op'>)</span>

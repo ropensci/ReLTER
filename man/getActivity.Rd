@@ -13,11 +13,11 @@ DEIMS-SDR website. More information about DEIMS iD in this
 }
 \value{
 The output of the function is a `tibble` with main features of
-the activity make in a site.
+the activities in a site, and a `leaflet` map plot.
 }
 \description{
 This function obtains the info of activity (actually
- only title) provided in DEIMS-SDR.
+ title) provided in DEIMS-SDR.
 }
 \examples{
 activities <- getActivity(activityid = "https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845")

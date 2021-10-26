@@ -13,7 +13,7 @@
 #' and affiliation of the filtered ILTER sites. If no bounding box is available,
 #' the centroid is returned.
 #' @author Alessandro Oggioni, phD (2021) \email{oggioni.a@@irea.cnr.it}
-#' @author  Micha Silver, ... \email{silverm@@post.bgu.ac.il}
+#' @author  Micha Silver, phD (2021) \email{silverm@@post.bgu.ac.il}
 #' @importFrom jsonlite fromJSON
 #' @importFrom dplyr bind_rows
 #' @importFrom sf st_as_sf
@@ -92,4 +92,4 @@ getILTERGeneralInfo <- function(country_name = NA,
                                              crs = 4326)
   }
   uniteSitesGeneralInfoGeo
-}˙
+}
