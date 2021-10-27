@@ -105,7 +105,7 @@ getDataset <- function(datasetid) {
         geoDataset_SP <- sf::as_Spatial(
           geoDataset$boundaries
         )
-        geoDataset_valid <- gIsValid(
+        geoDataset_valid <- rgeos::gIsValid(
           geoDataset_SP,
           byid = FALSE,
           reason = TRUE

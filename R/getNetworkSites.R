@@ -48,7 +48,7 @@ getNetworkSites <- function(networkDEIMSID) {
     lterSitesNetworkPointDEIMS_SP <- sf::as_Spatial(
       lterSitesNetworkPointDEIMS$coordinates
     )
-    lterSitesNetworkPointDEIMS_valid <- gIsValid(
+    lterSitesNetworkPointDEIMS_valid <- rgeos::gIsValid(
       lterSitesNetworkPointDEIMS_SP,
       byid = FALSE,
       reason = TRUE

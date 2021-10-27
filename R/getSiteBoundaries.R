@@ -124,5 +124,5 @@ getSiteBoundaries <- function(deimsid) {
     geoBoundaries <- NULL
     map <- NULL
   }
-  return(geoBoundaries)
+  geoBoundaries
 }

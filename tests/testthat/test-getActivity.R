@@ -40,7 +40,7 @@ test_that("Wrong input (not URL) constructs an empty tibble", {
 test_that("Output of get activities information function constructs ‘sf' with valid geometries", {
   result <- ReLTER::getActivity(activityid = "https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845")
   result_sp <- sf::as_Spatial(result$boundaries)
-  result_valid <- gIsValid(result_sp, byid = FALSE, reason = TRUE)
+  result_valid <- rgeos::gIsValid(result_sp, byid = FALSE, reason = TRUE)
   expect_type(result_valid, "character")
   expect_match(result_valid, "Valid Geometry")
 })

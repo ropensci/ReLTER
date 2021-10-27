@@ -46,11 +46,25 @@ getILTERGeneralInfo <- function(country_name = NA,
     idx <- grep(x = lterILTERSites$title,
                 pattern = country_name,
                 ignore.case = TRUE)
-    filteredILTERSites <- lterILTERSites[idx, ]
+    if (length(idx) == 0) {
+      warning(
+        "\n" ,
+        paste0(
+          "You have provided a country name (\'",
+          country_name,
+          "\') that probably don't match with the countries stored in the DEIMS-SDR. Please review what you entered in \'country_name\'.\n"
+        ),
+        "\n"
+      )
+      filteredILTERSites <- NULL
+    } else {
+      filteredILTERSites <- lterILTERSites[idx, ]
+    }
   } else {
     # No country filtering
     filteredILTERSites <- lterILTERSites
   }
+  
   # Now get affiliations, general info
   filteredSitesGeneralInfo <- lapply(as.list(
     paste0(
@@ -60,20 +74,40 @@ getILTERGeneralInfo <- function(country_name = NA,
   ),
   ReLTER::getSiteAffiliations)
   uniteSitesGeneralInfo <- do.call(rbind, filteredSitesGeneralInfo)
-  
   # Now filter by site name
   if (!is.na(site_name) & typeof(site_name) == "character") {
     idx <- grep(pattern = site_name,
                 x = uniteSitesGeneralInfo$title,
                 ignore.case = TRUE)
-    uniteSitesGeneralInfo <- uniteSitesGeneralInfo[idx, ]
+    if (length(idx) == 0) {
+      warning(
+        "\n" ,
+        paste0(
+          "You have provided a site name (\'",
+          site_name,
+          "\') that probably don't match with the countries stored in the DEIMS-SDR.\n",
+          "The result of this function will be all sites in the requested country (\'",
+          country_name,
+          "\') but no specific site.\n",
+          "Please review what you entered in \'site_name\'."
+        ),
+        "\n"
+      )
+      uniteSitesGeneralInfo <- uniteSitesGeneralInfo
+    } else{
+      uniteSitesGeneralInfo <- uniteSitesGeneralInfo[idx, ]
+    }
   }
   
   # Make sure we have some rows
-  if (nrow(uniteSitesGeneralInfo) == 0 |
+  if (is.null(uniteSitesGeneralInfo)) {
+    uniteSitesGeneralInfoGeo <- NULL
+    uniteSitesGeneralInfoGeo
+  } else if (nrow(uniteSitesGeneralInfo) == 0 |
       # No rows after country filter
       length(uniteSitesGeneralInfo$title) == 0) {
     # No rows left after site filter
+    uniteSitesGeneralInfoGeo <- NULL
     warning(
       "\n" ,
       paste(
@@ -84,12 +118,32 @@ getILTERGeneralInfo <- function(country_name = NA,
       ),
       "\n"
     )
-    uniteSitesGeneralInfoGeo <- NULL
+    uniteSitesGeneralInfoGeo
   } else {
     # Now convert to sf object
     uniteSitesGeneralInfoGeo <- sf::st_as_sf(uniteSitesGeneralInfo,
                                              wkt = "geoCoord",
                                              crs = 4326)
+    uniteSitesGeneralInfoGeo_SP <- sf::as_Spatial(
+      uniteSitesGeneralInfoGeo$geoCoord
+    )
+    uniteSitesGeneralInfoGeo_valid <- rgeos::gIsValid(
+      uniteSitesGeneralInfoGeo_SP,
+      byid = FALSE,
+      reason = TRUE
+    )
+    if (uniteSitesGeneralInfoGeo_valid == "Valid Geometry") {
+      map <- leaflet::leaflet(uniteSitesGeneralInfoGeo) %>%
+        leaflet::addTiles() %>%
+        leaflet::addMarkers()
+      print(map)
+      uniteSitesGeneralInfoGeo
+    } else {
+      map <- leaflet::leaflet() %>%
+        leaflet::addTiles()
+      message("\n----\n The maps cannot be created because one or more then one points of the sites, provided in DEIMS-SDR, has an invalid geometry.\n Please check the content and refers this error to DEIMS-SDR contact person.\n----\n")
+      print(map)
+      uniteSitesGeneralInfoGeo
+    }
   }
-  uniteSitesGeneralInfoGeo
 }
