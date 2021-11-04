@@ -47,8 +47,8 @@
 
 
 <meta property="og:title" content="eLTER getNetworkSites function — getNetworkSites" />
-<meta property="og:description" content="This function provide a SpatialPointsDataFrame (sp) of sites in
-a network provided by DEIMS-SDR." />
+<meta property="og:description" content="This function retrieves a list of sites in the provided network
+including title, date late updated, URI, and coordinates" />
 <meta property="og:image" content="https://oggioniale.github.io/ReLTER/logo.png" />
 
 
@@ -91,7 +91,7 @@ a network provided by DEIMS-SDR." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ReLTER</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -151,8 +151,8 @@ a network provided by DEIMS-SDR." />
     </div>
 
     <div class="ref-description">
-    <p>This function provide a SpatialPointsDataFrame (sp) of sites in
-a network provided by DEIMS-SDR.</p>
+    <p>This function retrieves a list of sites in the provided network
+including title, date late updated, URI, and coordinates</p>
     </div>
 
     <pre class="usage"><span class='fu'>getNetworkSites</span><span class='op'>(</span><span class='va'>networkDEIMSID</span><span class='op'>)</span></pre>
@@ -162,9 +162,9 @@ a network provided by DEIMS-SDR.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>networkDEIMSID</th>
-      <td><p>A `character`. It is the DEIMS iD of network make from
-DEIMS-SDR website. More information about DEIMS iD in this
-<a href='https://deims.org/docs/deimsid.html'>page</a>, and at this
+      <td><p>A `character`. The DEIMS ID of the network from
+DEIMS-SDR website. More information about DEIMS network ID from these pages: 
+<a href='https://deims.org/docs/deimsid.html'>page</a>, and
 <a href='https://deims.org/search?f[0]=result_type:network'>page</a> the
 complete list of iLTER networks.</p></td>
     </tr>

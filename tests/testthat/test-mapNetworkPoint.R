@@ -91,7 +91,7 @@ test_that("Output of site affiliation information function constructs ‘sf' wit
     countryCode = 'DEU'
   )
   result_sp <- sf::as_Spatial(result$coordinates)
-  result_valid <- gIsValid(result_sp, byid = FALSE, reason = TRUE)
+  result_valid <- rgeos::gIsValid(result_sp, byid = FALSE, reason = TRUE)
   expect_type(result_valid, "character")
   expect_match(result_valid, "Valid Geometry")
 })

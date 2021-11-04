@@ -12,7 +12,6 @@
 #' getSOSProcedureList(sosHost = "http://getit.lteritalia.it")
 #'
 ### function getProcedureList
-# TODO: testare questo quando il GET-IT è attivo
 getSOSProcedureList <- function(sosHost) {
   xslProcUrl.url <- "https://www.get-it.it/objects/sensors/xslt/Capabilities_proceduresUrlList.xsl"
   styleProcUrl <- xml2::read_xml(xslProcUrl.url, package = "xslt")

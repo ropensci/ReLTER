@@ -14,6 +14,7 @@
 #' @importFrom jsonlite fromJSON
 #' @importFrom dplyr bind_rows distinct
 #' @importFrom dplyr as_tibble
+#' @importFrom magrittr %>%
 #' @export
 #' @examples
 #' \dontrun{
@@ -28,7 +29,6 @@
 #'
 ### function getNetworkParameters
 getNetworkParameters <- function(networkDEIMSID) {
-  require(dplyr)
   lterNetworkSites <- as.list(
     jsonlite::fromJSON(
       paste0("https://deims.org/",

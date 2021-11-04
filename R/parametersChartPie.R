@@ -13,6 +13,7 @@
 #' @importFrom utils data
 #' @importFrom ggplot2 theme_minimal theme element_blank element_text ggplot geom_text aes coord_fixed scale_x_continuous scale_y_continuous scale_color_manual
 #' @importFrom ggforce geom_arc_bar
+#' @importFrom magrittr %>%
 #' @export
 #' @examples
 #' \dontrun{
@@ -24,7 +25,6 @@
 #' 
 ### function parametersChartPie
 parametersChartPie <- function(deimsid) {
-  require(dplyr)
   # TODO add this by SPARQL query
   utils::data(envThesParams)
   paramsDeims <- ReLTER::getSiteParameters(deimsid)
@@ -103,9 +103,6 @@ parametersChartPie <- function(deimsid) {
         paste(groupsIsNa$parameterLabel, collapse = "\n")
       )
     }
-    # TODO: in questo caso ma anche in altri penso che sia importante avere sia il grafico che la tibble associata. E' possibile ottenere un result con tutti e due?
-    #  Con le due righe seguenti avviene che: 1. si esegue il codice come in esempio, 2. viene scritta in console la tabella (params) e visualizzata in Plots il grafico, 3. richiamando result si ottiene solo la tabella (params).
-    #  Come si può ottenere tutte e due le cose quando si richiama 'result'?
     print(pie)
     params
   } else {

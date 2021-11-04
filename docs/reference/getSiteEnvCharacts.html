@@ -47,9 +47,8 @@
 
 
 <meta property="og:title" content="eLTER getSiteEnvCharacts function — getSiteEnvCharacts" />
-<meta property="og:description" content="This function allows to obtain the information about
-environmental characteristics of the eLTER site througth the DEIMS-SDR
-sites API." />
+<meta property="og:description" content="This function obtains Environmental Characteristics 
+of an eLTER site through the DEIMS-SDR sites API." />
 <meta property="og:image" content="https://oggioniale.github.io/ReLTER/logo.png" />
 
 
@@ -92,7 +91,7 @@ sites API." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ReLTER</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -152,9 +151,8 @@ sites API." />
     </div>
 
     <div class="ref-description">
-    <p>This function allows to obtain the information about
-environmental characteristics of the eLTER site througth the DEIMS-SDR
-sites API.</p>
+    <p>This function obtains Environmental Characteristics 
+of an eLTER site through the DEIMS-SDR sites API.</p>
     </div>
 
     <pre class="usage"><span class='fu'>getSiteEnvCharacts</span><span class='op'>(</span><span class='va'>deimsid</span><span class='op'>)</span></pre>
@@ -164,8 +162,8 @@ sites API.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>deimsid</th>
-      <td><p>A `character`. It is the DEIMS iD of network make from
-DEIMS-SDR website. More information about DEIMS iD in this
+      <td><p>A `character`. The DEIMS ID of a site from
+DEIMS-SDR website. More information about DEIMS I from:
 <a href='https://deims.org/docs/deimsid.html'>page</a>.</p></td>
     </tr>
     </table>
@@ -173,9 +171,9 @@ DEIMS-SDR website. More information about DEIMS iD in this
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>The output of the function is a `tibble` with main features of the
-site and the environmental characteristics information, such as: air
-temperature, precipitation, biogeographical region, biome, ecosystem land
-use, EUNIS habitat, geoBon biome, geology, hydrology, soils and vegetation.</p>
+site and the environmental characteristics where available,
+such as: air temperature, precipitation, biogeographical region, biome,
+ecosystem land use, EUNIS habitat, geoBon biome, geology, hydrology, soils and vegetation.</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Alessandro Oggioni, phD (2021) <a href='mailto:oggioni.a@irea.cnr.it'>oggioni.a@irea.cnr.it</a></p>

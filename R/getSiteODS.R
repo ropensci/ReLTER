@@ -35,7 +35,7 @@
 
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom dplyr as_tibble case_when
-#' @importFrom terra rast
+#' @importFrom terra rast crs
 #' @importFrom sf st_transform
 #' @export
 #' @examples
