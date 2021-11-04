@@ -35,7 +35,7 @@
 
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom dplyr as_tibble case_when
-#' @importFrom terra rast crs
+#' @importFrom terra rast crs crop mask
 #' @importFrom sf st_transform
 #' @export
 #' @examples
@@ -87,7 +87,7 @@ getSiteODS <- function(deimsid, dataset = "landcover") {
     return(NULL)
   }
   # Crop and masl the raster dataset to the boundary polygon
-  boundary <- sf::st_transform(boundary, crs(ds))
+  boundary <- sf::st_transform(boundary, terra::crs(ds))
   ds_site <- terra::mask(terra::crop(ds, boundary), vect(boundary))
   return(ds_site)
 }
