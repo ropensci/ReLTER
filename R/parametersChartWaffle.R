@@ -13,6 +13,7 @@
 #' @importFrom RColorBrewer brewer.pal
 #' @importFrom waffle waffle
 #' @importFrom utils data
+#' @importFrom magrittr %>%
 #' @export
 #' @examples
 #' \dontrun{
@@ -24,7 +25,6 @@
 #'
 ### function parametersChartWaffle
 parametersChartWaffle <- function(deimsid) {
-  require(dplyr)
   # TODO add this by SPARQL query
   utils::data(envThesParams)
   paramsDeims <- ReLTER::getSiteParameters(deimsid)

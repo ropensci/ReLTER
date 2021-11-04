@@ -26,6 +26,26 @@ API. If no `country_name` or `site_name` are specified,
 the whole list of sites is returned. If either or both of the filtering strings
 is specified, then a filtered subset of the sites is acquired.
 }
+\examples{
+\dontrun{
+require('dplyr')
+listOfAllSites <- getILTERGeneralInfo()
+nrow(listOfAllSites)
+
+sitesAustria <- getILTERGeneralInfo(country_name = "Austri")
+# (matches Austria, but not Australia)
+length(sitesAustria$title)
+
+eisenwurzen <- getILTERGeneralInfo(country_name = "Austri", site_name =" Eisen")
+eisenwurzen[,1:2]
+eisenwurzen_deimsid <- eisenwurzen$uri
+eisenwurzen_deimsid
+
+}
+
+}
 \author{
 Alessandro Oggioni, phD (2021) \email{oggioni.a@irea.cnr.it}
+
+Micha Silver, phD (2021) \email{silverm@post.bgu.ac.il}
 }

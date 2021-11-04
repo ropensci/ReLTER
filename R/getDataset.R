@@ -12,6 +12,7 @@
 #' @importFrom utils capture.output
 #' @importFrom sf st_as_sf
 #' @importFrom leaflet leaflet addTiles addPolygons
+#' @importFrom magrittr %>%
 #' @export
 #' @examples
 #' tDataset <- getDataset(datasetid = "https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef")
@@ -23,7 +24,6 @@
 #'
 ### function getDataset
 getDataset <- function(datasetid) {
-  require(dplyr)
   q <- '{
        title: .title,
        abstract: .attributes.general.abstract,
@@ -105,7 +105,7 @@ getDataset <- function(datasetid) {
         geoDataset_SP <- sf::as_Spatial(
           geoDataset$boundaries
         )
-        geoDataset_valid <- gIsValid(
+        geoDataset_valid <- rgeos::gIsValid(
           geoDataset_SP,
           byid = FALSE,
           reason = TRUE

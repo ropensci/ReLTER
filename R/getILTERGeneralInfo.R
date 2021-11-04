@@ -13,6 +13,7 @@
 #' and affiliation of the filtered ILTER sites. If no bounding box is available,
 #' the centroid is returned.
 #' @author Alessandro Oggioni, phD (2021) \email{oggioni.a@@irea.cnr.it}
+#' @author  Micha Silver, phD (2021) \email{silverm@@post.bgu.ac.il}
 #' @importFrom jsonlite fromJSON
 #' @importFrom dplyr bind_rows
 #' @importFrom sf st_as_sf
@@ -21,66 +22,128 @@
 #' \dontrun{
 #' require('dplyr')
 #' listOfAllSites <- getILTERGeneralInfo()
-#' length(listOfAllSites$geom)
+#' nrow(listOfAllSites)
+#' 
 #' sitesAustria <- getILTERGeneralInfo(country_name = "Austri")
 #' # (matches Austria, but not Australia)
 #' length(sitesAustria$title)
-#' eisenwurzen <- getILTERGeneralInfo(country_name="Austri", site_name="Eisen")
+#' 
+#' eisenwurzen <- getILTERGeneralInfo(country_name = "Austri", site_name =" Eisen")
 #' eisenwurzen[,1:2]
 #' eisenwurzen_deimsid <- eisenwurzen$uri
-#' \donttest
+#' eisenwurzen_deimsid
+#'
+#' }
 #' 
 ### function getILTERGeneralInfo
-getILTERGeneralInfo <- function(country_name = NA, site_name = NA) {
+getILTERGeneralInfo <- function(country_name = NA,
+                                site_name = NA) {
   # Get full set of sites
-  lterILTERSites <- as.data.frame(
-      jsonlite::fromJSON("https://deims.org/api/sites")
-  )
-  # First filter by country_name 
+  lterILTERSites <- as.data.frame(jsonlite::fromJSON("https://deims.org/api/sites"))
+  # First filter by country_name
   # (Getting site affiliations for all 1200 sites takes too long...)
   if (!is.na(country_name) & typeof(country_name) == "character") {
     idx <- grep(x = lterILTERSites$title,
                 pattern = country_name,
                 ignore.case = TRUE)
-    filteredILTERSites <- lterILTERSites[idx,]
+    if (length(idx) == 0) {
+      warning(
+        "\n" ,
+        paste0(
+          "You have provided a country name (\'",
+          country_name,
+          "\') that probably don't match with the countries stored in the DEIMS-SDR. Please review what you entered in \'country_name\'.\n"
+        ),
+        "\n"
+      )
+      filteredILTERSites <- NULL
+    } else {
+      filteredILTERSites <- lterILTERSites[idx, ]
+    }
   } else {
     # No country filtering
     filteredILTERSites <- lterILTERSites
   }
-  # Now get affiliations, general info
-  filteredSitesGeneralInfo <- lapply(
-      as.list(paste0(filteredILTERSites$id$prefix,
-                     filteredILTERSites$id$suffix)),
-      ReLTER::getSiteAffiliations
-  )
-  uniteSitesGeneralInfo <- do.call(rbind, filteredSitesGeneralInfo)
   
+  # Now get affiliations, general info
+  filteredSitesGeneralInfo <- lapply(as.list(
+    paste0(
+      filteredILTERSites$id$prefix,
+      filteredILTERSites$id$suffix
+    )
+  ),
+  ReLTER::getSiteAffiliations)
+  uniteSitesGeneralInfo <- do.call(rbind, filteredSitesGeneralInfo)
   # Now filter by site name
   if (!is.na(site_name) & typeof(site_name) == "character") {
     idx <- grep(pattern = site_name,
-                x=uniteSitesGeneralInfo$title, ignore.case = TRUE)
-    uniteSitesGeneralInfo <- uniteSitesGeneralInfo[idx,]
+                x = uniteSitesGeneralInfo$title,
+                ignore.case = TRUE)
+    if (length(idx) == 0) {
+      warning(
+        "\n" ,
+        paste0(
+          "You have provided a site name (\'",
+          site_name,
+          "\') that probably don't match with the countries stored in the DEIMS-SDR.\n",
+          "The result of this function will be all sites in the requested country (\'",
+          country_name,
+          "\') but no specific site.\n",
+          "Please review what you entered in \'site_name\'."
+        ),
+        "\n"
+      )
+      uniteSitesGeneralInfo <- uniteSitesGeneralInfo
+    } else{
+      uniteSitesGeneralInfo <- uniteSitesGeneralInfo[idx, ]
+    }
   }
   
   # Make sure we have some rows
-  if (length(uniteSitesGeneralInfo) == 0 | # No rows after country filter
-      length(uniteSitesGeneralInfo$title) == 0) { # No rows left after site filter
-    warning("\n" ,paste("No matches found for country name:",
-                      country_name, "and site name:", site_name), 
-            "\n")
-    return(NA)
+  if (is.null(uniteSitesGeneralInfo)) {
+    uniteSitesGeneralInfoGeo <- NULL
+    uniteSitesGeneralInfoGeo
+  } else if (nrow(uniteSitesGeneralInfo) == 0 |
+      # No rows after country filter
+      length(uniteSitesGeneralInfo$title) == 0) {
+    # No rows left after site filter
+    uniteSitesGeneralInfoGeo <- NULL
+    warning(
+      "\n" ,
+      paste(
+        "No matches found for country name:",
+        country_name,
+        "and site name:",
+        site_name
+      ),
+      "\n"
+    )
+    uniteSitesGeneralInfoGeo
   } else {
     # Now convert to sf object
-    uniteSitesGeneralInfoGeo <- sf::st_as_sf(
-      uniteSitesGeneralInfo, 
-      wkt = "geoCoord", 
-      crs = 4326
+    uniteSitesGeneralInfoGeo <- sf::st_as_sf(uniteSitesGeneralInfo,
+                                             wkt = "geoCoord",
+                                             crs = 4326)
+    uniteSitesGeneralInfoGeo_SP <- sf::as_Spatial(
+      uniteSitesGeneralInfoGeo$geoCoord
     )
-  } 
-
-  return(uniteSitesGeneralInfoGeo)
+    uniteSitesGeneralInfoGeo_valid <- rgeos::gIsValid(
+      uniteSitesGeneralInfoGeo_SP,
+      byid = FALSE,
+      reason = TRUE
+    )
+    if (uniteSitesGeneralInfoGeo_valid == "Valid Geometry") {
+      map <- leaflet::leaflet(uniteSitesGeneralInfoGeo) %>%
+        leaflet::addTiles() %>%
+        leaflet::addMarkers()
+      print(map)
+      uniteSitesGeneralInfoGeo
+    } else {
+      map <- leaflet::leaflet() %>%
+        leaflet::addTiles()
+      message("\n----\n The maps cannot be created because one or more then one points of the sites, provided in DEIMS-SDR, has an invalid geometry.\n Please check the content and refers this error to DEIMS-SDR contact person.\n----\n")
+      print(map)
+      uniteSitesGeneralInfoGeo
+    }
+  }
 }
-
-# TODO: occorre mettere un controllo di errore tipo "status" nelle funzioni getSite...?
-# In questo caso l'URL su cui viene fatta la chiamata non è parametrizzata e quindi
-#   non credo che sia da inserire alcun controllo. Vero?

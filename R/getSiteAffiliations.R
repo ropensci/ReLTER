@@ -14,6 +14,7 @@
 #' @importFrom dtplyr lazy_dt
 #' @importFrom dplyr as_tibble
 #' @importFrom utils capture.output
+#' @importFrom magrittr %>%
 #' @export
 #' @examples
 #' tSiteAffiliation <- getSiteAffiliations(
@@ -23,7 +24,6 @@
 #'
 ### function getSiteAffiliations
 getSiteAffiliations <- function(deimsid) {
-  require(dplyr)
   q <- '{title: .title,
        uri: "\\(.id.prefix)\\(.id.suffix)",
        geoCoord: .attributes.geographic.coordinates,

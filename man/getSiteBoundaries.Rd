@@ -26,22 +26,16 @@ If the boundary is missing, a warning message is printed in the R console.
 tSiteBoundaries <- getSiteBoundaries(
   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
 )
-mapA <- leaflet::leaflet(tSiteBoundaries) \%>\% 
- leaflet::addTiles() \%>\% 
- leaflet::addPolygons()
-print(mapA)
 tSiteBoundaries
 
 eisenwurzen <- getSiteBoundaries(
   deimsid = "https://deims.org/d0a8da18-0881-4ebe-bccf-bc4cb4e25701"
 )
-mapB <- leaflet::leaflet(eisenwurzen) \%>\% 
- leaflet::addTiles() \%>\% 
- leaflet::addPolygons()
-print(mapB)
 eisenwurzen
 
 }
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
+
+Micha Silver, phD (2021) \email{silverm@post.bgu.ac.il}
 }

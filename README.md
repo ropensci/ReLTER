@@ -24,11 +24,15 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 (e.g. [DEIMS-SDR](https://deims.org/)) implemented by eLTER Research
 Infrastructure (RI) and manage the data/information shared by them.
 
-<!-- about the icons https://github.com/ikatyang/emoji-cheat-sheet  -->
+<!-- about the icons https://github.com/ikatyang/emoji-cheat-sheet -->
 
 ## :notebook_with_decorative_cover: Citation
 
-To cite `{ReLTER}` please use:
+To cite `{ReLTER}` please use: Alessandro Oggioni. (2021).
+oggioniale/ReLTER: v0.2.0 (0.2.0). Zenodo.
+<https://doi.org/10.5281/zenodo.5576814>
+
+or:
 
 ``` bibtex
 @software{alessandro_oggioni_2021_5576814,
@@ -200,24 +204,29 @@ ReLTER::parametersChartWaffle(
     #> 10 soil parameter               1 0.0105 1.1% 
     #> 11 water parameter             16 0.168  16.8%
 
-## :writing_hand: Authors
+## :woman_technologist: Persons involved :man_technologist:
 
-Alessandro Oggioni <https://orcid.org/0000-0002-7997-219X>
+Alessandro Oggioni <https://orcid.org/0000-0002-7997-219X> (CNR,
+Institute for Electromagnetic Sensing of the Environment - IREA)
 
-Paolo Tagliolato <https:://orcid.org/0000-0002-0261-313X>
-
-CNR - Institute for Electromagnetic Sensing of the Environment (IREA)
+Paolo Tagliolato <https:://orcid.org/0000-0002-0261-313X> (CNR,
+Institute for Electromagnetic Sensing of the Environment - IREA)
 
 <!-- Add authors, reviewers including those who, within eLTER network, reviewed the package and add acknowledgements 
      in accordance with this https://ropensci.org/blog/2018/03/16/thanking-reviewers-in-metadata/ and this
      https://devguide.ropensci.org/building.html#authorship.
      Add the same in DESCRIPTION file -->
 
-------------------------------------------------------------------------
+Micha Silver <https://orcid.org/0000-0002-1128-1325> (Ben Gurion
+University - BGU)
 
 For a exhaustive list of contributors please visit [authors
 page](https://oggioniale.github.io/ReLTER/authors).
 
 ## :office: Contributing organizations
 
-<a href="http://www.irea.cnr.it/en/"><img src="man/figures/irea_logo.png" height="40" align="left" /></a>
+<img src="man/figures/irea_logo.png" height="70" alt="CNR-IREA" />
+<!--a href="http://www.irea.cnr.it/en/"><img src="man/figures/irea_logo.png" height="40" align="left" /></a-->
+
+<img src="man/figures/bgu_logo.png" height="80" alt="BGU" />
+<!--a href="https://in.bgu.ac.il/en/"><img src="man/figures/bgu_logo.png" height="40" align="left" /></a-->

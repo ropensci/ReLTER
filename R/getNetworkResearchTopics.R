@@ -13,6 +13,7 @@
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom jsonlite fromJSON
 #' @importFrom dplyr bind_rows distinct as_tibble
+#' @importFrom magrittr %>%
 #' @export
 #' @examples
 #' \dontrun{
@@ -30,7 +31,6 @@
 #'
 ### function getNetworkResearchTopics
 getNetworkResearchTopics <- function(networkDEIMSID) {
-  require(dplyr)
   lterNetworkSites <- as.list(
     jsonlite::fromJSON(
       paste0(

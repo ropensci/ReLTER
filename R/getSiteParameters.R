@@ -10,6 +10,7 @@
 #' @importFrom httr GET content
 #' @importFrom utils capture.output
 #' @importFrom dplyr as_tibble
+#' @importFrom magrittr %>%
 #' @export
 #' @examples
 #' tSiteParameters <- getSiteParameters(
@@ -19,7 +20,6 @@
 #'
 ### function getParameters
 getSiteParameters <- function(deimsid) {
-  require(dplyr)
   q <- '{title: .title,
        uri: "\\(.id.prefix)\\(.id.suffix)",
        geoCoord: .attributes.geographic.coordinates,

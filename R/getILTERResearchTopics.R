@@ -10,6 +10,7 @@
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom jsonlite fromJSON
 #' @importFrom dplyr bind_rows distinct as_tibble
+#' @importFrom magrittr %>%
 #' @export
 #' @examples
 #' \dontrun{
@@ -25,7 +26,6 @@
 #' 
 ### function getILTERResearchTopics
 getILTERResearchTopics <- function(sitesNum = NULL) {
-  require(dplyr)
   if (is.na(sitesNum)) {
     lterILTERSites <- as.list(jsonlite::fromJSON("https://deims.org/api/sites"))
     allSiteResearchTopics <- lapply(
@@ -64,7 +64,3 @@ getILTERResearchTopics <- function(sitesNum = NULL) {
     uniqueSiteResearchTopics <- NULL
   }
 }
-
-# TODO: occorre mettere un controllo di errore tipo "status" nelle funzioni getSite...?
-# In questo caso l'URL su cui viene fatta la chiamata non è parametrizzata e quindi
-#   non credo che sia da inserire alcun controllo. Vero?

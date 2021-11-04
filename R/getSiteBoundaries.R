@@ -10,6 +10,7 @@
 #' or NA if the boundary is missing from DEIMS-SDR.
 #' In addition, as `html map` with boundaries of the site is plotted.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
+#' @author  Micha Silver, phD (2021) \email{silverm@@post.bgu.ac.il}
 #' @importFrom tibble tribble 
 #' @importFrom dplyr as_tibble
 #' @importFrom jsonlite fromJSON
@@ -18,29 +19,21 @@
 #' @importFrom sf st_as_sf write_sf st_write
 #' @importFrom leaflet leaflet addTiles addPolygons
 #' @importFrom mapview mapshot
+#' @importFrom magrittr %>%
 #' @export
 #' @examples
 #' tSiteBoundaries <- getSiteBoundaries(
 #'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
 #' )
-#' mapA <- leaflet::leaflet(tSiteBoundaries) %>% 
-#'  leaflet::addTiles() %>% 
-#'  leaflet::addPolygons()
-#' print(mapA)
 #' tSiteBoundaries
 #' 
 #' eisenwurzen <- getSiteBoundaries(
 #'   deimsid = "https://deims.org/d0a8da18-0881-4ebe-bccf-bc4cb4e25701"
 #' )
-#' mapB <- leaflet::leaflet(eisenwurzen) %>% 
-#'  leaflet::addTiles() %>% 
-#'  leaflet::addPolygons()
-#' print(mapB)
 #' eisenwurzen
 #' 
 ### function getSiteBoundaries
 getSiteBoundaries <- function(deimsid) {
-  require(dplyr)
   biomeColor <- tibble::tribble(
     ~geoBonBiome, ~fill, ~border,
     "marine", "#055ca8", "#057ae1",
@@ -131,5 +124,5 @@ getSiteBoundaries <- function(deimsid) {
     geoBoundaries <- NULL
     map <- NULL
   }
-  return(geoBoundaries)
+  geoBoundaries
 }
