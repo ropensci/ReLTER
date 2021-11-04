@@ -35,8 +35,8 @@
 
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom dplyr as_tibble case_when
-#' @importFrom terra rast crs crop mask
 #' @importFrom sf st_transform
+#' @import terra
 #' @export
 #' @examples
 #' Landcover for Angelo Mosso
@@ -82,12 +82,12 @@ getSiteODS <- function(deimsid, dataset = "landcover") {
   # terra::rast can address a virtual dataset *without* downloading
   ds <- rast(full_url)
   boundary <- ReLTER::getSiteBoundaries(deimsid)
-  if (is.null(boundary)) {
+  if (is.null(boundary) || class(boundary) != "SpatRaster") {
     print("No boundary for requested DEIMS site.")
     return(NULL)
   }
-  # Crop and masl the raster dataset to the boundary polygon
+  # Crop and mask the raster dataset to the boundary polygon
   boundary <- sf::st_transform(boundary, terra::crs(ds))
-  ds_site <- terra::mask(terra::crop(ds, boundary), vect(boundary))
+  ds_site <- terra::mask(terra::crop(ds, boundary), terra::vect(boundary))
   return(ds_site)
 }
