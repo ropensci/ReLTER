@@ -81,7 +81,7 @@ getSiteODS <- function(deimsid, dataset = "landcover") {
   }
   # terra::rast can address a virtual dataset *without* downloading
   ds <- rast(full_url)
-  if (is.null(ds) || !inherits(ds, "SpatRaster") {
+  if (is.null(ds) || !inherits(ds, "SpatRaster")) {
         print("No raster dataset downloaded")
         return(NULL)
   }
