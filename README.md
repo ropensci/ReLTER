@@ -30,12 +30,12 @@ Infrastructure (RI) and manage the data/information shared by them.
 
 To cite `{ReLTER}` please use: Alessandro Oggioni. (2021).
 oggioniale/ReLTER: v0.2.0 (0.2.0). Zenodo.
-<https://doi.org/10.5281/zenodo.5576814>
+<https://doi.org/10.5281/zenodo.5576813>
 
 or:
 
 ``` bibtex
-@software{alessandro_oggioni_2021_5576814,
+@software{alessandro_oggioni_2021_5576813,
   author       = {Alessandro Oggioni},
   title        = {oggioniale/ReLTER: v0.2.0},
   month        = oct,
@@ -51,7 +51,7 @@ or:
 
 You can visit `{ReLTER}` website at
 [oggioniale.github.io/ReLTER/](https://oggioniale.github.io/ReLTER/) for
-obtain more information, documentation and examples of use.
+obtain documentation about installation and examples of use.
 
 ## :arrow_double_down: Installation
 
@@ -69,13 +69,18 @@ Some examples of the possible capabilities of this library is given
 below. In these examples you can see the interaction, througth
 [API](https://deims.org/api), with [DEIMS-SDR](https://deims.org/).
 
-The *getSiteBoundaries* function creates a map overlaying the boundaries
-of the site (e.g. Lake Maggiore) thanks to the information on
-geographical aspects provided by [DEIMS-SDR](https://deims.org/).
+The *get_site_info* function, with category Boundaries, creates a map
+overlaying the boundaries of the site (e.g. Lake Maggiore) thanks to the
+information on geographical aspects provided by
+[DEIMS-SDR](https://deims.org/).
 
 ``` r
 library(dplyr)
-siteBoundaries <- ReLTER::getSiteBoundaries(deimsid = 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe')
+siteBoundaries <- ReLTER::get_site_info(
+  deimsid = 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe',
+  category = "Boundaries"
+)
+#>  Found 1 records... Imported 1 records. Simplifying...
 #>  Found 1 records... Imported 1 records. Simplifying...
 leaflet::leaflet(siteBoundaries) %>% 
   leaflet::addTiles() %>% 
@@ -86,20 +91,21 @@ leaflet::leaflet(siteBoundaries) %>%
 
 ``` r
 siteBoundaries
-#> Simple feature collection with 1 feature and 2 fields
+#> Simple feature collection with 1 feature and 8 fields
 #> Geometry type: MULTIPOLYGON
 #> Dimension:     XY
 #> Bounding box:  xmin: 8.47803 ymin: 45.72556 xmax: 8.860755 ymax: 46.18081
 #> Geodetic CRS:  WGS 84
-#> # A tibble: 1 × 3
-#>   title                 uri                                           boundaries
-#> * <chr>                 <chr>                                 <MULTIPOLYGON [°]>
-#> 1 Lago Maggiore - Italy https://deims.org… (((8.615976 45.72628, 8.614418 45.72…
+#> # A tibble: 1 × 9
+#>   title uri                  boundaries geoCoord country geoElev.avg geoElev.min
+#>   <chr> <chr>        <MULTIPOLYGON [°]> <chr>    <list>        <dbl>       <int>
+#> 1 Lago… http… (((8.615976 45.72628, 8.… POINT (… <chr […        194.         186
+#> # … with 2 more variables: geoElev.max <int>, geoElev.unit <chr>
 ```
 
 ------------------------------------------------------------------------
 
-The *getNetworkParameters* function creates a list of parameters
+The *get_network_parameters* function creates a list of parameters
 collected by a network (e.g. LTER-Italy). Information always gathered
 from what is indicated in the different sites on
 [DEIMS-SDR](https://deims.org/).
@@ -120,8 +126,8 @@ from what is indicated in the different sites on
 
 ------------------------------------------------------------------------
 
-The *getDataset* function provides to a table with information about
-specific dataset shared through [DEIMS-SDR](https://deims.org/).
+The *get_dataset_info* function provides to a table with information
+about specific dataset shared through [DEIMS-SDR](https://deims.org/).
 
     #>  Found 1 records... Imported 1 records. Simplifying...
 
@@ -146,9 +152,11 @@ specific dataset shared through [DEIMS-SDR](https://deims.org/).
 
 ------------------------------------------------------------------------
 
-The *getSiteRelatedResources* function provides a list of related
-resources associated with a site within [DEIMS-SDR](https://deims.org/).
+The *get_site_info* function, with category = “RelateRes”, provides a
+list of related resources associated with a site within
+[DEIMS-SDR](https://deims.org/).
 
+    #>  Found 1 records... Imported 1 records. Simplifying...
     #>  Found 1 records... Imported 1 records. Simplifying...
     #>                                                                              relatedResourcesTitle
     #> 1 Biovolume of Phytoplankton in Lake Maggiore site code  IT_SI001137_within the period 1981 - 2010
@@ -162,7 +170,7 @@ resources associated with a site within [DEIMS-SDR](https://deims.org/).
     #> 1 2021-08-25T16:38:25+0200
     #> 2 2020-12-13T20:06:48+0100
     #> 3 2020-12-16T10:46:15+0100
-    #> 4 2021-08-04T10:00:49+0200
+    #> 4 2021-11-03T06:10:14+0100
     #> 5 2020-12-13T20:10:34+0100
     #> 6 2021-01-10T21:48:49+0100
     #> 7 2021-07-21T12:35:07+0200
@@ -177,17 +185,19 @@ resources associated with a site within [DEIMS-SDR](https://deims.org/).
 
 ------------------------------------------------------------------------
 
-The *parametersChartWaffle* function provides a grouping of parameters,
-declared as measured within a site, in a waffle chart representation.
+The *produce_site_parameters_waffle* function provides a grouping of
+parameters, declared as measured within a site, in a waffle chart
+representation.
 
 ``` r
-ReLTER::parametersChartWaffle(
+ReLTER::produce_site_parameters_waffle(
   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
 )
 #>  Found 1 records... Imported 1 records. Simplifying...
+#>  Found 1 records... Imported 1 records. Simplifying...
 ```
 
-<img src="man/figures/README-exampleparametersChartWaffle-1.png" width="100%" />
+<img src="man/figures/README-exampleproduce_site_parameters_waffle-1.png" width="100%" />
 
     #> # A tibble: 11 × 4
     #>    parameterGroups              n   freq label

@@ -38,12 +38,12 @@ knitr::opts_chunk$set(
 ## :notebook_with_decorative_cover: Citation
 
 To cite `{ReLTER}` please use:
-Alessandro Oggioni. (2021). oggioniale/ReLTER: v0.2.0 (0.2.0). Zenodo. https://doi.org/10.5281/zenodo.5576814
+Alessandro Oggioni. (2021). oggioniale/ReLTER: v0.2.0 (0.2.0). Zenodo. https://doi.org/10.5281/zenodo.5576813
 
 or:
 
 ``` bibtex
-@software{alessandro_oggioni_2021_5576814,
+@software{alessandro_oggioni_2021_5576813,
   author       = {Alessandro Oggioni},
   title        = {oggioniale/ReLTER: v0.2.0},
   month        = oct,
@@ -57,7 +57,7 @@ or:
 
 ## :book: Documentation
 
-You can visit `{ReLTER}` website at [oggioniale.github.io/ReLTER/](https://oggioniale.github.io/ReLTER/) for obtain more information, documentation and examples of use.  
+You can visit `{ReLTER}` website at [oggioniale.github.io/ReLTER/](https://oggioniale.github.io/ReLTER/) for obtain documentation about installation and examples of use.  
 
 
 ## :arrow_double_down: Installation
@@ -74,11 +74,14 @@ devtools::install_github("oggioniale/ReLTER")
 
 Some examples of the possible capabilities of this library is given below. In these examples you can see the interaction, througth [API](https://deims.org/api), with [DEIMS-SDR](https://deims.org/).
 
-The *getSiteBoundaries* function creates a map overlaying the boundaries of the site (e.g. Lake Maggiore) thanks to the information on geographical aspects provided by [DEIMS-SDR](https://deims.org/).
+The *get_site_info* function, with category Boundaries, creates a map overlaying the boundaries of the site (e.g. Lake Maggiore) thanks to the information on geographical aspects provided by [DEIMS-SDR](https://deims.org/).
 
 ```{r, message = FALSE, warning = FALSE, exampleSiteBoundaries}
 library(dplyr)
-siteBoundaries <- ReLTER::getSiteBoundaries(deimsid = 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe')
+siteBoundaries <- ReLTER::get_site_info(
+  deimsid = 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe',
+  category = "Boundaries"
+)
 leaflet::leaflet(siteBoundaries) %>% 
   leaflet::addTiles() %>% 
   leaflet::addPolygons()
@@ -87,13 +90,13 @@ siteBoundaries
 
 --------------------------------
 
-The *getNetworkParameters* function creates a list of parameters collected by a network (e.g. LTER-Italy). Information always gathered from what is indicated in the different sites on [DEIMS-SDR](https://deims.org/).
+The *get_network_parameters* function creates a list of parameters collected by a network (e.g. LTER-Italy). Information always gathered from what is indicated in the different sites on [DEIMS-SDR](https://deims.org/).
 
 ```{r, echo = FALSE, warning = FALSE, message = FALSE, exampleSiteParameters}
 library(dplyr)
 invisible(
   utils::capture.output(
-    listParams <- ReLTER::getNetworkParameters(
+    listParams <- ReLTER::get_network_parameters(
       networkDEIMSID = 'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3'
     )
   )
@@ -103,10 +106,10 @@ knitr::kable(listParams[1:10, ] %>% dplyr::rows_insert(tibble(parameterLabel = "
 
 --------------------------------
 
-The *getDataset* function provides to a table with information about specific dataset shared through [DEIMS-SDR](https://deims.org/).
+The *get_dataset_info* function provides to a table with information about specific dataset shared through [DEIMS-SDR](https://deims.org/).
 
 ```{r, echo = FALSE, warning = FALSE, message = FALSE, exampleGetDataset}
-tDataset <- ReLTER::getDataset(datasetid = "https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef")
+tDataset <- ReLTER::get_dataset_info(datasetid = "https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef")
 leaflet::leaflet(tDataset) %>% 
   leaflet::addTiles() %>% 
   leaflet::addPolygons()
@@ -115,21 +118,22 @@ tDataset
 
 --------------------------------
 
-The *getSiteRelatedResources* function provides a list of related resources associated with a site within [DEIMS-SDR](https://deims.org/).
+The *get_site_info* function, with category = "RelateRes", provides a list of related resources associated with a site within [DEIMS-SDR](https://deims.org/).
 
-```{r, echo = FALSE, warning = FALSE, message = FALSE, exampleGetSiteRelatedResources}
-tSiteRelatedResources <- ReLTER::getSiteRelatedResources(
-  deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
+```{r, echo = FALSE, warning = FALSE, message = FALSE, exampleGetSiteInfoRelatedResources}
+tSiteRelatedResources <- ReLTER::get_site_info(
+  deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
+  category = "RelateRes"
 )
 tSiteRelatedResources$relatedResources[[1]]
 ```
 
 --------------------------------
 
-The *parametersChartWaffle* function provides a grouping of parameters, declared as measured within a site, in a waffle chart representation.
+The *produce_site_parameters_waffle* function provides a grouping of parameters, declared as measured within a site, in a waffle chart representation.
 
-```{r, message = FALSE, warning = FALSE, exampleparametersChartWaffle}
-ReLTER::parametersChartWaffle(
+```{r, message = FALSE, warning = FALSE, exampleproduce_site_parameters_waffle}
+ReLTER::produce_site_parameters_waffle(
   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
 )
 ```

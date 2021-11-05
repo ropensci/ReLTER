@@ -2,7 +2,7 @@ Package: ReLTER
 Type: Package
 Title: An interface to the eLTER for the R statistical programming environment
 Version: 0.2.0
-Date: 2021-10-19
+Date: 2021-11-01
 Authors@R: c(
         person("Alessandro", "Oggioni", email = "oggioni.a@irea.cnr.it", role = c("aut", "cre", "fnd"),
           comment = c(ORCID = "0000-0002-7997-219X")
@@ -13,7 +13,7 @@ Authors@R: c(
         ),
         person("Micha", "Silver", email = "silverm@post.bgu.ac.il", role = "ctb",
           comment = c(ORCID = "0000-0002-1128-1325", " Micha Silver is a coauthor of functions getILTERGeneralInfo and 
-          getSiteBoundaries, he also is a reviewer of English wording for all functions.")
+          get_Site_Info category Boundaries, he also is a reviewer of English wording for all functions.")
         )
       )
 Maintainer: The package maintainer Alessandro Oggioni, phD (2020) <oggioniale@gmail.com>
@@ -60,3 +60,4 @@ URL: https://github.com/oggioniale/ReLTER
 BugReports: https://github.com/oggioniale/ReLTER/issues
 Config/testthat/edition: 3
 RoxygenNote: 7.1.2
+Language: en-GB

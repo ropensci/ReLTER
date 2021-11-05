@@ -34,7 +34,7 @@ pkgdown::build_reference()
 # prima kintr di README.Rmd, viene prodotto README.md quindi eseguire per ottenere home della documentazione
 pkgdown::build_home()
 # il comando seguente per ricostruire l'intero sito della documentazione
-pkgdown::build_site(examples = F)
+pkgdown::build_site(examples = T)
 
 # Automated checking https://r-pkgs.org/r-cmd-check.html
 devtools::check()
@@ -43,3 +43,5 @@ devtools::check()
 # after creating the package documentation, test it: https://r-pkgs.org/tests.html
 usethis::use_testthat()
 
+# per listare le funzioni dei pacchetti importati dalle funzioni scritte
+NCmisc::list.functions.in.file("R/nomefile.R")
