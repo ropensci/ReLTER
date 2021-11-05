@@ -43,6 +43,7 @@ Natura2000: Protected areas rasterized from NATURA 2000 (A, B and C site categor
 NDVI:  NDVI time-series, derived from the Landsat quarterly temporal composites
 
 All datasets are georeferenced to the EPSG:3035 coordinate reference system.
+and all except clc2018 have 30 meters resolution
 }
 \examples{
 Landcover for Angelo Mosso
@@ -58,4 +59,6 @@ siteNDVI <- getSiteODS(deimsid = "https://deims.org/d0a8da18-0881-4ebe-bccf-bc4c
 }
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
+
+Micha Silver, phD (2020) \email{silverm@post.bgu.ac.il}
 }
