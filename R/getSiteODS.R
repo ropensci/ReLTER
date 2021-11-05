@@ -81,12 +81,17 @@ getSiteODS <- function(deimsid, dataset = "landcover") {
   }
   # terra::rast can address a virtual dataset *without* downloading
   ds <- rast(full_url)
+  if (is.null(ds) || !inherits(ds, "SpatRaster") {
+        print("No raster dataset downloaded")
+        return(NULL)
+  }
   boundary <- ReLTER::getSiteBoundaries(deimsid)
-  if (is.null(boundary) || class(boundary) != "SpatRaster") {
+  if (is.null(boundary) || !inherits(boundary, "sf") {
     print("No boundary for requested DEIMS site.")
     return(NULL)
   }
   # Crop and mask the raster dataset to the boundary polygon
+  # The boundary must be transformed first to the European CRS (EPSG:3035) used by ODS 
   boundary <- sf::st_transform(boundary, terra::crs(ds))
   ds_site <- terra::mask(terra::crop(ds, boundary), terra::vect(boundary))
   return(ds_site)
