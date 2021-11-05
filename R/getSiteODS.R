@@ -27,6 +27,7 @@
 #' NDVI:  NDVI time-series, derived from the Landsat quarterly temporal composites
 #'
 #' All datasets are georeferenced to the EPSG:3035 coordinate reference system.
+#' and all except clc2018 have 30 meters resolution
 #'
 #' @return The function returns a SpatRaster object (from the `terra` package)
 #' of the requested dataset, cropped to the site boundaries
@@ -34,6 +35,7 @@
 #' i.e. writeRaster(ds_site, "site_dataset.tif")
 
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
+#' @author Micha Silver, phD (2020) \email{silverm@post.bgu.ac.il}
 #' @importFrom dplyr as_tibble case_when
 #' @importFrom sf st_transform
 #' @import terra
@@ -67,6 +69,7 @@ getSiteODS <- function(deimsid, dataset = "landcover") {
   ndvi_winter <- "lcv/lcv_ndvi_landsat.glad.ard_p50_30m_0..0cm_201912_eumap_epsg3035_v1.0.tif"
   full_url <- case_when(dataset == "landcover" ~ paste0(ods_url, landcover),
                         dataset == "clc2018" ~ paste0(ods_url, clc2018),
+                        dataset == "osm_buildings" ~ paste0(ods_url, osm_buildings),
                         dataset == "natura2000" ~ paste0(ods_url, natura2000),
                         dataset == "ndvi_spring" ~ paste0(ods_url, ndvi_spring),
                         dataset == "ndvi_summer" ~ paste0(ods_url, ndvi_summer),

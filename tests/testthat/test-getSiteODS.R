@@ -20,18 +20,19 @@ deimsids <- c("https://deims.org/1b94503d-285c-4028-a3db-bc78e31dea07", # Cairng
               "https://deims.org/632895f6-b954-4fd9-90bb-b427b22585ac"  # Sikfokut, Hungary
             )
 
-for (d in 1:length(demisids)) {
-      if (d == 2) {  #Mondsee, no boundary available on DEIMS, func should return NULL
+for (id in 1:length(deimsids)) {
+      if (id == 2) {  #Mondsee, no boundary available on DEIMS, func should return NULL
         test_that("Function correctly returns NULL for site with no boundary", {
           ds <- getSiteODS(deimsid = deimsids[id]) # Default dataset is "landcover"
           expect_null(ds)
         })
-        break     # Don't continue testing with this site
-      } else {
+        next     # Don't continue testing with this site
+      } 
+      else {
       # Check other sites with all datasets
       for (s in 1:length(datasets)) {    
           test_that("Function returns a SpatRaster", {
-            ds <- getSiteODS(deimsid = deimsids[d], datasets[s])
+            ds <- getSiteODS(deimsid = deimsids[id], datasets[s])
             expect_s4_class(ds, "SpatRaster")
           })
         }
