@@ -36,11 +36,11 @@
 getSiteBoundaries <- function(deimsid) {
   biomeColor <- tibble::tribble(
     ~geoBonBiome, ~fill, ~border,
-    "marine", "#055ca8", "#057ae1",
-    "coastal", "#43903f", "#5ecc58",
-    "fresh_water_lakes", "#03a3b8", "#04d0eb",
-    "fresh_water_rivers", "#03a3b8", "#04d0eb",
-    "terrestrial", "#b07c03", "#e8a303"
+    "Marine", "#055ca8", "#057ae1",
+    "Coastal", "#43903f", "#5ecc58",
+    "Fresh water lakes", "#03a3b8", "#04d0eb",
+    "Fresh water rivers", "#03a3b8", "#04d0eb",
+    "Terrestrial", "#b07c03", "#e8a303"
   )
   geoBonBiome <- jsonlite::fromJSON(
     paste0(
@@ -49,8 +49,8 @@ getSiteBoundaries <- function(deimsid) {
       sub("^.+/", "", deimsid)
     )
   )$attributes$environmentalCharacteristics$geoBonBiome
-  color <- biomeColor$fill[biomeColor$geoBonBiome == geoBonBiome]
-  colorBorder <- biomeColor$border[biomeColor$geoBonBiome == geoBonBiome]
+  color <- biomeColor$fill[biomeColor$geoBonBiome == geoBonBiome[1]]
+  colorBorder <- biomeColor$border[biomeColor$geoBonBiome == geoBonBiome[1]]
   q <- '{title: .title,
         uri: "\\(.id.prefix)\\(.id.suffix)",
         boundaries: .attributes.geographic.boundaries
