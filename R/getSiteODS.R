@@ -86,7 +86,7 @@ getSiteODS <- function(deimsid, dataset = "landcover") {
         return(NULL)
   }
   boundary <- ReLTER::getSiteBoundaries(deimsid)
-  if (is.null(boundary) || !inherits(boundary, "sf") {
+  if (is.null(boundary) || !inherits(boundary, "sf")) {
     print("No boundary for requested DEIMS site.")
     return(NULL)
   }
