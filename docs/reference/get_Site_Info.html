@@ -190,34 +190,15 @@ which the site is involved.</p>
 <span class='r-in'>  deimsid <span class='op'>=</span> <span class='st'>"https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"</span>,</span>
 <span class='r-in'>  category <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"EnvCharacts"</span>, <span class='st'>"Affiliations"</span>, <span class='st'>"Boundaries"</span><span class='op'>)</span></span>
 <span class='r-in'><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  Found 1 records... Imported 1 records. Simplifying...</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  Found 1 records... Imported 1 records. Simplifying...</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  Found 1 records... Imported 1 records. Simplifying...</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  Found 1 records... Imported 1 records. Simplifying...</span>
+<span class='r-err co'><span class='r-pr'>#&gt;</span> <span class='error'>Error in curl::curl_fetch_memory(url, handle = handle):</span> SSL certificate problem: certificate has expired</span>
 <span class='r-in'><span class='va'>siteInfo</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Simple feature collection with 1 feature and 28 fields</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Geometry type: MULTIPOLYGON</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Dimension:     XY</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Bounding box:  xmin: 8.47803 ymin: 45.72556 xmax: 8.860755 ymax: 46.18081</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Geodetic CRS:  WGS 84</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 1 × 29</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>   title uri                  boundaries geoCoord country geoElev.avg geoElev.min</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;MULTIPOLYGON [°]&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>1</span> Lago… http… (((8.615976 45.72628, 8.… POINT (… <span style='color: #949494;'>&lt;chr [</span>…        194.         186</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># … with 22 more variables: geoElev.max &lt;int&gt;, geoElev.unit &lt;chr&gt;,</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   affiliation.networks &lt;list&gt;, affiliation.projects &lt;list&gt;,</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   envCharacteristics.airTemperature.avg &lt;dbl&gt;,</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   envCharacteristics.airTemperature.min &lt;dbl&gt;,</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   envCharacteristics.airTemperature.max &lt;dbl&gt;,</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   envCharacteristics.airTemperature.unit &lt;chr&gt;,</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   envCharacteristics.precipitation.annual &lt;int&gt;, …</span></span>
+<span class='r-err co'><span class='r-pr'>#&gt;</span> <span class='error'>Error in eval(expr, envir, enclos):</span> object 'siteInfo' not found</span>
 <span class='r-in'></span>
 <span class='r-in'><span class='va'>site</span> <span class='op'>&lt;-</span> <span class='fu'>get_site_info</span><span class='op'>(</span></span>
 <span class='r-in'>  deimsid <span class='op'>=</span> <span class='st'>"https://deims.org/79d6c1df-570f-455f-a929-6cfe5c4ca1e9"</span>,</span>
 <span class='r-in'>  category <span class='op'>=</span> <span class='st'>"Boundaries"</span></span>
 <span class='r-in'><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  Found 1 records... Imported 1 records. Simplifying...</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  Found 1 records... Imported 1 records. Simplifying...</span>
+<span class='r-err co'><span class='r-pr'>#&gt;</span> <span class='error'>Error in curl::curl_fetch_memory(url, handle = handle):</span> SSL certificate problem: certificate has expired</span>
 <span class='r-in'></span>
 </pre>
   </div>
@@ -231,7 +212,7 @@ which the site is involved.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Alessandro Oggioni.</p>
+  <p>Developed by Alessandro Oggioni, Micha Silver.</p>
 </div>
 
 <div class="pkgdown">

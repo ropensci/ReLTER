@@ -7,13 +7,13 @@ Authors@R: c(
         person("Alessandro", "Oggioni", email = "oggioni.a@irea.cnr.it", role = c("aut", "cre", "fnd"),
           comment = c(ORCID = "0000-0002-7997-219X")
         ),
-        person("Paolo", "Tagliolato", email = "tagliolato.a@irea.cnr.it", role = "ctb",
-          comment = c(ORCID = "0000-0002-0261-313X", " Paolo Tagliolato wrote the function ds_Q(),
-                     on which some ReLTER internal functions are based")
+        person("Micha", "Silver", email = "silverm@post.bgu.ac.il", role = "aut",
+          comment = c(ORCID = "0000-0002-1128-1325", " Micha Silver is a coauthor of functions get_ilter_generalinfo and 
+          get_site_info for category Boundaries, he develop get_site_ODS function and he also is a reviewer of English wording for all functions.")
         ),
-        person("Micha", "Silver", email = "silverm@post.bgu.ac.il", role = "ctb",
-          comment = c(ORCID = "0000-0002-1128-1325", " Micha Silver is a coauthor of functions getILTERGeneralInfo and 
-          get_Site_Info category Boundaries, he also is a reviewer of English wording for all functions.")
+        person("Paolo", "Tagliolato", email = "tagliolato.a@irea.cnr.it", role = "ctb",
+          comment = c(ORCID = "0000-0002-0261-313X", " Paolo Tagliolato wrote the function do_Q(),
+                     on which some ReLTER internal functions are based")
         )
       )
 Maintainer: The package maintainer Alessandro Oggioni, phD (2020) <oggioniale@gmail.com>
@@ -34,6 +34,7 @@ Imports:
     rgeos (>= 0.5-3),
     rosm (>= 0.2.5),
     raster (>= 3.3-13),
+    terra (>= 1.4-11),
     tmap (>= 3.1),
     grid (>= 3.5.1),
     leaflet (>= 2.0.3),

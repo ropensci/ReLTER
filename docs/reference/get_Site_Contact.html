@@ -181,16 +181,9 @@ organization, metadata provider, founding agency and site url.</p>
     <pre class="examples"><span class='r-in'><span class='va'>tSiteContact</span> <span class='op'>&lt;-</span> <span class='fu'>get_site_contact</span><span class='op'>(</span></span>
 <span class='r-in'>  deimsid <span class='op'>=</span> <span class='st'>"https://deims.org/17210eba-d832-4759-89fa-9ff127cbdf6e"</span></span>
 <span class='r-in'><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  Found 1 records... Imported 1 records. Simplifying...</span>
+<span class='r-err co'><span class='r-pr'>#&gt;</span> <span class='error'>Error in curl::curl_fetch_memory(url, handle = handle):</span> SSL certificate problem: certificate has expired</span>
 <span class='r-in'><span class='va'>tSiteContact</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 1 × 13</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>   title  uri   geoCoord country geoElev.avg geoElev.min geoElev.max geoElev.unit</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>1</span> Istit… http… POINT (… <span style='color: #949494;'>&lt;chr [</span>…        <span style='text-decoration: underline;'>2</span>700        <span style='text-decoration: underline;'>2</span>500        <span style='text-decoration: underline;'>3</span>100 msl         </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># … with 5 more variables: generalInfo.siteManager &lt;list&gt;,</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   generalInfo.operatingOrganisation &lt;list&gt;,</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   generalInfo.metadataProvider &lt;list&gt;, generalInfo.fundingAgency &lt;lgl&gt;,</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   generalInfo.siteUrl &lt;lgl&gt;</span></span>
+<span class='r-err co'><span class='r-pr'>#&gt;</span> <span class='error'>Error in eval(expr, envir, enclos):</span> object 'tSiteContact' not found</span>
 <span class='r-in'></span>
 </pre>
   </div>
@@ -204,7 +197,7 @@ organization, metadata provider, founding agency and site url.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Alessandro Oggioni.</p>
+  <p>Developed by Alessandro Oggioni, Micha Silver.</p>
 </div>
 
 <div class="pkgdown">

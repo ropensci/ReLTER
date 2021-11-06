@@ -10,6 +10,7 @@ reference:
     desc: For retrive information about LTER sites stored in DEIMS-SDR website
     contents:
       - '`get_site_info`'
+      - '`get_site_ODS`'
   - subtitle: Networks
     desc: For retrive information about LTER networks stored in DEIMS-SDR website
     contents:

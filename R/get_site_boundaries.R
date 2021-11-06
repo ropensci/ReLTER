@@ -98,15 +98,19 @@ get_site_boundaries <- function(deimsid) {
         #   paste0("sites_", gsub(" ", "_", boundaries$title), ".shp"),
         #   append = FALSE
         # )
-        map <- leaflet::leaflet(geoBoundaries) %>%
-          leaflet::addTiles() %>%
-          leaflet::addPolygons(fillColor = color, color = colorBorder)
+
+        ##---------------------------------------------------
+        # MS: Temporarily disable printing of map, for testing
+        # map <- leaflet::leaflet(geoBoundaries) %>%
+        #   leaflet::addTiles() %>%
+        #   leaflet::addPolygons(fillColor = color, color = colorBorder)
+        # print(map)
+        ##--------------------------------------------------
         # mapview::mapshot(
         #   map,
         #   file = paste0("sites_", gsub(" ", "_", boundaries$title), ".png"),
         #   append = FALSE
         # )
-        print(map)
         geoBoundaries
       }
     } else {

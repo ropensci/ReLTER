@@ -219,9 +219,6 @@ ReLTER::produce_site_parameters_waffle(
 Alessandro Oggioni <https://orcid.org/0000-0002-7997-219X> (CNR,
 Institute for Electromagnetic Sensing of the Environment - IREA)
 
-Paolo Tagliolato <https:://orcid.org/0000-0002-0261-313X> (CNR,
-Institute for Electromagnetic Sensing of the Environment - IREA)
-
 <!-- Add authors, reviewers including those who, within eLTER network, reviewed the package and add acknowledgements 
      in accordance with this https://ropensci.org/blog/2018/03/16/thanking-reviewers-in-metadata/ and this
      https://devguide.ropensci.org/building.html#authorship.
@@ -229,6 +226,9 @@ Institute for Electromagnetic Sensing of the Environment - IREA)
 
 Micha Silver <https://orcid.org/0000-0002-1128-1325> (Ben Gurion
 University - BGU)
+
+Paolo Tagliolato <https:://orcid.org/0000-0002-0261-313X> (CNR,
+Institute for Electromagnetic Sensing of the Environment - IREA)
 
 For a exhaustive list of contributors please visit [authors
 page](https://oggioniale.github.io/ReLTER/authors).

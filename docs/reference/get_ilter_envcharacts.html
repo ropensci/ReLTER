@@ -177,10 +177,12 @@ Environmental Characteristics of ILTER's sites.</p>
     <p>Alessandro Oggioni, phD (2020) &lt;oggioni.a@irea.cnr.it&gt;</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+    <pre class="examples"><span class='r-in'><span class='co'># \dontrun{</span></span>
 <span class='r-in'><span class='va'>listEnvCharacts</span> <span class='op'>&lt;-</span> <span class='fu'>get_ilter_envcharacts</span><span class='op'>(</span>sitesNum <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span></span>
+<span class='r-err co'><span class='r-pr'>#&gt;</span> <span class='error'>Error in h(simpleError(msg, call)):</span> error in evaluating the argument 'x' in selecting a method for function 'as.list': SSL certificate problem: certificate has expired</span>
 <span class='r-in'><span class='va'>listEnvCharacts</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>20</span>, <span class='op'>]</span></span>
-<span class='r-in'><span class='op'>}</span></span>
+<span class='r-err co'><span class='r-pr'>#&gt;</span> <span class='error'>Error in eval(expr, envir, enclos):</span> object 'listEnvCharacts' not found</span>
+<span class='r-in'><span class='co'># }</span></span>
 <span class='r-in'></span>
 </pre>
   </div>
@@ -194,7 +196,7 @@ Environmental Characteristics of ILTER's sites.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Alessandro Oggioni.</p>
+  <p>Developed by Alessandro Oggioni, Micha Silver.</p>
 </div>
 
 <div class="pkgdown">
