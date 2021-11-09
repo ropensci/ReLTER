@@ -86,9 +86,7 @@ get_activity_info <- function(activityid) {
       map <- NULL
     }
   } else {
-    message("\n---- The requested page could not be found. Please check again the Activity.iD ----\n")
-    geoActivity <- NULL
-    map <- NULL
+    stop("\n---- Page Not Found. The requested page could not be found. Please check again the Activity.iD ----\n")
   }
   print(map)
   geoActivity

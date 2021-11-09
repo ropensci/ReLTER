@@ -36,8 +36,8 @@ get_network_related_resources <- function(networkDEIMSID) {
   allSiteRelatedResources <- lapply(
     as.list(
       paste0(
-        lterNetworkSites$id$prefix,
-        lterNetworkSites$id$suffix
+        lterNetworkSites$id$prefix[1:10],
+        lterNetworkSites$id$suffix[1:10]
       )
     ),
     ReLTER::get_site_info,
@@ -47,7 +47,7 @@ get_network_related_resources <- function(networkDEIMSID) {
     uniteSiteRelatedResources <- dplyr::bind_rows(allSiteRelatedResources)
     relatedResourcesNetworkList <- uniteSiteRelatedResources$relatedResources
     relatedResourcesNetworkDF <- dplyr::bind_rows(relatedResourcesNetworkList)
-    relatedResourcesNetworkDF$uri <- paste0(relatedResourcesNetworkDF$relatedResourcesId$prefix, relatedResourcesNetworkDF$relatedResourcesId$suffix)
+    # relatedResourcesNetworkDF$uri <- paste0(relatedResourcesNetworkDF$relatedResourcesId$prefix, relatedResourcesNetworkDF$relatedResourcesId$suffix)
     relatedResourcesNetworkDF <- relatedResourcesNetworkDF %>% 
       dplyr::select(relatedResourcesTitle, uri, relatedResourcesChanged)
     uniqueSiteRelatedResources <- dplyr::as_tibble(
