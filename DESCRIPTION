@@ -18,33 +18,37 @@ Authors@R: c(
         ),
         person("Paolo", "Tagliolato", email = "tagliolato.a@irea.cnr.it",
           role = c("aut", "ctb"),
-          comment = c(ORCID = "0000-0002-0261-313X", 
-          " Paolo Tagliolato wrote the function do_Q(), on which some ReLTER
-          internal functions are based")
+          comment = c(ORCID = "0000-0002-0261-313X",
+          " Paolo Tagliolato is a coauthor of package, he wrote the function
+          do_Q(), on which some ReLTER internal functions are based")
         )
       )
 Maintainer: The package maintainer Alessandro Oggioni, phD (2020)
     <oggioniale@gmail.com>
-Description: ReLTER is a R package devoted to access, interact and improve
-    the information and the data shared by Long Term Ecological Research (LTER)
+Description: ReLTER is an R package that: provides access to DEIMS-SDR
+    (https://deims.org/), allows interact with software implemented by eLTER
+    Research Infrastructure (RI) and improves the data/information shared by
+    them.
+    ReLTER is a R package devoted to access, interact and improve the
+    information and the data shared by Long Term Ecological Research (LTER)
     network. This package is born within eLTER H2020 major project that will
     help advance the development of European Long-Term Ecosystem Research
-    Infrastructures ([eLTER RI](https://elter-ri.eu)).
+    Infrastructures (eLTER RI - https://elter-ri.eu).
     The ReLTER package functions in particular allow to:
     - retrive the information about entities (e.g. sites, datasets, and
-    activities) shared by [DEIMS-SDR](https://deims.org/) (see e.g.
-    get_site_info function);
+    activities) shared by DEIMS-SDR (see e.g. get_site_info function);
     - elaborate the information of single site or merge info from national
     network sites or entire International LTER (ILTER) in order to provide
-    maps, figures, graphs etc (see e.g. get_network_sites, produce_site_map or
-    produce_site_parameters_pie functions);
+    maps, figures, graphs etc (see e.g. get_network_sites, produce_site_map
+    or produce_site_parameters_pie functions);
     - use the site informations for download data from other platforms (see
     e.g. get_site_ODS function);
     - improve the quality of the dataset (see e.g. get_id_worms).
     Functions currently implemented are derived from the discussion of the
     needs declared by eLTER users community.
     The ReLTER package shall definitely follow the progress of eLTER-RI
-    infrastructure and evolving with the improvements and develop of new tools.
+    infrastructure and evolving with the improvements and develop of
+    new tools.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
