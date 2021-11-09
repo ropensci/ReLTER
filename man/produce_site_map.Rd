@@ -68,7 +68,7 @@ as provided by the DEIMS-SDR, within a given country and network.
 }
 \examples{
 \dontrun{
-# Example of LTER-Germay site
+# Example of Lange Bramke site
 sitesNetwork <- get_network_sites(
   networkDEIMSID = "https://deims.org/networks/e904354a-f3a0-40ce-a9b5-61741f66c824"
 )
@@ -76,11 +76,23 @@ map <- produce_site_map(
   deimsid = "https://deims.org/8e24d4f8-d6f6-4463-83e9-73cac2fd3f38",
   countryCode = "DEU",
   listOfSites = sitesNetwork,
-  gridNx = 0.7,
-  gridNy = 0.2
+  gridNx = 0.2,
+  gridNy = 0.7
 )
 
-# Example of LTER-Italy site
+# Example of Eisenwurzen site
+sitesNetwork <- get_network_sites(
+  networkDEIMSID = "https://deims.org/networks/d45c2690-dbef-4dbc-a742-26ea846edf28"
+)
+map <- produce_site_map(
+  deimsid = "https://deims.org/d0a8da18-0881-4ebe-bccf-bc4cb4e25701",
+  countryCode = "AUT",
+  listOfSites = sitesNetwork,
+  gridNx = 0.2,
+  gridNy = 0.7
+)
+
+# Example of Lake Maggiore site
 sitesNetwork <- get_network_sites(
   networkDEIMSID = "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 )

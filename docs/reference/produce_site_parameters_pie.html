@@ -176,73 +176,12 @@ DEIMS-SDR website. More information about DEIMS ID from:
     <p>Alessandro Oggioni, phD (2020) <a href='mailto:oggioni.a@irea.cnr.it'>oggioni.a@irea.cnr.it</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='r-in'><span class='co'># \dontrun{</span></span>
+    <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
 <span class='r-in'><span class='va'>pie</span> <span class='op'>&lt;-</span> <span class='fu'>produce_site_parameters_pie</span><span class='op'>(</span></span>
 <span class='r-in'>  deimsid <span class='op'>=</span> <span class='st'>"https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"</span></span>
 <span class='r-in'><span class='op'>)</span></span>
-<span class='r-err co'><span class='r-pr'>#&gt;</span> <span class='error'>Error in curl::curl_fetch_memory(url, handle = handle):</span> SSL certificate problem: certificate has expired</span>
 <span class='r-in'><span class='va'>pie</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> function (x, labels = names(x), edges = 200, radius = 0.8, clockwise = FALSE, </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     init.angle = if (clockwise) 90 else 0, density = NULL, angle = 45, </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     col = NULL, border = NULL, lty = NULL, main = NULL, ...) </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> {</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     if (!is.numeric(x) || any(is.na(x) | x &lt; 0)) </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>         stop("'x' values must be positive.")</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     if (is.null(labels)) </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>         labels &lt;- as.character(seq_along(x))</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     else labels &lt;- as.graphicsAnnot(labels)</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     x &lt;- c(0, cumsum(x)/sum(x))</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     dx &lt;- diff(x)</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     nx &lt;- length(dx)</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     plot.new()</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     pin &lt;- par("pin")</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     xlim &lt;- ylim &lt;- c(-1, 1)</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     if (pin[1L] &gt; pin[2L]) </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>         xlim &lt;- (pin[1L]/pin[2L]) * xlim</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     else ylim &lt;- (pin[2L]/pin[1L]) * ylim</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     dev.hold()</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     on.exit(dev.flush())</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     plot.window(xlim, ylim, "", asp = 1)</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     if (is.null(col)) </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>         col &lt;- if (is.null(density)) </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>             c("white", "lightblue", "mistyrose", "lightcyan", </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>                 "lavender", "cornsilk")</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>         else par("fg")</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     if (!is.null(col)) </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>         col &lt;- rep_len(col, nx)</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     if (!is.null(border)) </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>         border &lt;- rep_len(border, nx)</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     if (!is.null(lty)) </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>         lty &lt;- rep_len(lty, nx)</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     angle &lt;- rep(angle, nx)</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     if (!is.null(density)) </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>         density &lt;- rep_len(density, nx)</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     twopi &lt;- if (clockwise) </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>         -2 * pi</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     else 2 * pi</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     t2xy &lt;- function(t) {</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>         t2p &lt;- twopi * t + init.angle * pi/180</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>         list(x = radius * cos(t2p), y = radius * sin(t2p))</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     }</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     for (i in 1L:nx) {</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>         n &lt;- max(2, floor(edges * dx[i]))</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>         P &lt;- t2xy(seq.int(x[i], x[i + 1], length.out = n))</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>         polygon(c(P$x, 0), c(P$y, 0), density = density[i], angle = angle[i], </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>             border = border[i], col = col[i], lty = lty[i])</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>         P &lt;- t2xy(mean(x[i + 0:1]))</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>         lab &lt;- as.character(labels[i])</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>         if (!is.na(lab) &amp;&amp; nzchar(lab)) {</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>             lines(c(1, 1.05) * P$x, c(1, 1.05) * P$y)</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>             text(1.1 * P$x, 1.1 * P$y, labels[i], xpd = TRUE, </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>                 adj = ifelse(P$x &lt; 0, 1, 0), ...)</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>         }</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     }</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     title(main = main, ...)</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     invisible(NULL)</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> }</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;bytecode: 0x7f9a0f433388&gt;</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;environment: namespace:graphics&gt;</span>
-<span class='r-in'><span class='co'># }</span></span>
+<span class='r-in'><span class='op'>}</span></span>
 <span class='r-in'></span>
 </pre>
   </div>
@@ -256,7 +195,7 @@ DEIMS-SDR website. More information about DEIMS ID from:
 
       <footer>
       <div class="copyright">
-  <p>Developed by Alessandro Oggioni, Micha Silver.</p>
+  <p>Developed by Alessandro Oggioni, Micha Silver, Paolo Tagliolato.</p>
 </div>
 
 <div class="pkgdown">

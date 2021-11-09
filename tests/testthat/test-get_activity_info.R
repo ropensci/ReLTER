@@ -28,13 +28,17 @@ test_that("Output of activities information function constructs ‘sf' and 'tibb
 })
 
 test_that("Wrong input (but URL) constructs a NULL object", {
-  result <- ReLTER::get_activity_info(activityid = "https://deims.org/activity/ljhnhbkihubib")
-  expect_type(result, "NULL")
+  expect_error(
+    object = ReLTER::get_activity_info(activityid = "https://deims.org/activity/ljhnhbkihubib"),
+    regexp = "Page Not Found"
+  )
 })
 
 test_that("Wrong input (not URL) constructs an empty tibble", {
-  result <- ReLTER::get_activity_info(activityid = "ljhnhbkihubib")
-  expect_type(result, "NULL")
+  expect_error(
+    object = ReLTER::get_activity_info(activityid = "ljhnhbkihubib"),
+    regexp = "Page Not Found"
+  )
 })
 
 test_that("Output of get activities information function constructs ‘sf' with valid geometries", {

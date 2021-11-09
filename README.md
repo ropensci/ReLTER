@@ -18,32 +18,64 @@
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+
+<!-- Once you have submitted a package and it has passed editor checks, add a peer-review badge via -->
+<!-- [![](https://badges.ropensci.org/<issue_id>_status.svg)](https://github.com/ropensci/software-review/issues/<issue_id>) -->
+<!-- where issue_id is the number of the issue in the software-review repository. -->
 <!-- badges: end -->
 
-`{ReLTER}` is an R package that allows interact with software
-(e.g. [DEIMS-SDR](https://deims.org/)) implemented by eLTER Research
-Infrastructure (RI) and manage the data/information shared by them.
+`{ReLTER}` is an R package that: provides access to
+[DEIMS-SDR](https://deims.org/)), allows interact with software
+implemented by eLTER Research Infrastructure (RI) and improves the
+data/information shared by them. `{ReLTER}` is a R package devoted to
+access, interact and improve the information and the data shared by Long
+Term Ecological Research (LTER) network. This package is born within
+eLTER H2020 major project that will help advance the development of
+European Long-Term Ecosystem Research Infrastructures ([eLTER
+RI](https://elter-ri.eu)).
+
+The `{ReLTER}` package functions in particular allow to:
+
+-   retrive the information about entities (e.g. sites, datasets, and
+    activities) shared by [DEIMS-SDR](https://deims.org/) (see
+    e.g. [get_site_info
+    function](https://oggioniale.github.io/ReLTER/reference/get_site_info.html));
+
+-   elaborate the information of single site or merge info from national
+    network sites or entire International LTER (ILTER) in order to
+    provide maps, figures, graphs etc (see
+    e.g. [get_network_sites](https://oggioniale.github.io/ReLTER/reference/get_network_sites.html),
+    [produce_site_map](https://oggioniale.github.io/ReLTER/reference/produce_site_map.html)
+    or
+    [produce_site_parameters_pie](https://oggioniale.github.io/ReLTER/reference/produce_site_parameters_pie.html)
+    functions);
+
+-   use the site informations for download data from other platforms
+    (see
+    e.g. [get_site_ODS](https://oggioniale.github.io/ReLTER/reference/get_site_ODS.html)
+    function);
+
+-   improve the quality of the dataset (see
+    e.g. [get_id_worms](https://oggioniale.github.io/ReLTER/reference/get_id_worms.html)).
+
+Functions currently implemented are derived from the discussion of the
+needs declared by eLTER users community.
+
+The `{ReLTER}` package shall definitely follow the progress of eLTER-RI
+infrastructure and evolving with the improvements and develop of new
+tools.
 
 <!-- about the icons https://github.com/ikatyang/emoji-cheat-sheet -->
 
 ## :notebook_with_decorative_cover: Citation
 
-To cite `{ReLTER}` please use: Alessandro Oggioni. (2021).
-oggioniale/ReLTER: v0.2.0 (0.2.0). Zenodo.
-<https://doi.org/10.5281/zenodo.5576813>
+To cite `{ReLTER}` please use: …
 
 or:
 
 ``` bibtex
-@software{alessandro_oggioni_2021_5576813,
-  author       = {Alessandro Oggioni},
-  title        = {oggioniale/ReLTER: v0.2.0},
-  month        = oct,
-  year         = 2021,
-  publisher    = {Zenodo},
-  version      = {0.2.0},
-  doi          = {10.5281/zenodo.5576813},
-  url          = {https://doi.org/10.5281/zenodo.5576813}
+@software{
+...
 }
 ```
 
@@ -51,7 +83,8 @@ or:
 
 You can visit `{ReLTER}` website at
 [oggioniale.github.io/ReLTER/](https://oggioniale.github.io/ReLTER/) for
-obtain documentation about installation and examples of use.
+obtain documentation on installation, functions description and examples
+of use.
 
 ## :arrow_double_down: Installation
 
@@ -97,10 +130,9 @@ siteBoundaries
 #> Bounding box:  xmin: 8.47803 ymin: 45.72556 xmax: 8.860755 ymax: 46.18081
 #> Geodetic CRS:  WGS 84
 #> # A tibble: 1 × 9
-#>   title uri                  boundaries geoCoord country geoElev.avg geoElev.min
-#>   <chr> <chr>        <MULTIPOLYGON [°]> <chr>    <list>        <dbl>       <int>
-#> 1 Lago… http… (((8.615976 45.72628, 8.… POINT (… <chr […        194.         186
-#> # … with 2 more variables: geoElev.max <int>, geoElev.unit <chr>
+#>   title                 uri                            boundaries geoCoord  country geoElev.avg geoElev.min geoElev.max geoElev.unit
+#>   <chr>                 <chr>                  <MULTIPOLYGON [°]> <chr>     <list>        <dbl>       <int>       <int> <chr>       
+#> 1 Lago Maggiore - Italy https://d… (((8.615976 45.72628, 8.61441… POINT (8… <chr […        194.         186        4633 msl
 ```
 
 ------------------------------------------------------------------------
@@ -139,16 +171,16 @@ about specific dataset shared through [DEIMS-SDR](https://deims.org/).
     #> Bounding box:  xmin: 11.88721 ymin: 43.20518 xmax: 15.86426 ymax: 45.91294
     #> Geodetic CRS:  WGS 84
     #> # A tibble: 1 × 34
-    #>   title  abstract   keywords uri   type  dateRange.from dateRange.to relatedSite
-    #> * <chr>  <chr>      <list>   <chr> <chr> <chr>          <lgl>        <list>     
-    #> 1 LTER … The prese… <df [5 … http… data… 1965-01-01     NA           <df [1 × 4…
-    #> # … with 26 more variables: contacts.corresponding <list>,
-    #> #   contacts.creator <list>, contacts.metadataProvider <lgl>,
-    #> #   observationParameters <list>, observationSpecies <list>, dataPolicy <list>,
-    #> #   doi <chr>, onlineLocation <list>, legal.accessUse <list>,
-    #> #   legal.rights <lgl>, legal.legalAct <lgl>, legal.citation <lgl>,
-    #> #   method.instrumentation <lgl>, method.qualityAssurance <lgl>,
-    #> #   method.methodUrl <list>, method.methodDescription <list>, …
+    #>   title  abstract   keywords  uri   type  dateRange.from dateRange.to relatedSite contacts.corres… contacts.creator contacts.metada…
+    #> * <chr>  <chr>      <list>    <chr> <chr> <chr>          <lgl>        <list>      <list>           <list>           <lgl>           
+    #> 1 LTER … The prese… <df [5 ×… http… data… 1965-01-01     NA           <df [1 × 4… <df [1 × 4]>     <df [14 × 4]>    NA              
+    #> # … with 23 more variables: observationParameters <list>, observationSpecies <list>, dataPolicy <list>, doi <chr>,
+    #> #   onlineLocation <list>, legal.accessUse <list>, legal.rights <lgl>, legal.legalAct <lgl>, legal.citation <lgl>,
+    #> #   method.instrumentation <lgl>, method.qualityAssurance <lgl>, method.methodUrl <list>, method.methodDescription <list>,
+    #> #   method.samplingTimeUnit.label <chr>, method.samplingTimeUnit.uri <lgl>, method.spatialDesign.label <chr>,
+    #> #   method.spatialDesign.uri <lgl>, method.spatialScale.label <chr>, method.spatialScale.uri <lgl>,
+    #> #   method.temporalResolution.label <chr>, method.temporalResolution.uri <lgl>, boundaries <POLYGON [°]>,
+    #> #   boundariesDescription <chr>
 
 ------------------------------------------------------------------------
 
@@ -158,22 +190,14 @@ list of related resources associated with a site within
 
     #>  Found 1 records... Imported 1 records. Simplifying...
     #>  Found 1 records... Imported 1 records. Simplifying...
-    #>                                                                              relatedResourcesTitle
-    #> 1 Biovolume of Phytoplankton in Lake Maggiore site code  IT_SI001137_within the period 1981 - 2010
-    #> 2                           Atmospheric deposition in Pallanza, Lake Maggiore watershed, 1980-2018
-    #> 3                                     Phytoplankton_Biomass_Lake Maggiore_Ghiffa_station-1984-2018
-    #> 4                                      Water chemistry of Lake Maggiore, Ghiffa station, 1988-2018
-    #> 5                          Transparency (Secchi depth) of Lake Maggiore, Ghiffa station, 1988-2018
-    #> 6                                             Chlorophyll a_Lake_Maggiore_Ghiffa_Station-1984-2018
-    #> 7                                 Water discharge of River Ticino, Lake Maggiore outlet, 1988-2018
-    #>    relatedResourcesChanged
-    #> 1 2021-08-25T16:38:25+0200
-    #> 2 2020-12-13T20:06:48+0100
-    #> 3 2020-12-16T10:46:15+0100
-    #> 4 2021-11-03T06:10:14+0100
-    #> 5 2020-12-13T20:10:34+0100
-    #> 6 2021-01-10T21:48:49+0100
-    #> 7 2021-07-21T12:35:07+0200
+    #>                                                                              relatedResourcesTitle  relatedResourcesChanged
+    #> 1 Biovolume of Phytoplankton in Lake Maggiore site code  IT_SI001137_within the period 1981 - 2010 2021-08-25T16:38:25+0200
+    #> 2                           Atmospheric deposition in Pallanza, Lake Maggiore watershed, 1980-2018 2020-12-13T20:06:48+0100
+    #> 3                                     Phytoplankton_Biomass_Lake Maggiore_Ghiffa_station-1984-2018 2020-12-16T10:46:15+0100
+    #> 4                                      Water chemistry of Lake Maggiore, Ghiffa station, 1988-2018 2021-11-03T06:10:14+0100
+    #> 5                          Transparency (Secchi depth) of Lake Maggiore, Ghiffa station, 1988-2018 2020-12-13T20:10:34+0100
+    #> 6                                             Chlorophyll a_Lake_Maggiore_Ghiffa_Station-1984-2018 2021-01-10T21:48:49+0100
+    #> 7                                 Water discharge of River Ticino, Lake Maggiore outlet, 1988-2018 2021-07-21T12:35:07+0200
     #>                                                              uri
     #> 1 https://deims.org/dataset/d9e94776-e7a8-11e2-a655-005056ab003f
     #> 2 https://deims.org/dataset/0ce46362-0aab-482a-b1f0-a444a5dada39
@@ -232,6 +256,13 @@ Institute for Electromagnetic Sensing of the Environment - IREA)
 
 For a exhaustive list of contributors please visit [authors
 page](https://oggioniale.github.io/ReLTER/authors).
+
+To contribute to the improvement of this package, join the group of
+developers in [GitHub](https://github.com/oggioniale/ReLTER).
+
+Please note that this package is released with a [Contributor Code of
+Conduct](https://ropensci.org/code-of-conduct/). By contributing to this
+project, you agree to abide by its terms.
 
 ## :office: Contributing organizations
 

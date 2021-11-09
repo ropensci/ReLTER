@@ -17,29 +17,40 @@ knitr::opts_chunk$set(
 )
 ```
 
+## Description of <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span>
+<span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span> is an R package that: provides access to [DEIMS-SDR](https://deims.org/)), allows interact with software implemented by eLTER Research Infrastructure (RI) and improves the data/information shared by them.
+<span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span> is a R package devoted to access, interact and improve the information and the data shared by Long Term Ecological Research (LTER) network. This package is born within eLTER H2020 major project that will help advance the development of European Long-Term Ecosystem Research Infrastructures ([eLTER RI](https://elter-ri.eu)).
+
+The <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span> package functions in particular allow to:
+
+- retrive the information about entities (e.g. sites, datasets, and activities) shared by [DEIMS-SDR](https://deims.org/) (see e.g. [get_site_info function](https://oggioniale.github.io/ReLTER/reference/get_site_info.html));
+
+- elaborate the information of single site or merge info from national network sites or entire International LTER (ILTER) in order to provide maps, figures, graphs etc (see e.g. [get_network_sites](https://oggioniale.github.io/ReLTER/reference/get_network_sites.html), [produce_site_map](https://oggioniale.github.io/ReLTER/reference/produce_site_map.html) or [produce_site_parameters_pie](https://oggioniale.github.io/ReLTER/reference/produce_site_parameters_pie.html) functions);
+
+- use the site informations for download data from other platforms (see e.g. [get_site_ODS](https://oggioniale.github.io/ReLTER/reference/get_site_ODS.html) function);
+
+- improve the quality of the dataset (see e.g. [get_id_worms](https://oggioniale.github.io/ReLTER/reference/get_id_worms.html)).
+
+Functions currently implemented are derived from the discussion of the needs declared by eLTER users community.
+
+The <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span> package shall definitely follow the progress of eLTER-RI infrastructure and evolving with the improvements and develop of new tools.
+
 ## Citation of <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span>
 
 To cite <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span> please use:
-Alessandro Oggioni. (2021). oggioniale/ReLTER: v0.3.0 (0.3.0). Zenodo. https://doi.org/10.5281/zenodo.5576813
+...
 
 or:
 
 ``` bibtex
-@software{alessandro_oggioni_2021_5576814,
-  author       = {Alessandro Oggioni},
-  title        = {oggioniale/ReLTER: v0.3.0},
-  month        = oct,
-  year         = 2021,
-  publisher    = {Zenodo},
-  version      = {0.2.0},
-  doi          = {10.5281/zenodo.5576813},
-  url          = {https://doi.org/10.5281/zenodo.5576813}
+@software{
+...
 }
 ```
 
 ## Documentation of <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span>
 
-You can visit <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span> website at [oggioniale.github.io/ReLTER/](https://oggioniale.github.io/ReLTER/) for obtain documentation about installation and examples of use.
+You can visit <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span> website at [oggioniale.github.io/ReLTER/](https://oggioniale.github.io/ReLTER/) for obtain documentation on installation, functions description and examples of use.
 
 
 ## Installation of <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span>

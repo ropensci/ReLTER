@@ -5,7 +5,7 @@
     "To contribute to the improvement of this package, join the group of developers
     (https://github.com/oggioniale/ReLTER).\n\n",
     "If you use this package, please cite as:\n",
-    "Alessandro Oggioni. (2021). oggioniale/ReLTER: v0.2.0 (0.2.0). Zenodo. https://doi.org/10.5281/zenodo.5576813\n",
+    "...\n",
     "'citation('ReLTER')'.\n"
   )
   packageStartupMessage(startMessage)

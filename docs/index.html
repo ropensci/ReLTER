@@ -18,8 +18,26 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="An interface to the eLTER for the R statistical programming environment">
-<meta property="og:description" content="More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.">
+<meta property="og:description" content="ReLTER is a R package devoted to access, interact and improve
+    the information and the data shared by Long Term Ecological Research (LTER)
+    network. This package is born within eLTER H2020 major project that will
+    help advance the development of European Long-Term Ecosystem Research
+    Infrastructures ([eLTER RI](https://elter-ri.eu)).
+    The ReLTER package functions in particular allow to:
+    - retrive the information about entities (e.g. sites, datasets, and
+    activities) shared by [DEIMS-SDR](https://deims.org/) (see e.g.
+    get_site_info function);
+    - elaborate the information of single site or merge info from national
+    network sites or entire International LTER (ILTER) in order to provide
+    maps, figures, graphs etc (see e.g. get_network_sites, produce_site_map or
+    produce_site_parameters_pie functions);
+    - use the site informations for download data from other platforms (see
+    e.g. get_site_ODS function);
+    - improve the quality of the dataset (see e.g. get_id_worms).
+    Functions currently implemented are derived from the discussion of the
+    needs declared by eLTER users community.
+    The ReLTER package shall definitely follow the progress of eLTER-RI
+    infrastructure and evolving with the improvements and develop of new tools.">
 <meta property="og:image" content="https://oggioniale.github.io/ReLTER/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -104,28 +122,34 @@
 <!-- other badges https://github.com/GuangchuangYu/badger -->
 <!-- DOI badge -->
 
-<p><a href="https://github.com/oggioniale/ReLTER">ReLTER</a> is an R package that allows interact with software (e.g. <a href="https://deims.org/">DEIMS-SDR</a>) implemented by eLTER Research Infrastructure (RI) and manage the data/information shared by them.</p>
+<!-- Once you have submitted a package and it has passed editor checks, add a peer-review badge via -->
+<!-- [![](https://badges.ropensci.org/<issue_id>_status.svg)](https://github.com/ropensci/software-review/issues/<issue_id>) -->
+<!-- where issue_id is the number of the issue in the software-review repository. -->
+<!-- badges: end -->
+<p><a href="https://github.com/oggioniale/ReLTER">ReLTER</a> is an R package that: provides access to <a href="https://deims.org/">DEIMS-SDR</a>), allows interact with software implemented by eLTER Research Infrastructure (RI) and improves the data/information shared by them. <a href="https://github.com/oggioniale/ReLTER">ReLTER</a> is a R package devoted to access, interact and improve the information and the data shared by Long Term Ecological Research (LTER) network. This package is born within eLTER H2020 major project that will help advance the development of European Long-Term Ecosystem Research Infrastructures (<a href="https://elter-ri.eu">eLTER RI</a>).</p>
+<p>The <a href="https://github.com/oggioniale/ReLTER">ReLTER</a> package functions in particular allow to:</p>
+<ul>
+<li><p>retrive the information about entities (e.g. sites, datasets, and activities) shared by <a href="https://deims.org/">DEIMS-SDR</a> (see e.g. <a href="https://oggioniale.github.io/ReLTER/reference/get_site_info.html">get_site_info function</a>);</p></li>
+<li><p>elaborate the information of single site or merge info from national network sites or entire International LTER (ILTER) in order to provide maps, figures, graphs etc (see e.g. <a href="https://oggioniale.github.io/ReLTER/reference/get_network_sites.html">get_network_sites</a>, <a href="https://oggioniale.github.io/ReLTER/reference/produce_site_map.html">produce_site_map</a> or <a href="https://oggioniale.github.io/ReLTER/reference/produce_site_parameters_pie.html">produce_site_parameters_pie</a> functions);</p></li>
+<li><p>use the site informations for download data from other platforms (see e.g. <a href="https://oggioniale.github.io/ReLTER/reference/get_site_ODS.html">get_site_ODS</a> function);</p></li>
+<li><p>improve the quality of the dataset (see e.g. <a href="https://oggioniale.github.io/ReLTER/reference/get_id_worms.html">get_id_worms</a>).</p></li>
+</ul>
+<p>Functions currently implemented are derived from the discussion of the needs declared by eLTER users community.</p>
+<p>The <a href="https://github.com/oggioniale/ReLTER">ReLTER</a> package shall definitely follow the progress of eLTER-RI infrastructure and evolving with the improvements and develop of new tools.</p>
 <!-- about the icons https://github.com/ikatyang/emoji-cheat-sheet -->
 <div id="notebook_with_decorative_cover-citation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#notebook_with_decorative_cover-citation" class="anchor"></a><span class="emoji" data-emoji="notebook_with_decorative_cover">📔</span> Citation</h2>
-<p>To cite <a href="https://github.com/oggioniale/ReLTER">ReLTER</a> please use: Alessandro Oggioni. (2021). oggioniale/ReLTER: v0.2.0 (0.2.0). Zenodo. <a href="https://doi.org/10.5281/zenodo.5576813" class="uri">https://doi.org/10.5281/zenodo.5576813</a></p>
+<p>To cite <a href="https://github.com/oggioniale/ReLTER">ReLTER</a> please use: …</p>
 <p>or:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bibtex"><code class="sourceCode bibtex"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">@software{alessandro_oggioni_2021_5576813,</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">  author       = {Alessandro Oggioni},</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">  title        = {oggioniale/ReLTER: v0.2.0},</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">  month        = oct,</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">  year         = 2021,</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">  publisher    = {Zenodo},</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">  version      = {0.2.0},</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">  doi          = {10.5281/zenodo.5576813},</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">  url          = {https://doi.org/10.5281/zenodo.5576813}</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bibtex"><code class="sourceCode bibtex"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">@software{</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">...</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">}</span></span></code></pre></div>
 </div>
 <div id="book-documentation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#book-documentation" class="anchor"></a><span class="emoji" data-emoji="book">📖</span> Documentation</h2>
-<p>You can visit <a href="https://github.com/oggioniale/ReLTER">ReLTER</a> website at <a href="https://oggioniale.github.io/ReLTER/">oggioniale.github.io/ReLTER/</a> for obtain documentation about installation and examples of use.</p>
+<p>You can visit <a href="https://github.com/oggioniale/ReLTER">ReLTER</a> website at <a href="https://oggioniale.github.io/ReLTER/">oggioniale.github.io/ReLTER/</a> for obtain documentation on installation, functions description and examples of use.</p>
 </div>
 <div id="arrow_double_down-installation" class="section level2">
 <h2 class="hasAnchor">
@@ -160,10 +184,9 @@
 <span class="co">#&gt; Bounding box:  xmin: 8.47803 ymin: 45.72556 xmax: 8.860755 ymax: 46.18081</span>
 <span class="co">#&gt; Geodetic CRS:  WGS 84</span>
 <span class="co">#&gt; # A tibble: 1 × 9</span>
-<span class="co">#&gt;   title uri                  boundaries geoCoord country geoElev.avg geoElev.min</span>
-<span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;        &lt;MULTIPOLYGON [°]&gt; &lt;chr&gt;    &lt;list&gt;        &lt;dbl&gt;       &lt;int&gt;</span>
-<span class="co">#&gt; 1 Lago… http… (((8.615976 45.72628, 8.… POINT (… &lt;chr […        194.         186</span>
-<span class="co">#&gt; # … with 2 more variables: geoElev.max &lt;int&gt;, geoElev.unit &lt;chr&gt;</span></code></pre></div>
+<span class="co">#&gt;   title                 uri                            boundaries geoCoord  country geoElev.avg geoElev.min geoElev.max geoElev.unit</span>
+<span class="co">#&gt;   &lt;chr&gt;                 &lt;chr&gt;                  &lt;MULTIPOLYGON [°]&gt; &lt;chr&gt;     &lt;list&gt;        &lt;dbl&gt;       &lt;int&gt;       &lt;int&gt; &lt;chr&gt;       </span>
+<span class="co">#&gt; 1 Lago Maggiore - Italy https://d… (((8.615976 45.72628, 8.61441… POINT (8… &lt;chr […        194.         186        4633 msl</span></code></pre></div>
 <hr>
 <p>The <em>get_network_parameters</em> function creates a list of parameters collected by a network (e.g. LTER-Italy). Information always gathered from what is indicated in the different sites on <a href="https://deims.org/">DEIMS-SDR</a>.</p>
 <table class="table">
@@ -232,44 +255,36 @@
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Bounding box:  xmin: 11.88721 ymin: 43.20518 xmax: 15.86426 ymax: 45.91294</span></span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Geodetic CRS:  WGS 84</span></span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 1 × 34</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   title  abstract   keywords uri   type  dateRange.from dateRange.to relatedSite</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; * &lt;chr&gt;  &lt;chr&gt;      &lt;list&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;          &lt;lgl&gt;        &lt;list&gt;     </span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 LTER … The prese… &lt;df [5 … http… data… 1965-01-01     NA           &lt;df [1 × 4…</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # … with 26 more variables: contacts.corresponding &lt;list&gt;,</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   contacts.creator &lt;list&gt;, contacts.metadataProvider &lt;lgl&gt;,</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   observationParameters &lt;list&gt;, observationSpecies &lt;list&gt;, dataPolicy &lt;list&gt;,</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   doi &lt;chr&gt;, onlineLocation &lt;list&gt;, legal.accessUse &lt;list&gt;,</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   legal.rights &lt;lgl&gt;, legal.legalAct &lt;lgl&gt;, legal.citation &lt;lgl&gt;,</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   method.instrumentation &lt;lgl&gt;, method.qualityAssurance &lt;lgl&gt;,</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   method.methodUrl &lt;list&gt;, method.methodDescription &lt;list&gt;, …</span></span></code></pre></div>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   title  abstract   keywords  uri   type  dateRange.from dateRange.to relatedSite contacts.corres… contacts.creator contacts.metada…</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; * &lt;chr&gt;  &lt;chr&gt;      &lt;list&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;          &lt;lgl&gt;        &lt;list&gt;      &lt;list&gt;           &lt;list&gt;           &lt;lgl&gt;           </span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 LTER … The prese… &lt;df [5 ×… http… data… 1965-01-01     NA           &lt;df [1 × 4… &lt;df [1 × 4]&gt;     &lt;df [14 × 4]&gt;    NA              </span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # … with 23 more variables: observationParameters &lt;list&gt;, observationSpecies &lt;list&gt;, dataPolicy &lt;list&gt;, doi &lt;chr&gt;,</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   onlineLocation &lt;list&gt;, legal.accessUse &lt;list&gt;, legal.rights &lt;lgl&gt;, legal.legalAct &lt;lgl&gt;, legal.citation &lt;lgl&gt;,</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   method.instrumentation &lt;lgl&gt;, method.qualityAssurance &lt;lgl&gt;, method.methodUrl &lt;list&gt;, method.methodDescription &lt;list&gt;,</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   method.samplingTimeUnit.label &lt;chr&gt;, method.samplingTimeUnit.uri &lt;lgl&gt;, method.spatialDesign.label &lt;chr&gt;,</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   method.spatialDesign.uri &lt;lgl&gt;, method.spatialScale.label &lt;chr&gt;, method.spatialScale.uri &lt;lgl&gt;,</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   method.temporalResolution.label &lt;chr&gt;, method.temporalResolution.uri &lt;lgl&gt;, boundaries &lt;POLYGON [°]&gt;,</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   boundariesDescription &lt;chr&gt;</span></span></code></pre></div>
 <hr>
 <p>The <em>get_site_info</em> function, with category = “RelateRes”, provides a list of related resources associated with a site within <a href="https://deims.org/">DEIMS-SDR</a>.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                                              relatedResourcesTitle</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Biovolume of Phytoplankton in Lake Maggiore site code  IT_SI001137_within the period 1981 - 2010</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2                           Atmospheric deposition in Pallanza, Lake Maggiore watershed, 1980-2018</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3                                     Phytoplankton_Biomass_Lake Maggiore_Ghiffa_station-1984-2018</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4                                      Water chemistry of Lake Maggiore, Ghiffa station, 1988-2018</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5                          Transparency (Secchi depth) of Lake Maggiore, Ghiffa station, 1988-2018</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6                                             Chlorophyll a_Lake_Maggiore_Ghiffa_Station-1984-2018</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7                                 Water discharge of River Ticino, Lake Maggiore outlet, 1988-2018</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    relatedResourcesChanged</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 2021-08-25T16:38:25+0200</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 2020-12-13T20:06:48+0100</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 2020-12-16T10:46:15+0100</span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 2021-11-03T06:10:14+0100</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 2020-12-13T20:10:34+0100</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 2021-01-10T21:48:49+0100</span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7 2021-07-21T12:35:07+0200</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                              uri</span></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 https://deims.org/dataset/d9e94776-e7a8-11e2-a655-005056ab003f</span></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 https://deims.org/dataset/0ce46362-0aab-482a-b1f0-a444a5dada39</span></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 https://deims.org/dataset/0ab8425a-d574-4575-8ba9-5275c607b0c5</span></span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 https://deims.org/dataset/69564188-89de-4879-ad88-4aa97c1d005d</span></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 https://deims.org/dataset/e538c743-2149-49e3-9025-14a04ea7c90d</span></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 https://deims.org/dataset/c857c8e2-48aa-4dcd-a7fb-e089bd4c5c4e</span></span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7 https://deims.org/dataset/fb3a8fec-0c1f-4c3a-81d5-364c7e6078c4</span></span></code></pre></div>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                                              relatedResourcesTitle  relatedResourcesChanged</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Biovolume of Phytoplankton in Lake Maggiore site code  IT_SI001137_within the period 1981 - 2010 2021-08-25T16:38:25+0200</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2                           Atmospheric deposition in Pallanza, Lake Maggiore watershed, 1980-2018 2020-12-13T20:06:48+0100</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3                                     Phytoplankton_Biomass_Lake Maggiore_Ghiffa_station-1984-2018 2020-12-16T10:46:15+0100</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4                                      Water chemistry of Lake Maggiore, Ghiffa station, 1988-2018 2021-11-03T06:10:14+0100</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5                          Transparency (Secchi depth) of Lake Maggiore, Ghiffa station, 1988-2018 2020-12-13T20:10:34+0100</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6                                             Chlorophyll a_Lake_Maggiore_Ghiffa_Station-1984-2018 2021-01-10T21:48:49+0100</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7                                 Water discharge of River Ticino, Lake Maggiore outlet, 1988-2018 2021-07-21T12:35:07+0200</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                              uri</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 https://deims.org/dataset/d9e94776-e7a8-11e2-a655-005056ab003f</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 https://deims.org/dataset/0ce46362-0aab-482a-b1f0-a444a5dada39</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 https://deims.org/dataset/0ab8425a-d574-4575-8ba9-5275c607b0c5</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 https://deims.org/dataset/69564188-89de-4879-ad88-4aa97c1d005d</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 https://deims.org/dataset/e538c743-2149-49e3-9025-14a04ea7c90d</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 https://deims.org/dataset/c857c8e2-48aa-4dcd-a7fb-e089bd4c5c4e</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7 https://deims.org/dataset/fb3a8fec-0c1f-4c3a-81d5-364c7e6078c4</span></span></code></pre></div>
 <hr>
 <p>The <em>produce_site_parameters_waffle</em> function provides a grouping of parameters, declared as measured within a site, in a waffle chart representation.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
@@ -306,6 +321,8 @@
 <p>Micha Silver <a href="https://orcid.org/0000-0002-1128-1325" class="uri">https://orcid.org/0000-0002-1128-1325</a> (Ben Gurion University - BGU)</p>
 <p>Paolo Tagliolato <a href="https:://orcid.org/0000-0002-0261-313X" class="uri">https:://orcid.org/0000-0002-0261-313X</a> (CNR, Institute for Electromagnetic Sensing of the Environment - IREA)</p>
 <p>For a exhaustive list of contributors please visit <a href="https://oggioniale.github.io/ReLTER/authors">authors page</a>.</p>
+<p>To contribute to the improvement of this package, join the group of developers in <a href="https://github.com/oggioniale/ReLTER">GitHub</a>.</p>
+<p>Please note that this package is released with a <a href="https://ropensci.org/code-of-conduct/">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
 <div id="office-contributing-organizations" class="section level2">
 <h2 class="hasAnchor">
@@ -336,10 +353,14 @@
 <h2>Developers</h2>
 <ul class="list-unstyled">
 <li>Alessandro Oggioni <br><small class="roles"> Author, maintainer, funder </small> <a href="https://orcid.org/0000-0002-7997-219X" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Micha Silver <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-1128-1325" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> <br><small>( Micha Silver is a coauthor of functions get_ilter_generalinfo and 
-          get_site_info for category Boundaries, he develop get_site_ODS function and he also is a reviewer of English wording for all functions.)</small>
+<li>Micha Silver <br><small class="roles"> Author, contributor </small> <a href="https://orcid.org/0000-0002-1128-1325" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> <br><small>( Micha Silver is a coauthor of functions get_ilter_generalinfo and
+          get_site_info for category Boundaries, he develop get_site_ODS
+          function and he also is a reviewer of English wording for all
+          functions.)</small>
 </li>
-<li><a href="authors.html">All authors...</a></li>
+<li>Paolo Tagliolato <br><small class="roles"> Author, contributor </small> <a href="https://orcid.org/0000-0002-0261-313X" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> <br><small>( Paolo Tagliolato wrote the function do_Q(), on which some ReLTER
+          internal functions are based)</small>
+</li>
 </ul>
 </div>
 
@@ -358,7 +379,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Alessandro Oggioni, Micha Silver.</p>
+  <p>Developed by Alessandro Oggioni, Micha Silver, Paolo Tagliolato.</p>
 </div>
 
 <div class="pkgdown">

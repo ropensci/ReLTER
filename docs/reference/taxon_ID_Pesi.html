@@ -191,7 +191,7 @@ columns provided as input and new columns as: 'canonicalName', 'authorship',
     <p>Alessandro Oggioni, phD (2020) <a href='mailto:oggioni.a@irea.cnr.it'>oggioni.a@irea.cnr.it</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='r-in'><span class='co'># \dontrun{</span></span>
+    <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
 <span class='r-in'><span class='va'>table</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span></span>
 <span class='r-in'>   taxonID <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>4</span>, <span class='fl'>5</span>, <span class='fl'>6</span><span class='op'>)</span>,</span>
 <span class='r-in'>   family <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Alexiidae"</span>, <span class='st'>"Anthicidae"</span>, <span class='st'>"Anthribidae"</span>, <span class='st'>"Anthribidae"</span>, <span class='st'>"Biphyllidae"</span>, <span class='st'>"Brentidae"</span><span class='op'>)</span>,</span>
@@ -200,17 +200,7 @@ columns provided as input and new columns as: 'canonicalName', 'authorship',
 <span class='r-in'></span>
 <span class='r-in'><span class='co'># We perform a query from the `table` in order to associate the taxon identifier (LSID) to the list of species present in the thirth column.</span></span>
 <span class='r-in'><span class='fu'>taxon_id_pesi</span><span class='op'>(</span><span class='va'>table</span>, <span class='fl'>3</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 6 × 10</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>   taxonID family  scientificName  canonicalName authorship synonyms LSID  url   </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;lgl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>1</span>       1 Alexii… Sphaerosoma se… Sphaerosoma … (Reitter,… <span style='color: #BB0000;'>NA</span>       urn:… http:…</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>2</span>       2 Anthic… Endomia tenuic… Endomia tenu… (Rossi, 1… <span style='color: #BB0000;'>NA</span>       urn:… http:…</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>3</span>       3 Anthri… Anthribus fasc… Anthribus fa… Forster, … <span style='color: #BB0000;'>NA</span>       urn:… http:…</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>4</span>       4 Anthri… Phaenotherion … <span style='color: #BB0000;'>NA</span>            <span style='color: #BB0000;'>NA</span>         <span style='color: #BB0000;'>NA</span>       <span style='color: #BB0000;'>NA</span>    <span style='color: #BB0000;'>NA</span>    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>5</span>       5 Biphyl… Diplocoelus fa… Diplocoelus … Guérin-Mé… <span style='color: #BB0000;'>NA</span>       urn:… http:…</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>6</span>       6 Brenti… Holotrichapion… Holotrichapi… (Fabriciu… <span style='color: #BB0000;'>NA</span>       urn:… http:…</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># … with 2 more variables: accordingTo &lt;chr&gt;, checkStatus &lt;chr&gt;</span></span>
-<span class='r-in'><span class='co'># }</span></span>
+<span class='r-in'><span class='op'>}</span></span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'># the output is:</span></span>
 <span class='r-in'><span class='co'># A tibble: 6 x 10</span></span>
@@ -263,7 +253,7 @@ columns provided as input and new columns as: 'canonicalName', 'authorship',
 
       <footer>
       <div class="copyright">
-  <p>Developed by Alessandro Oggioni, Micha Silver.</p>
+  <p>Developed by Alessandro Oggioni, Micha Silver, Paolo Tagliolato.</p>
 </div>
 
 <div class="pkgdown">

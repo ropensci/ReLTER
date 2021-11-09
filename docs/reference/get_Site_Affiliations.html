@@ -181,9 +181,14 @@ which the site is involved.</p>
     <pre class="examples"><span class='r-in'><span class='va'>tSiteAffiliation</span> <span class='op'>&lt;-</span> <span class='fu'>get_site_affiliations</span><span class='op'>(</span></span>
 <span class='r-in'>  deimsid <span class='op'>=</span> <span class='st'>"https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"</span></span>
 <span class='r-in'><span class='op'>)</span></span>
-<span class='r-err co'><span class='r-pr'>#&gt;</span> <span class='error'>Error in curl::curl_fetch_memory(url, handle = handle):</span> SSL certificate problem: certificate has expired</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Found 1 records... Imported 1 records. Simplifying...</span>
 <span class='r-in'><span class='va'>tSiteAffiliation</span></span>
-<span class='r-err co'><span class='r-pr'>#&gt;</span> <span class='error'>Error in eval(expr, envir, enclos):</span> object 'tSiteAffiliation' not found</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 1 × 10</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   title  uri   geoCoord country geoElev.avg geoElev.min geoElev.max geoElev.unit</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>1</span> Lago … http… POINT (… <span style='color: #949494;'>&lt;chr [</span>…        194.         186        <span style='text-decoration: underline;'>4</span>633 msl         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># … with 2 more variables: affiliation.networks &lt;list&gt;,</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   affiliation.projects &lt;list&gt;</span></span>
 <span class='r-in'></span>
 </pre>
   </div>
@@ -197,7 +202,7 @@ which the site is involved.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Alessandro Oggioni, Micha Silver.</p>
+  <p>Developed by Alessandro Oggioni, Micha Silver, Paolo Tagliolato.</p>
 </div>
 
 <div class="pkgdown">

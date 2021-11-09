@@ -4,21 +4,47 @@ Title: An interface to the eLTER for the R statistical programming environment
 Version: 0.2.0
 Date: 2021-11-01
 Authors@R: c(
-        person("Alessandro", "Oggioni", email = "oggioni.a@irea.cnr.it", role = c("aut", "cre", "fnd"),
+        person("Alessandro", "Oggioni", email = "oggioni.a@irea.cnr.it", 
+          role = c("aut", "cre", "fnd"),
           comment = c(ORCID = "0000-0002-7997-219X")
         ),
-        person("Micha", "Silver", email = "silverm@post.bgu.ac.il", role = "aut",
-          comment = c(ORCID = "0000-0002-1128-1325", " Micha Silver is a coauthor of functions get_ilter_generalinfo and 
-          get_site_info for category Boundaries, he develop get_site_ODS function and he also is a reviewer of English wording for all functions.")
+        person("Micha", "Silver", email = "silverm@post.bgu.ac.il",
+          role = c("aut", "ctb"),
+          comment = c(ORCID = "0000-0002-1128-1325",
+          " Micha Silver is a coauthor of functions get_ilter_generalinfo and
+          get_site_info for category Boundaries, he develop get_site_ODS
+          function and he also is a reviewer of English wording for all
+          functions.")
         ),
-        person("Paolo", "Tagliolato", email = "tagliolato.a@irea.cnr.it", role = "ctb",
-          comment = c(ORCID = "0000-0002-0261-313X", " Paolo Tagliolato wrote the function do_Q(),
-                     on which some ReLTER internal functions are based")
+        person("Paolo", "Tagliolato", email = "tagliolato.a@irea.cnr.it",
+          role = c("aut", "ctb"),
+          comment = c(ORCID = "0000-0002-0261-313X", 
+          " Paolo Tagliolato wrote the function do_Q(), on which some ReLTER
+          internal functions are based")
         )
       )
-Maintainer: The package maintainer Alessandro Oggioni, phD (2020) <oggioniale@gmail.com>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Maintainer: The package maintainer Alessandro Oggioni, phD (2020)
+    <oggioniale@gmail.com>
+Description: ReLTER is a R package devoted to access, interact and improve
+    the information and the data shared by Long Term Ecological Research (LTER)
+    network. This package is born within eLTER H2020 major project that will
+    help advance the development of European Long-Term Ecosystem Research
+    Infrastructures ([eLTER RI](https://elter-ri.eu)).
+    The ReLTER package functions in particular allow to:
+    - retrive the information about entities (e.g. sites, datasets, and
+    activities) shared by [DEIMS-SDR](https://deims.org/) (see e.g.
+    get_site_info function);
+    - elaborate the information of single site or merge info from national
+    network sites or entire International LTER (ILTER) in order to provide
+    maps, figures, graphs etc (see e.g. get_network_sites, produce_site_map or
+    produce_site_parameters_pie functions);
+    - use the site informations for download data from other platforms (see
+    e.g. get_site_ODS function);
+    - improve the quality of the dataset (see e.g. get_id_worms).
+    Functions currently implemented are derived from the discussion of the
+    needs declared by eLTER users community.
+    The ReLTER package shall definitely follow the progress of eLTER-RI
+    infrastructure and evolving with the improvements and develop of new tools.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true

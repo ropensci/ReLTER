@@ -244,29 +244,37 @@ by centroid of the site. Default 0.</p></td>
     <p>Alessandro Oggioni, phD (2020) <a href='mailto:oggioni.a@irea.cnr.it'>oggioni.a@irea.cnr.it</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='r-in'><span class='co'># \dontrun{</span></span>
-<span class='r-in'><span class='co'># Example of LTER-Germay site</span></span>
+    <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'><span class='co'># Example of Lange Bramke site</span></span>
 <span class='r-in'><span class='va'>sitesNetwork</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_network_sites.html'>get_network_sites</a></span><span class='op'>(</span></span>
 <span class='r-in'>  networkDEIMSID <span class='op'>=</span> <span class='st'>"https://deims.org/networks/e904354a-f3a0-40ce-a9b5-61741f66c824"</span></span>
 <span class='r-in'><span class='op'>)</span></span>
-<span class='r-err co'><span class='r-pr'>#&gt;</span> <span class='error'>Error in open.connection(con, "rb"):</span> SSL certificate problem: certificate has expired</span>
 <span class='r-in'><span class='va'>map</span> <span class='op'>&lt;-</span> <span class='fu'>produce_site_map</span><span class='op'>(</span></span>
 <span class='r-in'>  deimsid <span class='op'>=</span> <span class='st'>"https://deims.org/8e24d4f8-d6f6-4463-83e9-73cac2fd3f38"</span>,</span>
 <span class='r-in'>  countryCode <span class='op'>=</span> <span class='st'>"DEU"</span>,</span>
 <span class='r-in'>  listOfSites <span class='op'>=</span> <span class='va'>sitesNetwork</span>,</span>
-<span class='r-in'>  gridNx <span class='op'>=</span> <span class='fl'>0.7</span>,</span>
-<span class='r-in'>  gridNy <span class='op'>=</span> <span class='fl'>0.2</span></span>
+<span class='r-in'>  gridNx <span class='op'>=</span> <span class='fl'>0.2</span>,</span>
+<span class='r-in'>  gridNy <span class='op'>=</span> <span class='fl'>0.7</span></span>
 <span class='r-in'><span class='op'>)</span></span>
-<span class='r-err co'><span class='r-pr'>#&gt;</span> <span class='error'>Error in open.connection(con, "rb"):</span> SSL certificate problem: certificate has expired</span>
 <span class='r-in'></span>
-<span class='r-in'><span class='co'># Example of LTER-Italy site</span></span>
+<span class='r-in'><span class='co'># Example of Eisenwurzen site</span></span>
+<span class='r-in'><span class='va'>sitesNetwork</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_network_sites.html'>get_network_sites</a></span><span class='op'>(</span></span>
+<span class='r-in'>  networkDEIMSID <span class='op'>=</span> <span class='st'>"https://deims.org/networks/d45c2690-dbef-4dbc-a742-26ea846edf28"</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>map</span> <span class='op'>&lt;-</span> <span class='fu'>produce_site_map</span><span class='op'>(</span></span>
+<span class='r-in'>  deimsid <span class='op'>=</span> <span class='st'>"https://deims.org/d0a8da18-0881-4ebe-bccf-bc4cb4e25701"</span>,</span>
+<span class='r-in'>  countryCode <span class='op'>=</span> <span class='st'>"AUT"</span>,</span>
+<span class='r-in'>  listOfSites <span class='op'>=</span> <span class='va'>sitesNetwork</span>,</span>
+<span class='r-in'>  gridNx <span class='op'>=</span> <span class='fl'>0.2</span>,</span>
+<span class='r-in'>  gridNy <span class='op'>=</span> <span class='fl'>0.7</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Example of Lake Maggiore site</span></span>
 <span class='r-in'><span class='va'>sitesNetwork</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_network_sites.html'>get_network_sites</a></span><span class='op'>(</span></span>
 <span class='r-in'>  networkDEIMSID <span class='op'>=</span> <span class='st'>"https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"</span></span>
 <span class='r-in'><span class='op'>)</span></span>
-<span class='r-err co'><span class='r-pr'>#&gt;</span> <span class='error'>Error in open.connection(con, "rb"):</span> SSL certificate problem: certificate has expired</span>
 <span class='r-in'><span class='co'># In the case of Italian sites are selected only true sites and exclused the macrosites.</span></span>
 <span class='r-in'><span class='va'>sitesNetwork</span> <span class='op'>&lt;-</span> <span class='op'>(</span><span class='va'>sitesNetwork</span><span class='op'>[</span><span class='op'>!</span><span class='fu'><a href='https://rdrr.io/r/base/grep.html'>grepl</a></span><span class='op'>(</span><span class='st'>'^IT'</span>, <span class='va'>sitesNetwork</span><span class='op'>$</span><span class='va'>title</span><span class='op'>)</span>,<span class='op'>]</span><span class='op'>)</span></span>
-<span class='r-err co'><span class='r-pr'>#&gt;</span> <span class='error'>Error in eval(expr, envir, enclos):</span> object 'sitesNetwork' not found</span>
 <span class='r-in'><span class='va'>map</span> <span class='op'>&lt;-</span> <span class='fu'>produce_site_map</span><span class='op'>(</span></span>
 <span class='r-in'>  deimsid <span class='op'>=</span> <span class='st'>"https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"</span>,</span>
 <span class='r-in'>  countryCode <span class='op'>=</span> <span class='st'>"ITA"</span>,</span>
@@ -274,8 +282,7 @@ by centroid of the site. Default 0.</p></td>
 <span class='r-in'>  gridNx <span class='op'>=</span> <span class='fl'>0.7</span>,</span>
 <span class='r-in'>  gridNy <span class='op'>=</span> <span class='fl'>0.35</span></span>
 <span class='r-in'><span class='op'>)</span></span>
-<span class='r-err co'><span class='r-pr'>#&gt;</span> <span class='error'>Error in open.connection(con, "rb"):</span> SSL certificate problem: certificate has expired</span>
-<span class='r-in'><span class='co'># }</span></span>
+<span class='r-in'><span class='op'>}</span></span>
 <span class='r-in'></span>
 </pre>
   </div>
@@ -289,7 +296,7 @@ by centroid of the site. Default 0.</p></td>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Alessandro Oggioni, Micha Silver.</p>
+  <p>Developed by Alessandro Oggioni, Micha Silver, Paolo Tagliolato.</p>
 </div>
 
 <div class="pkgdown">
