@@ -63,4 +63,6 @@ devtools::install_github("oggioniale/ReLTER")
 ```
 
 
+## Code of Conduct of <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span>
 
+Please note that this package is released with a [Contributor Code of Conduct](https://ropensci.org/code-of-conduct/). By contributing to this project, you agree to abide by its terms.

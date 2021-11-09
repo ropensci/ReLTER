@@ -25,24 +25,24 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 <!-- badges: end -->
 
 `{ReLTER}` is an R package that: provides access to
-[DEIMS-SDR](https://deims.org/)), allows the interaction with software
+[DEIMS-SDR](https://deims.org/)), allows interact with software
 implemented by eLTER Research Infrastructure (RI) and improves the
-data/information shared by them. `{ReLTER}` is an R package devoted to
+data/information shared by them. `{ReLTER}` is a R package devoted to
 access, interact and improve the information and the data shared by Long
 Term Ecological Research (LTER) network. This package is born within
 eLTER H2020 major project that will help advance the development of
 European Long-Term Ecosystem Research Infrastructures ([eLTER
 RI](https://elter-ri.eu)).
 
-The `{ReLTER}` package functions allow to:
+The `{ReLTER}` package functions in particular allow to:
 
--   retrieve information about entities (e.g. sites, datasets, and
+-   retrive the information about entities (e.g. sites, datasets, and
     activities) shared by [DEIMS-SDR](https://deims.org/) (see
     e.g. [get_site_info
     function](https://oggioniale.github.io/ReLTER/reference/get_site_info.html));
 
--   elaborate the information of a single site or merged info from national
-    network sites or from the entire International LTER (ILTER) in order to
+-   elaborate the information of single site or merge info from national
+    network sites or entire International LTER (ILTER) in order to
     provide maps, figures, graphs etc (see
     e.g. [get_network_sites](https://oggioniale.github.io/ReLTER/reference/get_network_sites.html),
     [produce_site_map](https://oggioniale.github.io/ReLTER/reference/produce_site_map.html)
@@ -50,19 +50,19 @@ The `{ReLTER}` package functions allow to:
     [produce_site_parameters_pie](https://oggioniale.github.io/ReLTER/reference/produce_site_parameters_pie.html)
     functions);
 
--   exploit site information for downloading data (even when stored in other platforms)
+-   use the site informations for download data from other platforms
     (see
     e.g. [get_site_ODS](https://oggioniale.github.io/ReLTER/reference/get_site_ODS.html)
     function);
 
--   improve dataset quality (see
+-   improve the quality of the dataset (see
     e.g. [get_id_worms](https://oggioniale.github.io/ReLTER/reference/get_id_worms.html)).
 
 Functions currently implemented are derived from the discussion of the
 needs declared by eLTER users community.
 
-The `{ReLTER}` package will definitely follow the progress of eLTER-RI
-infrastructure and will evolve with improvements and development of new
+The `{ReLTER}` package shall definitely follow the progress of eLTER-RI
+infrastructure and evolving with the improvements and develop of new
 tools.
 
 <!-- about the icons https://github.com/ikatyang/emoji-cheat-sheet -->
@@ -82,7 +82,7 @@ or:
 ## :book: Documentation
 
 You can visit `{ReLTER}` website at
-[oggioniale.github.io/ReLTER/](https://oggioniale.github.io/ReLTER/) to
+[oggioniale.github.io/ReLTER/](https://oggioniale.github.io/ReLTER/) for
 obtain documentation on installation, functions description and examples
 of use.
 
@@ -98,13 +98,13 @@ devtools::install_github("oggioniale/ReLTER")
 
 ## :memo: Examples
 
-Examples of some capabilities of this library are given
-below. In these examples you can see the interaction
-with [DEIMS-SDR](https://deims.org/) through its [WEB APIs](https://deims.org/api), 
+Some examples of the possible capabilities of this library is given
+below. In these examples you can see the interaction, througth
+[API](https://deims.org/api), with [DEIMS-SDR](https://deims.org/).
 
 The *get_site_info* function, with category Boundaries, creates a map
 overlaying the boundaries of the site (e.g. Lake Maggiore) thanks to the
-information on geographical features provided by
+information on geographical aspects provided by
 [DEIMS-SDR](https://deims.org/).
 
 ``` r
@@ -130,17 +130,18 @@ siteBoundaries
 #> Bounding box:  xmin: 8.47803 ymin: 45.72556 xmax: 8.860755 ymax: 46.18081
 #> Geodetic CRS:  WGS 84
 #> # A tibble: 1 × 9
-#>   title                 uri                            boundaries geoCoord  country geoElev.avg geoElev.min geoElev.max geoElev.unit
-#>   <chr>                 <chr>                  <MULTIPOLYGON [°]> <chr>     <list>        <dbl>       <int>       <int> <chr>       
-#> 1 Lago Maggiore - Italy https://d… (((8.615976 45.72628, 8.61441… POINT (8… <chr […        194.         186        4633 msl
+#>   title uri                  boundaries geoCoord country geoElev.avg geoElev.min
+#>   <chr> <chr>        <MULTIPOLYGON [°]> <chr>    <list>        <dbl>       <int>
+#> 1 Lago… http… (((8.615976 45.72628, 8.… POINT (… <chr […        194.         186
+#> # … with 2 more variables: geoElev.max <int>, geoElev.unit <chr>
 ```
 
 ------------------------------------------------------------------------
 
 The *get_network_parameters* function creates a list of parameters
-collected by a network (e.g. LTER-Italy). The function produces the list by gathering
-information from the description in [DEIMS-SDR](https://deims.org/) 
-of all the sites in the given network.
+collected by a network (e.g. LTER-Italy). Information always gathered
+from what is indicated in the different sites on
+[DEIMS-SDR](https://deims.org/).
 
 | parameterLabel                    | parameterUri                                  |
 |:----------------------------------|:----------------------------------------------|
@@ -158,7 +159,7 @@ of all the sites in the given network.
 
 ------------------------------------------------------------------------
 
-The *get_dataset_info* function provides a table with information
+The *get_dataset_info* function provides to a table with information
 about specific dataset shared through [DEIMS-SDR](https://deims.org/).
 
     #>  Found 1 records... Imported 1 records. Simplifying...
@@ -171,33 +172,41 @@ about specific dataset shared through [DEIMS-SDR](https://deims.org/).
     #> Bounding box:  xmin: 11.88721 ymin: 43.20518 xmax: 15.86426 ymax: 45.91294
     #> Geodetic CRS:  WGS 84
     #> # A tibble: 1 × 34
-    #>   title  abstract   keywords  uri   type  dateRange.from dateRange.to relatedSite contacts.corres… contacts.creator contacts.metada…
-    #> * <chr>  <chr>      <list>    <chr> <chr> <chr>          <lgl>        <list>      <list>           <list>           <lgl>           
-    #> 1 LTER … The prese… <df [5 ×… http… data… 1965-01-01     NA           <df [1 × 4… <df [1 × 4]>     <df [14 × 4]>    NA              
-    #> # … with 23 more variables: observationParameters <list>, observationSpecies <list>, dataPolicy <list>, doi <chr>,
-    #> #   onlineLocation <list>, legal.accessUse <list>, legal.rights <lgl>, legal.legalAct <lgl>, legal.citation <lgl>,
-    #> #   method.instrumentation <lgl>, method.qualityAssurance <lgl>, method.methodUrl <list>, method.methodDescription <list>,
-    #> #   method.samplingTimeUnit.label <chr>, method.samplingTimeUnit.uri <lgl>, method.spatialDesign.label <chr>,
-    #> #   method.spatialDesign.uri <lgl>, method.spatialScale.label <chr>, method.spatialScale.uri <lgl>,
-    #> #   method.temporalResolution.label <chr>, method.temporalResolution.uri <lgl>, boundaries <POLYGON [°]>,
-    #> #   boundariesDescription <chr>
+    #>   title  abstract   keywords uri   type  dateRange.from dateRange.to relatedSite
+    #> * <chr>  <chr>      <list>   <chr> <chr> <chr>          <lgl>        <list>     
+    #> 1 LTER … The prese… <df [5 … http… data… 1965-01-01     NA           <df [1 × 4…
+    #> # … with 26 more variables: contacts.corresponding <list>,
+    #> #   contacts.creator <list>, contacts.metadataProvider <lgl>,
+    #> #   observationParameters <list>, observationSpecies <list>, dataPolicy <list>,
+    #> #   doi <chr>, onlineLocation <list>, legal.accessUse <list>,
+    #> #   legal.rights <lgl>, legal.legalAct <lgl>, legal.citation <lgl>,
+    #> #   method.instrumentation <lgl>, method.qualityAssurance <lgl>,
+    #> #   method.methodUrl <list>, method.methodDescription <list>, …
 
 ------------------------------------------------------------------------
 
 The *get_site_info* function, with category = “RelateRes”, provides a
-list of related resources associated to a site within
+list of related resources associated with a site within
 [DEIMS-SDR](https://deims.org/).
 
     #>  Found 1 records... Imported 1 records. Simplifying...
     #>  Found 1 records... Imported 1 records. Simplifying...
-    #>                                                                              relatedResourcesTitle  relatedResourcesChanged
-    #> 1 Biovolume of Phytoplankton in Lake Maggiore site code  IT_SI001137_within the period 1981 - 2010 2021-08-25T16:38:25+0200
-    #> 2                           Atmospheric deposition in Pallanza, Lake Maggiore watershed, 1980-2018 2020-12-13T20:06:48+0100
-    #> 3                                     Phytoplankton_Biomass_Lake Maggiore_Ghiffa_station-1984-2018 2020-12-16T10:46:15+0100
-    #> 4                                      Water chemistry of Lake Maggiore, Ghiffa station, 1988-2018 2021-11-03T06:10:14+0100
-    #> 5                          Transparency (Secchi depth) of Lake Maggiore, Ghiffa station, 1988-2018 2020-12-13T20:10:34+0100
-    #> 6                                             Chlorophyll a_Lake_Maggiore_Ghiffa_Station-1984-2018 2021-01-10T21:48:49+0100
-    #> 7                                 Water discharge of River Ticino, Lake Maggiore outlet, 1988-2018 2021-07-21T12:35:07+0200
+    #>                                                                              relatedResourcesTitle
+    #> 1 Biovolume of Phytoplankton in Lake Maggiore site code  IT_SI001137_within the period 1981 - 2010
+    #> 2                           Atmospheric deposition in Pallanza, Lake Maggiore watershed, 1980-2018
+    #> 3                                     Phytoplankton_Biomass_Lake Maggiore_Ghiffa_station-1984-2018
+    #> 4                                      Water chemistry of Lake Maggiore, Ghiffa station, 1988-2018
+    #> 5                          Transparency (Secchi depth) of Lake Maggiore, Ghiffa station, 1988-2018
+    #> 6                                             Chlorophyll a_Lake_Maggiore_Ghiffa_Station-1984-2018
+    #> 7                                 Water discharge of River Ticino, Lake Maggiore outlet, 1988-2018
+    #>    relatedResourcesChanged
+    #> 1 2021-08-25T16:38:25+0200
+    #> 2 2020-12-13T20:06:48+0100
+    #> 3 2020-12-16T10:46:15+0100
+    #> 4 2021-11-03T06:10:14+0100
+    #> 5 2020-12-13T20:10:34+0100
+    #> 6 2021-01-10T21:48:49+0100
+    #> 7 2021-07-21T12:35:07+0200
     #>                                                              uri
     #> 1 https://deims.org/dataset/d9e94776-e7a8-11e2-a655-005056ab003f
     #> 2 https://deims.org/dataset/0ce46362-0aab-482a-b1f0-a444a5dada39
@@ -254,15 +263,11 @@ University - BGU)
 Paolo Tagliolato <https:://orcid.org/0000-0002-0261-313X> (CNR,
 Institute for Electromagnetic Sensing of the Environment - IREA)
 
-For an exhaustive list of contributors please visit [authors
+For a exhaustive list of contributors please visit [authors
 page](https://oggioniale.github.io/ReLTER/authors).
 
 To contribute to the improvement of this package, join the group of
 developers in [GitHub](https://github.com/oggioniale/ReLTER).
-
-Please note that this package is released with a [Contributor Code of
-Conduct](https://ropensci.org/code-of-conduct/). By contributing to this
-project, you agree to abide by its terms.
 
 ## :office: Contributing organizations
 
@@ -271,3 +276,9 @@ project, you agree to abide by its terms.
 
 <img src="man/figures/bgu_logo.png" height="80" alt="BGU" />
 <!--a href="https://in.bgu.ac.il/en/"><img src="man/figures/bgu_logo.png" height="40" align="left" /></a-->
+
+## :passport_control: Code of Conduct
+
+Please note that this package is released with a [Contributor Code of
+Conduct](https://ropensci.org/code-of-conduct/). By contributing to this
+project, you agree to abide by its terms.
