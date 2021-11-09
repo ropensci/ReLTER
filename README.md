@@ -25,24 +25,24 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 <!-- badges: end -->
 
 `{ReLTER}` is an R package that: provides access to
-[DEIMS-SDR](https://deims.org/)), allows interact with software
+[DEIMS-SDR](https://deims.org/)), allows the interaction with software
 implemented by eLTER Research Infrastructure (RI) and improves the
-data/information shared by them. `{ReLTER}` is a R package devoted to
+data/information shared by them. `{ReLTER}` is an R package devoted to
 access, interact and improve the information and the data shared by Long
 Term Ecological Research (LTER) network. This package is born within
 eLTER H2020 major project that will help advance the development of
 European Long-Term Ecosystem Research Infrastructures ([eLTER
 RI](https://elter-ri.eu)).
 
-The `{ReLTER}` package functions in particular allow to:
+The `{ReLTER}` package functions allow to:
 
--   retrive the information about entities (e.g. sites, datasets, and
+-   retrieve information about entities (e.g. sites, datasets, and
     activities) shared by [DEIMS-SDR](https://deims.org/) (see
     e.g. [get_site_info
     function](https://oggioniale.github.io/ReLTER/reference/get_site_info.html));
 
--   elaborate the information of single site or merge info from national
-    network sites or entire International LTER (ILTER) in order to
+-   elaborate the information of a single site or merged info from national
+    network sites or from the entire International LTER (ILTER) in order to
     provide maps, figures, graphs etc (see
     e.g. [get_network_sites](https://oggioniale.github.io/ReLTER/reference/get_network_sites.html),
     [produce_site_map](https://oggioniale.github.io/ReLTER/reference/produce_site_map.html)
@@ -50,19 +50,19 @@ The `{ReLTER}` package functions in particular allow to:
     [produce_site_parameters_pie](https://oggioniale.github.io/ReLTER/reference/produce_site_parameters_pie.html)
     functions);
 
--   use the site informations for download data from other platforms
+-   exploit site information for downloading data (even when stored in other platforms)
     (see
     e.g. [get_site_ODS](https://oggioniale.github.io/ReLTER/reference/get_site_ODS.html)
     function);
 
--   improve the quality of the dataset (see
+-   improve dataset quality (see
     e.g. [get_id_worms](https://oggioniale.github.io/ReLTER/reference/get_id_worms.html)).
 
 Functions currently implemented are derived from the discussion of the
 needs declared by eLTER users community.
 
-The `{ReLTER}` package shall definitely follow the progress of eLTER-RI
-infrastructure and evolving with the improvements and develop of new
+The `{ReLTER}` package will definitely follow the progress of eLTER-RI
+infrastructure and will evolve with improvements and development of new
 tools.
 
 <!-- about the icons https://github.com/ikatyang/emoji-cheat-sheet -->
@@ -82,7 +82,7 @@ or:
 ## :book: Documentation
 
 You can visit `{ReLTER}` website at
-[oggioniale.github.io/ReLTER/](https://oggioniale.github.io/ReLTER/) for
+[oggioniale.github.io/ReLTER/](https://oggioniale.github.io/ReLTER/) to
 obtain documentation on installation, functions description and examples
 of use.
 
@@ -98,13 +98,13 @@ devtools::install_github("oggioniale/ReLTER")
 
 ## :memo: Examples
 
-Some examples of the possible capabilities of this library is given
-below. In these examples you can see the interaction, througth
-[API](https://deims.org/api), with [DEIMS-SDR](https://deims.org/).
+Examples of some capabilities of this library are given
+below. In these examples you can see the interaction
+with [DEIMS-SDR](https://deims.org/) through its [WEB APIs](https://deims.org/api), 
 
 The *get_site_info* function, with category Boundaries, creates a map
 overlaying the boundaries of the site (e.g. Lake Maggiore) thanks to the
-information on geographical aspects provided by
+information on geographical features provided by
 [DEIMS-SDR](https://deims.org/).
 
 ``` r
@@ -138,9 +138,9 @@ siteBoundaries
 ------------------------------------------------------------------------
 
 The *get_network_parameters* function creates a list of parameters
-collected by a network (e.g. LTER-Italy). Information always gathered
-from what is indicated in the different sites on
-[DEIMS-SDR](https://deims.org/).
+collected by a network (e.g. LTER-Italy). The function produces the list by gathering
+information from the description in [DEIMS-SDR](https://deims.org/) 
+of all the sites in the given network.
 
 | parameterLabel                    | parameterUri                                  |
 |:----------------------------------|:----------------------------------------------|
@@ -158,7 +158,7 @@ from what is indicated in the different sites on
 
 ------------------------------------------------------------------------
 
-The *get_dataset_info* function provides to a table with information
+The *get_dataset_info* function provides a table with information
 about specific dataset shared through [DEIMS-SDR](https://deims.org/).
 
     #>  Found 1 records... Imported 1 records. Simplifying...
@@ -185,7 +185,7 @@ about specific dataset shared through [DEIMS-SDR](https://deims.org/).
 ------------------------------------------------------------------------
 
 The *get_site_info* function, with category = “RelateRes”, provides a
-list of related resources associated with a site within
+list of related resources associated to a site within
 [DEIMS-SDR](https://deims.org/).
 
     #>  Found 1 records... Imported 1 records. Simplifying...
@@ -254,7 +254,7 @@ University - BGU)
 Paolo Tagliolato <https:://orcid.org/0000-0002-0261-313X> (CNR,
 Institute for Electromagnetic Sensing of the Environment - IREA)
 
-For a exhaustive list of contributors please visit [authors
+For an exhaustive list of contributors please visit [authors
 page](https://oggioniale.github.io/ReLTER/authors).
 
 To contribute to the improvement of this package, join the group of
