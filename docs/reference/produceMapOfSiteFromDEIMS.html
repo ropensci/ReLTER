@@ -47,8 +47,8 @@
 
 
 <meta property="og:title" content="eLTER produceMapOfSiteFromDEIMS function — produceMapOfSiteFromDEIMS" />
-<meta property="og:description" content="This function provide a `map` of the site boundaries provided
-by site manager in the DEIMS-SDR." />
+<meta property="og:description" content="This function produces a `map` of the site boundaries 
+as provided by the DEIMS-SDR, within a given country and network." />
 <meta property="og:image" content="https://oggioniale.github.io/ReLTER/logo.png" />
 
 
@@ -91,7 +91,7 @@ by site manager in the DEIMS-SDR." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ReLTER</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -151,8 +151,8 @@ by site manager in the DEIMS-SDR." />
     </div>
 
     <div class="ref-description">
-    <p>This function provide a `map` of the site boundaries provided
-by site manager in the DEIMS-SDR.</p>
+    <p>This function produces a `map` of the site boundaries 
+as provided by the DEIMS-SDR, within a given country and network.</p>
     </div>
 
     <pre class="usage"><span class='fu'>produceMapOfSiteFromDEIMS</span><span class='op'>(</span>
@@ -174,24 +174,25 @@ by site manager in the DEIMS-SDR.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>deimsid</th>
-      <td><p>a character. It is the DEIMS iD of network make from
+      <td><p>a `character`. The DEIMS ID of network from
 DEIMS-SDR website. More information about DEIMS iD in this
 <a href='https://deims.org/docs/deimsid.html'>page</a>.</p></td>
     </tr>
     <tr>
       <th>countryCode</th>
-      <td><p>a `character` follow the SO 3166-1 alpha-3 codes. This
-ISO convention are three-letter country codes defined in ISO 3166-1, part of
-the ISO 3166 standard published by the International Organization for
-Standardization (ISO), to represent countries, dependent territories, and
-special areas of geographical interest. The map produced by this function
-will be limited only to the country indicated in this parameter, if the
-network has a extraterritorial sites those will not represented.</p></td>
+      <td><p>a `character` following the SO 3166-1 alpha-3 codes. 
+This ISO convention consists of three-letter country codes 
+as defined in ISO 3166-1, part of the ISO 3166 standard published by the 
+International Organization for Standardization (ISO), to represent countries, 
+dependent territories, and special areas of geographical interest. 
+The map produced by this function will be limited to the country 
+indicated in this parameter; if the network has a extraterritorial sites
+those will not represented.</p></td>
     </tr>
     <tr>
       <th>listOfSites</th>
       <td><p>a `sf`. List of sites of specific network. This list
-needs for show the another points into map.</p></td>
+is needed for showing another points on the map.</p></td>
     </tr>
     <tr>
       <th>gridNx</th>

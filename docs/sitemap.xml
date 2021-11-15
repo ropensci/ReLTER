@@ -4,93 +4,102 @@
     <loc>https://oggioniale.github.io/ReLTER//index.html</loc>
   </url>
   <url>
-    <loc>https://oggioniale.github.io/ReLTER//reference/createQRCode.html</loc>
-  </url>
-  <url>
     <loc>https://oggioniale.github.io/ReLTER//reference/do_Q.html</loc>
   </url>
   <url>
-    <loc>https://oggioniale.github.io/ReLTER//reference/getActivity.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/get_activity_info.html</loc>
   </url>
   <url>
-    <loc>https://oggioniale.github.io/ReLTER//reference/getDataset.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/get_dataset_info.html</loc>
   </url>
   <url>
-    <loc>https://oggioniale.github.io/ReLTER//reference/getILTEREnvCharacts.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/get_ilter_envcharacts.html</loc>
   </url>
   <url>
-    <loc>https://oggioniale.github.io/ReLTER//reference/getILTERGeneralInfo.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/get_ilter_generalinfo.html</loc>
   </url>
   <url>
-    <loc>https://oggioniale.github.io/ReLTER//reference/getILTERParameters.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/get_ilter_parameters.html</loc>
   </url>
   <url>
-    <loc>https://oggioniale.github.io/ReLTER//reference/getILTERResearchTopics.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/get_ilter_research_topics.html</loc>
   </url>
   <url>
-    <loc>https://oggioniale.github.io/ReLTER//reference/getNetworkEnvCharacts.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/get_network_envcharacts.html</loc>
   </url>
   <url>
-    <loc>https://oggioniale.github.io/ReLTER//reference/getNetworkParameters.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/get_network_parameters.html</loc>
   </url>
   <url>
-    <loc>https://oggioniale.github.io/ReLTER//reference/getNetworkRelatedResources.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/get_network_related_resources.html</loc>
   </url>
   <url>
-    <loc>https://oggioniale.github.io/ReLTER//reference/getNetworkResearchTopics.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/get_network_research_topics.html</loc>
   </url>
   <url>
-    <loc>https://oggioniale.github.io/ReLTER//reference/getNetworkSites.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/get_network_sites.html</loc>
   </url>
   <url>
-    <loc>https://oggioniale.github.io/ReLTER//reference/getSOSProcedureList.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/get_site_ODS.html</loc>
   </url>
   <url>
-    <loc>https://oggioniale.github.io/ReLTER//reference/getSiteAffiliations.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/get_site_affiliations.html</loc>
   </url>
   <url>
-    <loc>https://oggioniale.github.io/ReLTER//reference/getSiteBoundaries.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/get_site_boundaries.html</loc>
   </url>
   <url>
-    <loc>https://oggioniale.github.io/ReLTER//reference/getSiteContact.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/get_site_contact.html</loc>
   </url>
   <url>
-    <loc>https://oggioniale.github.io/ReLTER//reference/getSiteEnvCharacts.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/get_site_envcharacts.html</loc>
   </url>
   <url>
-    <loc>https://oggioniale.github.io/ReLTER//reference/getSiteGeneral.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/get_site_general.html</loc>
   </url>
   <url>
-    <loc>https://oggioniale.github.io/ReLTER//reference/getSiteInfrastructure.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/get_site_info.html</loc>
   </url>
   <url>
-    <loc>https://oggioniale.github.io/ReLTER//reference/getSiteParameters.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/get_site_infrastructure.html</loc>
   </url>
   <url>
-    <loc>https://oggioniale.github.io/ReLTER//reference/getSiteRelatedResources.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/get_site_parameters.html</loc>
   </url>
   <url>
-    <loc>https://oggioniale.github.io/ReLTER//reference/getSiteResearchTopics.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/get_site_related_resources.html</loc>
   </url>
   <url>
-    <loc>https://oggioniale.github.io/ReLTER//reference/mapNetworkPoint.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/get_site_research_topics.html</loc>
   </url>
   <url>
-    <loc>https://oggioniale.github.io/ReLTER//reference/parametersChartPie.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/get_sos_procedurelist.html</loc>
   </url>
   <url>
-    <loc>https://oggioniale.github.io/ReLTER//reference/parametersChartWaffle.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/produce_network_points_map.html</loc>
   </url>
   <url>
-    <loc>https://oggioniale.github.io/ReLTER//reference/produceMapOfSiteFromDEIMS.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/produce_site_map.html</loc>
   </url>
   <url>
-    <loc>https://oggioniale.github.io/ReLTER//reference/taxonIDPesi.html</loc>
+    <loc>https://oggioniale.github.io/ReLTER//reference/produce_site_parameters_pie.html</loc>
+  </url>
+  <url>
+    <loc>https://oggioniale.github.io/ReLTER//reference/produce_site_parameters_waffle.html</loc>
+  </url>
+  <url>
+    <loc>https://oggioniale.github.io/ReLTER//reference/produce_site_qrcode.html</loc>
+  </url>
+  <url>
+    <loc>https://oggioniale.github.io/ReLTER//reference/taxon_id_pesi.html</loc>
+  </url>
+  <url>
+    <loc>https://oggioniale.github.io/ReLTER//reference/taxon_id_worms.html</loc>
+  </url>
+  <url>
+    <loc>https://oggioniale.github.io/ReLTER//reference/taxon_id_worms_refine.html</loc>
   </url>
   <url>
     <loc>https://oggioniale.github.io/ReLTER//articles/ReLTER.html</loc>
-  </url>
-  <url>
-    <loc>https://oggioniale.github.io/ReLTER//articles/longtable.html</loc>
   </url>
 </urlset>

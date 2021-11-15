@@ -47,8 +47,7 @@
 
 
 <meta property="og:title" content="eLTER mapNetworkPoint function — mapNetworkPoint" />
-<meta property="og:description" content="This function provide a map (image) of site LTER network
-started from DEIMS iD of network." />
+<meta property="og:description" content="This function provides a map (image) of sites in an LTER network" />
 <meta property="og:image" content="https://oggioniale.github.io/ReLTER/logo.png" />
 
 
@@ -91,7 +90,7 @@ started from DEIMS iD of network." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ReLTER</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -151,8 +150,7 @@ started from DEIMS iD of network." />
     </div>
 
     <div class="ref-description">
-    <p>This function provide a map (image) of site LTER network
-started from DEIMS iD of network.</p>
+    <p>This function provides a map (image) of sites in an LTER network</p>
     </div>
 
     <pre class="usage"><span class='fu'>mapNetworkPoint</span><span class='op'>(</span><span class='va'>networkDEIMSID</span>, <span class='va'>countryCode</span><span class='op'>)</span></pre>
@@ -162,16 +160,16 @@ started from DEIMS iD of network.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>networkDEIMSID</th>
-      <td><p>A `character`. It is the DEIMS iD of network make
-from DEIMS-SDR website. More information about DEIMS iD in this
-<a href='https://deims.org/docs/deimsid.html'>page</a>, and at this
-<a href='https://deims.org/search?f[0]=result_type:network'>page</a> the
-complete list of iLTER networks.</p></td>
+      <td><p>A `character`. The DEIMS ID of the network 
+from DEIMS-SDR website. More information about DEIMS network ID from:
+<a href='https://deims.org/docs/deimsid.html'>page</a>, and
+<a href='https://deims.org/search?f[0]=result_type:network'>page</a> 
+(the complete list of iLTER networks.)</p></td>
     </tr>
     <tr>
       <th>countryCode</th>
-      <td><p>A `character` follow the SO 3166-1 alpha-3 codes. This
-ISO convention are three-letter country codes defined in ISO 3166-1, part of
+      <td><p>A `character` following the ISO 3166-1 alpha-3 codes. This
+ISO convention consists of three-letter country codes as defined in ISO 3166-1.
 the ISO 3166 standard published by the International Organization for
 Standardization (ISO), to represent countries, dependent territories, and
 special areas of geographical interest. The map produced by this function
@@ -182,8 +180,8 @@ network has a extraterritorial sites those will not represented.</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The output of the function is a tmap plot containing an image of
-geographic distribution of the network sites present in the chosen country.</p>
+    <p>The output of the function is a `tmap` plot containing an image of
+geographic distribution of the network of sites present in the chosen country.</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Alessandro Oggioni, phD (2020) <a href='mailto:oggioni.a@irea.cnr.it'>oggioni.a@irea.cnr.it</a></p>

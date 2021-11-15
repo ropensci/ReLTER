@@ -96,7 +96,7 @@ PESI RestAPI." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ReLTER</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -172,7 +172,7 @@ currently A Pan-European Species directories Infrastructure -
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>table</th>
-      <td><p>`data.frame` containing at least one column with a taxa
+      <td><p>`data.frame` containing column with a taxa
 (e.g. Sphaerosoma seidlitzi, Malthinus, etc.).</p></td>
     </tr>
     <tr>
@@ -192,14 +192,14 @@ columns provided as input plus 'canonicalName', 'authorship', 'synonyms',
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='va'>importedDataset</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
+<span class='va'>table</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
    taxonID <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>4</span>, <span class='fl'>5</span>, <span class='fl'>6</span><span class='op'>)</span>,
    family <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Alexiidae"</span>, <span class='st'>"Anthicidae"</span>, <span class='st'>"Anthribidae"</span>, <span class='st'>"Anthribidae"</span>, <span class='st'>"Biphyllidae"</span>, <span class='st'>"Brentidae"</span><span class='op'>)</span>,
    scientificName <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Sphaerosoma seidlitzi"</span>, <span class='st'>"Endomia tenuicollis tenuicollis"</span>, <span class='st'>"Anthribus fasciatus"</span>, <span class='st'>"Phaenotherion fasciculatum fasciculatum"</span>, <span class='st'>"Diplocoelus fagi"</span>, <span class='st'>"Holotrichapion (Apiops) pisi"</span><span class='op'>)</span>
 <span class='op'>)</span>
 
-<span class='co'># We perform a query from the `importedDataset` in order to associate the taxon identifier (LSID) to the list of species present in the thirth column.</span>
-<span class='fu'>taxonIDPesi</span><span class='op'>(</span><span class='va'>importedDataset</span>, <span class='fl'>3</span><span class='op'>)</span>
+<span class='co'># We perform a query from the `table` in order to associate the taxon identifier (LSID) to the list of species present in the thirth column.</span>
+<span class='fu'>taxonIDPesi</span><span class='op'>(</span><span class='va'>table</span>, <span class='fl'>3</span><span class='op'>)</span>
 <span class='op'>}</span>
 
 <span class='co'># the output is:</span>
@@ -214,8 +214,8 @@ columns provided as input plus 'canonicalName', 'authorship', 'synonyms',
 <span class='co'>#   6       6 Brentid… Holotrichapion (Apiop… Holotrichapion (Ap… (Fabricius, 1… NA       urn:lsid:faun… http://www.eu-nomen.eu/port… FaEu_v2.6.1 ex… accepted</span>
 
 <span class='co'># An example to export dataset producted by this function is:</span>
-<span class='co'># datasetMerged &lt;- dplyr::bind_rows(importedDataset)</span>
-<span class='co'># write.csv(datasetMerged, "importedDataset.csv", row.names = FALSE, fileEncoding = "UTF-8")</span>
+<span class='co'># datasetMerged &lt;- dplyr::bind_rows(table)</span>
+<span class='co'># write.csv(datasetMerged, "table.csv", row.names = FALSE, fileEncoding = "UTF-8")</span>
 
 <span class='co'># Someone could have problems of characters encoding when csv file is written.</span>
 <span class='co'># To resolve we suggest two different methods:</span>
