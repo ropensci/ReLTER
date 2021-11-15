@@ -89,7 +89,7 @@ You can install the development version of `{ReLTER}` from [GitHub](https://gith
 install.packages("devtools")
 devtools::install_github("oggioniale/ReLTER")
 ```
-
+If you wish to help develop this package, please follow the [contributing guidelines](CONTRIBUTING.md).
 
 ## :memo: Examples
 
