@@ -38,13 +38,20 @@ The <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span> 
 ## Citation of <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span>
 
 To cite <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span> please use:
-...
+Alessandro Oggioni, Micha Silver & Paolo Tagliolato. (2021). oggioniale/ReLTER: ReLTER v1.0.0 (1.0.0). Zenodo. https://doi.org/10.5281/zenodo.5576813
 
 or:
 
 ``` bibtex
-@software{
-...
+@software{alessandro_oggioni_2021_5576813,
+  author       = {Alessandro Oggioni and Micha Silver and Paolo Tagliolato},
+  title        = {oggioniale/ReLTER: ReLTER v1.0.0},
+  month        = nov,
+  year         = 2021,
+  publisher    = {Zenodo},
+  version      = {1.0.0},
+  doi          = {10.5281/zenodo.5576813},
+  url          = {https://doi.org/10.5281/zenodo.5576813}
 }
 ```
 

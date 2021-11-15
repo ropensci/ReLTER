@@ -147,9 +147,18 @@
 <div id="notebook_with_decorative_cover-citation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#notebook_with_decorative_cover-citation" class="anchor"></a><span class="emoji" data-emoji="notebook_with_decorative_cover">📔</span> Citation</h2>
-<p>To cite <a href="https://github.com/oggioniale/ReLTER">ReLTER</a> please use: …</p>
+<p>To cite <a href="https://github.com/oggioniale/ReLTER">ReLTER</a> please use: Alessandro Oggioni, Micha Silver &amp; Paolo Tagliolato. (2021). oggioniale/ReLTER: ReLTER v1.0.0 (1.0.0). Zenodo. <a href="https://doi.org/10.5281/zenodo.5576813" class="uri">https://doi.org/10.5281/zenodo.5576813</a></p>
 <p>or:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bibtex"><code class="sourceCode bibtex"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">...</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bibtex"><code class="sourceCode bibtex"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">@software{alessandro_oggioni_2021_5576813,</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">  author       = {Alessandro Oggioni and Micha Silver and Paolo Tagliolato},</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">  title        = {oggioniale/ReLTER: ReLTER v1.0.0},</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">  month        = nov,</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">  year         = 2021,</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">  publisher    = {Zenodo},</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">  version      = {1.0.0},</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">  doi          = {10.5281/zenodo.5576813},</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">  url          = {https://doi.org/10.5281/zenodo.5576813}</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">}</span></span></code></pre></div>
 </div>
 <div id="book-documentation" class="section level2">
 <h2 class="hasAnchor">
@@ -282,15 +291,12 @@
 <span class="co">#&gt; Bounding box:  xmin: 11.88721 ymin: 43.20518 xmax: 15.86426 ymax: 45.91294</span>
 <span class="co">#&gt; Geodetic CRS:  WGS 84</span>
 <span class="co">#&gt; # A tibble: 1 × 34</span>
-<span class="co">#&gt;   title     abstract        keywords  uri     type  dateRange.from dateRange.to relatedSite contacts.corres… contacts.creator contacts.metada…</span>
-<span class="co">#&gt; * &lt;chr&gt;     &lt;chr&gt;           &lt;list&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;          &lt;lgl&gt;        &lt;list&gt;      &lt;list&gt;           &lt;list&gt;           &lt;lgl&gt;           </span>
-<span class="co">#&gt; 1 LTER Nor… The present da… &lt;df [5 ×… https:… data… 1965-01-01     NA           &lt;df [1 × 4… &lt;df [1 × 4]&gt;     &lt;df [14 × 4]&gt;    NA              </span>
-<span class="co">#&gt; # … with 23 more variables: observationParameters &lt;list&gt;, observationSpecies &lt;list&gt;, dataPolicy &lt;list&gt;, doi &lt;chr&gt;, onlineLocation &lt;list&gt;,</span>
-<span class="co">#&gt; #   legal.accessUse &lt;list&gt;, legal.rights &lt;lgl&gt;, legal.legalAct &lt;lgl&gt;, legal.citation &lt;lgl&gt;, method.instrumentation &lt;lgl&gt;,</span>
-<span class="co">#&gt; #   method.qualityAssurance &lt;lgl&gt;, method.methodUrl &lt;list&gt;, method.methodDescription &lt;list&gt;, method.samplingTimeUnit.label &lt;chr&gt;,</span>
-<span class="co">#&gt; #   method.samplingTimeUnit.uri &lt;lgl&gt;, method.spatialDesign.label &lt;chr&gt;, method.spatialDesign.uri &lt;lgl&gt;, method.spatialScale.label &lt;chr&gt;,</span>
-<span class="co">#&gt; #   method.spatialScale.uri &lt;lgl&gt;, method.temporalResolution.label &lt;chr&gt;, method.temporalResolution.uri &lt;lgl&gt;, boundaries &lt;POLYGON [°]&gt;,</span>
-<span class="co">#&gt; #   boundariesDescription &lt;chr&gt;</span></code></pre></div>
+<span class="co">#&gt;   title   abstract      keywords  uri    type  dateRange.from dateRange.to relatedSite contacts.corres… contacts.creator contacts.metada… observationPara… observationSpec… dataPolicy doi   onlineLocation</span>
+<span class="co">#&gt; * &lt;chr&gt;   &lt;chr&gt;         &lt;list&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;          &lt;lgl&gt;        &lt;list&gt;      &lt;list&gt;           &lt;list&gt;           &lt;lgl&gt;            &lt;list&gt;           &lt;list&gt;           &lt;list&gt;     &lt;chr&gt; &lt;list&gt;        </span>
+<span class="co">#&gt; 1 LTER N… The present … &lt;df [5 ×… https… data… 1965-01-01     NA           &lt;df [1 × 4… &lt;df [1 × 4]&gt;     &lt;df [14 × 4]&gt;    NA               &lt;df [1 × 2]&gt;     &lt;df [3 × 2]&gt;     &lt;df [1 × … 10.3… &lt;df [1 × 3]&gt;  </span>
+<span class="co">#&gt; # … with 18 more variables: legal.accessUse &lt;list&gt;, legal.rights &lt;lgl&gt;, legal.legalAct &lt;lgl&gt;, legal.citation &lt;lgl&gt;, method.instrumentation &lt;lgl&gt;, method.qualityAssurance &lt;lgl&gt;, method.methodUrl &lt;list&gt;,</span>
+<span class="co">#&gt; #   method.methodDescription &lt;list&gt;, method.samplingTimeUnit.label &lt;chr&gt;, method.samplingTimeUnit.uri &lt;lgl&gt;, method.spatialDesign.label &lt;chr&gt;, method.spatialDesign.uri &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   method.spatialScale.label &lt;chr&gt;, method.spatialScale.uri &lt;lgl&gt;, method.temporalResolution.label &lt;chr&gt;, method.temporalResolution.uri &lt;lgl&gt;, boundaries &lt;POLYGON [°]&gt;, boundariesDescription &lt;chr&gt;</span></code></pre></div>
 <hr>
 </div>
 <div id="get_site_infocategory--relateres" class="section level4">
@@ -306,22 +312,14 @@
 <span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span>
 <span class="co">#&gt;  Found 1 records... Imported 1 records. Simplifying...</span>
 <span class="va">tSiteRelatedResources</span><span class="op">$</span><span class="va">relatedResources</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
-<span class="co">#&gt;                                                                              relatedResourcesTitle  relatedResourcesChanged</span>
-<span class="co">#&gt; 1 Biovolume of Phytoplankton in Lake Maggiore site code  IT_SI001137_within the period 1981 - 2010 2021-08-25T16:38:25+0200</span>
-<span class="co">#&gt; 2                           Atmospheric deposition in Pallanza, Lake Maggiore watershed, 1980-2018 2020-12-13T20:06:48+0100</span>
-<span class="co">#&gt; 3                                     Phytoplankton_Biomass_Lake Maggiore_Ghiffa_station-1984-2018 2020-12-16T10:46:15+0100</span>
-<span class="co">#&gt; 4                                      Water chemistry of Lake Maggiore, Ghiffa station, 1988-2018 2021-11-03T06:10:14+0100</span>
-<span class="co">#&gt; 5                          Transparency (Secchi depth) of Lake Maggiore, Ghiffa station, 1988-2018 2020-12-13T20:10:34+0100</span>
-<span class="co">#&gt; 6                                             Chlorophyll a_Lake_Maggiore_Ghiffa_Station-1984-2018 2021-01-10T21:48:49+0100</span>
-<span class="co">#&gt; 7                                 Water discharge of River Ticino, Lake Maggiore outlet, 1988-2018 2021-07-21T12:35:07+0200</span>
-<span class="co">#&gt;                                                              uri</span>
-<span class="co">#&gt; 1 https://deims.org/dataset/d9e94776-e7a8-11e2-a655-005056ab003f</span>
-<span class="co">#&gt; 2 https://deims.org/dataset/0ce46362-0aab-482a-b1f0-a444a5dada39</span>
-<span class="co">#&gt; 3 https://deims.org/dataset/0ab8425a-d574-4575-8ba9-5275c607b0c5</span>
-<span class="co">#&gt; 4 https://deims.org/dataset/69564188-89de-4879-ad88-4aa97c1d005d</span>
-<span class="co">#&gt; 5 https://deims.org/dataset/e538c743-2149-49e3-9025-14a04ea7c90d</span>
-<span class="co">#&gt; 6 https://deims.org/dataset/c857c8e2-48aa-4dcd-a7fb-e089bd4c5c4e</span>
-<span class="co">#&gt; 7 https://deims.org/dataset/fb3a8fec-0c1f-4c3a-81d5-364c7e6078c4</span></code></pre></div>
+<span class="co">#&gt;                                                                              relatedResourcesTitle  relatedResourcesChanged                                                            uri</span>
+<span class="co">#&gt; 1 Biovolume of Phytoplankton in Lake Maggiore site code  IT_SI001137_within the period 1981 - 2010 2021-08-25T16:38:25+0200 https://deims.org/dataset/d9e94776-e7a8-11e2-a655-005056ab003f</span>
+<span class="co">#&gt; 2                           Atmospheric deposition in Pallanza, Lake Maggiore watershed, 1980-2018 2020-12-13T20:06:48+0100 https://deims.org/dataset/0ce46362-0aab-482a-b1f0-a444a5dada39</span>
+<span class="co">#&gt; 3                                     Phytoplankton_Biomass_Lake Maggiore_Ghiffa_station-1984-2018 2020-12-16T10:46:15+0100 https://deims.org/dataset/0ab8425a-d574-4575-8ba9-5275c607b0c5</span>
+<span class="co">#&gt; 4                                      Water chemistry of Lake Maggiore, Ghiffa station, 1988-2018 2021-11-03T06:10:14+0100 https://deims.org/dataset/69564188-89de-4879-ad88-4aa97c1d005d</span>
+<span class="co">#&gt; 5                          Transparency (Secchi depth) of Lake Maggiore, Ghiffa station, 1988-2018 2020-12-13T20:10:34+0100 https://deims.org/dataset/e538c743-2149-49e3-9025-14a04ea7c90d</span>
+<span class="co">#&gt; 6                                             Chlorophyll a_Lake_Maggiore_Ghiffa_Station-1984-2018 2021-01-10T21:48:49+0100 https://deims.org/dataset/c857c8e2-48aa-4dcd-a7fb-e089bd4c5c4e</span>
+<span class="co">#&gt; 7                                 Water discharge of River Ticino, Lake Maggiore outlet, 1988-2018 2021-07-21T12:35:07+0200 https://deims.org/dataset/fb3a8fec-0c1f-4c3a-81d5-364c7e6078c4</span></code></pre></div>
 <hr>
 </div>
 <div id="produce_site_parameters_waffle" class="section level4">

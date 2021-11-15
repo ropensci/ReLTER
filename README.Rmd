@@ -31,26 +31,46 @@ knitr::opts_chunk$set(
 `r badger::badge_code_size("oggioniale/ReLTER")`
 `r badger::badge_last_commit("oggioniale/ReLTER")`
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+
+<!-- Once you have submitted a package and it has passed editor checks, add a peer-review badge via -->
+<!-- [![](https://badges.ropensci.org/<issue_id>_status.svg)](https://github.com/ropensci/software-review/issues/<issue_id>) -->
+<!-- where issue_id is the number of the issue in the software-review repository. -->
 <!-- badges: end -->
 
-The `{ReLTER}` package allows interacting with online datasets such as [DEIMS-SDR](https://deims.org/), implemented by eLTER Research Infrastructure (RI), and the [ODSEurope](maps.opendatascience.eu) managed by members of the [Geo-harmonizer](https://opendatascience.eu/geoharmonizer-project/) project. The package contains functions to acquire, crop and visualize datasets and information shared by those archives.
+`{ReLTER}` is an R package that: provides access to [DEIMS-SDR](https://deims.org/)), allows interact with software implemented by eLTER Research Infrastructure (RI) and improves the data/information shared by them.
+
+`{ReLTER}` is a R package devoted to access, interact and improve the information and the data shared by Long Term Ecological Research (LTER) network. This package is born within eLTER H2020 major project that will help advance the development of European Long-Term Ecosystem Research Infrastructures ([eLTER RI](https://elter-ri.eu)).
+
+The `{ReLTER}` package functions in particular allow to:
+
+- retrive the information about entities (e.g. sites, datasets, and activities) shared by [DEIMS-SDR](https://deims.org/) (see e.g. [get_site_info function](https://oggioniale.github.io/ReLTER/reference/get_site_info.html));
+
+- elaborate the information of single site or merge info from national network sites or entire International LTER (ILTER) in order to provide maps, figures, graphs etc (see e.g. [get_network_sites](https://oggioniale.github.io/ReLTER/reference/get_network_sites.html), [produce_site_map](https://oggioniale.github.io/ReLTER/reference/produce_site_map.html) or [produce_site_parameters_pie](https://oggioniale.github.io/ReLTER/reference/produce_site_parameters_pie.html) functions);
+
+- interact with the [ODSEurope](maps.opendatascience.eu) managed by members of the [Geo-harmonizer](https://opendatascience.eu/geoharmonizer-project/) project starting with the dataset shared by [DEIMS-SDR](https://deims.org/) (see e.g. [get_site_ODS](https://oggioniale.github.io/ReLTER/reference/get_site_ODS.html) function);
+
+- improve the quality of the dataset (see e.g. [get_id_worms](https://oggioniale.github.io/ReLTER/reference/get_id_worms.html)).
+
+Functions currently implemented are derived from the discussion of the needs declared by eLTER users community.
+
+The `{ReLTER}` package shall definitely follow the progress of eLTER-RI infrastructure and evolving with the improvements and develop of new tools.
 
 <!-- about the icons https://github.com/ikatyang/emoji-cheat-sheet -->
 ## :notebook_with_decorative_cover: Citation
 
 To cite `{ReLTER}` please use:
-Alessandro Oggioni. (2021). oggioniale/ReLTER: v0.2.0 (0.2.0). Zenodo. https://doi.org/10.5281/zenodo.5576813
+Alessandro Oggioni, Micha Silver & Paolo Tagliolato. (2021). oggioniale/ReLTER: ReLTER v1.0.0 (1.0.0). Zenodo. https://doi.org/10.5281/zenodo.5576813
 
 or:
 
 ``` bibtex
 @software{alessandro_oggioni_2021_5576813,
-  author       = {Alessandro Oggioni},
-  title        = {oggioniale/ReLTER: v0.2.0},
-  month        = oct,
+  author       = {Alessandro Oggioni and Micha Silver and Paolo Tagliolato},
+  title        = {oggioniale/ReLTER: ReLTER v1.0.0},
+  month        = nov,
   year         = 2021,
   publisher    = {Zenodo},
-  version      = {0.2.0},
+  version      = {1.0.0},
   doi          = {10.5281/zenodo.5576813},
   url          = {https://doi.org/10.5281/zenodo.5576813}
 }

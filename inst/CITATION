@@ -1,0 +1,6 @@
+citHeader(paste(
+  "ReLTER is being developed by Alessandro Oggioni (IREA-CNR), Micha Silver
+  (BGU) and Paolo Tagliolato (IREA-CNR), and it is released under the GPL-3.",
+  "To cite package 'ReLTER' in publications use:",
+  "Alessandro Oggioni, Micha Silver & Paolo Tagliolato. (2021). oggioniale/ReLTER: ReLTER v1.0.0 (1.0.0). Zenodo. https://doi.org/10.5281/zenodo.5576813"
+))
