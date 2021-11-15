@@ -1,3 +1,23 @@
+## ReLTER 1.0.0 Release Notes
+
+v1.0.0 was released on 15/11/2021
+
+### Major changes
+
+* all the getSite* functions could be merged into one, with an additional function parameter category;
+* all the functions are renamed according with CRAN suggestion;
+* first release of vignettes have been done;
+* new functions for interactive improvements of taxa names using PESI and WORMS repository have been done;
+* function acquires one of eight raster datasets from the European OpenDataScience maps website for a selected DEIMS site have been implemented by @micha-silver;
+* a fully review of functions and package description have been done.
+
+### Minor changes
+
+* CITATION file are been created;
+* this version has been submitted on rOpenSci.
+
+________________________________________________________________________________
+
 ## ReLTER 0.2.0 Release Notes
 
 v0.2.0 was released on 18/10/2021
