@@ -7,6 +7,7 @@
 #' Resource Identifier) of each procedure.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom xml2 read_xml xml_ns xml_find_all
+#' @importFrom xslt xml_xslt
 #' @export
 #' @examples
 #' get_sos_procedurelist(sosHost = "http://getit.lteritalia.it")
