@@ -23,11 +23,10 @@
 #'     envCharacteristics: .attributes.environmentalCharacteristics
 #'   }'
 #'
-#' do_Q(q, jj)
+#' ReLTER:::do_Q(q, jj)
 #'
 ### function do_q
 do_Q <- function(q, jj) {
-  require("dplyr")
   jj %>%
     jqr::jq(as.character(q)) %>%
     textConnection() %>%
