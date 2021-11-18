@@ -83,7 +83,7 @@ produce_network_points_map <- function(networkDEIMSID, countryCode) {
             title = NA,
             legend.show = FALSE
           )
-        print(mapOfSites)
+        suppressWarnings(print(mapOfSites)) # FIXME manage
         networkSitesGeo
       } else {
         mapOfSites <- tmap::tm_shape(networkSitesGeo) +
