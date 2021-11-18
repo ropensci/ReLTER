@@ -8,6 +8,8 @@
 #' of DEIMS sites by country name. Partial matching is supported.
 #' @param site_name A `character`. This character string filters by site name
 #' where, again, partial matching is supported
+#' @param show_map A `boolean`. If TRUE a Leaflet map of site locations is shown.
+#' Default FALSE
 #' @return An `sf` object of the bounding boxes of sites in the filtered list,
 #' containing the name, DEIMS ID, longitude, latitude, average altitude, 
 #' and affiliation of the filtered ILTER sites. If no bounding box is available,
@@ -22,24 +24,19 @@
 #' \dontrun{
 #' require('dplyr')
 #' listOfAllSites <- get_ilter_generalinfo()
-#' nrow(listOfAllSites)
-#' 
+#' length(listOfAllSites[,1])
 #' sitesAustria <- get_ilter_generalinfo(country_name = "Austri")
 #' # (matches Austria, but not Australia)
 #' length(sitesAustria$title)
-#' 
 #' eisenwurzen <- get_ilter_generalinfo(country_name = "Austri", site_name =" Eisen")
 #' eisenwurzen[,1:2]
 #' eisenwurzen_deimsid <- eisenwurzen$uri
 #' eisenwurzen_deimsid
-#'
 #' }
-#' 
+
 ### function get_ilter_generalinfo
-get_ilter_generalinfo <- function(
-  country_name = NA,
-  site_name = NA
-) {
+get_ilter_generalinfo <- function(country_name = NA, site_name = NA,
+                                  show_map = FALSE) {
   # Get full set of sites
   lterILTERSites <- as.data.frame(jsonlite::fromJSON("https://deims.org/api/sites"))
   # First filter by country_name
@@ -54,7 +51,8 @@ get_ilter_generalinfo <- function(
         paste0(
           "You have provided a country name (\'",
           country_name,
-          "\') that probably don't match with the countries stored in the DEIMS-SDR. Please review what you entered in \'country_name\'.\n"
+          "\') that is not among the countries stored in the DEIMS-SDR.",
+          " Please review what you entered in \'country_name\'.\n"
         ),
         "\n"
       )
@@ -90,10 +88,10 @@ get_ilter_generalinfo <- function(
         paste0(
           "You have provided a site name (\'",
           site_name,
-          "\') that probably don't match with the countries stored in the DEIMS-SDR.\n",
+          "\') that s not among the sites stored in the DEIMS-SDR.\n",
           "The result of this function will be all sites in the requested country (\'",
           country_name,
-          "\') but no specific site.\n",
+          "\') not a specific site.\n",
           "Please review what you entered in \'site_name\'."
         ),
         "\n"
@@ -108,12 +106,12 @@ get_ilter_generalinfo <- function(
   if (is.null(uniteSitesGeneralInfo)) {
     uniteSitesGeneralInfoGeo <- NULL
     uniteSitesGeneralInfoGeo
-  } else if (nrow(uniteSitesGeneralInfo) == 0 |
-      # No rows after country filter
-      length(uniteSitesGeneralInfo$title) == 0) {
-    # No rows left after site filter
-    uniteSitesGeneralInfoGeo <- NULL
-    warning(
+  } else if (length(uniteSitesGeneralInfo[,1]) == 0 |
+          # No rows after country filter
+          length(uniteSitesGeneralInfo$title) == 0) {
+          # No rows left after site filter
+          uniteSitesGeneralInfoGeo <- NULL
+       warning(
       "\n" ,
       paste(
         "No matches found for country name:",
@@ -138,16 +136,18 @@ get_ilter_generalinfo <- function(
       reason = TRUE
     )
     if (uniteSitesGeneralInfoGeo_valid == "Valid Geometry") {
-      map <- leaflet::leaflet(uniteSitesGeneralInfoGeo) %>%
-        leaflet::addTiles() %>%
-        leaflet::addMarkers()
-      print(map)
+      if (show_map == TRUE) {
+        map <- leaflet::leaflet(uniteSitesGeneralInfoGeo) %>%
+          leaflet::addTiles() %>%
+          leaflet::addMarkers()
+        print(map)
+      }
       uniteSitesGeneralInfoGeo
     } else {
-      map <- leaflet::leaflet() %>%
-        leaflet::addTiles()
-      message("\n----\n The maps cannot be created because one or more then one points of the sites, provided in DEIMS-SDR, has an invalid geometry.\n Please check the content and refers this error to DEIMS-SDR contact person.\n----\n")
-      print(map)
+      message("\n----\nThe map cannot be created because one or more site",
+             " locations provided in DEIMS-SDR, has an invalid geometry.\n",
+             "Please check the content and refer this error",
+             " to DEIMS-SDR support.\n----\n")
       uniteSitesGeneralInfoGeo
     }
   }

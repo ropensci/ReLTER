@@ -4,11 +4,14 @@
 #' @param deimsid a character. The DEIMS ID of the site from
 #' DEIMS-SDR website. More information about DEIMS ID in this pages:
 #' \href{https://deims.org/docs/deimsid.html}{page}.
-#' @param category a `category`. This attribute allows to select which category
-#' or categories must be written in the result. Possible value are:
+#' @param category a `category`. This parameter selects which category
+#' or categories are retrieved and returned in the result.
+#' Possible value are:
 #' 'Affiliations', 'Boundaries', 'Contacts', 'EnvCharacts', 'General',
-#' 'Infrastructure', 'Parameters', 'RelateRes', 'ResearchTop'. More that one
-#' can be indicated.
+#' 'Infrastructure', 'Parameters', 'RelateRes', 'ResearchTop'.
+#' More that one can be indicated.
+#' @param show_map a `boolean`. When TRUE, and category is "Boundaries" 
+#' the boundary will be plotted on a Leaflet map. Default FALSE.
 #' @return The output of the function is a `tibble` with main features of the
 #' site and the selected information, such as: networks and projects in
 #' which the site is involved.
@@ -36,7 +39,7 @@
 #' )
 #'
 ### function get_site_info
-get_site_info <- function(deimsid, category = NA) {
+get_site_info <- function(deimsid, category = NA, show_map = FALSE) {
   q <- '{title: .title,
        uri: "\\(.id.prefix)\\(.id.suffix)",
        geoCoord: .attributes.geographic.coordinates,
@@ -246,17 +249,20 @@ get_site_info <- function(deimsid, category = NA) {
             "uri" = "uri"
           )
         )
-        map <- leaflet::leaflet(siteInfo) %>%
-          leaflet::addTiles() %>%
-          leaflet::addPolygons()
-        print(map)
-        siteInfo
+        if (show_map == TRUE) {
+          map <- leaflet::leaflet(siteInfo) %>%
+            leaflet::addTiles() %>%
+            leaflet::addPolygons()
+          print(map)
+        }
+        return(siteInfo)
       } else {
         siteInfo <- siteInfo
       }
     }
   } else {
-    message("\n---- The requested page could not be found. Please check again the DEIMS.iD ----\n")
+    message("\n---- The requested page could not be found.
+            Please check the DEIMS ID ----\n")
     siteInfo <- NULL
   }
   # Final result
