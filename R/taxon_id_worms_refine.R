@@ -10,6 +10,7 @@
 #' @export
 #' @keywords internal
 #' @examples
+#' \dontrun{
 #' phytoplankton <- tibble::tibble(
 #'    ID = c(1, 2, 3, 4, 5, 6, 7),
 #'    species = c("Asterionella formosa", "Chrysococcus sp.", "Cryptomonas rostrata", "Dinobryon divergens", "Mallomonas akrokomos", "Melosira varians", "Cryptomonas rostrata")
@@ -17,6 +18,7 @@
 #' table <- ReLTER::taxon_ID_Worms(input = phytoplankton, taxaColumn = 2, verbose = TRUE, refine = FALSE)
 #' table
 #' taxon_id_worms_refine(input = table, taxaColumn = 2)
+#' }
 ### function taxon_id_worms_refine
 taxon_id_worms_refine <- function(input, taxaColumn = 1) {
   for (i in 1:nrow(input)) {

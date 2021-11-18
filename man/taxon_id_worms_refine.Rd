@@ -20,6 +20,7 @@ This function provides a refining of the output of
 function taxon_ID_WORMS.
 }
 \examples{
+\dontrun{
 phytoplankton <- tibble::tibble(
    ID = c(1, 2, 3, 4, 5, 6, 7),
    species = c("Asterionella formosa", "Chrysococcus sp.", "Cryptomonas rostrata", "Dinobryon divergens", "Mallomonas akrokomos", "Melosira varians", "Cryptomonas rostrata")
@@ -27,6 +28,7 @@ phytoplankton <- tibble::tibble(
 table <- ReLTER::taxon_ID_Worms(input = phytoplankton, taxaColumn = 2, verbose = TRUE, refine = FALSE)
 table
 taxon_id_worms_refine(input = table, taxaColumn = 2)
+}
 }
 \author{
 Alessandro Oggioni, phD (2021) \email{oggioni.a@irea.cnr.it}
