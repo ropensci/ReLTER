@@ -11,7 +11,6 @@
 #' @importFrom httr GET content
 #' @importFrom utils capture.output
 #' @importFrom dplyr as_tibble
-#' @importFrom magrittr %>%
 #' @export
 #' @keywords internal
 #' @examples

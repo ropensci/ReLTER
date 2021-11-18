@@ -6,7 +6,6 @@
 #' species list is. Default is `1`.
 #' @return 
 #' @author Alessandro Oggioni, phD (2021) \email{oggioni.a@@irea.cnr.it}
-#' @importFrom magrittr %>%
 #' @importFrom dplyr filter select
 #' @export
 #' @keywords internal

@@ -20,7 +20,6 @@
 #' match with Worms name species.
 #' @author Alessandro Oggioni, phD (2021) \email{oggioni.a@@irea.cnr.it}
 #' @author Paolo Tagliolato, phD (2021) \email{tagliolato.p@@irea.cnr.it}
-#' @importFrom magrittr %>%
 #' @importFrom worrms wm_records_names
 #' @importFrom dplyr filter
 #' @export

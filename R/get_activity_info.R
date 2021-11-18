@@ -13,7 +13,6 @@
 #' @importFrom sf st_as_sf
 #' @importFrom leaflet leaflet addTiles addPolygons
 #' @importFrom rgeos gIsValid
-#' @importFrom magrittr %>%
 #' @export
 #' @examples
 #' activities <- get_activity_info(activityid = "https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845")

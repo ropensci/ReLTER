@@ -14,7 +14,6 @@
 #' @importFrom jsonlite fromJSON
 #' @importFrom dplyr bind_rows distinct
 #' @importFrom dplyr as_tibble
-#' @importFrom magrittr %>%
 #' @export
 #' @examples
 #' \dontrun{
