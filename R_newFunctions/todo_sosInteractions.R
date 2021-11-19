@@ -59,7 +59,7 @@ obsOfProfile <- function(sosEndpoint, observedProperty) {
     dplyr::mutate(foiLabels = as.character())
   calate[2:10] <- lapply(calate[2:10], function(x) as.numeric())
   
-  for (l in 1:length(valuesAll)) {
+  for (l in seq_len(length(valuesAll))) {
     calata <- data.frame(x = unlist(strsplit(as.character(valuesAll[l]), "##"))) %>% 
       tidyr::separate(x, ObsProperties, sep = ";", convert = TRUE) %>% 
       as_tibble() %>% 

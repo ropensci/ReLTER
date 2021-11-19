@@ -1,15 +1,19 @@
 #' @title eLTER get_sos_procedurelist function
-#' @description This function lists the procedures 
+#' @description This function lists the procedures
 #' of a Sensor Observations Service (SOS).
-#' @param sosHost a `character`. An SOS endpoint (e.g. http://getit.lteritalia.it).
+#' @param sosHost a `character`. An SOS endpoint (e.g.
+#' \url{http://getit.lteritalia.it}).
 #' In particular is the path before  '/observations/service?'
 #' @return The output of the function is a `list` with the name and URI (Uniform
 #' Resource Identifier) of each procedure.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom xml2 read_xml xml_ns xml_find_all
+#' @importFrom xslt xml_xslt
 #' @export
 #' @examples
+#' \dontrun{
 #' get_sos_procedurelist(sosHost = "http://getit.lteritalia.it")
+#' }
 #'
 ### function getProcedureList
 get_sos_procedurelist <- function(sosHost) {
@@ -27,7 +31,7 @@ get_sos_procedurelist <- function(sosHost) {
   ), styleProcUrl), header = TRUE, sep = ";")
 
   sensorName <- vector(mode = "character", length = nrow(listProcedure))
-  for (i in 1:nrow(listProcedure)) {
+  for (i in seq_len(nrow(listProcedure))) {
     SensorML <- xml2::read_xml(
       as.character(
         paste0(

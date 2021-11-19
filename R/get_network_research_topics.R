@@ -3,8 +3,8 @@
 #' handled in the eLTER Network (e.g. Italy) througth
 #' the DEIMS-SDR sites API.
 #' @param networkDEIMSID A `character`. The DEIMS ID of a network
-#' from DEIMS-SDR website. More information about DEIMS network ID in these pages:
-#' \href{https://deims.org/docs/deimsid.html}{page}, and
+#' from DEIMS-SDR website. More information about DEIMS network ID in these
+#' pages: \href{https://deims.org/docs/deimsid.html}{page}, and
 #' \href{https://deims.org/search?f[0]=result_type:network}{page} the
 #' complete list of ILTER networks.
 #' @return The output of the function is a `tibble` containing the research
@@ -12,13 +12,14 @@
 #' sites.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom jsonlite fromJSON
-#' @importFrom dplyr bind_rows distinct as_tibble
+#' @importFrom dplyr bind_rows distinct as_tibble tibble rows_insert
 #' @importFrom magrittr %>%
 #' @export
 #' @examples
 #' \dontrun{
 #' listResearchTopics <- get_network_research_topics(
-#'   networkDEIMSID = "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
+#'   networkDEIMSID =
+#'   "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 #' )
 #' listResearchTopics[1:10, ] %>%
 #'   dplyr::rows_insert(
@@ -61,7 +62,8 @@ get_network_research_topics <- function(networkDEIMSID) {
     )
     uniqueSiteResearchTopics
   } else {
-    message("\n---- The requested page could not be found. Please check again the Network.iD ----\n")
-    uniqueSiteParameters <- NULL
+    message("\n----\nThe requested page could not be found.
+Please check again the Network.iD\n----\n")
+    uniqueSiteResearchTopics <- NULL
   }
 }

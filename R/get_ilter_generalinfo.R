@@ -1,9 +1,9 @@
 #' @title eLTER get_ilter_generalinfo function
 #' @description This function downloads generic information
 #' of all sites, or a subset of sites of ILTER, through the DEIMS-SDR
-#' API. If no `country_name` or `site_name` are specified, 
-#' the whole list of sites is returned. If either or both of the filtering strings
-#' is specified, then a filtered subset of the sites is acquired. 
+#' API. If no `country_name` or `site_name` are specified,
+#' the whole list of sites is returned. If either or both of the filtering
+#' strings is specified, then a filtered subset of the sites is acquired.
 #' @param country_name A `character`. This character string filters the full set
 #' of DEIMS sites by country name. Partial matching is supported.
 #' @param site_name A `character`. This character string filters by site name
@@ -11,18 +11,16 @@
 #' @param show_map A `boolean`. If TRUE a Leaflet map of site locations is shown.
 #' Default FALSE
 #' @return An `sf` object of the bounding boxes of sites in the filtered list,
-#' containing the name, DEIMS ID, longitude, latitude, average altitude, 
+#' containing the name, DEIMS ID, longitude, latitude, average altitude,
 #' and affiliation of the filtered ILTER sites. If no bounding box is available,
 #' the centroid is returned.
 #' @author Alessandro Oggioni, phD (2021) \email{oggioni.a@@irea.cnr.it}
 #' @author  Micha Silver, phD (2021) \email{silverm@@post.bgu.ac.il}
 #' @importFrom jsonlite fromJSON
-#' @importFrom dplyr bind_rows
 #' @importFrom sf st_as_sf
 #' @export
 #' @examples
 #' \dontrun{
-#' require('dplyr')
 #' listOfAllSites <- get_ilter_generalinfo()
 #' length(listOfAllSites[,1])
 #' sitesAustria <- get_ilter_generalinfo(country_name = "Austri")
@@ -33,12 +31,13 @@
 #' eisenwurzen_deimsid <- eisenwurzen$uri
 #' eisenwurzen_deimsid
 #' }
-
 ### function get_ilter_generalinfo
 get_ilter_generalinfo <- function(country_name = NA, site_name = NA,
                                   show_map = FALSE) {
   # Get full set of sites
-  lterILTERSites <- as.data.frame(jsonlite::fromJSON("https://deims.org/api/sites"))
+  lterILTERSites <- as.data.frame(
+    jsonlite::fromJSON("https://deims.org/api/sites")
+  )
   # First filter by country_name
   # (Getting site affiliations for all 1200 sites takes too long...)
   if (!is.na(country_name) & typeof(country_name) == "character") {
@@ -47,7 +46,7 @@ get_ilter_generalinfo <- function(country_name = NA, site_name = NA,
                 ignore.case = TRUE)
     if (length(idx) == 0) {
       warning(
-        "\n" ,
+        "\n",
         paste0(
           "You have provided a country name (\'",
           country_name,
@@ -64,7 +63,6 @@ get_ilter_generalinfo <- function(country_name = NA, site_name = NA,
     # No country filtering
     filteredILTERSites <- lterILTERSites
   }
-  
   # Now get affiliations, general info
   filteredSitesGeneralInfo <- lapply(
     as.list(
@@ -84,7 +82,7 @@ get_ilter_generalinfo <- function(country_name = NA, site_name = NA,
                 ignore.case = TRUE)
     if (length(idx) == 0) {
       warning(
-        "\n" ,
+        "\n",
         paste0(
           "You have provided a site name (\'",
           site_name,
@@ -101,7 +99,6 @@ get_ilter_generalinfo <- function(country_name = NA, site_name = NA,
       uniteSitesGeneralInfo <- uniteSitesGeneralInfo[idx, ]
     }
   }
-  
   # Make sure we have some rows
   if (is.null(uniteSitesGeneralInfo)) {
     uniteSitesGeneralInfoGeo <- NULL

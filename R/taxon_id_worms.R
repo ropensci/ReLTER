@@ -1,7 +1,7 @@
 #' @title eLTER taxon_id_worms function
 #' @description This function enriches and certifies a list of species names by
 #' comparing with \href{https://www.marinespecies.org}{Worms records}
-#' @param table a `tibble`. The table that contain the species
+#' @param input a `tibble`. The table that contain the species
 #' names list to be checked.
 #' @param taxaColumn a `numeric`. The cardinal number of the column where
 #' species list is. Default is `1`.
@@ -27,13 +27,28 @@
 #' @examples
 #' phytoplankton <- tibble::tibble(
 #'    ID = c(1, 2, 3, 4, 5, 6, 7),
-#'    species = c("Asterionella formosa", "Chrysococcus sp.", "Cryptomonas rostrata", "Dinobryon divergens", "Mallomonas akrokomos", "Melosira varians", "Cryptomonas rostrata")
+#'    species = c(
+#'    "Asterionella formosa", "Chrysococcus sp.",
+#'    "Cryptomonas rostrata", "Dinobryon divergens",
+#'    "Mallomonas akrokomos", "Melosira varians",
+#'    "Cryptomonas rostrata"
+#'  )
 #' )
-#' table <- taxon_id_worms(input = phytoplankton, taxaColumn = 2, verbose = TRUE, refine = TRUE)
+#' table <- taxon_id_worms(
+#'   input = phytoplankton,
+#'   taxaColumn = 2,
+#'   verbose = TRUE,
+#'   refine = TRUE
+#' )
 #' table
 #'
 ### function taxon_id_worms
-taxon_id_worms <- function(input, taxaColumn = 1, verbose = TRUE, refine = FALSE) {
+taxon_id_worms <- function(
+  input,
+  taxaColumn = 1,
+  verbose = TRUE,
+  refine = FALSE
+) {
   input[, c(
     "valid_name", # ok
     "valid_authority", # ok
@@ -50,8 +65,7 @@ taxon_id_worms <- function(input, taxaColumn = 1, verbose = TRUE, refine = FALSE
     name = input[[taxaColumn]],
     marine_only = FALSE
   )
-  # i <- 3
-  for (i in 1:length(a)) {
+  for (i in seq_len(length(a))) {
     if (nrow(a[[i]]) == 0) {
       input$nOfWormsResults[[i]] <- 0
       input$valid_name[[i]] <- NA
@@ -75,30 +89,39 @@ taxon_id_worms <- function(input, taxaColumn = 1, verbose = TRUE, refine = FALSE
   }
   newTable <- input
   if (verbose == TRUE) {
-    rowsWithZero <- newTable %>% 
-      dplyr::filter(nOfWormsResults == 0) %>% 
+    rowsWithZero <- newTable %>%
+      dplyr::filter(nOfWormsResults == 0) %>%
       nrow()
-    rowsWithMoreOne <- newTable %>% 
-      dplyr::filter(nOfWormsResults > 1) %>% 
+    rowsWithMoreOne <- newTable %>%
+      dplyr::filter(nOfWormsResults > 1) %>%
       nrow()
     message <- message(
       paste0(
-        "\nAfter the finding operation the number of record(s) that don't match with any Worms names are:\n*--- ",
+        "\nAfter the finding operation the number of record(s) that don't match
+with any Worms names are:\n*--- ",
         rowsWithZero, " on ", length(a), " examined",
-        " ---*\nplease verify the species name provided and run again this function. The record(s) that match with more that one Worms name are:\n*--- ",
+        " ---*\nplease verify the species name provided and run again this
+function. The record(s) that match with more that one Worms name are:\n*--- ",
         rowsWithMoreOne, " on ", length(a), " examined",
-        " ---*\nplease use the function taxon_id_worms_refine for specify wich is the exact corrispondence with your given species name.\n"
+        " ---*\nplease use the function taxon_id_worms_refine for specify wich
+is the exact corrispondence with your given species name.\n"
       )
     )
     if (refine == TRUE) {
-      refinedTable <- ReLTER:::taxon_id_worms_refine(input = newTable, taxaColumn = taxaColumn)
+      refinedTable <- taxon_id_worms_refine(
+        input = newTable,
+        taxaColumn = taxaColumn
+      )
       refinedTable
     } else {
       newTable
     }
   } else {
     if (refine == TRUE) {
-      refinedTable <- ReLTER:::taxon_id_worms_refine(input = newTable, taxaColumn = taxaColumn)
+      refinedTable <- taxon_id_worms_refine(
+        input = newTable,
+        taxaColumn = taxaColumn
+      )
       refinedTable
     } else {
       newTable

@@ -7,23 +7,25 @@
 produce_network_points_map(networkDEIMSID, countryCode)
 }
 \arguments{
-\item{networkDEIMSID}{A `character`. The DEIMS ID of the network 
+\item{networkDEIMSID}{A `character`. The DEIMS ID of the network
 from DEIMS-SDR website. More information about DEIMS network ID from:
 \href{https://deims.org/docs/deimsid.html}{page}, and
-\href{https://deims.org/search?f[0]=result_type:network}{page} 
+\href{https://deims.org/search?f[0]=result_type:network}{page}
 (the complete list of ILTER networks.)}
 
-\item{countryCode}{A `character` following the ISO 3166-1 alpha-3 codes. This
-ISO convention consists of three-letter country codes as defined in ISO 3166-1.
-the ISO 3166 standard published by the International Organization for
-Standardization (ISO), to represent countries, dependent territories, and
-special areas of geographical interest. The map produced by this function
-will be limited only to the country indicated in this parameter, if the
-network has a extraterritorial sites those will not represented.}
+\item{countryCode}{A `character` following the ISO 3166-1 alpha-3 codes.
+This ISO convention consists of three-letter country codes as defined in
+ISO 3166-1. The ISO 3166 standard published by the International
+Organization for Standardization (ISO), to represent countries, dependent
+territories, and special areas of geographical interest. The map produced by
+this function will be limited only to the country indicated in this
+parameter, if the network has a extraterritorial sites those will not
+represented.}
 }
 \value{
 The output of the function is a `tmap` plot containing an image of
-geographic distribution of the network of sites present in the chosen country.
+geographic distribution of the network of sites present in the chosen
+country.
 }
 \description{
 This function provides a map (image) of sites in an LTER network
@@ -32,15 +34,17 @@ This function provides a map (image) of sites in an LTER network
 \dontrun{
 # Italian sites
 map <- produce_network_points_map(
-  networkDEIMSID = 'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3',
-  countryCode = 'ITA'
+  networkDEIMSID =
+  "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3",
+  countryCode = "ITA"
 )
 map
 
 # German sites
 produce_network_points_map(
-  networkDEIMSID = 'https://deims.org/networks/e904354a-f3a0-40ce-a9b5-61741f66c824',
-  countryCode = 'DEU'
+  networkDEIMSID =
+  "https://deims.org/networks/e904354a-f3a0-40ce-a9b5-61741f66c824",
+  countryCode = "DEU"
 )
 }
 

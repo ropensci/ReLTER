@@ -7,6 +7,9 @@
 taxon_id_worms(input, taxaColumn = 1, verbose = TRUE, refine = FALSE)
 }
 \arguments{
+\item{input}{a `tibble`. The table that contain the species
+names list to be checked.}
+
 \item{taxaColumn}{a `numeric`. The cardinal number of the column where
 species list is. Default is `1`.}
 
@@ -18,9 +21,6 @@ is `TRUE`.}
 \item{refine}{a `logical`. With this selection, the function allows to
 refine the result(s) that match with more Worms records. By a interactive
 use of the terminal, the user can chose the result. Default is `FALSE`.}
-
-\item{table}{a `tibble`. The table that contain the species
-names list to be checked.}
 }
 \value{
 The output of the function is a `tibble` with the columns provided
@@ -37,9 +37,19 @@ comparing with \href{https://www.marinespecies.org}{Worms records}
 \examples{
 phytoplankton <- tibble::tibble(
    ID = c(1, 2, 3, 4, 5, 6, 7),
-   species = c("Asterionella formosa", "Chrysococcus sp.", "Cryptomonas rostrata", "Dinobryon divergens", "Mallomonas akrokomos", "Melosira varians", "Cryptomonas rostrata")
+   species = c(
+   "Asterionella formosa", "Chrysococcus sp.",
+   "Cryptomonas rostrata", "Dinobryon divergens",
+   "Mallomonas akrokomos", "Melosira varians",
+   "Cryptomonas rostrata"
+ )
 )
-table <- taxon_id_worms(input = phytoplankton, taxaColumn = 2, verbose = TRUE, refine = TRUE)
+table <- taxon_id_worms(
+  input = phytoplankton,
+  taxaColumn = 2,
+  verbose = TRUE,
+  refine = TRUE
+)
 table
 
 }
