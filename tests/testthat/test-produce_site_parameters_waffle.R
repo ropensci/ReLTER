@@ -15,8 +15,8 @@ test_that("Expect error if internet connection is down", {
 
 skip_if_offline(host = "deims.org")
 
-test_that("Output of chart waffle of parameters function constructs ‘sf" and
-          "tibble’ as expected", {
+test_that("Output of chart waffle of parameters function constructs 'sf' and
+          'tibble’ as expected", {
   result <- ReLTER::produce_site_parameters_waffle(
     deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
   )
