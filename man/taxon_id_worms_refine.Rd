@@ -21,6 +21,7 @@ This function provides a refining of the output of
 function taxon_id_worms.
 }
 \examples{
+\dontrun{
 phytoplankton <- tibble::tibble(
    ID = c(1, 2, 3, 4, 5, 6, 7),
    species = c(
@@ -38,6 +39,7 @@ table <- taxon_id_worms(
 )
 table
 taxon_id_worms_refine(input = table, taxaColumn = 2)
+}
 }
 \author{
 Alessandro Oggioni, phD (2021) \email{oggioni.a@irea.cnr.it}

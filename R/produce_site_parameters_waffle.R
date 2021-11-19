@@ -13,7 +13,6 @@
 #' @importFrom RColorBrewer brewer.pal
 #' @importFrom waffle waffle
 #' @importFrom utils data
-#' @importFrom magrittr %>%
 #' @export
 #' @examples
 #' \dontrun{
