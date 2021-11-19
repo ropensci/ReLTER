@@ -7,7 +7,8 @@
 get_sos_procedurelist(sosHost)
 }
 \arguments{
-\item{sosHost}{a `character`. An SOS endpoint (e.g. http://getit.lteritalia.it).
+\item{sosHost}{a `character`. An SOS endpoint (e.g.
+\url{http://getit.lteritalia.it}).
 In particular is the path before  '/observations/service?'}
 }
 \value{
@@ -15,11 +16,13 @@ The output of the function is a `list` with the name and URI (Uniform
 Resource Identifier) of each procedure.
 }
 \description{
-This function lists the procedures 
+This function lists the procedures
 of a Sensor Observations Service (SOS).
 }
 \examples{
+\dontrun{
 get_sos_procedurelist(sosHost = "http://getit.lteritalia.it")
+}
 
 }
 \author{

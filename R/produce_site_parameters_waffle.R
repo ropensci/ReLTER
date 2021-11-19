@@ -26,7 +26,7 @@
 ### function produce_site_parameters_waffle
 produce_site_parameters_waffle <- function(deimsid) {
   # TODO add this by SPARQL query
-  utils::data(envThesParams)
+  # parametersStructureEnvThes <- utils::data(envThesParams)
   paramsDeims <- ReLTER::get_site_info(
     deimsid = deimsid,
     category = "Parameters"
@@ -49,15 +49,15 @@ produce_site_parameters_waffle <- function(deimsid) {
     # Waffle chart ----
     mycolors <- c(
       RColorBrewer::brewer.pal(
-        name ="Set1",
+        name = "Set1",
         n = 9
       ),
       RColorBrewer::brewer.pal(
-        name ="Set2",
+        name = "Set2",
         n = 8
       ),
       RColorBrewer::brewer.pal(
-        name ="Set3",
+        name = "Set3",
         n = 12
       )
     )
@@ -89,7 +89,8 @@ produce_site_parameters_waffle <- function(deimsid) {
     print(waffle)
     params
   } else {
-    message("\n---- The requested page could not be found. Please check again the DEIMS.iD ----\n")
+    message("\n----\nThe requested page could not be found.
+Please check again the DEIMS.iD\n----\n")
     waffle <- NULL
     params <- NULL
   }

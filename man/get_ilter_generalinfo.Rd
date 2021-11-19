@@ -15,20 +15,19 @@ where, again, partial matching is supported}
 }
 \value{
 An `sf` object of the bounding boxes of sites in the filtered list,
-containing the name, DEIMS ID, longitude, latitude, average altitude, 
+containing the name, DEIMS ID, longitude, latitude, average altitude,
 and affiliation of the filtered ILTER sites. If no bounding box is available,
 the centroid is returned.
 }
 \description{
 This function downloads generic information
 of all sites, or a subset of sites of ILTER, through the DEIMS-SDR
-API. If no `country_name` or `site_name` are specified, 
-the whole list of sites is returned. If either or both of the filtering strings
-is specified, then a filtered subset of the sites is acquired.
+API. If no `country_name` or `site_name` are specified,
+the whole list of sites is returned. If either or both of the filtering
+strings is specified, then a filtered subset of the sites is acquired.
 }
 \examples{
 \dontrun{
-require('dplyr')
 listOfAllSites <- get_ilter_generalinfo()
 nrow(listOfAllSites)
 
@@ -36,7 +35,10 @@ sitesAustria <- get_ilter_generalinfo(country_name = "Austri")
 # (matches Austria, but not Australia)
 length(sitesAustria$title)
 
-eisenwurzen <- get_ilter_generalinfo(country_name = "Austri", site_name =" Eisen")
+eisenwurzen <- get_ilter_generalinfo(
+  country_name = "Austri",
+  site_name =" Eisen"
+)
 eisenwurzen[,1:2]
 eisenwurzen_deimsid <- eisenwurzen$uri
 eisenwurzen_deimsid

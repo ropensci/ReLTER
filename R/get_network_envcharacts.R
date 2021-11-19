@@ -2,9 +2,9 @@
 #' @description This function obtains several Envinronmental Characteristics:
 #' title, URI, geocoordinates, country name, and elevation
 #' of sites in an eLTER Network (e.g. Italy) through the DEIMS-SDR sites API.
-#' @param networkDEIMSID A `character`. DEIMS ID of network 
+#' @param networkDEIMSID A `character`. DEIMS ID of network
 #' from DEIMS-SDR website. More information about DEIMS ID refer to these pages:
-#' \href{https://deims.org/docs/deimsid.html}{page}, and 
+#' \href{https://deims.org/docs/deimsid.html}{page}, and
 #' \href{https://deims.org/search?f[0]=result_type:network}{page}
 #' the complete list of ILTER networks.
 #' @return The output of the function is a `tibble` containing all the
@@ -16,7 +16,8 @@
 #' @examples
 #' \dontrun{
 #' listEnvCharacts <- get_network_envcharacts(
-#'   networkDEIMSID = "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
+#'   networkDEIMSID =
+#'   "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 #' )
 #' listEnvCharacts[1:10, ]
 #' }
@@ -47,7 +48,8 @@ get_network_envcharacts <- function(networkDEIMSID) {
     allSiteEnvCharacts <- dplyr::as_tibble(allSiteEnvCharacts_matrix)
     allSiteEnvCharacts
   } else {
-    message("\n---- The requested page could not be found. Please check again the Network.iD ----\n")
+    message("\n----\nThe requested page could not be found.
+Please check again the Network.iD\n----\n")
     allSiteEnvCharacts <- NULL
   }
 }

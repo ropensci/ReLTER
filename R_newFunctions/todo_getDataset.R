@@ -133,7 +133,7 @@ getDataset <- function(resourceID) {
   url <- gsub('/dataset/', "/api/datasets/", resourceID)
   export <- httr::GET(url = url)
   jj <- suppressMessages(httr::content(export, "text"))
-  invisible(capture.output(resource <- tibble::as_tibble(ReLTER:::do_Q(q, jj))))
+  invisible(capture.output(resource <- tibble::as_tibble(do_Q(q, jj))))
   resourceOnLine <- resource$online.onlineLocation[[1]]
   
   # type of links provided by DEIMS-SDR related resource
@@ -149,7 +149,7 @@ getDataset <- function(resourceID) {
   landingPageURI <- gsub('/records/', "/api/records/", landingPage$url$value) # issue b
   exportLP <- httr::GET(url = landingPageURI)
   jjLP <- suppressMessages(httr::content(exportLP, "text"))
-  invisible(capture.output(resourceLP <- tibble::as_tibble(ReLTER:::do_Q(qLP, jjLP))))
+  invisible(capture.output(resourceLP <- tibble::as_tibble(do_Q(qLP, jjLP))))
   
   # file information 
   fileLink <- resourceLP$files[[1]]$ePIC_PID[[1]] # issue c

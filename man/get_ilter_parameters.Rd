@@ -7,7 +7,7 @@
 get_ilter_parameters(sitesNum = 0)
 }
 \arguments{
-\item{sitesNum}{A `integer`. It is the number of the sites that are 
+\item{sitesNum}{A `integer`. It is the number of the sites that are
 read to get the information. Use this parameters moreover for provide
 example of this function. Default 0.}
 }

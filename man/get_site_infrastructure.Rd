@@ -17,7 +17,7 @@ site and infrastructure information where available, such as:
 power supply, accessibility, maintenaince interval, etc.
 }
 \description{
-This function obtains infrastructure information 
+This function obtains infrastructure information
 of an eLTER site through the DEIMS-SDR sites API.
 }
 \examples{

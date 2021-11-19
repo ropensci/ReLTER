@@ -12,14 +12,14 @@ DEIMS-SDR website. More information about DEIMS ID in this page:
 \href{https://deims.org/docs/deimsid.html}{page}.}
 }
 \value{
-The output of the function is an `sf` object, the boundary of the site
-or NA if the boundary is missing from DEIMS-SDR.
-In addition, as `html map` with boundaries of the site is plotted.
+The output of the function is an `sf` object, the boundary of the
+site or NA if the boundary is missing from DEIMS-SDR. In addition, as
+`html map` with boundaries of the site is plotted.
 }
 \description{
 This function retrieves the boundary of a specified eLTER site
 and a view of the site boundaries on a leaflet map is shown.
-All the info are taken from the DEIMS-SDR sites API. 
+All the info are taken from the DEIMS-SDR sites API.
 If the boundary is missing, a warning message is printed in the R console.
 }
 \examples{

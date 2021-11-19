@@ -1,5 +1,5 @@
 #' @title eLTER get_site_general function
-#' @description This function obtains general information 
+#' @description This function obtains general information
 #' about an eLTER site through the DEIMS-SDR sites API.
 #' @param deimsid A `character`. The DEIMS ID of the site from
 #' DEIMS-SDR website. More information about DEIMS ID from:
@@ -37,17 +37,17 @@ get_site_general <- function(deimsid) {
   )
   export <- httr::GET(url = url)
   jj <- suppressMessages(httr::content(export, "text"))
-  status <- jj %>% 
-    jqr::jq(as.character('{status: .errors.status}')) %>% 
+  status <- jj %>%
+    jqr::jq(as.character("{status: .errors.status}")) %>%
     textConnection() %>%
     jsonlite::stream_in(simplifyDataFrame = TRUE) %>%
-    dtplyr::lazy_dt() %>% 
+    dtplyr::lazy_dt() %>%
     dplyr::as_tibble()
   if (is.na(status)) {
     invisible(
       utils::capture.output(
         general <- dplyr::as_tibble(
-          ReLTER:::do_Q(q, jj)
+          do_Q(q, jj)
         )
       )
     )
@@ -56,7 +56,8 @@ get_site_general <- function(deimsid) {
       "keywordsURI"
     )
   } else {
-    message("\n---- The requested page could not be found. Please check again the DEIMS.iD ----\n")
+    message("\n----\nThe requested page could not be found.
+Please check again the DEIMS.iD\n----\n")
     general <- NULL
   }
   general

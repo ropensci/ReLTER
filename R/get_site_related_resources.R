@@ -9,7 +9,7 @@
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom httr GET content
 #' @importFrom utils capture.output
-#' @importFrom dplyr as_tibble
+#' @importFrom dplyr as_tibble select
 #' @importFrom magrittr %>%
 #' @export
 #' @keywords internal
@@ -35,17 +35,17 @@ get_site_related_resources <- function(deimsid) {
   )
   export <- httr::GET(url = url)
   jj <- suppressMessages(httr::content(export, "text"))
-  status <- jj %>% 
-    jqr::jq(as.character('{status: .errors.status}')) %>% 
+  status <- jj %>%
+    jqr::jq(as.character("{status: .errors.status}")) %>%
     textConnection() %>%
     jsonlite::stream_in(simplifyDataFrame = TRUE) %>%
-    dtplyr::lazy_dt() %>% 
+    dtplyr::lazy_dt() %>%
     dplyr::as_tibble()
   if (is.na(status)) {
     invisible(
       utils::capture.output(
         relatedResources <- dplyr::as_tibble(
-          ReLTER:::do_Q(q, jj)
+          do_Q(q, jj)
         )
       )
     )
@@ -55,8 +55,12 @@ get_site_related_resources <- function(deimsid) {
         "relatedResourcesTitle",
         "relatedResourcesChanged"
       )
-      relatedResources$relatedResources[[1]]$uri <- paste0(relatedResources$relatedResources[[1]]$relatedResourcesId$prefix, relatedResources$relatedResources[[1]]$relatedResourcesId$suffix)
-      relatedResources$relatedResources[[1]] <- relatedResources$relatedResources[[1]] %>% 
+      relatedResources$relatedResources[[1]]$uri <- paste0(
+        relatedResources$relatedResources[[1]]$relatedResourcesId$prefix,
+        relatedResources$relatedResources[[1]]$relatedResourcesId$suffix
+      )
+      relatedResources$relatedResources[[1]] <-
+        relatedResources$relatedResources[[1]] %>%
         dplyr::select(relatedResourcesTitle, relatedResourcesChanged, uri)
       relatedResources
     } else {
@@ -73,7 +77,8 @@ get_site_related_resources <- function(deimsid) {
       relatedResources
     }
   } else {
-    message("\n---- The requested page could not be found. Please check again the DEIMS.iD ----\n")
+    message("\n----\nThe requested page could not be found.
+Please check again the DEIMS.iD\n----\n")
     relatedResources <- NULL
   }
 }
