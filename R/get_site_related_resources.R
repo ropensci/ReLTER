@@ -9,8 +9,7 @@
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom httr GET content
 #' @importFrom utils capture.output
-#' @importFrom dplyr as_tibble select
-#' @importFrom magrittr %>%
+#' @importFrom dplyr as_tibble
 #' @export
 #' @keywords internal
 #' @examples

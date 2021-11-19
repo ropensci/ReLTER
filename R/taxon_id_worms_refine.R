@@ -7,10 +7,11 @@
 #' @return The output of the function is a `tibble` with the refinement of the
 #' input.
 #' @author Alessandro Oggioni, phD (2021) \email{oggioni.a@@irea.cnr.it}
-#' @importFrom tibble tibble
+#' @importFrom dplyr filter select
 #' @export
 #' @keywords internal
 #' @examples
+#' \dontrun{
 #' phytoplankton <- tibble::tibble(
 #'    ID = c(1, 2, 3, 4, 5, 6, 7),
 #'    species = c(
@@ -28,6 +29,7 @@
 #' )
 #' table
 #' taxon_id_worms_refine(input = table, taxaColumn = 2)
+#' }
 ### function taxon_id_worms_refine
 taxon_id_worms_refine <- function(input, taxaColumn = 1) {
   for (i in seq_len(nrow(input))) {

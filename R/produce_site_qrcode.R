@@ -15,14 +15,8 @@
 #'
 ### function produce_site_qrcode
 produce_site_qrcode <- function(deimsid) {
-  qrcode::qrcode_gen(
-    deimsid,
-    ErrorCorrectionLevel = "L",
-    dataOutput = FALSE,
-    plotQRcode = TRUE,
-    wColor = "White",
-    bColor = "#1479BC",
-    mask = 1,
-    softLimitFlag = TRUE
-  )
+  suppressWarnings({
+    qrcode::qr_code(deimsid, ecl = "L") %>%
+      plot(col = c("White", "#1479BC"))
+  })
 }

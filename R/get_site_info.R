@@ -22,7 +22,6 @@
 #' @importFrom dtplyr lazy_dt
 #' @importFrom dplyr as_tibble left_join
 #' @importFrom utils capture.output
-#' @importFrom magrittr %>%
 #' @importFrom stringr str_detect
 #' @importFrom leaflet leaflet addTiles addPolygons
 #' @export

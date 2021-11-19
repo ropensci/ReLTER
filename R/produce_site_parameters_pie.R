@@ -11,9 +11,10 @@
 #' @importFrom scales percent
 #' @importFrom RColorBrewer brewer.pal
 #' @importFrom utils data
-#' @importFrom ggplot2 theme_minimal theme element_blank element_text ggplot geom_text aes coord_fixed scale_x_continuous scale_y_continuous scale_color_manual
+#' @importFrom ggplot2 theme_minimal theme element_blank element_text ggplot
+#' @importFrom ggplot2 geom_text aes coord_fixed scale_x_continuous
+#' @importFrom ggplot2 scale_y_continuous scale_color_manual
 #' @importFrom ggforce geom_arc_bar
-#' @importFrom magrittr %>%
 #' @export
 #' @examples
 #' \dontrun{

@@ -12,8 +12,7 @@
 #' sites.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom jsonlite fromJSON
-#' @importFrom dplyr bind_rows distinct as_tibble tibble rows_insert
-#' @importFrom magrittr %>%
+#' @importFrom dplyr bind_rows distinct as_tibble
 #' @export
 #' @examples
 #' \dontrun{

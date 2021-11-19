@@ -13,7 +13,6 @@
 #' @importFrom sf st_as_sf
 #' @importFrom dplyr select as_tibble
 #' @importFrom leaflet leaflet addTiles addMarkers
-#' @importFrom magrittr %>%
 #' @export
 #' @examples
 #' \dontrun{

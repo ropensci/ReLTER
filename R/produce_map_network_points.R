@@ -25,7 +25,6 @@
 #' @importFrom tmap tm_shape tm_borders tm_dots
 #' @importFrom dplyr select
 #' @importFrom tibble as_tibble
-#' @importFrom magrittr %>%
 #' @export
 #' @examples
 #' \dontrun{
@@ -92,7 +91,7 @@ produce_network_points_map <- function(networkDEIMSID, countryCode) {
             title = NA,
             legend.show = FALSE
           )
-        print(mapOfSites)
+        suppressWarnings(print(mapOfSites)) # FIXME manage
         networkSitesGeo
       } else {
         mapOfSites <- tmap::tm_shape(networkSitesGeo) +

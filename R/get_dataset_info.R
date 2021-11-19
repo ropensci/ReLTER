@@ -12,7 +12,6 @@
 #' @importFrom utils capture.output
 #' @importFrom sf st_as_sf
 #' @importFrom leaflet leaflet addTiles addPolygons
-#' @importFrom magrittr %>%
 #' @export
 #' @examples
 #' tDataset <- get_dataset_info(

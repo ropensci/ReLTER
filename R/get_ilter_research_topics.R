@@ -9,8 +9,7 @@
 #' topics and their URI (Uniform Resource Identifier) of all ILTER sites.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom jsonlite fromJSON
-#' @importFrom dplyr bind_rows distinct as_tibble rows_insert tibble
-#' @importFrom magrittr %>%
+#' @importFrom dplyr bind_rows distinct as_tibble
 #' @export
 #' @examples
 #' \dontrun{

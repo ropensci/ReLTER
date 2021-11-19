@@ -79,6 +79,7 @@ Imports:
     qrcode (>= 0.1.3),
     scales (>= 1.1.1),
     xml2 (>= 1.3.2),
+    xslt,
     magrittr (>= 2.0.1),
     stringr (>= 1.4.0),
     worrms (>= 0.4.2),

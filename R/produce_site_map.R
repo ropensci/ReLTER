@@ -40,7 +40,8 @@
 #' @importFrom raster getData reclassify
 #' @importFrom rgeos gSimplify
 #' @importFrom rosm osm.raster
-#' @importFrom tmap tm_shape tm_rgb tm_dots tm_compass tm_scale_bar tm_layout tm_credits tm_basemap tm_borders tm_fill tm_lines
+#' @importFrom tmap tm_shape tm_rgb tm_dots tm_compass tm_scale_bar tm_layout
+#' @importFrom tmap tm_credits tm_basemap tm_borders tm_fill tm_lines
 #' @importFrom grid viewport
 #' @export
 #' @examples
