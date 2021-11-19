@@ -1,7 +1,7 @@
 #' @title eLTER get_ilter_parameters function
 #' @description This function obtains information about the
 #' parameters collected in ILTER sites, through the DEIMS-SDR sites API.
-#' @param sitesNum A `integer`. It is the number of the sites that are 
+#' @param sitesNum A `integer`. It is the number of the sites that are
 #' read to get the information. Use this parameters moreover for provide
 #' example of this function. Default 0.
 #' @return The output of the function is a `tibble` containing the list
@@ -63,7 +63,8 @@ get_ilter_parameters <- function(sitesNum = 0) {
     )
     uniqueSitesParameters
   } else {
-    message("\n---- The `sitesNum` value must be a double (e.g. 10, 24, etc.). Please check again the value of `sitesNum`. ----\n")
+    message("\n----\nThe `sitesNum` value must be a double (e.g. 10, 24, etc.).
+Please check again the value of `sitesNum`.\n----\n")
     uniqueSitesParameters <- NULL
   }
 }

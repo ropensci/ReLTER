@@ -18,7 +18,7 @@ status, yearEstablished, yearClosed, hierarchy, siteName, short name, site
 type, protection level, images.
 }
 \description{
-This function obtains general information 
+This function obtains general information
 about an eLTER site through the DEIMS-SDR sites API.
 }
 \examples{

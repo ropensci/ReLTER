@@ -23,22 +23,23 @@ produce_site_map(
 DEIMS-SDR website. More information about DEIMS iD in this
 \href{https://deims.org/docs/deimsid.html}{page}.}
 
-\item{countryCode}{a `character` following the SO 3166-1 alpha-3 codes. 
-This ISO convention consists of three-letter country codes 
-as defined in ISO 3166-1, part of the ISO 3166 standard published by the 
-International Organization for Standardization (ISO), to represent countries, 
-dependent territories, and special areas of geographical interest. 
-The map produced by this function will be limited to the country 
+\item{countryCode}{a `character` following the SO 3166-1 alpha-3 codes.
+This ISO convention consists of three-letter country codes
+as defined in ISO 3166-1, part of the ISO 3166 standard published by the
+International Organization for Standardization (ISO), to represent
+#' countries, dependent territories, and special areas of geographical
+interest.
+The map produced by this function will be limited to the country
 indicated in this parameter; if the network has a extraterritorial sites
 those will not represented.}
 
 \item{listOfSites}{a `sf`. List of sites of specific network. This list
 is needed for showing another points on the map.}
 
-\item{gridNx}{a `double`. A numeric vector or unit object specifying 
+\item{gridNx}{a `double`. A numeric vector or unit object specifying
 x-location of viewports about country provided by countryCode parameter.}
 
-\item{gridNy}{a `double`. A numeric vector or unit object specifying 
+\item{gridNy}{a `double`. A numeric vector or unit object specifying
 y-location of viewports about country provided by countryCode parameter.}
 
 \item{width}{a `double`. A numeric vector or unit object specifying width
@@ -47,30 +48,31 @@ of viewports about country provided by countryCode parameter. Default 0.25.}
 \item{height}{a `double`. A numeric vector or unit object specifying height
 of viewports about country provided by countryCode parameter. Default 0.25.}
 
-\item{bboxXMin}{a `double`. A numeric for add some unit of a bbox provided 
+\item{bboxXMin}{a `double`. A numeric for add some unit of a bbox provided
 by centroid of the site. Default 0.}
 
-\item{bboxXMax}{a `double`. A numeric for add some unit of a bbox provided 
+\item{bboxXMax}{a `double`. A numeric for add some unit of a bbox provided
 by centroid of the site. Default 0.}
 
-\item{bboxYMin}{a `double`. A numeric for add some unit of a bbox provided 
+\item{bboxYMin}{a `double`. A numeric for add some unit of a bbox provided
 by centroid of the site. Default 0.}
 
-\item{bboxYMax}{a `double`. A numeric for add some unit of a bbox provided 
+\item{bboxYMax}{a `double`. A numeric for add some unit of a bbox provided
 by centroid of the site. Default 0.}
 }
 \value{
 The output of the function is a distribution `image`.
 }
 \description{
-This function produces a `map` of the site boundaries 
+This function produces a `map` of the site boundaries
 as provided by the DEIMS-SDR, within a given country and network.
 }
 \examples{
 \dontrun{
 # Example of Lange Bramke site
 sitesNetwork <- get_network_sites(
-  networkDEIMSID = "https://deims.org/networks/e904354a-f3a0-40ce-a9b5-61741f66c824"
+  networkDEIMSID =
+  "https://deims.org/networks/e904354a-f3a0-40ce-a9b5-61741f66c824"
 )
 map <- produce_site_map(
   deimsid = "https://deims.org/8e24d4f8-d6f6-4463-83e9-73cac2fd3f38",
@@ -82,7 +84,8 @@ map <- produce_site_map(
 
 # Example of Eisenwurzen site
 sitesNetwork <- get_network_sites(
-  networkDEIMSID = "https://deims.org/networks/d45c2690-dbef-4dbc-a742-26ea846edf28"
+  networkDEIMSID =
+  "https://deims.org/networks/d45c2690-dbef-4dbc-a742-26ea846edf28"
 )
 map <- produce_site_map(
   deimsid = "https://deims.org/d0a8da18-0881-4ebe-bccf-bc4cb4e25701",
@@ -94,9 +97,11 @@ map <- produce_site_map(
 
 # Example of Lake Maggiore site
 sitesNetwork <- get_network_sites(
-  networkDEIMSID = "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
+  networkDEIMSID =
+  "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 )
-# In the case of Italian sites are selected only true sites and exclused the macrosites.
+# In the case of Italian sites are selected only true sites and exclused the
+macrosites.
 sitesNetwork <- (sitesNetwork[!grepl('^IT', sitesNetwork$title),])
 map <- produce_site_map(
   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",

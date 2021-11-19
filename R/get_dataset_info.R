@@ -14,11 +14,10 @@
 #' @importFrom leaflet leaflet addTiles addPolygons
 #' @export
 #' @examples
-#' tDataset <- get_dataset_info(datasetid = "https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef")
-#' map <- leaflet::leaflet(tDataset) %>% 
-#'  leaflet::addTiles() %>% 
-#'  leaflet::addPolygons()
-#' print(map)
+#' tDataset <- get_dataset_info(
+#'   datasetid =
+#'   "https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef"
+#' )
 #' tDataset
 #'
 ### function get_dataset_info
@@ -49,16 +48,16 @@ get_dataset_info <- function(datasetid) {
   )
   export <- httr::GET(url = url)
   jj <- suppressMessages(httr::content(export, as = "text", encoding = "UTF-8"))
-  status <- jj %>% 
-    jqr::jq(as.character('{status: .errors.status}')) %>% 
+  status <- jj %>%
+    jqr::jq(as.character("{status: .errors.status}")) %>%
     textConnection() %>%
     jsonlite::stream_in(simplifyDataFrame = TRUE) %>%
-    dtplyr::lazy_dt() %>% 
+    dtplyr::lazy_dt() %>%
     dplyr::as_tibble()
   if (is.na(status)) {
     invisible(
       utils::capture.output(
-        dataset <- dplyr::as_tibble(ReLTER:::do_Q(q, jj))
+        dataset <- dplyr::as_tibble(do_Q(q, jj))
       )
     )
     # fix the observationParameters columns name
@@ -118,7 +117,10 @@ get_dataset_info <- function(datasetid) {
         } else {
           map <- leaflet::leaflet() %>%
             leaflet::addTiles()
-          message("\n----\n The maps cannot be created because the polygon of dataset, provided in DEIMS-SDR, has an invalid geometry.\n Please check the content and refers this error to DEIMS-SDR contact person of dataset, citing the Dataset.iD.\n----\n")
+          message("\n----\nThe maps cannot be created because the polygon of
+dataset, provided in DEIMS-SDR, has an invalid geometry.
+Please check the content and refers this error to DEIMS-SDR contact person of
+dataset, citing the Dataset.iD.\n----\n")
           print(map)
           geoDataset
         }
@@ -128,7 +130,8 @@ get_dataset_info <- function(datasetid) {
       map <- NULL
     }
   } else {
-    message("\n---- The requested page could not be found. Please check again the Dataset.iD ----\n")
+    message("\n----\nThe requested page could not be found.
+Please check again the Dataset.iD\n----\n")
     geoDataset <- NULL
     map <- NULL
   }

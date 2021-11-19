@@ -2,7 +2,7 @@
 #' @description This function allows to obtain the information about the
 #' Research Topics collected in all sites of ILTER, through the DEIMS-SDR
 #' sites API.
-#' @param sitesNum A `integer`. It is the number of the sites that are 
+#' @param sitesNum A `integer`. It is the number of the sites that are
 #' read to get the information. Use this parameters moreover for provide
 #' example of this function.
 #' @return The output of the function is a `tibble` containing the research
@@ -22,7 +22,7 @@
 #'   )
 #' )
 #' }
-#' 
+#'
 ### function get_ilter_research_topics
 get_ilter_research_topics <- function(sitesNum = NULL) {
   if (is.na(sitesNum)) {
@@ -61,7 +61,8 @@ get_ilter_research_topics <- function(sitesNum = NULL) {
     )
     uniqueSiteResearchTopics
   } else {
-    message("\n---- The `sitesNum` value must be a double (e.g. 10, 24, etc.). Please check again the value of `sitesNum`. ----\n")
+    message("\n----\nThe `sitesNum` value must be a double (e.g. 10, 24, etc.).
+Please check again the value of `sitesNum`.\n----\n")
     uniqueSiteResearchTopics <- NULL
   }
 }

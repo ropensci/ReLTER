@@ -9,7 +9,9 @@
 #' @importFrom qrcode qrcode_gen
 #' @export
 #' @examples
-#' produce_site_qrcode(deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe")
+#' produce_site_qrcode(
+#'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
+#' )
 #'
 ### function produce_site_qrcode
 produce_site_qrcode <- function(deimsid) {

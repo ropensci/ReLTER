@@ -201,19 +201,6 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "sp",
-      "name": "sp",
-      "version": ">= 1.4-2",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=sp"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "rgeos",
       "name": "rgeos",
       "version": ">= 0.5-3",
@@ -295,19 +282,6 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=leaflet"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "qrencoder",
-      "name": "qrencoder",
-      "version": ">= 0.1.0",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=qrencoder"
     },
     {
       "@type": "SoftwareApplication",
@@ -466,13 +440,46 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "stats",
-      "name": "stats",
-      "version": ">= 4.0.3"
+      "identifier": "stringr",
+      "name": "stringr",
+      "version": ">= 1.4.0",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=stringr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "worrms",
+      "name": "worrms",
+      "version": ">= 0.4.2",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=worrms"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "xslt",
+      "name": "xslt",
+      "version": ">= 1.4.3",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=xslt"
     }
   ],
   "releaseNotes": "https://github.com/oggioniale/ReLTER/blob/master/NEWS.md",
-  "fileSize": "6685.62KB",
+  "fileSize": "6707.847KB",
   "readme": "https://github.com/oggioniale/ReLTER/blob/main/README.md",
   "developmentStatus": "https://www.repostatus.org/#active",
   "citation": []

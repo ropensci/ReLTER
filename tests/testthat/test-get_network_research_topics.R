@@ -27,14 +27,14 @@ test_that("Output of network research topics function constructs ‘tibble’ as
 })
 
 test_that("Wrong input (but URL) constructs a NULL object", {
-  result <- ReLTER::get_network_research_topics(networkDEIMSID = 'https://deims.org/network/ljhnhbkihubib')
+  result <- ReLTER::get_network_research_topics(networkDEIMSID = "https://deims.org/network/ljhnhbkihubib")
   expect_true(is.null(result))
   expect_true(is.null(ncol(result)))
   expect_true(length(result) == 0)
 })
 
 test_that("Wrong input (not URL) constructs an empty tibble", {
-  result <- ReLTER::get_network_research_topics(networkDEIMSID = 'ljhnhbkihubib')
+  result <- ReLTER::get_network_research_topics(networkDEIMSID = "ljhnhbkihubib")
   expect_true(is.null(result))
   expect_true(is.null(ncol(result)))
   expect_true(length(result) == 0)

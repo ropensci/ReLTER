@@ -15,7 +15,8 @@ test_that("Expect error if internet connection is down", {
 
 skip_if_offline(host = "deims.org")
 
-test_that("Output of ILTER research topics function constructs ‘tibble’ as expected", {
+test_that("Output of ILTER research topics function constructs 'tibble' as
+          expected", {
   result <- ReLTER::get_ilter_research_topics(sitesNum = 50)
   expect_s3_class(result, "tbl_df")
   expect_true(ncol(result) == 2)
@@ -27,6 +28,6 @@ test_that("Output of ILTER research topics function constructs ‘tibble’ as e
 })
 
 test_that("Wrong input (not a double) constructs an empty tibble", {
-  result <- ReLTER::get_ilter_research_topics(sitesNum = 'aa')
+  result <- ReLTER::get_ilter_research_topics(sitesNum = "aa")
   expect_type(result, "NULL")
 })

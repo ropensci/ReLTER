@@ -8,8 +8,8 @@ get_network_research_topics(networkDEIMSID)
 }
 \arguments{
 \item{networkDEIMSID}{A `character`. The DEIMS ID of a network
-from DEIMS-SDR website. More information about DEIMS network ID in these pages:
-\href{https://deims.org/docs/deimsid.html}{page}, and
+from DEIMS-SDR website. More information about DEIMS network ID in these
+pages: \href{https://deims.org/docs/deimsid.html}{page}, and
 \href{https://deims.org/search?f[0]=result_type:network}{page} the
 complete list of ILTER networks.}
 }
@@ -26,7 +26,8 @@ the DEIMS-SDR sites API.
 \examples{
 \dontrun{
 listResearchTopics <- get_network_research_topics(
-  networkDEIMSID = "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
+  networkDEIMSID =
+  "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 )
 listResearchTopics[1:10, ] \%>\%
   dplyr::rows_insert(

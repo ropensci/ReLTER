@@ -7,9 +7,9 @@
 get_network_parameters(networkDEIMSID)
 }
 \arguments{
-\item{networkDEIMSID}{A `character`. The DEIMS ID of network 
-from DEIMS-SDR website. For more information about DEIMS ID refer to these pages:
-\href{https://deims.org/docs/deimsid.html}{page}, and
+\item{networkDEIMSID}{A `character`. The DEIMS ID of network
+from DEIMS-SDR website. For more information about DEIMS ID refer to these
+pages: \href{https://deims.org/docs/deimsid.html}{page}, and
 \href{https://deims.org/search?f[0]=result_type:network}{page}
 the complete list of ILTER networks.}
 }
@@ -20,13 +20,14 @@ by the network's sites.
 }
 \description{
 This function obtains a list of the environmental parameters
-collected on sites in the eLTER Network (e.g. Italy) 
-through the DEIMS-SDR sites API.
+collected on sites in the eLTER Network (e.g. Italy) through the DEIMS-SDR
+sites API.
 }
 \examples{
 \dontrun{
 listParams <- get_network_parameters(
-  networkDEIMSID = "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
+  networkDEIMSID =
+  "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 )
 listParams[1:10, ] \%>\%
 dplyr::rows_insert(
