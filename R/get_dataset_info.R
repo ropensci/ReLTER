@@ -47,7 +47,8 @@ get_dataset_info <- function(datasetid) {
     sub("^.+/", "", datasetid)
   )
   export <- httr::GET(url = url)
-  jj <- suppressMessages(httr::content(export, as = "text", encoding = "UTF-8"))
+  jj <- suppressMessages(httr::content(export, as = "text",
+                                       encoding = "UTF-8"))
   status <- jj %>%
     jqr::jq(as.character("{status: .errors.status}")) %>%
     textConnection() %>%
@@ -119,7 +120,7 @@ get_dataset_info <- function(datasetid) {
             leaflet::addTiles()
           message("\n----\nThe maps cannot be created because the polygon of
 dataset, provided in DEIMS-SDR, has an invalid geometry.
-Please check the content and refers this error to DEIMS-SDR contact person of
+Please check the content and refer this error to DEIMS-SDR support for this
 dataset, citing the Dataset.iD.\n----\n")
           print(map)
           geoDataset

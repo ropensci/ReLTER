@@ -4,16 +4,16 @@
 #' API. If no `country_name` or `site_name` are specified,
 #' the whole list of sites is returned. If either or both of the filtering
 #' strings is specified, then a filtered subset of the sites is acquired.
-#' @param country_name A `character`. This character string filters the full set
-#' of DEIMS sites by country name. Partial matching is supported.
+#' @param country_name A `character`. This character string filters 
+#' the full set of DEIMS sites by country name. Partial matching is supported.
 #' @param site_name A `character`. This character string filters by site name
 #' where, again, partial matching is supported
-#' @param show_map A `boolean`. If TRUE a Leaflet map of site locations is shown.
-#' Default FALSE
+#' @param show_map A `boolean`. If TRUE a Leaflet map of site locations 
+#' is shown. Default FALSE
 #' @return An `sf` object of the bounding boxes of sites in the filtered list,
 #' containing the name, DEIMS ID, longitude, latitude, average altitude,
-#' and affiliation of the filtered ILTER sites. If no bounding box is available,
-#' the centroid is returned.
+#' and affiliation of the filtered ILTER sites. 
+#' If no bounding box is available,the centroid is returned.
 #' @author Alessandro Oggioni, phD (2021) \email{oggioni.a@@irea.cnr.it}
 #' @author  Micha Silver, phD (2021) \email{silverm@@post.bgu.ac.il}
 #' @importFrom jsonlite fromJSON
@@ -26,7 +26,8 @@
 #' sitesAustria <- get_ilter_generalinfo(country_name = "Austri")
 #' # (matches Austria, but not Australia)
 #' length(sitesAustria$title)
-#' eisenwurzen <- get_ilter_generalinfo(country_name = "Austri", site_name =" Eisen")
+#' eisenwurzen <- get_ilter_generalinfo(country_name = "Austri",
+#'                                      site_name =" Eisen")
 #' eisenwurzen[,1:2]
 #' eisenwurzen_deimsid <- eisenwurzen$uri
 #' eisenwurzen_deimsid
@@ -86,9 +87,9 @@ get_ilter_generalinfo <- function(country_name = NA, site_name = NA,
         paste0(
           "You have provided a site name (\'",
           site_name,
-          "\') that s not among the sites stored in the DEIMS-SDR.\n",
-          "The result of this function will be all sites in the requested country (\'",
-          country_name,
+          "\') that's not among the sites stored in the DEIMS-SDR.\n",
+          "The result of this function will be 
+          all sites in the requested country (\'", country_name,
           "\') not a specific site.\n",
           "Please review what you entered in \'site_name\'."
         ),

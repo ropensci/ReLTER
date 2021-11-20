@@ -17,14 +17,16 @@
 #'
 ### function getProcedureList
 get_sos_procedurelist <- function(sosHost) {
-  xslProcUrl.url <- "https://www.get-it.it/objects/sensors/xslt/Capabilities_proceduresUrlList.xsl"
+  xslProcUrl.url <- paste0("https://www.get-it.it/objects/sensors/xslt/",
+                           "Capabilities_proceduresUrlList.xsl")
   styleProcUrl <- xml2::read_xml(xslProcUrl.url, package = "xslt")
 
   listProcedure <- read.csv(text = xslt::xml_xslt((
     xml2::read_xml(
       paste0(
         sosHost,
-        "/observations/service?service=SOS&request=GetCapabilities&Sections=Contents"
+        "/observations/service?service=SOS&request=",
+        "GetCapabilities&Sections=Contents"
       ),
       package = "xslt"
     )
@@ -36,9 +38,11 @@ get_sos_procedurelist <- function(sosHost) {
       as.character(
         paste0(
           sosHost,
-          "/observations/service?service=SOS&amp;version=2.0.0&amp;request=DescribeSensor&amp;procedure=",
+          "/observations/service?service=SOS&amp;version=2.0.0&amp;",
+          "request=DescribeSensor&amp;procedure=",
           listProcedure$uri[i],
-          "&amp;procedureDescriptionFormat=http%3A%2F%2Fwww.opengis.net%2FsensorML%2F1.0.1"
+          "&amp;procedureDescriptionFormat=http%3A%2F%2Fwww.opengis.net",
+          "%2FsensorML%2F1.0.1"
         )
       )
     )
@@ -46,7 +50,8 @@ get_sos_procedurelist <- function(sosHost) {
     sensorName[i] <- as.character(
       xml2::xml_find_all(
         SensorML,
-        "//sml:identification/sml:IdentifierList/sml:identifier[@name='short name']/sml:Term/sml:value/text()",
+        paste0("//sml:identification/sml:IdentifierList/sml:identifier",
+               "[@name='short name']/sml:Term/sml:value/text()"),
         ns
       )
     )

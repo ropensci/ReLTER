@@ -9,12 +9,13 @@
 #' Possible value are:
 #' 'Affiliations', 'Boundaries', 'Contacts', 'EnvCharacts', 'General',
 #' 'Infrastructure', 'Parameters', 'RelateRes', 'ResearchTop'.
-#' More that one can be indicated.
+#' Multiple values can be indicated.
 #' @param show_map a `boolean`. When TRUE, and category is "Boundaries" 
 #' the boundary will be plotted on a Leaflet map. Default FALSE.
 #' @return The output of the function is a `tibble` with main features of the
 #' site and the selected information, such as: networks and projects in
 #' which the site is involved.
+#' If `category` "Boundaries" is indicated an `sf` object is returned 
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom httr GET content
 #' @importFrom jqr jq
