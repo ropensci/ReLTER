@@ -4,23 +4,28 @@
 \alias{get_site_info}
 \title{eLTER get_site_info function}
 \usage{
-get_site_info(deimsid, category = NA)
+get_site_info(deimsid, category = NA, show_map = FALSE)
 }
 \arguments{
 \item{deimsid}{a character. The DEIMS ID of the site from
 DEIMS-SDR website. More information about DEIMS ID in this pages:
 \href{https://deims.org/docs/deimsid.html}{page}.}
 
-\item{category}{a `category`. This attribute allows to select which category
-or categories must be written in the result. Possible value are:
+\item{category}{a `category`. This parameter selects which category
+or categories are retrieved and returned in the result.
+Possible value are:
 'Affiliations', 'Boundaries', 'Contacts', 'EnvCharacts', 'General',
-'Infrastructure', 'Parameters', 'RelateRes', 'ResearchTop'. More that one
-can be indicated.}
+'Infrastructure', 'Parameters', 'RelateRes', 'ResearchTop'.
+Multiple values can be indicated.}
+
+\item{show_map}{a `boolean`. When TRUE, and category is "Boundaries" 
+the boundary will be plotted on a Leaflet map. Default FALSE.}
 }
 \value{
 The output of the function is a `tibble` with main features of the
 site and the selected information, such as: networks and projects in
 which the site is involved.
+If `category` "Boundaries" is indicated an `sf` object is returned
 }
 \description{
 This function obtains details about an eLTER site

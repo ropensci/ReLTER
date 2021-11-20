@@ -63,16 +63,25 @@ The Worms records most similar are:\n\n",
         a
       )
       my.selection <-
-        readline(prompt = "\n----\nPlease select the record that you think most
-similar to the taxa name that you have provided. Insert the number of record: ")
-      input$valid_name[[i]] <- input$wormsRecords[[i]][as.integer(my.selection), ]$valid_name
-      input$valid_authority[[i]] <- input$wormsRecords[[i]][as.integer(my.selection), ]$valid_authority
-      input$valid_AphiaID[[i]] <- input$wormsRecords[[i]][as.integer(my.selection), ]$valid_AphiaID
-      input$status[[i]] <- input$wormsRecords[[i]][as.integer(my.selection), ]$status
-      input$synonyms[[i]] <- input$wormsRecords[[i]][as.integer(my.selection), ]$unacceptreason
-      input$LSID[[i]] <- input$wormsRecords[[i]][as.integer(my.selection), ]$lsid
-      input$url[[i]] <- input$wormsRecords[[i]][as.integer(my.selection), ]$url
-      input$matchType[[i]] <- input$wormsRecords[[i]][as.integer(my.selection), ]$match_type
+        readline(prompt = "\n----\nPlease select the record that you think 
+                 mostsimilar to the taxa name that you have provided.
+                 Insert the number of record:")
+      input$valid_name[[i]] <- 
+        input$wormsRecords[[i]][as.integer(my.selection), ]$valid_name
+      input$valid_authority[[i]] <- 
+        input$wormsRecords[[i]][as.integer(my.selection), ]$valid_authority
+      input$valid_AphiaID[[i]] <- 
+        input$wormsRecords[[i]][as.integer(my.selection), ]$valid_AphiaID
+      input$status[[i]] <- 
+        input$wormsRecords[[i]][as.integer(my.selection), ]$status
+      input$synonyms[[i]] <- 
+        input$wormsRecords[[i]][as.integer(my.selection), ]$unacceptreason
+      input$LSID[[i]] <- 
+        input$wormsRecords[[i]][as.integer(my.selection), ]$lsid
+      input$url[[i]] <- 
+        input$wormsRecords[[i]][as.integer(my.selection), ]$url
+      input$matchType[[i]] <- 
+        input$wormsRecords[[i]][as.integer(my.selection), ]$match_type
       input$nOfWormsResults[[i]] <- 1
       input$wormsRecords[[i]] <- list(
         input$wormsRecords[[i]][as.integer(my.selection), ]
