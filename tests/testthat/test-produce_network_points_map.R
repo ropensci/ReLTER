@@ -8,7 +8,7 @@ test_that("Expect error if internet connection is down", {
       result <- ReLTER::produce_network_points_map(
         networkDEIMSID =
           "https://deims.org/networks/e904354a-f3a0-40ce-a9b5-61741f66c824",
-        countryCode = "DEU"
+          countryCode = "DEU"
       )
     ),
     "GET"

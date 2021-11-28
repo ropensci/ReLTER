@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>eLTER produce_site_qrcode function — produce_site_qrcode • ReLTER</title>
+<title>Pipe operator — %&gt;% • ReLTER</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,9 +46,8 @@
 
 
 
-<meta property="og:title" content="eLTER produce_site_qrcode function — produce_site_qrcode" />
-<meta property="og:description" content="This function obtain the QRCode of any DEIMS-SDR
-entities of the eLTER." />
+<meta property="og:title" content="Pipe operator — %&gt;%" />
+<meta property="og:description" content="See magrittr::%&amp;gt;% for details." />
 <meta property="og:image" content="https://oggioniale.github.io/ReLTER/logo.png" />
 
 
@@ -145,60 +144,34 @@ entities of the eLTER." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>eLTER produce_site_qrcode function</h1>
-    <small class="dont-index">Source: <a href='https://github.com/oggioniale/ReLTER/blob/master/R/produce_site_qrcode.R'><code>R/produce_site_qrcode.R</code></a></small>
-    <div class="hidden name"><code>produce_site_qrcode.Rd</code></div>
+    <h1>Pipe operator</h1>
+    <small class="dont-index">Source: <a href='https://github.com/oggioniale/ReLTER/blob/master/R/utils-pipe.R'><code>R/utils-pipe.R</code></a></small>
+    <div class="hidden name"><code>pipe.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function obtain the QRCode of any DEIMS-SDR
-entities of the eLTER.</p>
+    <p>See <code>magrittr::%&gt;%</code> for details.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>produce_site_qrcode</span><span class='op'>(</span><span class='va'>deimsid</span>, do_plot <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='va'>lhs</span> <span class='op'>%&gt;%</span> <span class='va'>rhs</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>deimsid</th>
-      <td><p>a `character`. The DEIMS ID of entities from
-DEIMS-SDR website. More information about DEIMS iD in this
-<a href='https://deims.org/docs/deimsid.html'>page</a>.</p></td>
+      <th>lhs</th>
+      <td><p>A value or the magrittr placeholder.</p></td>
     </tr>
     <tr>
-      <th>do_plot</th>
-      <td><p>a `boolean`. Plot the computed QRCode. Default FALSE.</p></td>
+      <th>rhs</th>
+      <td><p>A function call using the magrittr semantics.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The QR code as a logical matrix with "qr_code" class.</p>
-    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+    <p>The result of calling `rhs(lhs)`.</p>
 
-    <p>Alessandro Oggioni, phD (2020) <a href='mailto:oggioni.a@irea.cnr.it'>oggioni.a@irea.cnr.it</a></p>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='r-in'><span class='va'>qrcode</span> <span class='op'>&lt;-</span> <span class='fu'>produce_site_qrcode</span><span class='op'>(</span></span>
-<span class='r-in'>  deimsid <span class='op'>=</span> <span class='st'>"https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"</span></span>
-<span class='r-in'><span class='op'>)</span></span>
-<span class='r-plt img'><img src='produce_site_qrcode-1.png' alt='' width='700' height='433' /></span>
-<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>qrcode</span><span class='op'>)</span></span>
-<span class='r-wrn co'><span class='r-pr'>#&gt;</span> <span class='warning'>Warning: </span>no non-missing arguments to min; returning Inf</span>
-<span class='r-wrn co'><span class='r-pr'>#&gt;</span> <span class='warning'>Warning: </span>no non-missing arguments to max; returning -Inf</span>
-<span class='r-wrn co'><span class='r-pr'>#&gt;</span> <span class='warning'>Warning: </span>no non-missing arguments to min; returning Inf</span>
-<span class='r-wrn co'><span class='r-pr'>#&gt;</span> <span class='warning'>Warning: </span>no non-missing arguments to max; returning -Inf</span>
-<span class='r-err co'><span class='r-pr'>#&gt;</span> <span class='error'>Error in plot.window(...):</span> need finite 'xlim' values</span>
-<span class='r-plt img'><img src='produce_site_qrcode-2.png' alt='' width='700' height='433' /></span>
-<span class='r-in'></span>
-<span class='r-in'><span class='fu'>produce_site_qrcode</span><span class='op'>(</span></span>
-<span class='r-in'>  deimsid <span class='op'>=</span> <span class='st'>"https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"</span>,</span>
-<span class='r-in'>  do_plot <span class='op'>=</span> <span class='cn'>TRUE</span></span>
-<span class='r-in'><span class='op'>)</span></span>
-<span class='r-err co'><span class='r-pr'>#&gt;</span> <span class='error'>Error in produce_site_qrcode(deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",     do_plot = TRUE):</span> unused argument (do_plot = TRUE)</span>
-<span class='r-in'></span>
-</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

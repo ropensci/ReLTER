@@ -17,9 +17,6 @@ Possible value are:
 'Affiliations', 'Boundaries', 'Contacts', 'EnvCharacts', 'General',
 'Infrastructure', 'Parameters', 'RelateRes', 'ResearchTop'.
 Multiple values can be indicated.}
-
-\item{show_map}{a `boolean`. When TRUE, and category is "Boundaries" 
-the boundary will be plotted on a Leaflet map. Default FALSE.}
 }
 \value{
 The output of the function is a `tibble` with main features of the
@@ -42,6 +39,7 @@ site <- get_site_info(
   deimsid = "https://deims.org/79d6c1df-570f-455f-a929-6cfe5c4ca1e9",
   category = "Boundaries"
 )
+site
 
 }
 \author{

@@ -15,6 +15,7 @@
 #' @importFrom ggplot2 geom_text aes coord_fixed scale_x_continuous
 #' @importFrom ggplot2 scale_y_continuous scale_color_manual
 #' @importFrom ggforce geom_arc_bar
+#' @importFrom stats lag start end
 #' @export
 #' @examples
 #' \dontrun{
@@ -38,17 +39,17 @@ produce_site_parameters_pie <- function(deimsid) {
     params$parameterGroups <- parametersStructureEnvThes$category[
       match(params$parameterLabel, parametersStructureEnvThes$parameter)
     ]
-    groupsIsNa <- params %>% dplyr::filter(is.na(parameterGroups))
+    groupsIsNa <- params %>% dplyr::filter(is.na("parameterGroups"))
     # parameters ----
     params <- params %>%
-      dplyr::group_by(parameterGroups) %>%
+      dplyr::group_by("parameterGroups") %>%
       dplyr::tally() %>%
       dplyr::mutate(
         freq = n / sum(n),
         label = scales::percent(freq),
         end = 2 * pi * cumsum(freq) / sum(freq),
-        start = lag(end, default = 0),
-        middle = 0.5 * (start + end),
+        start = stats::lag(end, default = 0),
+        middle = 0.5 * (stats::start + stats::start),
         hjust = ifelse(middle > pi, 1, 0),
         vjust = ifelse(
           middle < pi / 2 | middle > 3 * pi / 2, 0, 1

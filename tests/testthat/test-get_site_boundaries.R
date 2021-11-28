@@ -28,7 +28,11 @@ test_that("Output of site boundaries function constructs 'sf' and 'tibble' as
   )))
   expect_type(result$title, "character")
   expect_type(result$uri, "character")
-  expect_type(result$boundaries, "list")
+  if (is.na(result$boundaries)) {
+    expect_type(result$boundaries, "logical")
+  } else {
+    expect_type(result$boundaries, "list")
+  }
 })
 
 test_that("Wrong input (but URL) constructs a NULL object", {

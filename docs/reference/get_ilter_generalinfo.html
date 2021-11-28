@@ -161,20 +161,25 @@ the whole list of sites is returned. If either or both of the filtering
 strings is specified, then a filtered subset of the sites is acquired.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_ilter_generalinfo</span><span class='op'>(</span>country_name <span class='op'>=</span> <span class='cn'>NA</span>, site_name <span class='op'>=</span> <span class='cn'>NA</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>get_ilter_generalinfo</span><span class='op'>(</span>country_name <span class='op'>=</span> <span class='cn'>NA</span>, site_name <span class='op'>=</span> <span class='cn'>NA</span>, show_map <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>country_name</th>
-      <td><p>A `character`. This character string filters the full set
-of DEIMS sites by country name. Partial matching is supported.</p></td>
+      <td><p>A `character`. This character string filters
+the full set of DEIMS sites by country name. Partial matching is supported.</p></td>
     </tr>
     <tr>
       <th>site_name</th>
       <td><p>A `character`. This character string filters by site name
 where, again, partial matching is supported</p></td>
+    </tr>
+    <tr>
+      <th>show_map</th>
+      <td><p>A `boolean`. If TRUE a Leaflet map of site locations
+is shown. Default FALSE</p></td>
     </tr>
     </table>
 
@@ -182,8 +187,8 @@ where, again, partial matching is supported</p></td>
 
     <p>An `sf` object of the bounding boxes of sites in the filtered list,
 containing the name, DEIMS ID, longitude, latitude, average altitude,
-and affiliation of the filtered ILTER sites. If no bounding box is available,
-the centroid is returned.</p>
+and affiliation of the filtered ILTER sites.
+If no bounding box is available,the centroid is returned.</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Alessandro Oggioni, phD (2021) <a href='mailto:oggioni.a@irea.cnr.it'>oggioni.a@irea.cnr.it</a></p>
@@ -192,22 +197,16 @@ the centroid is returned.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
 <span class='r-in'><span class='va'>listOfAllSites</span> <span class='op'>&lt;-</span> <span class='fu'>get_ilter_generalinfo</span><span class='op'>(</span><span class='op'>)</span></span>
-<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>listOfAllSites</span><span class='op'>)</span></span>
-<span class='r-in'></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>listOfAllSites</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>]</span><span class='op'>)</span></span>
 <span class='r-in'><span class='va'>sitesAustria</span> <span class='op'>&lt;-</span> <span class='fu'>get_ilter_generalinfo</span><span class='op'>(</span>country_name <span class='op'>=</span> <span class='st'>"Austri"</span><span class='op'>)</span></span>
 <span class='r-in'><span class='co'># (matches Austria, but not Australia)</span></span>
 <span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>sitesAustria</span><span class='op'>$</span><span class='va'>title</span><span class='op'>)</span></span>
-<span class='r-in'></span>
-<span class='r-in'><span class='va'>eisenwurzen</span> <span class='op'>&lt;-</span> <span class='fu'>get_ilter_generalinfo</span><span class='op'>(</span></span>
-<span class='r-in'>  country_name <span class='op'>=</span> <span class='st'>"Austri"</span>,</span>
-<span class='r-in'>  site_name <span class='op'>=</span><span class='st'>" Eisen"</span></span>
-<span class='r-in'><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>eisenwurzen</span> <span class='op'>&lt;-</span> <span class='fu'>get_ilter_generalinfo</span><span class='op'>(</span>country_name <span class='op'>=</span> <span class='st'>"Austri"</span>,</span>
+<span class='r-in'>                                     site_name <span class='op'>=</span><span class='st'>" Eisen"</span><span class='op'>)</span></span>
 <span class='r-in'><span class='va'>eisenwurzen</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span><span class='op'>]</span></span>
 <span class='r-in'><span class='va'>eisenwurzen_deimsid</span> <span class='op'>&lt;-</span> <span class='va'>eisenwurzen</span><span class='op'>$</span><span class='va'>uri</span></span>
 <span class='r-in'><span class='va'>eisenwurzen_deimsid</span></span>
-<span class='r-in'></span>
 <span class='r-in'><span class='op'>}</span></span>
-<span class='r-in'></span>
 </pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

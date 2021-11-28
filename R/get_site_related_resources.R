@@ -60,7 +60,11 @@ get_site_related_resources <- function(deimsid) {
       )
       relatedResources$relatedResources[[1]] <-
         relatedResources$relatedResources[[1]] %>%
-        dplyr::select(relatedResourcesTitle, relatedResourcesChanged, uri)
+          dplyr::select(
+            "relatedResourcesTitle",
+            "relatedResourcesChanged",
+            "uri"
+          )
       relatedResources
     } else {
       relatedResourcesId <- NA

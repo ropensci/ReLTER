@@ -4,15 +4,15 @@
 #' API. If no `country_name` or `site_name` are specified,
 #' the whole list of sites is returned. If either or both of the filtering
 #' strings is specified, then a filtered subset of the sites is acquired.
-#' @param country_name A `character`. This character string filters 
+#' @param country_name A `character`. This character string filters
 #' the full set of DEIMS sites by country name. Partial matching is supported.
 #' @param site_name A `character`. This character string filters by site name
 #' where, again, partial matching is supported
-#' @param show_map A `boolean`. If TRUE a Leaflet map of site locations 
+#' @param show_map A `boolean`. If TRUE a Leaflet map of site locations
 #' is shown. Default FALSE
 #' @return An `sf` object of the bounding boxes of sites in the filtered list,
 #' containing the name, DEIMS ID, longitude, latitude, average altitude,
-#' and affiliation of the filtered ILTER sites. 
+#' and affiliation of the filtered ILTER sites.
 #' If no bounding box is available,the centroid is returned.
 #' @author Alessandro Oggioni, phD (2021) \email{oggioni.a@@irea.cnr.it}
 #' @author  Micha Silver, phD (2021) \email{silverm@@post.bgu.ac.il}
@@ -88,7 +88,7 @@ get_ilter_generalinfo <- function(country_name = NA, site_name = NA,
           "You have provided a site name (\'",
           site_name,
           "\') that's not among the sites stored in the DEIMS-SDR.\n",
-          "The result of this function will be 
+          "The result of this function will be
           all sites in the requested country (\'", country_name,
           "\') not a specific site.\n",
           "Please review what you entered in \'site_name\'."
@@ -104,13 +104,13 @@ get_ilter_generalinfo <- function(country_name = NA, site_name = NA,
   if (is.null(uniteSitesGeneralInfo)) {
     uniteSitesGeneralInfoGeo <- NULL
     uniteSitesGeneralInfoGeo
-  } else if (length(uniteSitesGeneralInfo[,1]) == 0 |
+  } else if (length(uniteSitesGeneralInfo[, 1]) == 0 |
           # No rows after country filter
           length(uniteSitesGeneralInfo$title) == 0) {
           # No rows left after site filter
           uniteSitesGeneralInfoGeo <- NULL
        warning(
-      "\n" ,
+      "\n",
       paste(
         "No matches found for country name:",
         country_name,

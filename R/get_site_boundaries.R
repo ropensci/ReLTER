@@ -6,6 +6,8 @@
 #' @param deimsid A `character`. The DEIMS ID of the site from
 #' DEIMS-SDR website. More information about DEIMS ID in this page:
 #' \href{https://deims.org/docs/deimsid.html}{page}.
+#' @param show_map a `boolean`. When TRUE the boundary will be plotted on a
+#' Leaflet map. Default FALSE.
 #' @return The output of the function is an `sf` object, the boundary of the
 #' site or NA if the boundary is missing from DEIMS-SDR. In addition, as
 #' `html map` with boundaries of the site is plotted.
@@ -28,29 +30,13 @@
 #' tSiteBoundaries
 #'
 #' eisenwurzen <- get_site_boundaries(
-#'   deimsid = "https://deims.org/d0a8da18-0881-4ebe-bccf-bc4cb4e25701"
+#'   deimsid = "https://deims.org/d0a8da18-0881-4ebe-bccf-bc4cb4e25701",
+#'   show_map = TRUE
 #' )
 #' eisenwurzen
 #'
 ### function get_site_boundaries
-get_site_boundaries <- function(deimsid) {
-  # biomeColor <- tibble::tribble(
-  #   ~geoBonBiome, ~fill, ~border,
-  #   "Marine", "#055ca8", "#057ae1",
-  #   "Coastal", "#43903f", "#5ecc58",
-  #   "Fresh water lakes", "#03a3b8", "#04d0eb",
-  #   "Fresh water rivers", "#03a3b8", "#04d0eb",
-  #   "Terrestrial", "#b07c03", "#e8a303"
-  # )
-  # geoBonBiome <- jsonlite::fromJSON(
-  #   paste0(
-  #     "https://deims.org/",
-  #     "api/sites/",
-  #     sub("^.+/", "", deimsid)
-  #   )
-  # )$attributes$environmentalCharacteristics$geoBonBiome
-  # color <- biomeColor$fill[biomeColor$geoBonBiome == geoBonBiome[1]]
-  # colorBorder <- biomeColor$border[biomeColor$geoBonBiome == geoBonBiome[1]]
+get_site_boundaries <- function(deimsid, show_map = FALSE) {
   q <- '{title: .title,
         uri: "\\(.id.prefix)\\(.id.suffix)",
         boundaries: .attributes.geographic.boundaries
@@ -77,8 +63,8 @@ get_site_boundaries <- function(deimsid) {
     if (!is.null(boundaries)) {
       if (is.na(boundaries$boundaries)) {
         warning(
-          "\n----\nThis site does not have boundaries uploaded to DEIMS-SDR.
-Please verify in the site page (",
+          "\n----\nThis site does not have boundaries uploaded to DEIMS-SDR.",
+          "Please verify in the site page (",
           deimsid,
           ")\n----\n"
         )
@@ -90,37 +76,18 @@ Please verify in the site page (",
           wkt = "boundaries",
           crs = 4326
         )
-        # TODO: add this part of the function when it will be possible to write
-        # files in the temp folder.
-        # sf::write_sf(
-        #   geoBoundaries,
-        #   paste0("sites_", gsub(" ", "_", boundaries$title), ".gpkg"),
-        #   append = FALSE
-        # )
-        # sf::st_write(
-        #   geoBoundaries,
-        #   paste0("sites_", gsub(" ", "_", boundaries$title), ".shp"),
-        #   append = FALSE
-        # )
-
-        ##---------------------------------------------------
-        # MS: Temporarily disable printing of map, for testing
-        # map <- leaflet::leaflet(geoBoundaries) %>%
-        #   leaflet::addTiles() %>%
-        #   leaflet::addPolygons(fillColor = color, color = colorBorder)
-        # print(map)
-        ##--------------------------------------------------
-        # mapview::mapshot(
-        #   map,
-        #   file = paste0("sites_", gsub(" ", "_", boundaries$title), ".png"),
-        #   append = FALSE
-        # )
-        geoBoundaries
+        if (show_map == TRUE) {
+          map <- leaflet::leaflet(geoBoundaries) %>%
+            leaflet::addTiles() %>%
+            leaflet::addPolygons()
+          print(map)
+        }
+        return(geoBoundaries)
       }
     } else {
       warning(
-        "\n ----This site does not have boundaries uploaded to DEIMS-SDR.
-      Please verify in the site page (",
+        "\n ----This site does not have boundaries uploaded to DEIMS-SDR.",
+        "Please verify in the site page (",
         deimsid,
         ")---- \n"
       )
@@ -128,8 +95,8 @@ Please verify in the site page (",
       # map <- NULL
     }
   } else {
-    message("\n----\nThe requested page could not be found.
-Please check the DEIMS ID\n----\n")
+    message("\n----\nThe requested page could not be found.",
+    "Please check the DEIMS ID\n----\n")
     geoBoundaries <- NULL
     # map <- NULL
   }

@@ -108,7 +108,7 @@ taxon_id_pesi <- function(table, taxaColumn) {
       table$checkStatus[[i]] <- a$taxon.taxonomicStatus
       i <- i + 1
     } else if (length(a[[1]]) > 1) {
-      a <- subset(a, matchingNameType == "TAXON")
+      a <- subset(a, "matchingNameType" == "TAXON")
       table$canonicalName[[i]] <-
         a$taxon.taxonName.canonicalName
       table$authorship[[i]] <-

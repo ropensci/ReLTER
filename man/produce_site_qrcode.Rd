@@ -4,23 +4,31 @@
 \alias{produce_site_qrcode}
 \title{eLTER produce_site_qrcode function}
 \usage{
-produce_site_qrcode(deimsid)
+produce_site_qrcode(deimsid, do_plot = FALSE)
 }
 \arguments{
-\item{deimsid}{A `character`. The DEIMS ID of site from
+\item{deimsid}{a `character`. The DEIMS ID of entities from
 DEIMS-SDR website. More information about DEIMS iD in this
 \href{https://deims.org/docs/deimsid.html}{page}.}
+
+\item{do_plot}{a `boolean`. Plot the computed QRCode. Default FALSE.}
 }
 \value{
-The output of the function is a QRcode `image`.
+The QR code as a logical matrix with "qr_code" class.
 }
 \description{
 This function obtain the QRCode of any DEIMS-SDR
 entities of the eLTER.
 }
 \examples{
-produce_site_qrcode(
+qrcode <- produce_site_qrcode(
   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
+)
+plot(qrcode)
+
+produce_site_qrcode(
+  deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
+  do_plot = TRUE
 )
 
 }

@@ -7,19 +7,19 @@
 get_ilter_generalinfo(country_name = NA, site_name = NA, show_map = FALSE)
 }
 \arguments{
-\item{country_name}{A `character`. This character string filters 
+\item{country_name}{A `character`. This character string filters
 the full set of DEIMS sites by country name. Partial matching is supported.}
 
 \item{site_name}{A `character`. This character string filters by site name
 where, again, partial matching is supported}
 
-\item{show_map}{A `boolean`. If TRUE a Leaflet map of site locations 
+\item{show_map}{A `boolean`. If TRUE a Leaflet map of site locations
 is shown. Default FALSE}
 }
 \value{
 An `sf` object of the bounding boxes of sites in the filtered list,
 containing the name, DEIMS ID, longitude, latitude, average altitude,
-and affiliation of the filtered ILTER sites. 
+and affiliation of the filtered ILTER sites.
 If no bounding box is available,the centroid is returned.
 }
 \description{

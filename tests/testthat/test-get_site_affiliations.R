@@ -31,14 +31,8 @@ test_that("Output of site affiliation function constructs 'tibble' as
 
   expect_type(result$title, "character")
   expect_type(result$uri, "character")
-  expect_type(result$geoCoord, "list")
+  expect_type(result$geoCoord, "character")
   expect_type(result$country, "list")
-  expect_type(result$geoElev.avg, "double")
-  expect_type(result$geoElev.min, "double")
-  expect_type(result$geoElev.max, "double")
-  expect_type(result$geoElev.unit, "character")
-  expect_type(result$affiliation.networks, "list")
-  expect_type(result$affiliation.projects, "list")
 })
 
 test_that("Wrong input (but URL) constructs a NULL object", {

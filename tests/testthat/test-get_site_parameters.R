@@ -34,11 +34,6 @@ test_that("Output of site parameters function constructs ‘tibble’ as
   expect_type(result$uri, "character")
   expect_type(result$geoCoord, "character")
   expect_type(result$country, "list")
-  expect_type(result$geoElev.avg, "double")
-  expect_type(result$geoElev.min, "integer")
-  expect_type(result$geoElev.max, "integer")
-  expect_type(result$geoElev.unit, "character")
-  expect_type(result$parameter, "list")
 })
 
 test_that("Wrong input (but URL) constructs a tibble with empty data", {

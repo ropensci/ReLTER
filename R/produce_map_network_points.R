@@ -17,7 +17,6 @@
 #' geographic distribution of the network of sites present in the chosen
 #' country.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @import ISOcodes
 #' @importFrom jsonlite fromJSON
 #' @importFrom sf as_Spatial st_as_sf st_crs
 #' @importFrom raster getData
@@ -25,6 +24,7 @@
 #' @importFrom tmap tm_shape tm_borders tm_dots
 #' @importFrom dplyr select
 #' @importFrom tibble as_tibble
+#' @importFrom ISOcodes ISO_3166_1
 #' @export
 #' @examples
 #' \dontrun{
@@ -46,83 +46,87 @@
 #'
 ### function produce_network_points_map
 produce_network_points_map <- function(networkDEIMSID, countryCode) {
-  lterNetworkSitesCoords <- jsonlite::fromJSON(
-    paste0(
+  # suppressWarnings({
+    url <- paste0(
       "https://deims.org/",
       "api/sites?network=",
       sub("^.+/", "", networkDEIMSID)
     )
-  )
-  if (length(lterNetworkSitesCoords) != 0) {
-    lterNetworkSitesCoords$uri <- paste0(
-      lterNetworkSitesCoords$id$prefix,
-      lterNetworkSitesCoords$id$suffix
+    export <- httr::GET(url = url)
+    lterNetworkSitesCoords <- jsonlite::fromJSON(
+      httr::content(export, "text")
     )
-    lterNetworkSitesCoords <- lterNetworkSitesCoords %>%
-      dplyr::select("title", "uri", "changed", "coordinates")
-    networkSitesGeo <- sf::st_as_sf(
-      tibble::as_tibble(lterNetworkSitesCoords),
-      wkt = "coordinates"
-    )
-    sf::st_crs(networkSitesGeo) <- 4326
-    networkSitesGeo_SP <- sf::as_Spatial(
-      networkSitesGeo$coordinates
-    )
-    networkSitesGeo_valid <- rgeos::gIsValid(
-      networkSitesGeo_SP,
-      byid = FALSE,
-      reason = TRUE
-    )
-    if (networkSitesGeo_valid == "Valid Geometry") {
-      if (countryCode %in% ISOcodes::ISO_3166_1$Alpha_3 == TRUE) {
-        country <- raster::getData(country = countryCode, level = 0)
-        country <- rgeos::gSimplify(
-          country,
-          tol = 0.01,
-          topologyPreserve = TRUE
-        )
-        mapOfSites <- tmap::tm_shape(country) +
-          tmap::tm_borders("grey75", lwd = 1) +
-          tmap::tm_shape(networkSitesGeo) +
-          tmap::tm_dots(
-            col = NA,
-            size = 0.1,
-            shape = 16,
-            title = NA,
-            legend.show = FALSE
+    if (length(lterNetworkSitesCoords) != 0) {
+      lterNetworkSitesCoords$uri <- paste0(
+        lterNetworkSitesCoords$id$prefix,
+        lterNetworkSitesCoords$id$suffix
+      )
+      lterNetworkSitesCoords <- lterNetworkSitesCoords %>%
+        dplyr::select("title", "uri", "changed", "coordinates")
+      networkSitesGeo <- sf::st_as_sf(
+        tibble::as_tibble(lterNetworkSitesCoords),
+        wkt = "coordinates"
+      )
+      sf::st_crs(networkSitesGeo) <- 4326
+      networkSitesGeo_SP <- sf::as_Spatial(
+        networkSitesGeo$coordinates
+      )
+      networkSitesGeo_valid <- rgeos::gIsValid(
+        networkSitesGeo_SP,
+        byid = FALSE,
+        reason = TRUE
+      )
+      if (networkSitesGeo_valid == "Valid Geometry") {
+        if (countryCode %in% ISOcodes::ISO_3166_1$Alpha_3 == TRUE) {
+          country <- raster::getData(country = countryCode, level = 0)
+          country <- rgeos::gSimplify(
+            country,
+            tol = 0.01,
+            topologyPreserve = TRUE
           )
-        suppressWarnings(print(mapOfSites)) # FIXME manage
-        networkSitesGeo
+          mapOfSites <- tmap::tm_shape(country) +
+            tmap::tm_borders("grey75", lwd = 1) +
+            tmap::tm_shape(networkSitesGeo) +
+            tmap::tm_dots(
+              col = NA,
+              size = 0.1,
+              shape = 16,
+              title = NA,
+              legend.show = FALSE
+            )
+          suppressWarnings(print(mapOfSites)) # FIXME manage
+          networkSitesGeo
+        } else {
+          mapOfSites <- tmap::tm_shape(networkSitesGeo) +
+            tmap::tm_dots(
+              col = NA,
+              size = 0.1,
+              shape = 16,
+              title = NA,
+              legend.show = FALSE
+            )
+          message("\n----\nThe map of site cannot be made properly.
+  Please check again the Country code.
+  Compare the code provided with the list of code in Wikipage
+  https://en.wikipedia.org/wiki/ISO_3166\n----\n")
+          print(mapOfSites)
+          networkSitesGeo
+        }
       } else {
-        mapOfSites <- tmap::tm_shape(networkSitesGeo) +
-          tmap::tm_dots(
-            col = NA,
-            size = 0.1,
-            shape = 16,
-            title = NA,
-            legend.show = FALSE
-          )
-        message("\n----\nThe map of site cannot be made properly.
-Please check again the Country code.
-Compare the code provided with the list of code in Wikipage
-https://en.wikipedia.org/wiki/ISO_3166\n----\n")
+        message("\n----\nThe maps cannot be created because the coordinates,
+  provided in DEIMS-SDR, has an invalid geometry.
+  Please check the content and refers this error to DEIMS-SDR contact person
+  of the network, citing the Network.iD.\n----\n")
+        mapOfSites <- tmap::tm_shape(country) +
+          tmap::tm_borders("grey75", lwd = 1)
         print(mapOfSites)
         networkSitesGeo
       }
     } else {
-      message("\n----\nThe maps cannot be created because the coordinates,
-provided in DEIMS-SDR, has an invalid geometry.
-Please check the content and refers this error to DEIMS-SDR contact person
-of the network, citing the Network.iD.\n----\n")
-      mapOfSites <- tmap::tm_shape(country) +
-        tmap::tm_borders("grey75", lwd = 1)
-      print(mapOfSites)
-      networkSitesGeo
+      message("\n----\nThe requested page could not be found.
+  Please check again the Network.iD\n----\n")
+      networkSitesGeo <- NULL
+      mapOfSites <- NULL
     }
-  } else {
-    message("\n----\nThe requested page could not be found.
-Please check again the Network.iD\n----\n")
-    networkSitesGeo <- NULL
-    mapOfSites <- NULL
-  }
+  # })
 }

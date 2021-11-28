@@ -89,10 +89,10 @@ taxon_id_worms <- function(
   newTable <- input
   if (verbose == TRUE) {
     rowsWithZero <- newTable %>%
-      dplyr::filter(nOfWormsResults == 0) %>%
+      dplyr::filter("nOfWormsResults" == 0) %>%
       nrow()
     rowsWithMoreOne <- newTable %>%
-      dplyr::filter(nOfWormsResults > 1) %>%
+      dplyr::filter("nOfWormsResults" > 1) %>%
       nrow()
     message <- message(
       paste0(

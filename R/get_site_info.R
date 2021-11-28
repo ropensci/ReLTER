@@ -10,12 +10,10 @@
 #' 'Affiliations', 'Boundaries', 'Contacts', 'EnvCharacts', 'General',
 #' 'Infrastructure', 'Parameters', 'RelateRes', 'ResearchTop'.
 #' Multiple values can be indicated.
-#' @param show_map a `boolean`. When TRUE, and category is "Boundaries" 
-#' the boundary will be plotted on a Leaflet map. Default FALSE.
 #' @return The output of the function is a `tibble` with main features of the
 #' site and the selected information, such as: networks and projects in
 #' which the site is involved.
-#' If `category` "Boundaries" is indicated an `sf` object is returned 
+#' If `category` "Boundaries" is indicated an `sf` object is returned
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom httr GET content
 #' @importFrom jqr jq
@@ -37,6 +35,7 @@
 #'   deimsid = "https://deims.org/79d6c1df-570f-455f-a929-6cfe5c4ca1e9",
 #'   category = "Boundaries"
 #' )
+#' site
 #'
 ### function get_site_info
 get_site_info <- function(deimsid, category = NA, show_map = FALSE) {
@@ -241,13 +240,6 @@ get_site_info <- function(deimsid, category = NA, show_map = FALSE) {
             "uri" = "uri"
           )
         )
-        if (show_map == TRUE) {
-          map <- leaflet::leaflet(siteInfo) %>%
-            leaflet::addTiles() %>%
-            leaflet::addPolygons()
-          print(map)
-        }
-        return(siteInfo)
       } else {
         siteInfo <- siteInfo
       }

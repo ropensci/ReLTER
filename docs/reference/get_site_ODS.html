@@ -49,8 +49,8 @@
 <meta property="og:title" content="eLTER get_site_ODS function — get_site_ODS" />
 <meta property="og:description" content="This function acquires various raster layers from
 ODS Europe:  https://maps.opendatascience.eu/
-and crops to an eLTER site boundary, which is obtained from the DEIMS-SDR
-sites API." />
+and crops to an eLTER site boundary, which is obtained
+from the DEIMS-SDR sites API." />
 <meta property="og:image" content="https://oggioniale.github.io/ReLTER/logo.png" />
 
 
@@ -155,8 +155,8 @@ sites API." />
     <div class="ref-description">
     <p>This function acquires various raster layers from
 ODS Europe:  https://maps.opendatascience.eu/
-and crops to an eLTER site boundary, which is obtained from the DEIMS-SDR
-sites API.</p>
+and crops to an eLTER site boundary, which is obtained
+from the DEIMS-SDR sites API.</p>
     </div>
 
     <pre class="usage"><span class='fu'>get_site_ODS</span><span class='op'>(</span><span class='va'>deimsid</span>, dataset <span class='op'>=</span> <span class='st'>"landcover"</span><span class='op'>)</span></pre>
@@ -196,14 +196,17 @@ OSM buildings: Buildings according to OSM polygons
    and the Copernicus impervious build-up layer (2018),
    aggregated and rasterized first to 10m spatial resolution
    and after downsampled to 30m by spatial average.
-Natura2000: Protected areas rasterized from NATURA 2000 (A, B and C site
-   categories) and OSM (IUCN Ia, IUCN Ib, IUCN 2, IUCN 3, IUCN 4, IUCN 5,
-   IUCN 6 and others categories), first to 10m spatial resolution and
-   after downsampled to 30m by spatial average.
-   The overlap areas are indicated in a new category.
-NDVI:  NDVI time-series, derived from the Landsat quarterly temporal
-composites
-All datasets are georeferenced to the EPSG:3035 coordinate reference system.
+Natura2000: Protected areas rasterized from NATURA 2000
+   (A, B and C site categories)
+   and OSM (IUCN Ia, IUCN Ib, IUCN 2, IUCN 3, IUCN 4, IUCN 5, IUCN 6
+   and others categories),
+   first to 10m spatial resolution and after downsampled
+   to 30m by spatial average.
+   The overlap areas are indicated in a new category.</p>
+<p>NDVI:  NDVI time-series,
+   derived from the Landsat quarterly temporal composites</p>
+<p>All datasets are georeferenced to the
+EPSG:3035 coordinate reference system.
 and all except clc2018 have 30 meters resolution</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
@@ -226,7 +229,7 @@ and all except clc2018 have 30 meters resolution</p>
 <span class='r-in'>  dataset <span class='op'>=</span> <span class='st'>"ndvi_summer"</span></span>
 <span class='r-in'><span class='op'>)</span></span>
 <span class='r-in'><span class='va'>siteNDVI</span></span>
-<span class='r-in'>  <span class='fu'>terra</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/terra/man/plot.html'>plot</a></span><span class='op'>(</span><span class='va'>siteNDVI</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>terra</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/terra/man/plot.html'>plot</a></span><span class='op'>(</span><span class='va'>siteNDVI</span><span class='op'>)</span></span>
 <span class='r-in'><span class='op'>}</span></span>
 <span class='r-in'></span>
 </pre>

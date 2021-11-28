@@ -180,7 +180,8 @@ input.</p>
     <p>Alessandro Oggioni, phD (2021) <a href='mailto:oggioni.a@irea.cnr.it'>oggioni.a@irea.cnr.it</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='r-in'><span class='va'>phytoplankton</span> <span class='op'>&lt;-</span> <span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span></span>
+    <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'><span class='va'>phytoplankton</span> <span class='op'>&lt;-</span> <span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span></span>
 <span class='r-in'>   ID <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>4</span>, <span class='fl'>5</span>, <span class='fl'>6</span>, <span class='fl'>7</span><span class='op'>)</span>,</span>
 <span class='r-in'>   species <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span></span>
 <span class='r-in'>     <span class='st'>"Asterionella formosa"</span>, <span class='st'>"Chrysococcus sp."</span>,</span>
@@ -195,79 +196,9 @@ input.</p>
 <span class='r-in'>  verbose <span class='op'>=</span> <span class='cn'>TRUE</span>,</span>
 <span class='r-in'>  refine <span class='op'>=</span> <span class='cn'>FALSE</span></span>
 <span class='r-in'><span class='op'>)</span></span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> After the finding operation the number of record(s) that don't match</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> with any Worms names are:</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> *--- 1 on 7 examined ---*</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> please verify the species name provided and run again this</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> function. The record(s) that match with more that one Worms name are:</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> *--- 2 on 7 examined ---*</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> please use the function taxon_id_worms_refine for specify wich</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> is the exact corrispondence with your given species name.</span>
 <span class='r-in'><span class='va'>table</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 7 × 12</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>      ID species  valid_name valid_authority valid_AphiaID status synonyms LSID  </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                   <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;lgl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>1</span>     1 Asterio… Asterione… Hassall, 1850          <span style='text-decoration: underline;'>148</span>954 accep… <span style='color: #BB0000;'>NA</span>       urn:l…</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>2</span>     2 Chrysoc… <span style='color: #BB0000;'>NA</span>         <span style='color: #BB0000;'>NA</span>                         <span style='color: #BB0000;'>NA</span> <span style='color: #BB0000;'>NA</span>     <span style='color: #BB0000;'>NA</span>       <span style='color: #BB0000;'>NA</span>    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>3</span>     3 Cryptom… <span style='color: #BB0000;'>NA</span>         <span style='color: #BB0000;'>NA</span>                         <span style='color: #BB0000;'>NA</span> <span style='color: #BB0000;'>NA</span>     <span style='color: #BB0000;'>NA</span>       <span style='color: #BB0000;'>NA</span>    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>4</span>     4 Dinobry… Dinobryon… O.E.Imhof, 1887        <span style='text-decoration: underline;'>157</span>248 accep… <span style='color: #BB0000;'>NA</span>       urn:l…</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>5</span>     5 Mallomo… Mallomona… Ruttner, 1913          <span style='text-decoration: underline;'>249</span>722 accep… <span style='color: #BB0000;'>NA</span>       urn:l…</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>6</span>     6 Melosir… Melosira … C.Agardh, 1827         <span style='text-decoration: underline;'>149</span>043 accep… <span style='color: #BB0000;'>NA</span>       urn:l…</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>7</span>     7 Cryptom… <span style='color: #BB0000;'>NA</span>         <span style='color: #BB0000;'>NA</span>                         <span style='color: #BB0000;'>NA</span> <span style='color: #BB0000;'>NA</span>     <span style='color: #BB0000;'>NA</span>       <span style='color: #BB0000;'>NA</span>    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># … with 4 more variables: url &lt;chr&gt;, matchType &lt;chr&gt;, nOfWormsResults &lt;dbl&gt;,</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   wormsRecords &lt;list&gt;</span></span>
 <span class='r-in'><span class='fu'>taxon_id_worms_refine</span><span class='op'>(</span>input <span class='op'>=</span> <span class='va'>table</span>, taxaColumn <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span></span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> This is the taxa name provided by you:</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> Cryptomonas rostrata</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> Worms don't contain a unique records that match with this name.</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> The Worms records most similar are:</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> 1:  Cryptomonas rostrata (Skuja, 1948)</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span>     Worms status: accepted</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span>     Unaccept reason: NA</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span>     Match type: exact</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span>     Modified: 2015-06-26T12:14:04.327Z</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> 2:  Cryptomonas rostrata (O.V.Troitzkaja, 1922)</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span>     Worms status: unaccepted</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span>     Unaccept reason: synonym</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span>     Match type: exact</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span>     Modified: 2021-08-27T06:27:33.180Z</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> ----</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Please select the record that you think most</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> similar to the taxa name that you have provided. Insert the number of record: </span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> This is the taxa name provided by you:</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> Cryptomonas rostrata</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> Worms don't contain a unique records that match with this name.</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> The Worms records most similar are:</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> 1:  Cryptomonas rostrata (Skuja, 1948)</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span>     Worms status: accepted</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span>     Unaccept reason: NA</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span>     Match type: exact</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span>     Modified: 2015-06-26T12:14:04.327Z</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> 2:  Cryptomonas rostrata (O.V.Troitzkaja, 1922)</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span>     Worms status: unaccepted</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span>     Unaccept reason: synonym</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span>     Match type: exact</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span>     Modified: 2021-08-27T06:27:33.180Z</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> ----</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Please select the record that you think most</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> similar to the taxa name that you have provided. Insert the number of record: </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 7 × 12</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>      ID species  valid_name valid_authority valid_AphiaID status synonyms LSID  </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                   <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>1</span>     1 Asterio… Asterione… Hassall, 1850          <span style='text-decoration: underline;'>148</span>954 accep… <span style='color: #BB0000;'>NA</span>       urn:l…</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>2</span>     2 Chrysoc… <span style='color: #BB0000;'>NA</span>         <span style='color: #BB0000;'>NA</span>                         <span style='color: #BB0000;'>NA</span> <span style='color: #BB0000;'>NA</span>     <span style='color: #BB0000;'>NA</span>       <span style='color: #BB0000;'>NA</span>    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>3</span>     3 Cryptom… <span style='color: #BB0000;'>NA</span>         <span style='color: #BB0000;'>NA</span>                         <span style='color: #BB0000;'>NA</span> <span style='color: #BB0000;'>NA</span>     <span style='color: #BB0000;'>NA</span>       <span style='color: #BB0000;'>NA</span>    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>4</span>     4 Dinobry… Dinobryon… O.E.Imhof, 1887        <span style='text-decoration: underline;'>157</span>248 accep… <span style='color: #BB0000;'>NA</span>       urn:l…</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>5</span>     5 Mallomo… Mallomona… Ruttner, 1913          <span style='text-decoration: underline;'>249</span>722 accep… <span style='color: #BB0000;'>NA</span>       urn:l…</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>6</span>     6 Melosir… Melosira … C.Agardh, 1827         <span style='text-decoration: underline;'>149</span>043 accep… <span style='color: #BB0000;'>NA</span>       urn:l…</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>7</span>     7 Cryptom… <span style='color: #BB0000;'>NA</span>         <span style='color: #BB0000;'>NA</span>                         <span style='color: #BB0000;'>NA</span> <span style='color: #BB0000;'>NA</span>     <span style='color: #BB0000;'>NA</span>       <span style='color: #BB0000;'>NA</span>    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># … with 4 more variables: url &lt;chr&gt;, matchType &lt;chr&gt;, nOfWormsResults &lt;dbl&gt;,</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   wormsRecords &lt;list&gt;</span></span>
+<span class='r-in'><span class='op'>}</span></span>
 </pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

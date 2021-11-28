@@ -25,7 +25,7 @@ i.e. writeRaster(ds_site, "site_dataset.tif")
 \description{
 This function acquires various raster layers from
 ODS Europe:  https://maps.opendatascience.eu/
-and crops to an eLTER site boundary, which is obtained 
+and crops to an eLTER site boundary, which is obtained
 from the DEIMS-SDR sites API.
 }
 \details{
@@ -38,18 +38,18 @@ OSM buildings: Buildings according to OSM polygons
    and the Copernicus impervious build-up layer (2018),
    aggregated and rasterized first to 10m spatial resolution
    and after downsampled to 30m by spatial average.
-Natura2000: Protected areas rasterized from NATURA 2000 
+Natura2000: Protected areas rasterized from NATURA 2000
    (A, B and C site categories)
    and OSM (IUCN Ia, IUCN Ib, IUCN 2, IUCN 3, IUCN 4, IUCN 5, IUCN 6
    and others categories),
-   first to 10m spatial resolution and after downsampled 
+   first to 10m spatial resolution and after downsampled
    to 30m by spatial average.
-   The overlap areas are indicated in a new category. 
+   The overlap areas are indicated in a new category.
 
-NDVI:  NDVI time-series, 
+NDVI:  NDVI time-series,
    derived from the Landsat quarterly temporal composites
 
-All datasets are georeferenced to the 
+All datasets are georeferenced to the
 EPSG:3035 coordinate reference system.
 and all except clc2018 have 30 meters resolution
 }
@@ -69,7 +69,7 @@ siteNDVI <- get_site_ODS(
   dataset = "ndvi_summer"
 )
 siteNDVI
-  terra::plot(siteNDVI)
+terra::plot(siteNDVI)
 }
 
 }

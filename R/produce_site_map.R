@@ -33,7 +33,6 @@
 #' by centroid of the site. Default 0.
 #' @return The output of the function is a distribution `image`.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @import ISOcodes
 #' @importFrom sf as_Spatial st_as_sfc st_bbox st_crs
 #' @importFrom jsonlite fromJSON
 #' @importFrom tibble tribble
@@ -43,6 +42,7 @@
 #' @importFrom tmap tm_shape tm_rgb tm_dots tm_compass tm_scale_bar tm_layout
 #' @importFrom tmap tm_credits tm_basemap tm_borders tm_fill tm_lines
 #' @importFrom grid viewport
+#' @inportFrom ISOcodes ISO_3166_1
 #' @export
 #' @examples
 #' \dontrun{

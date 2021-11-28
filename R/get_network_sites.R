@@ -43,7 +43,7 @@ get_network_sites <- function(networkDEIMSID) {
     )
     lterSitesNetworkPointDEIMS <- lterSitesNetworkPointDEIMS %>%
       dplyr::select(
-        title, changed, uri, coordinates
+        "title", "changed", "uri", "coordinates"
       )
     lterSitesNetworkPointDEIMS_SP <- sf::as_Spatial(
       lterSitesNetworkPointDEIMS$coordinates

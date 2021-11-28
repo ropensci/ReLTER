@@ -9,6 +9,7 @@
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom xml2 read_xml xml_ns xml_find_all
 #' @importFrom xslt xml_xslt
+#' @importFrom utils read.csv
 #' @export
 #' @examples
 #' \dontrun{
@@ -21,7 +22,7 @@ get_sos_procedurelist <- function(sosHost) {
                            "Capabilities_proceduresUrlList.xsl")
   styleProcUrl <- xml2::read_xml(xslProcUrl.url, package = "xslt")
 
-  listProcedure <- read.csv(text = xslt::xml_xslt((
+  listProcedure <- utils::read.csv(text = xslt::xml_xslt((
     xml2::read_xml(
       paste0(
         sosHost,
