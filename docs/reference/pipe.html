@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>eLTER getSiteEnvCharacts function — getSiteEnvCharacts • ReLTER</title>
+<title>Pipe operator — %&gt;% • ReLTER</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,9 +46,8 @@
 
 
 
-<meta property="og:title" content="eLTER getSiteEnvCharacts function — getSiteEnvCharacts" />
-<meta property="og:description" content="This function obtains Environmental Characteristics 
-of an eLTER site through the DEIMS-SDR sites API." />
+<meta property="og:title" content="Pipe operator — %&gt;%" />
+<meta property="og:description" content="See magrittr::%&amp;gt;% for details." />
 <meta property="og:image" content="https://oggioniale.github.io/ReLTER/logo.png" />
 
 
@@ -91,7 +90,7 @@ of an eLTER site through the DEIMS-SDR sites API." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ReLTER</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0</span>
       </span>
     </div>
 
@@ -145,56 +144,34 @@ of an eLTER site through the DEIMS-SDR sites API." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>eLTER getSiteEnvCharacts function</h1>
-    <small class="dont-index">Source: <a href='https://github.com/oggioniale/ReLTER/blob/master/R/getSiteEnvCharacts.R'><code>R/getSiteEnvCharacts.R</code></a></small>
-    <div class="hidden name"><code>getSiteEnvCharacts.Rd</code></div>
+    <h1>Pipe operator</h1>
+    <small class="dont-index">Source: <a href='https://github.com/oggioniale/ReLTER/blob/master/R/utils-pipe.R'><code>R/utils-pipe.R</code></a></small>
+    <div class="hidden name"><code>pipe.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function obtains Environmental Characteristics 
-of an eLTER site through the DEIMS-SDR sites API.</p>
+    <p>See <code>magrittr::%&gt;%</code> for details.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>getSiteEnvCharacts</span><span class='op'>(</span><span class='va'>deimsid</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='va'>lhs</span> <span class='op'>%&gt;%</span> <span class='va'>rhs</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>deimsid</th>
-      <td><p>A `character`. The DEIMS ID of a site from
-DEIMS-SDR website. More information about DEIMS I from:
-<a href='https://deims.org/docs/deimsid.html'>page</a>.</p></td>
+      <th>lhs</th>
+      <td><p>A value or the magrittr placeholder.</p></td>
+    </tr>
+    <tr>
+      <th>rhs</th>
+      <td><p>A function call using the magrittr semantics.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The output of the function is a `tibble` with main features of the
-site and the environmental characteristics where available,
-such as: air temperature, precipitation, biogeographical region, biome,
-ecosystem land use, EUNIS habitat, geoBon biome, geology, hydrology, soils and vegetation.</p>
-    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+    <p>The result of calling `rhs(lhs)`.</p>
 
-    <p>Alessandro Oggioni, phD (2021) <a href='mailto:oggioni.a@irea.cnr.it'>oggioni.a@irea.cnr.it</a></p>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>tSiteEnvCharacts</span> <span class='op'>&lt;-</span> <span class='fu'>getSiteEnvCharacts</span><span class='op'>(</span>
-  deimsid <span class='op'>=</span> <span class='st'>"https://deims.org/17210eba-d832-4759-89fa-9ff127cbdf6e"</span>
-<span class='op'>)</span>
-</div><div class='output co'>#&gt;  Found 1 records... Imported 1 records. Simplifying...</div><div class='input'><span class='va'>tSiteEnvCharacts</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 × 26</span>
-#&gt;   title  uri   geoCoord country geoElev.avg geoElev.min geoElev.max geoElev.unit
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       
-#&gt; <span style='color: #BCBCBC;'>1</span> Istit… http… POINT (… <span style='color: #949494;'>&lt;chr [</span>…        <span style='text-decoration: underline;'>2</span>700        <span style='text-decoration: underline;'>2</span>500        <span style='text-decoration: underline;'>3</span>100 msl         
-#&gt; <span style='color: #949494;'># … with 18 more variables: envCharacteristics.airTemperature.avg &lt;dbl&gt;,</span>
-#&gt; <span style='color: #949494;'>#   envCharacteristics.airTemperature.min &lt;dbl&gt;,</span>
-#&gt; <span style='color: #949494;'>#   envCharacteristics.airTemperature.max &lt;dbl&gt;,</span>
-#&gt; <span style='color: #949494;'>#   envCharacteristics.airTemperature.unit &lt;chr&gt;,</span>
-#&gt; <span style='color: #949494;'>#   envCharacteristics.precipitation.annual &lt;int&gt;,</span>
-#&gt; <span style='color: #949494;'>#   envCharacteristics.precipitation.min &lt;lgl&gt;,</span>
-#&gt; <span style='color: #949494;'>#   envCharacteristics.precipitation.max &lt;lgl&gt;, …</span></div><div class='input'>
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -206,7 +183,7 @@ ecosystem land use, EUNIS habitat, geoBon biome, geology, hydrology, soils and v
 
       <footer>
       <div class="copyright">
-  <p>Developed by Alessandro Oggioni.</p>
+  <p>Developed by Alessandro Oggioni, Micha Silver, Paolo Tagliolato.</p>
 </div>
 
 <div class="pkgdown">

@@ -7,9 +7,9 @@
 get_network_envcharacts(networkDEIMSID)
 }
 \arguments{
-\item{networkDEIMSID}{A `character`. DEIMS ID of network 
+\item{networkDEIMSID}{A `character`. DEIMS ID of network
 from DEIMS-SDR website. More information about DEIMS ID refer to these pages:
-\href{https://deims.org/docs/deimsid.html}{page}, and 
+\href{https://deims.org/docs/deimsid.html}{page}, and
 \href{https://deims.org/search?f[0]=result_type:network}{page}
 the complete list of ILTER networks.}
 }
@@ -25,7 +25,8 @@ of sites in an eLTER Network (e.g. Italy) through the DEIMS-SDR sites API.
 \examples{
 \dontrun{
 listEnvCharacts <- get_network_envcharacts(
-  networkDEIMSID = "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
+  networkDEIMSID =
+  "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 )
 listEnvCharacts[1:10, ]
 }

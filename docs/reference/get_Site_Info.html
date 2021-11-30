@@ -155,7 +155,7 @@ through the DEIMS-SDR sites API." />
 through the DEIMS-SDR sites API.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_site_info</span><span class='op'>(</span><span class='va'>deimsid</span>, category <span class='op'>=</span> <span class='cn'>NA</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>get_site_info</span><span class='op'>(</span><span class='va'>deimsid</span>, category <span class='op'>=</span> <span class='cn'>NA</span>, show_map <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -168,11 +168,12 @@ DEIMS-SDR website. More information about DEIMS ID in this pages:
     </tr>
     <tr>
       <th>category</th>
-      <td><p>a `category`. This attribute allows to select which category
-or categories must be written in the result. Possible value are:
+      <td><p>a `category`. This parameter selects which category
+or categories are retrieved and returned in the result.
+Possible value are:
 'Affiliations', 'Boundaries', 'Contacts', 'EnvCharacts', 'General',
-'Infrastructure', 'Parameters', 'RelateRes', 'ResearchTop'. More that one
-can be indicated.</p></td>
+'Infrastructure', 'Parameters', 'RelateRes', 'ResearchTop'.
+Multiple values can be indicated.</p></td>
     </tr>
     </table>
 
@@ -180,7 +181,8 @@ can be indicated.</p></td>
 
     <p>The output of the function is a `tibble` with main features of the
 site and the selected information, such as: networks and projects in
-which the site is involved.</p>
+which the site is involved.
+If `category` "Boundaries" is indicated an `sf` object is returned</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Alessandro Oggioni, phD (2020) <a href='mailto:oggioni.a@irea.cnr.it'>oggioni.a@irea.cnr.it</a></p>
@@ -218,6 +220,17 @@ which the site is involved.</p>
 <span class='r-in'><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>  Found 1 records... Imported 1 records. Simplifying...</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>  Found 1 records... Imported 1 records. Simplifying...</span>
+<span class='r-in'><span class='va'>site</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Simple feature collection with 1 feature and 8 fields</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Geometry type: POLYGON</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Dimension:     XY</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Bounding box:  xmin: 4.8846 ymin: 43.4795 xmax: 7.7155 ymax: 46.40787</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Geodetic CRS:  WGS 84</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 1 × 9</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   title uri                  boundaries geoCoord country geoElev.avg geoElev.min</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>             <span style='color: #949494; font-style: italic;'>&lt;POLYGON [°]&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>1</span> LTSE… http… ((7.47178 43.77728, 7.46… POINT (… <span style='color: #949494;'>&lt;chr [</span>…        <span style='text-decoration: underline;'>1</span>800         200</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># … with 2 more variables: geoElev.max &lt;int&gt;, geoElev.unit &lt;chr&gt;</span></span>
 <span class='r-in'></span>
 </pre>
   </div>

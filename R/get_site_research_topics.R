@@ -1,5 +1,5 @@
 #' @title eLTER get_site_research_topics function
-#' @description This function obtains a list of research topics handled 
+#' @description This function obtains a list of research topics handled
 #' at an eLTER site through the DEIMS-SDR sites API.
 #' @param deimsid  A `character`. The DEIMS ID of the site from
 #' DEIMS-SDR website. More information about DEIMS ID from:
@@ -10,7 +10,6 @@
 #' @importFrom httr GET content
 #' @importFrom utils capture.output
 #' @importFrom dplyr as_tibble
-#' @importFrom magrittr %>%
 #' @export
 #' @keywords internal
 #' @examples
@@ -35,17 +34,17 @@ get_site_research_topics <- function(deimsid) {
   )
   export <- httr::GET(url = url)
   jj <- suppressMessages(httr::content(export, "text"))
-  status <- jj %>% 
-    jqr::jq(as.character('{status: .errors.status}')) %>% 
+  status <- jj %>%
+    jqr::jq(as.character("{status: .errors.status}")) %>%
     textConnection() %>%
     jsonlite::stream_in(simplifyDataFrame = TRUE) %>%
-    dtplyr::lazy_dt() %>% 
+    dtplyr::lazy_dt() %>%
     dplyr::as_tibble()
   if (is.na(status)) {
     invisible(
       utils::capture.output(
         researchTopics <- dplyr::as_tibble(
-          ReLTER:::do_Q(q, jj)
+          do_Q(q, jj)
         )
       )
     )
@@ -65,7 +64,8 @@ get_site_research_topics <- function(deimsid) {
       )
     }
   } else {
-    message("\n---- The requested page could not be found. Please check again the DEIMS.iD ----\n")
+    message("\n----\nThe requested page could not be found.
+Please check again the DEIMS.iD\n----\n")
     researchTopics <- NULL
   }
   researchTopics

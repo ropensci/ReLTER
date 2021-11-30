@@ -1,5 +1,5 @@
 #' @title eLTER get_site_envcharacts function
-#' @description This function obtains Environmental Characteristics 
+#' @description This function obtains Environmental Characteristics
 #' of an eLTER site through the DEIMS-SDR sites API.
 #' @param deimsid A `character`. The DEIMS ID of a site from
 #' DEIMS-SDR website. More information about DEIMS I from:
@@ -7,12 +7,12 @@
 #' @return The output of the function is a `tibble` with main features of the
 #' site and the environmental characteristics where available,
 #' such as: air temperature, precipitation, biogeographical region, biome,
-#' ecosystem land use, EUNIS habitat, geoBon biome, geology, hydrology, soils and vegetation.
+#' ecosystem land use, EUNIS habitat, geoBon biome, geology, hydrology, soils
+#' and vegetation.
 #' @author Alessandro Oggioni, phD (2021) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom httr GET content
 #' @importFrom utils capture.output
 #' @importFrom dplyr as_tibble
-#' @importFrom magrittr %>%
 #' @export
 #' @keywords internal
 #' @examples
@@ -38,22 +38,23 @@ get_site_envcharacts <- function(deimsid) {
   )
   export <- httr::GET(url = url)
   jj <- suppressMessages(httr::content(export, "text"))
-  status <- jj %>% 
-    jqr::jq(as.character('{status: .errors.status}')) %>% 
+  status <- jj %>%
+    jqr::jq(as.character("{status: .errors.status}")) %>%
     textConnection() %>%
     jsonlite::stream_in(simplifyDataFrame = TRUE) %>%
-    dtplyr::lazy_dt() %>% 
+    dtplyr::lazy_dt() %>%
     dplyr::as_tibble()
   if (is.na(status)) {
     invisible(
       utils::capture.output(
         envCharacteristics <- dplyr::as_tibble(
-          ReLTER:::do_Q(q, jj)
+          do_Q(q, jj)
         )
       )
     )
   } else {
-    message("\n---- The requested page could not be found. Please check again the DEIMS.iD ----\n")
+    message("\n----\nThe requested page could not be found.
+Please check again the DEIMS.iD\n----\n")
     envCharacteristics <- NULL
   }
   envCharacteristics

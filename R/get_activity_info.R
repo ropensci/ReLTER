@@ -13,14 +13,12 @@
 #' @importFrom sf st_as_sf
 #' @importFrom leaflet leaflet addTiles addPolygons
 #' @importFrom rgeos gIsValid
-#' @importFrom magrittr %>%
 #' @export
 #' @examples
-#' activities <- get_activity_info(activityid = "https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845")
-#' map <- leaflet::leaflet(activities) %>% 
-#'  leaflet::addTiles() %>% 
-#'  leaflet::addPolygons()
-#' print(map)
+#' activities <- get_activity_info(
+#'   activityid =
+#'   "https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845"
+#' )
 #' activities
 #'
 ### function get_activity_info
@@ -36,16 +34,16 @@ get_activity_info <- function(activityid) {
   )
   export <- httr::GET(url = url)
   jj <- suppressMessages(httr::content(export, "text"))
-  status <- jj %>% 
-    jqr::jq(as.character('{status: .errors.status}')) %>% 
+  status <- jj %>%
+    jqr::jq(as.character("{status: .errors.status}")) %>%
     textConnection() %>%
     jsonlite::stream_in(simplifyDataFrame = TRUE) %>%
-    dtplyr::lazy_dt() %>% 
+    dtplyr::lazy_dt() %>%
     dplyr::as_tibble()
   if (is.na(status)) {
     invisible(
       utils::capture.output(
-        activity <- dplyr::as_tibble(ReLTER:::do_Q(q, jj))
+        activity <- dplyr::as_tibble(do_Q(q, jj))
       )
     )
     if (!is.null(activity)) {
@@ -69,14 +67,17 @@ get_activity_info <- function(activityid) {
         )
         if (geoActivity_valid == "Valid Geometry") {
           map <- leaflet::leaflet(geoActivity) %>%
-            leaflet::addTiles() %>% 
+            leaflet::addTiles() %>%
             leaflet::addPolygons()
           print(map)
           geoActivity
         } else {
           map <- leaflet::leaflet() %>%
             leaflet::addTiles()
-          message("\n----\n The maps cannot be created because the polygon of activity, provided in DEIMS-SDR, has an invalid geometry.\n Please check the content and refers this error to DEIMS-SDR contact person of the activity, citing the Activity.iD.\n----\n")
+          message("\n----\nThe maps cannot be created because the polygon of
+activity, provided in DEIMS-SDR, has an invalid geometry.
+Please check the content and refers this error to DEIMS-SDR
+contact person of the activity, citing the Activity.iD.\n----\n")
           print(map)
           geoActivity
         }
@@ -86,7 +87,8 @@ get_activity_info <- function(activityid) {
       map <- NULL
     }
   } else {
-    stop("\n---- Page Not Found. The requested page could not be found. Please check again the Activity.iD ----\n")
+    stop("\n----\nPage Not Found. The requested page could not be found. Please
+check again the Activity.iD\n----\n")
   }
   print(map)
   geoActivity

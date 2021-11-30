@@ -20,11 +20,10 @@ This function obtains the info of activity (actually
  title) provided in DEIMS-SDR.
 }
 \examples{
-activities <- get_activity_info(activityid = "https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845")
-map <- leaflet::leaflet(activities) \%>\% 
- leaflet::addTiles() \%>\% 
- leaflet::addPolygons()
-print(map)
+activities <- get_activity_info(
+  activityid =
+  "https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845"
+)
 activities
 
 }
