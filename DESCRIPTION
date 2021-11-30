@@ -10,16 +10,17 @@ Authors@R: c(
         person("Micha", "Silver", email = "silverm@post.bgu.ac.il",
           role = c("aut", "ctb"),
           comment = c(ORCID = "0000-0002-1128-1325",
-          " Micha Silver is a coauthor of functions get_ilter_generalinfo and
+          "Micha Silver is a coauthor of functions get_ilter_generalinfo and
           get_site_info for category Boundaries, he develop get_site_ODS
           function and he also is a reviewer of English wording for all
-          functions.")
+          functions")
         ),
         person("Paolo", "Tagliolato", email = "tagliolato.a@irea.cnr.it",
           role = c("aut", "ctb"),
           comment = c(ORCID = "0000-0002-0261-313X",
-          " Paolo Tagliolato is a coauthor of package, he wrote the function
-          do_Q(), on which some ReLTER internal functions are based")
+          "Paolo Tagliolato is a coauthor of package, he wrote the function
+          do_Q() and developed the related pattern to interact with external
+          API on which several ReLTER internal functions are based")
         )
       )
 Maintainer: The package maintainer Alessandro Oggioni, phD (2020)
