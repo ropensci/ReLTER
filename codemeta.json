@@ -5,8 +5,8 @@
   ],
   "@type": "SoftwareSourceCode",
   "identifier": "ReLTER",
-  "description": "ReLTER is an R package that: provides access to DEIMS-SDR\n    (https://deims.org/), allows interact with software implemented by eLTER\n    Research Infrastructure (RI) and improves the data/information shared by\n    them.\n    ReLTER is a R package devoted to access, interact and improve the\n    information and the data shared by Long Term Ecological Research (LTER)\n    network. This package is born within eLTER H2020 major project that will\n    help advance the development of European Long-Term Ecosystem Research\n    Infrastructures (eLTER RI - https://elter-ri.eu).\n    The ReLTER package functions in particular allow to:\n    - retrive the information about entities (e.g. sites, datasets, and\n    activities) shared by DEIMS-SDR (see e.g. get_site_info function);\n    - interact with the [ODSEurope](maps.opendatascience.eu) managed by members\n    of the [Geo-harmonizer](https://opendatascience.eu/geoharmonizer-project/)\n    project starting with the dataset shared by [DEIMS-SDR](https://deims.org/)\n    (see e.g. [get_site_ODS](https://oggioniale.github.io/ReLTER/reference/get_site_ODS.html)\n    function);\n    - use the site informations for download data from other platforms (see\n    e.g. get_site_ODS function);\n    - improve the quality of the dataset (see e.g. get_id_worms).\n    Functions currently implemented are derived from the discussion of the\n    needs declared by eLTER users community.\n    The ReLTER package shall definitely follow the progress of eLTER-RI\n    infrastructure and evolving with the improvements and develop of\n    new tools.",
-  "name": "ReLTER: An R Interface to the European eLTER RI",
+  "description": "ReLTER provides access to DEIMS-SDR (https://deims.org/),\n    and allows interaction with data and software implemented by eLTER\n    Research Infrastructure (RI) thus improving data sharing among European \n    LTER projects.\n    ReLTER uses the R language to access and interact with the DEIMS-SDR\n    archive of information shared by the Long Term Ecological Research (LTER)\n    network. This package grew within eLTER H2020 as a major project that will\n    help advance the development of European Long-Term Ecosystem Research\n    Infrastructures (eLTER RI - https://elter-ri.eu).\n    The ReLTER package functions in particular allow to:\n    - retrieve the information about entities (e.g. sites, datasets, and\n    activities) shared by DEIMS-SDR (see e.g. get_site_info function);\n    - interact with the [ODSEurope](maps.opendatascience.eu) managed by members\n    of the [Geo-harmonizer](https://opendatascience.eu/geoharmonizer-project/)\n    project starting with the dataset shared by [DEIMS-SDR](https://deims.org/)\n    (see e.g. [get_site_ODS](https://oggioniale.github.io/ReLTER/reference/get_site_ODS.html)\n    function);\n    - use the eLTER site informations to download and crop geospatial data\n    from other platforms (see e.g. get_site_ODS function);\n    - improve the quality of the dataset (see e.g. get_id_worms).\n    Functions currently implemented are derived from discussions of the\n    needs among the eLTER users community.\n    The ReLTER package will continue to follow the progress of eLTER-RI\n    and evolve, adding new tools and improvements as required.",
+  "name": "ReLTER: An R Interface for the eLTER Community",
   "codeRepository": "https://github.com/oggioniale/ReLTER",
   "issueTracker": "https://github.com/oggioniale/ReLTER/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
@@ -492,7 +492,7 @@
     }
   ],
   "releaseNotes": "https://github.com/oggioniale/ReLTER/blob/master/NEWS.md",
-  "fileSize": "5397.684KB",
+  "fileSize": "5432.069KB",
   "developmentStatus": "https://www.repostatus.org/#active",
   "citation": [],
   "readme": "https://github.com/oggioniale/ReLTER/blob/main/README.md"
