@@ -26,9 +26,8 @@ DEIMS-SDR website. More information about DEIMS iD in this
 \item{countryCode}{a `character` following the SO 3166-1 alpha-3 codes.
 This ISO convention consists of three-letter country codes
 as defined in ISO 3166-1, part of the ISO 3166 standard published by the
-International Organization for Standardization (ISO), to represent
-#' countries, dependent territories, and special areas of geographical
-interest.
+International Organization for Standardization (ISO), to represent countries,
+dependent territories, and special areas of geographical interest.
 The map produced by this function will be limited to the country
 indicated in this parameter; if the network has a extraterritorial sites
 those will not represented.}
