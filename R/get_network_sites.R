@@ -10,7 +10,7 @@
 #' of the network's sites.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom jsonlite fromJSON
-#' @importFrom sf st_as_sf
+#' @importFrom sf st_as_sf st_is_valid
 #' @importFrom dplyr select as_tibble
 #' @importFrom leaflet leaflet addTiles addMarkers
 #' @export
@@ -45,15 +45,10 @@ get_network_sites <- function(networkDEIMSID) {
       dplyr::select(
         "title", "changed", "uri", "coordinates"
       )
-    lterSitesNetworkPointDEIMS_SP <- sf::as_Spatial(
-      lterSitesNetworkPointDEIMS$coordinates
+    lSNPD_valid <- sf::st_is_valid(
+      lterSitesNetworkPointDEIMS
     )
-    lSNPD_valid <- rgeos::gIsValid(
-      lterSitesNetworkPointDEIMS_SP,
-      byid = FALSE,
-      reason = TRUE
-    )
-    if (lSNPD_valid == "Valid Geometry") {
+    if (any(lSNPD_valid)) {
       map <- leaflet::leaflet(lterSitesNetworkPointDEIMS) %>%
         leaflet::addTiles() %>%
         leaflet::addMarkers()

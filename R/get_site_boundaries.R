@@ -69,7 +69,6 @@ get_site_boundaries <- function(deimsid, show_map = FALSE) {
           ")\n----\n"
         )
         geoBoundaries <- boundaries
-        # map <- NULL
       } else {
         geoBoundaries <- sf::st_as_sf(
           boundaries,
@@ -92,13 +91,11 @@ get_site_boundaries <- function(deimsid, show_map = FALSE) {
         ")---- \n"
       )
       geoBoundaries <- NULL
-      # map <- NULL
     }
   } else {
     message("\n----\nThe requested page could not be found.",
     "Please check the DEIMS ID\n----\n")
     geoBoundaries <- NULL
-    # map <- NULL
   }
   geoBoundaries
 }

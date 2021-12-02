@@ -17,4 +17,8 @@ The result of calling `rhs(lhs)`.
 \description{
 See \code{magrittr::\link[magrittr:pipe]{\%>\%}} for details.
 }
+\examples{
+# Basic use:
+iris \%>\% head
+}
 \keyword{internal}

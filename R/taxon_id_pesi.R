@@ -97,7 +97,6 @@ taxon_id_pesi <- function(table, taxaColumn) {
         a$taxon.taxonName.canonicalName
       table$authorship[[i]] <-
         a$taxon.taxonName.authorship
-      # table$synonyms[[i]] <- a$synonyms
       table$LSID[[i]] <- a$taxon.identifier
       table$url[[i]] <- a$taxon.url
       if (is.null(a$taxon.accordingTo)) {
@@ -119,7 +118,6 @@ taxon_id_pesi <- function(table, taxaColumn) {
       # SYNONYM
       # SYNONYM
       # TAXON
-      # table$synonyms[[i]] <- a$synonyms
       table$LSID[[i]] <- a$taxon.identifier
       table$url[[i]] <- a$taxon.url
       if (is.null(a$taxon.accordingTo)) {

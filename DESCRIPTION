@@ -1,6 +1,6 @@
 Package: ReLTER
 Type: Package
-Title: An interface to the eLTER for the R statistical programming environment
+Title: An R Interface to the European eLTER RI
 Version: 1.0.0
 Authors@R: c(
         person("Alessandro", "Oggioni", email = "oggioni.a@irea.cnr.it", 
@@ -55,35 +55,36 @@ Encoding: UTF-8
 LazyData: true
 Depends: R (>= 3.5.0)
 Imports:
-    dplyr (>= 1.0.0),
-    jsonlite (>= 1.7.2),
-    sf (>= 0.9-5),
-    tibble (>= 3.0.5),
-    httr (>= 1.4.2),
-    taxize (>= 0.9.97),
-    rgeos (>= 0.5-3),
-    rosm (>= 0.2.5),
-    raster (>= 3.3-13),
-    terra (>= 1.4-11),
-    tmap (>= 3.1),
-    grid (>= 3.5.1),
-    leaflet (>= 2.0.3),
-    waffle (>= 0.7.0),
-    dtplyr (>= 1.1.0),
     ISOcodes (>= 2021.02.24),
     RColorBrewer (>= 1.1-2),
+    dplyr (>= 1.0.0),
+    dtplyr (>= 1.1.0),
     ggforce (>= 0.3.2),
     ggplot2 (>= 3.3.5),
+    grDevices (>= 4.0.3),
+    grid (>= 3.5.1),
+    httr (>= 1.4.2),
     jqr (>= 1.2.0),
+    jsonlite (>= 1.7.2),
+    leaflet (>= 2.0.3),
+    magrittr (>= 2.0.1),
     mapview (>= 2.9.0),
     qrcode (>= 0.1.3),
+    raster (>= 3.3-13),
+    rgeos (>= 0.5-3),
+    rosm (>= 0.2.5),
     scales (>= 1.1.1),
-    xml2 (>= 1.3.2),
-    xslt (>= 1.4.3),
-    magrittr (>= 2.0.1),
+    sf (>= 0.9-5),
     stringr (>= 1.4.0),
+    taxize (>= 0.9.97),
+    terra (>= 1.4-11),
+    tibble (>= 3.0.5),
+    tmap (>= 3.1),
+    utils (>= 4.0.3),
+    waffle (>= 0.7.0),
     worrms (>= 0.4.2),
-    utils (>= 4.0.3)
+    xml2 (>= 1.3.2),
+    xslt (>= 1.4.3)
 Suggests: 
     testthat (>= 3.0.0),
     knitr,

@@ -4,7 +4,7 @@
 \alias{get_site_info}
 \title{eLTER get_site_info function}
 \usage{
-get_site_info(deimsid, category = NA, show_map = FALSE)
+get_site_info(deimsid, category = NA)
 }
 \arguments{
 \item{deimsid}{a character. The DEIMS ID of the site from

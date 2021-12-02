@@ -54,8 +54,6 @@ test_that("Output of get activities information function constructs 'sf' with
     activityid =
       "https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845"
   )
-  result_sp <- sf::as_Spatial(result$boundaries)
-  result_valid <- rgeos::gIsValid(result_sp, byid = FALSE, reason = TRUE)
-  expect_type(result_valid, "character")
-  expect_match(result_valid, "Valid Geometry")
+  result_valid <- sf::st_is_valid(result)
+  expect_true(any(result_valid))
 })

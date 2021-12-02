@@ -33,7 +33,7 @@
 #' by centroid of the site. Default 0.
 #' @return The output of the function is a distribution `image`.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @importFrom sf as_Spatial st_as_sfc st_bbox st_crs
+#' @importFrom sf as_Spatial st_as_sfc st_bbox st_crs st_simplify
 #' @importFrom jsonlite fromJSON
 #' @importFrom tibble tribble
 #' @importFrom raster getData reclassify
@@ -42,7 +42,7 @@
 #' @importFrom tmap tm_shape tm_rgb tm_dots tm_compass tm_scale_bar tm_layout
 #' @importFrom tmap tm_credits tm_basemap tm_borders tm_fill tm_lines
 #' @importFrom grid viewport
-#' @inportFrom ISOcodes ISO_3166_1
+#' @import ISOcodes
 #' @export
 #' @examples
 #' \dontrun{
@@ -80,7 +80,7 @@
 #' # In the case of Italian sites are selected only true sites and exclused the
 #' macrosites.
 #' sitesNetwork <- (sitesNetwork[!grepl('^IT', sitesNetwork$title),])
-#' map <- produce_site_map(
+  #' map <- produce_site_map(
 #'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
 #'   countryCode = "ITA",
 #'   listOfSites = sitesNetwork,

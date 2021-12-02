@@ -84,8 +84,6 @@ test_that("Output of function constructs 'sf' with valid geometries", {
     country_name = "Austri",
     site_name = " Eisen"
   )
-  result_sp <- sf::as_Spatial(result$geoCoord)
-  result_valid <- rgeos::gIsValid(result_sp, byid = FALSE, reason = TRUE)
-  expect_type(result_valid, "character")
-  expect_match(result_valid, "Valid Geometry")
+  result_valid <- sf::st_is_valid(result$coordinates)
+  expect_true(any(result_valid))
 })
