@@ -24,7 +24,7 @@
 #' @importFrom tmap tm_shape tm_borders tm_dots
 #' @importFrom dplyr select
 #' @importFrom tibble as_tibble
-#' @importFrom ISOcodes ISO_3166_1
+#' @import ISOcodes
 #' @export
 #' @examples
 #' \dontrun{
