@@ -42,7 +42,7 @@ Description: ReLTER provides access to DEIMS-SDR (https://deims.org/),
     needs among the eLTER users community.
     The ReLTER package will continue to follow the progress of eLTER-RI
     and evolve, adding new tools and improvements as required.
-License: GPL (>= 3)
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Depends: R (>= 3.5.0)
