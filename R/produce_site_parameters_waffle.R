@@ -12,7 +12,6 @@
 #' @importFrom grDevices colorRampPalette
 #' @importFrom RColorBrewer brewer.pal
 #' @importFrom waffle waffle
-#' @importFrom utils data
 #' @export
 #' @examples
 #' \dontrun{
@@ -25,7 +24,6 @@
 ### function produce_site_parameters_waffle
 produce_site_parameters_waffle <- function(deimsid) {
   # TODO add this by SPARQL query
-  # parametersStructureEnvThes <- utils::data(envThesParams)
   paramsDeims <- ReLTER::get_site_info(
     deimsid = deimsid,
     category = "Parameters"

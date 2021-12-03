@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>An interface to the eLTER for the R statistical programming environment • ReLTER</title>
+<title>An R Interface for the eLTER Community • ReLTER</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
@@ -17,32 +17,31 @@
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="An interface to the eLTER for the R statistical programming environment">
-<meta property="og:description" content="ReLTER is an R package that: provides access to DEIMS-SDR
-    (https://deims.org/), allows interact with software implemented by eLTER
-    Research Infrastructure (RI) and improves the data/information shared by
-    them.
-    ReLTER is a R package devoted to access, interact and improve the
-    information and the data shared by Long Term Ecological Research (LTER)
-    network. This package is born within eLTER H2020 major project that will
+<script src="pkgdown.js"></script><meta property="og:title" content="An R Interface for the eLTER Community">
+<meta property="og:description" content="ReLTER provides access to DEIMS-SDR (https://deims.org/),
+    and allows interaction with data and software implemented by eLTER
+    Research Infrastructure (RI) thus improving data sharing among European 
+    LTER projects.
+    ReLTER uses the R language to access and interact with the DEIMS-SDR
+    archive of information shared by the Long Term Ecological Research (LTER)
+    network. This package grew within eLTER H2020 as a major project that will
     help advance the development of European Long-Term Ecosystem Research
     Infrastructures (eLTER RI - https://elter-ri.eu).
     The ReLTER package functions in particular allow to:
-    - retrive the information about entities (e.g. sites, datasets, and
+    - retrieve the information about entities (e.g. sites, datasets, and
     activities) shared by DEIMS-SDR (see e.g. get_site_info function);
     - interact with the [ODSEurope](maps.opendatascience.eu) managed by members
     of the [Geo-harmonizer](https://opendatascience.eu/geoharmonizer-project/)
     project starting with the dataset shared by [DEIMS-SDR](https://deims.org/)
     (see e.g. [get_site_ODS](https://oggioniale.github.io/ReLTER/reference/get_site_ODS.html)
     function);
-    - use the site informations for download data from other platforms (see
-    e.g. get_site_ODS function);
+    - use the eLTER site informations to download and crop geospatial data
+    from other platforms (see e.g. get_site_ODS function);
     - improve the quality of the dataset (see e.g. get_id_worms).
-    Functions currently implemented are derived from the discussion of the
-    needs declared by eLTER users community.
-    The ReLTER package shall definitely follow the progress of eLTER-RI
-    infrastructure and evolving with the improvements and develop of
-    new tools.">
+    Functions currently implemented are derived from discussions of the
+    needs among the eLTER users community.
+    The ReLTER package will continue to follow the progress of eLTER-RI
+    and evolve, adding new tools and improvements as required.">
 <meta property="og:image" content="https://oggioniale.github.io/ReLTER/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -414,9 +413,8 @@
 <div class="license">
 <h2>License</h2>
 <ul class="list-unstyled">
-<li>
-<a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a> + file <a href="LICENSE-text.html">LICENSE</a>
-</li>
+<li><a href="LICENSE.html">Full license</a></li>
+<li><small>GPL (&gt;= 3)</small></li>
 </ul>
 </div>
 <div class="community">
@@ -435,15 +433,8 @@
 <h2>Developers</h2>
 <ul class="list-unstyled">
 <li>Alessandro Oggioni <br><small class="roles"> Author, maintainer, funder </small> <a href="https://orcid.org/0000-0002-7997-219X" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Micha Silver <br><small class="roles"> Author, contributor </small> <a href="https://orcid.org/0000-0002-1128-1325" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> <br><small>(Micha Silver is a coauthor of functions get_ilter_generalinfo and
-          get_site_info for category Boundaries, he develop get_site_ODS
-          function and he also is a reviewer of English wording for all
-          functions)</small>
-</li>
-<li>Paolo Tagliolato <br><small class="roles"> Author, contributor </small> <a href="https://orcid.org/0000-0002-0261-313X" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> <br><small>(Paolo Tagliolato is a coauthor of package, he wrote the function
-          do_Q() and developed the related pattern to interact with external
-          API on which several ReLTER internal functions are based)</small>
-</li>
+<li>Micha Silver <br><small class="roles"> Author, contributor </small> <a href="https://orcid.org/0000-0002-1128-1325" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Paolo Tagliolato <br><small class="roles"> Author, contributor </small> <a href="https://orcid.org/0000-0002-0261-313X" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 </ul>
 </div>
 

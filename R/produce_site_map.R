@@ -7,9 +7,8 @@
 #' @param countryCode a `character` following the SO 3166-1 alpha-3 codes.
 #' This ISO convention consists of three-letter country codes
 #' as defined in ISO 3166-1, part of the ISO 3166 standard published by the
-#' International Organization for Standardization (ISO), to represent
-#' #' countries, dependent territories, and special areas of geographical
-#' interest.
+#' International Organization for Standardization (ISO), to represent countries,
+#' dependent territories, and special areas of geographical interest.
 #' The map produced by this function will be limited to the country
 #' indicated in this parameter; if the network has a extraterritorial sites
 #' those will not represented.
@@ -33,7 +32,7 @@
 #' by centroid of the site. Default 0.
 #' @return The output of the function is a distribution `image`.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @importFrom sf as_Spatial st_as_sfc st_bbox st_crs
+#' @importFrom sf as_Spatial st_as_sfc st_bbox st_crs st_simplify
 #' @importFrom jsonlite fromJSON
 #' @importFrom tibble tribble
 #' @importFrom raster getData reclassify
@@ -42,7 +41,7 @@
 #' @importFrom tmap tm_shape tm_rgb tm_dots tm_compass tm_scale_bar tm_layout
 #' @importFrom tmap tm_credits tm_basemap tm_borders tm_fill tm_lines
 #' @importFrom grid viewport
-#' @inportFrom ISOcodes ISO_3166_1
+#' @import ISOcodes 
 #' @export
 #' @examples
 #' \dontrun{
@@ -80,7 +79,7 @@
 #' # In the case of Italian sites are selected only true sites and exclused the
 #' macrosites.
 #' sitesNetwork <- (sitesNetwork[!grepl('^IT', sitesNetwork$title),])
-#' map <- produce_site_map(
+  #' map <- produce_site_map(
 #'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
 #'   countryCode = "ITA",
 #'   listOfSites = sitesNetwork,

@@ -9,10 +9,10 @@
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom httr GET content
 #' @importFrom dplyr as_tibble
+#' @importFrom dtplyr lazy_dt
 #' @importFrom utils capture.output
-#' @importFrom sf st_as_sf
+#' @importFrom sf st_as_sf st_is_valid
 #' @importFrom leaflet leaflet addTiles addPolygons
-#' @importFrom rgeos gIsValid
 #' @export
 #' @examples
 #' activities <- get_activity_info(
@@ -57,15 +57,8 @@ get_activity_info <- function(activityid) {
           wkt = "boundaries",
           crs = 4326
         )
-        geoActivity_SP <- sf::as_Spatial(
-          geoActivity$boundaries
-        )
-        geoActivity_valid <- rgeos::gIsValid(
-          geoActivity_SP,
-          byid = FALSE,
-          reason = TRUE
-        )
-        if (geoActivity_valid == "Valid Geometry") {
+        geoActivity_valid <- sf::st_is_valid(geoActivity)
+        if (any(geoActivity_valid)) {
           map <- leaflet::leaflet(geoActivity) %>%
             leaflet::addTiles() %>%
             leaflet::addPolygons()

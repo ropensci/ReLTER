@@ -7,14 +7,14 @@
 #' @param do_plot a `boolean`. Plot the computed QRCode. Default FALSE.
 #' @return The QR code as a logical matrix with "qr_code" class.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @importFrom qrcode qrcode_gen
+#' @importFrom qrcode qr_code
 #' @export
 #' @examples
 #' qrcode <- produce_site_qrcode(
 #'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
 #' )
 #' plot(qrcode)
-#' 
+#'
 #' produce_site_qrcode(
 #'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
 #'   do_plot = TRUE
@@ -24,7 +24,7 @@
 produce_site_qrcode <- function(deimsid, do_plot = FALSE) {
   res <- qrcode::qr_code(deimsid, ecl = "L")
   if (do_plot) {
-    res %>% 
+    res %>%
       plot(col = c("White", "#1479BC"))
   }
   return(res)

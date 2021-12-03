@@ -18,13 +18,12 @@
 #' country.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom jsonlite fromJSON
-#' @importFrom sf as_Spatial st_as_sf st_crs
+#' @importFrom sf as_Spatial st_as_sf st_crs st_is_valid
 #' @importFrom raster getData
-#' @importFrom rgeos gSimplify gIsValid
 #' @importFrom tmap tm_shape tm_borders tm_dots
 #' @importFrom dplyr select
 #' @importFrom tibble as_tibble
-#' @importFrom ISOcodes ISO_3166_1
+#' @import ISOcodes
 #' @export
 #' @examples
 #' \dontrun{
@@ -68,15 +67,10 @@ produce_network_points_map <- function(networkDEIMSID, countryCode) {
         wkt = "coordinates"
       )
       sf::st_crs(networkSitesGeo) <- 4326
-      networkSitesGeo_SP <- sf::as_Spatial(
-        networkSitesGeo$coordinates
+      networkSitesGeo_valid <- sf::st_is_valid(
+        networkSitesGeo
       )
-      networkSitesGeo_valid <- rgeos::gIsValid(
-        networkSitesGeo_SP,
-        byid = FALSE,
-        reason = TRUE
-      )
-      if (networkSitesGeo_valid == "Valid Geometry") {
+      if (any(networkSitesGeo_valid)) {
         if (countryCode %in% ISOcodes::ISO_3166_1$Alpha_3 == TRUE) {
           country <- raster::getData(country = countryCode, level = 0)
           country <- rgeos::gSimplify(

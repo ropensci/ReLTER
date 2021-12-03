@@ -38,7 +38,7 @@
 #' site
 #'
 ### function get_site_info
-get_site_info <- function(deimsid, category = NA, show_map = FALSE) {
+get_site_info <- function(deimsid, category = NA) {
   q <- '{title: .title,
        uri: "\\(.id.prefix)\\(.id.suffix)",
        geoCoord: .attributes.geographic.coordinates,

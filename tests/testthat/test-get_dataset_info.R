@@ -129,8 +129,6 @@ test_that("Output of get dataset information function constructs 'sf' with
     datasetid =
       "https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef"
   )
-  result_sp <- sf::as_Spatial(result$boundaries)
-  result_valid <- rgeos::gIsValid(result_sp, byid = FALSE, reason = TRUE)
-  expect_type(result_valid, "character")
-  expect_match(result_valid, "Valid Geometry")
+  result_valid <- sf::st_is_valid(result)
+  expect_true(any(result_valid))
 })

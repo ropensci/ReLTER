@@ -17,7 +17,8 @@
 #' @author Alessandro Oggioni, phD (2021) \email{oggioni.a@@irea.cnr.it}
 #' @author  Micha Silver, phD (2021) \email{silverm@@post.bgu.ac.il}
 #' @importFrom jsonlite fromJSON
-#' @importFrom sf st_as_sf
+#' @importFrom sf st_as_sf st_is_valid
+#' @importFrom leaflet leaflet addTiles addMarkers
 #' @export
 #' @examples
 #' \dontrun{
@@ -96,7 +97,7 @@ get_ilter_generalinfo <- function(country_name = NA, site_name = NA,
         "\n"
       )
       uniteSitesGeneralInfo <- uniteSitesGeneralInfo
-    } else{
+    } else {
       uniteSitesGeneralInfo <- uniteSitesGeneralInfo[idx, ]
     }
   }
@@ -125,15 +126,8 @@ get_ilter_generalinfo <- function(country_name = NA, site_name = NA,
     uniteSitesGeneralInfoGeo <- sf::st_as_sf(uniteSitesGeneralInfo,
                                              wkt = "geoCoord",
                                              crs = 4326)
-    uniteSitesGeneralInfoGeo_SP <- sf::as_Spatial(
-      uniteSitesGeneralInfoGeo$geoCoord
-    )
-    uniteSitesGeneralInfoGeo_valid <- rgeos::gIsValid(
-      uniteSitesGeneralInfoGeo_SP,
-      byid = FALSE,
-      reason = TRUE
-    )
-    if (uniteSitesGeneralInfoGeo_valid == "Valid Geometry") {
+    uniteSitesGeneralInfoGeo_valid <- sf::st_is_valid(uniteSitesGeneralInfoGeo)
+    if (isTRUE(uniteSitesGeneralInfoGeo_valid)) {
       if (show_map == TRUE) {
         map <- leaflet::leaflet(uniteSitesGeneralInfoGeo) %>%
           leaflet::addTiles() %>%
