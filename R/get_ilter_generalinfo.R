@@ -42,7 +42,8 @@ get_ilter_generalinfo <- function(country_name = NA, site_name = NA,
   )
   # First filter by country_name
   # (Getting site affiliations for all 1200 sites takes too long...)
-  if (!is.na(country_name) & typeof(country_name) == "character") {
+  valid_cntry <- (!is.na(country_name) & typeof(country_name) == "character")
+  if (valid_cntry) {
     idx <- grep(x = lterILTERSites$title,
                 pattern = country_name,
                 ignore.case = TRUE)
@@ -78,7 +79,8 @@ get_ilter_generalinfo <- function(country_name = NA, site_name = NA,
   )
   uniteSitesGeneralInfo <- do.call(rbind, filteredSitesGeneralInfo)
   # Now filter by site name
-  if (!is.na(site_name) & typeof(site_name) == "character") {
+  valid_site <- (!is.na(site_name) & typeof(site_name) == "character")
+  if (valid_site) {
     idx <- grep(pattern = site_name,
                 x = uniteSitesGeneralInfo$title,
                 ignore.case = TRUE)
@@ -103,44 +105,42 @@ get_ilter_generalinfo <- function(country_name = NA, site_name = NA,
   }
   # Make sure we have some rows
   if (is.null(uniteSitesGeneralInfo)) {
-    uniteSitesGeneralInfoGeo <- NULL
-    uniteSitesGeneralInfoGeo
+    return(NULL)
   } else if (length(uniteSitesGeneralInfo[, 1]) == 0 |
           # No rows after country filter
-          length(uniteSitesGeneralInfo$title) == 0) {
-          # No rows left after site filter
-          uniteSitesGeneralInfoGeo <- NULL
-       warning(
-      "\n",
-      paste(
-        "No matches found for country name:",
-        country_name,
-        "and site name:",
-        site_name
-      ),
-      "\n"
+          length(uniteSitesGeneralInfo$title) == 0) 
+    {
+    # No rows left after site filter
+    uniteSitesGeneralInfoGeo <- NULL
+    warning("\n", paste("No matches found for country name:",
+                        country_name,
+                        "and site name:",
+                        site_name
+          ),
+          "\n"
     )
-    uniteSitesGeneralInfoGeo
+    return(NULL)
   } else {
     # Now convert to sf object
     uniteSitesGeneralInfoGeo <- sf::st_as_sf(uniteSitesGeneralInfo,
                                              wkt = "geoCoord",
                                              crs = 4326)
-    uniteSitesGeneralInfoGeo_valid <- sf::st_is_valid(uniteSitesGeneralInfoGeo)
-    if (isTRUE(uniteSitesGeneralInfoGeo_valid)) {
+    #uniteSitesGeneralInfoGeo_valid <- sf::st_is_valid(uniteSitesGeneralInfoGeo)
+    if (!is.na(uniteSitesGeneralInfoGeo) & 
+        sf::st_is_valid(uniteSitesGeneralInfoGeo)) {
       if (show_map == TRUE) {
         map <- leaflet::leaflet(uniteSitesGeneralInfoGeo) %>%
           leaflet::addTiles() %>%
           leaflet::addMarkers()
         print(map)
       }
-      uniteSitesGeneralInfoGeo
+      return(uniteSitesGeneralInfoGeo)
     } else {
       message("\n----\nThe map cannot be created because one or more site",
              " locations provided in DEIMS-SDR, has an invalid geometry.\n",
              "Please check the content and refer this error",
              " to DEIMS-SDR support.\n----\n")
-      uniteSitesGeneralInfoGeo
+      return(uniteSitesGeneralInfo)
     }
   }
 }
