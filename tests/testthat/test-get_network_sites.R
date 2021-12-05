@@ -9,8 +9,7 @@ test_that("Expect error if internet connection is down", {
     httptest::without_internet(
       result <- ReLTER::get_network_sites(
         networkDEIMSID =
-          "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
-      )
+          "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3")
     ),
     "GET"
   )
@@ -44,7 +43,7 @@ test_that("Wrong input (but URL) constructs a NULL object", {
 })
 
 test_that("Wrong input (not URL) constructs an empty tibble", {
-  result <- ReLTER::get_network_sites(activityid = "ljhnhbkihubib")
+  result <- ReLTER::get_network_sites(networkDEIMSID = "ljhnhbkihubib")
   expect_type(result, "NULL")
 })
 

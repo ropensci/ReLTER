@@ -26,10 +26,10 @@ test_that("Output of network related resources function constructs 'tibble' as
   )
   expect_s3_class(result, "tbl_df")
   expect_true(ncol(result) == 3)
-  expect_true(all(names(result) == c(
-    "relatedResourcesId", "relatedResourcesTitle", "relatedResourcesChanged"
+  expect_true(all(names(result) == c("relatedResourcesTitle", "uri", 
+                                     "relatedResourcesChanged"
   )))
-  expect_type(result$relatedResourcesId, "list")
+  expect_type(result$uri, "character")
   expect_type(result$relatedResourcesTitle, "character")
   expect_type(result$relatedResourcesChanged, "character")
 })

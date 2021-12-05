@@ -55,19 +55,19 @@ get_network_sites <- function(networkDEIMSID) {
       print(map)
       lterSitesNetworkPointDEIMS
     } else {
-      map <- leaflet::leaflet() %>%
-        leaflet::addTiles()
+#      map <- leaflet::leaflet() %>%
+#        leaflet::addTiles()
       message("\n----\nThe maps cannot be created because the coordinates,
 provided in DEIMS-SDR, has an invalid geometry.
 Please check the content and refers this error to DEIMS-SDR contact person of
 the network, citing the Network.iD.\n----\n")
       lterSitesNetworkPointDEIMS
-      print(map)
+#      print(map)
     }
   } else {
     message("\n----\nThe requested page could not be found.
 Please check again the Network.iD\n----\n")
     lterSitesNetworkPointDEIMS <- NULL
-    map <- NULL
+#    map <- NULL
   }
 }
