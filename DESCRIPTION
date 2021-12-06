@@ -1,6 +1,6 @@
 Package: ReLTER
 Type: Package
-Title: An R Interface for the eLTER Community
+Title: An Interface for the 'eLTER' Community
 Version: 1.0.0
 Authors@R: c(
         person("Alessandro", "Oggioni", email = "oggioni.a@irea.cnr.it", 
@@ -69,7 +69,7 @@ Imports:
     sf (>= 0.9-5),
     stringr (>= 1.4.0),
     taxize (>= 0.9.97),
-    terra (>= 1.4-11),
+    terra,
     tibble (>= 3.0.5),
     tmap (>= 3.1),
     utils (>= 4.0.3),
