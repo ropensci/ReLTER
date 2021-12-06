@@ -29,7 +29,7 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 <!-- badges: end -->
 
 `{ReLTER}` is an R package that: provides access to
-[DEIMS-SDR](https://deims.org/)), allows interact with software
+[DEIMS-SDR](https://deims.org/), allows interact with software
 implemented by eLTER Research Infrastructure (RI) and improves the
 data/information shared by them.
 

@@ -47,4 +47,5 @@ test_that("Wrong input (not URL) constructs an empty tibble", {
   expect_true(is.null(result))
   expect_true(is.null(ncol(result)))
   expect_true(length(result) == 0)
-})
+})   
+

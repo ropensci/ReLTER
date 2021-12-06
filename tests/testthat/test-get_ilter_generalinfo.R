@@ -43,7 +43,7 @@ test_that("Wrong input (not a character) of 'country_name'
           constructs an empty tibble", {
   expect_warning(
     ReLTER::get_ilter_generalinfo(country_name = "123"),
-    regexp = "You have provided a country name"
+    regexp = "that is not among the countries stored"
   )
 })
 
@@ -66,9 +66,9 @@ test_that("Wrong input (not a character) of 'site_name', but correct input of
   expect_type(result$uri, "character")
   expect_type(result$geoCoord, "list")
   expect_type(result$country, "list")
-  expect_type(result$geoElev.avg, "double")
-  expect_type(result$geoElev.min, "double")
-  expect_type(result$geoElev.max, "double")
+  expect_type(result$geoElev.avg, "integer")
+  expect_type(result$geoElev.min, "integer")
+  expect_type(result$geoElev.max, "integer")
   expect_type(result$geoElev.unit, "character")
   expect_type(result$affiliation.networks, "list")
   expect_type(result$affiliation.projects, "list")
@@ -84,6 +84,6 @@ test_that("Output of function constructs 'sf' with valid geometries", {
     country_name = "Austri",
     site_name = " Eisen"
   )
-  result_valid <- sf::st_is_valid(result$coordinates)
+  result_valid <- (!is.na(result) & sf::st_is_valid(result))
   expect_true(any(result_valid))
 })
