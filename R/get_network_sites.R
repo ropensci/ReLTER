@@ -26,12 +26,13 @@
 ### function get_network_sites
 get_network_sites <- function(networkDEIMSID) {
   lterNetworkSitesCoords <- jsonlite::fromJSON(
-    paste0(
-      "https://deims.org/",
+    paste0("https://deims.org/",
       "api/sites?network=",
       sub("^.+/", "", networkDEIMSID)
     )
-  ) %>% dplyr::as_tibble()
+  ) 
+  
+  lterNetworkSitesCoords = dplyr::as_tibble(lterNetworkSitesCoords)
   if (length(lterNetworkSitesCoords) != 0) {
     lterSitesNetworkPointDEIMS <- sf::st_as_sf(
       lterNetworkSitesCoords,
@@ -53,21 +54,21 @@ get_network_sites <- function(networkDEIMSID) {
         leaflet::addTiles() %>%
         leaflet::addMarkers()
       print(map)
-      lterSitesNetworkPointDEIMS
+      return(lterSitesNetworkPointDEIMS)
     } else {
 #      map <- leaflet::leaflet() %>%
 #        leaflet::addTiles()
       message("\n----\nThe maps cannot be created because the coordinates,
-provided in DEIMS-SDR, has an invalid geometry.
-Please check the content and refers this error to DEIMS-SDR contact person of
-the network, citing the Network.iD.\n----\n")
-      lterSitesNetworkPointDEIMS
+provided in DEIMS-SDR, have invalid geometry.
+Please check the content (returned by this function) and refer this error 
+to DEIMS-SDR contact person of the network, citing the Network ID.\n----\n")
+      return(lterSitesNetworkPointDEIMS)
 #      print(map)
     }
   } else {
     message("\n----\nThe requested page could not be found.
-Please check again the Network.iD\n----\n")
-    lterSitesNetworkPointDEIMS <- NULL
+Please check the Network ID\n----\n")
+    return(NULL)
 #    map <- NULL
   }
 }
