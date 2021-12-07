@@ -22,16 +22,31 @@
 #' @export
 #' @examples
 #' \dontrun{
+#' # list of the all sites info with ILTER
 #' listOfAllSites <- get_ilter_generalinfo()
 #' length(listOfAllSites[,1])
+#' 
+#' # example about country name parameter
 #' sitesAustria <- get_ilter_generalinfo(country_name = "Austri")
 #' # (matches Austria, but not Australia)
 #' length(sitesAustria$title)
-#' eisenwurzen <- get_ilter_generalinfo(country_name = "Austri",
-#'                                      site_name =" Eisen")
+#' 
+#' # example of single site in a country
+#' eisenwurzen <- get_ilter_generalinfo(
+#'   country_name = "Austri",
+#'   site_name = "Eisen"
+#' )
 #' eisenwurzen[,1:2]
+#' # extract DEIMS.Id
 #' eisenwurzen_deimsid <- eisenwurzen$uri
 #' eisenwurzen_deimsid
+#' 
+#' # example of single site in a country and return only map
+#' get_ilter_generalinfo(
+#'   country_name = "Italy",
+#'   site_name = "Maggiore",
+#'   show_map = TRUE
+#' )
 #' }
 ### function get_ilter_generalinfo
 get_ilter_generalinfo <- function(country_name = NA, site_name = NA,
@@ -106,10 +121,9 @@ get_ilter_generalinfo <- function(country_name = NA, site_name = NA,
   # Make sure we have some rows
   if (is.null(uniteSitesGeneralInfo)) {
     return(NULL)
-  } else if (length(uniteSitesGeneralInfo[, 1]) == 0 |
+  } else if (length(uniteSitesGeneralInfo) == 0 |
           # No rows after country filter
-          length(uniteSitesGeneralInfo$title) == 0) 
-    {
+          length(uniteSitesGeneralInfo$title) == 0) {
     # No rows left after site filter
     uniteSitesGeneralInfoGeo <- NULL
     warning("\n", paste("No matches found for country name:",
@@ -125,16 +139,15 @@ get_ilter_generalinfo <- function(country_name = NA, site_name = NA,
     uniteSitesGeneralInfoGeo <- sf::st_as_sf(uniteSitesGeneralInfo,
                                              wkt = "geoCoord",
                                              crs = 4326)
-    #uniteSitesGeneralInfoGeo_valid <- sf::st_is_valid(uniteSitesGeneralInfoGeo)
-    if (!is.na(uniteSitesGeneralInfoGeo) & 
-        sf::st_is_valid(uniteSitesGeneralInfoGeo)) {
+    if (any(sf::st_is_valid(uniteSitesGeneralInfoGeo))) {
       if (show_map == TRUE) {
         map <- leaflet::leaflet(uniteSitesGeneralInfoGeo) %>%
           leaflet::addTiles() %>%
           leaflet::addMarkers()
         print(map)
+      } else {
+        return(uniteSitesGeneralInfoGeo)
       }
-      return(uniteSitesGeneralInfoGeo)
     } else {
       message("\n----\nThe map cannot be created because one or more site",
              " locations provided in DEIMS-SDR, has an invalid geometry.\n",
