@@ -62,35 +62,34 @@ get_site_boundaries <- function(deimsid, show_map = FALSE) {
     )
     if (!is.null(boundaries)) {
       if (is.na(boundaries$boundaries)) {
-        warning(
-          "\n----\nThis site does not have boundaries uploaded to DEIMS-SDR.",
-          "Please verify in the site page (",
+        message(
+          "\n----\nThis site does not have boundaries uploaded to DEIMS-SDR.\n",
+          "Please verify in the site page: ",
           deimsid,
-          ")\n----\n"
+          "\n----\n"
         )
         geoBoundaries <- boundaries
       } else {
-        geoBoundaries <- sf::st_as_sf(
-          boundaries,
-          wkt = "boundaries",
-          crs = 4326
-        )
+        geoBoundaries <- sf::st_as_sf(boundaries,
+                                      wkt = "boundaries",
+                                      crs = 4326
+                                      )
         if (show_map == TRUE) {
           map <- leaflet::leaflet(geoBoundaries) %>%
             leaflet::addTiles() %>%
             leaflet::addPolygons()
           print(map)
         }
-        return(geoBoundaries)
+        #return(geoBoundaries)
       }
-    } else {
-      warning(
-        "\n ----This site does not have boundaries uploaded to DEIMS-SDR.",
-        "Please verify in the site page (",
-        deimsid,
-        ")---- \n"
-      )
-      geoBoundaries <- NULL
+    # } else {
+    #   warning(
+    #     "\n ----This site does not have boundaries uploaded to DEIMS-SDR.",
+    #     "Please verify in the site page (",
+    #     deimsid,
+    #     ")---- \n"
+    #   )
+    #   geoBoundaries <- NULL
     }
   } else {
     message("\n----\nThe requested page could not be found.",
