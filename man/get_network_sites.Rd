@@ -14,8 +14,8 @@ DEIMS-SDR website. More information about DEIMS network ID from these pages:
 complete list of ILTER networks.}
 }
 \value{
-The output of the function is `SpatialPointsDataFrame` (package sp)
-of the network's sites.
+The output of the function is a point vector of `sf` class
+(package sf) of the network's sites.
 }
 \description{
 This function retrieves a list of sites in the provided network

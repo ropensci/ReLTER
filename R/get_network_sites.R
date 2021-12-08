@@ -6,8 +6,9 @@
 #' \href{https://deims.org/docs/deimsid.html}{page}, and
 #' \href{https://deims.org/search?f[0]=result_type:network}{page} the
 #' complete list of ILTER networks.
-#' @return The output of the function is `SpatialPointsDataFrame` (package sp)
-#' of the network's sites.
+#'
+#' @return The output of the function is a point vector of `sf` class
+#' (package sf) of the network's sites.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom jsonlite fromJSON
 #' @importFrom sf st_as_sf st_is_valid
@@ -25,12 +26,12 @@
 #'
 ### function get_network_sites
 get_network_sites <- function(networkDEIMSID) {
+  url <- paste0("https://deims.org/",
+                "api/sites?network=",
+                sub("^.+/", "", networkDEIMSID))
+  export <- httr::GET(url = url)
   lterNetworkSitesCoords <- jsonlite::fromJSON(
-    paste0("https://deims.org/",
-      "api/sites?network=",
-      sub("^.+/", "", networkDEIMSID)
-    )
-  ) 
+    httr::content(export, as="text", encoding = "UTF-8"))
   
   lterNetworkSitesCoords = dplyr::as_tibble(lterNetworkSitesCoords)
   if (length(lterNetworkSitesCoords) != 0) {
@@ -56,19 +57,15 @@ get_network_sites <- function(networkDEIMSID) {
       print(map)
       return(lterSitesNetworkPointDEIMS)
     } else {
-#      map <- leaflet::leaflet() %>%
-#        leaflet::addTiles()
       message("\n----\nThe maps cannot be created because the coordinates,
 provided in DEIMS-SDR, have invalid geometry.
 Please check the content (returned by this function) and refer this error 
 to DEIMS-SDR contact person of the network, citing the Network ID.\n----\n")
       return(lterSitesNetworkPointDEIMS)
-#      print(map)
     }
   } else {
     message("\n----\nThe requested page could not be found.
 Please check the Network ID\n----\n")
     return(NULL)
-#    map <- NULL
   }
 }

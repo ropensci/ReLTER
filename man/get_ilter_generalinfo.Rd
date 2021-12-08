@@ -31,16 +31,31 @@ strings is specified, then a filtered subset of the sites is acquired.
 }
 \examples{
 \dontrun{
+# list of the all sites info with ILTER
 listOfAllSites <- get_ilter_generalinfo()
 length(listOfAllSites[,1])
+
+# example about country name parameter
 sitesAustria <- get_ilter_generalinfo(country_name = "Austri")
 # (matches Austria, but not Australia)
 length(sitesAustria$title)
-eisenwurzen <- get_ilter_generalinfo(country_name = "Austri",
-                                     site_name =" Eisen")
+
+# example of single site in a country
+eisenwurzen <- get_ilter_generalinfo(
+  country_name = "Austri",
+  site_name = "Eisen"
+)
 eisenwurzen[,1:2]
+# extract DEIMS.Id
 eisenwurzen_deimsid <- eisenwurzen$uri
 eisenwurzen_deimsid
+
+# example of single site in a country and return only map
+get_ilter_generalinfo(
+  country_name = "Italy",
+  site_name = "Maggiore",
+  show_map = TRUE
+)
 }
 }
 \author{
