@@ -6,8 +6,8 @@ test_that("Expect error if internet connection is down", {
   testthat::expect_error(
     httptest::without_internet(
       result <- ReLTER::get_site_general(
-        deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
-      )
+        deimsid = 
+          "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe")
     ),
     "GET"
   )

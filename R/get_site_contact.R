@@ -34,7 +34,7 @@ get_site_contact <- function(deimsid) {
     sub("^.+/", "", deimsid)
   )
   export <- httr::GET(url = url)
-  jj <- suppressMessages(httr::content(export, "text"))
+  jj <- suppressMessages(httr::content(export, as="text", encoding="UTF-8"))
   status <- jj %>%
     jqr::jq(as.character("{status: .errors.status}")) %>%
     textConnection() %>%

@@ -53,7 +53,7 @@ produce_network_points_map <- function(networkDEIMSID, countryCode) {
     )
     export <- httr::GET(url = url)
     lterNetworkSitesCoords <- jsonlite::fromJSON(
-      httr::content(export, "text")
+      httr::content(export, as="text", encoding="UTF-8")
     )
     if (length(lterNetworkSitesCoords) != 0) {
       lterNetworkSitesCoords$uri <- paste0(
@@ -99,16 +99,16 @@ produce_network_points_map <- function(networkDEIMSID, countryCode) {
               title = NA,
               legend.show = FALSE
             )
-          message("\n----\nThe map of site cannot be made properly.
+          message("\n----\nThe map of site cannot be created.
   Please check again the Country code.
-  Compare the code provided with the list of code in Wikipage
+  Compare the code provided with the list of code in 
   https://en.wikipedia.org/wiki/ISO_3166\n----\n")
           print(mapOfSites)
           networkSitesGeo
         }
       } else {
-        message("\n----\nThe maps cannot be created because the coordinates,
-  provided in DEIMS-SDR, has an invalid geometry.
+        message("\n----\nThe maps cannot be created because coordinates,
+  provided in DEIMS-SDR, have invalid geometry.
   Please check the content and refers this error to DEIMS-SDR contact person
   of the network, citing the Network.iD.\n----\n")
         mapOfSites <- tmap::tm_shape(country) +

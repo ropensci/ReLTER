@@ -125,6 +125,7 @@ get_site_ODS <- function(deimsid, dataset = "landcover") {
   # The boundary must be transformed first
   # to the European CRS (EPSG:3035) used by ODS
   boundary <- sf::st_transform(boundary, terra::crs(ds))
-  ds_site <- terra::mask(terra::crop(ds, boundary), terra::vect(boundary))
+  boundary <- terra::vect(boundary)
+  ds_site <- terra::mask(terra::crop(ds, boundary), boundary)
   return(ds_site)
 }

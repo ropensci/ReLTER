@@ -232,14 +232,15 @@ get_site_info <- function(deimsid, category = NA) {
       # add 'Boundaries' info
       if (any(stringr::str_detect(category, "Boundaries"))) {
         siteBound <- get_site_boundaries(deimsid = deimsid)
-        siteInfo <- dplyr::left_join(
-          siteBound,
-          siteInfo,
-          by = c(
-            "title" = "title",
-            "uri" = "uri"
+        if (!is.null(siteBound)) {
+          siteInfo <- dplyr::left_join(
+            siteBound,
+            siteInfo,
+            by = c("title" = "title", "uri" = "uri")
           )
-        )
+        } else {
+          siteInfo <- siteInfo
+        }
       } else {
         siteInfo <- siteInfo
       }
