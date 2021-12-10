@@ -16,7 +16,7 @@ Authors@R: c(
           comment = c(ORCID = "0000-0002-0261-313X")
         )
       )
-Maintainer: The package maintainer Alessandro Oggioni, phD (2021)
+Maintainer: The package maintainer Alessandro Oggioni, phD (2020)
     <oggioniale@gmail.com>
 Description: ReLTER provides access to DEIMS-SDR (https://deims.org/),
     and allows interaction with data and software implemented by eLTER
