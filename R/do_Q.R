@@ -3,7 +3,7 @@
 #' @param q a character
 #' @param jj a character
 #' @return The output of the function is ...
-#' @author Paolo Tagliolato, phD (2021) \email{tagliolato.p@@irea.cnr.it}
+#' @author Paolo Tagliolato, PhD (2021) \email{tagliolato.p@@irea.cnr.it}
 #' @importFrom jsonlite stream_in
 #' @importFrom jqr jq
 #' @importFrom dtplyr lazy_dt
