@@ -20,7 +20,7 @@ jobs:
           - {os: windows-latest, r: 'release'}
           - {os: ubuntu-latest,   r: 'devel', http-user-agent: 'release'}
           - {os: ubuntu-latest,   r: 'release'}
-          - {os: ubuntu-latest,   r: 'oldrel', rspm: "https://packagemanager.rstudio.com/cran/__linux__/bionic/latest"}
+          - {os: ubuntu-latest,   r: 'oldrel', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -35,7 +35,6 @@ jobs:
         with:
           r-version: ${{ matrix.config.r }}
           http-user-agent: ${{ matrix.config.http-user-agent }}
-          use-public-rspm: true
 
       - uses: r-lib/actions/setup-r-dependencies@v1
         with:
@@ -54,10 +53,19 @@ jobs:
       - name: download system packages
         if: runner.os == 'Linux'
         run: |
-          sudo apt-get install r-base-dev
-          sudo apt-get install build-essential
-          sudo apt-get install libssl-dev
-          sudo apt-get install libcurl4-openssl-dev
-          sudo apt-get install libxml2-dev
-          sudo apt-get install libcairo2-dev
-          sudo apt-get install libgit2-dev
+          sudo apt update
+          sudo apt-get install \
+            r-base-dev \
+            build-essential \
+            gdal-bin \
+            libgdal-dev \
+            libjq-dev \
+            libssl-dev \
+            libcurl4-openssl-dev \
+            libxml2-dev \
+            libprotobuf-dev \
+            protobuf-compiler \
+            libv8-dev \
+            libssl-dev \
+            libcairo2-dev \
+            libgit2-dev
