@@ -43,6 +43,14 @@ jobs:
 
       - uses: r-lib/actions/check-r-package@v1
 
+      - name: "[Linux] Install system dependencies"
+        if: runner.os == 'Linux'
+        run: |
+          while read -r cmd
+          do
+            eval sudo $cmd
+          done < <(Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "20.04"))')
+          
       - name: download system packages
         if: runner.os == 'Linux'
         run: |
