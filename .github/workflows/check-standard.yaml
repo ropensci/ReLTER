@@ -43,15 +43,13 @@ jobs:
 
       - uses: r-lib/actions/check-r-package@v1
 
-      - name: Install system dependencies
+      - name: download system packages
         if: runner.os == 'Linux'
         run: |
-          pak::local_system_requirements(execute = TRUE)
-          pak::pkg_system_requirements("rcmdcheck", execute = TRUE)
-        shell: Rscript {0}
-
-      - name: Install dependencies
-        run: |
-          pak::local_install_dev_deps(upgrade = TRUE)
-          pak::pkg_install("rcmdcheck")
-        shell: Rscript {0}
+          sudo apt-get install r-base-dev
+          sudo apt-get install build-essential
+          sudo apt-get install libssl-dev
+          sudo apt-get install libcurl4-openssl-dev
+          sudo apt-get install libxml2-dev
+          sudo apt-get install libcairo2-dev
+          sudo apt-get install libgit2-dev
