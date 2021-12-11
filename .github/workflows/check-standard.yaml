@@ -68,4 +68,5 @@ jobs:
             libv8-dev \
             libssl-dev \
             libcairo2-dev \
-            libgit2-dev
+            libgit2-dev \
+            r-cran-phangorn
