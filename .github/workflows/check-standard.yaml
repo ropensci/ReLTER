@@ -58,11 +58,6 @@ jobs:
           do
             eval sudo $cmd
           done < <(Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "20.04"))')
-
-      - name: "Install pak from source"
-        run: |
-          utils::install.packages("pak", type = "source")
-        shell: Rscript {0}
           
       - name: download system packages
         if: runner.os == 'Linux'
