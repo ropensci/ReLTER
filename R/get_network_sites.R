@@ -14,6 +14,7 @@
 #' @importFrom sf st_as_sf st_is_valid
 #' @importFrom dplyr select as_tibble
 #' @importFrom leaflet leaflet addTiles addMarkers
+#' @importFrom httr RETRY content
 #' @export
 #' @examples
 #' \dontrun{
@@ -29,7 +30,7 @@ get_network_sites <- function(networkDEIMSID) {
   url <- paste0("https://deims.org/",
                 "api/sites?network=",
                 sub("^.+/", "", networkDEIMSID))
-  export <- httr::GET(url = url)
+  export <- httr::RETRY("GET", url = url, times = 5)
   lterNetworkSitesCoords <- jsonlite::fromJSON(
     httr::content(export, as="text", encoding = "UTF-8"))
   

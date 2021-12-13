@@ -16,7 +16,7 @@
 #' @importFrom tibble tribble
 #' @importFrom dplyr as_tibble
 #' @importFrom jsonlite fromJSON
-#' @importFrom httr GET content
+#' @importFrom httr RETRY content
 #' @importFrom utils capture.output
 #' @importFrom sf st_as_sf write_sf st_write
 #' @importFrom leaflet leaflet addTiles addPolygons
@@ -46,7 +46,7 @@ get_site_boundaries <- function(deimsid, show_map = FALSE) {
     "api/sites/",
     sub("^.+/", "", deimsid)
   )
-  export <- httr::GET(url = url)
+  export <- httr::RETRY("GET", url = url, times = 5)
   jj <- suppressMessages(httr::content(export, "text"))
   status <- jj %>%
     jqr::jq(as.character("{status: .errors.status}")) %>%

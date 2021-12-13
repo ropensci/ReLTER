@@ -8,7 +8,7 @@
 #' site and the affiliations information, such as: networks and projects in
 #' which the site is involved.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @importFrom httr GET content
+#' @importFrom httr RETRY content
 #' @importFrom jqr jq
 #' @importFrom jsonlite stream_in
 #' @importFrom dtplyr lazy_dt
@@ -36,7 +36,7 @@ get_site_affiliations <- function(deimsid) {
     "api/sites/",
     sub("^.+/", "", deimsid)
   )
-  export <- httr::GET(url = url)
+  export <- httr::RETRY("GET", url = url, times = 5)
   jj <- suppressMessages(httr::content(export, "text"))
   status <- jj %>%
     jqr::jq(as.character("{status: .errors.status}")) %>%

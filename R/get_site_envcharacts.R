@@ -10,7 +10,7 @@
 #' ecosystem land use, EUNIS habitat, geoBon biome, geology, hydrology, soils
 #' and vegetation.
 #' @author Alessandro Oggioni, phD (2021) \email{oggioni.a@@irea.cnr.it}
-#' @importFrom httr GET content
+#' @importFrom httr RETRY content
 #' @importFrom utils capture.output
 #' @importFrom dplyr as_tibble
 #' @export
@@ -36,7 +36,7 @@ get_site_envcharacts <- function(deimsid) {
     "api/sites/",
     sub("^.+/", "", deimsid)
   )
-  export <- httr::GET(url = url)
+  export <- httr::RETRY("GET", url = url, times = 5)
   jj <- suppressMessages(httr::content(export, "text"))
   status <- jj %>%
     jqr::jq(as.character("{status: .errors.status}")) %>%

@@ -15,7 +15,7 @@
 #' which the site is involved.
 #' If `category` "Boundaries" is indicated an `sf` object is returned
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @importFrom httr GET content
+#' @importFrom httr RETRY content
 #' @importFrom jqr jq
 #' @importFrom jsonlite fromJSON stream_in
 #' @importFrom dtplyr lazy_dt
@@ -50,7 +50,7 @@ get_site_info <- function(deimsid, category = NA) {
     "api/sites/",
     sub("^.+/", "", deimsid)
   )
-  export <- httr::GET(url = url)
+  export <- httr::RETRY("GET", url = url, times = 5)
   jj <- suppressMessages(httr::content(export, "text"))
   status <- jj %>%
     jqr::jq(as.character("{status: .errors.status}")) %>%

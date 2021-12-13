@@ -23,6 +23,7 @@
 #' @importFrom tmap tm_shape tm_borders tm_dots
 #' @importFrom dplyr select
 #' @importFrom tibble as_tibble
+#' @importFrom httr RETRY content
 #' @import ISOcodes
 #' @export
 #' @examples
@@ -51,7 +52,7 @@ produce_network_points_map <- function(networkDEIMSID, countryCode) {
       "api/sites?network=",
       sub("^.+/", "", networkDEIMSID)
     )
-    export <- httr::GET(url = url)
+    export <- httr::RETRY("GET", url = url, times = 5)
     lterNetworkSitesCoords <- jsonlite::fromJSON(
       httr::content(export, as="text", encoding="UTF-8")
     )

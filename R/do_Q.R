@@ -23,7 +23,7 @@
 #'   "api/sites/",
 #'   sub("^.+/", "", deimsid)
 #' )
-#' export <- httr::GET(url = url)
+#' export <- httr::RETRY("GET", url = url)
 #' jj <- suppressMessages(httr::content(export, "text"))
 #'
 #' ReLTER:::do_Q(q, jj)

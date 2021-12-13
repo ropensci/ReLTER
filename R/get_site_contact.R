@@ -8,7 +8,7 @@
 #' site and the contact information, such as: site manager, operation
 #' organization, metadata provider, founding agency and site url.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @importFrom httr GET content
+#' @importFrom httr RETRY content
 #' @importFrom utils capture.output
 #' @importFrom dplyr as_tibble
 #' @export
@@ -33,7 +33,7 @@ get_site_contact <- function(deimsid) {
     "api/sites/",
     sub("^.+/", "", deimsid)
   )
-  export <- httr::GET(url = url)
+  export <- httr::RETRY("GET", url = url, times = 5)
   jj <- suppressMessages(httr::content(export, as="text", encoding="UTF-8"))
   status <- jj %>%
     jqr::jq(as.character("{status: .errors.status}")) %>%

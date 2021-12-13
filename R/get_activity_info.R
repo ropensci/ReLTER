@@ -7,7 +7,7 @@
 #' @return The output of the function is a `tibble` with main features of
 #' the activities in a site, and a `leaflet` map plot.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @importFrom httr GET content
+#' @importFrom httr RETRY content
 #' @importFrom dplyr as_tibble
 #' @importFrom dtplyr lazy_dt
 #' @importFrom utils capture.output
@@ -32,7 +32,7 @@ get_activity_info <- function(activityid) {
     "api/activities/",
     sub("^.+/", "", activityid)
   )
-  export <- httr::GET(url = url)
+  export <- httr::RETRY("GET", url = url, times = 5)
   jj <- suppressMessages(httr::content(export, "text"))
   status <- jj %>%
     jqr::jq(as.character("{status: .errors.status}")) %>%
