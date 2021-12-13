@@ -35,9 +35,10 @@ knitr::opts_chunk$set(
 <!-- Once you have submitted a package and it has passed editor checks, add a peer-review badge via -->
 <!-- [![](https://badges.ropensci.org/<issue_id>_status.svg)](https://github.com/ropensci/software-review/issues/<issue_id>) -->
 <!-- where issue_id is the number of the issue in the software-review repository. -->
+[![R-CMD-check](https://github.com/oggioniale/ReLTER/workflows/R-CMD-check/badge.svg)](https://github.com/oggioniale/ReLTER/actions)
 <!-- badges: end -->
 
-`{ReLTER}` is an R package that: provides access to [DEIMS-SDR](https://deims.org/)), allows interact with software implemented by eLTER Research Infrastructure (RI) and improves the data/information shared by them.
+`{ReLTER}` is an R package that: provides access to [DEIMS-SDR](https://deims.org/), allows interact with software implemented by eLTER Research Infrastructure (RI) and improves the data/information shared by them.
 
 `{ReLTER}` is a R package devoted to access, interact and improve the information and the data shared by Long Term Ecological Research (LTER) network. This package is born within eLTER H2020 major project that will help advance the development of European Long-Term Ecosystem Research Infrastructures ([eLTER RI](https://elter-ri.eu)).
 

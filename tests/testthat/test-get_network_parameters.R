@@ -7,7 +7,10 @@ skip_on_cran()
 test_that("Expect error if internet connection is down", {
   testthat::expect_error(
     httptest::without_internet(
-      result <- ReLTER::get_network_parameters(networkDEIMSID = "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3")
+      result <- ReLTER::get_network_parameters(
+        networkDEIMSID =
+          "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
+      )
     ),
     "GET"
   )
@@ -15,8 +18,12 @@ test_that("Expect error if internet connection is down", {
 
 skip_if_offline(host = "deims.org")
 
-test_that("Output of network parameters function constructs ‘tibble’ as expected", {
-  result <- ReLTER::get_network_parameters(networkDEIMSID = "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3")
+test_that("Output of network parameters function constructs 'tibble' as
+          expected", {
+  result <- ReLTER::get_network_parameters(
+    networkDEIMSID =
+      "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
+  )
   expect_s3_class(result, "tbl_df")
   expect_true(ncol(result) == 2)
   expect_true(all(names(result) == c(
@@ -27,15 +34,18 @@ test_that("Output of network parameters function constructs ‘tibble’ as expe
 })
 
 test_that("Wrong input (but URL) constructs a NULL object", {
-  result <- ReLTER::get_network_parameters(networkDEIMSID = 'https://deims.org/network/ljhnhbkihubib')
+  result <- ReLTER::get_network_parameters(
+    networkDEIMSID = "https://deims.org/network/ljhnhbkihubib"
+  )
   expect_true(is.null(result))
   expect_true(is.null(ncol(result)))
   expect_true(length(result) == 0)
 })
 
 test_that("Wrong input (not URL) constructs an empty tibble", {
-  result <- ReLTER::get_network_parameters(networkDEIMSID = 'ljhnhbkihubib')
+  result <- ReLTER::get_network_parameters(networkDEIMSID = "ljhnhbkihubib")
   expect_true(is.null(result))
   expect_true(is.null(ncol(result)))
   expect_true(length(result) == 0)
-})
+})   
+

@@ -24,10 +24,12 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 <!-- Once you have submitted a package and it has passed editor checks, add a peer-review badge via -->
 <!-- [![](https://badges.ropensci.org/<issue_id>_status.svg)](https://github.com/ropensci/software-review/issues/<issue_id>) -->
 <!-- where issue_id is the number of the issue in the software-review repository. -->
+
+[![R-CMD-check](https://github.com/oggioniale/ReLTER/workflows/R-CMD-check/badge.svg)](https://github.com/oggioniale/ReLTER/actions)
 <!-- badges: end -->
 
 `{ReLTER}` is an R package that: provides access to
-[DEIMS-SDR](https://deims.org/)), allows interact with software
+[DEIMS-SDR](https://deims.org/), allows interact with software
 implemented by eLTER Research Infrastructure (RI) and improves the
 data/information shared by them.
 
@@ -109,6 +111,9 @@ You can install the development version of `{ReLTER}` from
 install.packages("devtools")
 devtools::install_github("oggioniale/ReLTER")
 ```
+
+If you wish to help develop this package, please follow the
+[contributing guidelines](CONTRIBUTING.md).
 
 ## :memo: Examples
 
@@ -203,12 +208,16 @@ tDataset
 #> Bounding box:  xmin: 11.88721 ymin: 43.20518 xmax: 15.86426 ymax: 45.91294
 #> Geodetic CRS:  WGS 84
 #> # A tibble: 1 × 34
-#>   title   abstract      keywords  uri    type  dateRange.from dateRange.to relatedSite contacts.corres… contacts.creator contacts.metada… observationPara… observationSpec… dataPolicy doi   onlineLocation
-#> * <chr>   <chr>         <list>    <chr>  <chr> <chr>          <lgl>        <list>      <list>           <list>           <lgl>            <list>           <list>           <list>     <chr> <list>        
-#> 1 LTER N… The present … <df [5 ×… https… data… 1965-01-01     NA           <df [1 × 4… <df [1 × 4]>     <df [14 × 4]>    NA               <df [1 × 2]>     <df [3 × 2]>     <df [1 × … 10.3… <df [1 × 3]>  
-#> # … with 18 more variables: legal.accessUse <list>, legal.rights <lgl>, legal.legalAct <lgl>, legal.citation <lgl>, method.instrumentation <lgl>, method.qualityAssurance <lgl>, method.methodUrl <list>,
-#> #   method.methodDescription <list>, method.samplingTimeUnit.label <chr>, method.samplingTimeUnit.uri <lgl>, method.spatialDesign.label <chr>, method.spatialDesign.uri <lgl>,
-#> #   method.spatialScale.label <chr>, method.spatialScale.uri <lgl>, method.temporalResolution.label <chr>, method.temporalResolution.uri <lgl>, boundaries <POLYGON [°]>, boundariesDescription <chr>
+#>   title  abstract   keywords uri   type  dateRange.from dateRange.to relatedSite
+#> * <chr>  <chr>      <list>   <chr> <chr> <chr>          <lgl>        <list>     
+#> 1 LTER … The prese… <df [5 … http… data… 1965-01-01     NA           <df [1 × 4…
+#> # … with 26 more variables: contacts.corresponding <list>,
+#> #   contacts.creator <list>, contacts.metadataProvider <lgl>,
+#> #   observationParameters <list>, observationSpecies <list>, dataPolicy <list>,
+#> #   doi <chr>, onlineLocation <list>, legal.accessUse <list>,
+#> #   legal.rights <lgl>, legal.legalAct <lgl>, legal.citation <lgl>,
+#> #   method.instrumentation <lgl>, method.qualityAssurance <lgl>,
+#> #   method.methodUrl <list>, method.methodDescription <list>, …
 ```
 
 ------------------------------------------------------------------------
@@ -227,14 +236,30 @@ tSiteRelatedResources <- ReLTER::get_site_info(
 #>  Found 1 records... Imported 1 records. Simplifying...
 #>  Found 1 records... Imported 1 records. Simplifying...
 tSiteRelatedResources$relatedResources[[1]]
-#>                                                                              relatedResourcesTitle  relatedResourcesChanged                                                            uri
-#> 1 Biovolume of Phytoplankton in Lake Maggiore site code  IT_SI001137_within the period 1981 - 2010 2021-08-25T16:38:25+0200 https://deims.org/dataset/d9e94776-e7a8-11e2-a655-005056ab003f
-#> 2                           Atmospheric deposition in Pallanza, Lake Maggiore watershed, 1980-2018 2020-12-13T20:06:48+0100 https://deims.org/dataset/0ce46362-0aab-482a-b1f0-a444a5dada39
-#> 3                                     Phytoplankton_Biomass_Lake Maggiore_Ghiffa_station-1984-2018 2020-12-16T10:46:15+0100 https://deims.org/dataset/0ab8425a-d574-4575-8ba9-5275c607b0c5
-#> 4                                      Water chemistry of Lake Maggiore, Ghiffa station, 1988-2018 2021-11-03T06:10:14+0100 https://deims.org/dataset/69564188-89de-4879-ad88-4aa97c1d005d
-#> 5                          Transparency (Secchi depth) of Lake Maggiore, Ghiffa station, 1988-2018 2020-12-13T20:10:34+0100 https://deims.org/dataset/e538c743-2149-49e3-9025-14a04ea7c90d
-#> 6                                             Chlorophyll a_Lake_Maggiore_Ghiffa_Station-1984-2018 2021-01-10T21:48:49+0100 https://deims.org/dataset/c857c8e2-48aa-4dcd-a7fb-e089bd4c5c4e
-#> 7                                 Water discharge of River Ticino, Lake Maggiore outlet, 1988-2018 2021-07-21T12:35:07+0200 https://deims.org/dataset/fb3a8fec-0c1f-4c3a-81d5-364c7e6078c4
+#>                                                                              relatedResourcesTitle
+#> 1 Biovolume of Phytoplankton in Lake Maggiore site code  IT_SI001137_within the period 1981 - 2010
+#> 2                           Atmospheric deposition in Pallanza, Lake Maggiore watershed, 1980-2018
+#> 3                                     Phytoplankton_Biomass_Lake Maggiore_Ghiffa_station-1984-2018
+#> 4                                      Water chemistry of Lake Maggiore, Ghiffa station, 1988-2018
+#> 5                          Transparency (Secchi depth) of Lake Maggiore, Ghiffa station, 1988-2018
+#> 6                                             Chlorophyll a_Lake_Maggiore_Ghiffa_Station-1984-2018
+#> 7                                 Water discharge of River Ticino, Lake Maggiore outlet, 1988-2018
+#>    relatedResourcesChanged
+#> 1 2021-08-25T16:38:25+0200
+#> 2 2020-12-13T20:06:48+0100
+#> 3 2020-12-16T10:46:15+0100
+#> 4 2021-11-03T06:10:14+0100
+#> 5 2020-12-13T20:10:34+0100
+#> 6 2021-01-10T21:48:49+0100
+#> 7 2021-07-21T12:35:07+0200
+#>                                                              uri
+#> 1 https://deims.org/dataset/d9e94776-e7a8-11e2-a655-005056ab003f
+#> 2 https://deims.org/dataset/0ce46362-0aab-482a-b1f0-a444a5dada39
+#> 3 https://deims.org/dataset/0ab8425a-d574-4575-8ba9-5275c607b0c5
+#> 4 https://deims.org/dataset/69564188-89de-4879-ad88-4aa97c1d005d
+#> 5 https://deims.org/dataset/e538c743-2149-49e3-9025-14a04ea7c90d
+#> 6 https://deims.org/dataset/c857c8e2-48aa-4dcd-a7fb-e089bd4c5c4e
+#> 7 https://deims.org/dataset/fb3a8fec-0c1f-4c3a-81d5-364c7e6078c4
 ```
 
 ------------------------------------------------------------------------

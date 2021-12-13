@@ -25,7 +25,8 @@ througth the DEIMS-SDR sites API.
 \examples{
 \dontrun{
 listRelatedResources <- get_network_related_resources(
-  networkDEIMSID = "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
+  networkDEIMSID =
+  "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 )
 listRelatedResources[1:10, ]
 }

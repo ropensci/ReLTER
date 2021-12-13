@@ -30,39 +30,45 @@ currently A Pan-European Species directories Infrastructure -
 \dontrun{
 table <- data.frame(
    taxonID = c(1, 2, 3, 4, 5, 6),
-   family = c("Alexiidae", "Anthicidae", "Anthribidae", "Anthribidae", "Biphyllidae", "Brentidae"),
-   scientificName = c("Sphaerosoma seidlitzi", "Endomia tenuicollis tenuicollis", "Anthribus fasciatus", "Phaenotherion fasciculatum fasciculatum", "Diplocoelus fagi", "Holotrichapion (Apiops) pisi")
+   family = c(
+     "Alexiidae", "Anthicidae",
+     "Anthribidae", "Anthribidae",
+     "Biphyllidae", "Brentidae"
+   ),
+   scientificName = c(
+     "Sphaerosoma seidlitzi", "Endomia tenuicollis tenuicollis",
+     "Anthribus fasciatus", "Phaenotherion fasciculatum fasciculatum",
+     "Diplocoelus fagi", "Holotrichapion (Apiops) pisi"
+   )
 )
 
-# We perform a query from the `table` in order to associate the taxon identifier (LSID) to the list of species present in the thirth column.
+# We perform a query from the `table` in order to associate the taxon
+# identifier (LSID) to the list of species present in the thirth column.
 taxon_id_pesi(table, 3)
 }
 
-# the output is:
-# A tibble: 6 x 10
-# taxonID family   scientificName         canonicalName       authorship     synonyms LSID           url                          accordingTo     checkStatus
-# <dbl> <chr>    <chr>                  <chr>               <chr>          <lgl>    <chr>          <chr>                        <chr>           <chr>
-#   1       1 Alexiid… Sphaerosoma seidlitzi  Sphaerosoma seidli… (Reitter, 188… NA       urn:lsid:faun… http://www.eu-nomen.eu/port… FaEu_v2.6.1 ex… accepted
-#   2       2 Anthici… Endomia tenuicollis t… Endomia tenuicolli… (Rossi, 1792)  NA       urn:lsid:faun… http://www.eu-nomen.eu/port… FaEu_v2.6.1 ex… accepted
-#   3       3 Anthrib… Anthribus fasciatus    Anthribus fasciatus Forster, 1770  NA       urn:lsid:faun… http://www.eu-nomen.eu/port… FaEu_v2.6.1 ex… accepted
-#   4       4 Anthrib… Phaenotherion fascicu… NA                  NA             NA       NA             NA                           NA              NA
-#   5       5 Biphyll… Diplocoelus fagi       Diplocoelus fagi    Guérin-Ménevi… NA       urn:lsid:faun… http://www.eu-nomen.eu/port… FaEu_v2.6.1 ex… accepted
-#   6       6 Brentid… Holotrichapion (Apiop… Holotrichapion (Ap… (Fabricius, 1… NA       urn:lsid:faun… http://www.eu-nomen.eu/port… FaEu_v2.6.1 ex… accepted
-
 # An example to export dataset producted by this function is:
 # datasetMerged <- dplyr::bind_rows(table)
-# write.csv(datasetMerged, "table.csv", row.names = FALSE, fileEncoding = "UTF-8")
+# write.csv(
+# datasetMerged,
+#   "table.csv",
+#   row.names = FALSE,
+#   fileEncoding = "UTF-8"
+# )
 
-# Someone could have problems of characters encoding when csv file is written.
+# Someone could have problems of characters encoding when csv file is
+# written.
 # To resolve we suggest two different methods:
 #
 # Solution 1
 #
 # 1. Open the CSV in Notepad.
 # 2. Click “File” and “Save As”.
-# 3. In the new popup that displays,  select “ANSI” from the “Encoding” field.
+# 3. In the new popup that displays,  select “ANSI” from the “Encoding”
+#    field.
 # 4. Click “Save”.
-# 5. Now, you should be able to open the file in Excel and display the characters correctly.
+# 5. Now, you should be able to open the file in Excel and display the
+#    characters correctly.
 #
 # Solution 2
 #
@@ -75,7 +81,8 @@ taxon_id_pesi(table, 3)
 # 7. Click “Next”
 # 8. Select “Comma”
 # 9. Click “Finish”
-# 10. Excel should now show you the CSV file and display the characters correctly.
+# 10. Excel should now show you the CSV file and display the characters
+#     correctly.
 
 }
 \author{

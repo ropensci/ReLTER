@@ -7,13 +7,13 @@
 #' @return The output of the function is a pie chart.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom tibble as_tibble
-#' @importFrom dplyr group_by tally mutate filter
+#' @importFrom dplyr group_by tally mutate filter lag
 #' @importFrom scales percent
 #' @importFrom RColorBrewer brewer.pal
-#' @importFrom utils data
-#' @importFrom ggplot2 theme_minimal theme element_blank element_text ggplot geom_text aes coord_fixed scale_x_continuous scale_y_continuous scale_color_manual
+#' @importFrom ggplot2 theme_minimal theme element_blank element_text ggplot
+#' @importFrom ggplot2 geom_text aes coord_fixed scale_x_continuous
+#' @importFrom ggplot2 scale_y_continuous scale_color_manual
 #' @importFrom ggforce geom_arc_bar
-#' @importFrom magrittr %>%
 #' @export
 #' @examples
 #' \dontrun{
@@ -22,11 +22,10 @@
 #' )
 #' pie
 #' }
-#' 
+#'
 ### function produce_site_parameters_pie
 produce_site_parameters_pie <- function(deimsid) {
   # TODO add this by SPARQL query
-  utils::data(envThesParams)
   paramsDeims <- ReLTER::get_site_info(
     deimsid = deimsid,
     category = "Parameters"
@@ -46,12 +45,12 @@ produce_site_parameters_pie <- function(deimsid) {
         freq = n / sum(n),
         label = scales::percent(freq),
         end = 2 * pi * cumsum(freq) / sum(freq),
-        start = lag(end, default = 0),
+        start = dplyr::lag(end, default = 0),
         middle = 0.5 * (start + end),
         hjust = ifelse(middle > pi, 1, 0),
         vjust = ifelse(
           middle < pi / 2 | middle > 3 * pi / 2, 0, 1
-          )
+        )
       )
     # Pie Graph ----
     blank_theme <- ggplot2::theme_minimal() +
@@ -67,28 +66,52 @@ produce_site_parameters_pie <- function(deimsid) {
       )
     mycolors <- c(
       RColorBrewer::brewer.pal(
-        name ="Set1",
+        name = "Set1",
         n = 9
       ),
       RColorBrewer::brewer.pal(
-        name ="Set2",
+        name = "Set2",
         n = 8
       ),
       RColorBrewer::brewer.pal(
-        name ="Set3",
+        name = "Set3",
         n = 12
       )
     )
-    pie <- ggplot2::ggplot(params) + 
-      ggforce::geom_arc_bar(ggplot2::aes(x0 = 0, y0 = 0, r0 = 0, r = 1,
-                       start = start, end = end, fill = parameterGroups)) +
-      ggplot2::geom_text(ggplot2::aes(x = 1.05 * sin(middle), y = 1.05 * cos(middle), label = label,
-                    hjust = hjust, vjust = vjust)) +
+    pie <- ggplot2::ggplot(params) +
+      ggforce::geom_arc_bar(
+        ggplot2::aes(
+          x0 = 0,
+          y0 = 0,
+          r0 = 0,
+          r = 1,
+          start = start,
+          end = end,
+          fill = parameterGroups
+        )
+      ) +
+      ggplot2::geom_text(
+        ggplot2::aes(
+          x = 1.05 * sin(middle),
+          y = 1.05 * cos(middle),
+          label = label,
+          hjust = hjust,
+          vjust = vjust
+        )
+      ) +
       ggplot2::coord_fixed() +
-      ggplot2::scale_x_continuous(limits = c(-1.5, 1.5),  # Adjust so labels are not cut off
-                         name = "", breaks = NULL, labels = NULL) +
-      ggplot2::scale_y_continuous(limits = c(-1, 1.1),    # Adjust so labels are not cut off
-                         name = "", breaks = NULL, labels = NULL) +
+      ggplot2::scale_x_continuous(
+        limits = c(-1.5, 1.5), # Adjust so labels are not cut off
+        name = "",
+        breaks = NULL,
+        labels = NULL
+      ) +
+      ggplot2::scale_y_continuous(
+        limits = c(-1, 1.1), # Adjust so labels are not cut off
+        name = "",
+        breaks = NULL,
+        labels = NULL
+      ) +
       blank_theme +
       ggplot2::scale_color_manual(
         values = mycolors
@@ -109,7 +132,8 @@ produce_site_parameters_pie <- function(deimsid) {
     print(pie)
     params
   } else {
-    message("\n---- The requested page could not be found. Please check again the DEIMS.iD ----\n")
+    message("\n----\nThe requested page could not be found.
+Please check again the DEIMS.iD\n----\n")
     pie <- NULL
     params <- NULL
   }

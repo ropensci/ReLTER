@@ -1,7 +1,8 @@
 #' @title eLTER get_ilter_envcharacts function
 #' @description This function obtains the information about the
-#' Environmental Characteristics of ILTER sites, through the DEIMS-SDR sites API.
-#' @param sitesNum A `integer`. It is the number of the sites that are 
+#' Environmental Characteristics of ILTER sites, through the DEIMS-SDR sites
+#' API.
+#' @param sitesNum A `integer`. It is the number of the sites that are
 #' read to get the information. Use this parameters moreover for provide
 #' example of this function.
 #' @return The output of the function is a `tibble` containing all the
@@ -15,7 +16,7 @@
 #' listEnvCharacts <- get_ilter_envcharacts(sitesNum = 10)
 #' listEnvCharacts[1:20, ]
 #' }
-#' 
+#'
 ### function get_ilter_envcharacts
 get_ilter_envcharacts <- function(sitesNum = NULL) {
   if (is.na(sitesNum)) {
@@ -38,7 +39,7 @@ get_ilter_envcharacts <- function(sitesNum = NULL) {
         allSiteEnvCharacts_matrix
       )
     )
-    ReLTER::allSiteEnvCharacts
+    allSiteEnvCharacts
   } else if (typeof(sitesNum) == "double") {
     lterILTERSites <- as.list(
       jsonlite::fromJSON("https://deims.org/api/sites")
@@ -61,7 +62,8 @@ get_ilter_envcharacts <- function(sitesNum = NULL) {
     )
     allSiteEnvCharacts
   } else {
-    message("\n---- The `sitesNum` value must be a double (e.g. 10, 24, etc.). Please check again the value of `sitesNum`. ----\n")
+    message("\n----\nThe `sitesNum` value must be a double (e.g. 10, 24, etc.).
+Please check again the value of `sitesNum`.\n----\n")
     allSiteEnvCharacts <- NULL
   }
 }

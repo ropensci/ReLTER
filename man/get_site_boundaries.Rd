@@ -4,22 +4,25 @@
 \alias{get_site_boundaries}
 \title{eLTER get_site_boundaries function}
 \usage{
-get_site_boundaries(deimsid)
+get_site_boundaries(deimsid, show_map = FALSE)
 }
 \arguments{
 \item{deimsid}{A `character`. The DEIMS ID of the site from
 DEIMS-SDR website. More information about DEIMS ID in this page:
 \href{https://deims.org/docs/deimsid.html}{page}.}
+
+\item{show_map}{a `boolean`. When TRUE the boundary will be plotted on a
+Leaflet map. Default FALSE.}
 }
 \value{
-The output of the function is an `sf` object, the boundary of the site
-or NA if the boundary is missing from DEIMS-SDR.
-In addition, as `html map` with boundaries of the site is plotted.
+The output of the function is an `sf` object, the boundary of the
+site or NA if the boundary is missing from DEIMS-SDR. In addition, as
+`html map` with boundaries of the site is plotted.
 }
 \description{
 This function retrieves the boundary of a specified eLTER site
 and a view of the site boundaries on a leaflet map is shown.
-All the info are taken from the DEIMS-SDR sites API. 
+All the info are taken from the DEIMS-SDR sites API.
 If the boundary is missing, a warning message is printed in the R console.
 }
 \examples{
@@ -29,7 +32,8 @@ tSiteBoundaries <- get_site_boundaries(
 tSiteBoundaries
 
 eisenwurzen <- get_site_boundaries(
-  deimsid = "https://deims.org/d0a8da18-0881-4ebe-bccf-bc4cb4e25701"
+  deimsid = "https://deims.org/d0a8da18-0881-4ebe-bccf-bc4cb4e25701",
+  show_map = TRUE
 )
 eisenwurzen
 

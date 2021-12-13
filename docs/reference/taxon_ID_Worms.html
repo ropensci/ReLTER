@@ -161,6 +161,11 @@ comparing with <a href='https://www.marinespecies.org'>Worms records</a></p>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>input</th>
+      <td><p>a `tibble`. The table that contain the species
+names list to be checked.</p></td>
+    </tr>
+    <tr>
       <th>taxaColumn</th>
       <td><p>a `numeric`. The cardinal number of the column where
 species list is. Default is `1`.</p></td>
@@ -177,11 +182,6 @@ is `TRUE`.</p></td>
       <td><p>a `logical`. With this selection, the function allows to
 refine the result(s) that match with more Worms records. By a interactive
 use of the terminal, the user can chose the result. Default is `FALSE`.</p></td>
-    </tr>
-    <tr>
-      <th>table</th>
-      <td><p>a `tibble`. The table that contain the species
-names list to be checked.</p></td>
     </tr>
     </table>
 
@@ -201,15 +201,28 @@ match with Worms name species.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='r-in'><span class='va'>phytoplankton</span> <span class='op'>&lt;-</span> <span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span></span>
 <span class='r-in'>   ID <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>4</span>, <span class='fl'>5</span>, <span class='fl'>6</span>, <span class='fl'>7</span><span class='op'>)</span>,</span>
-<span class='r-in'>   species <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Asterionella formosa"</span>, <span class='st'>"Chrysococcus sp."</span>, <span class='st'>"Cryptomonas rostrata"</span>, <span class='st'>"Dinobryon divergens"</span>, <span class='st'>"Mallomonas akrokomos"</span>, <span class='st'>"Melosira varians"</span>, <span class='st'>"Cryptomonas rostrata"</span><span class='op'>)</span></span>
+<span class='r-in'>   species <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span></span>
+<span class='r-in'>   <span class='st'>"Asterionella formosa"</span>, <span class='st'>"Chrysococcus sp."</span>,</span>
+<span class='r-in'>   <span class='st'>"Cryptomonas rostrata"</span>, <span class='st'>"Dinobryon divergens"</span>,</span>
+<span class='r-in'>   <span class='st'>"Mallomonas akrokomos"</span>, <span class='st'>"Melosira varians"</span>,</span>
+<span class='r-in'>   <span class='st'>"Cryptomonas rostrata"</span></span>
+<span class='r-in'> <span class='op'>)</span></span>
 <span class='r-in'><span class='op'>)</span></span>
-<span class='r-in'><span class='va'>table</span> <span class='op'>&lt;-</span> <span class='fu'>taxon_id_worms</span><span class='op'>(</span>input <span class='op'>=</span> <span class='va'>phytoplankton</span>, taxaColumn <span class='op'>=</span> <span class='fl'>2</span>, verbose <span class='op'>=</span> <span class='cn'>TRUE</span>, refine <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>table</span> <span class='op'>&lt;-</span> <span class='fu'>taxon_id_worms</span><span class='op'>(</span></span>
+<span class='r-in'>  input <span class='op'>=</span> <span class='va'>phytoplankton</span>,</span>
+<span class='r-in'>  taxaColumn <span class='op'>=</span> <span class='fl'>2</span>,</span>
+<span class='r-in'>  verbose <span class='op'>=</span> <span class='cn'>TRUE</span>,</span>
+<span class='r-in'>  refine <span class='op'>=</span> <span class='cn'>TRUE</span></span>
+<span class='r-in'><span class='op'>)</span></span>
 <span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> After the finding operation the number of record(s) that don't match with any Worms names are:</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> *--- 1 on 7 examined ---*</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> please verify the species name provided and run again this function. The record(s) that match with more that one Worms name are:</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> *--- 2 on 7 examined ---*</span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> please use the function taxon_id_worms_refine for specify wich is the exact corrispondence with your given species name.</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> After the finding operation the number of record(s) that don't match</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> with any Worms names are:</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> *--- 0 on 7 examined ---*</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> please verify the species name provided and run again this</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> function. The record(s) that match with more that one Worms name are:</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> *--- 7 on 7 examined ---*</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> please use the function taxon_id_worms_refine for specify wich</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> is the exact corrispondence with your given species name.</span>
 <span class='r-msg co'><span class='r-pr'>#&gt;</span> This is the taxa name provided by you:</span>
 <span class='r-msg co'><span class='r-pr'>#&gt;</span> Cryptomonas rostrata</span>
 <span class='r-msg co'><span class='r-pr'>#&gt;</span> Worms don't contain a unique records that match with this name.</span>
@@ -226,7 +239,10 @@ match with Worms name species.</p>
 <span class='r-msg co'><span class='r-pr'>#&gt;</span>     Match type: exact</span>
 <span class='r-msg co'><span class='r-pr'>#&gt;</span>     Modified: 2021-08-27T06:27:33.180Z</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Please select the record that you think most similar to the taxa name that you have provided. Insert the number of record: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ----</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Please select the record that you think</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                  mostsimilar to the taxa name that you have provided.</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                  Insert the number of record:</span>
 <span class='r-msg co'><span class='r-pr'>#&gt;</span> This is the taxa name provided by you:</span>
 <span class='r-msg co'><span class='r-pr'>#&gt;</span> Cryptomonas rostrata</span>
 <span class='r-msg co'><span class='r-pr'>#&gt;</span> Worms don't contain a unique records that match with this name.</span>
@@ -243,7 +259,10 @@ match with Worms name species.</p>
 <span class='r-msg co'><span class='r-pr'>#&gt;</span>     Match type: exact</span>
 <span class='r-msg co'><span class='r-pr'>#&gt;</span>     Modified: 2021-08-27T06:27:33.180Z</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Please select the record that you think most similar to the taxa name that you have provided. Insert the number of record: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ----</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Please select the record that you think</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                  mostsimilar to the taxa name that you have provided.</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                  Insert the number of record:</span>
 <span class='r-in'><span class='va'>table</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 7 × 12</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>      ID species  valid_name valid_authority valid_AphiaID status synonyms LSID  </span>

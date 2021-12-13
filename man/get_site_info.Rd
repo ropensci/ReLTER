@@ -11,16 +11,18 @@ get_site_info(deimsid, category = NA)
 DEIMS-SDR website. More information about DEIMS ID in this pages:
 \href{https://deims.org/docs/deimsid.html}{page}.}
 
-\item{category}{a `category`. This attribute allows to select which category
-or categories must be written in the result. Possible value are:
+\item{category}{a `category`. This parameter selects which category
+or categories are retrieved and returned in the result.
+Possible value are:
 'Affiliations', 'Boundaries', 'Contacts', 'EnvCharacts', 'General',
-'Infrastructure', 'Parameters', 'RelateRes', 'ResearchTop'. More that one
-can be indicated.}
+'Infrastructure', 'Parameters', 'RelateRes', 'ResearchTop'.
+Multiple values can be indicated.}
 }
 \value{
 The output of the function is a `tibble` with main features of the
 site and the selected information, such as: networks and projects in
 which the site is involved.
+If `category` "Boundaries" is indicated an `sf` object is returned
 }
 \description{
 This function obtains details about an eLTER site
@@ -37,6 +39,7 @@ site <- get_site_info(
   deimsid = "https://deims.org/79d6c1df-570f-455f-a929-6cfe5c4ca1e9",
   category = "Boundaries"
 )
+site
 
 }
 \author{
