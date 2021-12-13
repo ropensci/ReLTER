@@ -32,7 +32,7 @@
 do_Q <- function(q, jj) {
   jj %>%
     jqr::jq(as.character(q)) %>%
-    textConnection() %>%
+    textConnection(encoding = "UTF-8") %>%
     jsonlite::stream_in(simplifyDataFrame = TRUE) %>%
     dtplyr::lazy_dt()
 }
