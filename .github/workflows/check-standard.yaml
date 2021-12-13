@@ -59,6 +59,11 @@ jobs:
             eval sudo $cmd
           done < <(Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "20.04"))')
           
+      - name: "Install backports version 1.4.0"
+         run: |
+           remotes::install_version("backports", version = "1.4.0")
+         shell: Rscript {0}
+          
       - name: download system packages
         if: runner.os == 'Linux'
         run: |
