@@ -1,7 +1,7 @@
 #' @title eLTER get_id function
 #' @description Internal function to retrieve json content from ID
-#' @param deimsid A `character`. It is the DEIMS ID of the site from
-#' DEIMS-SDR website. More information about DEIMS ID from:
+#' @param deimsid A `character`. It is the DEIMS ID of the site, activity or 
+#' dataset from DEIMS-SDR website. More information about DEIMS ID from:
 #' \href{https://deims.org/docs/deimsid.html}{page}.
 #' @param resource Character: one among `"sites"` (default), `"activities"` or
 #'  `"datasets"` (`"networks"` currently mnot tested).
@@ -35,19 +35,20 @@ get_id <- function(deimsid, resource = "sites", test, ...) {
   if (test == TRUE) {
     
     # Define IDs which can be used internally
-    valid_ids <- gsub(
-      "\\.json$", "",
-      list.files(system.file("deimsid", package="ReLTER"), "\\.json$")
-    )
+    valid_ids <- gsub("\\.json$", "", list.files(
+      system.file(file.path("deimsid",resource), package="ReLTER"),
+      "\\.json$"
+    ))
     if (!deimsid %in% valid_ids) {
       stop(paste0(
-        "deimsid '",deimsid,"' cannot be used in test mode."
+        "deimsid '", deimsid,
+        "' cannot be used in test mode with resource = '", resource, "'."
       ))
     }
     
     # Retrieve the content locally
     jj <- readLines(file.path(
-      system.file("deimsid", package="ReLTER"), 
+      system.file(file.path("deimsid",resource), package="ReLTER"), 
       paste0(deimsid, ".json")
     ))
     
