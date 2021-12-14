@@ -44,6 +44,14 @@ get_id <- function(deimsid, resource = "sites", test, ...) {
         "deimsid '", deimsid,
         "' cannot be used in test mode with resource = '", resource, "'."
       ))
+      # # code to store locally
+      # url <- file.path("https://deims.org/api", resource, deimsid)
+      # export <- httr::RETRY("GET", url = url, ...)
+      # jj <- suppressMessages(httr::content(export, "text", encoding = "UTF-8"))
+      # writeLines(jj, file.path(
+      #   system.file(file.path("deimsid",resource), package="ReLTER"), 
+      #   paste0(deimsid,".json")
+      # ))
     }
     
     # Retrieve the content locally

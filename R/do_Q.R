@@ -26,6 +26,6 @@ do_Q <- function(q, jj) {
   jj %>%
     jqr::jq(as.character(q)) %>%
     textConnection(encoding = "UTF-8") %>%
-    jsonlite::stream_in(simplifyDataFrame = TRUE) %>%
+    jsonlite::stream_in(simplifyDataFrame = TRUE, verbose = FALSE) %>%
     dtplyr::lazy_dt()
 }
