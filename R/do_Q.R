@@ -18,14 +18,7 @@
 #'   geoElev: .attributes.geographic.elevation,
 #'   affiliation: .attributes.affiliation
 #' }'
-#' url <- paste0(
-#'   "https://deims.org/",
-#'   "api/sites/",
-#'   sub("^.+/", "", deimsid)
-#' )
-#' export <- httr::RETRY("GET", url = url)
-#' jj <- suppressMessages(httr::content(export, "text"))
-#'
+#' jj <- ReLTER:::get_id(deimsid, "sites")
 #' ReLTER:::do_Q(q, jj)
 #'
 ### function do_q

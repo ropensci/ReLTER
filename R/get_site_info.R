@@ -45,20 +45,8 @@ get_site_info <- function(deimsid, category = NA) {
        country: .attributes.geographic.country,
        geoElev: .attributes.geographic.elevation
       }'
-  url <- paste0(
-    "https://deims.org/",
-    "api/sites/",
-    sub("^.+/", "", deimsid)
-  )
-  export <- httr::RETRY("GET", url = url, times = 5)
-  jj <- suppressMessages(httr::content(export, "text"))
-  status <- jj %>%
-    jqr::jq(as.character("{status: .errors.status}")) %>%
-    textConnection() %>%
-    jsonlite::stream_in(simplifyDataFrame = TRUE) %>%
-    dtplyr::lazy_dt() %>%
-    dplyr::as_tibble()
-  if (is.na(status)) {
+  jj <- ReLTER:::get_id(deimsid, "sites")
+  if (is.na(attr(jj, "status"))) {
     invisible(
       utils::capture.output(
         siteInfo <- dplyr::as_tibble(

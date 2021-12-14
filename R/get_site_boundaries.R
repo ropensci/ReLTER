@@ -41,20 +41,8 @@ get_site_boundaries <- function(deimsid, show_map = FALSE) {
         uri: "\\(.id.prefix)\\(.id.suffix)",
         boundaries: .attributes.geographic.boundaries
        }'
-  url <- paste0(
-    "https://deims.org/",
-    "api/sites/",
-    sub("^.+/", "", deimsid)
-  )
-  export <- httr::RETRY("GET", url = url, times = 5)
-  jj <- suppressMessages(httr::content(export, "text"))
-  status <- jj %>%
-    jqr::jq(as.character("{status: .errors.status}")) %>%
-    textConnection() %>%
-    jsonlite::stream_in(simplifyDataFrame = TRUE) %>%
-    dtplyr::lazy_dt() %>%
-    dplyr::as_tibble()
-  if (is.na(status)) {
+  jj <- ReLTER:::get_id(deimsid, "sites")
+  if (is.na(attr(jj, "status"))) {
     invisible(
       utils::capture.output(
         boundaries <- dplyr::as_tibble(do_Q(q, jj))

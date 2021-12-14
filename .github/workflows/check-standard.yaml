@@ -86,5 +86,3 @@ jobs:
             libgit2-dev
 
       - uses: r-lib/actions/check-r-package@v1
-        with:
-            extra-packages: rcmdcheck

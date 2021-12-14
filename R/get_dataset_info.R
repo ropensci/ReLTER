@@ -44,21 +44,8 @@ get_dataset_info <- function(datasetid) {
        boundaries: .attributes.geographic[].boundaries,
        boundariesDescription: .attributes.geographic[].abstract
       }'
-  url <- paste0(
-    "https://deims.org/",
-    "api/datasets/",
-    sub("^.+/", "", datasetid)
-  )
-  export <- httr::RETRY("GET", url = url, times = 5)
-  jj <- suppressMessages(httr::content(export, as = "text",
-                                       encoding = "UTF-8"))
-  status <- jj %>%
-    jqr::jq(as.character("{status: .errors.status}")) %>%
-    textConnection() %>%
-    jsonlite::stream_in(simplifyDataFrame = TRUE) %>%
-    dtplyr::lazy_dt() %>%
-    dplyr::as_tibble()
-  if (is.na(status)) {
+  jj <- ReLTER:::get_id(datasetid, "datasets")
+  if (is.na(attr(jj, "status"))) {
     invisible(
       utils::capture.output(
         dataset <- dplyr::as_tibble(do_Q(q, jj))
