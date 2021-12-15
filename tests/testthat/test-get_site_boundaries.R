@@ -47,6 +47,8 @@ test_that("Wrong input (but URL) constructs a NULL object", {
 })
 
 test_that("Wrong input (not URL) constructs an empty tibble", {
+  Sys.setenv('LOCAL_DEIMS' = FALSE) # set online mode
   result <- ReLTER::get_site_boundaries(deimsid = "ljhnhbkihubib")
   expect_type(result, "NULL")
+  Sys.setenv('LOCAL_DEIMS' = TRUE) # restore test mode
 })
