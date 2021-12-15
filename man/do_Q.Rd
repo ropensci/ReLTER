@@ -26,18 +26,11 @@ q <- '{title: .title,
   geoElev: .attributes.geographic.elevation,
   affiliation: .attributes.affiliation
 }'
-url <- paste0(
-  "https://deims.org/",
-  "api/sites/",
-  sub("^.+/", "", deimsid)
-)
-export <- httr::GET(url = url)
-jj <- suppressMessages(httr::content(export, "text"))
-
+jj <- ReLTER:::get_id(deimsid, "sites")
 ReLTER:::do_Q(q, jj)
 
 }
 \author{
-Paolo Tagliolato, phD (2021) \email{tagliolato.p@irea.cnr.it}
+Paolo Tagliolato, PhD (2021) \email{tagliolato.p@irea.cnr.it}
 }
 \keyword{internal}

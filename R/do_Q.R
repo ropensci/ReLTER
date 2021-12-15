@@ -18,21 +18,14 @@
 #'   geoElev: .attributes.geographic.elevation,
 #'   affiliation: .attributes.affiliation
 #' }'
-#' url <- paste0(
-#'   "https://deims.org/",
-#'   "api/sites/",
-#'   sub("^.+/", "", deimsid)
-#' )
-#' export <- httr::GET(url = url)
-#' jj <- suppressMessages(httr::content(export, "text"))
-#'
+#' jj <- ReLTER:::get_id(deimsid, "sites")
 #' ReLTER:::do_Q(q, jj)
 #'
 ### function do_q
 do_Q <- function(q, jj) {
   jj %>%
     jqr::jq(as.character(q)) %>%
-    textConnection() %>%
-    jsonlite::stream_in(simplifyDataFrame = TRUE) %>%
+    textConnection(encoding = "UTF-8") %>%
+    jsonlite::stream_in(simplifyDataFrame = TRUE, verbose = FALSE) %>%
     dtplyr::lazy_dt()
 }

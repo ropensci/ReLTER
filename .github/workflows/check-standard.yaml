@@ -37,11 +37,11 @@ jobs:
           http-user-agent: ${{ matrix.config.http-user-agent }}
           use-public-rspm: true
 
-      - uses: r-lib/actions/setup-r-dependencies@v1
-        with:
-          extra-packages: rcmdcheck
-
-      - uses: r-lib/actions/check-r-package@v1
+      - name: Query dependencies
+        run: |
+          install.packages("remotes")
+          saveRDS(remotes::dev_package_deps(dependencies = TRUE), "depends.Rds", version = 2)
+        shell: Rscript {0}
 
       - name: "Cache R packages"
         if: runner.os != 'Windows'
@@ -59,11 +59,12 @@ jobs:
             eval sudo $cmd
           done < <(Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "20.04"))')
           
-      - name: "Install backports version 1.4.0"
+      - name: Install dependencies
         run: |
-          remotes::install_version("backports", version = "1.4.0")
+          remotes::install_deps(dependencies = TRUE)
+          remotes::install_cran("rcmdcheck")
         shell: Rscript {0}
-          
+
       - name: download system packages
         if: runner.os == 'Linux'
         run: |
@@ -83,3 +84,5 @@ jobs:
             libssl-dev \
             libcairo2-dev \
             libgit2-dev
+
+      - uses: r-lib/actions/check-r-package@v1

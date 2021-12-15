@@ -8,7 +8,7 @@
 #' site and the contact information, such as: site manager, operation
 #' organization, metadata provider, founding agency and site url.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @importFrom httr GET content
+#' @importFrom httr RETRY content
 #' @importFrom utils capture.output
 #' @importFrom dplyr as_tibble
 #' @export
@@ -28,20 +28,8 @@ get_site_contact <- function(deimsid) {
        geoElev: .attributes.geographic.elevation,
        generalInfo: .attributes.contact
       }'
-  url <- paste0(
-    "https://deims.org/",
-    "api/sites/",
-    sub("^.+/", "", deimsid)
-  )
-  export <- httr::GET(url = url)
-  jj <- suppressMessages(httr::content(export, as="text", encoding="UTF-8"))
-  status <- jj %>%
-    jqr::jq(as.character("{status: .errors.status}")) %>%
-    textConnection() %>%
-    jsonlite::stream_in(simplifyDataFrame = TRUE) %>%
-    dtplyr::lazy_dt() %>%
-    dplyr::as_tibble()
-  if (is.na(status)) {
+  jj <- ReLTER:::get_id(deimsid, "sites")
+  if (is.na(attr(jj, "status"))) {
     invisible(
       utils::capture.output(
         contact <- dplyr::as_tibble(

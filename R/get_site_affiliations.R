@@ -8,7 +8,7 @@
 #' site and the affiliations information, such as: networks and projects in
 #' which the site is involved.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @importFrom httr GET content
+#' @importFrom httr RETRY content
 #' @importFrom jqr jq
 #' @importFrom jsonlite stream_in
 #' @importFrom dtplyr lazy_dt
@@ -31,20 +31,8 @@ get_site_affiliations <- function(deimsid) {
        geoElev: .attributes.geographic.elevation,
        affiliation: .attributes.affiliation
       }'
-  url <- paste0(
-    "https://deims.org/",
-    "api/sites/",
-    sub("^.+/", "", deimsid)
-  )
-  export <- httr::GET(url = url)
-  jj <- suppressMessages(httr::content(export, "text"))
-  status <- jj %>%
-    jqr::jq(as.character("{status: .errors.status}")) %>%
-    textConnection() %>%
-    jsonlite::stream_in(simplifyDataFrame = TRUE) %>%
-    dtplyr::lazy_dt() %>%
-    dplyr::as_tibble()
-  if (is.na(status)) {
+  jj <- ReLTER:::get_id(deimsid, "sites")
+  if (is.na(attr(jj, "status"))) {
     invisible(
       utils::capture.output(
         affiliations <- dplyr::as_tibble(

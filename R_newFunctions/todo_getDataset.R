@@ -131,7 +131,7 @@ getDataset <- function(resourceID) {
        online: .attributes.onlineDistribution
       }'
   url <- gsub('/dataset/', "/api/datasets/", resourceID)
-  export <- httr::GET(url = url)
+  export <- httr::RETRY("GET", url = url, times = 5)
   jj <- suppressMessages(httr::content(export, "text"))
   invisible(capture.output(resource <- tibble::as_tibble(do_Q(q, jj))))
   resourceOnLine <- resource$online.onlineLocation[[1]]
@@ -147,7 +147,7 @@ getDataset <- function(resourceID) {
      files: .files
     }'
   landingPageURI <- gsub('/records/', "/api/records/", landingPage$url$value) # issue b
-  exportLP <- httr::GET(url = landingPageURI)
+  exportLP <- httr::RETRY("GET", url = landingPageURI, times = 5)
   jjLP <- suppressMessages(httr::content(exportLP, "text"))
   invisible(capture.output(resourceLP <- tibble::as_tibble(do_Q(qLP, jjLP))))
   
