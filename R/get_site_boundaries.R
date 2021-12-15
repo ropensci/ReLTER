@@ -40,7 +40,7 @@ get_site_boundaries <- function(deimsid, show_map = FALSE) {
         uri: "\\(.id.prefix)\\(.id.suffix)",
         boundaries: .attributes.geographic.boundaries
        }'
-  jj <- ReLTER:::get_id(deimsid, "sites")
+  jj <- get_id(deimsid, "sites")
   if (is.na(attr(jj, "status"))) {
     invisible(
       utils::capture.output(

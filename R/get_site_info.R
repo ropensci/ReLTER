@@ -45,7 +45,7 @@ get_site_info <- function(deimsid, category = NA) {
        country: .attributes.geographic.country,
        geoElev: .attributes.geographic.elevation
       }'
-  jj <- ReLTER:::get_id(deimsid, "sites")
+  jj <- get_id(deimsid, "sites")
   if (is.na(attr(jj, "status"))) {
     invisible(
       utils::capture.output(

@@ -27,7 +27,7 @@ get_activity_info <- function(activityid) {
         title: .title,
         boundaries: .attributes.geographic.boundaries
         }"
-  jj <- ReLTER:::get_id(activityid, "activities")
+  jj <- get_id(activityid, "activities")
   if (is.na(attr(jj, "status"))) {
     invisible(
       utils::capture.output(

@@ -28,7 +28,7 @@ get_site_general <- function(deimsid) {
        geoElev: .attributes.geographic.elevation,
        generalInfo: .attributes.general
       }'
-  jj <- ReLTER:::get_id(deimsid, "sites")
+  jj <- get_id(deimsid, "sites")
   if (is.na(attr(jj, "status"))) {
     invisible(
       utils::capture.output(
