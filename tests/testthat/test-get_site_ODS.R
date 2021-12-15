@@ -2,6 +2,7 @@ message("\n---- Test get_site_ODS() ----")
 
 library(testthat)
 test_that("Expect error if internet connection is down", {
+  Sys.setenv('LOCAL_DEIMS' = FALSE) # set online mode
   testthat::expect_error(
     httptest::without_internet(
       result <- ReLTER::get_site_info(
@@ -11,6 +12,7 @@ test_that("Expect error if internet connection is down", {
     ),
     "GET"
   )
+  Sys.setenv('LOCAL_DEIMS' = TRUE) # restore test mode
 })
 
 skip_if_offline(host = "deims.org")

@@ -15,7 +15,7 @@
 #' which the site is involved.
 #' If `category` "Boundaries" is indicated an `sf` object is returned
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @importFrom httr GET content
+#' @importFrom httr RETRY content
 #' @importFrom jqr jq
 #' @importFrom jsonlite fromJSON stream_in
 #' @importFrom dtplyr lazy_dt
@@ -45,20 +45,8 @@ get_site_info <- function(deimsid, category = NA) {
        country: .attributes.geographic.country,
        geoElev: .attributes.geographic.elevation
       }'
-  url <- paste0(
-    "https://deims.org/",
-    "api/sites/",
-    sub("^.+/", "", deimsid)
-  )
-  export <- httr::GET(url = url)
-  jj <- suppressMessages(httr::content(export, "text"))
-  status <- jj %>%
-    jqr::jq(as.character("{status: .errors.status}")) %>%
-    textConnection() %>%
-    jsonlite::stream_in(simplifyDataFrame = TRUE) %>%
-    dtplyr::lazy_dt() %>%
-    dplyr::as_tibble()
-  if (is.na(status)) {
+  jj <- ReLTER:::get_id(deimsid, "sites")
+  if (is.na(attr(jj, "status"))) {
     invisible(
       utils::capture.output(
         siteInfo <- dplyr::as_tibble(

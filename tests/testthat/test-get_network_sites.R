@@ -5,6 +5,7 @@ library(testthat)
 skip_on_cran()
 
 test_that("Expect error if internet connection is down", {
+  Sys.setenv('LOCAL_DEIMS' = FALSE) # set online mode
   testthat::expect_error(
     httptest::without_internet(
       result <- ReLTER::get_network_sites(
@@ -13,6 +14,7 @@ test_that("Expect error if internet connection is down", {
     ),
     "GET"
   )
+  Sys.setenv('LOCAL_DEIMS' = TRUE) # restore test mode
 })
 
 skip_if_offline(host = "deims.org")
@@ -35,15 +37,19 @@ test_that("Output of network sites information function constructs 'sf' and
 })
 
 test_that("Wrong input (but URL) constructs a NULL object", {
+  Sys.setenv('LOCAL_DEIMS' = FALSE) # set online mode
   result <- ReLTER::get_network_sites(
     networkDEIMSID = "https://deims.org/network/ljhnhbkihubib"
   )
   expect_type(result, "NULL")
+  Sys.setenv('LOCAL_DEIMS' = TRUE) # restore test mode
 })
 
 test_that("Wrong input (not URL) constructs an empty tibble", {
+  Sys.setenv('LOCAL_DEIMS' = FALSE) # set online mode
   result <- ReLTER::get_network_sites(networkDEIMSID = "ljhnhbkihubib")
   expect_type(result, "NULL")
+  Sys.setenv('LOCAL_DEIMS' = TRUE) # restore test mode
 })
 
 test_that("Output of get activities information function constructs 'sf' with
