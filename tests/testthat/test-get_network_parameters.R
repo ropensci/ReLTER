@@ -19,6 +19,7 @@ test_that("Expect error if internet connection is down", {
 })
 
 skip_if_offline(host = "deims.org")
+skip_on_ci()
 
 test_that("Output of network parameters function constructs 'tibble' as
           expected", {
