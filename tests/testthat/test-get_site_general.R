@@ -8,7 +8,7 @@ test_that("Expect error if internet connection is down", {
     httptest::without_internet(
       result <- ReLTER::get_site_general(
         deimsid = 
-          "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe")
+          TESTURLSite)
     ),
     "GET"
   )
@@ -20,7 +20,7 @@ skip_if_offline(host = "deims.org")
 test_that("Output of site general info function constructs 'tibble' as
           expected", {
   result <- ReLTER::get_site_general(
-    deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
+    deimsid = TESTURLSite
   )
   expect_s3_class(result, "tbl_df")
   expect_true(ncol(result) == 22)
