@@ -27,7 +27,7 @@ get_site_parameters <- function(deimsid) {
        geoElev: .attributes.geographic.elevation,
        parameter: .attributes.focusDesignScale.parameters
       }'
-  jj <- ReLTER:::get_id(deimsid, "sites")
+  jj <- get_id(deimsid, "sites")
   if (is.na(attr(jj, "status"))) {
     invisible(
       utils::capture.output(

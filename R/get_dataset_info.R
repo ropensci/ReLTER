@@ -44,7 +44,7 @@ get_dataset_info <- function(datasetid) {
        boundaries: .attributes.geographic[].boundaries,
        boundariesDescription: .attributes.geographic[].abstract
       }'
-  jj <- ReLTER:::get_id(datasetid, "datasets")
+  jj <- get_id(datasetid, "datasets")
   if (is.na(attr(jj, "status"))) {
     invisible(
       utils::capture.output(

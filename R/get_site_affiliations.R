@@ -31,7 +31,7 @@ get_site_affiliations <- function(deimsid) {
        geoElev: .attributes.geographic.elevation,
        affiliation: .attributes.affiliation
       }'
-  jj <- ReLTER:::get_id(deimsid, "sites")
+  jj <- get_id(deimsid, "sites")
   if (is.na(attr(jj, "status"))) {
     invisible(
       utils::capture.output(
