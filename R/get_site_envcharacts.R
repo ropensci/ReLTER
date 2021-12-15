@@ -29,7 +29,7 @@ get_site_envcharacts <- function(deimsid) {
        geoElev: .attributes.geographic.elevation,
        envCharacteristics: .attributes.environmentalCharacteristics
       }'
-  jj <- ReLTER:::get_id(deimsid, "sites")
+  jj <- get_id(deimsid, "sites")
   if (is.na(attr(jj, "status"))) {
     invisible(
       utils::capture.output(

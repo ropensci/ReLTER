@@ -17,10 +17,10 @@
 #' @keywords internal
 #' @examples
 #' deimsid <- "f30007c4-8a6e-4f11-ab87-569db54638fe"
-#' jj <- ReLTER:::get_id(deimsid, "sites", times = 5)
+#' jj <- get_id(deimsid, "sites", times = 5)
 #' 
 #' # Test ode (only for defined IDs)
-#' jj <- ReLTER:::get_id(deimsid, "sites", test = TRUE)
+#' jj <- get_id(deimsid, "sites", test = TRUE)
 #'
 get_id <- function(deimsid, resource = "sites", test, ...) {
   

@@ -18,8 +18,8 @@
 #'   geoElev: .attributes.geographic.elevation,
 #'   affiliation: .attributes.affiliation
 #' }'
-#' jj <- ReLTER:::get_id(deimsid, "sites")
-#' ReLTER:::do_Q(q, jj)
+#' jj <- get_id(deimsid, "sites")
+#' do_Q(q, jj)
 #'
 ### function do_q
 do_Q <- function(q, jj) {

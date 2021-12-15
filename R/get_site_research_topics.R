@@ -26,7 +26,7 @@ get_site_research_topics <- function(deimsid) {
        geoElev: .attributes.geographic.elevation,
        researchTopics: .attributes.focusDesignScale.researchTopics
       }'
-  jj <- ReLTER:::get_id(deimsid, "sites")
+  jj <- get_id(deimsid, "sites")
   if (is.na(attr(jj, "status"))) {
     invisible(
       utils::capture.output(
