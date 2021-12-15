@@ -35,9 +35,9 @@ get_id <- function(deimsid, resource = "sites", test, ...) {
   if (test == TRUE) {
     
     # Define IDs which can be used internally
-    valid_ids <- gsub("\\.json$", "", list.files(
+    valid_ids <- gsub("\\.rds$", "", list.files(
       system.file(file.path("deimsid",resource), package="ReLTER"),
-      "\\.json$"
+      "\\.rds$"
     ))
     if (!deimsid %in% valid_ids) {
       stop(paste0(
@@ -48,16 +48,16 @@ get_id <- function(deimsid, resource = "sites", test, ...) {
       # url <- file.path("https://deims.org/api", resource, deimsid)
       # export <- httr::RETRY("GET", url = url, ...)
       # jj <- suppressMessages(httr::content(export, "text", encoding = "UTF-8"))
-      # writeLines(jj, file.path(
-      #   system.file(file.path("deimsid",resource), package="ReLTER"), 
-      #   paste0(deimsid,".json")
+      # saveRDS(jj, file.path(
+      #   system.file(file.path("deimsid",resource), package="ReLTER"),
+      #   paste0(deimsid,".rds")
       # ))
     }
     
     # Retrieve the content locally
-    jj <- readLines(file.path(
+    jj <- readRDS(file.path(
       system.file(file.path("deimsid",resource), package="ReLTER"), 
-      paste0(deimsid, ".json")
+      paste0(deimsid, ".rds")
     ))
     
   } else {
