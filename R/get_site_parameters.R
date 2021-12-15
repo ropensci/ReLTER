@@ -10,7 +10,6 @@
 #' @importFrom httr GET content
 #' @importFrom utils capture.output
 #' @importFrom dplyr as_tibble
-#' @export
 #' @keywords internal
 #' @examples
 #' tSiteParameters <- get_site_parameters(

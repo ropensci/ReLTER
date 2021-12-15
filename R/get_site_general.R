@@ -12,7 +12,6 @@
 #' @importFrom httr GET content
 #' @importFrom utils capture.output
 #' @importFrom dplyr as_tibble
-#' @export
 #' @keywords internal
 #' @examples
 #' tSiteGeneral <- get_site_general(

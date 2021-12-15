@@ -14,7 +14,6 @@
 #' @importFrom dtplyr lazy_dt
 #' @importFrom dplyr as_tibble
 #' @importFrom utils capture.output
-#' @export
 #' @keywords internal
 #' @examples
 #' tSiteAffiliation <- get_site_affiliations(
