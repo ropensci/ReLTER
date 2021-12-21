@@ -19,13 +19,6 @@ site and the parameters collected.
 This function obtains the list of parameters measured
 in the eLTER site through the DEIMS-SDR sites API.
 }
-\examples{
-tSiteParameters <- get_site_parameters(
-  deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
-)
-tSiteParameters
-
-}
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
 }

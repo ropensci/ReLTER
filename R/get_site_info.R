@@ -15,7 +15,7 @@
 #' which the site is involved.
 #' If `category` "Boundaries" is indicated an `sf` object is returned
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @importFrom httr GET content
+#' @importFrom httr RETRY content
 #' @importFrom jqr jq
 #' @importFrom jsonlite fromJSON stream_in
 #' @importFrom dtplyr lazy_dt
@@ -27,12 +27,12 @@
 #' @examples
 #' siteInfo <- get_site_info(
 #'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
-#'   category = c("EnvCharacts", "Affiliations", "Boundaries")
+#'   category = c("EnvCharacts", "Affiliations")
 #' )
 #' siteInfo
 #'
 #' site <- get_site_info(
-#'   deimsid = "https://deims.org/79d6c1df-570f-455f-a929-6cfe5c4ca1e9",
+#'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
 #'   category = "Boundaries"
 #' )
 #' site
@@ -45,20 +45,8 @@ get_site_info <- function(deimsid, category = NA) {
        country: .attributes.geographic.country,
        geoElev: .attributes.geographic.elevation
       }'
-  url <- paste0(
-    "https://deims.org/",
-    "api/sites/",
-    sub("^.+/", "", deimsid)
-  )
-  export <- httr::GET(url = url)
-  jj <- suppressMessages(httr::content(export, "text"))
-  status <- jj %>%
-    jqr::jq(as.character("{status: .errors.status}")) %>%
-    textConnection() %>%
-    jsonlite::stream_in(simplifyDataFrame = TRUE) %>%
-    dtplyr::lazy_dt() %>%
-    dplyr::as_tibble()
-  if (is.na(status)) {
+  jj <- get_id(deimsid, "sites")
+  if (is.na(attr(jj, "status"))) {
     invisible(
       utils::capture.output(
         siteInfo <- dplyr::as_tibble(
@@ -232,14 +220,15 @@ get_site_info <- function(deimsid, category = NA) {
       # add 'Boundaries' info
       if (any(stringr::str_detect(category, "Boundaries"))) {
         siteBound <- get_site_boundaries(deimsid = deimsid)
-        siteInfo <- dplyr::left_join(
-          siteBound,
-          siteInfo,
-          by = c(
-            "title" = "title",
-            "uri" = "uri"
+        if (!is.null(siteBound)) {
+          siteInfo <- dplyr::left_join(
+            siteBound,
+            siteInfo,
+            by = c("title" = "title", "uri" = "uri")
           )
-        )
+        } else {
+          siteInfo <- siteInfo
+        }
       } else {
         siteInfo <- siteInfo
       }

@@ -16,24 +16,12 @@
 #' @importFrom tibble tribble
 #' @importFrom dplyr as_tibble
 #' @importFrom jsonlite fromJSON
-#' @importFrom httr GET content
+#' @importFrom httr RETRY content
 #' @importFrom utils capture.output
 #' @importFrom sf st_as_sf write_sf st_write
 #' @importFrom leaflet leaflet addTiles addPolygons
 #' @importFrom mapview mapshot
-#' @export
 #' @keywords internal
-#' @examples
-#' tSiteBoundaries <- get_site_boundaries(
-#'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
-#' )
-#' tSiteBoundaries
-#'
-#' eisenwurzen <- get_site_boundaries(
-#'   deimsid = "https://deims.org/d0a8da18-0881-4ebe-bccf-bc4cb4e25701",
-#'   show_map = TRUE
-#' )
-#' eisenwurzen
 #'
 ### function get_site_boundaries
 get_site_boundaries <- function(deimsid, show_map = FALSE) {
@@ -41,20 +29,8 @@ get_site_boundaries <- function(deimsid, show_map = FALSE) {
         uri: "\\(.id.prefix)\\(.id.suffix)",
         boundaries: .attributes.geographic.boundaries
        }'
-  url <- paste0(
-    "https://deims.org/",
-    "api/sites/",
-    sub("^.+/", "", deimsid)
-  )
-  export <- httr::GET(url = url)
-  jj <- suppressMessages(httr::content(export, "text"))
-  status <- jj %>%
-    jqr::jq(as.character("{status: .errors.status}")) %>%
-    textConnection() %>%
-    jsonlite::stream_in(simplifyDataFrame = TRUE) %>%
-    dtplyr::lazy_dt() %>%
-    dplyr::as_tibble()
-  if (is.na(status)) {
+  jj <- get_id(deimsid, "sites")
+  if (is.na(attr(jj, "status"))) {
     invisible(
       utils::capture.output(
         boundaries <- dplyr::as_tibble(do_Q(q, jj))
@@ -62,35 +38,34 @@ get_site_boundaries <- function(deimsid, show_map = FALSE) {
     )
     if (!is.null(boundaries)) {
       if (is.na(boundaries$boundaries)) {
-        warning(
-          "\n----\nThis site does not have boundaries uploaded to DEIMS-SDR.",
-          "Please verify in the site page (",
+        message(
+          "\n----\nThis site does not have boundaries uploaded to DEIMS-SDR.\n",
+          "Please verify in the site page: ",
           deimsid,
-          ")\n----\n"
+          "\n----\n"
         )
         geoBoundaries <- boundaries
       } else {
-        geoBoundaries <- sf::st_as_sf(
-          boundaries,
-          wkt = "boundaries",
-          crs = 4326
-        )
+        geoBoundaries <- sf::st_as_sf(boundaries,
+                                      wkt = "boundaries",
+                                      crs = 4326
+                                      )
         if (show_map == TRUE) {
           map <- leaflet::leaflet(geoBoundaries) %>%
             leaflet::addTiles() %>%
             leaflet::addPolygons()
           print(map)
         }
-        return(geoBoundaries)
+        #return(geoBoundaries)
       }
-    } else {
-      warning(
-        "\n ----This site does not have boundaries uploaded to DEIMS-SDR.",
-        "Please verify in the site page (",
-        deimsid,
-        ")---- \n"
-      )
-      geoBoundaries <- NULL
+    # } else {
+    #   warning(
+    #     "\n ----This site does not have boundaries uploaded to DEIMS-SDR.",
+    #     "Please verify in the site page (",
+    #     deimsid,
+    #     ")---- \n"
+    #   )
+    #   geoBoundaries <- NULL
     }
   } else {
     message("\n----\nThe requested page could not be found.",

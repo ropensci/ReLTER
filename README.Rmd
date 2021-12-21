@@ -16,7 +16,6 @@ knitr::opts_chunk$set(
 )
 ```
 
-
 <img src='man/figures/logo.png' align="right" height="139" />
 
 <!-- badges: start -->
@@ -60,13 +59,13 @@ The `{ReLTER}` package shall definitely follow the progress of eLTER-RI infrastr
 ## :notebook_with_decorative_cover: Citation
 
 To cite `{ReLTER}` please use:
-Alessandro Oggioni, Micha Silver & Paolo Tagliolato. (2021). oggioniale/ReLTER: ReLTER v1.0.0 (1.0.0). Zenodo. https://doi.org/10.5281/zenodo.5576813
+Alessandro Oggioni, Micha Silver, Luigi Ranghetti & Paolo Tagliolato. (2021). oggioniale/ReLTER: ReLTER v1.0.0 (1.0.0). Zenodo. https://doi.org/10.5281/zenodo.5576813
 
 or:
 
 ``` bibtex
 @software{alessandro_oggioni_2021_5576813,
-  author       = {Alessandro Oggioni and Micha Silver and Paolo Tagliolato},
+  author       = {Alessandro Oggioni and Micha Silver and Luigi Ranghetti and Paolo Tagliolato},
   title        = {oggioniale/ReLTER: ReLTER v1.0.0},
   month        = nov,
   year         = 2021,
@@ -206,6 +205,8 @@ Alessandro Oggioni <https://orcid.org/0000-0002-7997-219X> (CNR, Institute for E
 
 Micha Silver <https://orcid.org/0000-0002-1128-1325> (Ben Gurion University - BGU)
 
+Luigi Ranghetti <https:://orcid.org/0000-0001-6207-5188> (CNR, Institute for Electromagnetic Sensing of the Environment - IREA)
+
 Paolo Tagliolato <https:://orcid.org/0000-0002-0261-313X> (CNR, Institute for Electromagnetic Sensing of the Environment - IREA)
 
 For a exhaustive list of contributors please visit [authors page](https://oggioniale.github.io/ReLTER/authors).
@@ -217,3 +218,7 @@ For a exhaustive list of contributors please visit [authors page](https://oggion
 
 ![BGU](man/figures/bgu_logo.png){height="80"}
 <!--a href="https://in.bgu.ac.il/en/"><img src="man/figures/bgu_logo.png" height="40" align="left" /></a-->
+
+## :thumbsup: Acknowledgements 
+
+This work has been partially funded from the European Union’s Horizon 2020 research and innovation programme under the [H2020 eLTER-Plus Project](https://elter-ri.eu/elter-plus) grant agreement No 871128.

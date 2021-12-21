@@ -31,12 +31,12 @@ through the DEIMS-SDR sites API.
 \examples{
 siteInfo <- get_site_info(
   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
-  category = c("EnvCharacts", "Affiliations", "Boundaries")
+  category = c("EnvCharacts", "Affiliations")
 )
 siteInfo
 
 site <- get_site_info(
-  deimsid = "https://deims.org/79d6c1df-570f-455f-a929-6cfe5c4ca1e9",
+  deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
   category = "Boundaries"
 )
 site

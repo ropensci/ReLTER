@@ -25,19 +25,6 @@ and a view of the site boundaries on a leaflet map is shown.
 All the info are taken from the DEIMS-SDR sites API.
 If the boundary is missing, a warning message is printed in the R console.
 }
-\examples{
-tSiteBoundaries <- get_site_boundaries(
-  deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
-)
-tSiteBoundaries
-
-eisenwurzen <- get_site_boundaries(
-  deimsid = "https://deims.org/d0a8da18-0881-4ebe-bccf-bc4cb4e25701",
-  show_map = TRUE
-)
-eisenwurzen
-
-}
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
 

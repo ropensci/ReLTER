@@ -108,9 +108,8 @@ get_site_ODS <- function(deimsid, dataset = "landcover") {
     return(NULL)
   }
   # First check that site has a boundary
-  boundary <- ReLTER::get_site_info(
-    deimsid,
-    category = "Boundaries"
+  boundary <- ReLTER::get_site_info(deimsid,
+                                    category = "Boundaries"
   )
   if (is.null(boundary) || !inherits(boundary, "sf")) {
     print("No boundary for requested DEIMS site.")
@@ -124,8 +123,9 @@ get_site_ODS <- function(deimsid, dataset = "landcover") {
   }
   # Crop and mask the raster dataset to the boundary polygon
   # The boundary must be transformed first
-  # to the European CRS (EPSG:3034) used by ODS
+  # to the European CRS (EPSG:3035) used by ODS
   boundary <- sf::st_transform(boundary, terra::crs(ds))
-  ds_site <- terra::mask(terra::crop(ds, boundary), terra::vect(boundary))
+  boundary <- terra::vect(boundary)
+  ds_site <- terra::mask(terra::crop(ds, boundary), boundary)
   return(ds_site)
 }

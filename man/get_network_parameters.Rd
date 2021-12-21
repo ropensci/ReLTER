@@ -27,7 +27,7 @@ sites API.
 \dontrun{
 listParams <- get_network_parameters(
   networkDEIMSID =
-  "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
+  "https://deims.org/networks/e0f680c2-22b1-4424-bf54-58aa9b7476a0"
 )
 listParams[1:10, ] \%>\%
 dplyr::rows_insert(

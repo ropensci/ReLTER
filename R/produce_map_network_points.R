@@ -23,7 +23,7 @@
 #' @importFrom tmap tm_shape tm_borders tm_dots
 #' @importFrom dplyr select
 #' @importFrom tibble as_tibble
-#' @import ISOcodes
+#' @importFrom httr RETRY content
 #' @export
 #' @examples
 #' \dontrun{
@@ -51,9 +51,9 @@ produce_network_points_map <- function(networkDEIMSID, countryCode) {
       "api/sites?network=",
       sub("^.+/", "", networkDEIMSID)
     )
-    export <- httr::GET(url = url)
+    export <- httr::RETRY("GET", url = url, times = 5)
     lterNetworkSitesCoords <- jsonlite::fromJSON(
-      httr::content(export, "text")
+      httr::content(export, as = "text", encoding = "UTF-8")
     )
     if (length(lterNetworkSitesCoords) != 0) {
       lterNetworkSitesCoords$uri <- paste0(
@@ -71,7 +71,7 @@ produce_network_points_map <- function(networkDEIMSID, countryCode) {
         networkSitesGeo
       )
       if (any(networkSitesGeo_valid)) {
-        if (countryCode %in% ISOcodes::ISO_3166_1$Alpha_3 == TRUE) {
+        if (countryCode %in% isoCodes$Alpha_3 == TRUE) {
           country <- raster::getData(country = countryCode, level = 0)
           country <- rgeos::gSimplify(
             country,
@@ -99,16 +99,16 @@ produce_network_points_map <- function(networkDEIMSID, countryCode) {
               title = NA,
               legend.show = FALSE
             )
-          message("\n----\nThe map of site cannot be made properly.
+          message("\n----\nThe map of site cannot be created.
   Please check again the Country code.
-  Compare the code provided with the list of code in Wikipage
+  Compare the code provided with the list of code in
   https://en.wikipedia.org/wiki/ISO_3166\n----\n")
           print(mapOfSites)
           networkSitesGeo
         }
       } else {
-        message("\n----\nThe maps cannot be created because the coordinates,
-  provided in DEIMS-SDR, has an invalid geometry.
+        message("\n----\nThe maps cannot be created because coordinates,
+  provided in DEIMS-SDR, have invalid geometry.
   Please check the content and refers this error to DEIMS-SDR contact person
   of the network, citing the Network.iD.\n----\n")
         mapOfSites <- tmap::tm_shape(country) +

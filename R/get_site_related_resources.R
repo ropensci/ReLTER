@@ -7,16 +7,10 @@
 #' @return The output of the function is a `tibble` with main features of the
 #' site and a list of the related resources collected by site.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @importFrom httr GET content
+#' @importFrom httr RETRY content
 #' @importFrom utils capture.output
 #' @importFrom dplyr as_tibble
-#' @export
 #' @keywords internal
-#' @examples
-#' tSiteRelatedResources <- get_site_related_resources(
-#'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
-#' )
-#' tSiteRelatedResources
 #'
 ### function get_site_related_resources
 get_site_related_resources <- function(deimsid) {
@@ -27,20 +21,8 @@ get_site_related_resources <- function(deimsid) {
        geoElev: .attributes.geographic.elevation,
        relatedResources: .attributes.relatedResources
       }'
-  url <- paste0(
-    "https://deims.org/",
-    "api/sites/",
-    sub("^.+/", "", deimsid)
-  )
-  export <- httr::GET(url = url)
-  jj <- suppressMessages(httr::content(export, "text"))
-  status <- jj %>%
-    jqr::jq(as.character("{status: .errors.status}")) %>%
-    textConnection() %>%
-    jsonlite::stream_in(simplifyDataFrame = TRUE) %>%
-    dtplyr::lazy_dt() %>%
-    dplyr::as_tibble()
-  if (is.na(status)) {
+  jj <- get_id(deimsid, "sites")
+  if (is.na(attr(jj, "status"))) {
     invisible(
       utils::capture.output(
         relatedResources <- dplyr::as_tibble(
