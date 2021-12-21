@@ -354,3 +354,7 @@ page](https://oggioniale.github.io/ReLTER/authors).
 
 <img src="man/figures/bgu_logo.png" height="80" alt="BGU" />
 <!--a href="https://in.bgu.ac.il/en/"><img src="man/figures/bgu_logo.png" height="40" align="left" /></a-->
+
+## :thumbsup: Acknowledgements 
+
+This work has been partially funded from the European Union’s Horizon 2020 research and innovation programme under the [H2020 eLTER-Plus Project](https://elter-ri.eu/elter-plus) grant agreement No 871128.
