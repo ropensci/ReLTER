@@ -41,7 +41,6 @@
 #' @importFrom tmap tm_shape tm_rgb tm_dots tm_compass tm_scale_bar tm_layout
 #' @importFrom tmap tm_credits tm_basemap tm_borders tm_fill tm_lines
 #' @importFrom grid viewport
-#' @import ISOcodes 
 #' @export
 #' @examples
 #' \dontrun{
@@ -145,7 +144,7 @@ produce_site_map <-
              "api/sites/",
              deimsidExa)
       )$attributes$geographic$boundaries
-    if (countryCode %in% ISOcodes::ISO_3166_1$Alpha_3 == TRUE) {
+    if (countryCode %in% isoCodes$Alpha_3 == TRUE) {
       country <- raster::getData(
         country = countryCode,
         level = 0

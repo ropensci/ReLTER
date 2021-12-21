@@ -10,13 +10,7 @@
 #' @importFrom httr RETRY content
 #' @importFrom utils capture.output
 #' @importFrom dplyr as_tibble
-#' @export
 #' @keywords internal
-#' @examples
-#' tSiteRelatedResources <- get_site_related_resources(
-#'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
-#' )
-#' tSiteRelatedResources
 #'
 ### function get_site_related_resources
 get_site_related_resources <- function(deimsid) {

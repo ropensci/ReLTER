@@ -11,11 +11,6 @@
 #' @importFrom utils capture.output
 #' @importFrom dplyr as_tibble
 #' @keywords internal
-#' @examples
-#' tSiteResearchTopics <- get_site_research_topics(
-#'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
-#' )
-#' tSiteResearchTopics
 #'
 ### function get_site_research_topics
 get_site_research_topics <- function(deimsid) {

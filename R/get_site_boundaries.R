@@ -22,17 +22,6 @@
 #' @importFrom leaflet leaflet addTiles addPolygons
 #' @importFrom mapview mapshot
 #' @keywords internal
-#' @examples
-#' tSiteBoundaries <- get_site_boundaries(
-#'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
-#' )
-#' tSiteBoundaries
-#'
-#' eisenwurzen <- get_site_boundaries(
-#'   deimsid = "https://deims.org/d0a8da18-0881-4ebe-bccf-bc4cb4e25701",
-#'   show_map = TRUE
-#' )
-#' eisenwurzen
 #'
 ### function get_site_boundaries
 get_site_boundaries <- function(deimsid, show_map = FALSE) {

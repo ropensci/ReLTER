@@ -21,13 +21,6 @@ type, protection level, images.
 This function obtains general information
 about an eLTER site through the DEIMS-SDR sites API.
 }
-\examples{
-tSiteGeneral <- get_site_general(
-  deimsid = "https://deims.org/17210eba-d832-4759-89fa-9ff127cbdf6e"
-)
-tSiteGeneral
-
-}
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
 }

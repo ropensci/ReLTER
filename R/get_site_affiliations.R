@@ -15,11 +15,6 @@
 #' @importFrom dplyr as_tibble
 #' @importFrom utils capture.output
 #' @keywords internal
-#' @examples
-#' tSiteAffiliation <- get_site_affiliations(
-#'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
-#' )
-#' tSiteAffiliation
 #'
 ### function get_site_affiliations
 get_site_affiliations <- function(deimsid) {

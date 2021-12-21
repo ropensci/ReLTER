@@ -14,11 +14,6 @@
 #' @importFrom utils capture.output
 #' @importFrom dplyr as_tibble
 #' @keywords internal
-#' @examples
-#' tSiteEnvCharacts <- get_site_envcharacts(
-#'   deimsid = "https://deims.org/17210eba-d832-4759-89fa-9ff127cbdf6e"
-#' )
-#' tSiteEnvCharacts
 #'
 ### function get_site_envcharacts
 get_site_envcharacts <- function(deimsid) {

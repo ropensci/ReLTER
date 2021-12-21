@@ -20,13 +20,6 @@ which the site is involved.
 This function obtains details about an eLTER site
 through the DEIMS-SDR sites API.
 }
-\examples{
-tSiteAffiliation <- get_site_affiliations(
-  deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
-)
-tSiteAffiliation
-
-}
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
 }

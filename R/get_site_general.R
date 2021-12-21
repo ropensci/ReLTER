@@ -13,11 +13,6 @@
 #' @importFrom utils capture.output
 #' @importFrom dplyr as_tibble
 #' @keywords internal
-#' @examples
-#' tSiteGeneral <- get_site_general(
-#'   deimsid = "https://deims.org/17210eba-d832-4759-89fa-9ff127cbdf6e"
-#' )
-#' tSiteGeneral
 #'
 ### function get_site_general
 get_site_general <- function(deimsid) {

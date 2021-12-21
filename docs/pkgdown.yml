@@ -1,10 +1,10 @@
 pandoc: 2.14.0.3
-pkgdown: 1.6.1
+pkgdown: 2.0.1
 pkgdown_sha: ~
 articles:
   ReLTER: ReLTER.html
-last_built: 2021-12-06T13:50Z
+last_built: 2021-12-20T14:33Z
 urls:
-  reference: https://oggioniale.github.io/ReLTER//reference
-  article: https://oggioniale.github.io/ReLTER//articles
+  reference: https://oggioniale.github.io/ReLTER/reference
+  article: https://oggioniale.github.io/ReLTER/articles
 

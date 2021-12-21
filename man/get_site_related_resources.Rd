@@ -19,13 +19,6 @@ site and a list of the related resources collected by site.
 This function obtains a list of related resources
 collected in an eLTER site through the DEIMS-SDR sites API.
 }
-\examples{
-tSiteRelatedResources <- get_site_related_resources(
-  deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
-)
-tSiteRelatedResources
-
-}
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
 }

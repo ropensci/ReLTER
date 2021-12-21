@@ -1,11 +1,11 @@
 #' @title eLTER get_id function
 #' @description Internal function to retrieve json content from ID
-#' @param deimsid A `character`. It is the DEIMS ID of the site, activity or 
+#' @param deimsid A `character`. It is the DEIMS ID of the site, activity or
 #' dataset from DEIMS-SDR website. More information about DEIMS ID from:
 #' \href{https://deims.org/docs/deimsid.html}{page}.
 #' @param resource Character: one among `"sites"` (default), `"activities"` or
-#'  `"datasets"` (`"networks"` currently mnot tested).
-#' @param test Logical: if TRUE, content is not retrieved from 
+#'  `"datasets"` (`"networks"` currently not tested).
+#' @param test Logical: if TRUE, content is not retrieved from
 #'  \url{https://deims.org} but internally (only for some defined IDs).
 #'  Used for testing purposes to avoid errors in case or HTTP error 500.
 #'  If missing, the content of the internal variable
@@ -15,28 +15,22 @@
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @author Luigi Ranghetti, phD (2021) \email{luigi@@ranghetti.info}
 #' @keywords internal
-#' @examples
-#' deimsid <- "f30007c4-8a6e-4f11-ab87-569db54638fe"
-#' jj <- get_id(deimsid, "sites", times = 5)
-#' 
-#' # Test ode (only for defined IDs)
-#' jj <- get_id(deimsid, "sites", test = TRUE)
 #'
 get_id <- function(deimsid, resource = "sites", test, ...) {
-  
+
   # Check test mode
   if (missing(test)) {
-    test <- Sys.getenv('LOCAL_DEIMS') == TRUE
+    test <- Sys.getenv("LOCAL_DEIMS") == TRUE
   }
-  
+
   deimsid <- sub("^.+/", "", deimsid)
-  
+
   # Test mode
   if (test == TRUE) {
-    
+
     # Define IDs which can be used internally
     valid_ids <- gsub("\\.rds$", "", list.files(
-      system.file(file.path("deimsid",resource), package="ReLTER"),
+      system.file(file.path("deimsid", resource), package = "ReLTER"),
       "\\.rds$"
     ))
     if (!deimsid %in% valid_ids) {
@@ -45,38 +39,56 @@ get_id <- function(deimsid, resource = "sites", test, ...) {
         "' cannot be used in test mode with resource = '", resource, "'."
       ))
       # # code to store locally
-      # url <- file.path("https://deims.org/api", resource, deimsid)
+      # if (resource == "networks") {
+      #   # for Network
+      #   url <- paste0("https://deims.org/api/sites?network=", deimsid)
+      # } else {
+      #   # for other entities
+      #   url <- file.path("https://deims.org/api", resource, deimsid)
+      # }
       # export <- httr::RETRY("GET", url = url, ...)
-      # jj <- suppressMessages(httr::content(export, "text", encoding = "UTF-8"))
+      # jj <- suppressMessages(httr::content(
+      #         export, "text", encoding = "UTF-8")
+      #       )
+      # saveRDS(
+      #   object = jj,
+      #   file = paste0("inst/deimsid/networks/", deimsid, ".rds")
+      # )
       # saveRDS(jj, file.path(
-      #   system.file(file.path("deimsid",resource), package="ReLTER"),
-      #   paste0(deimsid,".rds")
+      #   system.file(file.path("deimsid", resource), package = "ReLTER"),
+      #   paste0(deimsid, ".rds")
       # ))
+
     }
-    
+
     # Retrieve the content locally
     jj <- readRDS(file.path(
-      system.file(file.path("deimsid",resource), package="ReLTER"), 
+      system.file(file.path("deimsid", resource), package = "ReLTER"),
       paste0(deimsid, ".rds")
     ))
-    
+
   } else {
-    
+
+    if (resource == "networks") {
+      url <- paste0("https://deims.org/api/sites?network=", deimsid)
+    } else {
+      url <- file.path("https://deims.org/api", resource, deimsid)
+    }
+
     # Normal mode
-    url <- file.path("https://deims.org/api", resource, deimsid)
     export <- httr::RETRY("GET", url = url, ...)
     jj <- suppressMessages(httr::content(export, "text", encoding = "UTF-8"))
-    
+
   }
-  
+
   status <- jj %>%
     jqr::jq(as.character("{status: .errors.status}")) %>%
     textConnection() %>%
     jsonlite::stream_in(simplifyDataFrame = TRUE, verbose = FALSE) %>%
     dtplyr::lazy_dt() %>%
     dplyr::as_tibble()
-  
+
   attr(jj, "status") <- status
   jj
-  
+
 }

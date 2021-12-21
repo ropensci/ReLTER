@@ -12,11 +12,6 @@
 #' @importFrom utils capture.output
 #' @importFrom dplyr as_tibble
 #' @keywords internal
-#' @examples
-#' tSiteInfrastructure <- get_site_infrastructure(
-#'   deimsid = "https://deims.org/17210eba-d832-4759-89fa-9ff127cbdf6e"
-#' )
-#' tSiteInfrastructure
 #'
 ### function get_site_infrastructure
 get_site_infrastructure <- function(deimsid) {

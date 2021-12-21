@@ -3,23 +3,23 @@ message("\n---- Test get_site_general() ----")
 library(testthat)
 
 test_that("Expect error if internet connection is down", {
-  Sys.setenv('LOCAL_DEIMS' = FALSE) # set online mode
+  Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
   testthat::expect_error(
     httptest::without_internet(
-      result <- ReLTER::get_site_general(
-        deimsid = 
-          TESTURLSite)
+      result <- ReLTER:::get_site_general(
+        deimsid = TESTURLSite
+      )
     ),
     "GET"
   )
-  Sys.setenv('LOCAL_DEIMS' = TRUE) # restore test mode
+  Sys.setenv("LOCAL_DEIMS" = TRUE) # restore test mode
 })
 
 skip_if_offline(host = "deims.org")
 
 test_that("Output of site general info function constructs 'tibble' as
           expected", {
-  result <- ReLTER::get_site_general(
+  result <- ReLTER:::get_site_general(
     deimsid = TESTURLSite
   )
   expect_s3_class(result, "tbl_df")
@@ -42,19 +42,19 @@ test_that("Output of site general info function constructs 'tibble' as
 })
 
 test_that("Wrong input (but URL) constructs a tibble with empty data", {
-  Sys.setenv('LOCAL_DEIMS' = FALSE) # set online mode
-  result <- ReLTER::get_site_general(
+  Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
+  result <- ReLTER:::get_site_general(
     deimsid = "https://deims.org/ljhnhbkihubib"
   )
   expect_type(result, "NULL")
-  Sys.setenv('LOCAL_DEIMS' = TRUE) # restore test mode
+  Sys.setenv("LOCAL_DEIMS" = TRUE) # restore test mode
 })
 
 test_that("Wrong input (not URL) constructs an empty tibble", {
-  Sys.setenv('LOCAL_DEIMS' = FALSE) # set online mode
-  result <- ReLTER::get_site_general(
+  Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
+  result <- ReLTER:::get_site_general(
     deimsid = "ljhnhbkihubib"
   )
   expect_type(result, "NULL")
-  Sys.setenv('LOCAL_DEIMS' = TRUE) # restore test mode
+  Sys.setenv("LOCAL_DEIMS" = TRUE) # restore test mode
 })

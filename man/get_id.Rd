@@ -7,14 +7,14 @@
 get_id(deimsid, resource = "sites", test, ...)
 }
 \arguments{
-\item{deimsid}{A `character`. It is the DEIMS ID of the site, activity or 
+\item{deimsid}{A `character`. It is the DEIMS ID of the site, activity or
 dataset from DEIMS-SDR website. More information about DEIMS ID from:
 \href{https://deims.org/docs/deimsid.html}{page}.}
 
 \item{resource}{Character: one among `"sites"` (default), `"activities"` or
-`"datasets"` (`"networks"` currently mnot tested).}
+`"datasets"` (`"networks"` currently not tested).}
 
-\item{test}{Logical: if TRUE, content is not retrieved from 
+\item{test}{Logical: if TRUE, content is not retrieved from
 \url{https://deims.org} but internally (only for some defined IDs).
 Used for testing purposes to avoid errors in case or HTTP error 500.
 If missing, the content of the internal variable}
@@ -28,14 +28,6 @@ A character containing the json content, and an attribute `status`.
 }
 \description{
 Internal function to retrieve json content from ID
-}
-\examples{
-deimsid <- "f30007c4-8a6e-4f11-ab87-569db54638fe"
-jj <- ReLTER:::get_id(deimsid, "sites", times = 5)
-
-# Test ode (only for defined IDs)
-jj <- ReLTER:::get_id(deimsid, "sites", test = TRUE)
-
 }
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}

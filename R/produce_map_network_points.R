@@ -24,7 +24,6 @@
 #' @importFrom dplyr select
 #' @importFrom tibble as_tibble
 #' @importFrom httr RETRY content
-#' @import ISOcodes
 #' @export
 #' @examples
 #' \dontrun{
@@ -54,7 +53,7 @@ produce_network_points_map <- function(networkDEIMSID, countryCode) {
     )
     export <- httr::RETRY("GET", url = url, times = 5)
     lterNetworkSitesCoords <- jsonlite::fromJSON(
-      httr::content(export, as="text", encoding="UTF-8")
+      httr::content(export, as = "text", encoding = "UTF-8")
     )
     if (length(lterNetworkSitesCoords) != 0) {
       lterNetworkSitesCoords$uri <- paste0(
@@ -72,7 +71,7 @@ produce_network_points_map <- function(networkDEIMSID, countryCode) {
         networkSitesGeo
       )
       if (any(networkSitesGeo_valid)) {
-        if (countryCode %in% ISOcodes::ISO_3166_1$Alpha_3 == TRUE) {
+        if (countryCode %in% isoCodes$Alpha_3 == TRUE) {
           country <- raster::getData(country = countryCode, level = 0)
           country <- rgeos::gSimplify(
             country,
@@ -102,7 +101,7 @@ produce_network_points_map <- function(networkDEIMSID, countryCode) {
             )
           message("\n----\nThe map of site cannot be created.
   Please check again the Country code.
-  Compare the code provided with the list of code in 
+  Compare the code provided with the list of code in
   https://en.wikipedia.org/wiki/ISO_3166\n----\n")
           print(mapOfSites)
           networkSitesGeo
