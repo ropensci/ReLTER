@@ -85,6 +85,7 @@ jobs:
             libv8-dev \
             libssl-dev \
             libcairo2-dev \
-            libgit2-dev
+            libgit2-dev \
+            libxslt1-dev
 
       - uses: r-lib/actions/check-r-package@v1
