@@ -121,6 +121,10 @@ get_site_ODS <- function(deimsid, dataset = "landcover") {
       print("No raster dataset downloaded")
       return(NULL)
   }
+  # If this is NDVI, rescale back to (-1.0,1.0) range
+  if (grep(pattern="ndvi", x=dataset, fixed = TRUE) == 1) {
+    ds = (ds-100)/100.0
+  }
   # Crop and mask the raster dataset to the boundary polygon
   # The boundary must be transformed first
   # to the European CRS (EPSG:3035) used by ODS
