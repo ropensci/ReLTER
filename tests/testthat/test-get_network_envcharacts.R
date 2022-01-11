@@ -19,6 +19,7 @@ test_that("Expect error if internet connection is down", {
 
 skip_if_offline(host = "deims.org")
 skip_on_ci()
+skip_if(Sys.getenv("LOCAL_DEIMS") == TRUE)
 
 test_that("Output of network environmental characteristics function constructs
           'tibble' as expected", {
