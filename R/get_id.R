@@ -50,15 +50,10 @@ get_id <- function(deimsid, resource = "sites", test, ...) {
       # jj <- suppressMessages(httr::content(
       #         export, "text", encoding = "UTF-8")
       #       )
-      # saveRDS(
-      #   object = jj,
-      #   file = paste0("inst/deimsid/networks/", deimsid, ".rds")
-      # )
       # saveRDS(jj, file.path(
       #   system.file(file.path("deimsid", resource), package = "ReLTER"),
       #   paste0(deimsid, ".rds")
       # ))
-
     }
 
     # Retrieve the content locally

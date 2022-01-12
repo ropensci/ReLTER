@@ -8,4 +8,10 @@ test_mode <- any(
   isTRUE(as.logical(Sys.getenv("CI"))), 
   !identical(Sys.getenv("NOT_CRAN"), "true")
 )
+skip_in_test_mode <- test_mode
+  
+# # overwrite manually to test "test mode" (this should be normally commented!)
+# test_mode <- TRUE
+# skip_in_test_mode <- FALSE
+
 Sys.setenv("LOCAL_DEIMS" = test_mode) # run get_id(..., test = TRUE)
