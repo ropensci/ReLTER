@@ -12,15 +12,16 @@ test_that("Expect error if internet connection is down", {
     ),
     "GET"
   )
-  Sys.setenv("LOCAL_DEIMS" = TRUE) # restore test mode
+  Sys.setenv("LOCAL_DEIMS" = test_mode) # restore test mode
 })
 
 skip_if_offline(host = "deims.org")
 skip_on_ci()
+skip_if(skip_in_test_mode)
 
 test_that("Output of ILTER general info function constructs 'tibble' as
           expected", {
-  result <- ReLTER::get_ilter_generalinfo(country_name = NA, site_name = NA)
+  result <- ReLTER::get_ilter_generalinfo(country_name = "Denmark", site_name = NA)
   expect_s3_class(result, "tbl_df")
   expect_true(ncol(result) == 10)
   expect_true(all(names(result) == c(
@@ -34,9 +35,9 @@ test_that("Output of ILTER general info function constructs 'tibble' as
   expect_type(result$uri, "character")
   expect_type(result$geoCoord, "list")
   expect_type(result$country, "list")
-  expect_type(result$geoElev.avg, "double")
-  expect_type(result$geoElev.min, "double")
-  expect_type(result$geoElev.max, "double")
+  expect_type(result$geoElev.avg, "integer")
+  expect_type(result$geoElev.min, "integer")
+  expect_type(result$geoElev.max, "integer")
   expect_type(result$geoElev.unit, "character")
   expect_type(result$affiliation.networks, "list")
   expect_type(result$affiliation.projects, "list")
@@ -52,9 +53,12 @@ test_that("Wrong input (not a character) of 'country_name'
 
 test_that("Wrong input (not a character) of 'site_name', but correct input of
           'country_name'', constructs an empty tibble", {
-  result <- ReLTER::get_ilter_generalinfo(
-    country_name = "Austri",
-    site_name = "123"
+  expect_warning(
+    result <- ReLTER::get_ilter_generalinfo(
+      country_name = "Denmark",
+      site_name = "123"
+    ),
+    regexp = "that's not among the sites stored"
   )
   expect_s3_class(result, "tbl_df")
   expect_true(ncol(result) == 10)
@@ -77,15 +81,17 @@ test_that("Wrong input (not a character) of 'site_name', but correct input of
   expect_type(result$affiliation.projects, "list")
 })
 
-test_that("Wrong input (not a character) of 'country_name' and 'site_name'
-          constructs an empty tibble", {
-  # TODO: write a test for that!
-})
+# test_that("Wrong input (not a character) of 'country_name' and 'site_name'
+#           constructs an empty tibble", {
+#   # TODO: write a test for that!
+#   # WARNING this would be a very time-consuming test!
+#   # (all the IDs may be read)
+# })
 
 test_that("Output of function constructs 'sf' with valid geometries", {
   result <- get_ilter_generalinfo(
-    country_name = "Austri",
-    site_name = " Eisen"
+    country_name = "Denmark",
+    site_name = "HOBE"
   )
   result_valid <- (!is.na(result) & sf::st_is_valid(result))
   expect_true(any(result_valid))

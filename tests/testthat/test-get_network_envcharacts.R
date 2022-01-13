@@ -14,11 +14,12 @@ test_that("Expect error if internet connection is down", {
     ),
     "GET"
   )
-  Sys.setenv("LOCAL_DEIMS" = TRUE) # restore test mode
+  Sys.setenv("LOCAL_DEIMS" = test_mode) # restore test mode
 })
 
 skip_if_offline(host = "deims.org")
 skip_on_ci()
+skip_if(skip_in_test_mode)
 
 test_that("Output of network environmental characteristics function constructs
           'tibble' as expected", {
@@ -59,7 +60,7 @@ test_that("Wrong input (but URL) constructs a NULL object", {
   expect_true(is.null(result))
   expect_true(is.null(ncol(result)))
   expect_true(length(result) == 0)
-  Sys.setenv("LOCAL_DEIMS" = TRUE) # restore test mode
+  Sys.setenv("LOCAL_DEIMS" = test_mode) # restore test mode
 })
 
 test_that("Wrong input (not URL) constructs an empty tibble", {
@@ -68,5 +69,5 @@ test_that("Wrong input (not URL) constructs an empty tibble", {
   expect_true(is.null(result))
   expect_true(is.null(ncol(result)))
   expect_true(length(result) == 0)
-  Sys.setenv("LOCAL_DEIMS" = TRUE) # restore test mode
+  Sys.setenv("LOCAL_DEIMS" = test_mode) # restore test mode
 })

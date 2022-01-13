@@ -2,7 +2,7 @@
 # Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
 on:
   push:
-    branches: [main]
+    branches: [main,dev]
   pull_request:
     branches: [main]
 
@@ -85,7 +85,6 @@ jobs:
             libv8-dev \
             libssl-dev \
             libcairo2-dev \
-            libgit2-dev \
-            libxslt1-dev
+            libgit2-dev
 
       - uses: r-lib/actions/check-r-package@v1

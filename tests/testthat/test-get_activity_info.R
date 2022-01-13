@@ -13,7 +13,7 @@ test_that("Expect error if internet connection is down", {
     ),
     "GET"
   )
-  Sys.setenv("LOCAL_DEIMS" = TRUE) # restore test mode
+  Sys.setenv("LOCAL_DEIMS" = test_mode) # restore test mode
 })
 
 skip_if_offline(host = "deims.org")
@@ -42,7 +42,7 @@ test_that("Wrong input (but URL) constructs a NULL object", {
     ),
     regexp = "Page Not Found"
   )
-  Sys.setenv("LOCAL_DEIMS" = TRUE) # restore test mode
+  Sys.setenv("LOCAL_DEIMS" = test_mode) # restore test mode
 })
 
 test_that("Wrong input (not URL) constructs an empty tibble", {
@@ -51,7 +51,7 @@ test_that("Wrong input (not URL) constructs an empty tibble", {
     object = ReLTER::get_activity_info(activityid = "ljhnhbkihubib"),
     regexp = "Page Not Found"
   )
-  Sys.setenv("LOCAL_DEIMS" = TRUE) # restore test mode
+  Sys.setenv("LOCAL_DEIMS" = test_mode) # restore test mode
 })
 
 test_that("Output of get activities information function constructs 'sf' with
