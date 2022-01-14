@@ -11,7 +11,6 @@
 #' @importFrom httr RETRY content
 #' @importFrom jqr jq
 #' @importFrom jsonlite stream_in
-#' @importFrom dtplyr lazy_dt
 #' @importFrom dplyr as_tibble
 #' @importFrom utils capture.output
 #' @keywords internal

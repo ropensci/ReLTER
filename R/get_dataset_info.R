@@ -9,7 +9,6 @@
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom httr RETRY content
 #' @importFrom dplyr as_tibble
-#' @importFrom dtplyr lazy_dt
 #' @importFrom utils capture.output
 #' @importFrom sf st_as_sf st_is_valid
 #' @importFrom leaflet leaflet addTiles addPolygons

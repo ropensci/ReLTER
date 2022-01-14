@@ -18,7 +18,6 @@
 #' @importFrom httr RETRY content
 #' @importFrom jqr jq
 #' @importFrom jsonlite fromJSON stream_in
-#' @importFrom dtplyr lazy_dt
 #' @importFrom dplyr as_tibble left_join
 #' @importFrom utils capture.output
 #' @importFrom leaflet leaflet addTiles addPolygons
