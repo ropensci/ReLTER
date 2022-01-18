@@ -12,6 +12,11 @@
 #' @param ... Arguments to be passed to `httr::RETRY()`.
 #' @param jj a character
 #' @return A character containing the json content, and an attribute `status`.
+#' @importFrom dtplyr lazy_dt
+#' @importFrom dplyr as_tibble
+#' @importFrom httr content RETRY
+#' @importFrom jqr jq
+#' @importFrom jsonlite stream_in
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @author Luigi Ranghetti, phD (2021) \email{luigi@@ranghetti.info}
 #' @keywords internal

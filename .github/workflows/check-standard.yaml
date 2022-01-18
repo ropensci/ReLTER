@@ -87,4 +87,11 @@ jobs:
             libcairo2-dev \
             libgit2-dev
 
+      - name: Reinstall {raster}
+        # temporary, see https://stackoverflow.com/questions/70674136/r-package-warning-multiple-methods-tables-found-for-direction
+        # remove when no longer needed
+        run: |
+          remotes::install_cran("raster", type = "source", repos = "https://stat.ethz.ch/CRAN/", force = TRUE)
+        shell: Rscript {0}
+
       - uses: r-lib/actions/check-r-package@v1

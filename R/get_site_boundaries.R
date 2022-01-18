@@ -20,7 +20,6 @@
 #' @importFrom utils capture.output
 #' @importFrom sf st_as_sf write_sf st_write
 #' @importFrom leaflet leaflet addTiles addPolygons
-#' @importFrom mapview mapshot
 #' @keywords internal
 #'
 ### function get_site_boundaries

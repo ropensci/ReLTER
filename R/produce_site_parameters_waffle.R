@@ -8,7 +8,6 @@
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom tibble as_tibble
 #' @importFrom dplyr group_by tally mutate filter
-#' @importFrom scales percent
 #' @importFrom grDevices colorRampPalette
 #' @importFrom RColorBrewer brewer.pal
 #' @importFrom waffle waffle
@@ -40,7 +39,7 @@ produce_site_parameters_waffle <- function(deimsid) {
       dplyr::group_by(parameterGroups) %>%
       dplyr::tally() %>%
       dplyr::mutate(freq = n / sum(n))
-    params$label <- scales::percent(params$freq)
+    params$label <- paste0(round(params$freq,2)*100,"%")
     obsPropWaffle <- params$n
     names(obsPropWaffle) <- params$parameterGroups
     # Waffle chart ----
