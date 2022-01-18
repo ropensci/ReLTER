@@ -45,6 +45,8 @@ reference:
       - '`get_sos_procedurelist`'
       - '`taxon_id_pesi`'
       - '`taxon_id_worms`'
+      - '`get_site_speciesOcc`'
+      - '`produce_zenodo_record`'
 navbar:
   type: inverse
   left: []

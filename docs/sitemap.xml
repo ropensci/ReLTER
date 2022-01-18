@@ -106,6 +106,9 @@
     <loc>https://oggioniale.github.io/ReLTER/reference/get_site_ODS.html</loc>
   </url>
   <url>
+    <loc>https://oggioniale.github.io/ReLTER/reference/get_site_speciesOcc.html</loc>
+  </url>
+  <url>
     <loc>https://oggioniale.github.io/ReLTER/reference/get_sos_procedurelist.html</loc>
   </url>
   <url>
@@ -128,6 +131,9 @@
   </url>
   <url>
     <loc>https://oggioniale.github.io/ReLTER/reference/produce_site_qrcode.html</loc>
+  </url>
+  <url>
+    <loc>https://oggioniale.github.io/ReLTER/reference/produce_zenodo_record.html</loc>
   </url>
   <url>
     <loc>https://oggioniale.github.io/ReLTER/reference/taxon_ID_Pesi.html</loc>

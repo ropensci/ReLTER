@@ -299,19 +299,6 @@
     },
     "14": {
       "@type": "SoftwareApplication",
-      "identifier": "mapview",
-      "name": "mapview",
-      "version": ">= 2.9.0",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=mapview"
-    },
-    "15": {
-      "@type": "SoftwareApplication",
       "identifier": "qrcode",
       "name": "qrcode",
       "version": ">= 0.1.3",
@@ -323,7 +310,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=qrcode"
     },
-    "16": {
+    "15": {
       "@type": "SoftwareApplication",
       "identifier": "raster",
       "name": "raster",
@@ -336,7 +323,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=raster"
     },
-    "17": {
+    "16": {
       "@type": "SoftwareApplication",
       "identifier": "rgeos",
       "name": "rgeos",
@@ -349,7 +336,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rgeos"
     },
-    "18": {
+    "17": {
       "@type": "SoftwareApplication",
       "identifier": "rosm",
       "name": "rosm",
@@ -362,7 +349,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rosm"
     },
-    "19": {
+    "18": {
       "@type": "SoftwareApplication",
       "identifier": "scales",
       "name": "scales",
@@ -375,7 +362,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=scales"
     },
-    "20": {
+    "19": {
       "@type": "SoftwareApplication",
       "identifier": "sf",
       "name": "sf",
@@ -388,7 +375,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=sf"
     },
-    "21": {
+    "20": {
       "@type": "SoftwareApplication",
       "identifier": "stringr",
       "name": "stringr",
@@ -401,7 +388,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=stringr"
     },
-    "22": {
+    "21": {
       "@type": "SoftwareApplication",
       "identifier": "taxize",
       "name": "taxize",
@@ -414,7 +401,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=taxize"
     },
-    "23": {
+    "22": {
       "@type": "SoftwareApplication",
       "identifier": "terra",
       "name": "terra",
@@ -426,7 +413,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=terra"
     },
-    "24": {
+    "23": {
       "@type": "SoftwareApplication",
       "identifier": "tibble",
       "name": "tibble",
@@ -439,7 +426,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=tibble"
     },
-    "25": {
+    "24": {
       "@type": "SoftwareApplication",
       "identifier": "tmap",
       "name": "tmap",
@@ -452,13 +439,13 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=tmap"
     },
-    "26": {
+    "25": {
       "@type": "SoftwareApplication",
       "identifier": "utils",
       "name": "utils",
       "version": ">= 4.0.3"
     },
-    "27": {
+    "26": {
       "@type": "SoftwareApplication",
       "identifier": "waffle",
       "name": "waffle",
@@ -471,7 +458,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=waffle"
     },
-    "28": {
+    "27": {
       "@type": "SoftwareApplication",
       "identifier": "worrms",
       "name": "worrms",
@@ -484,7 +471,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=worrms"
     },
-    "29": {
+    "28": {
       "@type": "SoftwareApplication",
       "identifier": "xml2",
       "name": "xml2",
@@ -497,7 +484,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=xml2"
     },
-    "30": {
+    "29": {
       "@type": "SoftwareApplication",
       "identifier": "xslt",
       "name": "xslt",
@@ -510,13 +497,26 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=xslt"
     },
+    "30": {
+      "@type": "SoftwareApplication",
+      "identifier": "zen4R",
+      "name": "zen4R",
+      "version": ">= 0.5-2",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=zen4R"
+    },
     "SystemRequirements": null
   },
-  "fileSize": "13114.509KB",
+  "fileSize": "28270.83KB",
   "citation": [
     {
       "@type": "CreativeWork",
-      "datePublished": "2021",
+      "datePublished": "2022",
       "author": [
         {
           "@type": "Person",
