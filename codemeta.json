@@ -510,9 +510,22 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=zen4R"
     },
+    "31": {
+      "@type": "SoftwareApplication",
+      "identifier": "spocc",
+      "name": "spocc",
+      "version": ">= 1.2.0.91",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=spocc"
+    },
     "SystemRequirements": null
   },
-  "fileSize": "30438.879KB",
+  "fileSize": "30438.905KB",
   "citation": [
     {
       "@type": "CreativeWork",

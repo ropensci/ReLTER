@@ -79,7 +79,8 @@ Imports:
     worrms (>= 0.4.2),
     xml2 (>= 1.3.2),
     xslt (>= 1.4.3),
-    zen4R (>= 0.5-2)
+    zen4R (>= 0.5-2),
+    spocc (>= 1.2.0.91)
 Suggests: 
     httptest,
     knitr,
