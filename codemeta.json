@@ -514,7 +514,7 @@
       "@type": "SoftwareApplication",
       "identifier": "spocc",
       "name": "spocc",
-      "version": ">= 1.2.0.91",
+      "version": ">= 1.2.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -525,7 +525,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "30438.905KB",
+  "fileSize": "30439.311KB",
   "citation": [
     {
       "@type": "CreativeWork",
