@@ -29,8 +29,7 @@
 #' @importFrom tibble as_tibble
 #' @importFrom dplyr select mutate
 #' @importFrom spocc occ2df obis_search occ
-#' @importFrom sf st_as_text
-#' @importFrom rgbif wkt_parse
+#' @importFrom sf st_as_text st_as_sfc st_bbox
 #' @export
 #' @examples
 #' \dontrun{
@@ -81,10 +80,13 @@ get_site_speciesOcc <- function(
     print("No boundary for requested DEIMS site.")
     return(NULL)
   } else {
-    site_wkt <- sf::st_as_text(boundary$boundaries,
-                               EWKT = FALSE)
-    bbox_wkt <- rgbif::wkt_parse(site_wkt,
-                                 geom_big = "bbox")
+    bbox_wkt <- sf::st_as_text(
+      sf::st_as_sfc(
+        sf::st_bbox(
+          boundary
+        )
+      )
+    )
   }
 
   # download occurrence by SPOCC by provide data sources ----
@@ -157,7 +159,7 @@ get_site_speciesOcc <- function(
       leaflet::addTiles(
         "http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png"
       )
-  
+
     groups <- unique(occ_df$prov)
     for (i in groups) {
       data <- occ_df[occ_df$prov == i, ]
@@ -190,7 +192,7 @@ get_site_speciesOcc <- function(
           collapsed = FALSE
         )
       )
-  
+
     print(occ_map)
     # create tibble ----
     occ_list <- vector(
@@ -209,7 +211,7 @@ get_site_speciesOcc <- function(
     if ("obis" %in% list_DS) {
       occ_list$obis <- site_occ_spocc_obis$results
     }
-  
+
     occ_list
   } else {
     occ_map <- NULL
