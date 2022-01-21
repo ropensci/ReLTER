@@ -2,6 +2,8 @@ message("\n---- Test taxon_id_pesi() ----")
 
 library(testthat)
 
+skip_on_ci()
+
 test_that("Output of taxon pesi function constructs 'tibble' as expected", {
   table <- data.frame(
     taxonID = c(1, 2, 3, 4, 5, 6),

@@ -2,7 +2,7 @@
 #' @description This function lists the procedures
 #' of a Sensor Observations Service (SOS).
 #' @param sosHost a `character`. An SOS endpoint (e.g.
-#' \url{http://vesk.ve.ismar.cnr.it/observations/sos/kvp?}).
+#' \url{http://getit.lteritalia.it/observations/sos/kvp?}).
 #' @return The output of the function is a `list` with the name and URI (Uniform
 #' Resource Identifier) of each procedure.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
