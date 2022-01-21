@@ -497,22 +497,9 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=xslt"
     },
-    "30": {
-      "@type": "SoftwareApplication",
-      "identifier": "zen4R",
-      "name": "zen4R",
-      "version": ">= 0.5-2",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=zen4R"
-    },
     "SystemRequirements": null
   },
-  "fileSize": "28270.83KB",
+  "fileSize": "31765.359KB",
   "citation": [
     {
       "@type": "CreativeWork",

@@ -30,7 +30,10 @@
 #' by centroid of the site. Default 0.
 #' @param bboxYMax a `double`. A numeric for add some unit of a bbox provided
 #' by centroid of the site. Default 0.
-#' @return The output of the function is a distribution `image`.
+#' @param show_map a `boolean`. When TRUE the immage of map will be plotted.
+#' Default FALSE.
+#' @return The output of the function is an `image` of the boundary of the
+#' site, OSM as base map and all country sites map.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom sf as_Spatial st_as_sfc st_bbox st_crs st_simplify
 #' @importFrom jsonlite fromJSON
@@ -76,15 +79,27 @@
 #'   "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 #' )
 #' # In the case of Italian sites are selected only true sites and exclused the
-#' macrosites.
+#' # macrosites.
 #' sitesNetwork <- (sitesNetwork[!grepl('^IT', sitesNetwork$title),])
-  #' map <- produce_site_map(
+#' sf::st_crs(sitesNetwork) = 4326
+#' siteMap <- produce_site_map(
+#'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
+#'   countryCode = "ITA",
+#'   listOfSites = sitesNetwork,
+#'   gridNx = 0.7,
+#'   gridNy = 0.35,
+#'   show_map = TRUE
+#' )
+#' siteMap
+#' # with show_map = FALSE
+#' siteMap <- produce_site_map(
 #'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
 #'   countryCode = "ITA",
 #'   listOfSites = sitesNetwork,
 #'   gridNx = 0.7,
 #'   gridNy = 0.35
 #' )
+#' siteMap
 #' }
 #'
 ### function produce_site_map
@@ -99,18 +114,27 @@ produce_site_map <-
            bboxXMin = 0,
            bboxXMax = 0,
            bboxYMin = 0,
-           bboxYMax = 0) {
+           bboxYMax = 0,
+           show_map = FALSE) {
     deimsidExa <- sub("^.+/", "", deimsid)
-    siteSelected <- sf::as_Spatial(
-      sf::st_as_sfc(
-        jsonlite::fromJSON(paste0(
-          "https://deims.org/",
-          "api/sites/",
-          deimsidExa
-        ))$attributes$geographic$coordinates,
-        crs = "+proj=longlat +datum=WGS84 +no_defs"
+    q <- '{title: .title,
+        uri: "\\(.id.prefix)\\(.id.suffix)",
+        boundaries: .attributes.geographic.coordinates
+       }'
+    jj <- get_id(deimsid, "sites")
+    if (is.na(attr(jj, "status"))) {
+      invisible(
+        utils::capture.output(
+          coordinates <- dplyr::as_tibble(do_Q(q, jj))
+        )
       )
-    )
+      siteSelected <- sf::as_Spatial(
+        sf::st_as_sfc(
+          coordinates$boundaries,
+          crs = "+proj=longlat +datum=WGS84 +no_defs"
+        )
+      )
+    }
     biomeColor <- tibble::tribble(
       ~ geoBonBiome,
       ~ fill,
@@ -222,12 +246,22 @@ produce_site_map <-
             title = NA,
             legend.show = FALSE
           )
-        mapOfSite
-        print(mapOfCentroids,
-              vp = grid::viewport(gridNx,
-                                  gridNy,
-                                  width = width,
-                                  height = height))
+        # based on the value of show_map param
+        if (show_map == TRUE) {
+          print(mapOfSite)
+          print(mapOfCentroids,
+                vp = grid::viewport(gridNx,
+                                    gridNy,
+                                    width = width,
+                                    height = height))
+        } else {
+          return(mapOfSite)
+          return(mapOfCentroids,
+                 vp = grid::viewport(gridNx,
+                                     gridNy,
+                                     width = width,
+                                     height = height))
+        }
       } else {
         geoBoundaries_sf <- sf::st_as_sfc(geoBoundaries)
         sf::st_crs(geoBoundaries_sf) <- "+proj=longlat +datum=WGS84 +no_defs"
@@ -288,33 +322,42 @@ produce_site_map <-
             position = c("left", "bottom")
           ) +
           tmap::tm_basemap(leaflet::providers$Stamen.Watercolor)
-        print(mapOfSite)
-        mapOfCentroids <- tmap::tm_shape(country) +
-          tmap::tm_borders("grey75", lwd = 1) +
-          tmap::tm_shape(listOfSites) +
-          tmap::tm_dots(
-            col = NA,
-            size = 0.01,
-            shape = 16,
-            title = NA,
-            legend.show = FALSE
-          ) +
-          tmap::tm_shape(siteSelected) +
-          tmap::tm_dots(
-            col = color,
-            size = 0.1,
-            shape = 16,
-            title = NA,
-            legend.show = FALSE
-          )
-        print(mapOfCentroids,
-              vp = grid::viewport(
-                gridNx,
-                gridNy,
-                width = width,
-                height = height
-              )
+          mapOfCentroids <- tmap::tm_shape(country) +
+            tmap::tm_borders("grey75", lwd = 1) +
+            tmap::tm_shape(listOfSites) +
+            tmap::tm_dots(
+              col = NA,
+              size = 0.01,
+              shape = 16,
+              title = NA,
+              legend.show = FALSE
+            ) +
+            tmap::tm_shape(siteSelected) +
+            tmap::tm_dots(
+              col = color,
+              size = 0.1,
+              shape = 16,
+              title = NA,
+              legend.show = FALSE
             )
+        if (show_map == TRUE) {
+          print(mapOfSite)
+          print(mapOfCentroids,
+                vp = grid::viewport(
+                  gridNx,
+                  gridNy,
+                  width = width,
+                  height = height
+                )
+          )
+        } else {
+          return(mapOfSite)
+          return(mapOfCentroids,
+                 vp = grid::viewport(gridNx,
+                                     gridNy,
+                                     width = width,
+                                     height = height))
+        }
       }
     } else {
       message(

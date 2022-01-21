@@ -26,7 +26,7 @@ qrcode <- produce_site_qrcode(
 )
 plot(qrcode)
 
-produce_site_qrcode(
+a <- produce_site_qrcode(
   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
   do_plot = TRUE
 )

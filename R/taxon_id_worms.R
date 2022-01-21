@@ -109,7 +109,8 @@ is the exact corrispondence with your given species name.\n"
     if (refine == TRUE) {
       refinedTable <- taxon_id_worms_refine(
         input = newTable,
-        taxaColumn = taxaColumn
+        taxaColumn = taxaColumn,
+        interaction = TRUE
       )
       refinedTable
     } else {
@@ -119,7 +120,8 @@ is the exact corrispondence with your given species name.\n"
     if (refine == TRUE) {
       refinedTable <- taxon_id_worms_refine(
         input = newTable,
-        taxaColumn = taxaColumn
+        taxaColumn = taxaColumn,
+        interaction = TRUE
       )
       refinedTable
     } else {

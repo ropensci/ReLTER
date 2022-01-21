@@ -78,8 +78,7 @@ Imports:
     waffle (>= 0.7.0),
     worrms (>= 0.4.2),
     xml2 (>= 1.3.2),
-    xslt (>= 1.4.3),
-    zen4R (>= 0.5-2)
+    xslt (>= 1.4.3)
 Suggests: 
     httptest,
     knitr,

@@ -132,7 +132,10 @@ columns provided as input and new columns as: 'canonicalName', 'authorship',
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># We perform a query from the `table` in order to associate the taxon</span></span>
 <span class="r-in"><span class="co"># identifier (LSID) to the list of species present in the thirth column.</span></span>
-<span class="r-in"><span class="fu">taxon_id_pesi</span><span class="op">(</span><span class="va">table</span>, <span class="fl">3</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu">taxon_id_pesi</span><span class="op">(</span></span>
+<span class="r-in">  table <span class="op">=</span> <span class="va">table</span>,</span>
+<span class="r-in">  taxaColumn <span class="op">=</span> <span class="fl">3</span></span>
+<span class="r-in"><span class="op">)</span></span>
 <span class="r-in"><span class="op">}</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># An example to export dataset producted by this function is:</span></span>

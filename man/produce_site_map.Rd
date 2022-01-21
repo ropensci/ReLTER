@@ -15,7 +15,8 @@ produce_site_map(
   bboxXMin = 0,
   bboxXMax = 0,
   bboxYMin = 0,
-  bboxYMax = 0
+  bboxYMax = 0,
+  show_map = FALSE
 )
 }
 \arguments{
@@ -58,9 +59,13 @@ by centroid of the site. Default 0.}
 
 \item{bboxYMax}{a `double`. A numeric for add some unit of a bbox provided
 by centroid of the site. Default 0.}
+
+\item{show_map}{a `boolean`. When TRUE the immage of map will be plotted.
+Default FALSE.}
 }
 \value{
-The output of the function is a distribution `image`.
+The output of the function is an `image` of the boundary of the
+site, OSM as base map and all country sites map.
 }
 \description{
 This function produces a `map` of the site boundaries
@@ -100,15 +105,27 @@ sitesNetwork <- get_network_sites(
   "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 )
 # In the case of Italian sites are selected only true sites and exclused the
-macrosites.
+# macrosites.
 sitesNetwork <- (sitesNetwork[!grepl('^IT', sitesNetwork$title),])
-map <- produce_site_map(
+sf::st_crs(sitesNetwork) = 4326
+siteMap <- produce_site_map(
+  deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
+  countryCode = "ITA",
+  listOfSites = sitesNetwork,
+  gridNx = 0.7,
+  gridNy = 0.35,
+  show_map = TRUE
+)
+siteMap
+# with show_map = FALSE
+siteMap <- produce_site_map(
   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
   countryCode = "ITA",
   listOfSites = sitesNetwork,
   gridNx = 0.7,
   gridNy = 0.35
 )
+siteMap
 }
 
 }

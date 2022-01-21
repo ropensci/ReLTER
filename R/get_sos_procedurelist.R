@@ -2,8 +2,7 @@
 #' @description This function lists the procedures
 #' of a Sensor Observations Service (SOS).
 #' @param sosHost a `character`. An SOS endpoint (e.g.
-#' \url{http://getit.lteritalia.it}).
-#' In particular is the path before  '/observations/service?'
+#' \url{http://vesk.ve.ismar.cnr.it/observations/sos/kvp?}).
 #' @return The output of the function is a `list` with the name and URI (Uniform
 #' Resource Identifier) of each procedure.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
@@ -13,10 +12,10 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' get_sos_procedurelist(sosHost = "http://getit.lteritalia.it")
+#' get_sos_procedurelist(sosHost = "http://getit.lteritalia.it/observations/sos/kvp?")
 #' }
 #'
-### function getProcedureList
+### function get_sos_procedurelist
 get_sos_procedurelist <- function(sosHost) {
   xslProcUrl.url <- paste0("https://www.get-it.it/objects/sensors/xslt/",
                            "Capabilities_proceduresUrlList.xsl")
@@ -26,7 +25,7 @@ get_sos_procedurelist <- function(sosHost) {
     xml2::read_xml(
       paste0(
         sosHost,
-        "/observations/service?service=SOS&request=",
+        "service=SOS&request=",
         "GetCapabilities&Sections=Contents"
       ),
       package = "xslt"
@@ -39,7 +38,7 @@ get_sos_procedurelist <- function(sosHost) {
       as.character(
         paste0(
           sosHost,
-          "/observations/service?service=SOS&amp;version=2.0.0&amp;",
+          "service=SOS&amp;version=2.0.0&amp;",
           "request=DescribeSensor&amp;procedure=",
           listProcedure$uri[i],
           "&amp;procedureDescriptionFormat=http%3A%2F%2Fwww.opengis.net",
@@ -52,7 +51,7 @@ get_sos_procedurelist <- function(sosHost) {
       xml2::xml_find_all(
         SensorML,
         paste0("//sml:identification/sml:IdentifierList/sml:identifier",
-               "[@name='short name']/sml:Term/sml:value/text()"),
+               "[@name='shortName']/sml:Term/sml:value/text()"),
         ns
       )
     )

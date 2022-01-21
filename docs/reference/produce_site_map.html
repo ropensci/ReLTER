@@ -92,7 +92,8 @@ as provided by the DEIMS-SDR, within a given country and network.</p>
   bboxXMin <span class="op">=</span> <span class="fl">0</span>,
   bboxXMax <span class="op">=</span> <span class="fl">0</span>,
   bboxYMin <span class="op">=</span> <span class="fl">0</span>,
-  bboxYMax <span class="op">=</span> <span class="fl">0</span>
+  bboxYMax <span class="op">=</span> <span class="fl">0</span>,
+  show_map <span class="op">=</span> <span class="cn">FALSE</span>
 <span class="op">)</span></code></pre></div>
     </div>
 
@@ -138,10 +139,14 @@ by centroid of the site. Default 0.</p></dd>
 <dt>bboxYMax</dt>
 <dd><p>a `double`. A numeric for add some unit of a bbox provided
 by centroid of the site. Default 0.</p></dd>
+<dt>show_map</dt>
+<dd><p>a `boolean`. When TRUE the immage of map will be plotted.
+Default FALSE.</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>The output of the function is a distribution `image`.</p>
+    <p>The output of the function is an `image` of the boundary of the
+site, OSM as base map and all country sites map.</p>
     </div>
     <div id="author">
     <h2>Author</h2>
@@ -183,15 +188,27 @@ by centroid of the site. Default 0.</p></dd>
 <span class="r-in">  <span class="st">"https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-in"><span class="co"># In the case of Italian sites are selected only true sites and exclused the</span></span>
-<span class="r-in"><span class="va">macrosites.</span></span>
+<span class="r-in"><span class="co"># macrosites.</span></span>
 <span class="r-in"><span class="va">sitesNetwork</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">sitesNetwork</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span><span class="st">'^IT'</span>, <span class="va">sitesNetwork</span><span class="op">$</span><span class="va">title</span><span class="op">)</span>,<span class="op">]</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">map</span> <span class="op">&lt;-</span> <span class="fu">produce_site_map</span><span class="op">(</span></span>
+<span class="r-in"><span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_crs.html" class="external-link">st_crs</a></span><span class="op">(</span><span class="va">sitesNetwork</span><span class="op">)</span> <span class="op">=</span> <span class="fl">4326</span></span>
+<span class="r-in"><span class="va">siteMap</span> <span class="op">&lt;-</span> <span class="fu">produce_site_map</span><span class="op">(</span></span>
+<span class="r-in">  deimsid <span class="op">=</span> <span class="st">"https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"</span>,</span>
+<span class="r-in">  countryCode <span class="op">=</span> <span class="st">"ITA"</span>,</span>
+<span class="r-in">  listOfSites <span class="op">=</span> <span class="va">sitesNetwork</span>,</span>
+<span class="r-in">  gridNx <span class="op">=</span> <span class="fl">0.7</span>,</span>
+<span class="r-in">  gridNy <span class="op">=</span> <span class="fl">0.35</span>,</span>
+<span class="r-in">  show_map <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span class="r-in"><span class="op">)</span></span>
+<span class="r-in"><span class="va">siteMap</span></span>
+<span class="r-in"><span class="co"># with show_map = FALSE</span></span>
+<span class="r-in"><span class="va">siteMap</span> <span class="op">&lt;-</span> <span class="fu">produce_site_map</span><span class="op">(</span></span>
 <span class="r-in">  deimsid <span class="op">=</span> <span class="st">"https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"</span>,</span>
 <span class="r-in">  countryCode <span class="op">=</span> <span class="st">"ITA"</span>,</span>
 <span class="r-in">  listOfSites <span class="op">=</span> <span class="va">sitesNetwork</span>,</span>
 <span class="r-in">  gridNx <span class="op">=</span> <span class="fl">0.7</span>,</span>
 <span class="r-in">  gridNy <span class="op">=</span> <span class="fl">0.35</span></span>
 <span class="r-in"><span class="op">)</span></span>
+<span class="r-in"><span class="va">siteMap</span></span>
 <span class="r-in"><span class="op">}</span></span>
 <span class="r-in"></span>
 </code></pre></div>

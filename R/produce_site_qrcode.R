@@ -15,7 +15,7 @@
 #' )
 #' plot(qrcode)
 #'
-#' produce_site_qrcode(
+#' a <- produce_site_qrcode(
 #'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
 #'   do_plot = TRUE
 #' )
@@ -24,8 +24,9 @@
 produce_site_qrcode <- function(deimsid, do_plot = FALSE) {
   res <- qrcode::qr_code(deimsid, ecl = "L")
   if (do_plot) {
-    res %>%
+    a <- res %>%
       plot(col = c("White", "#1479BC"))
+    a
   }
   return(res)
 }

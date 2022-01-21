@@ -138,3 +138,33 @@ test_that("Output of get dataset information function constructs 'sf' with
   result_valid <- sf::st_is_valid(result)
   expect_true(any(result_valid))
 })
+
+test_that("Verify that 'observationParameters' is NULL", {
+  result <- ReLTER::get_dataset_info(
+    datasetid =
+      "https://deims.org/dataset/3cd76d66-cadc-4d10-9fa7-75fe8d60663c"
+  )
+  expect_type(
+    result$observationParameters[[1]]$parametersLabel,
+    "NULL"
+  )
+  expect_type(
+    result$observationParameters[[1]]$parametersUri,
+    "NULL"
+  )
+})
+
+test_that("Verify that 'observationSpecies' is NULL", {
+  result <- ReLTER::get_dataset_info(
+    datasetid =
+      "https://deims.org/dataset/3cd76d66-cadc-4d10-9fa7-75fe8d60663c"
+  )
+  expect_type(
+    result$observationSpecies[[1]]$parametersLabel,
+    "NULL"
+  )
+  expect_type(
+    result$observationSpecies[[1]]$speciesUri,
+    "NULL"
+  )
+})
