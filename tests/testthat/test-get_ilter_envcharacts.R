@@ -50,14 +50,3 @@ test_that("Wrong input (not a double) constructs an empty tibble", {
   result <- ReLTER::get_ilter_envcharacts(sitesNum = "aa")
   expect_type(result, "NULL")
 })
-
-test_that("If sitesNum is NA", {
-  lterILTERSites <- as.list(
-    jsonlite::fromJSON("https://deims.org/api/sites")
-  )
-  number_sites <- length(lterILTERSites$title)
-  result <- ReLTER::get_ilter_envcharacts(sitesNum = 0)
-  expect_s3_class(result, "tbl_df")
-  expect_true(ncol(result) == 26)
-  expect_true(nrow(result) == number_sites)
-})
