@@ -8,7 +8,7 @@ get_sos_procedurelist(sosHost)
 }
 \arguments{
 \item{sosHost}{a `character`. An SOS endpoint (e.g.
-\url{http://vesk.ve.ismar.cnr.it/observations/sos/kvp?}).}
+\url{http://getit.lteritalia.it/observations/sos/kvp?}).}
 }
 \value{
 The output of the function is a `list` with the name and URI (Uniform

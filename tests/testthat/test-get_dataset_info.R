@@ -144,13 +144,13 @@ test_that("Verify that 'observationParameters' is NULL", {
     datasetid =
       "https://deims.org/dataset/3cd76d66-cadc-4d10-9fa7-75fe8d60663c"
   )
-  expect_type(
+  expect_equal(
     result$observationParameters[[1]]$parametersLabel,
-    "NULL"
+    NA
   )
-  expect_type(
+  expect_equal(
     result$observationParameters[[1]]$parametersUri,
-    "NULL"
+    NA
   )
 })
 
@@ -163,8 +163,8 @@ test_that("Verify that 'observationSpecies' is NULL", {
     result$observationSpecies[[1]]$parametersLabel,
     "NULL"
   )
-  expect_type(
-    result$observationSpecies[[1]]$speciesUri,
-    "NULL"
+  expect_equal(
+    any(result$observationSpecies[[1]]$speciesUri),
+    NA
   )
 })

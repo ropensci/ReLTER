@@ -8,8 +8,8 @@ sitesNetwork <- get_network_sites(
 )
 # In the case of Italian sites are selected only true sites and exclused the
 # macrosites.
-sitesNetwork <- (sitesNetwork[!grepl('^IT', sitesNetwork$title),])
-sf::st_crs(sitesNetwork) = 4326
+sitesNetwork <- (sitesNetwork[!grepl("^IT", sitesNetwork$title), ])
+sf::st_crs(sitesNetwork) <- 4326
 
 test_that("Expect error if internet connection is down", {
   Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode

@@ -21,7 +21,10 @@ skip_if(skip_in_test_mode)
 
 test_that("Output of ILTER general info function constructs 'tibble' as
           expected", {
-  result <- ReLTER::get_ilter_generalinfo(country_name = "Denmark", site_name = NA)
+  result <- ReLTER::get_ilter_generalinfo(
+    country_name = "Denmark",
+    site_name = NA
+  )
   expect_s3_class(result, "tbl_df")
   expect_true(ncol(result) == 10)
   expect_true(all(names(result) == c(

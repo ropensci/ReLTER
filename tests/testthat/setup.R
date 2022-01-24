@@ -5,7 +5,7 @@ TESTURLSite <- "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
 
 # define test mode if...
 test_mode <- any(
-  isTRUE(as.logical(Sys.getenv("CI"))), 
+  isTRUE(as.logical(Sys.getenv("CI"))),
   !identical(Sys.getenv("NOT_CRAN"), "true")
 )
 skip_in_test_mode <- test_mode

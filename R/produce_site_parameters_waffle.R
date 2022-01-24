@@ -39,7 +39,7 @@ produce_site_parameters_waffle <- function(deimsid) {
       dplyr::group_by(parameterGroups) %>%
       dplyr::tally() %>%
       dplyr::mutate(freq = n / sum(n))
-    params$label <- paste0(round(params$freq,2)*100,"%")
+    params$label <- paste0(round(params$freq, 2) * 100, "%")
     obsPropWaffle <- params$n
     names(obsPropWaffle) <- params$parameterGroups
     # Waffle chart ----

@@ -4,7 +4,7 @@
 \alias{get_ilter_envcharacts}
 \title{eLTER get_ilter_envcharacts function}
 \usage{
-get_ilter_envcharacts(sitesNum = NULL)
+get_ilter_envcharacts(sitesNum = 0)
 }
 \arguments{
 \item{sitesNum}{A `integer`. It is the number of the sites that are

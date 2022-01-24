@@ -64,9 +64,11 @@ test_that("full_url with 'unavailable' value", {
 })
 
 test_that("Wrong URL", {
+  Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
   result <- ReLTER::get_site_ODS(
     deimsid = "https://wrong.url",
     dataset = "osm_buildings"
   )
   expect_null(result)
+  Sys.setenv("LOCAL_DEIMS" = test_mode) # restore test mode
 })
