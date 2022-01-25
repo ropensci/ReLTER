@@ -26,7 +26,6 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 <!-- where issue_id is the number of the issue in the software-review repository. -->
 
 [![R-CMD-check](https://github.com/oggioniale/ReLTER/workflows/R-CMD-check/badge.svg)](https://github.com/oggioniale/ReLTER/actions)
-[![codecov](https://codecov.io/gh/oggioniale/ReLTER/branch/main/graph/badge.svg)](https://codecov.io/gh/oggioniale/ReLTER)
 <!-- badges: end -->
 
 `{ReLTER}` is an R package that: provides access to
