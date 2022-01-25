@@ -2,7 +2,7 @@ message("\n---- Test produce_site_map() ----")
 
 library(testthat)
 
-sitesNetwork <- get_network_sites(
+sitesNetwork <- ReLTER::get_network_sites(
   networkDEIMSID =
     "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 )
@@ -15,7 +15,7 @@ test_that("Expect error if internet connection is down", {
   Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
   testthat::expect_error(
     httptest::without_internet(
-      result <- produce_site_map(
+      result <- ReLTER::produce_site_map(
         deimsid = TESTURLSite,
         countryCode = "ITA",
         listOfSites = sitesNetwork,
@@ -32,7 +32,7 @@ skip_if_offline(host = "deims.org")
 
 test_that("Output of site map function constructs 'list' as expected",
           {
-            result <- produce_site_map(
+            result <- ReLTER::produce_site_map(
               deimsid = TESTURLSite,
               countryCode = "ITA",
               listOfSites = sitesNetwork,
@@ -45,7 +45,7 @@ test_that("Output of site map function constructs 'list' as expected",
 
 test_that("Output of site map function constructs 'tmap' as expected",
           {
-            result <- produce_site_map(
+            result <- ReLTER::produce_site_map(
               deimsid = TESTURLSite,
               countryCode = "ITA",
               listOfSites = sitesNetwork,
