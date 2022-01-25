@@ -20,7 +20,9 @@ of a Sensor Observations Service (SOS).
 }
 \examples{
 \dontrun{
-get_sos_procedurelist(sosHost = "http://getit.lteritalia.it/observations/sos/kvp?")
+get_sos_procedurelist(
+  sosHost = "http://getit.lteritalia.it/observations/sos/kvp?"
+)
 }
 
 }

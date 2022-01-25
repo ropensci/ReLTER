@@ -351,19 +351,6 @@
     },
     "18": {
       "@type": "SoftwareApplication",
-      "identifier": "scales",
-      "name": "scales",
-      "version": ">= 1.1.1",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=scales"
-    },
-    "19": {
-      "@type": "SoftwareApplication",
       "identifier": "sf",
       "name": "sf",
       "version": ">= 0.9-5",
@@ -375,20 +362,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=sf"
     },
-    "20": {
-      "@type": "SoftwareApplication",
-      "identifier": "stringr",
-      "name": "stringr",
-      "version": ">= 1.4.0",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=stringr"
-    },
-    "21": {
+    "19": {
       "@type": "SoftwareApplication",
       "identifier": "taxize",
       "name": "taxize",
@@ -401,7 +375,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=taxize"
     },
-    "22": {
+    "20": {
       "@type": "SoftwareApplication",
       "identifier": "terra",
       "name": "terra",
@@ -413,7 +387,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=terra"
     },
-    "23": {
+    "21": {
       "@type": "SoftwareApplication",
       "identifier": "tibble",
       "name": "tibble",
@@ -426,7 +400,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=tibble"
     },
-    "24": {
+    "22": {
       "@type": "SoftwareApplication",
       "identifier": "tmap",
       "name": "tmap",
@@ -439,13 +413,13 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=tmap"
     },
-    "25": {
+    "23": {
       "@type": "SoftwareApplication",
       "identifier": "utils",
       "name": "utils",
       "version": ">= 4.0.3"
     },
-    "26": {
+    "24": {
       "@type": "SoftwareApplication",
       "identifier": "waffle",
       "name": "waffle",
@@ -458,7 +432,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=waffle"
     },
-    "27": {
+    "25": {
       "@type": "SoftwareApplication",
       "identifier": "worrms",
       "name": "worrms",
@@ -471,7 +445,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=worrms"
     },
-    "28": {
+    "26": {
       "@type": "SoftwareApplication",
       "identifier": "xml2",
       "name": "xml2",
@@ -484,7 +458,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=xml2"
     },
-    "29": {
+    "27": {
       "@type": "SoftwareApplication",
       "identifier": "xslt",
       "name": "xslt",
@@ -499,7 +473,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "31765.359KB",
+  "fileSize": "33132.829KB",
   "citation": [
     {
       "@type": "CreativeWork",

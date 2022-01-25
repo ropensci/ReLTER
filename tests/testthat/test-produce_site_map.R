@@ -30,8 +30,7 @@ test_that("Expect error if internet connection is down", {
 
 skip_if_offline(host = "deims.org")
 
-test_that("Output of site map function constructs 'list' as expected",
-          {
+test_that("Output of site map function constructs 'list' as expected", {
             result <- ReLTER::produce_site_map(
               deimsid = TESTURLSite,
               countryCode = "ITA",
@@ -43,8 +42,7 @@ test_that("Output of site map function constructs 'list' as expected",
             expect_type(result, "list")
           })
 
-test_that("Output of site map function constructs 'tmap' as expected",
-          {
+test_that("Output of site map function constructs 'tmap' as expected", {
             result <- ReLTER::produce_site_map(
               deimsid = TESTURLSite,
               countryCode = "ITA",

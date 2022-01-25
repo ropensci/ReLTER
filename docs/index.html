@@ -132,7 +132,7 @@
 <!-- Once you have submitted a package and it has passed editor checks, add a peer-review badge via -->
 <!-- [![](https://badges.ropensci.org/<issue_id>_status.svg)](https://github.com/ropensci/software-review/issues/<issue_id>) -->
 <!-- where issue_id is the number of the issue in the software-review repository. -->
-<p><a href="https://github.com/oggioniale/ReLTER/actions" class="external-link"><img src="https://github.com/oggioniale/ReLTER/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a> <!-- badges: end --></p>
+<p><a href="https://github.com/oggioniale/ReLTER/actions" class="external-link"><img src="https://github.com/oggioniale/ReLTER/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a> <a href="https://codecov.io/gh/oggioniale/ReLTER" class="external-link"><img src="https://codecov.io/gh/oggioniale/ReLTER/branch/main/graph/badge.svg" alt="codecov"></a> <!-- badges: end --></p>
 <p><a href="https://github.com/oggioniale/ReLTER" class="external-link">ReLTER</a> is an R package that: provides access to <a href="https://deims.org/" class="external-link">DEIMS-SDR</a>, allows interact with software implemented by eLTER Research Infrastructure (RI) and improves the data/information shared by them.</p>
 <p><a href="https://github.com/oggioniale/ReLTER" class="external-link">ReLTER</a> is a R package devoted to access, interact and improve the information and the data shared by Long Term Ecological Research (LTER) network. This package is born within eLTER H2020 major project that will help advance the development of European Long-Term Ecosystem Research Infrastructures (<a href="https://elter-ri.eu" class="external-link">eLTER RI</a>).</p>
 <p>The <a href="https://github.com/oggioniale/ReLTER" class="external-link">ReLTER</a> package functions in particular allow to:</p>
@@ -356,17 +356,17 @@
 <div class="sourceCode" id="cb10"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 11 × 4</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    parameterGroups              n   freq label</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;                    &lt;int&gt;  &lt;dbl&gt; &lt;chr&gt;</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 agricultural parameter       1 0.0105 1.1% </span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 atmospheric parameter       14 0.147  14.7%</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 biological parameter         8 0.0842 8.4% </span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 chemical parameter          24 0.253  25.3%</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 ecosystem parameter         23 0.242  24.2%</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 genetic parameter            2 0.0211 2.1% </span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 landscape parameter          4 0.0421 4.2% </span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 physical parameter           1 0.0105 1.1% </span></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 remote sensing parameter     1 0.0105 1.1% </span></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 soil parameter               1 0.0105 1.1% </span></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11 water parameter             16 0.168  16.8%</span></span></code></pre></div>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 agricultural parameter       1 0.0105 1%   </span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 atmospheric parameter       14 0.147  15%  </span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 biological parameter         8 0.0842 8%   </span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 chemical parameter          24 0.253  25%  </span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 ecosystem parameter         23 0.242  24%  </span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 genetic parameter            2 0.0211 2%   </span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 landscape parameter          4 0.0421 4%   </span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 physical parameter           1 0.0105 1%   </span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 remote sensing parameter     1 0.0105 1%   </span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 soil parameter               1 0.0105 1%   </span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11 water parameter             16 0.168  17%</span></span></code></pre></div>
 <hr>
 </div>
 <div class="section level4">
