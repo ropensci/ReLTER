@@ -20,13 +20,6 @@ organization, metadata provider, founding agency and site url.
 This function obtains the contact information for an
 eLTER site through the DEIMS-SDR sites API.
 }
-\examples{
-tSiteContact <- get_site_contact(
-  deimsid = "https://deims.org/17210eba-d832-4759-89fa-9ff127cbdf6e"
-)
-tSiteContact
-
-}
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
 }

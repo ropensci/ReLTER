@@ -17,27 +17,7 @@ The output of the function is ...
 \description{
 This function parses json content returned from an HTTP request
 }
-\examples{
-deimsid <- "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
-q <- '{title: .title,
-  uri: "\\\\(.id.prefix)\\\\(.id.suffix)",
-  geoCoord: .attributes.geographic.coordinates,
-  country: .attributes.geographic.country,
-  geoElev: .attributes.geographic.elevation,
-  affiliation: .attributes.affiliation
-}'
-url <- paste0(
-  "https://deims.org/",
-  "api/sites/",
-  sub("^.+/", "", deimsid)
-)
-export <- httr::GET(url = url)
-jj <- suppressMessages(httr::content(export, "text"))
-
-ReLTER:::do_Q(q, jj)
-
-}
 \author{
-Paolo Tagliolato, phD (2021) \email{tagliolato.p@irea.cnr.it}
+Paolo Tagliolato, PhD (2021) \email{tagliolato.p@irea.cnr.it}
 }
 \keyword{internal}

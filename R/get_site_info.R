@@ -15,24 +15,22 @@
 #' which the site is involved.
 #' If `category` "Boundaries" is indicated an `sf` object is returned
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @importFrom httr GET content
+#' @importFrom httr RETRY content
 #' @importFrom jqr jq
 #' @importFrom jsonlite fromJSON stream_in
-#' @importFrom dtplyr lazy_dt
 #' @importFrom dplyr as_tibble left_join
 #' @importFrom utils capture.output
-#' @importFrom stringr str_detect
 #' @importFrom leaflet leaflet addTiles addPolygons
 #' @export
 #' @examples
 #' siteInfo <- get_site_info(
 #'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
-#'   category = c("EnvCharacts", "Affiliations", "Boundaries")
+#'   category = c("EnvCharacts", "Affiliations")
 #' )
 #' siteInfo
 #'
 #' site <- get_site_info(
-#'   deimsid = "https://deims.org/79d6c1df-570f-455f-a929-6cfe5c4ca1e9",
+#'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
 #'   category = "Boundaries"
 #' )
 #' site
@@ -45,20 +43,8 @@ get_site_info <- function(deimsid, category = NA) {
        country: .attributes.geographic.country,
        geoElev: .attributes.geographic.elevation
       }'
-  url <- paste0(
-    "https://deims.org/",
-    "api/sites/",
-    sub("^.+/", "", deimsid)
-  )
-  export <- httr::GET(url = url)
-  jj <- suppressMessages(httr::content(export, "text"))
-  status <- jj %>%
-    jqr::jq(as.character("{status: .errors.status}")) %>%
-    textConnection() %>%
-    jsonlite::stream_in(simplifyDataFrame = TRUE) %>%
-    dtplyr::lazy_dt() %>%
-    dplyr::as_tibble()
-  if (is.na(status)) {
+  jj <- get_id(deimsid, "sites")
+  if (is.na(attr(jj, "status"))) {
     invisible(
       utils::capture.output(
         siteInfo <- dplyr::as_tibble(
@@ -70,7 +56,7 @@ get_site_info <- function(deimsid, category = NA) {
       siteInfo <- siteInfo
     } else {
       # add 'Affiliations' info
-      if (any(stringr::str_detect(category, "Affiliations"))) {
+      if (any(grepl("Affiliations", category))) {
         siteAffil <- get_site_affiliations(deimsid = deimsid)
         siteInfo <- dplyr::left_join(
           siteInfo,
@@ -90,7 +76,7 @@ get_site_info <- function(deimsid, category = NA) {
         siteInfo <- siteInfo
       }
       # add 'Contacts' info
-      if (any(stringr::str_detect(category, "Contacts"))) {
+      if (any(grepl("Contacts", category))) {
         siteConta <- get_site_contact(deimsid = deimsid)
         siteInfo <- dplyr::left_join(
           siteInfo,
@@ -110,7 +96,7 @@ get_site_info <- function(deimsid, category = NA) {
         siteInfo <- siteInfo
       }
       # add 'EnvCharacts' info
-      if (any(stringr::str_detect(category, "EnvCharacts"))) {
+      if (any(grepl("EnvCharacts", category))) {
         siteEnvCh <- get_site_envcharacts(deimsid = deimsid)
         siteInfo <- dplyr::left_join(
           siteInfo,
@@ -130,7 +116,7 @@ get_site_info <- function(deimsid, category = NA) {
         siteInfo <- siteInfo
       }
       # add 'General' info
-      if (any(stringr::str_detect(category, "General"))) {
+      if (any(grepl("General", category))) {
         siteGener <- get_site_general(deimsid = deimsid)
         siteInfo <- dplyr::left_join(
           siteInfo,
@@ -150,7 +136,7 @@ get_site_info <- function(deimsid, category = NA) {
         siteInfo <- siteInfo
       }
       # add 'Infrastructure' info
-      if (any(stringr::str_detect(category, "Infrastructure"))) {
+      if (any(grepl("Infrastructure", category))) {
         siteInfra <- get_site_infrastructure(deimsid = deimsid)
         siteInfo <- dplyr::left_join(
           siteInfo,
@@ -170,7 +156,7 @@ get_site_info <- function(deimsid, category = NA) {
         siteInfo <- siteInfo
       }
       # add 'Parameters' info
-      if (any(stringr::str_detect(category, "Parameters"))) {
+      if (any(grepl("Parameters", category))) {
         siteParam <- get_site_parameters(deimsid = deimsid)
         siteInfo <- dplyr::left_join(
           siteInfo,
@@ -190,7 +176,7 @@ get_site_info <- function(deimsid, category = NA) {
         siteInfo <- siteInfo
       }
       # add 'RelateRes' info
-      if (any(stringr::str_detect(category, "RelateRes"))) {
+      if (any(grepl("RelateRes", category))) {
         siteRelat <- get_site_related_resources(deimsid = deimsid)
         siteInfo <- dplyr::left_join(
           siteInfo,
@@ -210,7 +196,7 @@ get_site_info <- function(deimsid, category = NA) {
         siteInfo <- siteInfo
       }
       # add 'ResearchTop' info
-      if (any(stringr::str_detect(category, "ResearchTop"))) {
+      if (any(grepl("ResearchTop", category))) {
         siteResea <- get_site_research_topics(deimsid = deimsid)
         siteInfo <- dplyr::left_join(
           siteInfo,
@@ -230,7 +216,7 @@ get_site_info <- function(deimsid, category = NA) {
         siteInfo <- siteInfo
       }
       # add 'Boundaries' info
-      if (any(stringr::str_detect(category, "Boundaries"))) {
+      if (any(grepl("Boundaries", category))) {
         siteBound <- get_site_boundaries(deimsid = deimsid)
         if (!is.null(siteBound)) {
           siteInfo <- dplyr::left_join(

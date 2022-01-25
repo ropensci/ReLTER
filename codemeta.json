@@ -1,8 +1,5 @@
 {
-  "@context": [
-    "https://doi.org/10.5063/schema/codemeta-2.0",
-    "http://schema.org"
-  ],
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "ReLTER",
   "description": "ReLTER provides access to DEIMS-SDR (https://deims.org/),\n    and allows interaction with data and software implemented by eLTER\n    Research Infrastructure (RI) thus improving data sharing among European \n    LTER projects.\n    ReLTER uses the R language to access and interact with the DEIMS-SDR\n    archive of information shared by the Long Term Ecological Research (LTER)\n    network. This package grew within eLTER H2020 as a major project that will\n    help advance the development of European Long-Term Ecosystem Research\n    Infrastructures (eLTER RI - https://elter-ri.eu).\n    The ReLTER package functions in particular allow to:\n    - retrieve the information about entities (e.g. sites, datasets, and\n    activities) shared by DEIMS-SDR (see e.g. get_site_info function);\n    - interact with the [ODSEurope](maps.opendatascience.eu) managed by members\n    of the [Geo-harmonizer](https://opendatascience.eu/geoharmonizer-project/)\n    project starting with the dataset shared by [DEIMS-SDR](https://deims.org/)\n    (see e.g. [get_site_ODS](https://oggioniale.github.io/ReLTER/reference/get_site_ODS.html)\n    function);\n    - use the eLTER site informations to download and crop geospatial data\n    from other platforms (see e.g. get_site_ODS function);\n    - improve the quality of the dataset (see e.g. get_id_worms).\n    Functions currently implemented are derived from discussions of the\n    needs among the eLTER users community.\n    The ReLTER package will continue to follow the progress of eLTER-RI\n    and evolve, adding new tools and improvements as required.",
@@ -16,7 +13,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.0.3 (2020-10-10)",
+  "runtimePlatform": "R version 4.1.2 (2021-11-01)",
   "author": [
     {
       "@type": "Person",
@@ -38,6 +35,13 @@
       "familyName": "Tagliolato",
       "email": "tagliolato.a@irea.cnr.it",
       "@id": "https://orcid.org/0000-0002-0261-313X"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Luigi",
+      "familyName": "Ranghetti",
+      "email": "luigi@ranghetti.info",
+      "@id": "https://orcid.org/0000-0001-6207-5188"
     }
   ],
   "contributor": [
@@ -54,9 +58,15 @@
       "familyName": "Tagliolato",
       "email": "tagliolato.a@irea.cnr.it",
       "@id": "https://orcid.org/0000-0002-0261-313X"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Luigi",
+      "familyName": "Ranghetti",
+      "email": "luigi@ranghetti.info",
+      "@id": "https://orcid.org/0000-0001-6207-5188"
     }
   ],
-  "copyrightHolder": {},
   "funder": [
     {
       "@type": "Person",
@@ -114,6 +124,18 @@
     },
     {
       "@type": "SoftwareApplication",
+      "identifier": "ISOcodes",
+      "name": "ISOcodes",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=ISOcodes"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "testthat",
       "name": "testthat",
       "version": ">= 3.0.0",
@@ -126,27 +148,14 @@
       "sameAs": "https://CRAN.R-project.org/package=testthat"
     }
   ],
-  "softwareRequirements": [
-    {
+  "softwareRequirements": {
+    "1": {
       "@type": "SoftwareApplication",
       "identifier": "R",
       "name": "R",
       "version": ">= 3.5.0"
     },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "ISOcodes",
-      "name": "ISOcodes",
-      "version": ">= 2021.02.24",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=ISOcodes"
-    },
-    {
+    "2": {
       "@type": "SoftwareApplication",
       "identifier": "RColorBrewer",
       "name": "RColorBrewer",
@@ -159,7 +168,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=RColorBrewer"
     },
-    {
+    "3": {
       "@type": "SoftwareApplication",
       "identifier": "dplyr",
       "name": "dplyr",
@@ -172,7 +181,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=dplyr"
     },
-    {
+    "4": {
       "@type": "SoftwareApplication",
       "identifier": "dtplyr",
       "name": "dtplyr",
@@ -185,7 +194,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=dtplyr"
     },
-    {
+    "5": {
       "@type": "SoftwareApplication",
       "identifier": "ggforce",
       "name": "ggforce",
@@ -198,7 +207,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=ggforce"
     },
-    {
+    "6": {
       "@type": "SoftwareApplication",
       "identifier": "ggplot2",
       "name": "ggplot2",
@@ -211,19 +220,19 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=ggplot2"
     },
-    {
+    "7": {
       "@type": "SoftwareApplication",
       "identifier": "grDevices",
       "name": "grDevices",
       "version": ">= 4.0.3"
     },
-    {
+    "8": {
       "@type": "SoftwareApplication",
       "identifier": "grid",
       "name": "grid",
       "version": ">= 3.5.1"
     },
-    {
+    "9": {
       "@type": "SoftwareApplication",
       "identifier": "httr",
       "name": "httr",
@@ -236,7 +245,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=httr"
     },
-    {
+    "10": {
       "@type": "SoftwareApplication",
       "identifier": "jqr",
       "name": "jqr",
@@ -249,7 +258,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=jqr"
     },
-    {
+    "11": {
       "@type": "SoftwareApplication",
       "identifier": "jsonlite",
       "name": "jsonlite",
@@ -262,7 +271,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=jsonlite"
     },
-    {
+    "12": {
       "@type": "SoftwareApplication",
       "identifier": "leaflet",
       "name": "leaflet",
@@ -275,7 +284,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=leaflet"
     },
-    {
+    "13": {
       "@type": "SoftwareApplication",
       "identifier": "magrittr",
       "name": "magrittr",
@@ -288,20 +297,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=magrittr"
     },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "mapview",
-      "name": "mapview",
-      "version": ">= 2.9.0",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=mapview"
-    },
-    {
+    "14": {
       "@type": "SoftwareApplication",
       "identifier": "qrcode",
       "name": "qrcode",
@@ -314,7 +310,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=qrcode"
     },
-    {
+    "15": {
       "@type": "SoftwareApplication",
       "identifier": "raster",
       "name": "raster",
@@ -327,7 +323,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=raster"
     },
-    {
+    "16": {
       "@type": "SoftwareApplication",
       "identifier": "rgeos",
       "name": "rgeos",
@@ -340,7 +336,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rgeos"
     },
-    {
+    "17": {
       "@type": "SoftwareApplication",
       "identifier": "rosm",
       "name": "rosm",
@@ -353,20 +349,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rosm"
     },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "scales",
-      "name": "scales",
-      "version": ">= 1.1.1",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=scales"
-    },
-    {
+    "18": {
       "@type": "SoftwareApplication",
       "identifier": "sf",
       "name": "sf",
@@ -379,20 +362,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=sf"
     },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "stringr",
-      "name": "stringr",
-      "version": ">= 1.4.0",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=stringr"
-    },
-    {
+    "19": {
       "@type": "SoftwareApplication",
       "identifier": "taxize",
       "name": "taxize",
@@ -405,11 +375,10 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=taxize"
     },
-    {
+    "20": {
       "@type": "SoftwareApplication",
       "identifier": "terra",
       "name": "terra",
-      "version": "= 1.4-11",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -418,7 +387,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=terra"
     },
-    {
+    "21": {
       "@type": "SoftwareApplication",
       "identifier": "tibble",
       "name": "tibble",
@@ -431,7 +400,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=tibble"
     },
-    {
+    "22": {
       "@type": "SoftwareApplication",
       "identifier": "tmap",
       "name": "tmap",
@@ -444,13 +413,13 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=tmap"
     },
-    {
+    "23": {
       "@type": "SoftwareApplication",
       "identifier": "utils",
       "name": "utils",
       "version": ">= 4.0.3"
     },
-    {
+    "24": {
       "@type": "SoftwareApplication",
       "identifier": "waffle",
       "name": "waffle",
@@ -463,7 +432,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=waffle"
     },
-    {
+    "25": {
       "@type": "SoftwareApplication",
       "identifier": "worrms",
       "name": "worrms",
@@ -476,7 +445,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=worrms"
     },
-    {
+    "26": {
       "@type": "SoftwareApplication",
       "identifier": "xml2",
       "name": "xml2",
@@ -489,7 +458,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=xml2"
     },
-    {
+    "27": {
       "@type": "SoftwareApplication",
       "identifier": "xslt",
       "name": "xslt",
@@ -501,12 +470,38 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=xslt"
+    },
+    "SystemRequirements": null
+  },
+  "fileSize": "33132.829KB",
+  "citation": [
+    {
+      "@type": "CreativeWork",
+      "datePublished": "2022",
+      "author": [
+        {
+          "@type": "Person",
+          "givenName": "Alessandro",
+          "familyName": "Oggioni"
+        },
+        {
+          "@type": "Person",
+          "givenName": "Micha",
+          "familyName": "Silver"
+        },
+        {
+          "@type": "Person",
+          "givenName": "Luigi",
+          "familyName": "Ranghetti"
+        },
+        {
+          "@type": "Person",
+          "givenName": "Paolo",
+          "familyName": "Tagliolato"
+        }
+      ],
+      "name": "oggioniale/ReLTER: ReLTER v1.0.0",
+      "description": "R package version v1.0.0"
     }
-  ],
-  "releaseNotes": "https://github.com/oggioniale/ReLTER/blob/master/NEWS.md",
-  "fileSize": "5361.797KB",
-  "developmentStatus": "https://www.repostatus.org/#active",
-  "citation": [],
-  "readme": "https://github.com/oggioniale/ReLTER/blob/main/README.md",
-  "contIntegration": "https://github.com/oggioniale/ReLTER/actions"
+  ]
 }

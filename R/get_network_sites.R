@@ -14,6 +14,7 @@
 #' @importFrom sf st_as_sf st_is_valid
 #' @importFrom dplyr select as_tibble
 #' @importFrom leaflet leaflet addTiles addMarkers
+#' @importFrom httr RETRY content
 #' @export
 #' @examples
 #' \dontrun{
@@ -29,11 +30,11 @@ get_network_sites <- function(networkDEIMSID) {
   url <- paste0("https://deims.org/",
                 "api/sites?network=",
                 sub("^.+/", "", networkDEIMSID))
-  export <- httr::GET(url = url)
+  export <- httr::RETRY("GET", url = url, times = 5)
   lterNetworkSitesCoords <- jsonlite::fromJSON(
-    httr::content(export, as="text", encoding = "UTF-8"))
-  
-  lterNetworkSitesCoords = dplyr::as_tibble(lterNetworkSitesCoords)
+    httr::content(export, as = "text", encoding = "UTF-8"))
+
+  lterNetworkSitesCoords <- dplyr::as_tibble(lterNetworkSitesCoords)
   if (length(lterNetworkSitesCoords) != 0) {
     lterSitesNetworkPointDEIMS <- sf::st_as_sf(
       lterNetworkSitesCoords,
@@ -59,7 +60,7 @@ get_network_sites <- function(networkDEIMSID) {
     } else {
       message("\n----\nThe maps cannot be created because the coordinates,
 provided in DEIMS-SDR, have invalid geometry.
-Please check the content (returned by this function) and refer this error 
+Please check the content (returned by this function) and refer this error
 to DEIMS-SDR contact person of the network, citing the Network ID.\n----\n")
       return(lterSitesNetworkPointDEIMS)
     }

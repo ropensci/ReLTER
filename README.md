@@ -77,15 +77,15 @@ tools.
 
 ## :notebook_with_decorative_cover: Citation
 
-To cite `{ReLTER}` please use: Alessandro Oggioni, Micha Silver & Paolo
-Tagliolato. (2021). oggioniale/ReLTER: ReLTER v1.0.0 (1.0.0). Zenodo.
-<https://doi.org/10.5281/zenodo.5576813>
+To cite `{ReLTER}` please use: Alessandro Oggioni, Micha Silver, Luigi
+Ranghetti & Paolo Tagliolato. (2021). oggioniale/ReLTER: ReLTER v1.0.0
+(1.0.0). Zenodo. <https://doi.org/10.5281/zenodo.5576813>
 
 or:
 
 ``` bibtex
 @software{alessandro_oggioni_2021_5576813,
-  author       = {Alessandro Oggioni and Micha Silver and Paolo Tagliolato},
+  author       = {Alessandro Oggioni and Micha Silver and Luigi Ranghetti and Paolo Tagliolato},
   title        = {oggioniale/ReLTER: ReLTER v1.0.0},
   month        = nov,
   year         = 2021,
@@ -134,8 +134,6 @@ siteBoundaries <- ReLTER::get_site_info(
   deimsid = 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe',
   category = "Boundaries"
 )
-#>  Found 1 records... Imported 1 records. Simplifying...
-#>  Found 1 records... Imported 1 records. Simplifying...
 leaflet::leaflet(siteBoundaries) %>% 
  leaflet::addTiles() %>% 
  leaflet::addPolygons()
@@ -192,7 +190,6 @@ specific datasets shared through [DEIMS-SDR](https://deims.org/).
 
 ``` r
 tDataset <- ReLTER::get_dataset_info(datasetid = "https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef")
-#>  Found 1 records... Imported 1 records. Simplifying...
 leaflet::leaflet(tDataset) %>% 
  leaflet::addTiles() %>% 
  leaflet::addPolygons()
@@ -233,8 +230,6 @@ tSiteRelatedResources <- ReLTER::get_site_info(
   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
   category = "RelateRes"
 )
-#>  Found 1 records... Imported 1 records. Simplifying...
-#>  Found 1 records... Imported 1 records. Simplifying...
 tSiteRelatedResources$relatedResources[[1]]
 #>                                                                              relatedResourcesTitle
 #> 1 Biovolume of Phytoplankton in Lake Maggiore site code  IT_SI001137_within the period 1981 - 2010
@@ -274,8 +269,6 @@ representation.
 ReLTER::produce_site_parameters_waffle(
   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
 )
-#>  Found 1 records... Imported 1 records. Simplifying...
-#>  Found 1 records... Imported 1 records. Simplifying...
 ```
 
 <img src="man/figures/README-exampleproduce_site_parameters_waffle-1.png" width="100%" />
@@ -283,17 +276,17 @@ ReLTER::produce_site_parameters_waffle(
     #> # A tibble: 11 × 4
     #>    parameterGroups              n   freq label
     #>    <chr>                    <int>  <dbl> <chr>
-    #>  1 agricultural parameter       1 0.0105 1.1% 
-    #>  2 atmospheric parameter       14 0.147  14.7%
-    #>  3 biological parameter         8 0.0842 8.4% 
-    #>  4 chemical parameter          24 0.253  25.3%
-    #>  5 ecosystem parameter         23 0.242  24.2%
-    #>  6 genetic parameter            2 0.0211 2.1% 
-    #>  7 landscape parameter          4 0.0421 4.2% 
-    #>  8 physical parameter           1 0.0105 1.1% 
-    #>  9 remote sensing parameter     1 0.0105 1.1% 
-    #> 10 soil parameter               1 0.0105 1.1% 
-    #> 11 water parameter             16 0.168  16.8%
+    #>  1 agricultural parameter       1 0.0105 1%   
+    #>  2 atmospheric parameter       14 0.147  15%  
+    #>  3 biological parameter         8 0.0842 8%   
+    #>  4 chemical parameter          24 0.253  25%  
+    #>  5 ecosystem parameter         23 0.242  24%  
+    #>  6 genetic parameter            2 0.0211 2%   
+    #>  7 landscape parameter          4 0.0421 4%   
+    #>  8 physical parameter           1 0.0105 1%   
+    #>  9 remote sensing parameter     1 0.0105 1%   
+    #> 10 soil parameter               1 0.0105 1%   
+    #> 11 water parameter             16 0.168  17%
 
 ------------------------------------------------------------------------
 
@@ -308,14 +301,10 @@ siteNDVI <- ReLTER::get_site_ODS(
    deimsid = "https://deims.org/d0a8da18-0881-4ebe-bccf-bc4cb4e25701",
    dataset = "ndvi_summer"
 )
-#>  Found 1 records... Imported 1 records. Simplifying...
-#>  Found 1 records... Imported 1 records. Simplifying...
 siteBoundary <- ReLTER::get_site_info(
   deimsid = "https://deims.org/d0a8da18-0881-4ebe-bccf-bc4cb4e25701",
   category = "Boundaries"
 )
-#>  Found 1 records... Imported 1 records. Simplifying...
-#>  Found 1 records... Imported 1 records. Simplifying...
 
 tmap::tmap_mode("view")
 pal <- RColorBrewer::brewer.pal("RdYlGn", n = 5)
@@ -341,6 +330,9 @@ Institute for Electromagnetic Sensing of the Environment - IREA)
 Micha Silver <https://orcid.org/0000-0002-1128-1325> (Ben Gurion
 University - BGU)
 
+Luigi Ranghetti <https:://orcid.org/0000-0001-6207-5188> (CNR, Institute
+for Electromagnetic Sensing of the Environment - IREA)
+
 Paolo Tagliolato <https:://orcid.org/0000-0002-0261-313X> (CNR,
 Institute for Electromagnetic Sensing of the Environment - IREA)
 
@@ -354,3 +346,9 @@ page](https://oggioniale.github.io/ReLTER/authors).
 
 <img src="man/figures/bgu_logo.png" height="80" alt="BGU" />
 <!--a href="https://in.bgu.ac.il/en/"><img src="man/figures/bgu_logo.png" height="40" align="left" /></a-->
+
+## :thumbsup: Acknowledgements
+
+This work has been partially funded from the European Union’s Horizon
+2020 research and innovation programme under the [H2020 eLTER-Plus
+Project](https://elter-ri.eu/elter-plus) grant agreement No 871128.

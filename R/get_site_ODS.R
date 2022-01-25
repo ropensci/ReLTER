@@ -92,24 +92,25 @@ get_site_ODS <- function(deimsid, dataset = "landcover") {
   ndvi_winter <- paste0("lcv/lcv_ndvi_landsat.glad.ard_p50_30m_0..0cm_201912",
                         "_eumap_epsg3035_v1.0.tif")
   full_url <- dplyr::case_when(
-                  dataset == "landcover" ~ paste0(ods_url, landcover),
-                  dataset == "clc2018" ~ paste0(ods_url, clc2018),
-                  dataset == "osm_buildings" ~ paste0(ods_url, osm_buildings),
-                  dataset == "natura2000" ~ paste0(ods_url, natura2000),
-                  dataset == "ndvi_spring" ~ paste0(ods_url, ndvi_spring),
-                  dataset == "ndvi_summer" ~ paste0(ods_url, ndvi_summer),
-                  dataset == "ndvi_autumn" ~ paste0(ods_url, ndvi_autumn),
-                  dataset == "ndvi_winter" ~ paste0(ods_url, ndvi_winter),
-                  TRUE ~ paste("Dataset:", dataset, "unavailable")
-                  )
+                dataset == "landcover" ~ paste0(ods_url, landcover),
+                dataset == "clc2018" ~ paste0(ods_url, clc2018),
+                dataset == "osm_buildings" ~ paste0(ods_url, osm_buildings),
+                dataset == "natura2000" ~ paste0(ods_url, natura2000),
+                dataset == "ndvi_spring" ~ paste0(ods_url, ndvi_spring),
+                dataset == "ndvi_summer" ~ paste0(ods_url, ndvi_summer),
+                dataset == "ndvi_autumn" ~ paste0(ods_url, ndvi_autumn),
+                dataset == "ndvi_winter" ~ paste0(ods_url, ndvi_winter),
+                TRUE ~ paste("Dataset:", dataset, "unavailable")
+              )
   # Make sure `dataset` is among the list of implemented datasets
   if (grepl(pattern = "unavailable", x = full_url, fixed = TRUE)) {
     print(full_url)
     return(NULL)
   }
   # First check that site has a boundary
-  boundary <- ReLTER::get_site_info(deimsid,
-                                    category = "Boundaries"
+  boundary <- ReLTER::get_site_info(
+    deimsid,
+    category = "Boundaries"
   )
   if (is.null(boundary) || !inherits(boundary, "sf")) {
     print("No boundary for requested DEIMS site.")
@@ -118,8 +119,8 @@ get_site_ODS <- function(deimsid, dataset = "landcover") {
   # terra::rast can address a virtual dataset *without* downloading
   ds <- terra::rast(full_url)
   if (is.null(ds) || !inherits(ds, "SpatRaster")) {
-      print("No raster dataset downloaded")
-      return(NULL)
+    print("No raster dataset downloaded")
+    return(NULL)
   }
   # If this is NDVI, rescale back to (-1.0,1.0) range
   if (grep(pattern="ndvi", x=dataset, fixed = TRUE) == 1) {

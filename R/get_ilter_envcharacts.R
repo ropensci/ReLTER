@@ -18,8 +18,8 @@
 #' }
 #'
 ### function get_ilter_envcharacts
-get_ilter_envcharacts <- function(sitesNum = NULL) {
-  if (is.na(sitesNum)) {
+get_ilter_envcharacts <- function(sitesNum = 0) {
+  if (sitesNum == 0) {
     lterILTERSites <- as.list(
       jsonlite::fromJSON("https://deims.org/api/sites")
     )

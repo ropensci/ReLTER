@@ -7,9 +7,8 @@
 #' @return The output of the function is a `tibble` with main features of
 #' the activities in a site, and a `leaflet` map plot.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @importFrom httr GET content
+#' @importFrom httr RETRY content
 #' @importFrom dplyr as_tibble
-#' @importFrom dtplyr lazy_dt
 #' @importFrom utils capture.output
 #' @importFrom sf st_as_sf st_is_valid
 #' @importFrom leaflet leaflet addTiles addPolygons
@@ -27,20 +26,8 @@ get_activity_info <- function(activityid) {
         title: .title,
         boundaries: .attributes.geographic.boundaries
         }"
-  url <- paste0(
-    "https://deims.org/",
-    "api/activities/",
-    sub("^.+/", "", activityid)
-  )
-  export <- httr::GET(url = url)
-  jj <- suppressMessages(httr::content(export, "text"))
-  status <- jj %>%
-    jqr::jq(as.character("{status: .errors.status}")) %>%
-    textConnection() %>%
-    jsonlite::stream_in(simplifyDataFrame = TRUE) %>%
-    dtplyr::lazy_dt() %>%
-    dplyr::as_tibble()
-  if (is.na(status)) {
+  jj <- get_id(activityid, "activities")
+  if (is.na(attr(jj, "status"))) {
     invisible(
       utils::capture.output(
         activity <- dplyr::as_tibble(do_Q(q, jj))
@@ -48,7 +35,7 @@ get_activity_info <- function(activityid) {
     )
     if (!is.null(activity)) {
       if (is.na(activity$boundaries)) {
-        message("\n---- This activity don't contains geo info. ----\n")
+        message("\n---- This activity don't contains geo info. ----\n") # nocov
         geoActivity <- activity
         map <- NULL
       } else {

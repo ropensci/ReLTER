@@ -14,6 +14,10 @@ Authors@R: c(
         person("Paolo", "Tagliolato", email = "tagliolato.a@irea.cnr.it",
           role = c("aut", "ctb"),
           comment = c(ORCID = "0000-0002-0261-313X")
+        ),
+        person("Luigi", "Ranghetti", email = "luigi@ranghetti.info",
+          role = c("aut", "ctb"),
+          comment = c(ORCID = "0000-0001-6207-5188")
         )
       )
 Maintainer: The package maintainer Alessandro Oggioni, phD (2020)
@@ -47,7 +51,6 @@ Encoding: UTF-8
 LazyData: true
 Depends: R (>= 3.5.0)
 Imports: 
-    ISOcodes (>= 2021.02.24),
     RColorBrewer (>= 1.1-2),
     dplyr (>= 1.0.0),
     dtplyr (>= 1.1.0),
@@ -60,14 +63,11 @@ Imports:
     jsonlite (>= 1.7.2),
     leaflet (>= 2.0.3),
     magrittr (>= 2.0.1),
-    mapview (>= 2.9.0),
     qrcode (>= 0.1.3),
     raster (>= 3.3-13),
     rgeos (>= 0.5-3),
     rosm (>= 0.2.5),
-    scales (>= 1.1.1),
     sf (>= 0.9-5),
-    stringr (>= 1.4.0),
     taxize (>= 0.9.97),
     terra,
     tibble (>= 3.0.5),
@@ -81,6 +81,7 @@ Suggests:
     httptest,
     knitr,
     rmarkdown,
+    ISOcodes,
     testthat (>= 3.0.0)
 VignetteBuilder: knitr
 URL: https://github.com/oggioniale/ReLTER

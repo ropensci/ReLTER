@@ -34,7 +34,10 @@
 #'
 #' # We perform a query from the `table` in order to associate the taxon
 #' # identifier (LSID) to the list of species present in the thirth column.
-#' taxon_id_pesi(table, 3)
+#' taxon_id_pesi(
+#'   table = table,
+#'   taxaColumn = 3
+#' )
 #' }
 #'
 #' # An example to export dataset producted by this function is:
@@ -88,8 +91,10 @@ taxon_id_pesi <- function(table, taxaColumn) {
   table <- as.list(table)
   i <- 1
   while (i <= length(table[[taxaColumn]])) {
-    a <- taxize::eubon_search(query = table[[taxaColumn]][i],
-                              providers = "pesi")
+    a <- taxize::eubon_search(
+      query = table[[taxaColumn]][i],
+      providers = "pesi"
+    )
     if (length(a) == 0) {
       i <- i + 1
     } else if (length(a[[1]]) == 1) {

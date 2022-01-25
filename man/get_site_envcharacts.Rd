@@ -22,13 +22,6 @@ and vegetation.
 This function obtains Environmental Characteristics
 of an eLTER site through the DEIMS-SDR sites API.
 }
-\examples{
-tSiteEnvCharacts <- get_site_envcharacts(
-  deimsid = "https://deims.org/17210eba-d832-4759-89fa-9ff127cbdf6e"
-)
-tSiteEnvCharacts
-
-}
 \author{
 Alessandro Oggioni, phD (2021) \email{oggioni.a@irea.cnr.it}
 }

@@ -32,6 +32,8 @@
 </script>
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -44,7 +46,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ReLTER</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0</span>
       </span>
     </div>
 
@@ -72,13 +74,13 @@
   </a>
 </li>
 <li>
-  <a href="https://www.cnr.it/people/alessandro.oggioni">
+  <a href="https://www.cnr.it/people/alessandro.oggioni" class="external-link">
     <span class="fa fa-user"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://github.com/oggioniale/ReLTER/">
+  <a href="https://github.com/oggioniale/ReLTER/" class="external-link">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -93,39 +95,37 @@
 
       
 
-      </header><script src="ReLTER_files/header-attrs-2.11/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>ReLTER</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/oggioniale/ReLTER/blob/master/vignettes/ReLTER.Rmd"><code>vignettes/ReLTER.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/oggioniale/ReLTER/blob/HEAD/vignettes/ReLTER.Rmd" class="external-link"><code>vignettes/ReLTER.Rmd</code></a></small>
       <div class="hidden name"><code>ReLTER.Rmd</code></div>
 
     </div>
 
     
     
-<div id="description-of-relter" class="section level2">
-<h2 class="hasAnchor">
-<a href="#description-of-relter" class="anchor"></a>Description of <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span>
+<div class="section level2">
+<h2 id="description-of-relter">Description of <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span><a class="anchor" aria-label="anchor" href="#description-of-relter"></a>
 </h2>
-<p><span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span> is an R package that: provides access to <a href="https://deims.org/">DEIMS-SDR</a>), allows interact with software implemented by eLTER Research Infrastructure (RI) and improves the data/information shared by them. <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span> is a R package devoted to access, interact and improve the information and the data shared by Long Term Ecological Research (LTER) network. This package is born within eLTER H2020 major project that will help advance the development of European Long-Term Ecosystem Research Infrastructures (<a href="https://elter-ri.eu">eLTER RI</a>).</p>
+<p><span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span> is an R package that: provides access to <a href="https://deims.org/" class="external-link">DEIMS-SDR</a>), allows interact with software implemented by eLTER Research Infrastructure (RI) and improves the data/information shared by them. <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span> is a R package devoted to access, interact and improve the information and the data shared by Long Term Ecological Research (LTER) network. This package is born within eLTER H2020 major project that will help advance the development of European Long-Term Ecosystem Research Infrastructures (<a href="https://elter-ri.eu" class="external-link">eLTER RI</a>).</p>
 <p>The <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span> package functions in particular allow to:</p>
 <ul>
-<li><p>retrive the information about entities (e.g. sites, datasets, and activities) shared by <a href="https://deims.org/">DEIMS-SDR</a> (see e.g. <a href="https://oggioniale.github.io/ReLTER/reference/get_site_info.html">get_site_info function</a>);</p></li>
+<li><p>retrive the information about entities (e.g. sites, datasets, and activities) shared by <a href="https://deims.org/" class="external-link">DEIMS-SDR</a> (see e.g. <a href="https://oggioniale.github.io/ReLTER/reference/get_site_info.html">get_site_info function</a>);</p></li>
 <li><p>elaborate the information of single site or merge info from national network sites or entire International LTER (ILTER) in order to provide maps, figures, graphs etc (see e.g. <a href="https://oggioniale.github.io/ReLTER/reference/get_network_sites.html">get_network_sites</a>, <a href="https://oggioniale.github.io/ReLTER/reference/produce_site_map.html">produce_site_map</a> or <a href="https://oggioniale.github.io/ReLTER/reference/produce_site_parameters_pie.html">produce_site_parameters_pie</a> functions);</p></li>
-<li><p>interact with the <a href="maps.opendatascience.eu">ODSEurope</a> managed by members of the <a href="https://opendatascience.eu/geoharmonizer-project/">Geo-harmonizer</a> project starting with the dataset shared by <a href="https://deims.org/">DEIMS-SDR</a> (see e.g. <a href="https://oggioniale.github.io/ReLTER/reference/get_site_ODS.html">get_site_ODS</a> function);</p></li>
+<li><p>interact with the <a href="maps.opendatascience.eu">ODSEurope</a> managed by members of the <a href="https://opendatascience.eu/geoharmonizer-project/" class="external-link">Geo-harmonizer</a> project starting with the dataset shared by <a href="https://deims.org/" class="external-link">DEIMS-SDR</a> (see e.g. <a href="https://oggioniale.github.io/ReLTER/reference/get_site_ODS.html">get_site_ODS</a> function);</p></li>
 <li><p>improve the quality of the dataset (see e.g. <a href="https://oggioniale.github.io/ReLTER/reference/get_id_worms.html">get_id_worms</a>).</p></li>
 </ul>
 <p>Functions currently implemented are derived from the discussion of the needs declared by eLTER users community.</p>
 <p>The <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span> package shall definitely follow the progress of eLTER-RI infrastructure and evolving with the improvements and develop of new tools.</p>
 </div>
-<div id="citation-of-relter" class="section level2">
-<h2 class="hasAnchor">
-<a href="#citation-of-relter" class="anchor"></a>Citation of <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span>
+<div class="section level2">
+<h2 id="citation-of-relter">Citation of <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span><a class="anchor" aria-label="anchor" href="#citation-of-relter"></a>
 </h2>
-<p>To cite <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span> please use: Alessandro Oggioni, Micha Silver &amp; Paolo Tagliolato. (2021). oggioniale/ReLTER: ReLTER v1.0.0 (1.0.0). Zenodo. <a href="https://doi.org/10.5281/zenodo.5576813" class="uri">https://doi.org/10.5281/zenodo.5576813</a></p>
+<p>To cite <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span> please use: Alessandro Oggioni, Micha Silver &amp; Paolo Tagliolato. (2021). oggioniale/ReLTER: ReLTER v1.0.0 (1.0.0). Zenodo. <a href="https://doi.org/10.5281/zenodo.5576813" class="external-link uri">https://doi.org/10.5281/zenodo.5576813</a></p>
 <p>or:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bibtex"><code class="sourceCode bibtex"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">@software{alessandro_oggioni_2021_5576813,</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">  author       = {Alessandro Oggioni and Micha Silver and Paolo Tagliolato},</span></span>
@@ -138,26 +138,23 @@
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">  url          = {https://doi.org/10.5281/zenodo.5576813}</span></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">}</span></span></code></pre></div>
 </div>
-<div id="documentation-of-relter" class="section level2">
-<h2 class="hasAnchor">
-<a href="#documentation-of-relter" class="anchor"></a>Documentation of <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span>
+<div class="section level2">
+<h2 id="documentation-of-relter">Documentation of <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span><a class="anchor" aria-label="anchor" href="#documentation-of-relter"></a>
 </h2>
 <p>You can visit <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span> website at <a href="https://oggioniale.github.io/ReLTER/">oggioniale.github.io/ReLTER/</a> for obtain documentation on installation, functions description and examples of use.</p>
 </div>
-<div id="installation-of-relter" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation-of-relter" class="anchor"></a>Installation of <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span>
+<div class="section level2">
+<h2 id="installation-of-relter">Installation of <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span><a class="anchor" aria-label="anchor" href="#installation-of-relter"></a>
 </h2>
-<p>You can install the development version of <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span> from <a href="https://github.com/oggioniale/ReLTER">GitHub</a> with:</p>
+<p>You can install the development version of <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span> from <a href="https://github.com/oggioniale/ReLTER" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"oggioniale/ReLTER"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"oggioniale/ReLTER"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="code-of-conduct-of-relter" class="section level2">
-<h2 class="hasAnchor">
-<a href="#code-of-conduct-of-relter" class="anchor"></a>Code of Conduct of <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span>
+<div class="section level2">
+<h2 id="code-of-conduct-of-relter">Code of Conduct of <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span><a class="anchor" aria-label="anchor" href="#code-of-conduct-of-relter"></a>
 </h2>
-<p>Please note that this package is released with a <a href="https://ropensci.org/code-of-conduct/">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
+<p>Please note that this package is released with a <a href="https://ropensci.org/code-of-conduct/" class="external-link">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
   </div>
 
@@ -172,11 +169,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Alessandro Oggioni, Micha Silver, Paolo Tagliolato.</p>
+  <p></p>
+<p>Developed by Alessandro Oggioni, Micha Silver, Paolo Tagliolato, Luigi Ranghetti.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
@@ -184,6 +183,8 @@
 
   
 
+
+  
 
   </body>
 </html>

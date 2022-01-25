@@ -4,42 +4,34 @@
 \alias{taxon_id_worms_refine}
 \title{eLTER taxon_id_worms_refine}
 \usage{
-taxon_id_worms_refine(input, taxaColumn = 1)
+taxon_id_worms_refine(
+  input,
+  taxaColumn = 1,
+  interaction = FALSE,
+  choiceNumber = NULL
+)
 }
 \arguments{
 \item{input}{a `tibble`. The output of taxon_ID_Worms.}
 
 \item{taxaColumn}{a `numeric`. The cardinal number of the column where
 species list is. Default is `1`.}
+
+\item{interaction}{a `boolean`. When `TRUE` the user can interact with
+the choice of one of the proposed matching. Default is `FALSE`.}
+
+\item{choiceNumber}{a `numeric`. The number of selected choice. Default
+is `NULL`. When `NULL` no choice is performed.}
 }
 \value{
-The output of the function is a `tibble` with the refinement of the
-input.
+In interactive mode or when the `choiceNumber` is `NULL` the
+output of the function is a `tibble` with the refinement of the
+input, else the function simply returns the unchanged input.
 }
 \description{
 This function provides a refining of the output of
-function taxon_id_worms.
-}
-\examples{
-\dontrun{
-phytoplankton <- tibble::tibble(
-   ID = c(1, 2, 3, 4, 5, 6, 7),
-   species = c(
-     "Asterionella formosa", "Chrysococcus sp.",
-     "Cryptomonas rostrata", "Dinobryon divergens",
-     "Mallomonas akrokomos", "Melosira varians",
-     "Cryptomonas rostrata"
-   )
-)
-table <- taxon_id_worms(
-  input = phytoplankton,
-  taxaColumn = 2,
-  verbose = TRUE,
-  refine = FALSE
-)
-table
-taxon_id_worms_refine(input = table, taxaColumn = 2)
-}
+function taxon_id_worms. It prints a list of possible matches
+and possibly enable the user to interactively make his choice.
 }
 \author{
 Alessandro Oggioni, phD (2021) \email{oggioni.a@irea.cnr.it}

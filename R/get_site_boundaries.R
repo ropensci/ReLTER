@@ -16,24 +16,11 @@
 #' @importFrom tibble tribble
 #' @importFrom dplyr as_tibble
 #' @importFrom jsonlite fromJSON
-#' @importFrom httr GET content
+#' @importFrom httr RETRY content
 #' @importFrom utils capture.output
 #' @importFrom sf st_as_sf write_sf st_write
 #' @importFrom leaflet leaflet addTiles addPolygons
-#' @importFrom mapview mapshot
-#' @export
 #' @keywords internal
-#' @examples
-#' tSiteBoundaries <- get_site_boundaries(
-#'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
-#' )
-#' tSiteBoundaries
-#'
-#' eisenwurzen <- get_site_boundaries(
-#'   deimsid = "https://deims.org/d0a8da18-0881-4ebe-bccf-bc4cb4e25701",
-#'   show_map = TRUE
-#' )
-#' eisenwurzen
 #'
 ### function get_site_boundaries
 get_site_boundaries <- function(deimsid, show_map = FALSE) {
@@ -41,20 +28,8 @@ get_site_boundaries <- function(deimsid, show_map = FALSE) {
         uri: "\\(.id.prefix)\\(.id.suffix)",
         boundaries: .attributes.geographic.boundaries
        }'
-  url <- paste0(
-    "https://deims.org/",
-    "api/sites/",
-    sub("^.+/", "", deimsid)
-  )
-  export <- httr::GET(url = url)
-  jj <- suppressMessages(httr::content(export, "text"))
-  status <- jj %>%
-    jqr::jq(as.character("{status: .errors.status}")) %>%
-    textConnection() %>%
-    jsonlite::stream_in(simplifyDataFrame = TRUE) %>%
-    dtplyr::lazy_dt() %>%
-    dplyr::as_tibble()
-  if (is.na(status)) {
+  jj <- get_id(deimsid, "sites")
+  if (is.na(attr(jj, "status"))) {
     invisible(
       utils::capture.output(
         boundaries <- dplyr::as_tibble(do_Q(q, jj))

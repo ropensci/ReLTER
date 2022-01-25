@@ -1,16 +1,19 @@
 message("\n---- Test get_site_ODS() ----")
 
 library(testthat)
+
 test_that("Expect error if internet connection is down", {
+  Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
   testthat::expect_error(
     httptest::without_internet(
       result <- ReLTER::get_site_info(
-        deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
+        deimsid = TESTURLSite,
         category = "Boundaries"
       )
     ),
     "GET"
   )
+  Sys.setenv("LOCAL_DEIMS" = test_mode) # restore test mode
 })
 
 skip_if_offline(host = "deims.org")
@@ -35,7 +38,7 @@ for (id in seq_along(deimsids)) {
       if (id == 2) {
         # Mondsee, no boundary available on DEIMS, func should return NULL
         test_that("Function correctly returns NULL for site with no boundary", {
-          ds <- get_site_ODS(
+          ds <- ReLTER::get_site_ODS(
             deimsid = deimsids[id]
           ) # Default dataset is "landcover"
           expect_null(ds)
@@ -51,3 +54,21 @@ for (id in seq_along(deimsids)) {
         }
       }
 }
+
+test_that("full_url with 'unavailable' value", {
+  result <- ReLTER::get_site_ODS(
+    deimsid = "https://deims.org/d0a8da18-0881-4ebe-bccf-bc4cb4e25701",
+    dataset = TRUE
+  )
+  expect_null(result)
+})
+
+test_that("Wrong URL", {
+  Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
+  result <- ReLTER::get_site_ODS(
+    deimsid = "https://wrong.url",
+    dataset = "osm_buildings"
+  )
+  expect_null(result)
+  Sys.setenv("LOCAL_DEIMS" = test_mode) # restore test mode
+})

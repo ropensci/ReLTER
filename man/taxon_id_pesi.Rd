@@ -44,7 +44,10 @@ table <- data.frame(
 
 # We perform a query from the `table` in order to associate the taxon
 # identifier (LSID) to the list of species present in the thirth column.
-taxon_id_pesi(table, 3)
+taxon_id_pesi(
+  table = table,
+  taxaColumn = 3
+)
 }
 
 # An example to export dataset producted by this function is:

@@ -8,3 +8,8 @@
 ^docs$
 ^pkgdown$
 ^xslt$
+^\.github$
+^R_newFunctions$
+^depends\.Rds$
+^figure$
+^miscellaneus$

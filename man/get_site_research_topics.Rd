@@ -19,13 +19,6 @@ site and a list of the research topics handled in this site.
 This function obtains a list of research topics handled
 at an eLTER site through the DEIMS-SDR sites API.
 }
-\examples{
-tSiteResearchTopics <- get_site_research_topics(
-  deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
-)
-tSiteResearchTopics
-
-}
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
 }

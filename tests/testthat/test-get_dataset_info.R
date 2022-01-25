@@ -3,6 +3,7 @@ message("\n---- Test get_dataset_info() ----")
 library(testthat)
 
 test_that("Expect error if internet connection is down", {
+  Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
   testthat::expect_error(
     httptest::without_internet(
       result <- ReLTER::get_dataset_info(
@@ -12,6 +13,7 @@ test_that("Expect error if internet connection is down", {
     ),
     "GET"
   )
+  Sys.setenv("LOCAL_DEIMS" = test_mode) # restore test mode
 })
 
 skip_if_offline(host = "deims.org")
@@ -112,15 +114,19 @@ test_that("Output of dataset function constructs ‘tibble’ as expected", {
 })
 
 test_that("Wrong input (but URL) constructs a NULL object", {
+  Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
   result <- ReLTER::get_dataset_info(
     datasetid = "https://deims.org/dataset/ljhnhbkihubib"
   )
   expect_type(result, "NULL")
+  Sys.setenv("LOCAL_DEIMS" = test_mode) # restore test mode
 })
 
 test_that("Wrong input (not URL) constructs an empty tibble", {
+  Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
   result <- ReLTER::get_dataset_info(datasetid = "ljhnhbkihubib")
   expect_type(result, "NULL")
+  Sys.setenv("LOCAL_DEIMS" = test_mode) # restore test mode
 })
 
 test_that("Output of get dataset information function constructs 'sf' with
@@ -131,4 +137,34 @@ test_that("Output of get dataset information function constructs 'sf' with
   )
   result_valid <- sf::st_is_valid(result)
   expect_true(any(result_valid))
+})
+
+test_that("Verify that 'observationParameters' is NULL", {
+  result <- ReLTER::get_dataset_info(
+    datasetid =
+      "https://deims.org/dataset/3cd76d66-cadc-4d10-9fa7-75fe8d60663c"
+  )
+  expect_equal(
+    result$observationParameters[[1]]$parametersLabel,
+    NA
+  )
+  expect_equal(
+    result$observationParameters[[1]]$parametersUri,
+    NA
+  )
+})
+
+test_that("Verify that 'observationSpecies' is NULL", {
+  result <- ReLTER::get_dataset_info(
+    datasetid =
+      "https://deims.org/dataset/3cd76d66-cadc-4d10-9fa7-75fe8d60663c"
+  )
+  expect_type(
+    result$observationSpecies[[1]]$parametersLabel,
+    "NULL"
+  )
+  expect_equal(
+    any(result$observationSpecies[[1]]$speciesUri),
+    NA
+  )
 })

@@ -8,19 +8,12 @@
 #' site and the affiliations information, such as: networks and projects in
 #' which the site is involved.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @importFrom httr GET content
+#' @importFrom httr RETRY content
 #' @importFrom jqr jq
 #' @importFrom jsonlite stream_in
-#' @importFrom dtplyr lazy_dt
 #' @importFrom dplyr as_tibble
 #' @importFrom utils capture.output
-#' @export
 #' @keywords internal
-#' @examples
-#' tSiteAffiliation <- get_site_affiliations(
-#'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
-#' )
-#' tSiteAffiliation
 #'
 ### function get_site_affiliations
 get_site_affiliations <- function(deimsid) {
@@ -31,20 +24,8 @@ get_site_affiliations <- function(deimsid) {
        geoElev: .attributes.geographic.elevation,
        affiliation: .attributes.affiliation
       }'
-  url <- paste0(
-    "https://deims.org/",
-    "api/sites/",
-    sub("^.+/", "", deimsid)
-  )
-  export <- httr::GET(url = url)
-  jj <- suppressMessages(httr::content(export, "text"))
-  status <- jj %>%
-    jqr::jq(as.character("{status: .errors.status}")) %>%
-    textConnection() %>%
-    jsonlite::stream_in(simplifyDataFrame = TRUE) %>%
-    dtplyr::lazy_dt() %>%
-    dplyr::as_tibble()
-  if (is.na(status)) {
+  jj <- get_id(deimsid, "sites")
+  if (is.na(attr(jj, "status"))) {
     invisible(
       utils::capture.output(
         affiliations <- dplyr::as_tibble(

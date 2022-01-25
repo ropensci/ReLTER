@@ -8,7 +8,6 @@
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom tibble as_tibble
 #' @importFrom dplyr group_by tally mutate filter lag
-#' @importFrom scales percent
 #' @importFrom RColorBrewer brewer.pal
 #' @importFrom ggplot2 theme_minimal theme element_blank element_text ggplot
 #' @importFrom ggplot2 geom_text aes coord_fixed scale_x_continuous
@@ -43,7 +42,7 @@ produce_site_parameters_pie <- function(deimsid) {
       dplyr::tally() %>%
       dplyr::mutate(
         freq = n / sum(n),
-        label = scales::percent(freq),
+        label = paste0(round(freq, 2) * 100, "%"),
         end = 2 * pi * cumsum(freq) / sum(freq),
         start = dplyr::lag(end, default = 0),
         middle = 0.5 * (start + end),

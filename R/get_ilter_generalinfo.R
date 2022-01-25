@@ -25,12 +25,12 @@
 #' # list of the all sites info with ILTER
 #' listOfAllSites <- get_ilter_generalinfo()
 #' length(listOfAllSites[,1])
-#' 
+#'
 #' # example about country name parameter
 #' sitesAustria <- get_ilter_generalinfo(country_name = "Austri")
 #' # (matches Austria, but not Australia)
 #' length(sitesAustria$title)
-#' 
+#'
 #' # example of single site in a country
 #' eisenwurzen <- get_ilter_generalinfo(
 #'   country_name = "Austri",
@@ -40,7 +40,7 @@
 #' # extract DEIMS.Id
 #' eisenwurzen_deimsid <- eisenwurzen$uri
 #' eisenwurzen_deimsid
-#' 
+#'
 #' # example of single site in a country and return only map
 #' get_ilter_generalinfo(
 #'   country_name = "Italy",

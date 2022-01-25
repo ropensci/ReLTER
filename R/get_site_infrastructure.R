@@ -8,16 +8,10 @@
 #' site and infrastructure information where available, such as:
 #' power supply, accessibility, maintenaince interval, etc.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @importFrom httr GET content
+#' @importFrom httr RETRY content
 #' @importFrom utils capture.output
 #' @importFrom dplyr as_tibble
-#' @export
 #' @keywords internal
-#' @examples
-#' tSiteInfrastructure <- get_site_infrastructure(
-#'   deimsid = "https://deims.org/17210eba-d832-4759-89fa-9ff127cbdf6e"
-#' )
-#' tSiteInfrastructure
 #'
 ### function get_site_infrastructure
 get_site_infrastructure <- function(deimsid) {
@@ -28,20 +22,8 @@ get_site_infrastructure <- function(deimsid) {
        geoElev: .attributes.geographic.elevation,
        generalInfo: .attributes.infrastructure
       }'
-  url <- paste0(
-    "https://deims.org/",
-    "api/sites/",
-    sub("^.+/", "", deimsid)
-  )
-  export <- httr::GET(url = url)
-  jj <- suppressMessages(httr::content(export, "text"))
-  status <- jj %>%
-    jqr::jq(as.character("{status: .errors.status}")) %>%
-    textConnection() %>%
-    jsonlite::stream_in(simplifyDataFrame = TRUE) %>%
-    dtplyr::lazy_dt() %>%
-    dplyr::as_tibble()
-  if (is.na(status)) {
+  jj <- get_id(deimsid, "sites")
+  if (is.na(attr(jj, "status"))) {
     invisible(
       utils::capture.output(
         infrastructure <- dplyr::as_tibble(
