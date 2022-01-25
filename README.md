@@ -276,17 +276,17 @@ ReLTER::produce_site_parameters_waffle(
     #> # A tibble: 11 × 4
     #>    parameterGroups              n   freq label
     #>    <chr>                    <int>  <dbl> <chr>
-    #>  1 agricultural parameter       1 0.0105 1.1% 
-    #>  2 atmospheric parameter       14 0.147  14.7%
-    #>  3 biological parameter         8 0.0842 8.4% 
-    #>  4 chemical parameter          24 0.253  25.3%
-    #>  5 ecosystem parameter         23 0.242  24.2%
-    #>  6 genetic parameter            2 0.0211 2.1% 
-    #>  7 landscape parameter          4 0.0421 4.2% 
-    #>  8 physical parameter           1 0.0105 1.1% 
-    #>  9 remote sensing parameter     1 0.0105 1.1% 
-    #> 10 soil parameter               1 0.0105 1.1% 
-    #> 11 water parameter             16 0.168  16.8%
+    #>  1 agricultural parameter       1 0.0105 1%   
+    #>  2 atmospheric parameter       14 0.147  15%  
+    #>  3 biological parameter         8 0.0842 8%   
+    #>  4 chemical parameter          24 0.253  25%  
+    #>  5 ecosystem parameter         23 0.242  24%  
+    #>  6 genetic parameter            2 0.0211 2%   
+    #>  7 landscape parameter          4 0.0421 4%   
+    #>  8 physical parameter           1 0.0105 1%   
+    #>  9 remote sensing parameter     1 0.0105 1%   
+    #> 10 soil parameter               1 0.0105 1%   
+    #> 11 water parameter             16 0.168  17%
 
 ------------------------------------------------------------------------
 
@@ -347,6 +347,8 @@ page](https://oggioniale.github.io/ReLTER/authors).
 <img src="man/figures/bgu_logo.png" height="80" alt="BGU" />
 <!--a href="https://in.bgu.ac.il/en/"><img src="man/figures/bgu_logo.png" height="40" align="left" /></a-->
 
-## :thumbsup: Acknowledgements 
+## :thumbsup: Acknowledgements
 
-This work has been partially funded from the European Union’s Horizon 2020 research and innovation programme under the [H2020 eLTER-Plus Project](https://elter-ri.eu/elter-plus) grant agreement No 871128.
+This work has been partially funded from the European Union’s Horizon
+2020 research and innovation programme under the [H2020 eLTER-Plus
+Project](https://elter-ri.eu/elter-plus) grant agreement No 871128.

@@ -93,8 +93,14 @@ get_dataset_info <- function(datasetid) {
         geoDataset_valid <- sf::st_is_valid(geoDataset)
         if (any(geoDataset_valid)) {
           map <- leaflet::leaflet(geoDataset) %>%
-            leaflet::addTiles() %>%
-            leaflet::addPolygons()
+            leaflet::addTiles()
+          if (sf::st_geometry_type(geoDataset) == "POINT") {
+            map <- map %>%
+              leaflet::addMarkers()
+          } else if (sf::st_geometry_type(geoDataset) == "POLYGON") {
+            map <- map %>%
+              leaflet::addPolygons()
+          }
           print(map)
           geoDataset
         } else {

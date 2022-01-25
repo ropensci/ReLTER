@@ -35,7 +35,7 @@ get_activity_info <- function(activityid) {
     )
     if (!is.null(activity)) {
       if (is.na(activity$boundaries)) {
-        message("\n---- This activity don't contains geo info. ----\n")
+        message("\n---- This activity don't contains geo info. ----\n") # nocov
         geoActivity <- activity
         map <- NULL
       } else {

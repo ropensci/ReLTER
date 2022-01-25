@@ -42,7 +42,7 @@ produce_site_parameters_pie <- function(deimsid) {
       dplyr::tally() %>%
       dplyr::mutate(
         freq = n / sum(n),
-        label = paste0(round(freq,2)*100,"%"),
+        label = paste0(round(freq, 2) * 100, "%"),
         end = 2 * pi * cumsum(freq) / sum(freq),
         start = dplyr::lag(end, default = 0),
         middle = 0.5 * (start + end),

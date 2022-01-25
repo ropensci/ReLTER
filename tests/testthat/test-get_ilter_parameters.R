@@ -33,3 +33,15 @@ test_that("Wrong input (not a double) constructs an empty tibble", {
   result <- ReLTER::get_ilter_parameters(sitesNum = "aa")
   expect_type(result, "NULL")
 })
+
+test_that("If sitesNum is 0", {
+  Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
+  lterILTERSites <- as.list(
+    jsonlite::fromJSON("https://deims.org/api/sites")
+  )
+  number_sites <- length(lterILTERSites$title)
+  result <- ReLTER::get_ilter_parameters()
+  expect_s3_class(result, "tbl_df")
+  expect_true(ncol(result) == 2)
+  Sys.setenv("LOCAL_DEIMS" = test_mode) # restore test mode
+})

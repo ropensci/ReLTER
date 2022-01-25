@@ -11,3 +11,11 @@ test_that("Output of site affiliation function constructs ‘qr_code’ as
   )
   expect_s3_class(result, "qr_code")
 })
+
+test_that("do_plot is TRUE", {
+  result <- ReLTER::produce_site_qrcode(
+    deimsid = TESTURLSite,
+    do_plot = TRUE
+  )
+  expect_s3_class(result, "qr_code")
+})
