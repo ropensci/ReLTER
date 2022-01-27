@@ -96,12 +96,6 @@ jobs:
 
       - uses: r-lib/actions/check-r-package@v1
       
-      - name: Install dependencies
-        run: |
-          install.packages(c("devtools"))
-          devtools::install_dev_deps(dependencies = TRUE)
-        shell: Rscript {0}
-        
       - name: Test coverage
-        run: devtools::test_coverage()
+        run: covr::codecov()
         shell: Rscript {0}
