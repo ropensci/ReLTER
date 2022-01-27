@@ -227,9 +227,22 @@ get_site_MODIS <- function(deimsid,
 
   ## Now plot ##
   #-----------------------------#
+  # Directory for time series outputs
+  create_ok <- FALSE
+  if (is.character(save_ts_dir) & !is.na(save_ts_dir)) {
+      # Create directory and save modis_ts to CSV
+      if (!dir.exists(save_ts_dir)) {
+        create_ok <- dir.create(save_ts_dir, recursive = TRUE)
+      }
+  } else {  # No time series directory specified, save to out_folder
+      save_ts_dir <- file.path(out_folder, "Time_Series")
+      create_ok <- dir.create(save_ts_dir, recursive = TRUE)
+  }
   # Prepare for multipanel plot
   num_plots <- length(modis_ts_list)
-  dev.new(width=7, height=5*num_plots)
+  plot_file <- paste("time_series", paste(bands, collapse="_"), sep="_")
+  plot_path <- file.path(save_ts_dir, paste0(plot_file, ".png"))
+  png(filename=plot_path, width=640, height=400*num_plots)
   par(mfcol = c(num_plots, 1))
   for (p in seq_along(1:num_plots)) {
     band_ts = modis_ts_list[[p]]
@@ -247,16 +260,6 @@ get_site_MODIS <- function(deimsid,
          lwd=3, main=ttl, xlab = "Image date", ylab=b)
     
     # Save this band time series to CSV
-    create_ok <- FALSE
-    if (is.character(save_ts_dir) & !is.na(save_ts_dir)) {
-      # Create directory and save modis_ts to CSV
-      if (!dir.exists(save_ts_dir)) {
-        create_ok <- dir.create(save_ts_dir, recursive = TRUE)
-      }
-    } else {  # No time series directory specified, save to out_folder
-      save_ts_dir <- file.path(out_folder, "Time_Series")
-      create_ok <- dir.create(save_ts_dir, recursive = TRUE)
-    }
     if (dir.exists(save_ts_dir) | create_ok) {
         output_file = paste0(paste("MODIS", b, fr_dte, to_dte,
                                    sep="_"),
@@ -269,6 +272,7 @@ get_site_MODIS <- function(deimsid,
     }
   }
   dev.off()
+  message("Saving time series plot to: ", plot_path)
 
   return(modis_stk)
 }
