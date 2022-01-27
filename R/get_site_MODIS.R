@@ -268,6 +268,7 @@ get_site_MODIS <- function(deimsid,
         message("\nCould not write time series to: ", save_ts_dir, "\n")
     }
   }
+  dev.off()
 
   return(modis_stk)
 }
