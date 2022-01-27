@@ -83,7 +83,7 @@ Suggests:
     rmarkdown,
     ISOcodes,
     testthat (>= 3.0.0),
-    covr
+    devtools
 VignetteBuilder: knitr
 URL: https://github.com/oggioniale/ReLTER
 BugReports: https://github.com/oggioniale/ReLTER/issues
