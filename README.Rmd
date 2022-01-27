@@ -35,6 +35,7 @@ knitr::opts_chunk$set(
 <!-- [![](https://badges.ropensci.org/<issue_id>_status.svg)](https://github.com/ropensci/software-review/issues/<issue_id>) -->
 <!-- where issue_id is the number of the issue in the software-review repository. -->
 [![R-CMD-check](https://github.com/oggioniale/ReLTER/workflows/R-CMD-check/badge.svg)](https://github.com/oggioniale/ReLTER/actions)
+[![codecov](https://codecov.io/gh/oggioniale/ReLTER/branch/dev/graph/badge.svg)](https://codecov.io/gh/oggioniale/ReLTER)
 <!-- badges: end -->
 
 `{ReLTER}` is an R package that: provides access to [DEIMS-SDR](https://deims.org/), allows interact with software implemented by eLTER Research Infrastructure (RI) and improves the data/information shared by them.
