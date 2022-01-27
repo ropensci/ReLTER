@@ -67,8 +67,7 @@ test_that("Check for invalid dates", {
 # Test for successful download, function returns terra::SpatRaster
 test_that("After successfull download, Function returns SpatRaster", {
   # Load username and password from sysdata.rda
-  #creds <- ReLTER:::creds
-  load("/home/micha/work/EU_Projects/ReLTER/R/sysdata.rda")
+  creds <- ReLTER:::creds
   ds <- get_site_MODIS(
           deimsid = "https://deims.org/45722713-80e3-4387-a47b-82c97a6ef62b",
           earthdata_user = creds$user,
