@@ -123,7 +123,7 @@ get_site_ODS <- function(deimsid, dataset = "landcover") {
     return(NULL)
   }
   # If this is NDVI, rescale back to (-1.0,1.0) range
-  if (grep(pattern="ndvi", x=dataset, fixed = TRUE) == 1) {
+  if (length(grep(pattern="ndvi", x=dataset, fixed = TRUE)) > 0) {
     ds = (ds-100)/100.0
   }
   # Crop and mask the raster dataset to the boundary polygon
