@@ -122,15 +122,15 @@ get_site_ODS <- function(deimsid, dataset = "landcover") {
     print("No raster dataset downloaded")
     return(NULL)
   }
-  # If this is NDVI, rescale back to (-1.0,1.0) range
-  if (length(grep(pattern="ndvi", x=dataset, fixed = TRUE)) > 0) {
-    ds = (ds-100)/100.0
-  }
   # Crop and mask the raster dataset to the boundary polygon
   # The boundary must be transformed first
   # to the European CRS (EPSG:3035) used by ODS
   boundary <- sf::st_transform(boundary, terra::crs(ds))
   boundary <- terra::vect(boundary)
   ds_site <- terra::mask(terra::crop(ds, boundary), boundary)
+  # If this is NDVI, rescale back to (-1.0,1.0) range
+  if (length(grep(pattern="ndvi", x=dataset, fixed = TRUE)) > 0) {
+    ds_site = (ds_site - 100) / 100.0
+  }
   return(ds_site)
 }

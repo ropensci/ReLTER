@@ -242,7 +242,7 @@ get_site_MODIS <- function(deimsid,
   num_plots <- length(modis_ts_list)
   plot_file <- paste("time_series", paste(bands, collapse="_"), sep="_")
   plot_path <- file.path(save_ts_dir, paste0(plot_file, ".png"))
-  png(filename=plot_path, width=640, height=400*num_plots)
+  png(filename=plot_path, width=400, height=250*num_plots)
   par(mfcol = c(num_plots, 1))
   for (p in seq_along(1:num_plots)) {
     band_ts = modis_ts_list[[p]]
