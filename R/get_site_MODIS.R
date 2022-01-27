@@ -1,8 +1,8 @@
 #' @title eLTER get_site_MODIS function
-#' @description This function both acquires MODIS products from
-#' MODIS Land Products archive,
-#' then crops to an eLTER site boundary, and plots a time series of the MODIS
-#' derived variable averaged over the eLTER site.
+#' @description This function acquires MODIS products
+#' from MODIS Land Products archive,
+#' crops to an eLTER site boundary, and
+#' plots a time series of the MODIS derived variable averaged over the eLTER site.
 #'
 #' @param deimsid  a `character`. The DEIMS ID of the site from
 #' DEIMS-SDR website. More information about DEIMS ID from:
@@ -21,8 +21,9 @@
 #' Default is c("NDVI", "EVI")  
 #' @param scale `boolean`. The MODIS raster values will be scaled (multiplied)
 #' by a factor. Some MODIS products are scaled up and saved as 16 bit integers.
-#' For example, Vegetation indices are scaled by 10000, and Land surface temperatures
-#' are scaled by 50. Scaling factors are derived from product metadata.
+#' For example, Vegetation indices are scaled by 10000,
+#' and Land surface temperatures are scaled by 50.
+#' Scaling factors are derived from product metadata.
 #' For additional details refer to the  MODIS Product Tables: 
 #' https://modis.gsfc.nasa.gov/data/dataprod/
 #' Default TRUE (scaling applied)
@@ -125,7 +126,7 @@ get_site_MODIS <- function(deimsid,
   
   # Check that username and password are strings
 	if (!is.character(earthdata_user) | !is.character(earthdata_passwd)) {
-		stop("Missing username or password")
+		stop("Missing username or password", call.=FALSE)
 	}
 
   # Check that from_date and to_date are correct format
@@ -150,7 +151,7 @@ get_site_MODIS <- function(deimsid,
 	if (CheckValidDate(from_date, to_date) == FALSE) {
 	  stop("Either from_date: ", from_date, " or to_date: ", to_date,
 	       " are not formatted correctly, or incorrect dates.
-		     \n Please check dates and format as: YYYY.mm.dd") 
+		     \n Please check dates and format as: YYYY.mm.dd", call.=FALSE) 
 	}
 
   ## OK to proceed ##
@@ -204,7 +205,8 @@ get_site_MODIS <- function(deimsid,
   modis_stk <- terra::rast(out_files)
   modis_stk <- terra::mask(modis_stk, terra::vect(boundary))
 
-	# Loop thru bands if > 1, and create separate timeseries
+	# Loop thru bands if > 1, and create timeseries,
+  # each band in separate panel
   modis_ts_list <- lapply(bands, function(b) {
     b_idx = grep(b, names(modis_stk))
     modis_band_stk <- modis_stk[[ b_idx ]]

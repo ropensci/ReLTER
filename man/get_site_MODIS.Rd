@@ -53,8 +53,9 @@ Default is c("NDVI", "EVI")}
 
 \item{scale}{`boolean`. The MODIS raster values will be scaled (multiplied)
 by a factor. Some MODIS products are scaled up and saved as 16 bit integers.
-For example, Vegetation indices are scaled by 10000, and Land surface temperatures
-are scaled by 50. Scaling factors are derived from product metadata.
+For example, Vegetation indices are scaled by 10000,
+and Land surface temperatures are scaled by 50.
+Scaling factors are derived from product metadata.
 For additional details refer to the  MODIS Product Tables: 
 https://modis.gsfc.nasa.gov/data/dataprod/
 Default TRUE (scaling applied)}
@@ -89,10 +90,10 @@ i.e. writeRaster(ds_site, "site_MODIS_dataset.tif")
 The function also plots a time series graph of the site averaged values.
 }
 \description{
-This function both acquires MODIS products from
-MODIS Land Products archive,
-then crops to an eLTER site boundary, and plots a time series of the MODIS
-derived variable averaged over the eLTER site.
+This function acquires MODIS products
+from MODIS Land Products archive,
+crops to an eLTER site boundary, and
+plots a time series of the MODIS derived variable averaged over the eLTER site.
 }
 \details{
 The Nasa [EarthData](https://urs.earthdata.nasa.gov/home) site 
