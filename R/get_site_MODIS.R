@@ -201,6 +201,12 @@ get_site_MODIS <- function(deimsid,
   } else { pat = bands }
   out_files = out_files[grep(pattern=pat, out_files)]
 
+  if (length(out_files) == 0) {
+    message("Something went wrong running MODIStsp ",
+            "(probably a timeout connecting to USGS servers). Exiting...")
+    return(NULL)
+  }
+  
   # Now load into stack and Mask to boundary
   modis_stk <- terra::rast(out_files)
   modis_stk <- terra::mask(modis_stk, terra::vect(boundary))

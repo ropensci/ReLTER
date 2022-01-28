@@ -64,11 +64,6 @@ test_that("Check for invalid dates", {
           to_date = "2018.01.01"), NULL)
 })
 
-# skip on CI until timeout will be managed to avoid the following
-# Error: [rast] filename is empty. Provide a valid filename
-skip_on_ci()
-skip_if(skip_in_test_mode)
-
 # Test for successful download, function returns terra::SpatRaster
 test_that("After successfull download, Function returns SpatRaster", {
   # Load username and password from sysdata.rda
@@ -82,8 +77,10 @@ test_that("After successfull download, Function returns SpatRaster", {
           from_date = "2017.01.01",
           to_date = "2017.04.30"
           )
+  if (!is.null(ds)) {
   expect_s4_class(ds, "SpatRaster")
   # In this case, with both Aqua and Terra platforms, 
   # and datasets for 4 months, should be 8 layers (Aqua and Terra)
   expect_equal(terra::nlyr(ds), 8)
+  }
 })
