@@ -29,25 +29,6 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
           restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
 
-      - name: download system packages
-        run: |
-          sudo apt update
-          sudo apt-get install \
-            r-base-dev \
-            build-essential \
-            gdal-bin \
-            libgdal-dev \
-            libjq-dev \
-            libssl-dev \
-            libcurl4-openssl-dev \
-            libxml2-dev \
-            libprotobuf-dev \
-            protobuf-compiler \
-            libv8-dev \
-            libssl-dev \
-            libcairo2-dev \
-            libgit2-dev
-
       - name: Install dependencies
         run: |
           remotes::install_deps(dependencies = TRUE)
