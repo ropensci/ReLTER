@@ -79,9 +79,29 @@
 #' @export
 #' @examples
 #'  \dontrun{
-#'  deimsid = "https://deims.org/86e3a1ca-b2ba-4b06-b096-71447df52841"
-#'  product_bands <- MODIStsp_get_prodlayers("M*D13Q1")
-#'  print(product_bands[,6:7])
+#'  deimsid <-  "https://deims.org/bf2cb8dd-0d38-419b-aa9c-7d53337bd98e"
+#'  # Use MODIS Land Surface Temperature product
+#'  product <-  "LST_3band_emissivity_8day_1km (M*D21A2)" 
+#'  # Check what bands are available for that product
+#'  get_site_MODIS(show_bands = "LST_3band_emissivity_8day_1km (M*D21A2)")
+#'  # Use LST_Day_1KM and LST_Night_1KM
+#'  bands = c("LST_Day_1KM", "LST_Night_1KM")
+#'  # Acquire MODIS data
+#'  # (Use internal authentication credentials)
+#'  creds <- ReLTER:::creds
+#'  MODIS_LST <- get_site_MODIS(deimsid = deimsid,
+#'                            earthdata_user = creds$user,
+#'                            earthdata_passwd = creds$password,
+#'                            product = product,
+#'                            bands = bands,
+#'                            from_date="2021.06.01", to_date = "2021.07.31")
+#'  terra::nlyr(MODIS_LST)
+#'  # Show time series table
+#'  MODIS_LST_timeseries <- read.csv(
+#'    file.path(tempdir(),
+#'            "Time_Series",
+#'            "MODIS_LST_Day_1KM_2021-06-02_2021-07-28.csv"))
+#'  MODIS_LST_timeseries
 #' }
 
 ### function get_site_ODS
