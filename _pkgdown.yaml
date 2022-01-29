@@ -7,12 +7,14 @@ template:
 reference:
   - title: DEIMS-SDR interaction functions
   - subtitle: Sites
-    desc: For retrive information about LTER sites stored in DEIMS-SDR website
+    desc: For retrive information about LTER sites stored in DEIMS-SDR website and for acquires data from third-party services.
     contents:
       - '`get_site_info`'
       - '`get_site_ODS`'
+      - '`get_site_MODIS`'
+      - '`get_site_speciesOcc`'
   - subtitle: Networks
-    desc: For retrive information about LTER networks stored in DEIMS-SDR website
+    desc: For retrive information about LTER networks stored in DEIMS-SDR website.
     contents:
       - '`get_network_envcharacts`'
       - '`get_network_parameters`'
@@ -20,19 +22,19 @@ reference:
       - '`get_network_related_resources`'
       - '`get_network_sites`'
   - subtitle: All ILTER
-    desc: For retrive information about all ILTER network stored in DEIMS-SDR website
+    desc: For retrive information about all ILTER network stored in DEIMS-SDR website.
     contents:
       - '`get_ilter_envcharacts`'
       - '`get_ilter_generalinfo`'
       - '`get_ilter_parameters`'
       - '`get_ilter_research_topics`'
   - subtitle: Other entities
-    desc: For retrive information about other entities (datasets and activites) stored in DEIMS-SDR website
+    desc: For retrive information about other entities (datasets and activites) stored in DEIMS-SDR website.
     contents:
       - '`get_activity_info`'
       - '`get_dataset_info`'
   - title: Graphical functions
-    desc: Functions able of producing geographical images of sites and national networks or charts
+    desc: Functions able of producing geographical images of sites and national networks or charts.
     contents:
       - '`produce_network_points_map`'
       - '`produce_site_map`'
@@ -40,7 +42,7 @@ reference:
       - '`produce_site_parameters_pie`'
       - '`produce_site_parameters_waffle`'
   - title: Other functions
-    desc: Functions able to some other interactions
+    desc: Functions able to some other interactions.
     contents:
       - '`get_sos_procedurelist`'
       - '`taxon_id_pesi`'

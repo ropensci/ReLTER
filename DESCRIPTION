@@ -79,6 +79,7 @@ Imports:
     xml2 (>= 1.3.2),
     xslt (>= 1.4.3),
     MODIStsp (>= 2.0.0),
+    spocc
 Suggests: 
     httptest,
     knitr,
