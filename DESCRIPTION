@@ -21,7 +21,7 @@ Authors@R: c(
         )
       )
 Maintainer: The package maintainer Alessandro Oggioni, phD (2020)
-    <oggioniale@gmail.com>
+    <oggioni.a@irea.cnr.it>
 Description: ReLTER provides access to DEIMS-SDR (https://deims.org/),
     and allows interaction with data and software implemented by eLTER
     Research Infrastructure (RI) thus improving data sharing among European 

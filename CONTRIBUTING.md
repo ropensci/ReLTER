@@ -11,7 +11,7 @@ First of all, thanks for considering contributing to *ReLTER*! 👍 It's people 
 [new_issue]: https://github.com/oggioniale/ReLTER/issues/new
 [website]: https://oggioniale.github.io/ReLTER/
 [citation]: https://github.com/oggioniale/ReLTER#notebook_with_decorative_cover-citation
-[email]: mailto:oggioniale@gmail.com
+[email]: mailto:oggioni.a@irea.cnr.it
 
 ## Code of conduct
 
