@@ -96,6 +96,3 @@ jobs:
 
       - uses: r-lib/actions/check-r-package@v1
       
-      - name: Test coverage
-        run: covr::codecov()
-        shell: Rscript {0}

@@ -77,8 +77,10 @@ test_that("After successfull download, Function returns SpatRaster", {
           from_date = "2017.01.01",
           to_date = "2017.04.30"
           )
+  if (!is.null(ds)) {
   expect_s4_class(ds, "SpatRaster")
   # In this case, with both Aqua and Terra platforms, 
   # and datasets for 4 months, should be 8 layers (Aqua and Terra)
   expect_equal(terra::nlyr(ds), 8)
+  }
 })
