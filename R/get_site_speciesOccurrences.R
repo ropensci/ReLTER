@@ -1,4 +1,4 @@
-#' @title eLTER get_site_speciesOcc function
+#' @title eLTER get_site_speciesOccurrences function
 #' @description This function acquires data from
 #' GBIF \url{https://www.gbif.org} (via `rgbif`),
 #' iNaturalist \url{https://www.inaturalist.org/} and
@@ -9,7 +9,7 @@
 #' \href{https://deims.org/docs/deimsid.html}{page}.
 #' @param list_DS a `character`. Data source to get data from, any
 #' combination of gbif, inat and/or obis.
-#' @param show_map a `boolean`. If TRUE a Leaflet map with occurences
+#' @param show_map a `boolean`. If TRUE a Leaflet map with occurrences
 #' is shown. Default FALSE.
 #' @param limit a `numeric`. Number of records to return. This is passed
 #' across all sources. Default: 500 for each source. BEWARE: if you have a
@@ -17,8 +17,8 @@
 #' can take a while to collect. So, when you first query, set the limit to
 #' something smallish so that you can get a result quickly, then do more as
 #' needed.
-#' @return The output of the function is a tibble with the list of occurrences
-#' retived from species data sources selected into parameter list_DS.
+#' @return The output of the function is a `list` of `sf` one for each of the
+#' repositories specified in the list_DS parameter.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom leaflet layersControlOptions addLayersControl addLegend
 #' @importFrom leaflet addCircleMarkers addTiles addProviderTiles leaflet
@@ -27,32 +27,33 @@
 #' @importFrom tibble as_tibble
 #' @importFrom dplyr select mutate
 #' @importFrom spocc occ2df obis_search occ
-#' @importFrom sf st_as_text st_as_sfc st_bbox
+#' @importFrom sf st_as_text st_as_sfc st_bbox st_as_sf
 #' @export
 #' @examples
 #' \dontrun{
 #' # terrestrial site Saldur River Catchment
-#' occ_SRC <- get_site_speciesOcc(
+#' occ_SRC <- get_site_speciesOccurrences(
 #'   deimsid =
 #'   "https://deims.org/97ff6180-e5d1-45f2-a559-8a7872eb26b1",
 #'   list_DS = c("gbif", "inat"),
-#'   show_map = TRUE,
+#'   show_map = FALSE,
 #'   limit = 100
 #' )
 #' occ_SRC
 #'
 #' # marine site Gulf of Venice only obis
-#' occ_GoV <- get_site_speciesOcc(
+#' occ_GoV <- get_site_speciesOccurrences(
 #'   deimsid =
 #'   "https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd",
-#'   list_DS = c("obis"),
+#'   list_DS = "obis",
 #'   show_map = TRUE,
 #'   limit = 100
 #' )
 #' occ_GoV
 #'
-#' # marine site Gulf of Venice only gbif, inat and obis
-#' occ_GoV_all <- get_site_speciesOcc(
+#' # marine site Gulf of Venice, all repositories are invoked
+#' # gbif, inat and obis
+#' occ_GoV_all <- get_site_speciesOccurrences(
 #'   deimsid =
 #'   "https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd",
 #'   list_DS = c("gbif", "inat", "obis"),
@@ -62,8 +63,8 @@
 #' occ_GoV_all
 #' }
 #'
-### function get_site_speciesOcc
-get_site_speciesOcc <- function(
+### function get_site_speciesOccurrences
+get_site_speciesOccurrences <- function(
   deimsid,
   list_DS,
   show_map = FALSE,
@@ -88,7 +89,7 @@ get_site_speciesOcc <- function(
   }
 
   # download occurrence by SPOCC by provide data sources ----
-  if (c("gbif", "inat") %in% list_DS) {
+  if (any(c("gbif", "inat") %in% list_DS)) {
     site_occ_spocc <- spocc::occ(
       from = list_DS,
       geometry = bbox_wkt,
@@ -104,7 +105,7 @@ get_site_speciesOcc <- function(
   }
 
   # combine results from occ calls to a single data.frame ----
-  if (c("gbif", "inat") %in% list_DS) {
+  if (any(c("gbif", "inat") %in% list_DS)) {
     occ_df <- spocc::occ2df(site_occ_spocc)
     occ_df <- occ_df %>%
       dplyr::mutate(
@@ -139,10 +140,18 @@ get_site_speciesOcc <- function(
   }
 
   # print map ----
-  my_palette <- RColorBrewer::brewer.pal(
-    length(list_DS),
-    "Set1"
-  )
+  if (length(list_DS) < 3) {
+    my_palette <- RColorBrewer::brewer.pal(
+      3,
+      "Set1"
+    )
+    my_palette <- my_palette[seq(from = 1, to = length(list_DS))]
+  } else {
+    my_palette <- RColorBrewer::brewer.pal(
+      length(list_DS),
+      "Set1"
+    )
+  }
   factpal <- leaflet::colorFactor(
     my_palette,
     levels = list_DS
@@ -157,7 +166,7 @@ get_site_speciesOcc <- function(
       leaflet::addTiles(
         "http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png"
       )
-  
+
     groups <- unique(occ_df$prov)
     for (i in groups) {
       data <- occ_df[occ_df$prov == i, ]
@@ -190,7 +199,7 @@ get_site_speciesOcc <- function(
           collapsed = FALSE
         )
       )
-  
+
     print(occ_map)
     # create tibble ----
     occ_list <- vector(
@@ -202,15 +211,29 @@ get_site_speciesOcc <- function(
     names(occ_list) <- unique(occ_df$prov)
     if ("gbif" %in% list_DS) {
       occ_list$gbif <- site_occ_spocc$gbif$data[[1]]
+      occ_list$gbif <- sf::st_as_sf(
+        occ_list$gbif,
+        coords = c("longitude", "latitude"),
+        crs = 4326
+      )
     }
     if ("inat" %in% list_DS) {
       occ_list$inat <- site_occ_spocc$inat$data[[1]]
+      occ_list$inat <- sf::st_as_sf(
+        occ_list$inat,
+        coords = c("longitude", "latitude"),
+        crs = 4326
+      )
     }
     if ("obis" %in% list_DS) {
       occ_list$obis <- site_occ_spocc_obis$results
+      occ_list$obis <- sf::st_as_sf(
+        occ_list$obis,
+        coords = c("decimalLongitude", "decimalLatitude"),
+        crs = 4326
+      )
     }
-  
-    occ_list
+    return(occ_list)
   } else {
     occ_map <- NULL
     # create tibble ----
@@ -223,12 +246,27 @@ get_site_speciesOcc <- function(
     names(occ_list) <- unique(occ_df$prov)
     if ("gbif" %in% list_DS) {
       occ_list$gbif <- site_occ_spocc$gbif$data[[1]]
+      occ_list$gbif <- sf::st_as_sf(
+        occ_list$gbif,
+        coords = c("longitude", "latitude"),
+        crs = 4326
+      )
     }
     if ("inat" %in% list_DS) {
       occ_list$inat <- site_occ_spocc$inat$data[[1]]
+      occ_list$inat <- sf::st_as_sf(
+        occ_list$inat,
+        coords = c("longitude", "latitude"),
+        crs = 4326
+      )
     }
     if ("obis" %in% list_DS) {
       occ_list$obis <- site_occ_spocc_obis$results
+      occ_list$obis <- sf::st_as_sf(
+        occ_list$obis,
+        coords = c("decimalLongitude", "decimalLatitude"),
+        crs = 4326
+      )
     }
     return(occ_list)
   }
