@@ -92,6 +92,7 @@ jobs:
         # remove when no longer needed
         run: |
           remotes::install_cran("raster", type = "source", repos = "https://stat.ethz.ch/CRAN/", force = TRUE)
+          remotes::install_cran("terra", type = "source", repos = "https://stat.ethz.ch/CRAN/", force = TRUE)
         shell: Rscript {0}
 
       - uses: r-lib/actions/check-r-package@v1
