@@ -2,8 +2,8 @@
 #' @description This function acquires MODIS products
 #' from MODIS Land Products archive,
 #' crops to an eLTER site boundary, and
-#' plots a time series of the MODIS derived variable averaged over the eLTER site.
-#'
+#' plots a time series of the MODIS derived variable averaged over
+#' the eLTER site.
 #' @param deimsid  a `character`. The DEIMS ID of the site from
 #' DEIMS-SDR website. More information about DEIMS ID from:
 #' \href{https://deims.org/docs/deimsid.html}{page}.
@@ -18,13 +18,13 @@
 #' @param bands `character`, string array of bands in the requested product.
 #' Use the "show_bands" parameter first to get a list of available bands.
 #' Some examples: "LST_Day_1km", or multiple bands as c("NDVI", "EVI")
-#' Default is c("NDVI", "EVI")  
+#' Default is c("NDVI", "EVI").
 #' @param scale `boolean`. The MODIS raster values will be scaled (multiplied)
 #' by a factor. Some MODIS products are scaled up and saved as 16 bit integers.
 #' For example, Vegetation indices are scaled by 10000,
 #' and Land surface temperatures are scaled by 50.
 #' Scaling factors are derived from product metadata.
-#' For additional details refer to the  MODIS Product Tables: 
+#' For additional details refer to the  MODIS Product Tables:
 #' https://modis.gsfc.nasa.gov/data/dataprod/
 #' Default TRUE (scaling applied)
 #' @param from_date, `character`, the start date for acquiring MODIS
@@ -33,37 +33,36 @@
 #' @param to_date, `character`, the last date for acquiring MODIS
 #' formatted as YYYY.MM.DD.
 #' @param out_folder, `character`, Where to save the downloaded MODIS rasters
-#' Default is tempdir(). 
+#' Default is tempdir().
 #' (Note that if this parameter is left at default the downloaded MODIS rasters
 #' will be deleted on exit, along with other temporary R files.)
 #' @param save_ts_dir, `character`. Full path to directory to save a CSV file
 #' of the time series of site averaged MODIS bands values.
-#' Default is NA (saving is disabled). 
+#' Default is NA (saving is disabled).
 #' This directory is created if it does not exist.
-#' @param earthdata_user `character`. For authentication. 
+#' @param earthdata_user `character`. For authentication.
 #' Please create an account on: https://urs.earthdata.nasa.gov/users/new
 #' and enter authentication details here.
 #' @param earthdata_passwd `character` For authentication on Earthdata.
 #' @param show_products, a `boolean`, if TRUE, then show a list of all
 #' available MODIS products, and exit. Default is FALSE.
 #' @param show_bands, a `character`, the name of a MODIS product.
-#' The parameter could be one of: 
+#' The parameter could be one of:
 #'     "M*D13Q1", (Vegetation Indexes_16Days_250m),
 #'     "M*D21A2", (LST_3band_emissivity_8day_1km),
 #'     "MCD12Q1". (LandCover_Type_Yearly_500m)
 #' When this parameter is supplied, show a list of the bands
 #' for that product, and exit. Default is NA.
 #'
-#' @details The Nasa [EarthData](https://urs.earthdata.nasa.gov/home) site 
-#' offers MODIS products as 8 day, 16 day and  monthly aggregations. 
+#' @details The Nasa [EarthData](https://urs.earthdata.nasa.gov/home) site
+#' offers MODIS products as 8 day, 16 day and  monthly aggregations.
 #' This function accesses those aggregations
 #' selecting a subset from the `from_date` to the `to_date`,
-#' then prepares site averaged values of the MODIS product, 
+#' then prepares site averaged values of the MODIS product,
 #' and plots a time series of those averages.
 #' In order to download from EarthData, you must register at
 #' https://urs.earthdata.nasa.gov/users/new
 #' and supply your username and password to this function.
-#' 
 #' @return The function returns a SpatRaster object (from the `terra` package)
 #' which contains a stack of all rasters for the requested product/bands
 #' over the requested date interval.
@@ -74,14 +73,14 @@
 #' @author Micha Silver, phD (2020) \email{silverm@@post.bgu.ac.il}
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom sf st_transform st_bbox
-#' @importFrom terra vect rast 
+#' @importFrom terra vect rast
 #' @import MODIStsp
 #' @export
 #' @examples
 #'  \dontrun{
 #'  deimsid <-  "https://deims.org/bf2cb8dd-0d38-419b-aa9c-7d53337bd98e"
 #'  # Use MODIS Land Surface Temperature product
-#'  product <-  "LST_3band_emissivity_8day_1km (M*D21A2)" 
+#'  product <-  "LST_3band_emissivity_8day_1km (M*D21A2)"
 #'  # Check what bands are available for that product
 #'  get_site_MODIS(show_bands = "LST_3band_emissivity_8day_1km (M*D21A2)")
 #'  # Use LST_Day_1KM and LST_Night_1KM
@@ -108,15 +107,16 @@
 get_site_MODIS <- function(deimsid,
                            earthdata_user,
                            earthdata_passwd,
-                           product="Vegetation_Indexes_Monthly_1Km (M*D13A3)", 
+                           product = "Vegetation_Indexes_Monthly_1Km (M*D13A3)",
                            from_date = NA,
                            to_date = NA,
-                           bands=c("NDVI", "EVI"),
+                           bands = c("NDVI", "EVI"),
                            scale = TRUE,
                            save_ts_dir = NA,
                            out_folder = tempdir(),
                            show_products = FALSE,
-						               show_bands = NA) {
+                           show_bands = NA) {
+  
 
   ## Check inputs ##
   #-----------------------------#
@@ -137,75 +137,80 @@ get_site_MODIS <- function(deimsid,
     }
     return(NULL)
   }
-  
+
   if (show_products == TRUE) {
-    MODIS_products <-  MODIStsp::MODIStsp_get_prodnames()
+    MODIS_products <- MODIStsp::MODIStsp_get_prodnames()
     print(MODIS_products)
     return(NULL)
-  } 
-  
+  }
+
   # Check that username and password are strings
-	if (!is.character(earthdata_user) | !is.character(earthdata_passwd)) {
-		stop("Missing username or password", call.=FALSE)
+  if (!is.character(earthdata_user) | !is.character(earthdata_passwd)) {
+	  stop("Missing username or password", call. = FALSE)
 	}
 
   # Check that from_date and to_date are correct format
-	CheckValidDate <- function(d1, d2) {
+  CheckValidDate <- function(d1, d2) {
 	  # Test for:
 	  #     date format (YYYY.mm.dd)
 	  #     from date not earlier than 2000/02/01
 	  #     to_date later than from_date
-		check_valid = regexpr("\\d\\d\\d\\d\\.[0-1]\\d\\.[0-3]\\d$",
-	            						d1, perl=TRUE)
-		check_valid = check_valid & 
-		  regexpr("\\d\\d\\d\\d\\.[0-1]\\d\\.[0-3]\\d$", d2, perl=TRUE)
-		check_valid = check_valid & 
-		  !is.na(as.POSIXct(d1, format="%Y.%m.%d")) &
-		  !is.na(as.POSIXct(d2, format="%Y.%m.%d"))
-    check_valid = check_valid & 
-      (as.POSIXct(d1, format="%Y.%m.%d") > "2000-02-01") &
-      as.POSIXct(d1, format="%Y.%m.%d") < as.POSIXct(d2, format="%Y.%m.%d")
+	  check_valid <- regexpr(
+		  "\\d\\d\\d\\d\\.[0-1]\\d\\.[0-3]\\d$",
+		  d1, perl = TRUE
+		)
+		check_valid <- check_valid &
+		  regexpr("\\d\\d\\d\\d\\.[0-1]\\d\\.[0-3]\\d$", d2, perl = TRUE)
+		check_valid <- check_valid &
+		  !is.na(as.POSIXct(d1, format = "%Y.%m.%d")) &
+		  !is.na(as.POSIXct(d2, format = "%Y.%m.%d"))
+    check_valid <- check_valid &
+      (as.POSIXct(d1, format = "%Y.%m.%d") > "2000-02-01") &
+      as.POSIXct(d1, format = "%Y.%m.%d") < as.POSIXct(d2, format = "%Y.%m.%d")
     return(check_valid)
-	}
-	
+  }
+
 	if (CheckValidDate(from_date, to_date) == FALSE) {
-	  stop("Either from_date: ", from_date, " or to_date: ", to_date,
-	       " are not formatted correctly, or incorrect dates.
-		     \n Please check dates and format as: YYYY.mm.dd", call.=FALSE) 
-	}
+    stop("Either from_date: ", from_date, " or to_date: ", to_date,
+         " are not formatted correctly, or incorrect dates.
+         \n Please check dates and format as: YYYY.mm.dd", call. = FALSE)
+  }
 
   ## OK to proceed ##
   #-----------------------------#
   # Get site boundary for clipping MODIS
   boundary <- ReLTER::get_site_info(deimsid, "Boundaries")
   if (is.null(boundary)) {
-    message("The site at DEIMS ID:", deimsid,
-			"does not have a boundary.\n Exiting...")
+    message(
+      "The site at DEIMS ID:",
+      deimsid,
+      "does not have a boundary.\n Exiting...")
     return(NULL)
   } else {
     # Call MODIStsp, Get MODIS bands
     bndry_bbox <- sf::st_bbox(boundary)
-    MODIStsp::MODIStsp(gui = FALSE,
-                       out_folder = out_folder,
-					             prod_version = "006",
-                       selprod = product,
-                       bandsel = bands,
-                       user = earthdata_user,
-                       password = earthdata_passwd,
-                       start_date = from_date,
-                       end_date = to_date,
-                       verbose = TRUE,
-                       out_format = "GTiff",
-                       compress = "LZW",
-                       delete_hdf = TRUE,
-          					   out_projsel= "User Defined",
-                       output_proj = "4326",
-					             out_res_sel = "Native",
-                       spatmeth = "bbox",
-                       bbox = bndry_bbox,
-                       scale_val = scale,
-                       n_retries = 20
-                       )
+    MODIStsp::MODIStsp(
+      gui = FALSE,
+      out_folder = out_folder,
+      prod_version = "006",
+      selprod = product,
+      bandsel = bands,
+      user = earthdata_user,
+      password = earthdata_passwd,
+      start_date = from_date,
+      end_date = to_date,
+      verbose = TRUE,
+      out_format = "GTiff",
+      compress = "LZW",
+      delete_hdf = TRUE,
+      out_projsel = "User Defined",
+      output_proj = "4326",
+      out_res_sel = "Native",
+      spatmeth = "bbox",
+      bbox = bndry_bbox,
+      scale_val = scale,
+      n_retries = 20
+    )
   }
 
 
@@ -217,35 +222,37 @@ get_site_MODIS <- function(deimsid,
   # (in case function is called again in same session)
   # Prepare regular expr with band names
   if (length(bands) > 1) {
-    pat = paste0(bands, collapse="|")
-  } else { pat = bands }
-  out_files = out_files[grep(pattern=pat, out_files)]
+    pat <- paste0(bands, collapse = "|")
+  } else {
+    pat <- bands
+  }
+  out_files <- out_files[grep(pattern = pat, out_files)]
 
   if (length(out_files) == 0) {
     message("Something went wrong running MODIStsp ",
             "(probably a timeout connecting to USGS servers). Exiting...")
     return(NULL)
   }
-  
+
   # Now load into stack and Mask to boundary
   modis_stk <- terra::rast(out_files)
   modis_stk <- terra::mask(modis_stk, terra::vect(boundary))
 
-	# Loop thru bands if > 1, and create timeseries,
+  # Loop thru bands if > 1, and create timeseries,
   # each band in separate panel
   modis_ts_list <- lapply(bands, function(b) {
-    b_idx = grep(b, names(modis_stk))
-    modis_band_stk <- modis_stk[[ b_idx ]]
+    b_idx <- grep(b, names(modis_stk))
+    modis_band_stk <- modis_stk[[b_idx]]
     modis_band_ts <- terra::global(modis_band_stk, mean, na.rm = TRUE)
     # Get date from row names
     img_dates <- lapply(row.names(modis_band_ts), function(n) {
-                         n_parts = unlist(strsplit(n, split="_")) 
+                         n_parts <- unlist(strsplit(n, split = "_"))
                          yr_jday <- tail(n_parts, 2)
-                         img_date = as.POSIXct(paste(yr_jday, collapse="-"),
+                         img_date <- as.POSIXct(paste(yr_jday, collapse = "-"),
                                                 format = "%Y-%j")
                          return(img_date)
                          })
-    image_dates = (Reduce(c, img_dates))
+    image_dates <- (Reduce(c, img_dates))
     modis_band_ts$image_date <- image_dates
     modis_band_ts$band <- b
     return(modis_band_ts)
@@ -266,31 +273,31 @@ get_site_MODIS <- function(deimsid,
   }
   # Prepare for multipanel plot
   num_plots <- length(modis_ts_list)
-  plot_file <- paste("time_series", paste(bands, collapse="_"), sep="_")
+  plot_file <- paste("time_series", paste(bands, collapse = "_"), sep = "_")
   plot_path <- file.path(save_ts_dir, paste0(plot_file, ".png"))
-  png(filename=plot_path, width=400, height=250*num_plots)
+  png(filename = plot_path, width = 400, height = 250 * num_plots)
   par(mfcol = c(num_plots, 1))
   for (p in seq_along(1:num_plots)) {
-    band_ts = modis_ts_list[[p]]
+    band_ts <- modis_ts_list[[p]]
     # Get band name from first row (all are the same)
     b <- band_ts$band[1]
     # First get rid of any NaN's (in case *all* pixels were NA)
     # and put in order, in case both Aqua and Terra  MODIS platforms used
-    band_ts = band_ts[complete.cases(band_ts),]
-    band_ts = band_ts[order(band_ts$image_date),]
+    band_ts <- band_ts[complete.cases(band_ts), ]
+    band_ts <- band_ts[order(band_ts$image_date), ]
     fr_dte <- band_ts$image_date[1]
     to_dte <- band_ts$image_date[length(band_ts$image_date)]
     ttl <- paste("Time series", b,
                  fr_dte, "to", to_dte)
-    plot(band_ts$image_date, band_ts$mean, type="l", col="blue",
-         lwd=3, main=ttl, xlab = "Image date", ylab=b)
-    
+    plot(band_ts$image_date, band_ts$mean, type = "l", col = "blue",
+         lwd = 3, main = ttl, xlab = "Image date", ylab = b)
+
     # Save this band time series to CSV
     if (dir.exists(save_ts_dir) | create_ok) {
-        output_file = paste0(paste("MODIS", b, fr_dte, to_dte,
-                                   sep="_"),
+        output_file <- paste0(paste("MODIS", b, fr_dte, to_dte,
+                                   sep = "_"),
                              ".csv")
-        output_csv = file.path(save_ts_dir, output_file)
+        output_csv <- file.path(save_ts_dir, output_file)
         message("Saving time series to CSV file: ", output_csv)
         write.csv(band_ts, output_csv)
     } else {

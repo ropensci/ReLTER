@@ -24,7 +24,7 @@ get_site_MODIS(
 DEIMS-SDR website. More information about DEIMS ID from:
 \href{https://deims.org/docs/deimsid.html}{page}.}
 
-\item{earthdata_user}{`character`. For authentication. 
+\item{earthdata_user}{`character`. For authentication.
 Please create an account on: https://urs.earthdata.nasa.gov/users/new
 and enter authentication details here.}
 
@@ -49,24 +49,24 @@ formatted as YYYY.MM.DD.}
 \item{bands}{`character`, string array of bands in the requested product.
 Use the "show_bands" parameter first to get a list of available bands.
 Some examples: "LST_Day_1km", or multiple bands as c("NDVI", "EVI")
-Default is c("NDVI", "EVI")}
+Default is c("NDVI", "EVI").}
 
 \item{scale}{`boolean`. The MODIS raster values will be scaled (multiplied)
 by a factor. Some MODIS products are scaled up and saved as 16 bit integers.
 For example, Vegetation indices are scaled by 10000,
 and Land surface temperatures are scaled by 50.
 Scaling factors are derived from product metadata.
-For additional details refer to the  MODIS Product Tables: 
+For additional details refer to the  MODIS Product Tables:
 https://modis.gsfc.nasa.gov/data/dataprod/
 Default TRUE (scaling applied)}
 
 \item{save_ts_dir, }{`character`. Full path to directory to save a CSV file
 of the time series of site averaged MODIS bands values.
-Default is NA (saving is disabled). 
+Default is NA (saving is disabled).
 This directory is created if it does not exist.}
 
 \item{out_folder, }{`character`, Where to save the downloaded MODIS rasters
-Default is tempdir(). 
+Default is tempdir().
 (Note that if this parameter is left at default the downloaded MODIS rasters
 will be deleted on exit, along with other temporary R files.)}
 
@@ -74,7 +74,7 @@ will be deleted on exit, along with other temporary R files.)}
 available MODIS products, and exit. Default is FALSE.}
 
 \item{show_bands, }{a `character`, the name of a MODIS product.
-The parameter could be one of: 
+The parameter could be one of:
     "M*D13Q1", (Vegetation Indexes_16Days_250m),
     "M*D21A2", (LST_3band_emissivity_8day_1km),
     "MCD12Q1". (LandCover_Type_Yearly_500m)
@@ -93,14 +93,15 @@ The function also plots a time series graph of the site averaged values.
 This function acquires MODIS products
 from MODIS Land Products archive,
 crops to an eLTER site boundary, and
-plots a time series of the MODIS derived variable averaged over the eLTER site.
+plots a time series of the MODIS derived variable averaged over
+the eLTER site.
 }
 \details{
-The Nasa [EarthData](https://urs.earthdata.nasa.gov/home) site 
-offers MODIS products as 8 day, 16 day and  monthly aggregations. 
+The Nasa [EarthData](https://urs.earthdata.nasa.gov/home) site
+offers MODIS products as 8 day, 16 day and  monthly aggregations.
 This function accesses those aggregations
 selecting a subset from the `from_date` to the `to_date`,
-then prepares site averaged values of the MODIS product, 
+then prepares site averaged values of the MODIS product,
 and plots a time series of those averages.
 In order to download from EarthData, you must register at
 https://urs.earthdata.nasa.gov/users/new
@@ -108,9 +109,29 @@ and supply your username and password to this function.
 }
 \examples{
  \dontrun{
- deimsid = "https://deims.org/86e3a1ca-b2ba-4b06-b096-71447df52841"
- product_bands <- MODIStsp_get_prodlayers("M*D13Q1")
- print(product_bands[,6:7])
+ deimsid <-  "https://deims.org/bf2cb8dd-0d38-419b-aa9c-7d53337bd98e"
+ # Use MODIS Land Surface Temperature product
+ product <-  "LST_3band_emissivity_8day_1km (M*D21A2)"
+ # Check what bands are available for that product
+ get_site_MODIS(show_bands = "LST_3band_emissivity_8day_1km (M*D21A2)")
+ # Use LST_Day_1KM and LST_Night_1KM
+ bands = c("LST_Day_1KM", "LST_Night_1KM")
+ # Acquire MODIS data
+ # (Use internal authentication credentials)
+ creds <- ReLTER:::creds
+ MODIS_LST <- get_site_MODIS(deimsid = deimsid,
+                           earthdata_user = creds$user,
+                           earthdata_passwd = creds$password,
+                           product = product,
+                           bands = bands,
+                           from_date="2021.06.01", to_date = "2021.07.31")
+ terra::nlyr(MODIS_LST)
+ # Show time series table
+ MODIS_LST_timeseries <- read.csv(
+   file.path(tempdir(),
+           "Time_Series",
+           "MODIS_LST_Day_1KM_2021-06-02_2021-07-28.csv"))
+ MODIS_LST_timeseries
 }
 }
 \author{
