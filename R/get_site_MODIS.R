@@ -269,7 +269,7 @@ get_site_MODIS <- function(deimsid,
       }
   } else {  # No time series directory specified, save to out_folder
       save_ts_dir <- file.path(out_folder, "Time_Series")
-      create_ok <- dir.create(save_ts_dir, recursive = TRUE)
+      create_ok <- dir.create(save_ts_dir, recursive = TRUE, showWarnings = FALSE)
   }
   # Prepare for multipanel plot
   num_plots <- length(modis_ts_list)
