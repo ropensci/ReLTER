@@ -66,9 +66,12 @@ test_that("Check for invalid dates", {
 
 # Test for successful download, function returns terra::SpatRaster
 test_that("After successfull download, Function returns SpatRaster", {
-  # Load username and password from sysdata.rda
-  creds <- ReLTER:::creds
-  ds <- get_site_MODIS(
+  # Load username and password from secrets
+  creds <- list(
+    "user" = Sys.getenv("USGS_USER"),
+    "password" = Sys.getenv("USGS_PASSWORD")
+  )
+  ds <- try(get_site_MODIS(
           deimsid = "https://deims.org/45722713-80e3-4387-a47b-82c97a6ef62b",
           earthdata_user = creds$user,
           earthdata_passwd = creds$password,
@@ -76,8 +79,8 @@ test_that("After successfull download, Function returns SpatRaster", {
           bands = "NDVI",
           from_date = "2017.01.01",
           to_date = "2017.04.30"
-          )
-  if (!is.null(ds)) {
+          ))
+  if (!is.null(ds) & !inherits(ds, "try-error")) {
   expect_s4_class(ds, "SpatRaster")
   # In this case, with both Aqua and Terra platforms, 
   # and datasets for 4 months, should be 8 layers (Aqua and Terra)

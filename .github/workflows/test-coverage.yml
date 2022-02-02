@@ -1,6 +1,5 @@
 on:
   push:
-    branches: [main,dev]
 
 name: test-coverage
 
@@ -9,6 +8,9 @@ jobs:
     runs-on: macOS-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      USGS_USER: 'modistsp_ci_codecov'
+      USGS_PASSWORD: ${{ secrets.USGS_PASSWORD }}
+      LOCAL_DEIMS: false
     steps:
       - uses: actions/checkout@v2
 
@@ -31,17 +33,9 @@ jobs:
 
       - name: Install dependencies
         run: |
-          remotes::install_deps(dependencies = TRUE)
+          remotes::install_deps(dependencies = TRUE, type = "binary")
           remotes::install_cran("rcmdcheck")
           remotes::install_cran("covr")
-        shell: Rscript {0}
-
-      - name: Reinstall {raster}
-        # temporary, see https://stackoverflow.com/questions/70674136/r-package-warning-multiple-methods-tables-found-for-direction
-        # remove when no longer needed
-        run: |
-          remotes::install_cran("terra", type = "source", repos = "https://stat.ethz.ch/CRAN/", force = TRUE)
-          remotes::install_cran("raster", type = "source", repos = "https://stat.ethz.ch/CRAN/", force = TRUE)
         shell: Rscript {0}
 
       - name: Test coverage

@@ -74,7 +74,12 @@
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom sf st_transform st_bbox
 #' @importFrom terra vect rast
-#' @import MODIStsp
+#' @importFrom graphics par
+#' @importFrom grDevices dev.off png
+#' @importFrom stats complete.cases
+#' @importFrom utils tail write.csv
+#' @importFrom MODIStsp MODIStsp_get_prodlayers 
+#'  MODIStsp_get_prodnames MODIStsp
 #' @export
 #' @examples
 #'  \dontrun{
@@ -86,11 +91,10 @@
 #'  # Use LST_Day_1KM and LST_Night_1KM
 #'  bands = c("LST_Day_1KM", "LST_Night_1KM")
 #'  # Acquire MODIS data
-#'  # (Use internal authentication credentials)
-#'  creds <- ReLTER:::creds
+#'  # (IMPORTANT: define personal authentication credentials)
 #'  MODIS_LST <- get_site_MODIS(deimsid = deimsid,
-#'                            earthdata_user = creds$user,
-#'                            earthdata_passwd = creds$password,
+#'                             earthdata_user = "your_USGS_username",
+#'                            earthdata_passwd = "your_USGS_password",
 #'                            product = product,
 #'                            bands = bands,
 #'                            from_date="2021.06.01", to_date = "2021.07.31")
@@ -269,7 +273,7 @@ get_site_MODIS <- function(deimsid,
       }
   } else {  # No time series directory specified, save to out_folder
       save_ts_dir <- file.path(out_folder, "Time_Series")
-      create_ok <- dir.create(save_ts_dir, recursive = TRUE)
+      create_ok <- dir.create(save_ts_dir, recursive = TRUE, showWarnings = FALSE)
   }
   # Prepare for multipanel plot
   num_plots <- length(modis_ts_list)

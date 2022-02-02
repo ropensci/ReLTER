@@ -2,7 +2,6 @@
 # Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
 on:
   push:
-    branches: [main,dev]
   pull_request:
     branches: [main]
 
@@ -18,14 +17,16 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {os: macOS-latest,   r: 'release', test_mode: 'FALSE'}
-          - {os: windows-latest, r: 'release', test_mode: 'FALSE'}
-          - {os: ubuntu-20.04,   r: 'devel',   test_mode: 'FALSE', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          - {os: ubuntu-20.04,   r: 'release', test_mode: 'FALSE', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          - {os: ubuntu-20.04,   r: 'oldrel',  test_mode: 'FALSE', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: macOS-latest,   r: 'release', usgs_user: 'modistsp_ci_macos_release',   test_mode: 'FALSE'}
+          - {os: windows-latest, r: 'release', usgs_user: 'modistsp_ci_windows_release', test_mode: 'FALSE'}
+          - {os: ubuntu-20.04,   r: 'devel',   usgs_user: 'modistsp_ci_ubuntu_release',  test_mode: 'FALSE', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-20.04,   r: 'release', usgs_user: 'modistsp_ci_ubuntu_devel',    test_mode: 'FALSE', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-20.04,   r: 'oldrel',  usgs_user: 'modistsp_ci_ubuntu_oldrel',   test_mode: 'FALSE', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      USGS_USER: ${{ matrix.config.usgs_user }}
+      USGS_PASSWORD: ${{ secrets.USGS_PASSWORD }}
       R_KEEP_PKG_SOURCE: yes
       LOCAL_DEIMS: ${{ matrix.config.test_mode }}
       
@@ -64,6 +65,7 @@ jobs:
           
       - name: Install dependencies
         run: |
+          if (Sys.info()["sysname"]=="Darwin") {options("pkgType" = "binary")}
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("rcmdcheck")
         shell: Rscript {0}
@@ -87,14 +89,5 @@ jobs:
             libssl-dev \
             libcairo2-dev \
             libgit2-dev
-
-      - name: Reinstall {raster}
-        # temporary, see https://stackoverflow.com/questions/70674136/r-package-warning-multiple-methods-tables-found-for-direction
-        # remove when no longer needed
-        if: runner.os == 'macOS'
-        run: |
-          remotes::install_cran("terra", type = "source", repos = "https://stat.ethz.ch/CRAN/", force = TRUE)
-          remotes::install_cran("raster", type = "source", repos = "https://stat.ethz.ch/CRAN/", force = TRUE)
-        shell: Rscript {0}
 
       - uses: r-lib/actions/check-r-package@v1

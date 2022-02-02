@@ -131,7 +131,7 @@ produce_site_map <-
       siteSelected <- sf::as_Spatial(
         sf::st_as_sfc(
           coordinates$boundaries,
-          crs = "+proj=longlat +datum=WGS84 +no_defs"
+          crs = 4326
         )
       )
     }
@@ -181,7 +181,7 @@ produce_site_map <-
           sf::as_Spatial(
             sf::st_as_sfc(
               lterCoords,
-              crs = "+proj=longlat +datum=WGS84 +no_defs"
+              crs = 4326
             ),
           )
         baseMap <-
@@ -264,7 +264,7 @@ produce_site_map <-
         }
       } else {
         geoBoundaries_sf <- sf::st_as_sfc(geoBoundaries)
-        sf::st_crs(geoBoundaries_sf) <- "+proj=longlat +datum=WGS84 +no_defs"
+        sf::st_crs(geoBoundaries_sf) <- sf::st_crs(4326)
         lterSitesFeatureDEIMS <-
           sf::as_Spatial(geoBoundaries_sf, )
         bboxlterItalySitesFeature <- sf::st_bbox(lterSitesFeatureDEIMS)
