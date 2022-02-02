@@ -78,7 +78,7 @@
 #' @importFrom grDevices dev.off png
 #' @importFrom stats complete.cases
 #' @importFrom utils tail write.csv
-#' @importFrom MODIStsp load_prodopts MODIStsp_get_prodlayers 
+#' @importFrom MODIStsp MODIStsp_get_prodlayers 
 #'  MODIStsp_get_prodnames MODIStsp
 #' @export
 #' @examples
