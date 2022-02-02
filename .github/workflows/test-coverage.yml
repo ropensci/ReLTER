@@ -8,6 +8,7 @@ jobs:
     runs-on: macOS-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      LOCAL_DEIMS: false
     steps:
       - uses: actions/checkout@v2
 
