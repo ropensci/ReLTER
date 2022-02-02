@@ -8,6 +8,8 @@ jobs:
     runs-on: macOS-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      USGS_USER: 'modistsp_ci_codecov'
+      USGS_PASSWORD: ${{ secrets.USGS_PASSWORD }}
       LOCAL_DEIMS: false
     steps:
       - uses: actions/checkout@v2

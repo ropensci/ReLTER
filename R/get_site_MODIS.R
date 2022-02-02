@@ -91,11 +91,10 @@
 #'  # Use LST_Day_1KM and LST_Night_1KM
 #'  bands = c("LST_Day_1KM", "LST_Night_1KM")
 #'  # Acquire MODIS data
-#'  # (Use internal authentication credentials)
-#'  creds <- ReLTER:::creds
+#'  # (IMPORTANT: define personal authentication credentials)
 #'  MODIS_LST <- get_site_MODIS(deimsid = deimsid,
-#'                            earthdata_user = creds$user,
-#'                            earthdata_passwd = creds$password,
+#'                             earthdata_user = "your_USGS_username",
+#'                            earthdata_passwd = "your_USGS_password",
 #'                            product = product,
 #'                            bands = bands,
 #'                            from_date="2021.06.01", to_date = "2021.07.31")
