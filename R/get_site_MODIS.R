@@ -74,7 +74,12 @@
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom sf st_transform st_bbox
 #' @importFrom terra vect rast
-#' @import MODIStsp
+#' @importFrom graphics par
+#' @importFrom grDevices dev.off png
+#' @importFrom stats complete.cases
+#' @importFrom utils tail write.csv
+#' @importFrom MODIStsp load_prodopts MODIStsp_get_prodlayers 
+#'  MODIStsp_get_prodnames MODIStsp
 #' @export
 #' @examples
 #'  \dontrun{
