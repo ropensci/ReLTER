@@ -34,13 +34,16 @@ Description: ReLTER provides access to DEIMS-SDR (https://deims.org/),
     The ReLTER package functions in particular allow to:
     - retrieve the information about entities (e.g. sites, datasets, and
     activities) shared by DEIMS-SDR (see e.g. get_site_info function);
-    - interact with the [ODSEurope](maps.opendatascience.eu) managed by members
-    of the [Geo-harmonizer](https://opendatascience.eu/geoharmonizer-project/)
-    project starting with the dataset shared by [DEIMS-SDR](https://deims.org/)
+    - interact with the [ODSEurope](maps.opendatascience.eu), MODIS Land Products
+    archive managed by members of the
+    [Geo-harmonizer](https://opendatascience.eu/geoharmonizer-project/)
+    project, [GBIF](https://www.gbif.org), [iNaturalist](https://www.inaturalist.org/) and
+    [OBIS](https://obis.org/) starting with the dataset shared by [DEIMS-SDR](https://deims.org/)
     (see e.g. [get_site_ODS](https://oggioniale.github.io/ReLTER/reference/get_site_ODS.html)
-    function);
+    function, [get_site_MODIS](https://oggioniale.github.io/ReLTER/reference/get_site_MODIS.html)
+    function and [get_site_speciesOccurrences](https://oggioniale.github.io/ReLTER/reference/get_site_speciesOccurrences.html));
     - use the eLTER site informations to download and crop geospatial data
-    from other platforms (see e.g. get_site_ODS function);
+    from other platforms (see e.g. get_site_ODS or get_site_MODIS functions);
     - improve the quality of the dataset (see e.g. get_id_worms).
     Functions currently implemented are derived from discussions of the
     needs among the eLTER users community.

@@ -13,7 +13,7 @@
 #' @return The output of the function is a `tibble` with main features of the
 #' site and the selected information, such as: networks and projects in
 #' which the site is involved.
-#' If `category` "Boundaries" is indicated an `sf` object is returned
+#' If category 'Boundaries' is indicated an `sf` object is returned
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom httr RETRY content
 #' @importFrom jqr jq

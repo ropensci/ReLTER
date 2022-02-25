@@ -27,14 +27,19 @@ knitr::opts_chunk$set(
 <!-- CRAN badges -->
 <!-- `r badger::badge_cran_release("oggioniale/ReLTER", "orange")` -->
 <!-- `r badger::badge_cran_checks("ReLTER")` -->
+<!-- `r badger::badge_cran_download("badger", "last-month", "green")` -->
+<!-- `r badgecreatr::badge_rdocumentation("ReLTER")` -->
+<!-- work on github -->
 `r badger::badge_code_size("oggioniale/ReLTER")`
 `r badger::badge_last_commit("oggioniale/ReLTER")`
+`r badger::badge_license("GPL-3.0")`
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![Lifecycle](https://lifecycle.r-lib.org/articles/figures/lifecycle-stable.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 
 <!-- Once you have submitted a package and it has passed editor checks, add a peer-review badge via -->
-<!-- [![](https://badges.ropensci.org/<issue_id>_status.svg)](https://github.com/ropensci/software-review/issues/<issue_id>) -->
+<!-- [![](https://badges.ropensci.org/485_status.svg)](https://github.com/ropensci/software-review/issues/485) -->
 <!-- where issue_id is the number of the issue in the software-review repository. -->
-[![R-CMD-check](https://github.com/oggioniale/ReLTER/workflows/R-CMD-check/badge.svg)](https://github.com/oggioniale/ReLTER/actions)
+`r badger::badge_github_actions("rossellhayes/ipa")`
 [![codecov](https://codecov.io/gh/oggioniale/ReLTER/branch/dev/graph/badge.svg)](https://codecov.io/gh/oggioniale/ReLTER)
 <!-- badges: end -->
 
