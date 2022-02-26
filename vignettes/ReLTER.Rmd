@@ -1,50 +1,87 @@
 ---
-title: "ReLTER"
-output: rmarkdown::html_vignette
+title: 'ReLTER: An interface to the eLTER for the R statistical programming environment - v1.0.0'
+author: "Alessadro Oggioni ([alessandro.oggioni@cnr.it](mailto:alessandro.oggioni@cnr.it)),
+  Micha Silver ([silverm@post.bgu.ac.il](mailto:silverm@post.bgu.ac.il)),
+  Luigi Ranghetti ([ranghetti.l@irea.cnr.it](mailto:ranghetti.l@irea.cnr.it)),
+  Paolo Tagliolato ([tagliolato.a@irea.cnr.it](mailto:tagliolato.a@irea.cnr.it))"
+# bibliography: ReLTER.bib
+date: '`r Sys.Date()`'
+output:
+  rmarkdown::html_vignette:
+    fig_caption: yes
+    number_section: yes
+    toc: no
+    toc_depth: 2
+  rmarkdown::pdf_document:
+    fig_caption: yes
+    number_sections: yes
+    toc: yes
+    toc_depth: 2
+  rmarkdown::html_document:
+    fig_caption: yes
+    number_section: yes
+    toc: no
+    toc_depth: 1
+urlcolor: blue
+linkcolor: blue
 vignette: >
-  %\VignetteIndexEntry{ReLTER}
+  \usepackage[utf8]{inputenc}
+  %\VignetteIndexEntry{ReLTER: An interface to the eLTER for the R statistical programming environment - v1.0.0}
   %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "man/figures/README-",
+  fig.path = "vignettes/figures/vignettes-",
   fig.ext = "png",
   out.width = "100%"
 )
 ```
+<img src='../man/figures/logo.png' align="right" height="139" />
 
-## Description of <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span>
-<span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span> is an R package that: provides access to [DEIMS-SDR](https://deims.org/)), allows interact with software implemented by eLTER Research Infrastructure (RI) and improves the data/information shared by them.
-<span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span> is a R package devoted to access, interact and improve the information and the data shared by Long Term Ecological Research (LTER) network. This package is born within eLTER H2020 major project that will help advance the development of European Long-Term Ecosystem Research Infrastructures ([eLTER RI](https://elter-ri.eu)).
+<span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span> provides access to [DEIMS-SDR](https://deims.org/), and allows interaction with data and software implemented by [Long Term Ecological Research Research Infrastructure (eLTER-RI)](https://elter-ri.eu) thus improving data sharing among [European LTER projects](https://elter-ri.eu/projects).
 
-The <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span> package functions in particular allow to:
+<br>
+<br>
+<br>
+<br>
+<br>
 
-- retrive the information about entities (e.g. sites, datasets, and activities) shared by [DEIMS-SDR](https://deims.org/) (see e.g. [get_site_info function](https://oggioniale.github.io/ReLTER/reference/get_site_info.html));
+# Documentation of <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span>
 
-- elaborate the information of single site or merge info from national network sites or entire International LTER (ILTER) in order to provide maps, figures, graphs etc (see e.g. [get_network_sites](https://oggioniale.github.io/ReLTER/reference/get_network_sites.html), [produce_site_map](https://oggioniale.github.io/ReLTER/reference/produce_site_map.html) or [produce_site_parameters_pie](https://oggioniale.github.io/ReLTER/reference/produce_site_parameters_pie.html) functions);
+Visit the <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span> [website](https://oggioniale.github.io/ReLTER/) for further documentation, examples, and installation of the package.
 
-- interact with the [ODSEurope](maps.opendatascience.eu) managed by members of the [Geo-harmonizer](https://opendatascience.eu/geoharmonizer-project/) project starting with the dataset shared by [DEIMS-SDR](https://deims.org/) (see e.g. [get_site_ODS](https://oggioniale.github.io/ReLTER/reference/get_site_ODS.html) function);
+# Installation of <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span>
 
-- improve the quality of the dataset (see e.g. [get_id_worms](https://oggioniale.github.io/ReLTER/reference/get_id_worms.html)).
+You can install the development version of <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span> from [GitHub](https://github.com/oggioniale/ReLTER) with:
 
-Functions currently implemented are derived from the discussion of the needs declared by eLTER users community.
+```{r, installationInfo, eval = FALSE}
+install.packages("devtools")
+devtools::install_github("oggioniale/ReLTER")
+```
+If you wish to help develop this package, please follow the [contributing guidelines](https://oggioniale.github.io/ReLTER/CONTRIBUTING.html).
 
-The <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span> package shall definitely follow the progress of eLTER-RI infrastructure and evolving with the improvements and develop of new tools.
+# Examples
 
-## Citation of <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span>
+## Ex1 ...
+<img alt="xxx" width="250" style="padding: 0 15px; float: right;"/>
+
+# Problems and Issues of <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span>
+
+Please report any issues you may encounter in our [issues page on GitHub](https://github.com/oggioniale/ReLTER/issues)
+
+# Citation of <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span>
 
 To cite <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span> please use:
-Alessandro Oggioni, Micha Silver & Paolo Tagliolato. (2021). oggioniale/ReLTER: ReLTER v1.0.0 (1.0.0). Zenodo. https://doi.org/10.5281/zenodo.5576813
+Alessandro Oggioni, Micha Silver, Luigi Ranghetti & Paolo Tagliolato. (2021). oggioniale/ReLTER: ReLTER v1.0.0 (1.0.0). Zenodo. https://doi.org/10.5281/zenodo.5576813
 
 or:
 
 ``` bibtex
 @software{alessandro_oggioni_2021_5576813,
-  author       = {Alessandro Oggioni and Micha Silver and Paolo Tagliolato},
+  author       = {Alessandro Oggioni and Micha Silver and Luigi Ranghetti and Paolo Tagliolato},
   title        = {oggioniale/ReLTER: ReLTER v1.0.0},
   month        = nov,
   year         = 2021,
@@ -55,21 +92,6 @@ or:
 }
 ```
 
-## Documentation of <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span>
-
-You can visit <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span> website at [oggioniale.github.io/ReLTER/](https://oggioniale.github.io/ReLTER/) for obtain documentation on installation, functions description and examples of use.
-
-
-## Installation of <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span>
-
-You can install the development version of <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span> from [GitHub](https://github.com/oggioniale/ReLTER) with:
-
-```{r, installationInfo, eval = FALSE}
-install.packages("devtools")
-devtools::install_github("oggioniale/ReLTER")
-```
-
-
-## Code of Conduct of <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span>
+# Code of Conduct of <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span>
 
 Please note that this package is released with a [Contributor Code of Conduct](https://ropensci.org/code-of-conduct/). By contributing to this project, you agree to abide by its terms.
