@@ -3,7 +3,7 @@ Type: Package
 Title: An Interface for the 'eLTER' Community
 Version: 1.0.0
 Authors@R: c(
-        person("Alessandro", "Oggioni", email = "oggioni.a@irea.cnr.it", 
+        person("Alessandro", "Oggioni", email = "alessandro.oggioni@cnr.it", 
           role = c("aut", "cre", "fnd"),
           comment = c(ORCID = "0000-0002-7997-219X")
         ),
@@ -18,10 +18,18 @@ Authors@R: c(
         person("Luigi", "Ranghetti", email = "luigi@ranghetti.info",
           role = c("aut", "ctb"),
           comment = c(ORCID = "0000-0001-6207-5188")
+        ),
+        person("Allison", "Horst", 
+          role = "rev",
+          comment = "Allison reviewed the package (v. 1.0.0) for rOpenSci, see <https://github.com/ropensci/software-review/issues/485>"
+        ),
+        person("Will", "Bolton", 
+          role = "rev",
+          comment = "Will reviewed the package (v. 1.0.0) for rOpenSci, see <https://github.com/ropensci/software-review/issues/485>"
         )
       )
-Maintainer: The package maintainer Alessandro Oggioni, phD (2020)
-    <oggioni.a@irea.cnr.it>
+Maintainer: Alessandro Oggioni
+    <alessandro.oggioni@cnr.it>
 Description: ReLTER provides access to DEIMS-SDR (https://deims.org/),
     and allows interaction with data and software implemented by eLTER
     Research Infrastructure (RI) thus improving data sharing among European 
