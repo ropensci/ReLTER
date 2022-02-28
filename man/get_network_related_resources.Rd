@@ -20,7 +20,7 @@ resources shared by the network's sites.
 \description{
 This function obtains information about the
 related resources (e.g. dataset) shared in the eLTER Network (e.g. Italy)
-througth the DEIMS-SDR sites API.
+through the DEIMS-SDR sites API.
 }
 \examples{
 \dontrun{

@@ -1,6 +1,6 @@
 #' @title eLTER get_network_research_topics function
 #' @description This function obtains a list of Research Topics
-#' handled in the eLTER Network (e.g. Italy) througth
+#' handled in the eLTER Network (e.g. Italy) through
 #' the DEIMS-SDR sites API.
 #' @param networkDEIMSID A `character`. The DEIMS ID of a network
 #' from DEIMS-SDR website. More information about DEIMS network ID in these

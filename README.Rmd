@@ -49,7 +49,7 @@ knitr::opts_chunk$set(
 
 The `{ReLTER}` package functions in particular allow to:
 
-- retrive the information about entities (e.g. sites, datasets, and activities) shared by [DEIMS-SDR](https://deims.org/) (see e.g. [get_site_info function](https://oggioniale.github.io/ReLTER/reference/get_site_info.html));
+- retrieve the information about entities (e.g. sites, datasets, and activities) shared by [DEIMS-SDR](https://deims.org/) (see e.g. [get_site_info function](https://oggioniale.github.io/ReLTER/reference/get_site_info.html));
 
 - elaborate the information of single site or merge info from national network sites or entire International LTER (ILTER) in order to provide maps, figures, graphs etc (see e.g. [get_network_sites](https://oggioniale.github.io/ReLTER/reference/get_network_sites.html), [produce_site_map](https://oggioniale.github.io/ReLTER/reference/produce_site_map.html) or [produce_site_parameters_pie](https://oggioniale.github.io/ReLTER/reference/produce_site_parameters_pie.html) functions);
 

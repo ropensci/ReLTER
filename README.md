@@ -49,7 +49,7 @@ Infrastructures ([eLTER RI](https://elter-ri.eu)).
 
 The `{ReLTER}` package functions in particular allow to:
 
--   retrive the information about entities (e.g. sites, datasets, and
+-   retrieve the information about entities (e.g. sites, datasets, and
     activities) shared by [DEIMS-SDR](https://deims.org/) (see
     e.g. [get_site_info
     function](https://oggioniale.github.io/ReLTER/reference/get_site_info.html));
@@ -252,7 +252,7 @@ tSiteRelatedResources$relatedResources[[1]]
 #> 2 2020-12-13T20:06:48+0100
 #> 3 2020-12-16T10:46:15+0100
 #> 4 2021-11-03T06:10:14+0100
-#> 5 2020-12-13T20:10:34+0100
+#> 5 2022-02-16T11:36:32+0100
 #> 6 2021-01-10T21:48:49+0100
 #> 7 2021-07-21T12:35:07+0200
 #>                                                              uri

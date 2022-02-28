@@ -69,7 +69,7 @@ v0.1.0 was released on 28/01/2019
 
 Beta release of ReLTER package!
 
-* Some fuctions are relesed whitin this version of package:
+* Some functions are released within this version of package:
 1. getSiteAffiliations
 2. getSiteBoundaries
 3. getSiteContact

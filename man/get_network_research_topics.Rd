@@ -20,7 +20,7 @@ sites.
 }
 \description{
 This function obtains a list of Research Topics
-handled in the eLTER Network (e.g. Italy) througth
+handled in the eLTER Network (e.g. Italy) through
 the DEIMS-SDR sites API.
 }
 \examples{
