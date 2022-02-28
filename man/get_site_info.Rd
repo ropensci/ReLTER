@@ -22,7 +22,7 @@ Multiple values can be indicated.}
 The output of the function is a `tibble` with main features of the
 site and the selected information, such as: networks and projects in
 which the site is involved.
-If `category` "Boundaries" is indicated an `sf` object is returned
+If category 'Boundaries' is indicated an `sf` object is returned
 }
 \description{
 This function obtains details about an eLTER site

@@ -11,8 +11,6 @@ reference:
     contents:
       - '`get_site_info`'
       - '`get_site_ODS`'
-      - '`get_site_MODIS`'
-      - '`get_site_speciesOccurrences`'
   - subtitle: Networks
     desc: For retrive information about LTER networks stored in DEIMS-SDR website.
     contents:

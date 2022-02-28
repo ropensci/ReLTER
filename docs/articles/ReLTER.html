@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ReLTER • ReLTER</title>
+<title>ReLTER: An interface to the eLTER for the R statistical programming environment - v1.0.0 • ReLTER</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
@@ -17,7 +17,7 @@
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="ReLTER">
+<script src="../pkgdown.js"></script><meta property="og:title" content="ReLTER: An interface to the eLTER for the R statistical programming environment - v1.0.0">
 <meta property="og:description" content="ReLTER">
 <meta property="og:image" content="https://oggioniale.github.io/ReLTER/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -98,8 +98,10 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>ReLTER</h1>
+      <h1 data-toc-skip>ReLTER: An interface to the eLTER for the R statistical programming environment - v1.0.0</h1>
+                        <h4 data-toc-skip class="author">Alessadro Oggioni (<a href="mailto:alessandro.oggioni@cnr.it">alessandro.oggioni@cnr.it</a>), Micha Silver (<a href="mailto:silverm@post.bgu.ac.il">silverm@post.bgu.ac.il</a>), Luigi Ranghetti (<a href="mailto:ranghetti.l@irea.cnr.it">ranghetti.l@irea.cnr.it</a>), Paolo Tagliolato (<a href="mailto:tagliolato.a@irea.cnr.it">tagliolato.a@irea.cnr.it</a>)</h4>
             
+            <h4 data-toc-skip class="date">2022-02-28</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/oggioniale/ReLTER/blob/HEAD/vignettes/ReLTER.Rmd" class="external-link"><code>vignettes/ReLTER.Rmd</code></a></small>
       <div class="hidden name"><code>ReLTER.Rmd</code></div>
@@ -108,52 +110,56 @@
 
     
     
-<div class="section level2">
-<h2 id="description-of-relter">Description of <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span><a class="anchor" aria-label="anchor" href="#description-of-relter"></a>
-</h2>
-<p><span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span> is an R package that: provides access to <a href="https://deims.org/" class="external-link">DEIMS-SDR</a>), allows interact with software implemented by eLTER Research Infrastructure (RI) and improves the data/information shared by them. <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span> is a R package devoted to access, interact and improve the information and the data shared by Long Term Ecological Research (LTER) network. This package is born within eLTER H2020 major project that will help advance the development of European Long-Term Ecosystem Research Infrastructures (<a href="https://elter-ri.eu" class="external-link">eLTER RI</a>).</p>
-<p>The <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span> package functions in particular allow to:</p>
-<ul>
-<li><p>retrive the information about entities (e.g. sites, datasets, and activities) shared by <a href="https://deims.org/" class="external-link">DEIMS-SDR</a> (see e.g. <a href="https://oggioniale.github.io/ReLTER/reference/get_site_info.html">get_site_info function</a>);</p></li>
-<li><p>elaborate the information of single site or merge info from national network sites or entire International LTER (ILTER) in order to provide maps, figures, graphs etc (see e.g. <a href="https://oggioniale.github.io/ReLTER/reference/get_network_sites.html">get_network_sites</a>, <a href="https://oggioniale.github.io/ReLTER/reference/produce_site_map.html">produce_site_map</a> or <a href="https://oggioniale.github.io/ReLTER/reference/produce_site_parameters_pie.html">produce_site_parameters_pie</a> functions);</p></li>
-<li><p>interact with the <a href="maps.opendatascience.eu">ODSEurope</a> managed by members of the <a href="https://opendatascience.eu/geoharmonizer-project/" class="external-link">Geo-harmonizer</a> project starting with the dataset shared by <a href="https://deims.org/" class="external-link">DEIMS-SDR</a> (see e.g. <a href="https://oggioniale.github.io/ReLTER/reference/get_site_ODS.html">get_site_ODS</a> function);</p></li>
-<li><p>improve the quality of the dataset (see e.g. <a href="https://oggioniale.github.io/ReLTER/reference/get_id_worms.html">get_id_worms</a>).</p></li>
-</ul>
-<p>Functions currently implemented are derived from the discussion of the needs declared by eLTER users community.</p>
-<p>The <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span> package shall definitely follow the progress of eLTER-RI infrastructure and evolving with the improvements and develop of new tools.</p>
+<p><img src="../reference/figures/logo.png" align="right" height="139"></p>
+<p><span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span> provides access to <a href="https://deims.org/" class="external-link">DEIMS-SDR</a>, and allows interaction with data and software implemented by <a href="https://elter-ri.eu" class="external-link">Long Term Ecological Research Research Infrastructure (eLTER-RI)</a> thus improving data sharing among <a href="https://elter-ri.eu/projects" class="external-link">European LTER projects</a>.</p>
+<p><br><br><br><br><br></p>
+<div class="section level1">
+<h1 id="documentation-of-relter">Documentation of <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span><a class="anchor" aria-label="anchor" href="#documentation-of-relter"></a>
+</h1>
+<p>Visit the <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span> <a href="https://oggioniale.github.io/ReLTER/">website</a> for further documentation, examples, and installation of the package.</p>
 </div>
-<div class="section level2">
-<h2 id="citation-of-relter">Citation of <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span><a class="anchor" aria-label="anchor" href="#citation-of-relter"></a>
-</h2>
-<p>To cite <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span> please use: Alessandro Oggioni, Micha Silver &amp; Paolo Tagliolato. (2021). oggioniale/ReLTER: ReLTER v1.0.0 (1.0.0). Zenodo. <a href="https://doi.org/10.5281/zenodo.5576813" class="external-link uri">https://doi.org/10.5281/zenodo.5576813</a></p>
-<p>or:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bibtex"><code class="sourceCode bibtex"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">@software{alessandro_oggioni_2021_5576813,</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">  author       = {Alessandro Oggioni and Micha Silver and Paolo Tagliolato},</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">  title        = {oggioniale/ReLTER: ReLTER v1.0.0},</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">  month        = nov,</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">  year         = 2021,</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">  publisher    = {Zenodo},</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">  version      = {1.0.0},</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">  doi          = {10.5281/zenodo.5576813},</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">  url          = {https://doi.org/10.5281/zenodo.5576813}</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">}</span></span></code></pre></div>
-</div>
-<div class="section level2">
-<h2 id="documentation-of-relter">Documentation of <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span><a class="anchor" aria-label="anchor" href="#documentation-of-relter"></a>
-</h2>
-<p>You can visit <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span> website at <a href="https://oggioniale.github.io/ReLTER/">oggioniale.github.io/ReLTER/</a> for obtain documentation on installation, functions description and examples of use.</p>
-</div>
-<div class="section level2">
-<h2 id="installation-of-relter">Installation of <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span><a class="anchor" aria-label="anchor" href="#installation-of-relter"></a>
-</h2>
+<div class="section level1">
+<h1 id="installation-of-relter">Installation of <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span><a class="anchor" aria-label="anchor" href="#installation-of-relter"></a>
+</h1>
 <p>You can install the development version of <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span> from <a href="https://github.com/oggioniale/ReLTER" class="external-link">GitHub</a> with:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span>
 <span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"oggioniale/ReLTER"</span><span class="op">)</span></code></pre></div>
+<p>If you wish to help develop this package, please follow the <a href="https://oggioniale.github.io/ReLTER/CONTRIBUTING.html">contributing guidelines</a>.</p>
 </div>
+<div class="section level1">
+<h1 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
+</h1>
 <div class="section level2">
-<h2 id="code-of-conduct-of-relter">Code of Conduct of <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span><a class="anchor" aria-label="anchor" href="#code-of-conduct-of-relter"></a>
+<h2 id="ex1">Ex1 …<a class="anchor" aria-label="anchor" href="#ex1"></a>
 </h2>
+<p><img alt="xxx" width="250" style="padding: 0 15px; float: right;" src="NA"></p>
+</div>
+</div>
+<div class="section level1">
+<h1 id="problems-and-issues-of-relter">Problems and Issues of <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span><a class="anchor" aria-label="anchor" href="#problems-and-issues-of-relter"></a>
+</h1>
+<p>Please report any issues you may encounter in our <a href="https://github.com/oggioniale/ReLTER/issues" class="external-link">issues page on GitHub</a></p>
+</div>
+<div class="section level1">
+<h1 id="citation-of-relter">Citation of <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span><a class="anchor" aria-label="anchor" href="#citation-of-relter"></a>
+</h1>
+<p>To cite <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span> please use: Alessandro Oggioni, Micha Silver, Luigi Ranghetti &amp; Paolo Tagliolato. (2021). oggioniale/ReLTER: ReLTER v1.0.0 (1.0.0). Zenodo. <a href="https://doi.org/10.5281/zenodo.5576813" class="external-link uri">https://doi.org/10.5281/zenodo.5576813</a></p>
+<p>or:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bibtex"><code class="sourceCode bibtex"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">@software{alessandro_oggioni_2021_5576813,</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">  author       = {Alessandro Oggioni and Micha Silver and Luigi Ranghetti and Paolo Tagliolato},</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">  title        = {oggioniale/ReLTER: ReLTER v1.0.0},</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">  month        = nov,</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">  year         = 2021,</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">  publisher    = {Zenodo},</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">  version      = {1.0.0},</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">  doi          = {10.5281/zenodo.5576813},</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">  url          = {https://doi.org/10.5281/zenodo.5576813}</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">}</span></span></code></pre></div>
+</div>
+<div class="section level1">
+<h1 id="code-of-conduct-of-relter">Code of Conduct of <span style="color:#2878B3;font-size:90%;font-weight:normal;">ReLTER</span><a class="anchor" aria-label="anchor" href="#code-of-conduct-of-relter"></a>
+</h1>
 <p>Please note that this package is released with a <a href="https://ropensci.org/code-of-conduct/" class="external-link">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
   </div>
