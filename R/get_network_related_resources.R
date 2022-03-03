@@ -1,6 +1,10 @@
-#' @title eLTER get_network_related_resources function
+#' @title Return a tibble object containing Related Resources, as a stored in
+#' \href{https://deims.org/}{DEIMS-SDR catalogue}, of all the eLTER sites
+#' belonging to an eLTER Network (e.g.
+#' \href{https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3}{LTER
+#' Italy network}).
 #' @description This function obtains information about the
-#' related resources (e.g. dataset) shared in the eLTER Network (e.g. Italy)
+#' Related Resources (e.g. dataset) shared in the eLTER Network (e.g. Italy)
 #' through the DEIMS-SDR sites API.
 #' @param networkDEIMSID A `character`. It is the DEIMS iD of network make
 #' from DEIMS-SDR website. More information about DEIMS iD in this

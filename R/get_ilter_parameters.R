@@ -1,4 +1,7 @@
-#' @title eLTER get_ilter_parameters function
+#' @title Return a tibble object containing Parameter collected by all of
+#' the eLTER sites (more than 1200 sites), as a stored into
+#' \href{https://deims.org}{DEIMS-SDR}, belonging to International LTER
+#' network (ILTER).
 #' @description This function obtains information about the
 #' parameters collected in ILTER sites, through the DEIMS-SDR sites API.
 #' @param sitesNum A `integer`. It is the number of the sites that are

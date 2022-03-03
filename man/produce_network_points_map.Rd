@@ -2,7 +2,10 @@
 % Please edit documentation in R/produce_network_points_map.R
 \name{produce_network_points_map}
 \alias{produce_network_points_map}
-\title{eLTER produce_network_points_map function}
+\title{Return a image map object of all of the eLTER sites belonging to an
+eLTER Network (e.g.
+\href{https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3}{LTER
+Italy network}), as a stored into \href{https://deims.org}{DEIMS-SDR}.}
 \usage{
 produce_network_points_map(networkDEIMSID, countryCode)
 }
@@ -28,7 +31,8 @@ geographic distribution of the network of sites present in the chosen
 country.
 }
 \description{
-This function provides a map (image) of sites in an LTER network
+This function provides a map (image) of sites in an LTER
+network
 }
 \examples{
 \dontrun{

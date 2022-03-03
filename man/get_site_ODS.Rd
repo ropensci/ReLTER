@@ -2,7 +2,9 @@
 % Please edit documentation in R/get_site_ODS.R
 \name{get_site_ODS}
 \alias{get_site_ODS}
-\title{eLTER get_site_ODS function}
+\title{Download and return a SpatRaster object containing requested
+by \href{https://maps.opendatascience.eu/}{ODS} dataset, cropped to a
+eLTER site boundaries.}
 \usage{
 get_site_ODS(deimsid, dataset = "landcover")
 }

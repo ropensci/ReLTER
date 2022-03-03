@@ -1,4 +1,7 @@
-#' @title eLTER get_ilter_generalinfo function
+#' @title Return a spatial point vector object containing name and
+#' geo-information, stored in \href{https://deims.org/}{DEIMS-SDR catalogue},
+#' of all the eLTER sites (more than 1200 sites) belonging to International
+#' LTER network (ILTER).
 #' @description This function downloads generic information
 #' of all sites, or a subset of sites of ILTER, through the DEIMS-SDR
 #' API. If no `country_name` or `site_name` are specified,

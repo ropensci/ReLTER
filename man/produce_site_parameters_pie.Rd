@@ -2,7 +2,11 @@
 % Please edit documentation in R/produce_site_parameters_pie.R
 \name{produce_site_parameters_pie}
 \alias{produce_site_parameters_pie}
-\title{eLTER produce_site_parameters_pie function}
+\title{Return a pie chart of Environmental Parameters, as a stored in
+\href{https://deims.org/}{DEIMS-SDR catalogue}, of a single eLTER site
+or all of the eLTER sites belonging to an eLTER Network (e.g.
+\href{https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3}{LTER
+Italy network}).}
 \usage{
 produce_site_parameters_pie(deimsid)
 }

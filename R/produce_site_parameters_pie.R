@@ -1,4 +1,8 @@
-#' @title eLTER produce_site_parameters_pie function
+#' @title  Return a pie chart of Environmental Parameters, as a stored in
+#' \href{https://deims.org/}{DEIMS-SDR catalogue}, of a single eLTER site
+#' or all of the eLTER sites belonging to an eLTER Network (e.g.
+#' \href{https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3}{LTER
+#' Italy network}).
 #' @description This function produces a pie chart of the parameters
 #' collected in a site or network grouped into compounds.
 #' @param deimsid A `character`. It is the DEIMS ID of site/network from

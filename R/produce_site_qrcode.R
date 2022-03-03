@@ -1,4 +1,5 @@
-#' @title eLTER produce_site_qrcode function
+#' @title Return a QR code image of any provided DEIMS.iD (e.g. dataset,
+#' site, activity).
 #' @description This function obtain the QRCode of any DEIMS-SDR
 #' entities of the eLTER.
 #' @param deimsid a `character`. The DEIMS ID of entities from

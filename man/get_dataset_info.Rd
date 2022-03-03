@@ -2,7 +2,9 @@
 % Please edit documentation in R/get_dataset_info.R
 \name{get_dataset_info}
 \alias{get_dataset_info}
-\title{eLTER get_dataset_info function}
+\title{Return a tibble object containing information, as a stored in
+\href{https://deims.org/}{DEIMS-SDR catalogue}, about a single eLTER dataset
+(e.g. \url{https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef}).}
 \usage{
 get_dataset_info(datasetid)
 }

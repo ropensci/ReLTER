@@ -1,4 +1,5 @@
-#' @title eLTER get_site_info function
+#' @title Return a tibble object containing information, as a stored in
+#' \href{https://deims.org/}{DEIMS-SDR catalogue}, of a single eLTER site.
 #' @description This function obtains details about an eLTER site
 #' through the DEIMS-SDR sites API.
 #' @param deimsid a character. The DEIMS ID of the site from

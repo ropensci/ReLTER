@@ -2,7 +2,11 @@
 % Please edit documentation in R/get_network_envcharacts.R
 \name{get_network_envcharacts}
 \alias{get_network_envcharacts}
-\title{eLTER get_network_envcharacts function}
+\title{Return a tibble object containing Environmental Characteristics,
+stored in \href{https://deims.org/}{DEIMS-SDR catalogue}, of all the
+eLTER sites belonging to an eLTER Network (e.g.
+\href{https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3}{LTER
+Italy network}).}
 \usage{
 get_network_envcharacts(networkDEIMSID)
 }
@@ -18,7 +22,7 @@ The output of the function is a `tibble` containing all the
 Environmental Characteristics of the network's sites.
 }
 \description{
-This function obtains several Envinronmental Characteristics:
+This function obtains several Environmental Characteristics:
 title, URI, geocoordinates, country name, and elevation
 of sites in an eLTER Network (e.g. Italy) through the DEIMS-SDR sites API.
 }

@@ -2,7 +2,10 @@
 % Please edit documentation in R/get_ilter_generalinfo.R
 \name{get_ilter_generalinfo}
 \alias{get_ilter_generalinfo}
-\title{eLTER get_ilter_generalinfo function}
+\title{Return a spatial point vector object containing name and
+geo-information, stored in \href{https://deims.org/}{DEIMS-SDR catalogue},
+of all the eLTER sites (more than 1200 sites) belonging to International
+LTER network (ILTER).}
 \usage{
 get_ilter_generalinfo(country_name = NA, site_name = NA, show_map = FALSE)
 }

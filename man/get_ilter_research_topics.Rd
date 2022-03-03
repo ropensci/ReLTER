@@ -2,7 +2,10 @@
 % Please edit documentation in R/get_ilter_research_topics.R
 \name{get_ilter_research_topics}
 \alias{get_ilter_research_topics}
-\title{eLTER get_ilter_research_topics function}
+\title{Return a tibble object containing Research Topics collected by all
+of the eLTER sites (more than 1200 sites), as a stored into
+\href{https://deims.org}{DEIMS-SDR}, belonging to International LTER
+network (ILTER).}
 \usage{
 get_ilter_research_topics(sitesNum = NULL)
 }

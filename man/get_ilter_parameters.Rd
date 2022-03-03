@@ -2,7 +2,10 @@
 % Please edit documentation in R/get_ilter_parameters.R
 \name{get_ilter_parameters}
 \alias{get_ilter_parameters}
-\title{eLTER get_ilter_parameters function}
+\title{Return a tibble object containing Parameter collected by all of
+the eLTER sites (more than 1200 sites), as a stored into
+\href{https://deims.org}{DEIMS-SDR}, belonging to International LTER
+network (ILTER).}
 \usage{
 get_ilter_parameters(sitesNum = 0)
 }

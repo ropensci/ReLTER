@@ -2,7 +2,8 @@
 % Please edit documentation in R/get_site_info.R
 \name{get_site_info}
 \alias{get_site_info}
-\title{eLTER get_site_info function}
+\title{Return a tibble object containing information, as a stored in
+\href{https://deims.org/}{DEIMS-SDR catalogue}, of a single eLTER site.}
 \usage{
 get_site_info(deimsid, category = NA)
 }

@@ -1,17 +1,21 @@
-#' @title eLTER taxon_id_pesi function
+#' @title Return tibble object with all the columns of input table plus new
+#' columns such as 'canonicalName', 'authorship', synonyms', 'LSID', 'url',
+#' 'accordingTo', 'checkStatus' gathered from
+#' \href{http://www.eu-nomen.eu/portal/rest/}{PESI RestAPI}.
 #' @description This function provide a taxon ID, usually a
-#' \href{https://en.wikipedia.org/wiki/LSID}{LSID}, to a taxon. The input of
-#' the function is a csv file with a list of taxon and the provider is
-#' currently A Pan-European Species directories Infrastructure -
-#' \href{http://eu-nomen.eu/pesi/}{PESI}. `taxonID` takes advantage of taxize's
-#' `eubon_search` function \url{https://docs.ropensci.org/taxize/} and the
+#' \href{https://en.wikipedia.org/wiki/LSID}{LSID}, to a taxon list.
+#' The input of the function is a csv file with a list of taxon. Taxon
+#' ID provided by this function is currently taken from Pan-European Species
+#' directories Infrastructure - \href{http://eu-nomen.eu/pesi/}{PESI}. This
+#' function takes advantage of taxize's `eubon_search` function
+#' \url{https://docs.ropensci.org/taxize/} and the
 #' \href{http://www.eu-nomen.eu/portal/rest/}{PESI RestAPI}.
 #' @param table `data.frame` containing column with a taxa
 #' (e.g. Sphaerosoma seidlitzi, Malthinus, etc.).
 #' @param taxaColumn `numeric` that identify the column containing taxa value.
-#' @return the output of the function is a `data.frame` containing all the
+#' @return the output of the function is a `tibble` containing all the
 #' columns provided as input and new columns as: 'canonicalName', 'authorship',
-#' 'synonyms', LSID', 'url', 'accordingTo', 'checkStatus' gathered from PESI.
+#' 'synonyms', 'LSID', 'url', 'accordingTo', 'checkStatus' gathered from PESI.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom taxize eubon_search
 #' @importFrom dplyr bind_rows
@@ -33,7 +37,7 @@
 #' )
 #'
 #' # We perform a query from the `table` in order to associate the taxon
-#' # identifier (LSID) to the list of species present in the thirth column.
+#' # identifier (LSID) to the list of species present in the thirty column.
 #' taxon_id_pesi(
 #'   table = table,
 #'   taxaColumn = 3

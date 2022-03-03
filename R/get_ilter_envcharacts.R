@@ -1,4 +1,7 @@
-#' @title eLTER get_ilter_envcharacts function
+#' @title Return a tibble object containing Environmental Characteristics
+#' collected by all of the eLTER sites (more than 1200 sites), as a stored
+#' into \href{https://deims.org}{DEIMS-SDR}, belonging to International
+#' LTER network (ILTER).
 #' @description This function obtains the information about the
 #' Environmental Characteristics of ILTER sites, through the DEIMS-SDR sites
 #' API.

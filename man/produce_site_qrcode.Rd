@@ -2,7 +2,8 @@
 % Please edit documentation in R/produce_site_qrcode.R
 \name{produce_site_qrcode}
 \alias{produce_site_qrcode}
-\title{eLTER produce_site_qrcode function}
+\title{Return a QR code image of any provided DEIMS.iD (e.g. dataset,
+site, activity).}
 \usage{
 produce_site_qrcode(deimsid, do_plot = FALSE)
 }

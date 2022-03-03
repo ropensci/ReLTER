@@ -1,4 +1,7 @@
-#' @title eLTER get_activity_info function
+#' @title Return a tibble object containing information, as a stored in
+#' \href{https://deims.org/}{DEIMS-SDR catalogue}, about a single eLTER
+#' activity (e.g.
+#' \url{https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845}).
 #' @description This function obtains the info of activity (actually
 #'  title) provided in DEIMS-SDR.
 #' @param activityid A character. The DEIMS activity ID from

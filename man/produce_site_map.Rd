@@ -2,7 +2,8 @@
 % Please edit documentation in R/produce_site_map.R
 \name{produce_site_map}
 \alias{produce_site_map}
-\title{eLTER produce_site_map function}
+\title{Return a image map object of a single eLTER site boundaries, as a
+stored in \href{https://deims.org/}{DEIMS-SDR catalogue}.}
 \usage{
 produce_site_map(
   deimsid,

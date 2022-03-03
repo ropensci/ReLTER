@@ -2,17 +2,21 @@
 % Please edit documentation in R/get_sos_procedurelist.R
 \name{get_sos_procedurelist}
 \alias{get_sos_procedurelist}
-\title{eLTER get_sos_procedurelist function}
+\title{Return a list of Procedure (e.g. Method, algorithm, instrument,
+sensor, or system of these which may be used in making an observation)
+store into a
+\href{http://opengeospatial.github.io/e-learning/sos/text/index.html}{SOS
+(Sensor Observations Service OGC)}.}
 \usage{
 get_sos_procedurelist(sosHost)
 }
 \arguments{
-\item{sosHost}{a `character`. An SOS endpoint (e.g.
+\item{sosHost}{a `list`. An SOS endpoint (e.g.
 \url{http://getit.lteritalia.it/observations/sos/kvp?}).}
 }
 \value{
-The output of the function is a `list` with the name and URI (Uniform
-Resource Identifier) of each procedure.
+The output of the function is a `list` with the name and URI
+(Uniform Resource Identifier) of each procedure.
 }
 \description{
 This function lists the procedures

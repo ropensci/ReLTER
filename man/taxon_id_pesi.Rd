@@ -2,7 +2,10 @@
 % Please edit documentation in R/taxon_id_pesi.R
 \name{taxon_id_pesi}
 \alias{taxon_id_pesi}
-\title{eLTER taxon_id_pesi function}
+\title{Return tibble object with all the columns of input table plus new
+columns such as 'canonicalName', 'authorship', synonyms', 'LSID', 'url',
+'accordingTo', 'checkStatus' gathered from
+\href{http://www.eu-nomen.eu/portal/rest/}{PESI RestAPI}.}
 \usage{
 taxon_id_pesi(table, taxaColumn)
 }
@@ -13,17 +16,18 @@ taxon_id_pesi(table, taxaColumn)
 \item{taxaColumn}{`numeric` that identify the column containing taxa value.}
 }
 \value{
-the output of the function is a `data.frame` containing all the
+the output of the function is a `tibble` containing all the
 columns provided as input and new columns as: 'canonicalName', 'authorship',
-'synonyms', LSID', 'url', 'accordingTo', 'checkStatus' gathered from PESI.
+'synonyms', 'LSID', 'url', 'accordingTo', 'checkStatus' gathered from PESI.
 }
 \description{
 This function provide a taxon ID, usually a
-\href{https://en.wikipedia.org/wiki/LSID}{LSID}, to a taxon. The input of
-the function is a csv file with a list of taxon and the provider is
-currently A Pan-European Species directories Infrastructure -
-\href{http://eu-nomen.eu/pesi/}{PESI}. `taxonID` takes advantage of taxize's
-`eubon_search` function \url{https://docs.ropensci.org/taxize/} and the
+\href{https://en.wikipedia.org/wiki/LSID}{LSID}, to a taxon list.
+The input of the function is a csv file with a list of taxon. Taxon
+ID provided by this function is currently taken from Pan-European Species
+directories Infrastructure - \href{http://eu-nomen.eu/pesi/}{PESI}. This
+function takes advantage of taxize's `eubon_search` function
+\url{https://docs.ropensci.org/taxize/} and the
 \href{http://www.eu-nomen.eu/portal/rest/}{PESI RestAPI}.
 }
 \examples{
@@ -43,7 +47,7 @@ table <- data.frame(
 )
 
 # We perform a query from the `table` in order to associate the taxon
-# identifier (LSID) to the list of species present in the thirth column.
+# identifier (LSID) to the list of species present in the thirty column.
 taxon_id_pesi(
   table = table,
   taxaColumn = 3

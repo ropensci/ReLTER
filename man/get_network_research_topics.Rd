@@ -2,7 +2,10 @@
 % Please edit documentation in R/get_network_research_topics.R
 \name{get_network_research_topics}
 \alias{get_network_research_topics}
-\title{eLTER get_network_research_topics function}
+\title{Return a tibble object containing Research Topics collected by all
+of the eLTER sites belonging to an eLTER Network (e.g.
+\href{https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3}{LTER
+Italy network}), as a stored into \href{https://deims.org}{DEIMS-SDR}.}
 \usage{
 get_network_research_topics(networkDEIMSID)
 }

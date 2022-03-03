@@ -1,10 +1,14 @@
-#' @title eLTER get_sos_procedurelist function
+#' @title Return a list of Procedure (e.g. Method, algorithm, instrument,
+#' sensor, or system of these which may be used in making an observation)
+#' store into a
+#' \href{http://opengeospatial.github.io/e-learning/sos/text/index.html}{SOS
+#' (Sensor Observations Service OGC)}.
 #' @description This function lists the procedures
 #' of a Sensor Observations Service (SOS).
-#' @param sosHost a `character`. An SOS endpoint (e.g.
+#' @param sosHost a `list`. An SOS endpoint (e.g.
 #' \url{http://getit.lteritalia.it/observations/sos/kvp?}).
-#' @return The output of the function is a `list` with the name and URI (Uniform
-#' Resource Identifier) of each procedure.
+#' @return The output of the function is a `list` with the name and URI
+#' (Uniform Resource Identifier) of each procedure.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom xml2 read_xml xml_ns xml_find_all
 #' @importFrom xslt xml_xslt

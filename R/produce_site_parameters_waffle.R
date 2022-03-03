@@ -1,6 +1,10 @@
-#' @title eLTER produce_site_parameters_waffle function
-#' @description This function produces a waffle chart of the parameters
-#' collected in a site or network grouped into compounds.
+#' @title Return a waffle chart of Environmental Parameters, as a stored in
+#' \href{https://deims.org/}{DEIMS-SDR catalogue}, of a single eLTER site or
+#' all of the eLTER sites belonging to an eLTER Network (e.g.
+#' \href{https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3}{LTER
+#' Italy network}).
+#' @description This function produces a waffle chart of the Environmental
+#' Parameters collected in a site or network grouped into clusters.
 #' @param deimsid A `character`. The DEIMS ID of site/network from:
 #' DEIMS-SDR website. More information about DEIMS ID from:
 #' \href{https://deims.org/docs/deimsid.html}{page}.

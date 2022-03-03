@@ -1,5 +1,9 @@
-#' @title eLTER get_network_envcharacts function
-#' @description This function obtains several Envinronmental Characteristics:
+#' @title Return a tibble object containing Environmental Characteristics,
+#' stored in \href{https://deims.org/}{DEIMS-SDR catalogue}, of all the
+#' eLTER sites belonging to an eLTER Network (e.g.
+#' \href{https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3}{LTER
+#' Italy network}).
+#' @description This function obtains several Environmental Characteristics:
 #' title, URI, geocoordinates, country name, and elevation
 #' of sites in an eLTER Network (e.g. Italy) through the DEIMS-SDR sites API.
 #' @param networkDEIMSID A `character`. DEIMS ID of network

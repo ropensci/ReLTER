@@ -1,5 +1,9 @@
-#' @title eLTER produce_network_points_map function
-#' @description This function provides a map (image) of sites in an LTER network
+#' @title Return a image map object of all of the eLTER sites belonging to an
+#' eLTER Network (e.g.
+#' \href{https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3}{LTER
+#' Italy network}), as a stored into \href{https://deims.org}{DEIMS-SDR}.
+#' @description This function provides a map (image) of sites in an LTER
+#' network
 #' @param networkDEIMSID A `character`. The DEIMS ID of the network
 #' from DEIMS-SDR website. More information about DEIMS network ID from:
 #' \href{https://deims.org/docs/deimsid.html}{page}, and

@@ -2,7 +2,10 @@
 % Please edit documentation in R/taxon_id_worms.R
 \name{taxon_id_worms}
 \alias{taxon_id_worms}
-\title{eLTER taxon_id_worms function}
+\title{Return tibble object with all the columns of input table plus new
+columns such as valid_name, valid_authority, valid_AphiaID, status,
+synonyms, LSID, url, matchType, nOfWormsRecords, wormsRecords obtained by
+\href{http://www.marinespecies.org/rest/}{Worms rest API}.}
 \usage{
 taxon_id_worms(input, taxaColumn = 1, verbose = TRUE, refine = FALSE)
 }

@@ -1,4 +1,7 @@
-#' @title eLTER get_network_research_topics function
+#' @title Return a tibble object containing Research Topics collected by all
+#' of the eLTER sites belonging to an eLTER Network (e.g.
+#' \href{https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3}{LTER
+#' Italy network}), as a stored into \href{https://deims.org}{DEIMS-SDR}.
 #' @description This function obtains a list of Research Topics
 #' handled in the eLTER Network (e.g. Italy) through
 #' the DEIMS-SDR sites API.

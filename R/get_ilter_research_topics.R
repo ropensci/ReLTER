@@ -1,4 +1,7 @@
-#' @title eLTER get_ilter_research_topics function
+#' @title Return a tibble object containing Research Topics collected by all
+#' of the eLTER sites (more than 1200 sites), as a stored into
+#' \href{https://deims.org}{DEIMS-SDR}, belonging to International LTER
+#' network (ILTER).
 #' @description This function allows to obtain the information about the
 #' Research Topics collected in all sites of ILTER, through the DEIMS-SDR
 #' sites API.
