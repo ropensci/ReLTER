@@ -2,9 +2,6 @@ ReLTER
 ================
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
-<img src='man/figures/logo.png' align="right" height="139" />
-
 <!-- badges: start -->
 <!-- other badges https://github.com/GuangchuangYu/badger -->
 <!-- DOI badge -->
