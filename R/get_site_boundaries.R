@@ -3,8 +3,8 @@
 #' and a view of the site boundaries on a leaflet map is shown.
 #' All the info are taken from the DEIMS-SDR sites API.
 #' If the boundary is missing, a warning message is printed in the R console.
-#' @param deimsid A `character`. The DEIMS ID of the site from
-#' DEIMS-SDR website. More information about DEIMS ID in this page:
+#' @param deimsid A `character`. The DEIMS.iD of the site from
+#' DEIMS-SDR website. More information about DEIMS.iD in this page:
 #' \href{https://deims.org/docs/deimsid.html}{page}.
 #' @param show_map a `boolean`. When TRUE the boundary will be plotted on a
 #' Leaflet map. Default FALSE.
@@ -68,7 +68,7 @@ get_site_boundaries <- function(deimsid, show_map = FALSE) {
     }
   } else {
     message("\n----\nThe requested page could not be found.",
-    "Please check the DEIMS ID\n----\n")
+    "Please check the DEIMS.iD\n----\n")
     geoBoundaries <- NULL
   }
   geoBoundaries

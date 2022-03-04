@@ -5,8 +5,8 @@
 #' @description This function obtains a list of the Environmental Parameters
 #' collected on sites in the eLTER Network (e.g. Italy) through the DEIMS-SDR
 #' sites API.
-#' @param networkDEIMSID A `character`. The DEIMS ID of network
-#' from DEIMS-SDR website. For more information about DEIMS ID refer to these
+#' @param networkDEIMSID A `character`. The DEIMS.iD of network
+#' from DEIMS-SDR website. For more information about DEIMS.iD refer to these
 #' pages: \href{https://deims.org/docs/deimsid.html}{page}, and
 #' \href{https://deims.org/search?f[0]=result_type:network}{page}
 #' the complete list of ILTER networks.

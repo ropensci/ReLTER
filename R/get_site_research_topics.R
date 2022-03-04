@@ -1,8 +1,8 @@
 #' @title eLTER get_site_research_topics function
 #' @description This function obtains a list of research topics handled
 #' at an eLTER site through the DEIMS-SDR sites API.
-#' @param deimsid  A `character`. The DEIMS ID of the site from
-#' DEIMS-SDR website. More information about DEIMS ID from:
+#' @param deimsid  A `character`. The DEIMS.iD of the site from
+#' DEIMS-SDR website. More information about DEIMS.iD from:
 #' \href{https://deims.org/docs/deimsid.html}{page}.
 #' @return The output of the function is a `tibble` with main features of the
 #' site and a list of the research topics handled in this site.

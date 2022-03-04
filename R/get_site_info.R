@@ -2,8 +2,8 @@
 #' \href{https://deims.org/}{DEIMS-SDR catalogue}, of a single eLTER site.
 #' @description This function obtains details about an eLTER site
 #' through the DEIMS-SDR sites API.
-#' @param deimsid a character. The DEIMS ID of the site from
-#' DEIMS-SDR website. More information about DEIMS ID in this pages:
+#' @param deimsid a character. The DEIMS.iD of the site from
+#' DEIMS-SDR website. More information about DEIMS.iD in this pages:
 #' \href{https://deims.org/docs/deimsid.html}{page}.
 #' @param category a `category`. This parameter selects which category
 #' or categories are retrieved and returned in the result.
@@ -234,7 +234,7 @@ get_site_info <- function(deimsid, category = NA) {
     }
   } else {
     message("\n---- The requested page could not be found.
-            Please check the DEIMS ID ----\n")
+            Please check the DEIMS.iD ----\n")
     siteInfo <- NULL
   }
   # Final result

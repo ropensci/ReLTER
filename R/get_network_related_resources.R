@@ -6,8 +6,8 @@
 #' @description This function obtains information about the
 #' Related Resources (e.g. dataset) shared in the eLTER Network (e.g. Italy)
 #' through the DEIMS-SDR sites API.
-#' @param networkDEIMSID A `character`. It is the DEIMS iD of network make
-#' from DEIMS-SDR website. More information about DEIMS iD in this
+#' @param networkDEIMSID A `character`. It is the DEIMS.iD of network make
+#' from DEIMS-SDR website. More information about DEIMS.iD in this
 #' \href{https://deims.org/docs/deimsid.html}{page}, and at this
 #' \href{https://deims.org/search?f[0]=result_type:network}{page} the
 #' complete list of ILTER networks.

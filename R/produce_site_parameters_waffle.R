@@ -5,8 +5,8 @@
 #' Italy network}).
 #' @description This function produces a waffle chart of the Environmental
 #' Parameters collected in a site or network grouped into clusters.
-#' @param deimsid A `character`. The DEIMS ID of site/network from:
-#' DEIMS-SDR website. More information about DEIMS ID from:
+#' @param deimsid A `character`. The DEIMS.iD of site/network from:
+#' DEIMS-SDR website. More information about DEIMS.iD from:
 #' \href{https://deims.org/docs/deimsid.html}{page}.
 #' @return The output of the function is a waffle chart.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}

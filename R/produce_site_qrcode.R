@@ -2,8 +2,8 @@
 #' site, activity).
 #' @description This function obtain the QRCode of any DEIMS-SDR
 #' entities of the eLTER.
-#' @param deimsid a `character`. The DEIMS ID of entities from
-#' DEIMS-SDR website. More information about DEIMS iD in this
+#' @param deimsid a `character`. The DEIMS.iD of entities from
+#' DEIMS-SDR website. More information about DEIMS.iD in this
 #' \href{https://deims.org/docs/deimsid.html}{page}.
 #' @param do_plot a `boolean`. Plot the computed QRCode. Default FALSE.
 #' @return The QR code as a logical matrix with "qr_code" class.

@@ -5,7 +5,7 @@
 #' @description This function obtains a list of Research Topics
 #' handled in the eLTER Network (e.g. Italy) through
 #' the DEIMS-SDR sites API.
-#' @param networkDEIMSID A `character`. The DEIMS ID of a network
+#' @param networkDEIMSID A `character`. The DEIMS.iD of a network
 #' from DEIMS-SDR website. More information about DEIMS network ID in these
 #' pages: \href{https://deims.org/docs/deimsid.html}{page}, and
 #' \href{https://deims.org/search?f[0]=result_type:network}{page} the

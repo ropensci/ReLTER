@@ -5,8 +5,8 @@
 #' Italy network}).
 #' @description This function produces a pie chart of the parameters
 #' collected in a site or network grouped into compounds.
-#' @param deimsid A `character`. It is the DEIMS ID of site/network from
-#' DEIMS-SDR website. More information about DEIMS ID from:
+#' @param deimsid A `character`. It is the DEIMS.iD of site/network from
+#' DEIMS-SDR website. More information about DEIMS.iD from:
 #' \href{https://deims.org/docs/deimsid.html}{page}.
 #' @return The output of the function is a pie chart.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}

@@ -14,7 +14,7 @@
 #' @param show_map A `boolean`. If TRUE a Leaflet map of site locations
 #' is shown. Default FALSE
 #' @return An `sf` object of the bounding boxes of sites in the filtered list,
-#' containing the name, DEIMS ID, longitude, latitude, average altitude,
+#' containing the name, DEIMS.iD, longitude, latitude, average altitude,
 #' and affiliation of the filtered ILTER sites.
 #' If no bounding box is available,the centroid is returned.
 #' @author Alessandro Oggioni, phD (2021) \email{oggioni.a@@irea.cnr.it}

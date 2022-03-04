@@ -6,8 +6,8 @@
 #' and crops to an eLTER site boundary, which is obtained
 #' from the DEIMS-SDR sites API.
 #'
-#' @param deimsid  a `character`. The DEIMS ID of the site from
-#' DEIMS-SDR website. More information about DEIMS ID from:
+#' @param deimsid  a `character`. The DEIMS.iD of the site from
+#' DEIMS-SDR website. More information about DEIMS.iD from:
 #' \href{https://deims.org/docs/deimsid.html}{page}.
 #' @param dataset a `character`. The requested dataset. One of:
 #' "landcover", "clc2018", "osm_buildings", "natura2000",

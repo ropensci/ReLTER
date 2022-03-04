@@ -2,8 +2,8 @@
 #' stored in \href{https://deims.org/}{DEIMS-SDR catalogue}.
 #' @description This function produces a `map` of the site boundaries
 #' as provided by the DEIMS-SDR, within a given country and network.
-#' @param deimsid a `character`. The DEIMS ID of network from
-#' DEIMS-SDR website. More information about DEIMS iD in this
+#' @param deimsid a `character`. The DEIMS.iD of network from
+#' DEIMS-SDR website. More information about DEIMS.iD in this
 #' \href{https://deims.org/docs/deimsid.html}{page}.
 #' @param countryCode a `character` following the SO 3166-1 alpha-3 codes.
 #' This ISO convention consists of three-letter country codes
