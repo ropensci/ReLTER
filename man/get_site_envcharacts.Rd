@@ -7,7 +7,7 @@
 get_site_envcharacts(deimsid)
 }
 \arguments{
-\item{deimsid}{A `character`. The DEIMS ID of a site from
+\item{deimsid}{A `character`. The DEIMS.iD of a site from
 DEIMS-SDR website. More information about DEIMS I from:
 \href{https://deims.org/docs/deimsid.html}{page}.}
 }

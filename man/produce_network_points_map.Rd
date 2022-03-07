@@ -10,7 +10,7 @@ Italy network}), as a stored into \href{https://deims.org}{DEIMS-SDR}.}
 produce_network_points_map(networkDEIMSID, countryCode)
 }
 \arguments{
-\item{networkDEIMSID}{A `character`. The DEIMS ID of the network
+\item{networkDEIMSID}{A `character`. The DEIMS.iD of the network
 from DEIMS-SDR website. More information about DEIMS network ID from:
 \href{https://deims.org/docs/deimsid.html}{page}, and
 \href{https://deims.org/search?f[0]=result_type:network}{page}

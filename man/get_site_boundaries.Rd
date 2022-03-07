@@ -7,8 +7,8 @@
 get_site_boundaries(deimsid, show_map = FALSE)
 }
 \arguments{
-\item{deimsid}{A `character`. The DEIMS ID of the site from
-DEIMS-SDR website. More information about DEIMS ID in this page:
+\item{deimsid}{A `character`. The DEIMS.iD of the site from
+DEIMS-SDR website. More information about DEIMS.iD in this page:
 \href{https://deims.org/docs/deimsid.html}{page}.}
 
 \item{show_map}{a `boolean`. When TRUE the boundary will be plotted on a

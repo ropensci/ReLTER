@@ -9,8 +9,8 @@
 get_dataset_info(datasetid)
 }
 \arguments{
-\item{datasetid}{A character. It is the DEIMS iD of dataset make from
-DEIMS-SDR website. More information about DEIMS iD in this
+\item{datasetid}{A character. It is the DEIMS.iD of dataset make from
+DEIMS-SDR website. More information about DEIMS.iD in this
 \href{https://deims.org/docs/deimsid.html}{page}.}
 }
 \value{

@@ -10,7 +10,7 @@ Italy network}), as a stored into \href{https://deims.org}{DEIMS-SDR}.}
 get_network_research_topics(networkDEIMSID)
 }
 \arguments{
-\item{networkDEIMSID}{A `character`. The DEIMS ID of a network
+\item{networkDEIMSID}{A `character`. The DEIMS.iD of a network
 from DEIMS-SDR website. More information about DEIMS network ID in these
 pages: \href{https://deims.org/docs/deimsid.html}{page}, and
 \href{https://deims.org/search?f[0]=result_type:network}{page} the

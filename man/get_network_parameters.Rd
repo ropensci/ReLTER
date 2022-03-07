@@ -10,8 +10,8 @@ Italy network}), as a stored into \href{https://deims.org}{DEIMS-SDR}.}
 get_network_parameters(networkDEIMSID)
 }
 \arguments{
-\item{networkDEIMSID}{A `character`. The DEIMS ID of network
-from DEIMS-SDR website. For more information about DEIMS ID refer to these
+\item{networkDEIMSID}{A `character`. The DEIMS.iD of network
+from DEIMS-SDR website. For more information about DEIMS.iD refer to these
 pages: \href{https://deims.org/docs/deimsid.html}{page}, and
 \href{https://deims.org/search?f[0]=result_type:network}{page}
 the complete list of ILTER networks.}

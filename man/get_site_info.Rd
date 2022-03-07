@@ -8,8 +8,8 @@
 get_site_info(deimsid, category = NA)
 }
 \arguments{
-\item{deimsid}{a character. The DEIMS ID of the site from
-DEIMS-SDR website. More information about DEIMS ID in this pages:
+\item{deimsid}{a character. The DEIMS.iD of the site from
+DEIMS-SDR website. More information about DEIMS.iD in this pages:
 \href{https://deims.org/docs/deimsid.html}{page}.}
 
 \item{category}{a `category`. This parameter selects which category

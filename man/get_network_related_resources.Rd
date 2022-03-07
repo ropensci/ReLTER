@@ -11,8 +11,8 @@ Italy network}).}
 get_network_related_resources(networkDEIMSID)
 }
 \arguments{
-\item{networkDEIMSID}{A `character`. It is the DEIMS iD of network make
-from DEIMS-SDR website. More information about DEIMS iD in this
+\item{networkDEIMSID}{A `character`. It is the DEIMS.iD of network make
+from DEIMS-SDR website. More information about DEIMS.iD in this
 \href{https://deims.org/docs/deimsid.html}{page}, and at this
 \href{https://deims.org/search?f[0]=result_type:network}{page} the
 complete list of ILTER networks.}

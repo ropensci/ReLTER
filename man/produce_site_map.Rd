@@ -21,8 +21,8 @@ produce_site_map(
 )
 }
 \arguments{
-\item{deimsid}{a `character`. The DEIMS ID of network from
-DEIMS-SDR website. More information about DEIMS iD in this
+\item{deimsid}{a `character`. The DEIMS.iD of network from
+DEIMS-SDR website. More information about DEIMS.iD in this
 \href{https://deims.org/docs/deimsid.html}{page}.}
 
 \item{countryCode}{a `character` following the SO 3166-1 alpha-3 codes.

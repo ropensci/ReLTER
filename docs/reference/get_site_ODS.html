@@ -78,8 +78,8 @@ from the DEIMS-SDR sites API.</p>
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>deimsid</dt>
-<dd><p>a `character`. The DEIMS ID of the site from
-DEIMS-SDR website. More information about DEIMS ID from:
+<dd><p>a `character`. The DEIMS.iD of the site from
+DEIMS-SDR website. More information about DEIMS.iD from:
 <a href="https://deims.org/docs/deimsid.html" class="external-link">page</a>.</p></dd>
 <dt>dataset</dt>
 <dd><p>a `character`. The requested dataset. One of:
@@ -126,24 +126,24 @@ and all except clc2018 have 30 meters resolution</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code> <span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span>
-<span class="co"># Landcover for Angelo Mosso</span>
-<span class="va">siteLandcover</span> <span class="op">&lt;-</span> <span class="fu">get_site_ODS</span><span class="op">(</span>
-  deimsid <span class="op">=</span> <span class="st">"https://deims.org/17210eba-d832-4759-89fa-9ff127cbdf6e"</span>,
-  dataset <span class="op">=</span> <span class="st">"landcover"</span>
-<span class="op">)</span>
-<span class="va">siteLandcover</span>
-<span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">siteLandcover</span><span class="op">)</span>
-
-<span class="co"># NDVI for Eisenwurzen</span>
-<span class="va">siteNDVI</span> <span class="op">&lt;-</span> <span class="fu">get_site_ODS</span><span class="op">(</span>
-  deimsid <span class="op">=</span> <span class="st">"https://deims.org/d0a8da18-0881-4ebe-bccf-bc4cb4e25701"</span>,
-  dataset <span class="op">=</span> <span class="st">"ndvi_summer"</span>
-<span class="op">)</span>
-<span class="va">siteNDVI</span>
-<span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">siteNDVI</span><span class="op">)</span>
-<span class="op">}</span>
-
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"> <span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+<span class="r-in"><span class="co"># Landcover for Angelo Mosso</span></span>
+<span class="r-in"><span class="va">siteLandcover</span> <span class="op">&lt;-</span> <span class="fu">get_site_ODS</span><span class="op">(</span></span>
+<span class="r-in">  deimsid <span class="op">=</span> <span class="st">"https://deims.org/17210eba-d832-4759-89fa-9ff127cbdf6e"</span>,</span>
+<span class="r-in">  dataset <span class="op">=</span> <span class="st">"landcover"</span></span>
+<span class="r-in"><span class="op">)</span></span>
+<span class="r-in"><span class="va">siteLandcover</span></span>
+<span class="r-in"><span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">siteLandcover</span><span class="op">)</span></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co"># NDVI for Eisenwurzen</span></span>
+<span class="r-in"><span class="va">siteNDVI</span> <span class="op">&lt;-</span> <span class="fu">get_site_ODS</span><span class="op">(</span></span>
+<span class="r-in">  deimsid <span class="op">=</span> <span class="st">"https://deims.org/d0a8da18-0881-4ebe-bccf-bc4cb4e25701"</span>,</span>
+<span class="r-in">  dataset <span class="op">=</span> <span class="st">"ndvi_summer"</span></span>
+<span class="r-in"><span class="op">)</span></span>
+<span class="r-in"><span class="va">siteNDVI</span></span>
+<span class="r-in"><span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">siteNDVI</span><span class="op">)</span></span>
+<span class="r-in"><span class="op">}</span></span>
+<span class="r-in"></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

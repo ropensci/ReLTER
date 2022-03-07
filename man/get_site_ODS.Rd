@@ -9,8 +9,8 @@ eLTER site boundaries.}
 get_site_ODS(deimsid, dataset = "landcover")
 }
 \arguments{
-\item{deimsid}{a `character`. The DEIMS ID of the site from
-DEIMS-SDR website. More information about DEIMS ID from:
+\item{deimsid}{a `character`. The DEIMS.iD of the site from
+DEIMS-SDR website. More information about DEIMS.iD from:
 \href{https://deims.org/docs/deimsid.html}{page}.}
 
 \item{dataset}{a `character`. The requested dataset. One of:
