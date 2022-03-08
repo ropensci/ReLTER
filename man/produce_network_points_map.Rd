@@ -44,11 +44,14 @@ map <- produce_network_points_map(
 map
 
 # German sites
-produce_network_points_map(
+map_LTERGermanSites <- produce_network_points_map(
   networkDEIMSID =
   "https://deims.org/networks/e904354a-f3a0-40ce-a9b5-61741f66c824",
   countryCode = "DEU"
-)
+) 
+map_LTERGermanSites +
+  tmap::tm_compass(type = "8star", position = c("right", "bottom")) +
+  tmap::tm_scale_bar(position = c("right", "bottom"))
 }
 
 }

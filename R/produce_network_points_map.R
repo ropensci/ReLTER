@@ -39,11 +39,14 @@
 #' map
 #'
 #' # German sites
-#' produce_network_points_map(
+#' map_LTERGermanSites <- produce_network_points_map(
 #'   networkDEIMSID =
 #'   "https://deims.org/networks/e904354a-f3a0-40ce-a9b5-61741f66c824",
 #'   countryCode = "DEU"
-#' )
+#' ) 
+#' map_LTERGermanSites +
+#'   tmap::tm_compass(type = "8star", position = c("right", "bottom")) +
+#'   tmap::tm_scale_bar(position = c("right", "bottom"))
 #' }
 #'
 ### function produce_network_points_map
@@ -58,7 +61,7 @@ produce_network_points_map <- function(networkDEIMSID, countryCode) {
     lterNetworkSitesCoords <- jsonlite::fromJSON(
       httr::content(export, as = "text", encoding = "UTF-8")
     )
-    if (length(lterNetworkSitesCoords) != 0) {
+    if (nrow(lterNetworkSitesCoords) != 0) {
       lterNetworkSitesCoords$uri <- paste0(
         lterNetworkSitesCoords$id$prefix,
         lterNetworkSitesCoords$id$suffix
@@ -91,8 +94,7 @@ produce_network_points_map <- function(networkDEIMSID, countryCode) {
               title = NA,
               legend.show = FALSE
             )
-          suppressWarnings(print(mapOfSites)) # FIXME manage
-          networkSitesGeo
+          suppressWarnings(mapOfSites) # FIXME manage
         } else {
           mapOfSites <- tmap::tm_shape(networkSitesGeo) +
             tmap::tm_dots(
@@ -106,8 +108,7 @@ produce_network_points_map <- function(networkDEIMSID, countryCode) {
   Please check again the Country code.
   Compare the code provided with the list of code in
   https://en.wikipedia.org/wiki/ISO_3166\n----\n")
-          print(mapOfSites)
-          networkSitesGeo
+          mapOfSites
         }
       } else {
         message("\n----\nThe maps cannot be created because coordinates,
@@ -116,13 +117,11 @@ produce_network_points_map <- function(networkDEIMSID, countryCode) {
   of the network, citing the Network.iD.\n----\n")
         mapOfSites <- tmap::tm_shape(country) +
           tmap::tm_borders("grey75", lwd = 1)
-        print(mapOfSites)
-        networkSitesGeo
+        mapOfSites
       }
     } else {
       message("\n----\nThe requested page could not be found.
   Please check again the Network.iD\n----\n")
-      networkSitesGeo <- NULL
       mapOfSites <- NULL
     }
   # })
