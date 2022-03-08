@@ -10,6 +10,7 @@
 #' from DEIMS-SDR website. DEIMS.iD information 
 #' \href{https://deims.org/docs/deimsid.html}{here} and Complete list of ILTER
 #' networks \href{https://deims.org/search?f[0]=result_type:network}{here}.
+#' The DEIMS.iD of network is the URL for the network page.
 #' @return The output of the function is a `tibble` containing all the
 #' Environmental Characteristics of the network's sites.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}

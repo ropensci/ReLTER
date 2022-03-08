@@ -9,6 +9,7 @@
 #' from DEIMS-SDR website. DEIMS.iD information 
 #' \href{https://deims.org/docs/deimsid.html}{here} and Complete list of ILTER
 #' networks \href{https://deims.org/search?f[0]=result_type:network}{here}.
+#' The DEIMS.iD of network is the URL for the network page.
 #' @return The output of the function is a `tibble` containing the list
 #' of parameters and their URI (Uniform Resource Identifier) collected
 #' by the network's sites.

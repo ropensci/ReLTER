@@ -14,7 +14,8 @@ get_network_related_resources(networkDEIMSID)
 \item{networkDEIMSID}{A `character`. It is the DEIMS.iD of network make
 from DEIMS-SDR website. DEIMS.iD information 
 \href{https://deims.org/docs/deimsid.html}{here} and Complete list of ILTER
-networks \href{https://deims.org/search?f[0]=result_type:network}{here}.}
+networks \href{https://deims.org/search?f[0]=result_type:network}{here}.
+The DEIMS.iD of network is the URL for the network page.}
 }
 \value{
 The output of the function is a `tibble` containing the related

@@ -13,8 +13,9 @@ get_network_sites(networkDEIMSID)
 \arguments{
 \item{networkDEIMSID}{A `character`. The DEIMS.iD of the network from
 DEIMS-SDR website. DEIMS.iD information 
-\href{https://deims.org/docs/deimsid.html}{here} and Complete list of ILTER
-networks \href{https://deims.org/search?f[0]=result_type:network}{here}.}
+\href{https://deims.org/docs/deimsid.html}{here} and Complete list of
+networks \href{https://deims.org/search?f[0]=result_type:network}{here}.
+The DEIMS.iD of network is the URL for the network page.}
 }
 \value{
 The output of the function is a point vector of `sf` class
