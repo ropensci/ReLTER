@@ -9,8 +9,8 @@ produce_site_qrcode(deimsid, do_plot = FALSE)
 }
 \arguments{
 \item{deimsid}{a `character`. The DEIMS.iD of entities from
-DEIMS-SDR website. More information about DEIMS.iD in this
-\href{https://deims.org/docs/deimsid.html}{page}.}
+DEIMS-SDR website. DEIMS.iD information 
+\href{https://deims.org/docs/deimsid.html}{here}.}
 
 \item{do_plot}{a `boolean`. Plot the computed QRCode. Default FALSE.}
 }

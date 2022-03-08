@@ -6,10 +6,9 @@
 #' @description This function retrieves a list of sites in the provided network
 #' including title, date late updated, URI, and coordinates
 #' @param networkDEIMSID A `character`. The DEIMS.iD of the network from
-#' DEIMS-SDR website. More information about DEIMS network ID from these pages:
-#' \href{https://deims.org/docs/deimsid.html}{page}, and
-#' \href{https://deims.org/search?f[0]=result_type:network}{page} the
-#' complete list of ILTER networks.
+#' DEIMS-SDR website. DEIMS.iD information 
+#' \href{https://deims.org/docs/deimsid.html}{here} and Complete list of ILTER
+#' networks \href{https://deims.org/search?f[0]=result_type:network}{here}.
 #' @return The output of the function is a point vector of `sf` class
 #' (package sf) of the network's sites.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}

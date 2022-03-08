@@ -1,8 +1,8 @@
 #' @title eLTER get_id function
 #' @description Internal function to retrieve json content from ID
 #' @param deimsid A `character`. It is the DEIMS.iD of the site, activity or
-#' dataset from DEIMS-SDR website. More information about DEIMS.iD from:
-#' \href{https://deims.org/docs/deimsid.html}{page}.
+#' dataset from DEIMS-SDR website. DEIMS.iD information 
+#' \href{https://deims.org/docs/deimsid.html}{here}.
 #' @param resource Character: one among `"sites"` (default), `"activities"` or
 #'  `"datasets"` (`"networks"` currently not tested).
 #' @param test Logical: if TRUE, content is not retrieved from

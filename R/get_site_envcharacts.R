@@ -2,8 +2,8 @@
 #' @description This function obtains Environmental Characteristics
 #' of an eLTER site through the DEIMS-SDR sites API.
 #' @param deimsid A `character`. The DEIMS.iD of a site from
-#' DEIMS-SDR website. More information about DEIMS I from:
-#' \href{https://deims.org/docs/deimsid.html}{page}.
+#' DEIMS-SDR website. DEIMS.iD information 
+#' \href{https://deims.org/docs/deimsid.html}{here}.
 #' @return The output of the function is a `tibble` with main features of the
 #' site and the environmental characteristics where available,
 #' such as: air temperature, precipitation, biogeographical region, biome,

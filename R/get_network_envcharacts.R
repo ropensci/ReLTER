@@ -7,10 +7,9 @@
 #' title, URI, geocoordinates, country name, and elevation
 #' of sites in an eLTER Network (e.g. Italy) through the DEIMS-SDR sites API.
 #' @param networkDEIMSID A `character`. DEIMS.iD of network
-#' from DEIMS-SDR website. More information about DEIMS.iD refer to these pages:
-#' \href{https://deims.org/docs/deimsid.html}{page}, and
-#' \href{https://deims.org/search?f[0]=result_type:network}{page}
-#' the complete list of ILTER networks.
+#' from DEIMS-SDR website. DEIMS.iD information 
+#' \href{https://deims.org/docs/deimsid.html}{here} and Complete list of ILTER
+#' networks \href{https://deims.org/search?f[0]=result_type:network}{here}.
 #' @return The output of the function is a `tibble` containing all the
 #' Environmental Characteristics of the network's sites.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}

@@ -5,8 +5,8 @@
 #' @description This function obtains the info of activity (actually
 #'  title) provided in DEIMS-SDR.
 #' @param activityid A character. The DEIMS activity ID from
-#' DEIMS-SDR website. More information about DEIMS.iD in this
-#' \href{https://deims.org/docs/deimsid.html}{page}.
+#' DEIMS-SDR website. DEIMS.iD information 
+#' \href{https://deims.org/docs/deimsid.html}{here}.
 #' @return The output of the function is a `tibble` with main features of
 #' the activities in a site, and a `leaflet` map plot.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}

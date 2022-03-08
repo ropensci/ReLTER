@@ -11,10 +11,9 @@ get_network_research_topics(networkDEIMSID)
 }
 \arguments{
 \item{networkDEIMSID}{A `character`. The DEIMS.iD of a network
-from DEIMS-SDR website. More information about DEIMS network ID in these
-pages: \href{https://deims.org/docs/deimsid.html}{page}, and
-\href{https://deims.org/search?f[0]=result_type:network}{page} the
-complete list of ILTER networks.}
+from DEIMS-SDR website. DEIMS.iD information 
+\href{https://deims.org/docs/deimsid.html}{here} and Complete list of ILTER
+networks \href{https://deims.org/search?f[0]=result_type:network}{here}.}
 }
 \value{
 The output of the function is a `tibble` containing the research

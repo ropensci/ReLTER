@@ -3,8 +3,8 @@
 #' @description This function obtains details about an eLTER site
 #' through the DEIMS-SDR sites API.
 #' @param deimsid a character. The DEIMS.iD of the site from
-#' DEIMS-SDR website. More information about DEIMS.iD in this pages:
-#' \href{https://deims.org/docs/deimsid.html}{page}.
+#' DEIMS-SDR website. DEIMS.iD information 
+#' \href{https://deims.org/docs/deimsid.html}{here}.
 #' @param category a `category`. This parameter selects which category
 #' or categories are retrieved and returned in the result.
 #' Possible value are:

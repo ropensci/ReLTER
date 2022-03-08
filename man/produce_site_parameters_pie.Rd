@@ -12,8 +12,8 @@ produce_site_parameters_pie(deimsid)
 }
 \arguments{
 \item{deimsid}{A `character`. It is the DEIMS.iD of site/network from
-DEIMS-SDR website. More information about DEIMS.iD from:
-\href{https://deims.org/docs/deimsid.html}{page}.}
+DEIMS-SDR website. DEIMS.iD information 
+\href{https://deims.org/docs/deimsid.html}{here}.}
 }
 \value{
 The output of the function is a pie chart.

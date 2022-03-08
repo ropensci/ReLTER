@@ -79,10 +79,9 @@ sites API.</p>
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>networkDEIMSID</dt>
 <dd><p>A `character`. The DEIMS.iD of network
-from DEIMS-SDR website. For more information about DEIMS.iD refer to these
-pages: <a href="https://deims.org/docs/deimsid.html" class="external-link">page</a>, and
-<a href="https://deims.org/search?f%5B0%5D=result_type:network" class="external-link">page</a>
-the complete list of ILTER networks.</p></dd>
+from DEIMS-SDR website. DEIMS.iD information 
+<a href="https://deims.org/docs/deimsid.html" class="external-link">here</a> and Complete list of ILTER
+networks <a href="https://deims.org/search?f%5B0%5D=result_type:network" class="external-link">here</a>.</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -97,17 +96,17 @@ by the network's sites.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="va">listParams</span> <span class="op">&lt;-</span> <span class="fu">get_network_parameters</span><span class="op">(</span></span>
-<span class="r-in">  networkDEIMSID <span class="op">=</span></span>
-<span class="r-in">  <span class="st">"https://deims.org/networks/e0f680c2-22b1-4424-bf54-58aa9b7476a0"</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="va">listParams</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="op">]</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in"><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rows.html" class="external-link">rows_insert</a></span><span class="op">(</span></span>
-<span class="r-in">  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>parameterLabel <span class="op">=</span> <span class="st">"..."</span>, parameterUri <span class="op">=</span> <span class="st">"..."</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span>
+<span class="va">listParams</span> <span class="op">&lt;-</span> <span class="fu">get_network_parameters</span><span class="op">(</span>
+  networkDEIMSID <span class="op">=</span>
+  <span class="st">"https://deims.org/networks/e0f680c2-22b1-4424-bf54-58aa9b7476a0"</span>
+<span class="op">)</span>
+<span class="va">listParams</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="op">]</span> <span class="op"><a href="pipe.html">%&gt;%</a></span>
+<span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rows.html" class="external-link">rows_insert</a></span><span class="op">(</span>
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>parameterLabel <span class="op">=</span> <span class="st">"..."</span>, parameterUri <span class="op">=</span> <span class="st">"..."</span><span class="op">)</span>
+<span class="op">)</span>
+<span class="op">}</span>
+
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

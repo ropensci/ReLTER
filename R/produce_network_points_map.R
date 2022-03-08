@@ -5,10 +5,9 @@
 #' @description This function provides a map (image) of sites in an LTER
 #' network
 #' @param networkDEIMSID A `character`. The DEIMS.iD of the network
-#' from DEIMS-SDR website. More information about DEIMS network ID from:
-#' \href{https://deims.org/docs/deimsid.html}{page}, and
-#' \href{https://deims.org/search?f[0]=result_type:network}{page}
-#' (the complete list of ILTER networks.)
+#' from DEIMS-SDR website. DEIMS.iD information 
+#' \href{https://deims.org/docs/deimsid.html}{here} and Complete list of ILTER
+#' networks \href{https://deims.org/search?f[0]=result_type:network}{here}.
 #' @param countryCode A `character` following the ISO 3166-1 alpha-3 codes.
 #' This ISO convention consists of three-letter country codes as defined in
 #' ISO 3166-1. The ISO 3166 standard published by the International

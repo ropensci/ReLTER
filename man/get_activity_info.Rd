@@ -11,8 +11,8 @@ get_activity_info(activityid)
 }
 \arguments{
 \item{activityid}{A character. The DEIMS activity ID from
-DEIMS-SDR website. More information about DEIMS.iD in this
-\href{https://deims.org/docs/deimsid.html}{page}.}
+DEIMS-SDR website. DEIMS.iD information 
+\href{https://deims.org/docs/deimsid.html}{here}.}
 }
 \value{
 The output of the function is a `tibble` with main features of

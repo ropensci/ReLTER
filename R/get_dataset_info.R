@@ -4,8 +4,8 @@
 #' @description This function allows to obtain the info of dataset provided in
 #' DEIMS-SDR.
 #' @param datasetid A character. It is the DEIMS.iD of dataset make from
-#' DEIMS-SDR website. More information about DEIMS.iD in this
-#' \href{https://deims.org/docs/deimsid.html}{page}.
+#' DEIMS-SDR website. DEIMS.iD information 
+#' \href{https://deims.org/docs/deimsid.html}{here}.
 #' @return The output of the function is a `tibble` with main features
 #' of the site and the related resources collected by site.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}

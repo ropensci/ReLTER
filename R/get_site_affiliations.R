@@ -2,8 +2,8 @@
 #' @description This function obtains details about an eLTER site
 #' through the DEIMS-SDR sites API.
 #' @param deimsid A character. The DEIMS.iD of the site from
-#' DEIMS-SDR website. More information about DEIMS.iD in this pages:
-#' \href{https://deims.org/docs/deimsid.html}{page}.
+#' DEIMS-SDR website. DEIMS.iD information 
+#' \href{https://deims.org/docs/deimsid.html}{here}.
 #' @return The output of the function is a `tibble` with main features of the
 #' site and the affiliations information, such as: networks and projects in
 #' which the site is involved.
