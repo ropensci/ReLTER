@@ -93,16 +93,48 @@ function takes advantage of taxize's `eubon_search` function
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>table</dt>
-<dd><p>`data.frame` containing column with a taxa
+<dd><p>A `data.frame` containing column with a taxa
 (e.g. Sphaerosoma seidlitzi, Malthinus, etc.).</p></dd>
 <dt>taxaColumn</dt>
-<dd><p>`numeric` that identify the column containing taxa value.</p></dd>
+<dd><p>A `numeric` that identify the column containing taxa
+value.</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>the output of the function is a `tibble` containing all the
+    <p>The output of the function is a `tibble` containing all the
 columns provided as input and new columns as: 'canonicalName', 'authorship',
-'synonyms', 'LSID', 'url', 'accordingTo', 'checkStatus' gathered from PESI.</p>
+'synonyms', 'LSID', 'url', 'accordingTo', 'checkStatus' gathered from PESI.
+An example to export dataset obtained by this function is:
+datasetMerged &lt;- dplyr::bind_rows(table)
+write.csv(
+  datasetMerged,
+  "table.csv",
+  row.names = FALSE,
+  fileEncoding = "UTF-8"
+)
+Someone could have problems of characters encoding when CSV file is
+written.
+To resolve we suggest two different solutions:
+Solution 1 -
+1. Open the CSV in Notepad.
+2. Click “File” and “Save As”.
+3. In the new popup that displays,  select “ANSI” from the “Encoding”
+   field.
+4. Click “Save”.
+5. Now, you should be able to open the file in Excel and display the
+   characters correctly.
+Solution 2 -
+1. Open Excel
+2. Click “File” and “New”
+3. Click on the “Data” tab
+4. Click “From Text” and select the CSV file
+5. Select “Delimited”
+6. For “File origin”, select “65001 : Unicode (UTF-8)”
+7. Click “Next”
+8. Select “Comma”
+9. Click “Finish”
+10. Excel should now show you the CSV file and display the characters
+    correctly.</p>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
@@ -133,43 +165,6 @@ columns provided as input and new columns as: 'canonicalName', 'authorship',
   taxaColumn <span class="op">=</span> <span class="fl">3</span>
 <span class="op">)</span>
 <span class="op">}</span>
-
-<span class="co"># An example to export dataset producted by this function is:</span>
-<span class="co"># datasetMerged &lt;- dplyr::bind_rows(table)</span>
-<span class="co"># write.csv(</span>
-<span class="co"># datasetMerged,</span>
-<span class="co">#   "table.csv",</span>
-<span class="co">#   row.names = FALSE,</span>
-<span class="co">#   fileEncoding = "UTF-8"</span>
-<span class="co"># )</span>
-
-<span class="co"># Someone could have problems of characters encoding when csv file is</span>
-<span class="co"># written.</span>
-<span class="co"># To resolve we suggest two different methods:</span>
-<span class="co">#</span>
-<span class="co"># Solution 1</span>
-<span class="co">#</span>
-<span class="co"># 1. Open the CSV in Notepad.</span>
-<span class="co"># 2. Click “File” and “Save As”.</span>
-<span class="co"># 3. In the new popup that displays,  select “ANSI” from the “Encoding”</span>
-<span class="co">#    field.</span>
-<span class="co"># 4. Click “Save”.</span>
-<span class="co"># 5. Now, you should be able to open the file in Excel and display the</span>
-<span class="co">#    characters correctly.</span>
-<span class="co">#</span>
-<span class="co"># Solution 2</span>
-<span class="co">#</span>
-<span class="co"># 1. Open Excel</span>
-<span class="co"># 2. Click “File” and “New”</span>
-<span class="co"># 3. Click on the “Data” tab</span>
-<span class="co"># 4. Click “From Text” and select the CSV file</span>
-<span class="co"># 5. Select “Delimited”</span>
-<span class="co"># 6. For “File origin”, select “65001 : Unicode (UTF-8)”</span>
-<span class="co"># 7. Click “Next”</span>
-<span class="co"># 8. Select “Comma”</span>
-<span class="co"># 9. Click “Finish”</span>
-<span class="co"># 10. Excel should now show you the CSV file and display the characters</span>
-<span class="co">#     correctly.</span>
 
 </code></pre></div>
     </div>

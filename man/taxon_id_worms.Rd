@@ -10,18 +10,18 @@ synonyms, LSID, url, matchType, nOfWormsRecords, wormsRecords obtained by
 taxon_id_worms(input, taxaColumn = 1, verbose = TRUE, refine = FALSE)
 }
 \arguments{
-\item{input}{a `tibble`. The table that contain the species
+\item{input}{A `tibble`. The table that contain the species
 names list to be checked.}
 
-\item{taxaColumn}{a `numeric`. The cardinal number of the column where
+\item{taxaColumn}{A `numeric`. The cardinal number of the column where
 species list is. Default is `1`.}
 
-\item{verbose}{a `logical`. Whit this selection, the function returns a
+\item{verbose}{A `logical`. Whit this selection, the function returns a
 message with number of record(s) that don't match with any Worms names and
 the number of record(s) that match with more that one Worms name. Default
 is `TRUE`.}
 
-\item{refine}{a `logical`. With this selection, the function allows to
+\item{refine}{A `logical`. With this selection, the function allows to
 refine the result(s) that match with more Worms records. By a interactive
 use of the terminal, the user can chose the result. Default is `FALSE`.}
 }

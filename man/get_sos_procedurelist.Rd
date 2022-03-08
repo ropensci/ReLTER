@@ -11,7 +11,7 @@ store into a
 get_sos_procedurelist(sosHost)
 }
 \arguments{
-\item{sosHost}{a `list`. An SOS endpoint (e.g.
+\item{sosHost}{A `list`. An SOS endpoint (e.g.
 \url{http://getit.lteritalia.it/observations/sos/kvp?}).}
 }
 \value{

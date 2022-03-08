@@ -6,10 +6,10 @@
 #' and crops to an eLTER site boundary, which is obtained
 #' from the DEIMS-SDR sites API.
 #'
-#' @param deimsid  a `character`. The DEIMS.iD of the site from
+#' @param deimsid  A `character`. The DEIMS.iD of the site from
 #' DEIMS-SDR website. DEIMS.iD information 
 #' \href{https://deims.org/docs/deimsid.html}{here}.
-#' @param dataset a `character`. The requested dataset. One of:
+#' @param dataset A `character`. The requested dataset. One of:
 #' "landcover", "clc2018", "osm_buildings", "natura2000",
 #' "ndvi_spring", "ndvi_summer", "ndvi_autumn", "ndvi_winter".
 #' Default is "landcover".

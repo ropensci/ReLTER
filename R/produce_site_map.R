@@ -2,10 +2,10 @@
 #' stored in \href{https://deims.org/}{DEIMS-SDR catalogue}.
 #' @description This function produces a `map` of the site boundaries
 #' as provided by the DEIMS-SDR, within a given country and network.
-#' @param deimsid a `character`. The DEIMS.iD of network from
+#' @param deimsid A `character`. The DEIMS.iD of network from
 #' DEIMS-SDR website. DEIMS.iD information 
 #' \href{https://deims.org/docs/deimsid.html}{here}.
-#' @param countryCode a `character` following the SO 3166-1 alpha-3 codes.
+#' @param countryCode A `character` following the SO 3166-1 alpha-3 codes.
 #' This ISO convention consists of three-letter country codes
 #' as defined in ISO 3166-1, part of the ISO 3166 standard published by the
 #' International Organization for Standardization (ISO), to represent countries,
@@ -13,25 +13,25 @@
 #' The map produced by this function will be limited to the country
 #' indicated in this parameter; if the network has a extraterritorial sites
 #' those will not represented.
-#' @param listOfSites a `sf`. List of sites of specific network. This list
+#' @param listOfSites A `sf`. List of sites of specific network. This list
 #' is needed for showing another points on the map.
-#' @param gridNx a `double`. A numeric vector or unit object specifying
+#' @param gridNx A `double`. A numeric vector or unit object specifying
 #' x-location of viewports about country provided by countryCode parameter.
-#' @param gridNy a `double`. A numeric vector or unit object specifying
+#' @param gridNy A `double`. A numeric vector or unit object specifying
 #' y-location of viewports about country provided by countryCode parameter.
-#' @param width a `double`. A numeric vector or unit object specifying width
+#' @param width A `double`. A numeric vector or unit object specifying width
 #' of viewports about country provided by countryCode parameter. Default 0.25.
-#' @param height a `double`. A numeric vector or unit object specifying height
+#' @param height A `double`. A numeric vector or unit object specifying height
 #' of viewports about country provided by countryCode parameter. Default 0.25.
-#' @param bboxXMin a `double`. A numeric for add some unit of a bbox provided
+#' @param bboxXMin A `double`. A numeric for add some unit of a bbox provided
 #' by centroid of the site. Default 0.
-#' @param bboxYMin a `double`. A numeric for add some unit of a bbox provided
+#' @param bboxYMin A `double`. A numeric for add some unit of a bbox provided
 #' by centroid of the site. Default 0.
-#' @param bboxXMax a `double`. A numeric for add some unit of a bbox provided
+#' @param bboxXMax A `double`. A numeric for add some unit of a bbox provided
 #' by centroid of the site. Default 0.
-#' @param bboxYMax a `double`. A numeric for add some unit of a bbox provided
+#' @param bboxYMax A `double`. A numeric for add some unit of a bbox provided
 #' by centroid of the site. Default 0.
-#' @param show_map a `boolean`. When TRUE the immage of map will be plotted.
+#' @param show_map A `boolean`. When TRUE the immage of map will be plotted.
 #' Default FALSE.
 #' @return The output of the function is an `image` of the boundary of the
 #' site, OSM as base map and all country sites map.

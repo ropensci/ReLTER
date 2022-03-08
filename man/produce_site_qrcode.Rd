@@ -8,11 +8,11 @@ site, activity).}
 produce_site_qrcode(deimsid, do_plot = FALSE)
 }
 \arguments{
-\item{deimsid}{a `character`. The DEIMS.iD of entities from
+\item{deimsid}{A `character`. The DEIMS.iD of entities from
 DEIMS-SDR website. DEIMS.iD information 
 \href{https://deims.org/docs/deimsid.html}{here}.}
 
-\item{do_plot}{a `boolean`. Plot the computed QRCode. Default FALSE.}
+\item{do_plot}{A `boolean`. Plot the computed QRCode. Default FALSE.}
 }
 \value{
 The QR code as a logical matrix with "qr_code" class.

@@ -5,7 +5,7 @@
 #' (Sensor Observations Service OGC)}.
 #' @description This function lists the procedures
 #' of a Sensor Observations Service (SOS).
-#' @param sosHost a `list`. An SOS endpoint (e.g.
+#' @param sosHost A `list`. An SOS endpoint (e.g.
 #' \url{http://getit.lteritalia.it/observations/sos/kvp?}).
 #' @return The output of the function is a `list` with the name and URI
 #' (Uniform Resource Identifier) of each procedure.

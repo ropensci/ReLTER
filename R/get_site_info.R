@@ -2,10 +2,10 @@
 #' \href{https://deims.org/}{DEIMS-SDR catalogue}, of a single eLTER site.
 #' @description This function obtains details about an eLTER site
 #' through the DEIMS-SDR sites API.
-#' @param deimsid a character. The DEIMS.iD of the site from
+#' @param deimsid A character. The DEIMS.iD of the site from
 #' DEIMS-SDR website. DEIMS.iD information 
 #' \href{https://deims.org/docs/deimsid.html}{here}.
-#' @param category a `category`. This parameter selects which category
+#' @param category A `category`. This parameter selects which category
 #' or categories are retrieved and returned in the result.
 #' Possible value are:
 #' 'Affiliations', 'Boundaries', 'Contacts', 'EnvCharacts', 'General',

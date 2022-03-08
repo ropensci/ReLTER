@@ -54,8 +54,8 @@ The Worms records most similar are:\n\n",
       if (interaction) {
         my.selection <-
           readline(prompt = "\n----\nPlease select the record that you think
-                 mostsimilar to the taxa name that you have provided.
-                 Insert the number of record:")
+most similar to the taxa name that you have provided.
+Insert the number of record:")
       } else if (!is.null(choiceNumber)) {
         my.selection <- choiceNumber
       }

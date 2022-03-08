@@ -10,15 +10,62 @@ columns such as 'canonicalName', 'authorship', synonyms', 'LSID', 'url',
 taxon_id_pesi(table, taxaColumn)
 }
 \arguments{
-\item{table}{`data.frame` containing column with a taxa
+\item{table}{A `data.frame` containing column with a taxa
 (e.g. Sphaerosoma seidlitzi, Malthinus, etc.).}
 
-\item{taxaColumn}{`numeric` that identify the column containing taxa value.}
+\item{taxaColumn}{A `numeric` that identify the column containing taxa
+value.}
 }
 \value{
-the output of the function is a `tibble` containing all the
+The output of the function is a `tibble` containing all the
 columns provided as input and new columns as: 'canonicalName', 'authorship',
 'synonyms', 'LSID', 'url', 'accordingTo', 'checkStatus' gathered from PESI.
+
+An example to export dataset obtained by this function is:
+datasetMerged <- dplyr::bind_rows(table)
+write.csv(
+  datasetMerged,
+  "table.csv",
+  row.names = FALSE,
+  fileEncoding = "UTF-8"
+)
+
+Someone could have problems of characters encoding when CSV file is
+written.
+To resolve we suggest two different solutions:
+
+Solution 1 -
+
+1. Open the CSV in Notepad.
+2. Click “File” and “Save As”.
+3. In the new popup that displays,  select “ANSI” from the “Encoding”
+   field.
+4. Click “Save”.
+5. Now, you should be able to open the file in Excel and display the
+   characters correctly.
+
+Solution 2 -
+
+1. Open Excel
+
+2. Click “File” and “New”
+
+3. Click on the “Data” tab
+
+4. Click “From Text” and select the CSV file
+
+5. Select “Delimited”
+
+6. For “File origin”, select “65001 : Unicode (UTF-8)”
+
+7. Click “Next”
+
+8. Select “Comma”
+
+9. Click “Finish”
+
+10. Excel should now show you the CSV file and display the characters
+    correctly.
 }
 \description{
 This function provide a taxon ID, usually a
@@ -53,43 +100,6 @@ taxon_id_pesi(
   taxaColumn = 3
 )
 }
-
-# An example to export dataset producted by this function is:
-# datasetMerged <- dplyr::bind_rows(table)
-# write.csv(
-# datasetMerged,
-#   "table.csv",
-#   row.names = FALSE,
-#   fileEncoding = "UTF-8"
-# )
-
-# Someone could have problems of characters encoding when csv file is
-# written.
-# To resolve we suggest two different methods:
-#
-# Solution 1
-#
-# 1. Open the CSV in Notepad.
-# 2. Click “File” and “Save As”.
-# 3. In the new popup that displays,  select “ANSI” from the “Encoding”
-#    field.
-# 4. Click “Save”.
-# 5. Now, you should be able to open the file in Excel and display the
-#    characters correctly.
-#
-# Solution 2
-#
-# 1. Open Excel
-# 2. Click “File” and “New”
-# 3. Click on the “Data” tab
-# 4. Click “From Text” and select the CSV file
-# 5. Select “Delimited”
-# 6. For “File origin”, select “65001 : Unicode (UTF-8)”
-# 7. Click “Next”
-# 8. Select “Comma”
-# 9. Click “Finish”
-# 10. Excel should now show you the CSV file and display the characters
-#     correctly.
 
 }
 \author{

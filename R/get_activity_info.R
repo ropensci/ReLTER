@@ -4,7 +4,7 @@
 #' \url{https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845}).
 #' @description This function obtains the information about of an eLTER
 #' activity provided in DEIMS-SDR.
-#' @param activityid a character. It is the DEIMS.iD of activity make from
+#' @param activityid A `character`. It is the DEIMS.iD of activity make from
 #' DEIMS-SDR website. DEIMS.iD information
 #' \href{https://deims.org/docs/deimsid.html}{here}.
 #' The DEIMS.iD of activity is the URL for the activity page.
