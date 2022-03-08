@@ -2,11 +2,12 @@
 #' \href{https://deims.org/}{DEIMS-SDR catalogue}, about a single eLTER
 #' activity (e.g.
 #' \url{https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845}).
-#' @description This function obtains the info of activity (actually
-#'  title) provided in DEIMS-SDR.
-#' @param activityid A character. The DEIMS activity ID from
-#' DEIMS-SDR website. DEIMS.iD information 
+#' @description This function obtains the information about of an eLTER
+#' activity provided in DEIMS-SDR.
+#' @param activityid a character. It is the DEIMS.iD of activity make from
+#' DEIMS-SDR website. DEIMS.iD information
 #' \href{https://deims.org/docs/deimsid.html}{here}.
+#' The DEIMS.iD of activity is the URL for the activity page.
 #' @return The output of the function is a `tibble` with main features of
 #' the activities in a site, and a `leaflet` map plot.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}

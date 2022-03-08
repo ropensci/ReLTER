@@ -10,17 +10,18 @@ activity (e.g.
 get_activity_info(activityid)
 }
 \arguments{
-\item{activityid}{A character. The DEIMS activity ID from
-DEIMS-SDR website. DEIMS.iD information 
-\href{https://deims.org/docs/deimsid.html}{here}.}
+\item{activityid}{a character. It is the DEIMS.iD of activity make from
+DEIMS-SDR website. DEIMS.iD information
+\href{https://deims.org/docs/deimsid.html}{here}.
+The DEIMS.iD of activity is the URL for the activity page.}
 }
 \value{
 The output of the function is a `tibble` with main features of
 the activities in a site, and a `leaflet` map plot.
 }
 \description{
-This function obtains the info of activity (actually
- title) provided in DEIMS-SDR.
+This function obtains the information about of an eLTER
+activity provided in DEIMS-SDR.
 }
 \examples{
 activities <- get_activity_info(

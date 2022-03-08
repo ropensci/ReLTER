@@ -3,9 +3,10 @@
 #' (e.g. \url{https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef}).
 #' @description This function allows to obtain the info of dataset provided in
 #' DEIMS-SDR.
-#' @param datasetid A character. It is the DEIMS.iD of dataset make from
+#' @param datasetid a character. It is the DEIMS.iD of dataset make from
 #' DEIMS-SDR website. DEIMS.iD information 
 #' \href{https://deims.org/docs/deimsid.html}{here}.
+#' The DEIMS.iD of dataset is the URL for the dataset page.
 #' @return The output of the function is a `tibble` with main features
 #' of the site and the related resources collected by site.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
