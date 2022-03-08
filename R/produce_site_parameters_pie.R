@@ -1,14 +1,18 @@
 #' @title  Return a pie chart of Environmental Parameters, as a stored in
-#' \href{https://deims.org/}{DEIMS-SDR catalogue}, of a single eLTER site
-#' or all of the eLTER sites belonging to an eLTER Network (e.g.
-#' \href{https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3}{LTER
-#' Italy network}).
+#' \href{https://deims.org/}{DEIMS-SDR catalogue}, of a single eLTER site.
 #' @description This function produces a pie chart of the parameters
 #' collected in a site or network grouped into compounds.
 #' @param deimsid A `character`. It is the DEIMS.iD of site/network from
 #' DEIMS-SDR website. DEIMS.iD information 
 #' \href{https://deims.org/docs/deimsid.html}{here}.
-#' @return The output of the function is a pie chart.
+#' @return The output of the function is a pie chart and a `tibble`. The
+#' percentages, as a label in the pie charts and in the output table (
+#' column 'perc'), refer to the number of the parameters, belonging to a type
+#' (e.g. biological, atmospheric, etc.), measured compared to all of parameters
+#' measured into selected eLTER site. This function allows to show what type
+#' of parameters are most measured into a site. In the example below the
+#' atmospheric parameters corresponds to the 15 percent of all parameters
+#' measured into the site.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom tibble as_tibble
 #' @importFrom dplyr group_by tally mutate filter lag
@@ -36,9 +40,12 @@ produce_site_parameters_pie <- function(deimsid) {
   paramsDeims <- tibble::as_tibble(paramsDeims$parameter[[1]])
   if (length(paramsDeims) != 0) {
     params <- tibble::as_tibble(paramsDeims)
-    params$parameterGroups <- parametersStructureEnvThes$category[
-      match(params$parameterLabel, parametersStructureEnvThes$parameter)
-    ]
+    params$parameterGroups <- paste0(
+      parametersStructureEnvThes$category[
+        match(params$parameterLabel, parametersStructureEnvThes$parameter)
+      ],
+      "s"
+    )
     groupsIsNa <- params %>% dplyr::filter(is.na(parameterGroups))
     # parameters ----
     params <- params %>%
@@ -46,7 +53,7 @@ produce_site_parameters_pie <- function(deimsid) {
       dplyr::tally() %>%
       dplyr::mutate(
         freq = n / sum(n),
-        label = paste0(round(freq, 2) * 100, "%"),
+        perc = paste0(round(freq, 2) * 100, "%"),
         end = 2 * pi * cumsum(freq) / sum(freq),
         start = dplyr::lag(end, default = 0),
         middle = 0.5 * (start + end),
@@ -97,7 +104,7 @@ produce_site_parameters_pie <- function(deimsid) {
         ggplot2::aes(
           x = 1.05 * sin(middle),
           y = 1.05 * cos(middle),
-          label = label,
+          label = perc,
           hjust = hjust,
           vjust = vjust
         )
@@ -133,7 +140,8 @@ produce_site_parameters_pie <- function(deimsid) {
       )
     }
     print(pie)
-    params
+    params %>%
+      dplyr::select(parameterGroups, n, freq, perc)
   } else {
     message("\n----\nThe requested page could not be found.
 Please check again the DEIMS.iD\n----\n")

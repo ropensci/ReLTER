@@ -3,10 +3,7 @@
 \name{produce_site_parameters_waffle}
 \alias{produce_site_parameters_waffle}
 \title{Return a waffle chart of Environmental Parameters, as a stored in
-\href{https://deims.org/}{DEIMS-SDR catalogue}, of a single eLTER site or
-all of the eLTER sites belonging to an eLTER Network (e.g.
-\href{https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3}{LTER
-Italy network}).}
+\href{https://deims.org/}{DEIMS-SDR catalogue}, of a single eLTER site.}
 \usage{
 produce_site_parameters_waffle(deimsid)
 }
@@ -16,7 +13,10 @@ DEIMS-SDR website. DEIMS.iD information
 \href{https://deims.org/docs/deimsid.html}{here}.}
 }
 \value{
-The output of the function is a waffle chart.
+The output of the function is a waffle chart and a `tibble`. Each
+of the squares represents a parameters measured into the selected eLTER
+site. The parameters with the same color belong to the same group (e.g.
+biological, atmospheric, etc.).
 }
 \description{
 This function produces a waffle chart of the Environmental
@@ -27,7 +27,7 @@ Parameters collected in a site or network grouped into clusters.
 waffle <- produce_site_parameters_waffle(
   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
 )
-print(waffle)
+waffle
 }
 
 }

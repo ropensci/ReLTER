@@ -3,10 +3,7 @@
 \name{produce_site_parameters_pie}
 \alias{produce_site_parameters_pie}
 \title{Return a pie chart of Environmental Parameters, as a stored in
-\href{https://deims.org/}{DEIMS-SDR catalogue}, of a single eLTER site
-or all of the eLTER sites belonging to an eLTER Network (e.g.
-\href{https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3}{LTER
-Italy network}).}
+\href{https://deims.org/}{DEIMS-SDR catalogue}, of a single eLTER site.}
 \usage{
 produce_site_parameters_pie(deimsid)
 }
@@ -16,7 +13,14 @@ DEIMS-SDR website. DEIMS.iD information
 \href{https://deims.org/docs/deimsid.html}{here}.}
 }
 \value{
-The output of the function is a pie chart.
+The output of the function is a pie chart and a `tibble`. The
+percentages, as a label in the pie charts and in the output table (
+column 'perc'), refer to the number of the parameters, belonging to a type
+(e.g. biological, atmospheric, etc.), measured compared to all of parameters
+measured into selected eLTER site. This function allows to show what type
+of parameters are most measured into a site. In the example below the
+atmospheric parameters corresponds to the 15 percent of all parameters
+measured into the site.
 }
 \description{
 This function produces a pie chart of the parameters
