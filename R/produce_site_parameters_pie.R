@@ -1,7 +1,6 @@
-#' @title  Return a pie chart of Environmental Parameters, as a stored in
+#' Produce a pie chart of the parameters collected in a site LTER.
+#' @description Return a pie chart of Environmental Parameters, as a stored in
 #' \href{https://deims.org/}{DEIMS-SDR catalogue}, of a single eLTER site.
-#' @description This function produces a pie chart of the parameters
-#' collected in a site or network grouped into compounds.
 #' @param deimsid A `character`. It is the DEIMS.iD of site/network from
 #' DEIMS-SDR website. DEIMS.iD information 
 #' \href{https://deims.org/docs/deimsid.html}{here}.

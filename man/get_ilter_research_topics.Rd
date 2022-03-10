@@ -2,10 +2,7 @@
 % Please edit documentation in R/get_ilter_research_topics.R
 \name{get_ilter_research_topics}
 \alias{get_ilter_research_topics}
-\title{Return a tibble object containing Research Topics collected by all
-of the eLTER sites (more than 1200 sites), as a stored into
-\href{https://deims.org}{DEIMS-SDR}, belonging to International LTER
-network (ILTER).}
+\title{obtain the information about the Research Topics of ILTER sites.}
 \usage{
 get_ilter_research_topics(sitesNum = NULL)
 }
@@ -19,9 +16,10 @@ The output of the function is a `tibble` containing the research
 topics and their URI (Uniform Resource Identifier) of all ILTER sites.
 }
 \description{
-This function allows to obtain the information about the
-Research Topics collected in all sites of ILTER, through the DEIMS-SDR
-sites API.
+Return a `tibble` object containing Research Topics collected
+by all \href{https://www.ilter.network/network/global-coverage}{ILTER sites
+(more than 1200 around the world)}, as a
+stored into \href{https://deims.org}{DEIMS-SDR}.
 }
 \examples{
 \dontrun{

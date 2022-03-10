@@ -1,11 +1,9 @@
-#' @title Download and return a SpatRaster object containing requested
-#' by \href{https://maps.opendatascience.eu/}{ODS} dataset, cropped to a
-#' eLTER site boundaries.
-#' @description This function acquires various raster layers from
-#' ODS Europe:  https://maps.opendatascience.eu/
-#' and crops to an eLTER site boundary, which is obtained
-#' from the DEIMS-SDR sites API.
-#'
+#' Acquire various raster layers from
+#' \href{https://maps.opendatascience.eu/}{ODS Europe}
+#' and crops to an eLTER site boundary.
+#' @description Download and return a SpatRaster object containing requested
+#' by \href{https://maps.opendatascience.eu/}{ODS} dataset, cropped to a eLTER
+#' site boundaries, which is obtained from the DEIMS-SDR API.
 #' @param deimsid  A `character`. The DEIMS.iD of the site from
 #' DEIMS-SDR website. DEIMS.iD information 
 #' \href{https://deims.org/docs/deimsid.html}{here}.

@@ -2,11 +2,8 @@
 % Please edit documentation in R/get_network_related_resources.R
 \name{get_network_related_resources}
 \alias{get_network_related_resources}
-\title{Return a tibble object containing Related Resources, as a stored in
-\href{https://deims.org/}{DEIMS-SDR catalogue}, of all the eLTER sites
-belonging to an eLTER Network (e.g.
-\href{https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3}{LTER
-Italy network}).}
+\title{Obtain information about the Related Resources (dataset and activity) of a
+eLTER Network.}
 \usage{
 get_network_related_resources(networkDEIMSID)
 }
@@ -22,9 +19,11 @@ The output of the function is a `tibble` containing the related
 resources shared by the network's sites.
 }
 \description{
-This function obtains information about the
-Related Resources (e.g. dataset) shared in the eLTER Network (e.g. Italy)
-through the DEIMS-SDR sites API.
+This function obtains the Related Resources information (title
+and URL), as a stored in \href{https://deims.org/}{DEIMS-SDR catalogue}, of
+all eLTER sites belonging to an eLTER Network (e.g.
+\href{https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3}{LTER
+Italy network}).
 }
 \examples{
 \dontrun{

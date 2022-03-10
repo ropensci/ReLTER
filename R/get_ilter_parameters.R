@@ -1,9 +1,8 @@
-#' @title Return a tibble object containing Parameter collected by all of
-#' the eLTER sites (more than 1200 sites), as a stored into
-#' \href{https://deims.org}{DEIMS-SDR}, belonging to International LTER
-#' network (ILTER).
-#' @description This function obtains information about the
-#' parameters collected in ILTER sites, through the DEIMS-SDR sites API.
+#' Obtain information about the parameters collected of all sites ILTER.
+#' @description Return a `tibble` object containing Parameter collected by all
+#' of the \href{https://www.ilter.network/network/global-coverage}{ILTER sites
+#' (more than 1200 around the world)},
+#' as a stored into \href{https://deims.org}{DEIMS-SDR}.
 #' @param sitesNum A `integer`. It is the number of the sites that are
 #' read to get the information. Use this parameters moreover for provide
 #' example of this function. Default 0.

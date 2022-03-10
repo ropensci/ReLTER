@@ -1,9 +1,8 @@
-#' @title Return a tibble object containing information, as a stored in
-#' \href{https://deims.org/}{DEIMS-SDR catalogue}, about a single eLTER
-#' activity (e.g.
-#' \url{https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845}).
+#' Obtain the information about of an eLTER activity.
 #' @description This function obtains the information about of an eLTER
-#' activity provided in DEIMS-SDR.
+#' activity (e.g.
+#' \url{https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845})
+#' provided in \href{https://deims.org/}{DEIMS-SDR catalogue}.
 #' @param activityid A `character`. It is the DEIMS.iD of activity make from
 #' DEIMS-SDR website. DEIMS.iD information
 #' \href{https://deims.org/docs/deimsid.html}{here}.

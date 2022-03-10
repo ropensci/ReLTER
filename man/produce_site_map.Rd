@@ -2,8 +2,7 @@
 % Please edit documentation in R/produce_site_map.R
 \name{produce_site_map}
 \alias{produce_site_map}
-\title{Return a image map object of a single eLTER site boundaries, as a
-stored in \href{https://deims.org/}{DEIMS-SDR catalogue}.}
+\title{Provide a map object of a sites LTER.}
 \usage{
 produce_site_map(
   deimsid,
@@ -70,7 +69,8 @@ site, OSM as base map and all country sites map.
 }
 \description{
 This function produces a `map` of the site boundaries
-as provided by the DEIMS-SDR, within a given country and network.
+as provided by the \href{https://deims.org/}{DEIMS-SDR catalogue}, within
+a given country and network.
 }
 \examples{
 \dontrun{

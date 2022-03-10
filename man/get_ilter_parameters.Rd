@@ -2,10 +2,7 @@
 % Please edit documentation in R/get_ilter_parameters.R
 \name{get_ilter_parameters}
 \alias{get_ilter_parameters}
-\title{Return a tibble object containing Parameter collected by all of
-the eLTER sites (more than 1200 sites), as a stored into
-\href{https://deims.org}{DEIMS-SDR}, belonging to International LTER
-network (ILTER).}
+\title{Obtain information about the parameters collected of all sites ILTER.}
 \usage{
 get_ilter_parameters(sitesNum = 0)
 }
@@ -20,8 +17,10 @@ of parameters and their URI (Uniform Resource Identifier) collected
 in all ILTER sites.
 }
 \description{
-This function obtains information about the
-parameters collected in ILTER sites, through the DEIMS-SDR sites API.
+Return a `tibble` object containing Parameter collected by all
+of the \href{https://www.ilter.network/network/global-coverage}{ILTER sites
+(more than 1200 around the world)},
+as a stored into \href{https://deims.org}{DEIMS-SDR}.
 }
 \examples{
 \dontrun{

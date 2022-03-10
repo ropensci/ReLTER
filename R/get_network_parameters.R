@@ -1,10 +1,9 @@
-#' @title Return a tibble object containing Environmental Parameters collected
-#' by all of the eLTER sites belonging to an eLTER Network (e.g.
-#' \href{https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3}{LTER
-#' Italy network}), as a stored into \href{https://deims.org}{DEIMS-SDR}.
-#' @description This function obtains a list of the Environmental Parameters
-#' collected on sites in the eLTER Network (e.g. Italy) through the DEIMS-SDR
-#' sites API.
+#' Obtain a list of all the Environmental Parameters of sites in an
+#' eLTER Network.
+#' @description This function obtains all Environmental Parameters
+#' collected in an eLTER Network (e.g.
+#' \href{https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3}{LTER-
+#' Italy network}), through the DEIMS-SDR API.
 #' @param networkDEIMSID A `character`. The DEIMS.iD of network
 #' from DEIMS-SDR website. DEIMS.iD information 
 #' \href{https://deims.org/docs/deimsid.html}{here} and Complete list of ILTER

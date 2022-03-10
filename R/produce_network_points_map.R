@@ -1,9 +1,8 @@
-#' @title Return a image map object of all of the eLTER sites belonging to an
+#' Provide a map (image) of sites in an eLTER Network.
+#' @description Return a image map object of all of the eLTER sites belonging to an
 #' eLTER Network (e.g.
 #' \href{https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3}{LTER
 #' Italy network}), as a stored into \href{https://deims.org}{DEIMS-SDR}.
-#' @description This function provides a map (image) of sites in an LTER
-#' network
 #' @param networkDEIMSID A `character`. The DEIMS.iD of the network
 #' from DEIMS-SDR website. DEIMS.iD information 
 #' \href{https://deims.org/docs/deimsid.html}{here} and Complete list of ILTER

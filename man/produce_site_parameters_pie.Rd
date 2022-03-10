@@ -2,8 +2,7 @@
 % Please edit documentation in R/produce_site_parameters_pie.R
 \name{produce_site_parameters_pie}
 \alias{produce_site_parameters_pie}
-\title{Return a pie chart of Environmental Parameters, as a stored in
-\href{https://deims.org/}{DEIMS-SDR catalogue}, of a single eLTER site.}
+\title{Produce a pie chart of the parameters collected in a site LTER.}
 \usage{
 produce_site_parameters_pie(deimsid)
 }
@@ -23,8 +22,8 @@ atmospheric parameters corresponds to the 15 percent of all parameters
 measured into the site.
 }
 \description{
-This function produces a pie chart of the parameters
-collected in a site or network grouped into compounds.
+Return a pie chart of Environmental Parameters, as a stored in
+\href{https://deims.org/}{DEIMS-SDR catalogue}, of a single eLTER site.
 }
 \examples{
 \dontrun{

@@ -2,10 +2,7 @@
 % Please edit documentation in R/get_ilter_envcharacts.R
 \name{get_ilter_envcharacts}
 \alias{get_ilter_envcharacts}
-\title{Return a tibble object containing Environmental Characteristics
-collected by all of the eLTER sites (more than 1200 sites), as a stored
-into \href{https://deims.org}{DEIMS-SDR}, belonging to International
-LTER network (ILTER).}
+\title{Obtain a list of all Environmental Characteristics of ILTER sites.}
 \usage{
 get_ilter_envcharacts(sitesNum = 0)
 }
@@ -19,9 +16,12 @@ The output of the function is a `tibble` containing all the
 Environmental Characteristics of ILTER's sites.
 }
 \description{
-This function obtains the information about the
-Environmental Characteristics of ILTER sites, through the DEIMS-SDR sites
-API.
+This function obtains all Environmental Characteristics:
+title, URI, geo-coordinates, country name, and elevation
+of all
+\href{https://www.ilter.network/network/global-coverage}{ILTER sites
+(more than 1200 around the world)},
+through the DEIMS-SDR API.
 }
 \examples{
 \dontrun{

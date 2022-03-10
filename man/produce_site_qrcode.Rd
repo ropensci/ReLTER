@@ -2,8 +2,7 @@
 % Please edit documentation in R/produce_site_qrcode.R
 \name{produce_site_qrcode}
 \alias{produce_site_qrcode}
-\title{Return a QR code image of any provided DEIMS.iD (e.g. dataset,
-site, activity).}
+\title{Obtain the QRCode of any DEIMS-SDR entities.}
 \usage{
 produce_site_qrcode(deimsid, do_plot = FALSE)
 }
@@ -18,8 +17,8 @@ DEIMS-SDR website. DEIMS.iD information
 The QR code as a logical matrix with "qr_code" class.
 }
 \description{
-This function obtain the QRCode of any DEIMS-SDR
-entities of the eLTER.
+Return a QR code image of any provided DEIMS.iD (e.g. dataset,
+site, activity).
 }
 \examples{
 qrcode <- produce_site_qrcode(

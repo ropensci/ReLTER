@@ -2,10 +2,8 @@
 % Please edit documentation in R/taxon_id_pesi.R
 \name{taxon_id_pesi}
 \alias{taxon_id_pesi}
-\title{Return tibble object with all the columns of input table plus new
-columns such as 'canonicalName', 'authorship', synonyms', 'LSID', 'url',
-'accordingTo', 'checkStatus' gathered from
-\href{http://www.eu-nomen.eu/portal/rest/}{PESI RestAPI}.}
+\title{Provide a taxon ID \href{https://en.wikipedia.org/wiki/LSID}{LSID} to a
+taxon list.}
 \usage{
 taxon_id_pesi(table, taxaColumn)
 }

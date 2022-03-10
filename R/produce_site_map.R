@@ -1,7 +1,7 @@
-#' @title Return a image map object of a single eLTER site boundaries, as a
-#' stored in \href{https://deims.org/}{DEIMS-SDR catalogue}.
+#' Provide a map object of a sites LTER.
 #' @description This function produces a `map` of the site boundaries
-#' as provided by the DEIMS-SDR, within a given country and network.
+#' as provided by the \href{https://deims.org/}{DEIMS-SDR catalogue}, within
+#' a given country and network.
 #' @param deimsid A `character`. The DEIMS.iD of network from
 #' DEIMS-SDR website. DEIMS.iD information 
 #' \href{https://deims.org/docs/deimsid.html}{here}.

@@ -64,162 +64,114 @@
           
           <code><a href="get_site_info.html">get_site_info()</a></code> 
         </dt>
-        <dd>Return a tibble object containing information, as a stored in
-<a href="https://deims.org/" class="external-link">DEIMS-SDR catalogue</a>, of a single eLTER site.</dd>
+        <dd>Obtain details about an eLTER site.</dd>
       </dl><dl><dt>
           
           <code><a href="get_site_ODS.html">get_site_ODS()</a></code> 
         </dt>
-        <dd>Download and return a SpatRaster object containing requested
-by <a href="https://maps.opendatascience.eu/" class="external-link">ODS</a> dataset, cropped to a
-eLTER site boundaries.</dd>
+        <dd>Acquire various raster layers from
+<a href="https://maps.opendatascience.eu/" class="external-link">ODS Europe</a>
+and crops to an eLTER site boundary.</dd>
       </dl><dl><dt>
           
           <code><a href="get_network_envcharacts.html">get_network_envcharacts()</a></code> 
         </dt>
-        <dd>Return a tibble object containing Environmental Characteristics,
-stored in <a href="https://deims.org/" class="external-link">DEIMS-SDR catalogue</a>, of all the
-eLTER sites belonging to an eLTER Network (e.g.
-<a href="https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3" class="external-link">LTER
-Italy network</a>).</dd>
+        <dd>Obtain a list of all Environmental Characteristics of sites in an
+eLTER Network.</dd>
       </dl><dl><dt>
           
           <code><a href="get_network_parameters.html">get_network_parameters()</a></code> 
         </dt>
-        <dd>Return a tibble object containing Environmental Parameters collected
-by all of the eLTER sites belonging to an eLTER Network (e.g.
-<a href="https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3" class="external-link">LTER
-Italy network</a>), as a stored into <a href="https://deims.org" class="external-link">DEIMS-SDR</a>.</dd>
+        <dd>Obtain a list of all the Environmental Parameters of sites in an
+eLTER Network.</dd>
       </dl><dl><dt>
           
           <code><a href="get_network_research_topics.html">get_network_research_topics()</a></code> 
         </dt>
-        <dd>Return a tibble object containing Research Topics collected by all
-of the eLTER sites belonging to an eLTER Network (e.g.
-<a href="https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3" class="external-link">LTER
-Italy network</a>), as a stored into <a href="https://deims.org" class="external-link">DEIMS-SDR</a>.</dd>
+        <dd>Obtain a list of Research Topics handled in an eLTER Network.</dd>
       </dl><dl><dt>
           
           <code><a href="get_network_related_resources.html">get_network_related_resources()</a></code> 
         </dt>
-        <dd>Return a tibble object containing Related Resources, as a stored in
-<a href="https://deims.org/" class="external-link">DEIMS-SDR catalogue</a>, of all the eLTER sites
-belonging to an eLTER Network (e.g.
-<a href="https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3" class="external-link">LTER
-Italy network</a>).</dd>
+        <dd>Obtain information about the Related Resources (dataset and activity) of a
+eLTER Network.</dd>
       </dl><dl><dt>
           
           <code><a href="get_network_sites.html">get_network_sites()</a></code> 
         </dt>
-        <dd>Return a spatial point vector object containing name and
-geo-information, stored in <a href="https://deims.org/" class="external-link">DEIMS-SDR catalogue</a>,
-of all the eLTER sites belonging to an eLTER Network (e.g.
-<a href="https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3" class="external-link">LTER
-Italy network</a>).</dd>
+        <dd>Retrieve a list of sites in an eLTER Network.</dd>
       </dl><dl><dt>
           
           <code><a href="get_ilter_envcharacts.html">get_ilter_envcharacts()</a></code> 
         </dt>
-        <dd>Return a tibble object containing Environmental Characteristics
-collected by all of the eLTER sites (more than 1200 sites), as a stored
-into <a href="https://deims.org" class="external-link">DEIMS-SDR</a>, belonging to International
-LTER network (ILTER).</dd>
+        <dd>Obtain a list of all Environmental Characteristics of ILTER sites.</dd>
       </dl><dl><dt>
           
           <code><a href="get_ilter_generalinfo.html">get_ilter_generalinfo()</a></code> 
         </dt>
-        <dd>Return a spatial point vector object containing name and
-geo-information, stored in <a href="https://deims.org/" class="external-link">DEIMS-SDR catalogue</a>,
-of all the eLTER sites (more than 1200 sites) belonging to International
-LTER network (ILTER).</dd>
+        <dd>Download information of all ILTER sites or a subset of ILTER sites.</dd>
       </dl><dl><dt>
           
           <code><a href="get_ilter_parameters.html">get_ilter_parameters()</a></code> 
         </dt>
-        <dd>Return a tibble object containing Parameter collected by all of
-the eLTER sites (more than 1200 sites), as a stored into
-<a href="https://deims.org" class="external-link">DEIMS-SDR</a>, belonging to International LTER
-network (ILTER).</dd>
+        <dd>Obtain information about the parameters collected of all sites ILTER.</dd>
       </dl><dl><dt>
           
           <code><a href="get_ilter_research_topics.html">get_ilter_research_topics()</a></code> 
         </dt>
-        <dd>Return a tibble object containing Research Topics collected by all
-of the eLTER sites (more than 1200 sites), as a stored into
-<a href="https://deims.org" class="external-link">DEIMS-SDR</a>, belonging to International LTER
-network (ILTER).</dd>
+        <dd>obtain the information about the Research Topics of ILTER sites.</dd>
       </dl><dl><dt>
           
           <code><a href="get_activity_info.html">get_activity_info()</a></code> 
         </dt>
-        <dd>Return a tibble object containing information, as a stored in
-<a href="https://deims.org/" class="external-link">DEIMS-SDR catalogue</a>, about a single eLTER
-activity (e.g.
-<a href="https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845" class="external-link">https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845</a>).</dd>
+        <dd>Obtain the information about of an eLTER activity.</dd>
       </dl><dl><dt>
           
           <code><a href="get_dataset_info.html">get_dataset_info()</a></code> 
         </dt>
-        <dd>Return a tibble object containing information, as a stored in
-<a href="https://deims.org/" class="external-link">DEIMS-SDR catalogue</a>, about a single eLTER dataset
-(e.g. <a href="https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef" class="external-link">https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef</a>).</dd>
+        <dd>Obtain the information about of an eLTER dataset.</dd>
       </dl><dl><dt>
           
           <code><a href="produce_network_points_map.html">produce_network_points_map()</a></code> 
         </dt>
-        <dd>Return a image map object of all of the eLTER sites belonging to an
-eLTER Network (e.g.
-<a href="https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3" class="external-link">LTER
-Italy network</a>), as a stored into <a href="https://deims.org" class="external-link">DEIMS-SDR</a>.</dd>
+        <dd>Provide a map (image) of sites in an eLTER Network.</dd>
       </dl><dl><dt>
           
           <code><a href="produce_site_map.html">produce_site_map()</a></code> 
         </dt>
-        <dd>Return a image map object of a single eLTER site boundaries, as a
-stored in <a href="https://deims.org/" class="external-link">DEIMS-SDR catalogue</a>.</dd>
+        <dd>Provide a map object of a sites LTER.</dd>
       </dl><dl><dt>
           
           <code><a href="produce_site_qrcode.html">produce_site_qrcode()</a></code> 
         </dt>
-        <dd>Return a QR code image of any provided DEIMS.iD (e.g. dataset,
-site, activity).</dd>
+        <dd>Obtain the QRCode of any DEIMS-SDR entities.</dd>
       </dl><dl><dt>
           
           <code><a href="produce_site_parameters_pie.html">produce_site_parameters_pie()</a></code> 
         </dt>
-        <dd>Return a pie chart of Environmental Parameters, as a stored in
-<a href="https://deims.org/" class="external-link">DEIMS-SDR catalogue</a>, of a single eLTER site.</dd>
+        <dd>Produce a pie chart of the parameters collected in a site LTER.</dd>
       </dl><dl><dt>
           
           <code><a href="produce_site_parameters_waffle.html">produce_site_parameters_waffle()</a></code> 
         </dt>
-        <dd>Return a waffle chart of Environmental Parameters, as a stored in
-<a href="https://deims.org/" class="external-link">DEIMS-SDR catalogue</a>, of a single eLTER site.</dd>
+        <dd>Produce a waffle chart of the parameters collected in a site LTER.</dd>
       </dl><dl><dt>
           
           <code><a href="get_sos_procedurelist.html">get_sos_procedurelist()</a></code> 
         </dt>
-        <dd>Return a list of Procedure (e.g. Method, algorithm, instrument,
-sensor, or system of these which may be used in making an observation)
-store into a
-<a href="http://opengeospatial.github.io/e-learning/sos/text/index.html" class="external-link">SOS
-(Sensor Observations Service OGC)</a>.</dd>
+        <dd>List the procedures of a Sensor Observations Service (SOS).</dd>
       </dl><dl><dt>
           
           <code><a href="taxon_id_pesi.html">taxon_id_pesi()</a></code> 
         </dt>
-        <dd>Return tibble object with all the columns of input table plus new
-columns such as 'canonicalName', 'authorship', synonyms', 'LSID', 'url',
-'accordingTo', 'checkStatus' gathered from
-<a href="http://www.eu-nomen.eu/portal/rest/" class="external-link">PESI RestAPI</a>.</dd>
+        <dd>Provide a taxon ID <a href="https://en.wikipedia.org/wiki/LSID" class="external-link">LSID</a> to a
+taxon list.</dd>
       </dl><dl><dt>
           
           <code><a href="taxon_id_worms.html">taxon_id_worms()</a></code> 
         </dt>
-        <dd>Return tibble object with all the columns of input table plus new
-columns such as valid_name, valid_authority, valid_AphiaID, status,
-synonyms, LSID, url, matchType, nOfWormsRecords, wormsRecords obtained by
-<a href="http://www.marinespecies.org/rest/" class="external-link">Worms rest API</a>.</dd>
+        <dd>Enrich and certify a list of species names by
+comparing with <a href="https://www.marinespecies.org" class="external-link">Worms</a>.</dd>
       </dl></div>
   </main></div>
 

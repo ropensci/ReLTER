@@ -2,9 +2,9 @@
 % Please edit documentation in R/get_site_ODS.R
 \name{get_site_ODS}
 \alias{get_site_ODS}
-\title{Download and return a SpatRaster object containing requested
-by \href{https://maps.opendatascience.eu/}{ODS} dataset, cropped to a
-eLTER site boundaries.}
+\title{Acquire various raster layers from
+\href{https://maps.opendatascience.eu/}{ODS Europe}
+and crops to an eLTER site boundary.}
 \usage{
 get_site_ODS(deimsid, dataset = "landcover")
 }
@@ -25,10 +25,9 @@ The user should save the raster to disk, if necessary.
 i.e. writeRaster(ds_site, "site_dataset.tif")
 }
 \description{
-This function acquires various raster layers from
-ODS Europe:  https://maps.opendatascience.eu/
-and crops to an eLTER site boundary, which is obtained
-from the DEIMS-SDR sites API.
+Download and return a SpatRaster object containing requested
+by \href{https://maps.opendatascience.eu/}{ODS} dataset, cropped to a eLTER
+site boundaries, which is obtained from the DEIMS-SDR API.
 }
 \details{
 Supported datasets from the ODS repository include:

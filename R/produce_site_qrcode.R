@@ -1,7 +1,6 @@
-#' @title Return a QR code image of any provided DEIMS.iD (e.g. dataset,
+#' Obtain the QRCode of any DEIMS-SDR entities.
+#' @description Return a QR code image of any provided DEIMS.iD (e.g. dataset,
 #' site, activity).
-#' @description This function obtain the QRCode of any DEIMS-SDR
-#' entities of the eLTER.
 #' @param deimsid A `character`. The DEIMS.iD of entities from
 #' DEIMS-SDR website. DEIMS.iD information 
 #' \href{https://deims.org/docs/deimsid.html}{here}.

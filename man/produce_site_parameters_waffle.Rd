@@ -2,8 +2,7 @@
 % Please edit documentation in R/produce_site_parameters_waffle.R
 \name{produce_site_parameters_waffle}
 \alias{produce_site_parameters_waffle}
-\title{Return a waffle chart of Environmental Parameters, as a stored in
-\href{https://deims.org/}{DEIMS-SDR catalogue}, of a single eLTER site.}
+\title{Produce a waffle chart of the parameters collected in a site LTER.}
 \usage{
 produce_site_parameters_waffle(deimsid)
 }
@@ -19,8 +18,8 @@ site. The parameters with the same color belong to the same group (e.g.
 biological, atmospheric, etc.).
 }
 \description{
-This function produces a waffle chart of the Environmental
-Parameters collected in a site or network grouped into clusters.
+Return a waffle chart of Environmental Parameters, as a stored in
+\href{https://deims.org/}{DEIMS-SDR catalogue}, of a single eLTER site.
 }
 \examples{
 \dontrun{

@@ -2,11 +2,7 @@
 % Please edit documentation in R/get_sos_procedurelist.R
 \name{get_sos_procedurelist}
 \alias{get_sos_procedurelist}
-\title{Return a list of Procedure (e.g. Method, algorithm, instrument,
-sensor, or system of these which may be used in making an observation)
-store into a
-\href{http://opengeospatial.github.io/e-learning/sos/text/index.html}{SOS
-(Sensor Observations Service OGC)}.}
+\title{List the procedures of a Sensor Observations Service (SOS).}
 \usage{
 get_sos_procedurelist(sosHost)
 }
@@ -19,8 +15,11 @@ The output of the function is a `list` with the name and URI
 (Uniform Resource Identifier) of each procedure.
 }
 \description{
-This function lists the procedures
-of a Sensor Observations Service (SOS).
+Return a list of Procedure (e.g. Method, algorithm, instrument,
+sensor, or system of these which may be used in making an observation)
+store into a
+\href{http://opengeospatial.github.io/e-learning/sos/text/index.html}{SOS
+(Sensor Observations Service OGC)}.
 }
 \examples{
 \dontrun{

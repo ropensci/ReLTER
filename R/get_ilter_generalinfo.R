@@ -1,12 +1,14 @@
-#' @title Return a spatial point vector object containing name and
-#' geo-information, stored in \href{https://deims.org/}{DEIMS-SDR catalogue},
-#' of all the eLTER sites (more than 1200 sites) belonging to International
-#' LTER network (ILTER).
+#' Download information of all ILTER sites or a subset of ILTER sites.
 #' @description This function downloads generic information
-#' of all sites, or a subset of sites of ILTER, through the DEIMS-SDR
-#' API. If no `country_name` or `site_name` are specified,
-#' the whole list of sites is returned. If either or both of the filtering
-#' strings is specified, then a filtered subset of the sites is acquired.
+#' of all sites, or a subset of
+#' \href{https://www.ilter.network/network/global-coverage}{ILTER sites
+#' (more than 1200 around the world)},
+#' through the DEIMS-SDR API. If no `country_name` or `site_name` are
+#' specified, the whole list of sites is returned. If either or both of the
+#' filtering strings is specified, then a filtered subset of the sites is
+#' acquired.
+#' 
+#' Return a `tibble` object.
 #' @param country_name A `character`. This character string filters
 #' the full set of DEIMS sites by country name. Partial matching is supported.
 #' @param site_name A `character`. This character string filters by site name

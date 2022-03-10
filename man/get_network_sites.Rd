@@ -2,11 +2,7 @@
 % Please edit documentation in R/get_network_sites.R
 \name{get_network_sites}
 \alias{get_network_sites}
-\title{Return a spatial point vector object containing name and
-geo-information, stored in \href{https://deims.org/}{DEIMS-SDR catalogue},
-of all the eLTER sites belonging to an eLTER Network (e.g.
-\href{https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3}{LTER
-Italy network}).}
+\title{Retrieve a list of sites in an eLTER Network.}
 \usage{
 get_network_sites(networkDEIMSID)
 }
@@ -22,8 +18,12 @@ The output of the function is a point vector of `sf` class
 (package sf) of the network's sites.
 }
 \description{
-This function retrieves a list of sites in the provided network
-including title, date late updated, URI, and coordinates
+This function return a spatial point vector object including
+title, date late updated, URI, and coordinates, stored in
+\href{https://deims.org/}{DEIMS-SDR catalogue}, of all the eLTER sites
+belonging to an eLTER Network (e.g.
+\href{https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3}{LTER-
+Italy network}).
 }
 \examples{
 \dontrun{

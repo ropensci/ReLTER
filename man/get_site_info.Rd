@@ -2,8 +2,7 @@
 % Please edit documentation in R/get_site_info.R
 \name{get_site_info}
 \alias{get_site_info}
-\title{Return a tibble object containing information, as a stored in
-\href{https://deims.org/}{DEIMS-SDR catalogue}, of a single eLTER site.}
+\title{Obtain details about an eLTER site.}
 \usage{
 get_site_info(deimsid, category = NA)
 }
@@ -26,8 +25,9 @@ which the site is involved.
 If category 'Boundaries' is indicated an `sf` object is returned
 }
 \description{
-This function obtains details about an eLTER site
-through the DEIMS-SDR sites API.
+Return a tibble object containing information, as a stored in
+\href{https://deims.org/}{DEIMS-SDR catalogue}, of a single eLTER site
+through the DEIMS-SDR API.
 }
 \examples{
 siteInfo <- get_site_info(

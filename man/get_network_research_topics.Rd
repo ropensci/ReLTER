@@ -2,10 +2,7 @@
 % Please edit documentation in R/get_network_research_topics.R
 \name{get_network_research_topics}
 \alias{get_network_research_topics}
-\title{Return a tibble object containing Research Topics collected by all
-of the eLTER sites belonging to an eLTER Network (e.g.
-\href{https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3}{LTER
-Italy network}), as a stored into \href{https://deims.org}{DEIMS-SDR}.}
+\title{Obtain a list of Research Topics handled in an eLTER Network.}
 \usage{
 get_network_research_topics(networkDEIMSID)
 }
@@ -22,9 +19,10 @@ topics and their URI (Uniform Resource Identifier) collected by network's
 sites.
 }
 \description{
-This function obtains a list of Research Topics
-handled in the eLTER Network (e.g. Italy) through
-the DEIMS-SDR sites API.
+This function obtains Research Topics collected by all
+of the eLTER sites belonging to an eLTER Network (e.g.
+\href{https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3}{LTER-
+Italy network}), as a stored into \href{https://deims.org}{DEIMS-SDR}.
 }
 \examples{
 \dontrun{

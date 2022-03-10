@@ -1,10 +1,10 @@
-#' @title Return a tibble object containing Environmental Characteristics
-#' collected by all of the eLTER sites (more than 1200 sites), as a stored
-#' into \href{https://deims.org}{DEIMS-SDR}, belonging to International
-#' LTER network (ILTER).
-#' @description This function obtains the information about the
-#' Environmental Characteristics of ILTER sites, through the DEIMS-SDR sites
-#' API.
+#' Obtain a list of all Environmental Characteristics of ILTER sites.
+#' @description This function obtains all Environmental Characteristics:
+#' title, URI, geo-coordinates, country name, and elevation
+#' of all
+#' \href{https://www.ilter.network/network/global-coverage}{ILTER sites
+#' (more than 1200 around the world)},
+#' through the DEIMS-SDR API.
 #' @param sitesNum A `integer`. It is the number of the sites that are
 #' read to get the information. Use this parameters moreover for provide
 #' example of this function.

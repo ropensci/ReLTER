@@ -1,7 +1,5 @@
-#' @title Return tibble object with all the columns of input table plus new
-#' columns such as 'canonicalName', 'authorship', synonyms', 'LSID', 'url',
-#' 'accordingTo', 'checkStatus' gathered from
-#' \href{http://www.eu-nomen.eu/portal/rest/}{PESI RestAPI}.
+#' Provide a taxon ID \href{https://en.wikipedia.org/wiki/LSID}{LSID} to a
+#' taxon list.
 #' @description This function provide a taxon ID, usually a
 #' \href{https://en.wikipedia.org/wiki/LSID}{LSID}, to a taxon list.
 #' The input of the function is a csv file with a list of taxon. Taxon

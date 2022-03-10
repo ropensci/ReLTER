@@ -1,10 +1,8 @@
-#' @title Return a tibble object containing Research Topics collected by all
-#' of the eLTER sites (more than 1200 sites), as a stored into
-#' \href{https://deims.org}{DEIMS-SDR}, belonging to International LTER
-#' network (ILTER).
-#' @description This function allows to obtain the information about the
-#' Research Topics collected in all sites of ILTER, through the DEIMS-SDR
-#' sites API.
+#' obtain the information about the Research Topics of ILTER sites.
+#' @description Return a `tibble` object containing Research Topics collected
+#' by all \href{https://www.ilter.network/network/global-coverage}{ILTER sites
+#' (more than 1200 around the world)}, as a
+#' stored into \href{https://deims.org}{DEIMS-SDR}.
 #' @param sitesNum A `integer`. It is the number of the sites that are
 #' read to get the information. Use this parameters moreover for provide
 #' example of this function.

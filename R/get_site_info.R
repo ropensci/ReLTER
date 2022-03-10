@@ -1,7 +1,7 @@
-#' @title Return a tibble object containing information, as a stored in
-#' \href{https://deims.org/}{DEIMS-SDR catalogue}, of a single eLTER site.
-#' @description This function obtains details about an eLTER site
-#' through the DEIMS-SDR sites API.
+#' Obtain details about an eLTER site.
+#' @description Return a tibble object containing information, as a stored in
+#' \href{https://deims.org/}{DEIMS-SDR catalogue}, of a single eLTER site
+#' through the DEIMS-SDR API.
 #' @param deimsid A character. The DEIMS.iD of the site from
 #' DEIMS-SDR website. DEIMS.iD information 
 #' \href{https://deims.org/docs/deimsid.html}{here}.

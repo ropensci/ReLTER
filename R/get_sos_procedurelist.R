@@ -1,10 +1,9 @@
-#' @title Return a list of Procedure (e.g. Method, algorithm, instrument,
+#' List the procedures of a Sensor Observations Service (SOS).
+#' @description Return a list of Procedure (e.g. Method, algorithm, instrument,
 #' sensor, or system of these which may be used in making an observation)
 #' store into a
 #' \href{http://opengeospatial.github.io/e-learning/sos/text/index.html}{SOS
 #' (Sensor Observations Service OGC)}.
-#' @description This function lists the procedures
-#' of a Sensor Observations Service (SOS).
 #' @param sosHost A `list`. An SOS endpoint (e.g.
 #' \url{http://getit.lteritalia.it/observations/sos/kvp?}).
 #' @return The output of the function is a `list` with the name and URI

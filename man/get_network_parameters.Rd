@@ -2,10 +2,8 @@
 % Please edit documentation in R/get_network_parameters.R
 \name{get_network_parameters}
 \alias{get_network_parameters}
-\title{Return a tibble object containing Environmental Parameters collected
-by all of the eLTER sites belonging to an eLTER Network (e.g.
-\href{https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3}{LTER
-Italy network}), as a stored into \href{https://deims.org}{DEIMS-SDR}.}
+\title{Obtain a list of all the Environmental Parameters of sites in an
+eLTER Network.}
 \usage{
 get_network_parameters(networkDEIMSID)
 }
@@ -22,9 +20,10 @@ of parameters and their URI (Uniform Resource Identifier) collected
 by the network's sites.
 }
 \description{
-This function obtains a list of the Environmental Parameters
-collected on sites in the eLTER Network (e.g. Italy) through the DEIMS-SDR
-sites API.
+This function obtains all Environmental Parameters
+collected in an eLTER Network (e.g.
+\href{https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3}{LTER-
+Italy network}), through the DEIMS-SDR API.
 }
 \examples{
 \dontrun{
