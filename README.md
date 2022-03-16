@@ -7,8 +7,8 @@ ReLTER
 
 <!-- badges: start -->
 <!-- other badges https://github.com/GuangchuangYu/badger -->
+[![StandWithUkraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg)](https://vshymanskyy.github.io/StandWithUkraine)
 <!-- DOI badge -->
-
 [![](https://img.shields.io/badge/doi-10.5281/zenodo.5576813-yellow.svg)](https://doi.org/10.5281/zenodo.5576813)
 <!-- the version is determined via the DESCRIPTION file -->
 [![](https://img.shields.io/badge/devel%20version-1.0.0-blue.svg)](https://github.com/oggioniale/ReLTER)
