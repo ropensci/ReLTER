@@ -4,9 +4,9 @@
 #' iNaturalist \url{https://www.inaturalist.org/} and
 #' OBIS \url{https://obis.org/} and crops to an eLTER site
 #' boundary, which is obtained from the DEIMS-SDR sites API.
-#' @param deimsid  a `character`. The DEIMS ID of the site from
-#' DEIMS-SDR website. More information about DEIMS ID from:
-#' \href{https://deims.org/docs/deimsid.html}{page}.
+#' @param deimsid  a `character`. The DEIMS.iD of the site from
+#' DEIMS-SDR website. DEIMS.iD information 
+#' \href{https://deims.org/docs/deimsid.html}{here}.
 #' @param list_DS a `character`. Data source to get data from, any
 #' combination of gbif, inat and/or obis.
 #' @param show_map a `boolean`. If TRUE a Leaflet map with occurrences
@@ -25,7 +25,7 @@
 #' @importFrom leaflet colorFactor
 #' @importFrom RColorBrewer brewer.pal
 #' @importFrom tibble as_tibble
-#' @importFrom dplyr select mutate
+#' @importFrom dplyr select mutate filter
 #' @importFrom spocc occ2df obis_search occ
 #' @importFrom sf st_as_text st_as_sfc st_bbox st_as_sf
 #' @export
@@ -58,7 +58,7 @@
 #'   "https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd",
 #'   list_DS = c("gbif", "inat", "obis"),
 #'   show_map = TRUE,
-#'   limit = 300
+#'   limit = 10
 #' )
 #' occ_GoV_all
 #' }
@@ -106,11 +106,35 @@ get_site_speciesOccurrences <- function(
 
   # combine results from occ calls to a single data.frame ----
   if (any(c("gbif", "inat") %in% list_DS)) {
-    occ_df <- spocc::occ2df(site_occ_spocc)
-    occ_df <- occ_df %>%
+    occ_df_gbif <- site_occ_spocc$gbif$data[[1]] %>%
+      tibble::as_tibble() %>%
+      dplyr::filter(institutionCode != "iNaturalist") %>%
+      dplyr::select(
+        name,
+        longitude,
+        latitude,
+        prov,
+        date = eventDate,
+        key
+      ) %>%
       dplyr::mutate(
-        date = as.character(occ_df$date)
+        date = as.character(date)
       )
+    occ_df_inat <- site_occ_spocc$inat$data[[1]] %>%
+      tibble::as_tibble() %>%
+      dplyr::select(
+        name,
+        longitude,
+        latitude,
+        prov,
+        date = observed_on,
+        key = id
+      )
+    if (nrow(occ_df_gbif) != 0) {
+      occ_df <- rbind(occ_df_gbif, occ_df_inat)
+    } else {
+      occ_df <- occ_df_inat
+    }
   }
   if ("obis" %in% list_DS) {
     occ_df_obis <- site_occ_spocc_obis$results %>%
@@ -211,11 +235,19 @@ get_site_speciesOccurrences <- function(
     names(occ_list) <- unique(occ_df$prov)
     if ("gbif" %in% list_DS) {
       occ_list$gbif <- site_occ_spocc$gbif$data[[1]]
-      occ_list$gbif <- sf::st_as_sf(
-        occ_list$gbif,
-        coords = c("longitude", "latitude"),
-        crs = 4326
-      )
+      occ_list$gbif <- occ_list$gbif %>%
+        dplyr::filter(
+          institutionCode != "iNaturalist"
+        )
+      if (nrow(occ_list$gbif) != 0) {
+        occ_list$gbif <- sf::st_as_sf(
+          occ_list$gbif,
+          coords = c("longitude", "latitude"),
+          crs = 4326
+        )
+      } else {
+        occ_list$gbif <- NULL
+      }
     }
     if ("inat" %in% list_DS) {
       occ_list$inat <- site_occ_spocc$inat$data[[1]]
@@ -246,6 +278,10 @@ get_site_speciesOccurrences <- function(
     names(occ_list) <- unique(occ_df$prov)
     if ("gbif" %in% list_DS) {
       occ_list$gbif <- site_occ_spocc$gbif$data[[1]]
+      occ_list$gbif <- occ_list$gbif %>%
+        dplyr::filter(
+          institutionCode != "iNaturalist"
+        )
       occ_list$gbif <- sf::st_as_sf(
         occ_list$gbif,
         coords = c("longitude", "latitude"),
