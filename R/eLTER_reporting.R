@@ -15,7 +15,7 @@
 #' @importFrom tibble as_tibble
 #' @importFrom dplyr select mutate filter
 #' @export
-gbif2elter <- function(x, deimsid){#, reference_variables=reference_variables_gbif){
+map_occ_gbif2elter <- function(x, deimsid){#, reference_variables=reference_variables_gbif){
   # "variables" (in this case they could be defined "custom fields", being just record metadata) 
   # to be described in the reference.csv file
   reference_variables<-reference_variables_gbif
@@ -79,7 +79,7 @@ gbif2elter <- function(x, deimsid){#, reference_variables=reference_variables_gb
 
 #' @inherit gbif2elter
 #' @export
-inat2elter <- function(x, deimsid){
+map_occ_inat2elter <- function(x, deimsid){
   reference_variables<-reference_variables_inat
   # "variables" (in this case they could be defined "custom fields", being just record metadata) to be described in the reference.csv file
   # as_tibble(reference_variables_inat<-data.frame(FIELD_NAME=rep("VARIABLE",3),
@@ -146,7 +146,7 @@ inat2elter <- function(x, deimsid){
 
 #' @inherit gbif2elter
 #' @export
-obis2elter <- function(x, deimsid){
+map_occ_obis2elter <- function(x, deimsid){
   # "variables" (in this case they could be defined "custom fields", being just record metadata) to be described in the reference.csv file
   reference_variables<-reference_variables_obis
   # reference_variables_obis<-tibble(data.frame(FIELD_NAME=rep("VARIABLE",3),
@@ -227,7 +227,7 @@ obis2elter <- function(x, deimsid){
 #' @author Paolo Tagliolato, phD (2020) \email{tagliolato.p@@irea.cnr.it}
 #' @importFrom utils zip write.csv2
 #' @export
-save_eLTER_reporting_Archive<-function(lterReportOut){
+save_occ_eLTER_reporting_Archive<-function(lterReportOut){
   sr=lterReportOut$source
   deimsid=lterReportOut$deimsid
   
