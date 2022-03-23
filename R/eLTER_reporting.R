@@ -244,9 +244,9 @@ save_occ_eLTER_reporting_Archive<-function(lterReportOut){
   
   dir.create(dirsr)
   
-  write.csv2(outGbif$data_mapping,file_mapping)
-  write.csv2(outGbif$reference_VARIABLES,file_reference_VARIABLES)
-  write.csv2(outGbif$reference_TAXA,file_reference_TAXA)
+  write.csv2(lterReportOut$data_mapping,file_mapping)
+  write.csv2(lterReportOut$reference_VARIABLES,file_reference_VARIABLES)
+  write.csv2(lterReportOut$reference_TAXA,file_reference_TAXA)
   
   zip(paste0("biodiv_occurrence_site_",.shortId(deimsid),"_",sr,".zip"),
       files = dirsr,
