@@ -7,9 +7,9 @@
 get_site_speciesOccurrences(deimsid, list_DS, show_map = FALSE, limit = 500)
 }
 \arguments{
-\item{deimsid}{a `character`. The DEIMS ID of the site from
-DEIMS-SDR website. More information about DEIMS ID from:
-\href{https://deims.org/docs/deimsid.html}{page}.}
+\item{deimsid}{a `character`. The DEIMS.iD of the site from
+DEIMS-SDR website. DEIMS.iD information 
+\href{https://deims.org/docs/deimsid.html}{here}.}
 
 \item{list_DS}{a `character`. Data source to get data from, any
 combination of gbif, inat and/or obis.}
@@ -53,7 +53,7 @@ occ_GoV <- get_site_speciesOccurrences(
   "https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd",
   list_DS = "obis",
   show_map = TRUE,
-  limit = 100
+  limit = 10
 )
 occ_GoV
 
@@ -64,12 +64,16 @@ occ_GoV_all <- get_site_speciesOccurrences(
   "https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd",
   list_DS = c("gbif", "inat", "obis"),
   show_map = TRUE,
-  limit = 300
+  limit = 100
 )
 occ_GoV_all
 }
 
 }
 \author{
-Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
+Alessandro Oggioni, PhD (2020) \email{oggioni.a@irea.cnr.it}
+
+Paolo Tagliolato, PhD (2020) \email{tagliolato.p@irea.cnr.it}
+
+Martina Zilioli \email{zilioli.m@irea.cnr.it}
 }

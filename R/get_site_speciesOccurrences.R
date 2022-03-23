@@ -19,7 +19,9 @@
 #' needed.
 #' @return The output of the function is a `list` of `sf` one for each of the
 #' repositories specified in the list_DS parameter.
-#' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
+#' @author Alessandro Oggioni, PhD (2020) \email{oggioni.a@@irea.cnr.it}
+#' @author Paolo Tagliolato, PhD (2020) \email{tagliolato.p@@irea.cnr.it}
+#' @author Martina Zilioli \email{zilioli.m@@irea.cnr.it}
 #' @importFrom leaflet layersControlOptions addLayersControl addLegend
 #' @importFrom leaflet addCircleMarkers addTiles addProviderTiles leaflet
 #' @importFrom leaflet colorFactor
