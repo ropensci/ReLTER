@@ -47,7 +47,7 @@
 #'   "https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd",
 #'   list_DS = "obis",
 #'   show_map = TRUE,
-#'   limit = 100
+#'   limit = 10
 #' )
 #' occ_GoV
 #'
@@ -58,7 +58,7 @@
 #'   "https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd",
 #'   list_DS = c("gbif", "inat", "obis"),
 #'   show_map = TRUE,
-#'   limit = 10
+#'   limit = 100
 #' )
 #' occ_GoV_all
 #' }
@@ -89,6 +89,8 @@ get_site_speciesOccurrences <- function(
   }
 
   # download occurrence by SPOCC by provide data sources ----
+  site_occ_spocc <- NULL
+  site_occ_spocc_obis <- NULL
   if (any(c("gbif", "inat") %in% list_DS)) {
     site_occ_spocc <- spocc::occ(
       from = list_DS,
@@ -103,9 +105,23 @@ get_site_speciesOccurrences <- function(
       geometry = bbox_wkt
     )
   }
-
+  
+  # find 0 record to dataset
+  list_DS_exclude <- NULL
+  if (!is.null(site_occ_spocc) && site_occ_spocc$gbif$meta$returned == 0) {
+    list_DS_exclude <- c(list_DS_exclude, "gbif")
+  }
+  if (!is.null(site_occ_spocc) && site_occ_spocc$inat$meta$returned == 0) {
+    list_DS_exclude <- c(list_DS_exclude, "inat")
+  }
+  if (!is.null(site_occ_spocc_obis) && nrow(site_occ_spocc_obis$results) == 0) {
+    list_DS_exclude <- c(list_DS_exclude, "obis")
+  }
+  list_DS <- list_DS[!(list_DS %in% list_DS_exclude)]
+  
   # combine results from occ calls to a single data.frame ----
-  if (any(c("gbif", "inat") %in% list_DS)) {
+  occ_df <- NULL
+  if ("gbif" %in% list_DS) {
     occ_df_gbif <- site_occ_spocc$gbif$data[[1]] %>%
       tibble::as_tibble() %>%
       dplyr::filter(institutionCode != "iNaturalist") %>%
@@ -120,6 +136,15 @@ get_site_speciesOccurrences <- function(
       dplyr::mutate(
         date = as.character(date)
       )
+    
+    if (nrow(occ_df_gbif) > 0) {
+      occ_df <- rbind(occ_df, occ_df_gbif)
+    } else {
+      list_DS <- list_DS[!(list_DS == "gbif")]
+    }
+  }
+  
+  if ("inat" %in% list_DS) {
     occ_df_inat <- site_occ_spocc$inat$data[[1]] %>%
       tibble::as_tibble() %>%
       dplyr::select(
@@ -130,12 +155,9 @@ get_site_speciesOccurrences <- function(
         date = observed_on,
         key = id
       )
-    if (nrow(occ_df_gbif) != 0) {
-      occ_df <- rbind(occ_df_gbif, occ_df_inat)
-    } else {
-      occ_df <- occ_df_inat
-    }
+    occ_df <- rbind(occ_df, occ_df_inat)
   }
+  
   if ("obis" %in% list_DS) {
     occ_df_obis <- site_occ_spocc_obis$results %>%
       dplyr::mutate(
@@ -154,14 +176,9 @@ get_site_speciesOccurrences <- function(
       "name", "longitude", "latitude",
       "prov", "date", "key"
     )
-  }
-  if (exists("occ_df") & exists("occ_df_obis")) {
     occ_df <- rbind(occ_df, occ_df_obis)
-  } else if (exists("occ_df") & !exists("occ_df_obis")) {
-    occ_df <- occ_df
-  } else if (!exists("occ_df") & exists("occ_df_obis")) {
-    occ_df <- occ_df_obis
   }
+  
 
   # print map ----
   if (length(list_DS) < 3) {
