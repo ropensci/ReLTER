@@ -109,7 +109,7 @@ further documentation, examples, and installation of the package.
 
 ## :arrow_double_down: Installation
 
-You can install the development version of `{ReLTER}` from
+You can install the main version of `{ReLTER}` from
 [GitHub](https://github.com/oggioniale/ReLTER) with:
 
 ``` r

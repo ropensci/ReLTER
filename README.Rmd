@@ -87,7 +87,7 @@ Visit the `{ReLTER}` website at [oggioniale.github.io/ReLTER/](https://oggionial
 
 ## :arrow_double_down: Installation
 
-You can install the development version of `{ReLTER}` from [GitHub](https://github.com/oggioniale/ReLTER) with:
+You can install the main version of `{ReLTER}` from [GitHub](https://github.com/oggioniale/ReLTER) with:
 
 ```{r, installationInfo, eval = FALSE}
 install.packages("devtools")
