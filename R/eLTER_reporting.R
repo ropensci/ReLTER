@@ -15,8 +15,9 @@
 #' @importFrom tibble as_tibble
 #' @importFrom dplyr select mutate filter
 #' @export
-map_occ_gbif2elter <- function(x, deimsid){#, reference_variables=reference_variables_gbif){
-  # "variables" (in this case they could be defined "custom fields", being just record metadata) 
+map_occ_gbif2elter <- function(x, deimsid){
+  # "variables" (in this case they could be defined "custom fields", 
+  # being just record metadata) 
   # to be described in the reference.csv file
   reference_variables<-reference_variables_gbif
   # reference_variables<-as_tibble(data.frame(
@@ -33,7 +34,7 @@ map_occ_gbif2elter <- function(x, deimsid){#, reference_variables=reference_vari
   
   # compose output for eLTER reporting format 
   # (intermediate step: info both for data and for reference)
-  lter_temp <- x %>% .addSiteCode(deimsid) %>% 
+  lter_temp <- x %>% .add_site_code(deimsid) %>% 
     # add new (computed) columns
     dplyr::mutate(VARIABLE="occurrence", 
                   VALUE=TRUE, 
@@ -77,7 +78,7 @@ map_occ_gbif2elter <- function(x, deimsid){#, reference_variables=reference_vari
               reference_VARIABLES=reference_variables_gbif))
 }
 
-#' @inherit gbif2elter
+#' @inherit map_occ_gbif2elter
 #' @export
 map_occ_inat2elter <- function(x, deimsid){
   reference_variables<-reference_variables_inat
@@ -92,7 +93,7 @@ map_occ_inat2elter <- function(x, deimsid){
   
   # compose output for eLTER reporting format 
   # (intermediate step: info both for data and for reference)
-  lter_temp <- x %>% .addSiteCode(deimsid) %>%
+  lter_temp <- x %>% .add_site_code(deimsid) %>%
     # add new (computed) columns
     dplyr::mutate(
       SITE_CODE = gardaid,
@@ -144,7 +145,7 @@ map_occ_inat2elter <- function(x, deimsid){
               reference_VARIABLES=reference_variables_inat))
 }
 
-#' @inherit gbif2elter
+#' @inherit map_occ_gbif2elter
 #' @export
 map_occ_obis2elter <- function(x, deimsid){
   # "variables" (in this case they could be defined "custom fields", being just record metadata) to be described in the reference.csv file
@@ -159,7 +160,7 @@ map_occ_obis2elter <- function(x, deimsid){
   
   # compose output for eLTER reporting format 
   # (intermediate step: info both for data and for reference)
-  lter_temp <- x %>% .addSiteCode(deimsid) %>%
+  lter_temp <- x %>% .add_site_code(deimsid) %>%
     # add new (computed) columns
     dplyr::mutate(
       SITE_CODE = GOFid,
@@ -221,9 +222,10 @@ map_occ_obis2elter <- function(x, deimsid){
 
 #' creates an archive with files following the eLTER reportingFormat
 #' @param eLterReportOut a list like the one created by gbif2elter
-#' @description creates a zip archive named biodiv_occurrence_site_<deimsid_code>_<source>.zip
-#'    where <deimsid_code> is the uuid in the last part of the deimsid, 
-#'    and <source> is one of "gbif", "inat", "obis"
+#' @description creates a zip archive named 
+#' biodiv_occurrence_site_<deimsid_code>_<source>.zip
+#' where <deimsid_code> is the uuid in the last part of the deimsid, 
+#' and <source> is one of "gbif", "inat", "obis"
 #' @author Paolo Tagliolato, phD (2020) \email{tagliolato.p@@irea.cnr.it}
 #' @importFrom utils zip write.csv2
 #' @export
@@ -248,7 +250,7 @@ save_occ_eLTER_reporting_Archive<-function(lterReportOut){
   write.csv2(lterReportOut$reference_VARIABLES,file_reference_VARIABLES)
   write.csv2(lterReportOut$reference_TAXA,file_reference_TAXA)
   
-  zip(paste0("biodiv_occurrence_site_",.shortId(deimsid),"_",sr,".zip"),
+  zip(paste0("biodiv_occurrence_site_",.short_id(deimsid),"_",sr,".zip"),
       files = dirsr,
       extras="-j")
 }
@@ -273,56 +275,61 @@ eLTER_reporting.mapping.coreFields<-c(
 
 #' @noRd
 eLTER_reporting.mapping.extendedFields<-c("ORG_NAME",
-                  "SUBPROG",
-                  "MEDIUM",
-                  "LISTMED",
-                  "MAX_LEVEL",
-                  "MIN_LEVEL",
-                  "SIZE",
-                  "YEAR",
-                  "MONTH",
-                  "DAY",
-                  "HOUR",
-                  "MINUTE",
-                  "SECOND",
-                  "SPOOL",
-                  "TPOOL",
-                  "TLEVEL",
-                  "LISTTAXA",
-                  "LISTSUB",
-                  "FLAGSTA")
+                                          "SUBPROG",
+                                          "MEDIUM",
+                                          "LISTMED",
+                                          "MAX_LEVEL",
+                                          "MIN_LEVEL",
+                                          "SIZE",
+                                          "YEAR",
+                                          "MONTH",
+                                          "DAY",
+                                          "HOUR",
+                                          "MINUTE",
+                                          "SECOND",
+                                          "SPOOL",
+                                          "TPOOL",
+                                          "TLEVEL",
+                                          "LISTTAXA",
+                                          "LISTSUB",
+                                          "FLAGSTA")
 
 
 #' @noRd
 reference_variables_gbif<-
   as_tibble(
-    data.frame(FIELD_NAME=rep("VARIABLE",4),
-               VARIABLE_CODE=c("RECORD_ID","DATASET_KEY","INSTITUTION_CODE","LICENSE"),
-               VARIABLE_NAME=c("gbif record id","gbif datasetKey", "gbif institution code", "licence applied to each gbif record"),
-               VARIABLE_DEFINITION=c("","","","")
-))
+    data.frame(
+      FIELD_NAME=rep("VARIABLE",4),
+      VARIABLE_CODE=c("RECORD_ID","DATASET_KEY","INSTITUTION_CODE","LICENSE"),
+      VARIABLE_NAME=c("gbif record id","gbif datasetKey", 
+                      "gbif institution code", 
+                      "licence applied to each gbif record"),
+      VARIABLE_DEFINITION=c("", "", "", "")
+    ))
 
 #' @noRd
 reference_variables_inat<-
   as_tibble(
-    data.frame(FIELD_NAME=rep("VARIABLE",3),
-               VARIABLE_CODE=c("RECORD_ID","AUTHOR_ID","LICENSE"),
-               VARIABLE_NAME=c("inat record id","author id of inat observations", "licence applied to each inat record"),
-               VARIABLE_DEFINITION=c("","","")
-))
+    data.frame(
+      FIELD_NAME = rep("VARIABLE",3),
+      VARIABLE_CODE = c("RECORD_ID","AUTHOR_ID","LICENSE"),
+      VARIABLE_NAME = c("inat record id","author id of inat observations", "licence applied to each inat record"),
+      VARIABLE_DEFINITION = c("","","")
+    ))
 
 #' @noRd
-reference_variables_obis<-as_tibble(
-  data.frame(FIELD_NAME=rep("VARIABLE",3),
-             VARIABLE_CODE=c("individualCount","RECORD_ID","DATASET_ID"),
-             VARIABLE_NAME=c("individual count","obis record id","obis dataset id"),
-             VARIABLE_DEFINITION=c("","","")
-))
+reference_variables_obis <- as_tibble(
+  data.frame(
+    FIELD_NAME = rep("VARIABLE", 3),
+    VARIABLE_CODE = c("individualCount", "RECORD_ID", "DATASET_ID"),
+    VARIABLE_NAME = c("individual count", "obis record id", "obis dataset id"),
+    VARIABLE_DEFINITION = c("", "", "")
+  ))
 
 
 #' utility function to add a column with deims id to a tibble
 #' @noRd
-.addSiteCode<-function(x, deimsid){
+.add_site_code <- function(x, deimsid){
   x %>% mutate(
     SITE_CODE = deimsid
   )
@@ -330,8 +337,9 @@ reference_variables_obis<-as_tibble(
 
 #' extract the numeric id from a deims site URI
 #' @noRd
-.shortId<-function(deimsid){strsplit(deimsid,"/")[[1]][4]}
-
+.short_id <- function(deimsid) {
+  strsplit(deimsid,"/")[[1]][4]
+}
 
 # # export to occurrence shapefiles
 # resGarda$gbif <- resGarda$gbif %>%
