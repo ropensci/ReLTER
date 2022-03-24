@@ -14,4 +14,8 @@ install.packages("devtools")
 devtools::install_github("oggioniale/ReLTER")
 ```
 
+If you want to install different package branch (e.g. 'dev') can you use this command:
+
+    devtools::install_github('https://github.com/oggioniale/ReLTER', ref = 'dev')
+
 Alternatively {`ReLTER`} can be used [in a Docker container](./rocker_ReLTER.html).
