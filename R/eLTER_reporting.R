@@ -97,7 +97,7 @@ map_occ_inat2elter <- function(x, deimsid) {
     .add_site_code(deimsid) %>%
     # add new (computed) columns
     dplyr::mutate(
-      SITE_CODE = gardaid,
+      SITE_CODE = deimsid,
       ABS_POSITION = location,
       TIME = time_observed_at,
       VARIABLE = "occurrence",
