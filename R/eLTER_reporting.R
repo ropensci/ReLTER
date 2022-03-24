@@ -1,8 +1,9 @@
 #' Harmonize outputs of get_site_speciesOccurrence and map them into eLTER
 #' reporting format
-#' @param x Tibble like one that can be obtained by
+#' @param x A `tibble` like one that can be obtained by
 #' as_tibble(get_site_speciesOccurrence(deimsid, "gbif")$gbif)
-#' @param deimsid deims id of the site of interest
+#' @param deimsid A `character`. The DEIMS.iD of the site from
+#' DEIMS-SDR website. DEIMS.iD information 
 #' @return list with the following named elements:
 #' * deimsid: the same deimsid passed in input
 #' * source: one of "gbif", "inat", "obis"
@@ -234,7 +235,7 @@ map_occ_obis2elter <- function(x, deimsid) {
 }
 
 #' creates an archive with files following the eLTER reportingFormat
-#' @param eLterReportOut a list like the one created by gbif2elter
+#' @param lterReportOut A `list` like the one created by gbif2elter
 #' @description creates a zip archive named
 #' biodiv_occurrence_site_<deimsid_code>_<source>.zip
 #' where <deimsid_code> is the uuid in the last part of the deimsid,

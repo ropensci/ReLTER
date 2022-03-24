@@ -4,19 +4,22 @@
 #' iNaturalist \url{https://www.inaturalist.org/} and
 #' OBIS \url{https://obis.org/} and crops to an eLTER site
 #' boundary, which is obtained from the DEIMS-SDR sites API.
-#' @param deimsid  a `character`. The DEIMS.iD of the site from
+#' @param deimsid A `character`. The DEIMS.iD of the site from
 #' DEIMS-SDR website. DEIMS.iD information 
 #' \href{https://deims.org/docs/deimsid.html}{here}.
-#' @param list_DS a `character`. Data source to get data from, any
+#' @param list_DS A `character`. Data source to get data from, any
 #' combination of gbif, inat and/or obis.
-#' @param show_map a `boolean`. If TRUE a Leaflet map with occurrences
+#' @param show_map A `boolean`. If TRUE a Leaflet map with occurrences
 #' is shown. Default FALSE.
-#' @param limit a `numeric`. Number of records to return. This is passed
+#' @param limit A `numeric`. Number of records to return. This is passed
 #' across all sources. Default: 500 for each source. BEWARE: if you have a
 #' lot of species to query for (e.g., n = 10), that's 10 * 500 = 5000, which
 #' can take a while to collect. So, when you first query, set the limit to
 #' something smallish so that you can get a result quickly, then do more as
 #' needed.
+#' @param exclude_inat_from_gbif A `boolean`. If TRUE, when list_DS contains
+#' both "gbif" and "inat", filter out gbif records originating 
+#' from iNaturalist (in order to avoid duplicates). Default TRUE.
 #' @return The output of the function is a `list` of `sf` one for each of the
 #' repositories specified in the list_DS parameter.
 #' @author Alessandro Oggioni, PhD (2020) \email{oggioni.a@@irea.cnr.it}
@@ -70,7 +73,8 @@ get_site_speciesOccurrences <- function(
   deimsid,
   list_DS,
   show_map = FALSE,
-  limit = 500
+  limit = 500,
+  exclude_inat_from_gbif = TRUE
 ) {
   # First check that site has a boundary ----
   boundary <- ReLTER::get_site_info(
@@ -125,8 +129,12 @@ get_site_speciesOccurrences <- function(
   occ_df <- NULL
   if ("gbif" %in% list_DS) {
     occ_df_gbif <- site_occ_spocc$gbif$data[[1]] %>%
-      tibble::as_tibble() %>%
-      dplyr::filter(institutionCode != "iNaturalist") %>%
+      tibble::as_tibble()
+    if("inat" %in% list_DS && exclude_inat_from_gbif){
+      occ_df_gbif <- occ_df_gbif %>%
+        dplyr::filter(institutionCode != "iNaturalist")
+    }
+    occ_df_gbif <- occ_df_gbif %>%
       dplyr::select(
         name,
         longitude,
