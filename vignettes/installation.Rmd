@@ -1,0 +1,17 @@
+---
+title: "How to install `{ReLTER}` package"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{How to install `{ReLTER}` package}
+  %\VignetteEngine{knitr::knitr}
+  %\usepackage[UTF-8]{inputenc}
+---
+
+You can install the `{ReLTER}` package from [GitHub](https://github.com/oggioniale/ReLTER) with:
+
+```{r, installationInfo, eval = FALSE}
+install.packages("devtools")
+devtools::install_github("oggioniale/ReLTER")
+```
+
+Alternatively {`ReLTER`} can be used [in a Docker container](./rocker_ReLTER.html).

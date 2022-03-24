@@ -12,7 +12,7 @@
 
 
 
-<title>How to info</title>
+<title>Run {ReLTER} in a Docker container</title>
 
 <script src="data:application/javascript;base64,Ly8gUGFuZG9jIDIuOSBhZGRzIGF0dHJpYnV0ZXMgb24gYm90aCBoZWFkZXIgYW5kIGRpdi4gV2UgcmVtb3ZlIHRoZSBmb3JtZXIgKHRvCi8vIGJlIGNvbXBhdGlibGUgd2l0aCB0aGUgYmVoYXZpb3Igb2YgUGFuZG9jIDwgMi44KS4KZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIGZ1bmN0aW9uKGUpIHsKICB2YXIgaHMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCJkaXYuc2VjdGlvbltjbGFzcyo9J2xldmVsJ10gPiA6Zmlyc3QtY2hpbGQiKTsKICB2YXIgaSwgaCwgYTsKICBmb3IgKGkgPSAwOyBpIDwgaHMubGVuZ3RoOyBpKyspIHsKICAgIGggPSBoc1tpXTsKICAgIGlmICghL15oWzEtNl0kL2kudGVzdChoLnRhZ05hbWUpKSBjb250aW51ZTsgIC8vIGl0IHNob3VsZCBiZSBhIGhlYWRlciBoMS1oNgogICAgYSA9IGguYXR0cmlidXRlczsKICAgIHdoaWxlIChhLmxlbmd0aCA+IDApIGgucmVtb3ZlQXR0cmlidXRlKGFbMF0ubmFtZSk7CiAgfQp9KTsK"></script>
 
@@ -42,18 +42,38 @@
 
 
 
-<h1 class="title toc-ignore">How to info</h1>
+<h1 class="title toc-ignore">Run {<code>ReLTER</code>} in a Docker container</h1>
 
 
 
-<ul>
-<li><a href="./installation.html">How to install <code>{ReLTER}</code> package</a></li>
-<li><a href="./site_information.html">How to get the info of a (one) LTER Site by knowing the DEIMS.ID</a></li>
-<li><a href="./sites_information.html">How to get the info of many LTER Sites</a></li>
-<li><a href="./sites_contacts.html">How to get the list of contacts from list of DEIMS.iD within csv file</a></li>
-<li><a href="./occurrences_into_site.html">How to obtain the specie occurrences from third parties repositories</a></li>
-<li><a href="./qrcode.html">How to produce qrcode of any DEIMS-SDR entities</a></li>
-</ul>
+<div id="rocker_relter" class="section level1">
+<h1>rocker_ReLTER</h1>
+<p>docker image for ReLTER package (<a href="https://github.com/oggioniale/ReLTER" class="uri">https://github.com/oggioniale/ReLTER</a>)</p>
+<div id="about" class="section level2">
+<h2>About</h2>
+<p>Run RStudio with preinstalled ReLTER package through Docker.</p>
+</div>
+<div id="install-a-different-branch-of-relter-package" class="section level2">
+<h2>Install a different branch of ReLTER package</h2>
+<p>Edit the addReLTER.sh script and modify the last line, using the name of your preferred branch as the ref= parameter value:</p>
+<pre><code>R -e &quot;devtools::install_github(&#39;https://github.com/oggioniale/ReLTER&#39;,ref = &#39;&lt;branchName&gt;&#39;,dependencies = FALSE)&quot;</code></pre>
+</div>
+<div id="build-the-image" class="section level2">
+<h2>Build the image</h2>
+<pre><code>docker build . -t rocker_relter</code></pre>
+</div>
+<div id="usage" class="section level2">
+<h2>Usage</h2>
+<p>Run locally on port 8080 (change port as you like). You can change “yourpasswordW with the password you prefer.</p>
+<pre><code>docker run -e PASSWORD=yourpassword -p 8080:8787 rocker_relter</code></pre>
+<p>Open browser at localhost:8080 and login with</p>
+<pre><code>user: rstudio
+password: youpassword</code></pre>
+<p>You can also use the precompiled image from docker hub:</p>
+<pre><code>docker pull ptagliolato/rocker_relter
+docker run -e PASSWORD=yourpassword -p 8080:8787 ptagliolato/rocker_relter</code></pre>
+</div>
+</div>
 
 
 

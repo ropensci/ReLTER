@@ -1,0 +1,15 @@
+---
+title: "How to info"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{How to info}
+  %\VignetteEngine{knitr::knitr}
+  %\usepackage[UTF-8]{inputenc}
+---
+
+* [How to install `{ReLTER}` package](./installation.html)
+* [How to get the info of a (one) LTER Site by knowing the DEIMS.ID](./site_information.html)
+* [How to get the info of many LTER Sites](./sites_information.html)
+* [How to get the list of contacts from list of DEIMS.iD within csv file](./sites_contacts.html)
+* [How to obtain the specie occurrences from third parties repositories](./occurrences_into_site.html)
+* [How to produce qrcode of any DEIMS-SDR entities](./qrcode.html)
