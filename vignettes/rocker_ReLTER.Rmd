@@ -26,14 +26,21 @@ Edit the addReLTER.sh script and modify the last line, using the name of your pr
 Run locally on port 8080 (change port as you like).
 You can change "yourpasswordW with the password you prefer.
 
-    docker run -e PASSWORD=yourpassword -p 8080:8787 rocker_relter
+    docker run -d -e PASSWORD=yourpassword -p 8080:8787 rocker_relter
 
 Open browser at localhost:8080 and login with
 
     user: rstudio
     password: youpassword
 
+## Preserve your work (use a docker volume)
+When you stop a docker container, the files created within it are lost. In order to preserve your work across 
+different runs, link a local volume (in this example, the current working directory, $(pwd)) to the container:
+
+    docker run -d -v $(pwd):/home/rstudio -e PASSWORD=yourpassword -p 8080:8787 rocker_relter
+
+## Precompiled image on docker hub
 You can also use the precompiled image from docker hub:
 
     docker pull ptagliolato/rocker_relter
-    docker run -e PASSWORD=yourpassword -p 8080:8787 ptagliolato/rocker_relter
+    docker run -d -e PASSWORD=yourpassword -p 8080:8787 ptagliolato/rocker_relter
