@@ -2,7 +2,7 @@
 #' @description This function obtains a list of related resources
 #' collected in an eLTER site through the DEIMS-SDR sites API.
 #' @param deimsid A `character`. The DEIMS.iD of the site from
-#' DEIMS-SDR website. DEIMS.iD information 
+#' DEIMS-SDR website. DEIMS.iD information
 #' \href{https://deims.org/docs/deimsid.html}{here}.
 #' @return The output of the function is a `tibble` with main features of the
 #' site and a list of the related resources collected by site.
@@ -47,6 +47,11 @@ get_site_related_resources <- function(deimsid) {
             "relatedResourcesChanged",
             "uri"
           )
+      relatedResources$relatedResources[[1]]$relatedResourcesChanged <- 
+        as.POSIXct(
+        relatedResources$relatedResources[[1]]$relatedResourcesChanged,
+        format = "%Y-%m-%dT%H:%M"
+      )
       relatedResources
     } else {
       relatedResourcesId <- NA
