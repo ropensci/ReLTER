@@ -5,7 +5,7 @@ vignette: >
   %\VignetteIndexEntry{How to get the list of contacts from list of DEIMS.iD within csv file}
   %\VignetteEngine{knitr::knitr}
   %\usepackage[UTF-8]{inputenc}
-  bibliography: ./references/occurrences_into_site_refs.bib
+author: "Alessandro Oggioni"
 ---
 
 Starting from the [DEIMS-SDR "Advanced Search - Sites" interface](https://deims.org/search/sites), an user can download a csv file of the sites. Some filters can be used for selecting sites based on countries, projects, Biome, etc. The list of sites selected can be downloaded in csv format file.
@@ -18,7 +18,7 @@ This documentation, starting from this file csv, shows how to:
 
 ```{r listContacts, warning=FALSE, message=FALSE}
 library(dplyr)
-site_results <- read.csv("./data/site_contacts_data.csv", sep=";") %>%
+site_results <- readr::read.csv("./data/site_contacts_data.csv", sep=";") %>%
   dplyr::as_tibble()
 
 allSiteContact <- lapply(

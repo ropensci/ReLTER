@@ -1,8 +1,8 @@
 ---
-title: "Related resources"
+title: "Related resources delivered by EU eLTER sites"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Related resources}
+  %\VignetteIndexEntry{Related resources delivered by EU eLTER sites}
   %\VignetteEngine{knitr::knitr}
   %\usepackage[UTF-8]{inputenc}
 author: "Alessandro Oggioni, Paolo Tagliolato"

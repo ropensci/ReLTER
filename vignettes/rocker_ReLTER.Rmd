@@ -5,6 +5,7 @@ vignette: >
   %\VignetteIndexEntry{Run {`ReLTER`} in a Docker container}
   %\VignetteEngine{knitr::knitr}
   %\usepackage[UTF-8]{inputenc}
+author: "Paolo Tagliolato"
 ---
 
 # rocker_ReLTER

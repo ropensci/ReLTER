@@ -5,7 +5,7 @@ vignette: >
   %\VignetteIndexEntry{How to get the info of many than one LTER Sites}
   %\VignetteEngine{knitr::knitr}
   %\usepackage[UTF-8]{inputenc}
-  bibliography: ./references/occurrences_into_site_refs.bib
+author: "Alessandro Oggioni"
 ---
 
 Taking into account the guide on ["How to obtain site info?"](./site_information.html), here is offered two examples on how to aggregate information of many eLTER sites.

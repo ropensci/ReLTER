@@ -6,12 +6,15 @@ vignette: >
   %\VignetteEngine{knitr::knitr}
   %\usepackage[UTF-8]{inputenc}
 bibliography: ./references/occurrences_into_site_refs.bib
+author: "Alessandro Oggioni, Paolo Tagliolato, Martina Zilioli"
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(dplyr)
 ```
+
+__ *get_site_speciesOccurrences()*, *map_occ_gbif2elter* and *save_occ_eLTER_reporting_Archive()* are delivered only with dev__withImprovements branch __
 
 Starting from the eLTER site id (DEIMS.iD), by ReLTER get_site_speciesOccurrences function, anyone can retrieve occurrence records from [GBIF](https://www.gbif.org) (via [`rgbif` R package](https://docs.ropensci.org/rgbif/)), [iNaturalist](https://www.inaturalist.org/) and [OBIS](https://obis.org/) carried out within the boundaries of the site.
 

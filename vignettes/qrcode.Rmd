@@ -5,7 +5,6 @@ vignette: >
   %\VignetteIndexEntry{How to produce qrcode of any DEIMS-SDR entities}
   %\VignetteEngine{knitr::knitr}
   %\usepackage[UTF-8]{inputenc}
-  bibliography: ./references/occurrences_into_site_refs.bib
 ---
 
 The [`produce_site_qrcode`](https://oggioniale.github.io/ReLTER/reference/produce_site_qrcode.html) function allows to create QRCode of activity, dataset, sensor and site by DEIMS.iD.
