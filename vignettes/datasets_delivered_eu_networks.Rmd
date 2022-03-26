@@ -1,0 +1,124 @@
+---
+title: "Related resources"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Related resources}
+  %\VignetteEngine{knitr::knitr}
+  %\usepackage[UTF-8]{inputenc}
+author: "Alessandro Oggioni, Paolo Tagliolato"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+```
+
+```{r related_resources}
+eLTER_eu_networks <- readr::read_csv("../extdata/eLTER_eu_networks.csv", show_col_types = FALSE) %>%
+  tibble::as_tibble()
+
+related_resources <- purrr::map_dfr(
+  as.list(
+    eLTER_eu_networks$DEIMS.iD
+  ),
+  function (x) {
+    ReLTER::get_network_related_resources(x) %>%
+      dplyr::filter(!is.na(uri)) %>%
+      dplyr::mutate(
+        networkID = x,
+        type = stringr::str_replace(uri, "https://deims.org/(.*)/.*","\\1")
+      )
+  }
+) %>%
+  dplyr::inner_join(eLTER_eu_networks, by = c("networkID" = "DEIMS.iD")) %>%
+  dplyr::select(
+    title = relatedResourcesTitle,
+    uri,
+    lastChanged = relatedResourcesChanged,
+    networkID,
+    type,
+    network = eLTER_EU_Networks,
+    country
+  )
+```
+
+```{r tbl_resources}
+library(dplyr)
+tbl_resources <- related_resources %>%
+  dplyr::count(country, type) %>%
+  tidyr::pivot_wider(names_from = type, values_from = n, values_fill = 0)
+
+knitr::kable(
+  tbl_resources,
+  caption = "eLTER EU networks related resources"
+)
+```
+
+```{r map_resources, fig.asp = 0.8, fig.width = 7, out.width = "100%"}
+# Get the world map
+worldMap <- rworldmap::getMap()
+
+library(rnaturalearth)
+world_map <- ne_countries(scale = 50, returnclass = 'sf')
+europe_map <- world_map %>%
+  filter(name %in% related_resources$country)
+
+elter_map <- europe_map %>%
+  dplyr::select(
+    name,
+    geometry
+  ) %>%
+  dplyr::left_join(tbl_resources, by = c("name" = "country"))
+
+map_datasets <- ggplot2::ggplot() +
+  ggplot2::geom_sf(data = elter_map, ggplot2::aes(fill = dataset)) +
+  ggplot2::coord_sf(xlim = c(-20, 45), ylim = c(28, 73), expand = FALSE)
+map_activities <- ggplot2::ggplot() +
+  ggplot2::geom_sf(data = elter_map, ggplot2::aes(fill = activity)) +
+  ggplot2::coord_sf(xlim = c(-20, 45), ylim = c(28, 73), expand = FALSE)
+map_sensors <- ggplot2::ggplot() +
+  ggplot2::geom_sf(data = elter_map, ggplot2::aes(fill = sensors)) +
+  ggplot2::coord_sf(xlim = c(-20, 45), ylim = c(28, 73), expand = FALSE)
+
+gridExtra::grid.arrange(
+  map_datasets,
+  map_activities,
+  map_sensors,
+  nrow = 1,
+  top = "Distribution of activities in eLTER countries"#,
+  # bottom = grid::textGrob(
+  #   "this footnote is right-justified",
+  #   gp = grid::gpar(fontface = 3, fontsize = 9),
+  #   hjust = 1,
+  #   x = 1
+  # )
+)
+```
+
+```{r chart_resources, fig.asp = 0.8, fig.width = 7, out.width = "100%"}
+dataset_uploaded <- related_resources %>%
+  dplyr::arrange(lastChanged) %>%
+  dplyr::mutate(
+    lastChanged = as.Date(
+        lastChanged
+    ),
+    value = 1
+  ) %>%
+  tidyr::complete(
+    lastChanged = tidyr::full_seq(
+      as.Date(lastChanged),
+      period = 1
+    ), 
+    fill = list(value = 0)
+  ) %>%
+  dplyr::group_by(lastChanged) %>%
+  dplyr::summarise(frequency = n()) %>%
+  dplyr::mutate(
+    cumsum = cumsum(frequency)
+  )
+
+fig <- plotly::plot_ly(dataset_uploaded, type = 'scatter', mode = 'lines') %>%
+  plotly::add_trace(x = ~lastChanged, y = ~cumsum) %>%
+  plotly::layout(showlegend = F)
+fig
+```
