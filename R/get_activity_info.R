@@ -7,6 +7,8 @@
 #' DEIMS-SDR website. DEIMS.iD information
 #' \href{https://deims.org/docs/deimsid.html}{here}.
 #' The DEIMS.iD of activity is the URL for the activity page.
+#' @param show_map A `boolean`. If TRUE a Leaflet map with occurrences
+#' is shown. Default FALSE.
 #' @return The output of the function is a `tibble` with main features of
 #' the activities in a site, and a `leaflet` map plot.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
@@ -19,12 +21,13 @@
 #' @examples
 #' activities <- get_activity_info(
 #'   activityid =
-#'   "https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845"
+#'   "https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845",
+#'   show_map = TRUE
 #' )
 #' activities
 #'
 ### function get_activity_info
-get_activity_info <- function(activityid) {
+get_activity_info <- function(activityid, show_map = FALSE) {
   q <- "{
         title: .title,
         boundaries: .attributes.geographic.boundaries
@@ -61,8 +64,12 @@ get_activity_info <- function(activityid) {
 activity, provided in DEIMS-SDR, has an invalid geometry.
 Please check the content and refers this error to DEIMS-SDR
 contact person of the activity, citing the Activity.iD.\n----\n")
-          print(map)
-          geoActivity
+          if (show_map = TRUE) {
+            print(map)
+            geoActivity
+          } else {
+            geoActivity
+          }
         }
       }
     } else {
