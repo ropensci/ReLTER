@@ -60,13 +60,14 @@ produce_network_points_map <- function(networkDEIMSID, countryCode) {
     lterNetworkSitesCoords <- jsonlite::fromJSON(
       httr::content(export, as = "text", encoding = "UTF-8")
     )
-    if (nrow(lterNetworkSitesCoords) != 0) {
+    if (length(lterNetworkSitesCoords) != 0) {
       lterNetworkSitesCoords$uri <- paste0(
         lterNetworkSitesCoords$id$prefix,
         lterNetworkSitesCoords$id$suffix
       )
       lterNetworkSitesCoords <- lterNetworkSitesCoords %>%
         dplyr::select("title", "uri", "changed", "coordinates")
+      
       networkSitesGeo <- sf::st_as_sf(
         tibble::as_tibble(lterNetworkSitesCoords),
         wkt = "coordinates"
@@ -94,6 +95,7 @@ produce_network_points_map <- function(networkDEIMSID, countryCode) {
               legend.show = FALSE
             )
           suppressWarnings(mapOfSites) # FIXME manage
+          return(networkSitesGeo)
         } else {
           mapOfSites <- tmap::tm_shape(networkSitesGeo) +
             tmap::tm_dots(
@@ -103,11 +105,12 @@ produce_network_points_map <- function(networkDEIMSID, countryCode) {
               title = NA,
               legend.show = FALSE
             )
-          message("\n----\nThe map of site cannot be created.
+          message("\n----\nThe map of country cannot be created.
   Please check again the Country code.
   Compare the code provided with the list of code in
   https://en.wikipedia.org/wiki/ISO_3166\n----\n")
           mapOfSites
+          return(networkSitesGeo)
         }
       } else {
         message("\n----\nThe maps cannot be created because coordinates,
@@ -117,11 +120,13 @@ produce_network_points_map <- function(networkDEIMSID, countryCode) {
         mapOfSites <- tmap::tm_shape(country) +
           tmap::tm_borders("grey75", lwd = 1)
         mapOfSites
+        return(NULL)
       }
     } else {
       message("\n----\nThe requested page could not be found.
   Please check again the Network.iD\n----\n")
       mapOfSites <- NULL
+      return(NULL)
     }
   # })
 }

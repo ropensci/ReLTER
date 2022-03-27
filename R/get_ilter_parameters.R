@@ -76,7 +76,7 @@ get_ilter_parameters <- function(sitesNum = 0) {
     )
     uniqueSitesParameters
   } else {
-    message("\n----\nThe `sitesNum` value must be a double (e.g. 10, 24, etc.).
+    message("\n----\nThe `sitesNum` value must be a numeric (e.g. 10, 24, etc.).
 Please check again the value of `sitesNum`.\n----\n")
     uniqueSitesParameters <- NULL
   }

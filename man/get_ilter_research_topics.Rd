@@ -22,13 +22,12 @@ Return a `tibble` object containing Research Topics collected
 by all \href{https://www.ilter.network/network/global-coverage}{ILTER sites
 (more than 1200 around the world)}, as a
 stored into \href{https://deims.org}{DEIMS-SDR}.
-This function aims to gather in a unique tibble all the Research Topics
-the whole of ILTER sites. If you want to obtain this
-results, it should be noted that the execution time for this function
+This function gathers in a tibble all Research Topics from all of the
+ILTER sites. Note that the execution time for this function
 is very high.
 
 If the objective is obtain information about Research Topics
-on a few sites, it is better to use other more specific functions (e.g.
+from a few sites, it is better to use other more specific functions (e.g.
 \href{get_network_research_topics.html}{`get_network_research_topics()`} or
 \href{get_site_info.html}{`get_site_info()`}) or using
 other methods
