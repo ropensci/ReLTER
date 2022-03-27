@@ -22,7 +22,7 @@
 #'   networkDEIMSID =
 #'   "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 #' )
-#' listRelatedResources[1:10, ]
+#' listRelatedResources
 #' }
 #'
 ### function get_network_related_resources
@@ -39,11 +39,11 @@ get_network_related_resources <- function(networkDEIMSID) {
   allSiteRelatedResources <- lapply(
     as.list(
       paste0(
-        lterNetworkSites$id$prefix[1:10],
-        lterNetworkSites$id$suffix[1:10]
+        lterNetworkSites$id$prefix,
+        lterNetworkSites$id$suffix
       )
     ),
-    ReLTER::get_site_info,
+    get_site_info,
     category = "RelateRes"
   )
   if (length(allSiteRelatedResources) != 0) {

@@ -47,6 +47,11 @@ get_site_related_resources <- function(deimsid) {
             "relatedResourcesChanged",
             "uri"
           )
+      relatedResources$relatedResources[[1]]$relatedResourcesChanged <- 
+        as.POSIXct(
+        relatedResources$relatedResources[[1]]$relatedResourcesChanged,
+        format = "%Y-%m-%dT%H:%M"
+      )
       relatedResources
     } else {
       relatedResourcesId <- NA
