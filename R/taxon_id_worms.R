@@ -1,8 +1,9 @@
 #' Enrich and certify a list of species names by
 #' comparing with \href{https://www.marinespecies.org}{Worms}.
-#' @description This function tibble object with all the columns of input table plus
-#' new columns such as valid_name, valid_authority, valid_AphiaID, status,
-#' synonyms, LSID, url, matchType, nOfWormsRecords, wormsRecords obtained by
+#' @description This function tibble object with all the columns of input table
+#' of taxa plus new columns such as valid_name, valid_authority, valid_AphiaID,
+#' status, synonyms, LSID, url, matchType, nOfWormsRecords, wormsRecords
+#' obtained from:
 #' \href{http://www.marinespecies.org/rest/}{Worms rest API}.
 #' @param input A `tibble`. The table that contain the species
 #' names list to be checked.

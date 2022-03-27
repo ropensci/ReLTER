@@ -6,9 +6,8 @@
 #' (more than 1200 around the world)},
 #' through the DEIMS-SDR API.
 #' 
-#' This function aims to gather in a unique tibble all the Environmental
-#' Characteristics the whole of ILTER sites. If you want to obtain this
-#' results, it should be noted that the execution time for this function
+#' This function gathers in a unique tibble all the Environmental
+#' Characteristics from all ILTER sites. Note that the execution time for this function
 #' is very high.
 #' 
 #' If the objective is obtain information about Environmental Characteristics
@@ -17,9 +16,9 @@
 #' \href{get_site_info.html}{`get_site_info()`}) or using
 #' other methods
 #' (\href{../../articles/sites_information.html}{How to about sites informations}).
-#' @param sitesNum A `integer`. It is the number of the sites that are
-#' read to get the information. Use this parameter only for get
-#' example of the output of this function. If the value of sitesNum is
+#' @param sitesNum A `integer`. The number of the sites that are
+#' read to get the information. Use this parameter only to get a
+#' sample of the output of this function. If the value of sitesNum is
 #' 0 (default) all the ILTER sites will be parsed and the waiting time will
 #' be long.
 #' @return The output of the function is a `tibble` containing all the

@@ -3,10 +3,10 @@
 #' activity (e.g.
 #' \url{https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845})
 #' provided in \href{https://deims.org/}{DEIMS-SDR catalogue}.
-#' @param activityid A `character`. It is the DEIMS.iD of activity make from
-#' DEIMS-SDR website. DEIMS.iD information
+#' @param activityid A `character`. It is the DEIMS ID of activity make from
+#' DEIMS-SDR website. DEIMS ID information
 #' \href{https://deims.org/docs/deimsid.html}{here}.
-#' The DEIMS.iD of activity is the URL for the activity page.
+#' The DEIMS ID of activity is the URL for the activity page.
 #' @return The output of the function is a `tibble` with main features of
 #' the activities in a site, and a `leaflet` map plot.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}

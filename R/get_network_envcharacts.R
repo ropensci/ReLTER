@@ -5,11 +5,11 @@
 #' of eLTER Network sites (e.g.
 #' \href{https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3}{LTER-
 #' Italy network}), through the DEIMS-SDR API.
-#' @param networkDEIMSID A `character`. DEIMS.iD of network
-#' from DEIMS-SDR website. DEIMS.iD information 
+#' @param networkDEIMSID A `character`. DEIMS ID of network
+#' from DEIMS-SDR website. DEIMS ID information 
 #' \href{https://deims.org/docs/deimsid.html}{here} and Complete list of ILTER
 #' networks \href{https://deims.org/search?f[0]=result_type:network}{here}.
-#' The DEIMS.iD of network is the URL for the network page.
+#' The DEIMS ID of network is the URL for the network page.
 #' @return The output of the function is a `tibble` containing all the
 #' Environmental Characteristics of the network's sites.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}

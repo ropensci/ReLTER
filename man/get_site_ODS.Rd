@@ -9,8 +9,8 @@ and crops to an eLTER site boundary.}
 get_site_ODS(deimsid, dataset = "landcover")
 }
 \arguments{
-\item{deimsid}{A `character`. The DEIMS.iD of the site from
-DEIMS-SDR website. DEIMS.iD information 
+\item{deimsid}{A `character`. The DEIMS ID of the site from
+DEIMS-SDR website. DEIMS ID information 
 \href{https://deims.org/docs/deimsid.html}{here}.}
 
 \item{dataset}{A `character`. The requested dataset. One of:
@@ -25,9 +25,9 @@ The user should save the raster to disk, if necessary.
 i.e. writeRaster(ds_site, "site_dataset.tif")
 }
 \description{
-Download and return a SpatRaster object containing requested
-by \href{https://maps.opendatascience.eu/}{ODS} dataset, cropped to a eLTER
-site boundaries, which is obtained from the DEIMS-SDR API.
+Download and return a SpatRaster object containing the requested
+dataset from \href{https://maps.opendatascience.eu/}{ODS},
+cropped to an eLTER site boundary, which is obtained from the DEIMS-SDR API.
 }
 \details{
 Supported datasets from the ODS repository include:

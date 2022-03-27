@@ -3,10 +3,10 @@
 #' dataset (e.g.
 #' \url{https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845})
 #' provided in \href{https://deims.org/}{DEIMS-SDR catalogue}.
-#' @param datasetid A `character`. It is the DEIMS.iD of dataset make from
-#' DEIMS-SDR website. DEIMS.iD information 
+#' @param datasetid A `character`. It is the DEIMS ID of dataset make from
+#' DEIMS-SDR website. DEIMS ID information 
 #' \href{https://deims.org/docs/deimsid.html}{here}.
-#' The DEIMS.iD of dataset is the URL for the dataset page.
+#' The DEIMS ID of dataset is the URL for the dataset page.
 #' @return The output of the function is a `tibble` with main features
 #' of the site and the related resources collected by site.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}

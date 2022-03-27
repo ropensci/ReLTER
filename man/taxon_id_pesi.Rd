@@ -67,8 +67,8 @@ Solution 2 -
 }
 \description{
 This function provide a taxon ID, usually a
-\href{https://en.wikipedia.org/wiki/LSID}{LSID}, to a taxon list.
-The input of the function is a csv file with a list of taxon. Taxon
+\href{https://en.wikipedia.org/wiki/LSID}{LSID}, from a taxonomic list.
+The input of the function is a csv file with a list of taxa. The Taxon
 ID provided by this function is currently taken from Pan-European Species
 directories Infrastructure - \href{http://eu-nomen.eu/pesi/}{PESI}. This
 function takes advantage of taxize's `eubon_search` function

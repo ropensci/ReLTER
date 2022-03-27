@@ -2,8 +2,8 @@
 #' @description This function produces a `map` of the site boundaries
 #' as provided by the \href{https://deims.org/}{DEIMS-SDR catalogue}, within
 #' a given country and network.
-#' @param deimsid A `character`. The DEIMS.iD of network from
-#' DEIMS-SDR website. DEIMS.iD information 
+#' @param deimsid A `character`. The DEIMS ID of network from
+#' DEIMS-SDR website. DEIMS ID information 
 #' \href{https://deims.org/docs/deimsid.html}{here}.
 #' @param countryCode A `character` following the SO 3166-1 alpha-3 codes.
 #' This ISO convention consists of three-letter country codes
@@ -304,7 +304,7 @@ produce_site_map <-
                 substring(deimsid,
                           19)
               ))$title,
-              "\nDEIMS.iD ",
+              "\nDEIMS ID ",
               deimsid
             ),
             main.title.position = "center",

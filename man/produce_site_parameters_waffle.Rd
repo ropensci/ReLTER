@@ -7,8 +7,8 @@
 produce_site_parameters_waffle(deimsid)
 }
 \arguments{
-\item{deimsid}{A `character`. The DEIMS.iD of site/network from:
-DEIMS-SDR website. DEIMS.iD information 
+\item{deimsid}{A `character`. The DEIMS ID of site/network from:
+DEIMS-SDR website. DEIMS ID information 
 \href{https://deims.org/docs/deimsid.html}{here}.}
 }
 \value{

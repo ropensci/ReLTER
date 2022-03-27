@@ -7,10 +7,10 @@
 get_dataset_info(datasetid)
 }
 \arguments{
-\item{datasetid}{A `character`. It is the DEIMS.iD of dataset make from
-DEIMS-SDR website. DEIMS.iD information 
+\item{datasetid}{A `character`. It is the DEIMS ID of dataset make from
+DEIMS-SDR website. DEIMS ID information 
 \href{https://deims.org/docs/deimsid.html}{here}.
-The DEIMS.iD of dataset is the URL for the dataset page.}
+The DEIMS ID of dataset is the URL for the dataset page.}
 }
 \value{
 The output of the function is a `tibble` with main features

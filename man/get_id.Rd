@@ -7,8 +7,8 @@
 get_id(deimsid, resource = "sites", test, ...)
 }
 \arguments{
-\item{deimsid}{A `character`. It is the DEIMS.iD of the site, activity or
-dataset from DEIMS-SDR website. DEIMS.iD information 
+\item{deimsid}{A `character`. It is the DEIMS ID of the site, activity or
+dataset from DEIMS-SDR website. DEIMS ID information 
 \href{https://deims.org/docs/deimsid.html}{here}.}
 
 \item{resource}{Character: one among `"sites"` (default), `"activities"` or

@@ -7,11 +7,10 @@
 get_ilter_parameters(sitesNum = 0)
 }
 \arguments{
-\item{sitesNum}{A `integer`. It is the number of the sites that are
-read to get the information. Use this parameter only for get
-example of the output of this function. If the value of sitesNum is
-0 (default) all the ILTER sites will be parsed and the waiting time will
-be long.}
+\item{sitesNum}{A `integer`. The number of the sites that are
+read to get the information. Use this parameter only to sample the output
+of this function. If the value of sitesNum is #' 0 (default) 
+all the ILTER sites will be parsed and the waiting time will be long.}
 }
 \value{
 The output of the function is a `tibble` containing the list
@@ -19,14 +18,12 @@ of parameters and their URI (Uniform Resource Identifier) collected
 in all ILTER sites.
 }
 \description{
-Return a `tibble` object containing Parameter collected by all
+Return a `tibble` object containing Parameters collected by all
 of the \href{https://www.ilter.network/network/global-coverage}{ILTER sites
-(more than 1200 around the world)},
-as a stored into \href{https://deims.org}{DEIMS-SDR}.
+(more than 1200 around the world)}, available from \href{https://deims.org}{DEIMS-SDR}.
 
-This function aims to gather in a unique tibble all the Parameters
-the whole of ILTER sites. If you want to obtain this
-results, it should be noted that the execution time for this function
+This function gathers in a unique tibble all the Parameters
+from all ILTER sites. Note that the execution time for this function
 is very high.
 
 If the objective is obtain information about Parameters

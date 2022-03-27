@@ -32,9 +32,10 @@ The function also return, if verbose is TRUE, the list of records that don't
 match with Worms name species.
 }
 \description{
-This function tibble object with all the columns of input table plus
-new columns such as valid_name, valid_authority, valid_AphiaID, status,
-synonyms, LSID, url, matchType, nOfWormsRecords, wormsRecords obtained by
+This function tibble object with all the columns of input table
+of taxa plus new columns such as valid_name, valid_authority, valid_AphiaID,
+status, synonyms, LSID, url, matchType, nOfWormsRecords, wormsRecords
+obtained from:
 \href{http://www.marinespecies.org/rest/}{Worms rest API}.
 }
 \examples{

@@ -7,8 +7,8 @@
 produce_site_parameters_pie(deimsid)
 }
 \arguments{
-\item{deimsid}{A `character`. It is the DEIMS.iD of site/network from
-DEIMS-SDR website. DEIMS.iD information 
+\item{deimsid}{A `character`. It is the DEIMS ID of site/network from
+DEIMS-SDR website. DEIMS ID information 
 \href{https://deims.org/docs/deimsid.html}{here}.}
 }
 \value{

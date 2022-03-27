@@ -3,8 +3,8 @@
 #' eLTER Network (e.g.
 #' \href{https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3}{LTER
 #' Italy network}), as a stored into \href{https://deims.org}{DEIMS-SDR}.
-#' @param networkDEIMSID A `character`. The DEIMS.iD of the network
-#' from DEIMS-SDR website. DEIMS.iD information 
+#' @param networkDEIMSID A `character`. The DEIMS ID of the network
+#' from DEIMS-SDR website. DEIMS ID information 
 #' \href{https://deims.org/docs/deimsid.html}{here} and Complete list of ILTER
 #' networks \href{https://deims.org/search?f[0]=result_type:network}{here}.
 #' @param countryCode A `character` following the ISO 3166-1 alpha-3 codes.

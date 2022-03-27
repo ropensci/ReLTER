@@ -18,7 +18,7 @@ is shown. Default FALSE}
 }
 \value{
 An `sf` object of the bounding boxes of sites in the filtered list,
-containing the name, DEIMS.iD, longitude, latitude, average altitude,
+containing the name, DEIMS ID, longitude, latitude, average altitude,
 and affiliation of the filtered ILTER sites.
 If no bounding box is available,the centroid is returned.
 }

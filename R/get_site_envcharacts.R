@@ -1,8 +1,8 @@
 #' @title eLTER get_site_envcharacts function
 #' @description This function obtains Environmental Characteristics
 #' of an eLTER site through the DEIMS-SDR sites API.
-#' @param deimsid A `character`. The DEIMS.iD of a site from
-#' DEIMS-SDR website. DEIMS.iD information 
+#' @param deimsid A `character`. The DEIMS ID of a site from
+#' DEIMS-SDR website. DEIMS ID information 
 #' \href{https://deims.org/docs/deimsid.html}{here}.
 #' @return The output of the function is a `tibble` with main features of the
 #' site and the environmental characteristics where available,
@@ -35,7 +35,7 @@ get_site_envcharacts <- function(deimsid) {
     )
   } else {
     message("\n----\nThe requested page could not be found.
-Please check again the DEIMS.iD\n----\n")
+Please check again the DEIMS ID\n----\n")
     envCharacteristics <- NULL
   }
   envCharacteristics

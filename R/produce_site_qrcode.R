@@ -1,8 +1,8 @@
 #' Obtain the QRCode of any DEIMS-SDR entities.
-#' @description Return a QR code image of any provided DEIMS.iD (e.g. dataset,
+#' @description Return a QR code image of any provided DEIMS ID (e.g. dataset,
 #' site, activity).
-#' @param deimsid A `character`. The DEIMS.iD of entities from
-#' DEIMS-SDR website. DEIMS.iD information 
+#' @param deimsid A `character`. The DEIMS ID of entities from
+#' DEIMS-SDR website. DEIMS ID information 
 #' \href{https://deims.org/docs/deimsid.html}{here}.
 #' @param do_plot A `boolean`. Plot the computed QRCode. Default FALSE.
 #' @return The QR code as a logical matrix with "qr_code" class.
