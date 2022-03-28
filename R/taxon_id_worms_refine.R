@@ -1,7 +1,7 @@
 #' @title eLTER taxon_id_worms_refine
 #' @description This function provides a refining of the output of
 #' function taxon_id_worms. It prints a list of possible matches
-#' and possibly enable the user to interactively make his choice.
+#' and possibly enables the user to interactively make his choice.
 #' @param input a `tibble`. The output of taxon_ID_Worms.
 #' @param taxaColumn a `numeric`. The cardinal number of the column where
 #' species list is. Default is `1`.

@@ -1,8 +1,8 @@
 #' Produce a pie chart of the parameters collected in a site LTER.
 #' @description Return a pie chart of Environmental Parameters, as a stored in
 #' \href{https://deims.org/}{DEIMS-SDR catalogue}, of a single eLTER site.
-#' @param deimsid A `character`. It is the DEIMS.iD of site/network from
-#' DEIMS-SDR website. DEIMS.iD information 
+#' @param deimsid A `character`. It is the DEIMS ID of site/network from
+#' DEIMS-SDR website. DEIMS ID information 
 #' \href{https://deims.org/docs/deimsid.html}{here}.
 #' @return The output of the function is a pie chart and a `tibble`. The
 #' percentages, as a label in the pie charts and in the output table (
@@ -143,7 +143,7 @@ produce_site_parameters_pie <- function(deimsid) {
       dplyr::select(parameterGroups, n, freq, perc)
   } else {
     message("\n----\nThe requested page could not be found.
-Please check again the DEIMS.iD\n----\n")
+Please check again the DEIMS ID\n----\n")
     pie <- NULL
     params <- NULL
   }

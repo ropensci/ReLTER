@@ -7,8 +7,8 @@
 produce_network_points_map(networkDEIMSID, countryCode)
 }
 \arguments{
-\item{networkDEIMSID}{A `character`. The DEIMS.iD of the network
-from DEIMS-SDR website. DEIMS.iD information 
+\item{networkDEIMSID}{A `character`. The DEIMS ID of the network
+from DEIMS-SDR website. DEIMS ID information 
 \href{https://deims.org/docs/deimsid.html}{here} and Complete list of ILTER
 networks \href{https://deims.org/search?f[0]=result_type:network}{here}.}
 

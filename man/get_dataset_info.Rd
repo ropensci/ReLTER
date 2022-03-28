@@ -4,13 +4,16 @@
 \alias{get_dataset_info}
 \title{Obtain the information about of an eLTER dataset.}
 \usage{
-get_dataset_info(datasetid)
+get_dataset_info(datasetid, show_map = FALSE)
 }
 \arguments{
-\item{datasetid}{A `character`. It is the DEIMS.iD of dataset make from
-DEIMS-SDR website. DEIMS.iD information 
+\item{datasetid}{A `character`. It is the DEIMS ID of dataset make from
+DEIMS-SDR website. DEIMS ID information 
 \href{https://deims.org/docs/deimsid.html}{here}.
-The DEIMS.iD of dataset is the URL for the dataset page.}
+The DEIMS ID of dataset is the URL for the dataset page.}
+
+\item{show_map}{A `boolean`. If TRUE a Leaflet map with occurrences
+is shown. Default FALSE.}
 }
 \value{
 The output of the function is a `tibble` with main features
@@ -25,7 +28,8 @@ provided in \href{https://deims.org/}{DEIMS-SDR catalogue}.
 \examples{
 tDataset <- get_dataset_info(
   datasetid =
-  "https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef"
+  "https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef",
+  show_map = TRUE
 )
 tDataset
 

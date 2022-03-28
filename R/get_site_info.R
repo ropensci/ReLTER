@@ -1,9 +1,9 @@
 #' Obtain details about an eLTER site.
-#' @description Return a tibble object containing information, as a stored in
-#' \href{https://deims.org/}{DEIMS-SDR catalogue}, of a single eLTER site
+#' @description This function obtains information of a single eLTER site,
+#' as a stored in \href{https://deims.org/}{DEIMS-SDR catalogue}, 
 #' through the DEIMS-SDR API.
-#' @param deimsid A character. The DEIMS.iD of the site from
-#' DEIMS-SDR website. DEIMS.iD information 
+#' @param deimsid A character. The DEIMS ID of the site from
+#' DEIMS-SDR website. DEIMS ID information 
 #' \href{https://deims.org/docs/deimsid.html}{here}.
 #' @param category A `category`. This parameter selects which category
 #' or categories are retrieved and returned in the result.
@@ -234,7 +234,7 @@ get_site_info <- function(deimsid, category = NA) {
     }
   } else {
     message("\n---- The requested page could not be found.
-            Please check the DEIMS.iD ----\n")
+            Please check the DEIMS ID ----\n")
     siteInfo <- NULL
   }
   # Final result

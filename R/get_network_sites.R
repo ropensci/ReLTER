@@ -5,11 +5,11 @@
 #' belonging to an eLTER Network (e.g.
 #' \href{https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3}{LTER-
 #' Italy network}).
-#' @param networkDEIMSID A `character`. The DEIMS.iD of the network from
-#' DEIMS-SDR website. DEIMS.iD information 
+#' @param networkDEIMSID A `character`. The DEIMS ID of the network from
+#' DEIMS-SDR website. DEIMS ID information 
 #' \href{https://deims.org/docs/deimsid.html}{here} and Complete list of
 #' networks \href{https://deims.org/search?f[0]=result_type:network}{here}.
-#' The DEIMS.iD of network is the URL for the network page.
+#' The DEIMS ID of network is the URL for the network page.
 #' @return The output of the function is a point vector of `sf` class
 #' (package sf) of the network's sites.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}

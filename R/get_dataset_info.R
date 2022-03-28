@@ -3,10 +3,10 @@
 #' dataset (e.g.
 #' \url{https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845})
 #' provided in \href{https://deims.org/}{DEIMS-SDR catalogue}.
-#' @param datasetid A `character`. It is the DEIMS.iD of dataset make from
-#' DEIMS-SDR website. DEIMS.iD information 
+#' @param datasetid A `character`. It is the DEIMS ID of dataset make from
+#' DEIMS-SDR website. DEIMS ID information 
 #' \href{https://deims.org/docs/deimsid.html}{here}.
-#' The DEIMS.iD of dataset is the URL for the dataset page.
+#' The DEIMS ID of dataset is the URL for the dataset page.
 #' @param show_map A `boolean`. If TRUE a Leaflet map with occurrences
 #' is shown. Default FALSE.
 #' @return The output of the function is a `tibble` with main features
@@ -38,6 +38,9 @@ get_dataset_info <- function(datasetid, show_map = FALSE) {
        type: .type,
        dateRange: .attributes.general.dateRange,
        relatedSite: .attributes.general.relatedSite,
+       siteTitle: .attributes.general.relatedSite[].title,
+       DEIMSiD_prefix: .attributes.general.relatedSite[].id.prefix,
+       DEIMSiD_suffix: .attributes.general.relatedSite[].id.suffix,
        contacts: .attributes.contact,
        observationParameters: .attributes.observations.parameters,
        observationSpecies: .attributes.observations.speciesGroups,
@@ -107,7 +110,7 @@ get_dataset_info <- function(datasetid, show_map = FALSE) {
             map <- map %>%
               leaflet::addPolygons()
           }
-          if (show_map = TRUE) {
+          if (show_map == TRUE) {
             print(map)
             geoDataset
           } else {

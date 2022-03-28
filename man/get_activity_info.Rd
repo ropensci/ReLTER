@@ -4,13 +4,16 @@
 \alias{get_activity_info}
 \title{Obtain the information about of an eLTER activity.}
 \usage{
-get_activity_info(activityid)
+get_activity_info(activityid, show_map = FALSE)
 }
 \arguments{
-\item{activityid}{A `character`. It is the DEIMS.iD of activity make from
-DEIMS-SDR website. DEIMS.iD information
+\item{activityid}{A `character`. It is the DEIMS ID of activity make from
+DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here}.
 The DEIMS.iD of activity is the URL for the activity page.}
+
+\item{show_map}{A `boolean`. If TRUE a Leaflet map with occurrences
+is shown. Default FALSE.}
 }
 \value{
 The output of the function is a `tibble` with main features of
@@ -25,7 +28,8 @@ provided in \href{https://deims.org/}{DEIMS-SDR catalogue}.
 \examples{
 activities <- get_activity_info(
   activityid =
-  "https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845"
+  "https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845",
+  show_map = TRUE
 )
 activities
 

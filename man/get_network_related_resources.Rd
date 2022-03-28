@@ -8,11 +8,11 @@ eLTER Network.}
 get_network_related_resources(networkDEIMSID)
 }
 \arguments{
-\item{networkDEIMSID}{A `character`. It is the DEIMS.iD of network make
-from DEIMS-SDR website. DEIMS.iD information 
+\item{networkDEIMSID}{A `character`. It is the DEIMS ID of network make
+from DEIMS-SDR website. DEIMS ID information 
 \href{https://deims.org/docs/deimsid.html}{here} and Complete list of ILTER
 networks \href{https://deims.org/search?f[0]=result_type:network}{here}.
-The DEIMS.iD of network is the URL for the network page.}
+The DEIMS ID of network is the URL for the network page.}
 }
 \value{
 The output of the function is a `tibble` containing the related
@@ -31,7 +31,7 @@ listRelatedResources <- get_network_related_resources(
   networkDEIMSID =
   "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 )
-listRelatedResources[1:10, ]
+listRelatedResources
 }
 
 }

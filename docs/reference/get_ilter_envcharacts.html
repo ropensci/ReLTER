@@ -5,9 +5,8 @@ of all
 ILTER sites
 (more than 1200 around the world),
 through the DEIMS-SDR API.
-This function aims to gather in a unique tibble all the Environmental
-Characteristics the whole of ILTER sites. If you want to obtain this
-results, it should be noted that the execution time for this function
+This function gathers in a unique tibble all the Environmental
+Characteristics from all ILTER sites. Note that the execution time for this function
 is very high.
 If the objective is obtain information about Environmental Characteristics
 on a few sites, it is better to use other more specific functions (e.g.
@@ -20,9 +19,8 @@ of all
 ILTER sites
 (more than 1200 around the world),
 through the DEIMS-SDR API.
-This function aims to gather in a unique tibble all the Environmental
-Characteristics the whole of ILTER sites. If you want to obtain this
-results, it should be noted that the execution time for this function
+This function gathers in a unique tibble all the Environmental
+Characteristics from all ILTER sites. Note that the execution time for this function
 is very high.
 If the objective is obtain information about Environmental Characteristics
 on a few sites, it is better to use other more specific functions (e.g.
@@ -88,9 +86,8 @@ of all
 <a href="https://www.ilter.network/network/global-coverage" class="external-link">ILTER sites
 (more than 1200 around the world)</a>,
 through the DEIMS-SDR API.</p>
-<p>This function aims to gather in a unique tibble all the Environmental
-Characteristics the whole of ILTER sites. If you want to obtain this
-results, it should be noted that the execution time for this function
+<p>This function gathers in a unique tibble all the Environmental
+Characteristics from all ILTER sites. Note that the execution time for this function
 is very high.</p>
 <p>If the objective is obtain information about Environmental Characteristics
 on a few sites, it is better to use other more specific functions (e.g.
@@ -108,9 +105,9 @@ other methods
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>sitesNum</dt>
-<dd><p>A `integer`. It is the number of the sites that are
-read to get the information. Use this parameter only for get
-example of the output of this function. If the value of sitesNum is
+<dd><p>A `integer`. The number of the sites that are
+read to get the information. Use this parameter only to get a
+sample of the output of this function. If the value of sitesNum is
 0 (default) all the ILTER sites will be parsed and the waiting time will
 be long.</p></dd>
 </dl></div>
@@ -126,11 +123,11 @@ Environmental Characteristics of ILTER's sites.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="va">listEnvCharacts</span> <span class="op">&lt;-</span> <span class="fu">get_ilter_envcharacts</span><span class="op">(</span>sitesNum <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">listEnvCharacts</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">20</span>, <span class="op">]</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span>
+<span class="va">listEnvCharacts</span> <span class="op">&lt;-</span> <span class="fu">get_ilter_envcharacts</span><span class="op">(</span>sitesNum <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>
+<span class="va">listEnvCharacts</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">20</span>, <span class="op">]</span>
+<span class="op">}</span>
+
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

@@ -3,8 +3,8 @@
 #' activity (e.g.
 #' \url{https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845})
 #' provided in \href{https://deims.org/}{DEIMS-SDR catalogue}.
-#' @param activityid A `character`. It is the DEIMS.iD of activity make from
-#' DEIMS-SDR website. DEIMS.iD information
+#' @param activityid A `character`. It is the DEIMS ID of activity make from
+#' DEIMS-SDR website. DEIMS ID information
 #' \href{https://deims.org/docs/deimsid.html}{here}.
 #' The DEIMS.iD of activity is the URL for the activity page.
 #' @param show_map A `boolean`. If TRUE a Leaflet map with occurrences
@@ -28,10 +28,23 @@
 #'
 ### function get_activity_info
 get_activity_info <- function(activityid, show_map = FALSE) {
-  q <- "{
+  q <- '{
         title: .title,
-        boundaries: .attributes.geographic.boundaries
-        }"
+        abstract: .attributes.general.abstract,
+        keywords: .attributes.general.keywords,
+        uri: "\\(.id.prefix)\\(.id.suffix)",
+        type: .type,
+        created: .created,
+        changed: .changed,
+        relatedSite: .attributes.general.relatedSite,
+        siteTitle: .attributes.general.relatedSite[].title,
+        DEIMSiD_prefix: .attributes.general.relatedSite[].id.prefix,
+        DEIMSiD_suffix: .attributes.general.relatedSite[].id.suffix,
+        contacts: .attributes.contact,
+        boundaries: .attributes.geographic.boundaries,
+        observationParameters: .attributes.observations.parameters,
+        relatedResources: .attributes.relatedResources
+        }'
   jj <- get_id(activityid, "activities")
   if (is.na(attr(jj, "status"))) {
     invisible(
@@ -64,7 +77,7 @@ get_activity_info <- function(activityid, show_map = FALSE) {
 activity, provided in DEIMS-SDR, has an invalid geometry.
 Please check the content and refers this error to DEIMS-SDR
 contact person of the activity, citing the Activity.iD.\n----\n")
-          if (show_map = TRUE) {
+          if (show_map == TRUE) {
             print(map)
             geoActivity
           } else {

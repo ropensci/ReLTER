@@ -20,8 +20,8 @@ produce_site_map(
 )
 }
 \arguments{
-\item{deimsid}{A `character`. The DEIMS.iD of network from
-DEIMS-SDR website. DEIMS.iD information 
+\item{deimsid}{A `character`. The DEIMS ID of network from
+DEIMS-SDR website. DEIMS ID information 
 \href{https://deims.org/docs/deimsid.html}{here}.}
 
 \item{countryCode}{A `character` following the SO 3166-1 alpha-3 codes.

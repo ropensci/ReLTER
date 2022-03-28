@@ -31,30 +31,28 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 [![R build
 status](https://github.com/rossellhayes/ipa/workflows/R-CMD-check/badge.svg)](https://github.com/rossellhayes/ipa/actions)
 [![codecov](https://codecov.io/gh/oggioniale/ReLTER/branch/dev/graph/badge.svg)](https://codecov.io/gh/oggioniale/ReLTER)
+
 <!-- badges: end -->
 
-`{ReLTER}` is an R package that: provides access to
-[DEIMS-SDR](https://deims.org/), allows interact with software
-implemented by eLTER Research Infrastructure (RI) and improves the
-data/information shared by them.
-
-`{ReLTER}` is a R package devoted to access, interact and improve the
-information and the data shared by Long Term Ecological Research (LTER)
-network. This package is born within eLTER H2020 major project that will
+`{ReLTER}` is an R package that provides access to
+[DEIMS-SDR](https://deims.org/), allowing to interact with software
+implemented by eLTER Research Infrastructure (RI) and improving the
+data/information shared among the Long Term Ecological Research (LTER)
+network. This package was conceived within eLTER H2020 project and will
 help advance the development of European Long-Term Ecosystem Research
 Infrastructures ([eLTER RI](https://elter-ri.eu)).
 
 The `{ReLTER}` package functions in particular allow to:
 
 -   retrieve the information about entities (e.g. sites, datasets, and
-    activities) shared by [DEIMS-SDR](https://deims.org/) (see
-    e.g. [get_site_info
+    activities) shared by [DEIMS-SDR](https://deims.org/) (see e.g.
+    [get_site_info
     function](https://oggioniale.github.io/ReLTER/reference/get_site_info.html));
 
 -   elaborate the information of single site or merge info from national
     network sites or entire International LTER (ILTER) in order to
-    provide maps, figures, graphs etc (see
-    e.g. [get_network_sites](https://oggioniale.github.io/ReLTER/reference/get_network_sites.html),
+    provide maps, figures, graphs etc (see e.g.
+    [get_network_sites](https://oggioniale.github.io/ReLTER/reference/get_network_sites.html),
     [produce_site_map](https://oggioniale.github.io/ReLTER/reference/produce_site_map.html)
     or
     [produce_site_parameters_pie](https://oggioniale.github.io/ReLTER/reference/produce_site_parameters_pie.html)
@@ -64,18 +62,18 @@ The `{ReLTER}` package functions in particular allow to:
     members of the
     [Geo-harmonizer](https://opendatascience.eu/geoharmonizer-project/)
     project starting with the dataset shared by
-    [DEIMS-SDR](https://deims.org/) (see
-    e.g. [get_site_ODS](https://oggioniale.github.io/ReLTER/reference/get_site_ODS.html)
+    [DEIMS-SDR](https://deims.org/) (see e.g.
+    [get_site_ODS](https://oggioniale.github.io/ReLTER/reference/get_site_ODS.html)
     function);
 
--   improve the quality of the dataset (see
-    e.g. [get_id_worms](https://oggioniale.github.io/ReLTER/reference/get_id_worms.html)).
+-   improve the quality of the dataset (see e.g.
+    [get_id_worms](https://oggioniale.github.io/ReLTER/reference/get_id_worms.html)).
 
 Functions currently implemented are derived from the discussion of the
 needs declared by eLTER users community.
 
-The `{ReLTER}` package shall definitely follow the progress of eLTER-RI
-infrastructure and evolving with the improvements and develop of new
+The `{ReLTER}` package will follow the progress of eLTER-RI
+infrastructure and evolve with improvements and development of new
 tools.
 
 <!-- about the icons https://github.com/ikatyang/emoji-cheat-sheet -->
@@ -112,10 +110,17 @@ further documentation, examples, and installation of the package.
 You can install the main version of `{ReLTER}` from
 [GitHub](https://github.com/oggioniale/ReLTER) with:
 
-``` r
-install.packages("devtools")
-devtools::install_github("oggioniale/ReLTER")
-```
+    install.packages("devtools")
+    devtools::install_github("oggioniale/ReLTER")
+    library(ReLTER)
+
+If you want to install different package branch (e.g. ‘dev’) can you use
+this command:
+
+    devtools::install_github('https://github.com/oggioniale/ReLTER', ref = 'dev')
+
+Alternatively {`ReLTER`} can be used [in a Docker
+container](./articles/rocker_ReLTER.html).
 
 If you wish to help develop this package, please follow the
 [contributing guidelines](CONTRIBUTING.md).
@@ -126,10 +131,56 @@ Some examples of the possible capabilities of this library appear below.
 These examples demonstrate interaction with the DEIMS-SDR
 [API](https://deims.org/api).
 
+#### *get_ilter_generalinfo()*
+
+For the initial example, the *get_ilter_generalinfo* function is called
+to find the DEIMS ID for a specific eLTER site. The function takes
+parameters “country_name” and “site_name”, and returns the site URL (the
+DEIMS ID) in the DEIMS SDR infrastructure.
+
+``` r
+# Obtain DEIMS ID for the Eisenwurzen site in Austria
+eisenwurzen <- ReLTER::get_ilter_generalinfo(country_name = "Austri",
+                                     site_name = "Eisen")
+# extract DEIMS.Id
+eisenwurzen_deimsid <- eisenwurzen$uri
+```
+
+In some countries, many sites have similar names. Here is a method to
+find the DEIMS ID of the specific site of interest.
+
+``` r
+# Obtain DEIMS ID for the Eisenwurzen site in Austria
+sites_germany <- ReLTER::get_ilter_generalinfo(country_name = "Germ",
+                                     site_name = "TERENO")
+# List full names of all sites
+sites_germany$title
+#>  [1] "TERENO Harz/Central German Lowland LTER - Germany"          
+#>  [2] "TERENO - Bad Lauchstaedt - Germany"                         
+#>  [3] "TERENO - Bode catchment - Germany"                          
+#>  [4] "TERENO - Friedeburg - Germany"                              
+#>  [5] "TERENO - Gimritz - Germany"                                 
+#>  [6] "TERENO - Greifenhagen - Germany"                            
+#>  [7] "TERENO - Schafstaedt - Germany"                             
+#>  [8] "TERENO - Siptenfelde - Germany"                             
+#>  [9] "TERENO - Wanzleben - Germany"                               
+#> [10] "TERENO - Wüstebach - Germany"                               
+#> [11] "TERENO - Harsleben - Germany"                               
+#> [12] "TERENO Harz - central german lowland - Hohes Holz - Germany"
+#> [13] "TERENO - Rollesbroich - Germany"                            
+#> [14] "TERENO - Selhausen - Germany"                               
+#> [15] "TERENO Eifel Lower Rhine Valley - Germany"
+# Get the DEIMS ID of the site of interest by partial string match on the title
+idx <- which(stringr::str_detect(sites_germany$title,
+                                 "Friedeburg"))
+(friedeburg_deims_id <- sites_germany$uri[idx])
+#> [1] "https://deims.org/a4dc71c4-de05-4883-ae53-7f57d51555fc"
+```
+
 #### *get_site_info(category = “Boundaries”)*
 
-The *get_site_info* function, using category “Boundaries”, creates a
-Leaflet map overlayed with the boundaries of the site (e.g. Lake
+Next, the *get_site_info* function, using category “Boundaries”, creates
+a Leaflet map overlayed with the boundaries of the site (e.g. Lake
 Maggiore) using the site geographical boundaries provided by
 [DEIMS-SDR](https://deims.org/). This function returns an `sf` object.
 
@@ -139,16 +190,13 @@ siteBoundaries <- ReLTER::get_site_info(
   deimsid = 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe',
   category = "Boundaries"
 )
-leaflet::leaflet(siteBoundaries) %>% 
+m <- leaflet::leaflet(siteBoundaries) %>% 
  leaflet::addTiles() %>% 
  leaflet::addPolygons()
+m
 ```
 
 <img src="man/figures/README-exampleSiteBoundaries-1.png" width="100%" />
-
-``` r
-#siteBoundaries
-```
 
 ------------------------------------------------------------------------
 
@@ -195,15 +243,7 @@ specific datasets shared through [DEIMS-SDR](https://deims.org/).
 
 ``` r
 tDataset <- ReLTER::get_dataset_info(datasetid = "https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef")
-leaflet::leaflet(tDataset) %>% 
- leaflet::addTiles() %>% 
- leaflet::addPolygons()
-```
-
-<img src="man/figures/README-exampleGetDataset-1.png" width="100%" />
-
-``` r
-tDataset
+print(tDataset)
 #> Simple feature collection with 1 feature and 33 fields
 #> Geometry type: POLYGON
 #> Dimension:     XY
@@ -220,7 +260,14 @@ tDataset
 #> #   legal.rights <lgl>, legal.legalAct <lgl>, legal.citation <lgl>,
 #> #   method.instrumentation <lgl>, method.qualityAssurance <lgl>,
 #> #   method.methodUrl <list>, method.methodDescription <list>, …
+
+m <- leaflet::leaflet(tDataset) %>% 
+ leaflet::addTiles() %>% 
+ leaflet::addPolygons()
+m
 ```
+
+<img src="man/figures/README-exampleGetDataset-1.png" width="100%" />
 
 ------------------------------------------------------------------------
 
@@ -235,7 +282,7 @@ tSiteRelatedResources <- ReLTER::get_site_info(
   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
   category = "RelateRes"
 )
-tSiteRelatedResources$relatedResources[[1]]
+print(tSiteRelatedResources$relatedResources[[1]])
 #>                                                                              relatedResourcesTitle
 #> 1 Biovolume of Phytoplankton in Lake Maggiore site code  IT_SI001137_within the period 1981 - 2010
 #> 2                           Atmospheric deposition in Pallanza, Lake Maggiore watershed, 1980-2018
@@ -279,19 +326,19 @@ ReLTER::produce_site_parameters_waffle(
 <img src="man/figures/README-exampleproduce_site_parameters_waffle-1.png" width="100%" />
 
     #> # A tibble: 11 × 4
-    #>    parameterGroups              n   freq label
-    #>    <chr>                    <int>  <dbl> <chr>
-    #>  1 agricultural parameter       1 0.0105 1%   
-    #>  2 atmospheric parameter       14 0.147  15%  
-    #>  3 biological parameter         8 0.0842 8%   
-    #>  4 chemical parameter          24 0.253  25%  
-    #>  5 ecosystem parameter         23 0.242  24%  
-    #>  6 genetic parameter            2 0.0211 2%   
-    #>  7 landscape parameter          4 0.0421 4%   
-    #>  8 physical parameter           1 0.0105 1%   
-    #>  9 remote sensing parameter     1 0.0105 1%   
-    #> 10 soil parameter               1 0.0105 1%   
-    #> 11 water parameter             16 0.168  17%
+    #>    parameterGroups               n   freq label
+    #>    <chr>                     <int>  <dbl> <chr>
+    #>  1 agricultural parameters       1 0.0105 1%   
+    #>  2 atmospheric parameters       14 0.147  15%  
+    #>  3 biological parameters         8 0.0842 8%   
+    #>  4 chemical parameters          24 0.253  25%  
+    #>  5 ecosystem parameters         23 0.242  24%  
+    #>  6 genetic parameters            2 0.0211 2%   
+    #>  7 landscape parameters          4 0.0421 4%   
+    #>  8 physical parameters           1 0.0105 1%   
+    #>  9 remote sensing parameters     1 0.0105 1%   
+    #> 10 soil parameters               1 0.0105 1%   
+    #> 11 water parameters             16 0.168  17%
 
 ------------------------------------------------------------------------
 
@@ -313,11 +360,12 @@ siteBoundary <- ReLTER::get_site_info(
 
 tmap::tmap_mode("view")
 pal <- RColorBrewer::brewer.pal("RdYlGn", n = 5)
-tmap::tm_basemap(leaflet::providers$OpenStreetMap.Mapnik) +
+m <- tmap::tm_basemap(leaflet::providers$OpenStreetMap.Mapnik) +
   tmap::tm_shape(siteNDVI, raster.downsample = TRUE) +
   tmap::tm_raster(palette = pal, alpha = 0.7) + 
   tmap::tm_shape(siteBoundary) +
   tmap::tm_borders("black")
+m
 ```
 
 <img src="man/figures/README-example_site_ODS-1.png" width="100%" />

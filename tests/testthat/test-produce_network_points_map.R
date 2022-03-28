@@ -106,6 +106,6 @@ test_that("Output of site affiliation information function constructs ‘sf' wit
       "https://deims.org/networks/e904354a-f3a0-40ce-a9b5-61741f66c824",
     countryCode = "DEU"
   )
-  result_valid <- sf::st_is_valid(result$coordinates)
+  result_valid <- sf::st_is_valid(result)
   expect_true(any(result_valid))
 })
