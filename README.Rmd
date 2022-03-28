@@ -17,8 +17,7 @@ knitr::opts_chunk$set(
   comment = "#>",
   fig.path = "man/figures/README-",
   fig.ext = 'png',
-  out.width = "100%"
-)
+  out.width = "100%")
 ```
 
 <!-- badges: start -->
@@ -61,7 +60,7 @@ network. This package was conceived within eLTER H2020 project and will
 help advance the development of European Long-Term Ecosystem Research
 Infrastructures ([eLTER RI](https://elter-ri.eu)).
 
-The `{ReLTER}` package functions in particular allow to:
+The `{ReLTER}` package functions in particular allows to:
 
 -   retrieve the information about entities (e.g. sites, datasets, and
     activities) shared by [DEIMS-SDR](https://deims.org/) (see e.g.
@@ -145,8 +144,7 @@ These examples demonstrate interaction with the DEIMS-SDR
 [API](https://deims.org/api).
 
 #### *get_ilter_generalinfo()*
-
-For the initial example, the *get_ilter_generalinfo* function is called
+In this initial example, the *get_ilter_generalinfo* function is called
 to find the DEIMS ID for a specific eLTER site. The function takes
 parameters "country_name" and "site_name", and returns the site URL (the
 DEIMS ID) in the DEIMS SDR infrastructure.
@@ -155,7 +153,7 @@ DEIMS ID) in the DEIMS SDR infrastructure.
 # Obtain DEIMS ID for the Eisenwurzen site in Austria
 eisenwurzen <- ReLTER::get_ilter_generalinfo(country_name = "Austri",
                                      site_name = "Eisen")
-# extract DEIMS.Id
+# extract DEIMS ID
 (eisenwurzen_deimsid <- eisenwurzen$uri)
 ```
 
@@ -163,10 +161,10 @@ In some countries, many sites have similar names. Here is a method to
 find the DEIMS ID of the specific site of interest.
 
 ```{r ilter_multi, message=FALSE, warning=FALSE}
-# Obtain DEIMS ID for the Eisenwurzen site in Austria
+# Obtain DEIMS ID for sites in Germany, with names like "TERENO"
 sites_germany <- ReLTER::get_ilter_generalinfo(country_name = "Germ",
                                      site_name = "TERENO")
-# List full names of all sites
+# List full names of these sites
 sites_germany$title
 # Get the DEIMS ID of the site of interest by partial string match on the title
 idx <- which(stringr::str_detect(sites_germany$title,
@@ -176,10 +174,7 @@ idx <- which(stringr::str_detect(sites_germany$title,
 
 #### *get_site_info(category = "Boundaries")*
 
-Next, the *get_site_info* function, using category "Boundaries", creates
-a Leaflet map overlayed with the boundaries of the site (e.g. Lake
-Maggiore) using the site geographical boundaries provided by
-[DEIMS-SDR](https://deims.org/). This function returns an `sf` object.
+Next, the *get_site_info* function, using category "Boundaries", returns an `sf` object. Furthermore, a map overlayed with the boundaries of the site is displayed, using the site geographical boundaries provided by [DEIMS-SDR](https://deims.org/).
 
 ```{r, message = FALSE, warning = FALSE, fig.show='hold', exampleSiteBoundaries}
 library(dplyr)
@@ -187,10 +182,14 @@ siteBoundaries <- ReLTER::get_site_info(
   deimsid = 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe',
   category = "Boundaries"
 )
-m <- leaflet::leaflet(siteBoundaries) %>% 
- leaflet::addTiles() %>% 
- leaflet::addPolygons()
-m
+
+tmap::tmap_mode("plot")
+r <- tmaptools::read_osm(siteBoundaries)
+tmap::tm_shape(r) +
+  tmap::tm_rgb() +
+  tmap::tm_shape(siteBoundaries) +
+  tmap::tm_fill(col="blue", alpha = 0.5) +
+  tmap::tm_borders(col = "blue")
 ```
 
 ------------------------------------------------------------------------
@@ -226,10 +225,13 @@ specific datasets shared through [DEIMS-SDR](https://deims.org/).
 tDataset <- ReLTER::get_dataset_info(datasetid = "https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef")
 print(tDataset)
 
-m <- leaflet::leaflet(tDataset) %>% 
- leaflet::addTiles() %>% 
- leaflet::addPolygons()
-m
+tmap::tmap_mode("plot")
+r <- tmaptools::read_osm(tDataset)
+tmap::tm_shape(r) +
+  tmap::tm_rgb() +
+  tmap::tm_shape(tDataset) +
+  tmap::tm_fill(col="blue", alpha = 0.5) +
+  tmap::tm_borders(col = "blue")
 ```
 
 ------------------------------------------------------------------------
@@ -258,8 +260,7 @@ representation.
 
 ```{r, message = FALSE, warning = FALSE, exampleproduce_site_parameters_waffle}
 ReLTER::produce_site_parameters_waffle(
-  deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
-)
+  deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe")
 ```
 
 ------------------------------------------------------------------------
@@ -280,14 +281,15 @@ siteBoundary <- ReLTER::get_site_info(
   category = "Boundaries"
 )
 
-tmap::tmap_mode("view")
+tmap::tmap_mode("plot")
 pal <- RColorBrewer::brewer.pal("RdYlGn", n = 5)
-m <- tmap::tm_basemap(leaflet::providers$OpenStreetMap.Mapnik) +
+r <- tmaptools::read_osm(siteBoundary)
+tmap::tm_shape(r) +
+  tmap::tm_rgb() +
   tmap::tm_shape(siteNDVI, raster.downsample = TRUE) +
   tmap::tm_raster(palette = pal, alpha = 0.7) + 
   tmap::tm_shape(siteBoundary) +
   tmap::tm_borders("black")
-m
 ```
 
 ## :woman_technologist: Persons involved :man_technologist:
