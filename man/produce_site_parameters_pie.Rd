@@ -25,6 +25,11 @@ measured into the site.
 Return a pie chart of Environmental Parameters, as a stored in
 \href{https://deims.org/}{DEIMS-SDR catalogue}, of a single eLTER site.
 }
+\section{Here is an example graphic output}{
+
+\figure{produce_site_parameters_pie_fig.png}{Parameters pie chart}
+}
+
 \examples{
 \dontrun{
 pie <- produce_site_parameters_pie(

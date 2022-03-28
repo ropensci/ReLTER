@@ -72,6 +72,11 @@ This function produces a `map` of the site boundaries
 as provided by the \href{https://deims.org/}{DEIMS-SDR catalogue}, within
 a given country and network.
 }
+\section{Here is an example graphic output}{
+
+\figure{produce_site_map_fig.png}{Lake Maggiore site map}
+}
+
 \examples{
 \dontrun{
 # Example of Lange Bramke site
@@ -118,6 +123,7 @@ siteMap <- produce_site_map(
   show_map = TRUE
 )
 siteMap
+
 # with show_map = FALSE
 siteMap <- produce_site_map(
   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",

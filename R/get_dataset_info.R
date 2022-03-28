@@ -7,6 +7,8 @@
 #' DEIMS-SDR website. DEIMS ID information 
 #' \href{https://deims.org/docs/deimsid.html}{here}.
 #' The DEIMS ID of dataset is the URL for the dataset page.
+#' @param show_map A `boolean`. If TRUE a Leaflet map with occurrences
+#' is shown. Default FALSE.
 #' @return The output of the function is a `tibble` with main features
 #' of the site and the related resources collected by site.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
@@ -21,12 +23,16 @@
 #' @examples
 #' tDataset <- get_dataset_info(
 #'   datasetid =
-#'   "https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef"
+#'   "https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef",
+#'   show_map = TRUE
 #' )
 #' tDataset
 #'
+#' @section Here is an example graphic output:
+#' \figure{get_dataset_info_fig.png}{Map of "LTER Northern Adriatic Sea (Italy) marine data from 1965 to 2015" dataset}
+#'
 ### function get_dataset_info
-get_dataset_info <- function(datasetid) {
+get_dataset_info <- function(datasetid, show_map = FALSE) {
   q <- '{
        title: .title,
        abstract: .attributes.general.abstract,
@@ -35,6 +41,9 @@ get_dataset_info <- function(datasetid) {
        type: .type,
        dateRange: .attributes.general.dateRange,
        relatedSite: .attributes.general.relatedSite,
+       siteTitle: .attributes.general.relatedSite[].title,
+       DEIMSiD_prefix: .attributes.general.relatedSite[].id.prefix,
+       DEIMSiD_suffix: .attributes.general.relatedSite[].id.suffix,
        contacts: .attributes.contact,
        observationParameters: .attributes.observations.parameters,
        observationSpecies: .attributes.observations.speciesGroups,
@@ -104,8 +113,12 @@ get_dataset_info <- function(datasetid) {
             map <- map %>%
               leaflet::addPolygons()
           }
-          print(map)
-          geoDataset
+          if (show_map == TRUE) {
+            print(map)
+            geoDataset
+          } else {
+            geoDataset
+          }
         } else {
           map <- leaflet::leaflet() %>%
             leaflet::addTiles()

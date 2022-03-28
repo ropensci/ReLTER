@@ -32,6 +32,11 @@ eLTER Network (e.g.
 \href{https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3}{LTER
 Italy network}), as a stored into \href{https://deims.org}{DEIMS-SDR}.
 }
+\section{Here is an example graphic output}{
+
+\figure{produce_network_points_map_fig.png}{Map of LTER-D Germany sites}
+}
+
 \examples{
 \dontrun{
 # Italian sites

@@ -23,6 +23,9 @@
 #' waffle
 #' }
 #'
+#' @section Here is an example graphic output:
+#' \figure{produce_site_parameters_waffle_fig.png}{Parameters waffle chart}
+#'
 ### function produce_site_parameters_waffle
 produce_site_parameters_waffle <- function(deimsid) {
   # TODO add this by SPARQL query

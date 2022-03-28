@@ -6,7 +6,7 @@
 #' @param deimsid A `character`. The DEIMS ID of the site from
 #' DEIMS-SDR website. DEIMS ID information 
 #' \href{https://deims.org/docs/deimsid.html}{here}.
-#' @param show_map a `boolean`. When TRUE the boundary will be plotted on a
+#' @param show_map A `boolean`. When TRUE the boundary will be plotted on a
 #' Leaflet map. Default FALSE.
 #' @return The output of the function is an `sf` object, the boundary of the
 #' site or NA if the boundary is missing from DEIMS-SDR. In addition, as

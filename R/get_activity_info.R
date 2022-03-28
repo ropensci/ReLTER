@@ -6,7 +6,9 @@
 #' @param activityid A `character`. It is the DEIMS ID of activity make from
 #' DEIMS-SDR website. DEIMS ID information
 #' \href{https://deims.org/docs/deimsid.html}{here}.
-#' The DEIMS ID of activity is the URL for the activity page.
+#' The DEIMS.iD of activity is the URL for the activity page.
+#' @param show_map A `boolean`. If TRUE a Leaflet map with occurrences
+#' is shown. Default FALSE.
 #' @return The output of the function is a `tibble` with main features of
 #' the activities in a site, and a `leaflet` map plot.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
@@ -19,16 +21,33 @@
 #' @examples
 #' activities <- get_activity_info(
 #'   activityid =
-#'   "https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845"
+#'   "https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845",
+#'   show_map = TRUE
 #' )
 #' activities
 #'
+#' @section Here is an example graphic output:
+#' \figure{get_activity_info_fig.png}{Map of "Study of non-indigenous (alien) species in the Mar Piccolo of Taranto" activity}
+#'
 ### function get_activity_info
-get_activity_info <- function(activityid) {
-  q <- "{
+get_activity_info <- function(activityid, show_map = FALSE) {
+  q <- '{
         title: .title,
-        boundaries: .attributes.geographic.boundaries
-        }"
+        abstract: .attributes.general.abstract,
+        keywords: .attributes.general.keywords,
+        uri: "\\(.id.prefix)\\(.id.suffix)",
+        type: .type,
+        created: .created,
+        changed: .changed,
+        relatedSite: .attributes.general.relatedSite,
+        siteTitle: .attributes.general.relatedSite[].title,
+        DEIMSiD_prefix: .attributes.general.relatedSite[].id.prefix,
+        DEIMSiD_suffix: .attributes.general.relatedSite[].id.suffix,
+        contacts: .attributes.contact,
+        boundaries: .attributes.geographic.boundaries,
+        observationParameters: .attributes.observations.parameters,
+        relatedResources: .attributes.relatedResources
+        }'
   jj <- get_id(activityid, "activities")
   if (is.na(attr(jj, "status"))) {
     invisible(
@@ -61,8 +80,12 @@ get_activity_info <- function(activityid) {
 activity, provided in DEIMS-SDR, has an invalid geometry.
 Please check the content and refers this error to DEIMS-SDR
 contact person of the activity, citing the Activity.iD.\n----\n")
-          print(map)
-          geoActivity
+          if (show_map == TRUE) {
+            print(map)
+            geoActivity
+          } else {
+            geoActivity
+          }
         }
       }
     } else {

@@ -20,6 +20,9 @@
 #'   do_plot = TRUE
 #' )
 #'
+#' @section Here is an example graphic output:
+#' \figure{produce_site_qrcode_fig.png}{QRcode of Lake Maggiore site}
+#'
 ### function produce_site_qrcode
 produce_site_qrcode <- function(deimsid, do_plot = FALSE) {
   res <- qrcode::qr_code(deimsid, ecl = "L")

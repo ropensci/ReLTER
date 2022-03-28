@@ -48,6 +48,9 @@
 #'   tmap::tm_scale_bar(position = c("right", "bottom"))
 #' }
 #'
+#' @section Here is an example graphic output:
+#' \figure{produce_network_points_map_fig.png}{Map of LTER-D Germany sites}
+#'
 ### function produce_network_points_map
 produce_network_points_map <- function(networkDEIMSID, countryCode) {
   # suppressWarnings({
@@ -94,8 +97,7 @@ produce_network_points_map <- function(networkDEIMSID, countryCode) {
               title = NA,
               legend.show = FALSE
             )
-          suppressWarnings(mapOfSites) # FIXME manage
-          return(networkSitesGeo)
+          return(mapOfSites)
         } else {
           mapOfSites <- tmap::tm_shape(networkSitesGeo) +
             tmap::tm_dots(
@@ -109,8 +111,7 @@ produce_network_points_map <- function(networkDEIMSID, countryCode) {
   Please check again the Country code.
   Compare the code provided with the list of code in
   https://en.wikipedia.org/wiki/ISO_3166\n----\n")
-          mapOfSites
-          return(networkSitesGeo)
+          return(mapOfSites)
         }
       } else {
         message("\n----\nThe maps cannot be created because coordinates,
@@ -120,13 +121,11 @@ produce_network_points_map <- function(networkDEIMSID, countryCode) {
         mapOfSites <- tmap::tm_shape(country) +
           tmap::tm_borders("grey75", lwd = 1)
         mapOfSites
-        return(NULL)
       }
     } else {
       message("\n----\nThe requested page could not be found.
   Please check again the Network.iD\n----\n")
       mapOfSites <- NULL
-      return(NULL)
     }
   # })
 }

@@ -92,6 +92,7 @@
 #'   show_map = TRUE
 #' )
 #' siteMap
+#' 
 #' # with show_map = FALSE
 #' siteMap <- produce_site_map(
 #'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
@@ -102,6 +103,9 @@
 #' )
 #' siteMap
 #' }
+#'
+#' @section Here is an example graphic output:
+#' \figure{produce_site_map_fig.png}{Lake Maggiore site map}
 #'
 ### function produce_site_map
 produce_site_map <-

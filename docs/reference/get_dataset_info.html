@@ -33,6 +33,17 @@ provided in DEIMS-SDR catalogue."><meta property="og:image" content="https://ogg
       <ul class="navbar-nav me-auto"><li class="active nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="../articles/qrcode.html">How to produce qrcode of any DEIMS-SDR entities</a>
+    <a class="dropdown-item" href="../articles/resources_delivered_eu_networks.html">Related resources delivered by EU eLTER sites</a>
+    <a class="dropdown-item" href="../articles/rocker_ReLTER.html">Run ReLTER in a Docker container</a>
+    <a class="dropdown-item" href="../articles/site_information.html">How to get the info of a (one) LTER Site by knowing the DEIMS ID</a>
+    <a class="dropdown-item" href="../articles/sites_contacts.html">How to get the list of contacts from list of DEIMS ID within csv file</a>
+    <a class="dropdown-item" href="../articles/sites_information.html">How to get the info of many than one LTER Sites</a>
+  </div>
+</li>
 <li class="nav-item">
   <a class="nav-link" href="../news/index.html">Changelog</a>
 </li>
@@ -66,21 +77,30 @@ provided in <a href="https://deims.org/" class="external-link">DEIMS-SDR catalog
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">get_dataset_info</span><span class="op">(</span><span class="va">datasetid</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">get_dataset_info</span><span class="op">(</span><span class="va">datasetid</span>, show_map <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>datasetid</dt>
-<dd><p>A `character`. It is the DEIMS.iD of dataset make from
-DEIMS-SDR website. DEIMS.iD information 
+<dd><p>A `character`. It is the DEIMS ID of dataset make from
+DEIMS-SDR website. DEIMS ID information 
 <a href="https://deims.org/docs/deimsid.html" class="external-link">here</a>.
-The DEIMS.iD of dataset is the URL for the dataset page.</p></dd>
+The DEIMS ID of dataset is the URL for the dataset page.</p></dd>
+<dt>show_map</dt>
+<dd><p>A `boolean`. If TRUE a Leaflet map with occurrences
+is shown. Default FALSE.</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p>The output of the function is a `tibble` with main features
 of the site and the related resources collected by site.</p>
+    </div>
+    <div class="section level2">
+    <h2 id="here-is-an-example-graphic-output">Here is an example graphic output<a class="anchor" aria-label="anchor" href="#here-is-an-example-graphic-output"></a></h2>
+    
+
+<p><img src="figures/get_dataset_info_fig.png" alt='Map of "LTER Northern Adriatic Sea (Italy) marine data from 1965 to 2015" dataset'></p>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
@@ -91,7 +111,8 @@ of the site and the related resources collected by site.</p>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="va">tDataset</span> <span class="op">&lt;-</span> <span class="fu">get_dataset_info</span><span class="op">(</span>
   datasetid <span class="op">=</span>
-  <span class="st">"https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef"</span>
+  <span class="st">"https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef"</span>,
+  show_map <span class="op">=</span> <span class="cn">TRUE</span>
 <span class="op">)</span>
 <span class="va">tDataset</span>
 
