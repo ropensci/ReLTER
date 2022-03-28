@@ -24,17 +24,17 @@
 #' @importFrom leaflet leaflet addTiles addPolygons
 #' @export
 #' @examples
-#' siteInfo <- get_site_info(
-#'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
-#'   category = c("EnvCharacts", "Affiliations")
-#' )
-#' siteInfo
-#'
 #' site <- get_site_info(
 #'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
 #'   category = "Boundaries"
 #' )
 #' site
+#' 
+#' siteInfo <- get_site_info(
+#'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
+#'   category = c("EnvCharacts", "Affiliations")
+#' )
+#' siteInfo
 #'
 ### function get_site_info
 get_site_info <- function(deimsid, category = NA) {

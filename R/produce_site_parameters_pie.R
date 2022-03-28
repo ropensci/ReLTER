@@ -29,6 +29,9 @@
 #' pie
 #' }
 #'
+#' @section Here is an example graphic output:
+#' \figure{produce_site_parameters_pie_fig.png}{Parameters pie chart}
+#'
 ### function produce_site_parameters_pie
 produce_site_parameters_pie <- function(deimsid) {
   # TODO add this by SPARQL query

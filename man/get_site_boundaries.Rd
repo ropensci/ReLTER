@@ -11,7 +11,7 @@ get_site_boundaries(deimsid, show_map = FALSE)
 DEIMS-SDR website. DEIMS ID information 
 \href{https://deims.org/docs/deimsid.html}{here}.}
 
-\item{show_map}{a `boolean`. When TRUE the boundary will be plotted on a
+\item{show_map}{A `boolean`. When TRUE the boundary will be plotted on a
 Leaflet map. Default FALSE.}
 }
 \value{

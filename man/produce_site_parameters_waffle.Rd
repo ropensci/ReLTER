@@ -21,6 +21,11 @@ biological, atmospheric, etc.).
 Return a waffle chart of Environmental Parameters, as a stored in
 \href{https://deims.org/}{DEIMS-SDR catalogue}, of a single eLTER site.
 }
+\section{Here is an example graphic output}{
+
+\figure{produce_site_parameters_waffle_fig.png}{Parameters waffle chart}
+}
+
 \examples{
 \dontrun{
 waffle <- produce_site_parameters_waffle(

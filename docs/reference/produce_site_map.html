@@ -31,6 +31,17 @@ a given country and network."><meta property="og:image" content="https://oggioni
       <ul class="navbar-nav me-auto"><li class="active nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="../articles/qrcode.html">How to produce qrcode of any DEIMS-SDR entities</a>
+    <a class="dropdown-item" href="../articles/resources_delivered_eu_networks.html">Related resources delivered by EU eLTER sites</a>
+    <a class="dropdown-item" href="../articles/rocker_ReLTER.html">Run ReLTER in a Docker container</a>
+    <a class="dropdown-item" href="../articles/site_information.html">How to get the info of a (one) LTER Site by knowing the DEIMS ID</a>
+    <a class="dropdown-item" href="../articles/sites_contacts.html">How to get the list of contacts from list of DEIMS ID within csv file</a>
+    <a class="dropdown-item" href="../articles/sites_information.html">How to get the info of many than one LTER Sites</a>
+  </div>
+</li>
 <li class="nav-item">
   <a class="nav-link" href="../news/index.html">Changelog</a>
 </li>
@@ -131,6 +142,12 @@ Default FALSE.</p></dd>
 site, OSM as base map and all country sites map.</p>
     </div>
     <div class="section level2">
+    <h2 id="here-is-an-example-graphic-output">Here is an example graphic output<a class="anchor" aria-label="anchor" href="#here-is-an-example-graphic-output"></a></h2>
+    
+
+<p><img src="figures/produce_site_map_fig.png" alt="Lake Maggiore site map"></p>
+    </div>
+    <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
     <p>Alessandro Oggioni, phD (2020) <a href="mailto:oggioni.a@irea.cnr.it">oggioni.a@irea.cnr.it</a></p>
     </div>
@@ -182,6 +199,7 @@ site, OSM as base map and all country sites map.</p>
   show_map <span class="op">=</span> <span class="cn">TRUE</span>
 <span class="op">)</span>
 <span class="va">siteMap</span>
+
 <span class="co"># with show_map = FALSE</span>
 <span class="va">siteMap</span> <span class="op">&lt;-</span> <span class="fu">produce_site_map</span><span class="op">(</span>
   deimsid <span class="op">=</span> <span class="st">"https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"</span>,

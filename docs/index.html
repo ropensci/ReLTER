@@ -95,6 +95,17 @@
 <li class="nav-item">
   <a class="nav-link" href="reference/index.html">Reference</a>
 </li>
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="articles/qrcode.html">How to produce qrcode of any DEIMS-SDR entities</a>
+    <a class="dropdown-item" href="articles/resources_delivered_eu_networks.html">Related resources delivered by EU eLTER sites</a>
+    <a class="dropdown-item" href="articles/rocker_ReLTER.html">Run ReLTER in a Docker container</a>
+    <a class="dropdown-item" href="articles/site_information.html">How to get the info of a (one) LTER Site by knowing the DEIMS ID</a>
+    <a class="dropdown-item" href="articles/sites_contacts.html">How to get the list of contacts from list of DEIMS ID within csv file</a>
+    <a class="dropdown-item" href="articles/sites_information.html">How to get the info of many than one LTER Sites</a>
+  </div>
+</li>
 <li class="nav-item">
   <a class="nav-link" href="news/index.html">Changelog</a>
 </li>
@@ -194,8 +205,7 @@
 <span class="va">eisenwurzen</span> <span class="op">&lt;-</span> <span class="fu">ReLTER</span><span class="fu">::</span><span class="fu"><a href="reference/get_ilter_generalinfo.html">get_ilter_generalinfo</a></span><span class="op">(</span>country_name <span class="op">=</span> <span class="st">"Austri"</span>,
                                      site_name <span class="op">=</span> <span class="st">"Eisen"</span><span class="op">)</span>
 <span class="co"># extract DEIMS.Id</span>
-<span class="op">(</span><span class="va">eisenwurzen_deimsid</span> <span class="op">&lt;-</span> <span class="va">eisenwurzen</span><span class="op">$</span><span class="va">uri</span><span class="op">)</span>
-<span class="co">#&gt; [1] "https://deims.org/d0a8da18-0881-4ebe-bccf-bc4cb4e25701"</span></code></pre></div>
+<span class="va">eisenwurzen_deimsid</span> <span class="op">&lt;-</span> <span class="va">eisenwurzen</span><span class="op">$</span><span class="va">uri</span></code></pre></div>
 <p>In some countries, many sites have similar names. Here is a method to find the DEIMS ID of the specific site of interest.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Obtain DEIMS ID for the Eisenwurzen site in Austria</span>

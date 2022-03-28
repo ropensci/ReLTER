@@ -28,6 +28,9 @@
 #' )
 #' tDataset
 #'
+#' @section Here is an example graphic output:
+#' \figure{get_dataset_info_fig.png}{Map of "LTER Northern Adriatic Sea (Italy) marine data from 1965 to 2015" dataset}
+#'
 ### function get_dataset_info
 get_dataset_info <- function(datasetid, show_map = FALSE) {
   q <- '{

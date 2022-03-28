@@ -2,8 +2,13 @@ pandoc: 2.14.0.3
 pkgdown: 2.0.1
 pkgdown_sha: ~
 articles:
-  ReLTER: ReLTER.html
-last_built: 2022-03-28T10:48Z
+  qrcode: qrcode.html
+  resources_delivered_eu_networks: resources_delivered_eu_networks.html
+  rocker_ReLTER: rocker_ReLTER.html
+  site_information: site_information.html
+  sites_contacts: sites_contacts.html
+  sites_information: sites_information.html
+last_built: 2022-03-28T15:03Z
 urls:
   reference: https://oggioniale.github.io/ReLTER/reference
   article: https://oggioniale.github.io/ReLTER/articles

@@ -54,6 +54,11 @@ All datasets are georeferenced to the
 EPSG:3035 coordinate reference system.
 and all except clc2018 have 30 meters resolution
 }
+\section{Here is an example graphic output}{
+
+\figure{get_site_ods_fig.png}{NDVI for Eisenwurzen}
+}
+
 \examples{
  \dontrun{
 # Landcover for Angelo Mosso

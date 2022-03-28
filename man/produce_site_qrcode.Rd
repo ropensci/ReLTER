@@ -20,6 +20,11 @@ The QR code as a logical matrix with "qr_code" class.
 Return a QR code image of any provided DEIMS ID (e.g. dataset,
 site, activity).
 }
+\section{Here is an example graphic output}{
+
+\figure{produce_site_qrcode_fig.png}{QRcode of Lake Maggiore site}
+}
+
 \examples{
 qrcode <- produce_site_qrcode(
   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"

@@ -63,6 +63,9 @@
 #' terra::plot(siteNDVI)
 #' }
 #'
+#' @section Here is an example graphic output:
+#' \figure{get_site_ods_fig.png}{NDVI for Eisenwurzen}
+#'
 ### function get_site_ODS
 get_site_ODS <- function(deimsid, dataset = "landcover") {
   # Base URL for OpenDataScience Europe

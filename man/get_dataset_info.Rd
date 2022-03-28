@@ -25,6 +25,11 @@ dataset (e.g.
 \url{https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845})
 provided in \href{https://deims.org/}{DEIMS-SDR catalogue}.
 }
+\section{Here is an example graphic output}{
+
+\figure{get_dataset_info_fig.png}{Map of "LTER Northern Adriatic Sea (Italy) marine data from 1965 to 2015" dataset}
+}
+
 \examples{
 tDataset <- get_dataset_info(
   datasetid =
