@@ -34,7 +34,7 @@ test_that("Output of network related resources function constructs 'tibble' as
   )))
   expect_type(result$uri, "character")
   expect_type(result$relatedResourcesTitle, "character")
-  expect_type(result$relatedResourcesChanged, "character")
+  expect_type(result$relatedResourcesChanged, "double")
 })
 
 test_that("Wrong input (but URL) constructs a NULL object", {

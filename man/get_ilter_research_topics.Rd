@@ -2,13 +2,13 @@
 % Please edit documentation in R/get_ilter_research_topics.R
 \name{get_ilter_research_topics}
 \alias{get_ilter_research_topics}
-\title{obtain the information about the Research Topics of ILTER sites.}
+\title{Obtain the information about the Research Topics of ILTER sites.}
 \usage{
 get_ilter_research_topics(sitesNum = NULL)
 }
 \arguments{
 \item{sitesNum}{A `integer`. It is the number of the sites that are
-read to get the information. Use this parameter only for get
+read to get the information. Use this parameter only to get an
 example of the output of this function. If the value of sitesNum is
 0 (default) all the ILTER sites will be parsed and the waiting time will
 be long.}
@@ -18,15 +18,13 @@ The output of the function is a `tibble` containing the research
 topics and their URI (Uniform Resource Identifier) of all ILTER sites.
 }
 \description{
-Return a `tibble` object containing Research Topics collected
-by all \href{https://www.ilter.network/network/global-coverage}{ILTER sites
-(more than 1200 around the world)}, as a
-stored into \href{https://deims.org}{DEIMS-SDR}.
-This function gathers in a tibble all Research Topics from all of the
-ILTER sites. Note that the execution time for this function
+This function obtains Research Topics as collected by all
+\href{https://www.ilter.network/network/global-coverage}{ILTER sites
+(more than 1200 around the world)}, as stored in 
+\href{https://deims.org}{DEIMS-SDR}. Note that the execution time for this function
 is very high.
 
-If the objective is obtain information about Research Topics
+If the objective is to obtain information about Research Topics
 from a few sites, it is better to use other more specific functions (e.g.
 \href{get_network_research_topics.html}{`get_network_research_topics()`} or
 \href{get_site_info.html}{`get_site_info()`}) or using
