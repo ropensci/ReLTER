@@ -8,7 +8,7 @@ produce_site_parameters_pie(deimsid)
 }
 \arguments{
 \item{deimsid}{A `character`. It is the DEIMS ID of site/network from
-DEIMS-SDR website. DEIMS ID information 
+DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here}.}
 }
 \value{
@@ -25,7 +25,7 @@ measured into the site.
 Return a pie chart of Environmental Parameters, as a stored in
 \href{https://deims.org/}{DEIMS-SDR catalogue}, of a single eLTER site.
 }
-\section{Here is an example graphic output}{
+\section{The function output}{
 
 \figure{produce_site_parameters_pie_fig.png}{Parameters pie chart}
 }

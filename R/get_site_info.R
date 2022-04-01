@@ -1,9 +1,9 @@
 #' Obtain details about an eLTER site.
 #' @description This function obtains information of a single eLTER site,
-#' as a stored in \href{https://deims.org/}{DEIMS-SDR catalogue}, 
+#' as a stored in \href{https://deims.org/}{DEIMS-SDR catalogue},
 #' through the DEIMS-SDR API.
 #' @param deimsid A character. The DEIMS ID of the site from
-#' DEIMS-SDR website. DEIMS ID information 
+#' DEIMS-SDR website. DEIMS ID information
 #' \href{https://deims.org/docs/deimsid.html}{here}.
 #' @param category A `category`. This parameter selects which category
 #' or categories are retrieved and returned in the result.
@@ -29,7 +29,7 @@
 #'   category = "Boundaries"
 #' )
 #' site
-#' 
+#'
 #' siteInfo <- get_site_info(
 #'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
 #'   category = c("EnvCharacts", "Affiliations")

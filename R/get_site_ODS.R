@@ -5,7 +5,7 @@
 #' dataset from \href{https://maps.opendatascience.eu/}{ODS},
 #' cropped to an eLTER site boundary, which is obtained from the DEIMS-SDR API.
 #' @param deimsid  A `character`. The DEIMS ID of the site from
-#' DEIMS-SDR website. DEIMS ID information 
+#' DEIMS-SDR website. DEIMS ID information
 #' \href{https://deims.org/docs/deimsid.html}{here}.
 #' @param dataset A `character`. The requested dataset. One of:
 #' "landcover", "clc2018", "osm_buildings", "natura2000",
@@ -63,7 +63,7 @@
 #' terra::plot(siteNDVI)
 #' }
 #'
-#' @section Here is an example graphic output:
+#' @section The function output:
 #' \figure{get_site_ods_fig.png}{NDVI for Eisenwurzen}
 #'
 ### function get_site_ODS

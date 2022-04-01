@@ -7,7 +7,7 @@
 #' specified, the whole list of sites is returned. If either or both of the
 #' filtering strings is specified, then a filtered subset of the sites is
 #' acquired.
-#' 
+#'
 #' Return a `tibble` object.
 #' @param country_name A `character`. This character string filters
 #' the full set of DEIMS sites by country name. Partial matching is supported.

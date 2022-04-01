@@ -3,7 +3,7 @@
 #' as provided by the \href{https://deims.org/}{DEIMS-SDR catalogue}, within
 #' a given country and network.
 #' @param deimsid A `character`. The DEIMS ID of network from
-#' DEIMS-SDR website. DEIMS ID information 
+#' DEIMS-SDR website. DEIMS ID information
 #' \href{https://deims.org/docs/deimsid.html}{here}.
 #' @param countryCode A `character` following the SO 3166-1 alpha-3 codes.
 #' This ISO convention consists of three-letter country codes
@@ -79,7 +79,7 @@
 #'   networkDEIMSID =
 #'   "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 #' )
-#' # In the case of Italian sites are selected only true sites and exclused the
+#' # In the case of Italian sites are selected only true sites and excluded the
 #' # macrosites.
 #' sitesNetwork <- (sitesNetwork[!grepl('^IT', sitesNetwork$title),])
 #' sf::st_crs(sitesNetwork) = 4326
@@ -92,7 +92,7 @@
 #'   show_map = TRUE
 #' )
 #' siteMap
-#' 
+#'
 #' # with show_map = FALSE
 #' siteMap <- produce_site_map(
 #'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
@@ -104,7 +104,7 @@
 #' siteMap
 #' }
 #'
-#' @section Here is an example graphic output:
+#' @section The function output:
 #' \figure{produce_site_map_fig.png}{Lake Maggiore site map}
 #'
 ### function produce_site_map

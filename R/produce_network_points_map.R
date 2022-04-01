@@ -1,10 +1,10 @@
 #' Provide a map (image) of sites in an eLTER Network.
-#' @description Return a image map object of all of the eLTER sites belonging to an
-#' eLTER Network (e.g.
+#' @description Return a image map object of all of the eLTER sites belonging
+#' to an eLTER Network (e.g.
 #' \href{https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3}{LTER
 #' Italy network}), as a stored into \href{https://deims.org}{DEIMS-SDR}.
 #' @param networkDEIMSID A `character`. The DEIMS ID of the network
-#' from DEIMS-SDR website. DEIMS ID information 
+#' from DEIMS-SDR website. DEIMS ID information
 #' \href{https://deims.org/docs/deimsid.html}{here} and Complete list of ILTER
 #' networks \href{https://deims.org/search?f[0]=result_type:network}{here}.
 #' @param countryCode A `character` following the ISO 3166-1 alpha-3 codes.
@@ -42,13 +42,13 @@
 #'   networkDEIMSID =
 #'   "https://deims.org/networks/e904354a-f3a0-40ce-a9b5-61741f66c824",
 #'   countryCode = "DEU"
-#' ) 
+#' )
 #' map_LTERGermanSites +
 #'   tmap::tm_compass(type = "8star", position = c("right", "bottom")) +
 #'   tmap::tm_scale_bar(position = c("right", "bottom"))
 #' }
 #'
-#' @section Here is an example graphic output:
+#' @section The function output:
 #' \figure{produce_network_points_map_fig.png}{Map of LTER-D Germany sites}
 #'
 ### function produce_network_points_map
@@ -70,7 +70,7 @@ produce_network_points_map <- function(networkDEIMSID, countryCode) {
       )
       lterNetworkSitesCoords <- lterNetworkSitesCoords %>%
         dplyr::select("title", "uri", "changed", "coordinates")
-      
+  
       networkSitesGeo <- sf::st_as_sf(
         tibble::as_tibble(lterNetworkSitesCoords),
         wkt = "coordinates"

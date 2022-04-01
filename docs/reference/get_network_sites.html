@@ -90,7 +90,7 @@ Italy network</a>).</p>
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>networkDEIMSID</dt>
 <dd><p>A `character`. The DEIMS ID of the network from
-DEIMS-SDR website. DEIMS ID information 
+DEIMS-SDR website. DEIMS ID information
 <a href="https://deims.org/docs/deimsid.html" class="external-link">here</a> and Complete list of
 networks <a href="https://deims.org/search?f%5B0%5D=result_type:network" class="external-link">here</a>.
 The DEIMS ID of network is the URL for the network page.</p></dd>
@@ -108,11 +108,19 @@ The DEIMS ID of network is the URL for the network page.</p></dd>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span>
+<span class="co"># The sites of LTER-Italy network</span>
 <span class="va">listSites</span> <span class="op">&lt;-</span> <span class="fu">get_network_sites</span><span class="op">(</span>
   networkDEIMSID <span class="op">=</span>
   <span class="st">"https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"</span>
 <span class="op">)</span>
-<span class="va">listSites</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="op">]</span>
+<span class="va">listSites</span>
+
+<span class="co"># The sites of LTER Europe network</span>
+<span class="va">euSites</span> <span class="op">&lt;-</span> <span class="fu">get_network_sites</span><span class="op">(</span>
+  networkDEIMSID <span class="op">=</span>
+  <span class="st">"https://deims.org/networks/4742ffca-65ac-4aae-815f-83738500a1fc"</span>
+<span class="op">)</span>
+<span class="va">euSites</span>
 <span class="op">}</span>
 
 </code></pre></div>

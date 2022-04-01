@@ -2,7 +2,7 @@
 #' @description This function obtains the list of parameters measured
 #' in the eLTER site through the DEIMS-SDR sites API.
 #' @param deimsid A `character`. It is the DEIMS ID of the site from
-#' DEIMS-SDR website. DEIMS ID information 
+#' DEIMS-SDR website. DEIMS ID information
 #' \href{https://deims.org/docs/deimsid.html}{here}.
 #' @return The output of the function is a `tibble` with main features of the
 #' site and the parameters collected.

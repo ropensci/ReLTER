@@ -8,7 +8,7 @@ get_site_info(deimsid, category = NA)
 }
 \arguments{
 \item{deimsid}{A character. The DEIMS ID of the site from
-DEIMS-SDR website. DEIMS ID information 
+DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here}.}
 
 \item{category}{A `category`. This parameter selects which category
@@ -26,7 +26,7 @@ If category 'Boundaries' is indicated an `sf` object is returned
 }
 \description{
 This function obtains information of a single eLTER site,
-as a stored in \href{https://deims.org/}{DEIMS-SDR catalogue}, 
+as a stored in \href{https://deims.org/}{DEIMS-SDR catalogue},
 through the DEIMS-SDR API.
 }
 \examples{

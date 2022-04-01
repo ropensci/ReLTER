@@ -4,7 +4,7 @@
 #' \url{https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845})
 #' provided in \href{https://deims.org/}{DEIMS-SDR catalogue}.
 #' @param datasetid A `character`. It is the DEIMS ID of dataset make from
-#' DEIMS-SDR website. DEIMS ID information 
+#' DEIMS-SDR website. DEIMS ID information
 #' \href{https://deims.org/docs/deimsid.html}{here}.
 #' The DEIMS ID of dataset is the URL for the dataset page.
 #' @param show_map A `boolean`. If TRUE a Leaflet map with occurrences
@@ -28,8 +28,9 @@
 #' )
 #' tDataset
 #'
-#' @section Here is an example graphic output:
-#' \figure{get_dataset_info_fig.png}{Map of "LTER Northern Adriatic Sea (Italy) marine data from 1965 to 2015" dataset}
+#' @section The function output:
+#' \figure{get_dataset_info_fig.png}{Map of "LTER Northern Adriatic Sea
+#' (Italy) marine data from 1965 to 2015" dataset}
 #'
 ### function get_dataset_info
 get_dataset_info <- function(datasetid, show_map = FALSE) {
@@ -113,12 +114,6 @@ get_dataset_info <- function(datasetid, show_map = FALSE) {
             map <- map %>%
               leaflet::addPolygons()
           }
-          if (show_map == TRUE) {
-            print(map)
-            geoDataset
-          } else {
-            geoDataset
-          }
         } else {
           map <- leaflet::leaflet() %>%
             leaflet::addTiles()
@@ -140,6 +135,10 @@ Please check again the Dataset.iD\n----\n")
     geoDataset <- NULL
     map <- NULL
   }
-  print(map)
-  geoDataset
+  if (show_map == TRUE) {
+    print(map)
+    geoDataset
+  } else {
+    geoDataset
+  }
 }

@@ -26,15 +26,16 @@ of all
 through the DEIMS-SDR API.
 
 This function gathers in a unique tibble all the Environmental
-Characteristics from all ILTER sites. Note that the execution time for this function
-is very high.
+Characteristics from all ILTER sites. Note that the execution time
+for this function is very high.
 
 If the objective is obtain information about Environmental Characteristics
 on a few sites, it is better to use other more specific functions (e.g.
 \href{get_network_envcharacts.html}{`get_network_envcharacts()`} or
 \href{get_site_info.html}{`get_site_info()`}) or using
 other methods
-(\href{../../articles/sites_information.html}{How to about sites informations}).
+(\href{../../articles/sites_information.html}{How to about sites
+informations}).
 }
 \examples{
 \dontrun{

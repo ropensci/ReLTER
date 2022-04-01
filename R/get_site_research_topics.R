@@ -2,7 +2,7 @@
 #' @description This function obtains a list of research topics handled
 #' at an eLTER site through the DEIMS-SDR sites API.
 #' @param deimsid  A `character`. The DEIMS ID of the site from
-#' DEIMS-SDR website. DEIMS ID information 
+#' DEIMS-SDR website. DEIMS ID information
 #' \href{https://deims.org/docs/deimsid.html}{here}.
 #' @return The output of the function is a `tibble` with main features of the
 #' site and a list of the research topics handled in this site.

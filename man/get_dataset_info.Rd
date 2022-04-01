@@ -8,7 +8,7 @@ get_dataset_info(datasetid, show_map = FALSE)
 }
 \arguments{
 \item{datasetid}{A `character`. It is the DEIMS ID of dataset make from
-DEIMS-SDR website. DEIMS ID information 
+DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here}.
 The DEIMS ID of dataset is the URL for the dataset page.}
 
@@ -25,9 +25,10 @@ dataset (e.g.
 \url{https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845})
 provided in \href{https://deims.org/}{DEIMS-SDR catalogue}.
 }
-\section{Here is an example graphic output}{
+\section{The function output}{
 
-\figure{get_dataset_info_fig.png}{Map of "LTER Northern Adriatic Sea (Italy) marine data from 1965 to 2015" dataset}
+\figure{get_dataset_info_fig.png}{Map of "LTER Northern Adriatic Sea
+(Italy) marine data from 1965 to 2015" dataset}
 }
 
 \examples{

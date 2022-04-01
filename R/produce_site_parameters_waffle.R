@@ -1,8 +1,9 @@
 #' Produce a waffle chart of the parameters collected in a site LTER.
-#' @description Return a waffle chart of Environmental Parameters, as a stored in
-#' \href{https://deims.org/}{DEIMS-SDR catalogue}, of a single eLTER site.
+#' @description Return a waffle chart of Environmental Parameters, as a
+#' stored in \href{https://deims.org/}{DEIMS-SDR catalogue}, of a single
+#' eLTER site.
 #' @param deimsid A `character`. The DEIMS ID of site/network from:
-#' DEIMS-SDR website. DEIMS ID information 
+#' DEIMS-SDR website. DEIMS ID information
 #' \href{https://deims.org/docs/deimsid.html}{here}.
 #' @return The output of the function is a waffle chart and a `tibble`. Each
 #' of the squares represents a parameters measured into the selected eLTER
@@ -23,17 +24,17 @@
 #' waffle
 #' }
 #'
-#' @section Here is an example graphic output:
+#' @section The function output:
 #' \figure{produce_site_parameters_waffle_fig.png}{Parameters waffle chart}
 #'
 ### function produce_site_parameters_waffle
 produce_site_parameters_waffle <- function(deimsid) {
   # TODO add this by SPARQL query
-  paramsDeims <- ReLTER::get_site_info(
+  site <- ReLTER::get_site_info(
     deimsid = deimsid,
     category = "Parameters"
   )
-  paramsDeims <- tibble::as_tibble(paramsDeims$parameter[[1]])
+  paramsDeims <- tibble::as_tibble(site$parameter[[1]])
   if (length(paramsDeims) != 0) {
     params <- tibble::as_tibble(paramsDeims)
     params$parameterGroups <- paste0(
@@ -68,12 +69,19 @@ produce_site_parameters_waffle <- function(deimsid) {
     )
     waffle <- waffle::waffle(
       obsPropWaffle,
+      title = paste0(
+        "Parameters measured in the ",
+        site$title,
+        " grouped by type"
+      ),
       rows = 8,
       size = 3,
       xlab = paste0(
-        "1 square is 1 parameter. Total of ",
+        "1 square is 1 parameter. A total of ",
         sum(params$n),
-        " parameters"
+        " parameters are collected in the ",
+        site$title, " site (DEIMS ID: ",
+        site$uri, ")"
       ),
       keep = FALSE,
       colors = mycolors

@@ -69,7 +69,7 @@ Imports:
     httr,
     jqr,
     jsonlite,
-    leaflet,
+    leaflet (>= 2.1.1),
     magrittr,
     qrcode,
     raster (>= 3.3-13),
@@ -84,7 +84,15 @@ Imports:
     waffle,
     worrms,
     xml2,
-    xslt
+    xslt,
+    purrr,
+    readr,
+    stringr,
+    tidyr,
+    rworldmap,
+    rnaturalearth,
+    gridExtra,
+    webshot
 Suggests: 
     httptest,
     knitr,

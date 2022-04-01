@@ -6,7 +6,7 @@ sitesNetwork <- ReLTER::get_network_sites(
   networkDEIMSID =
     "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 )
-# In the case of Italian sites are selected only true sites and exclused the
+# In the case of Italian sites are selected only true sites and excluded the
 # macrosites.
 sitesNetwork <- (sitesNetwork[!grepl("^IT", sitesNetwork$title), ])
 sf::st_crs(sitesNetwork) <- 4326
@@ -50,5 +50,5 @@ test_that("Output of site map function constructs 'tmap' as expected", {
               gridNx = 0.7,
               gridNy = 0.35
             )
-            expect_type(result, "list")
+            expect_s3_class(result, "tmap")
           })

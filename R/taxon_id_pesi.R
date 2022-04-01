@@ -15,7 +15,7 @@
 #' @return The output of the function is a `tibble` containing all the
 #' columns provided as input and new columns as: 'canonicalName', 'authorship',
 #' 'synonyms', 'LSID', 'url', 'accordingTo', 'checkStatus' gathered from PESI.
-#' 
+#'
 #' An example to export dataset obtained by this function is:
 #' datasetMerged <- dplyr::bind_rows(table)
 #' write.csv(
@@ -42,23 +42,23 @@
 #' Solution 2 -
 #'
 #' 1. Open Excel
-#' 
+#'
 #' 2. Click “File” and “New”
-#' 
+#'
 #' 3. Click on the “Data” tab
-#' 
+#'
 #' 4. Click “From Text” and select the CSV file
-#' 
+#'
 #' 5. Select “Delimited”
-#' 
+#'
 #' 6. For “File origin”, select “65001 : Unicode (UTF-8)”
-#' 
+#'
 #' 7. Click “Next”
-#' 
+#'
 #' 8. Select “Comma”
-#' 
+#'
 #' 9. Click “Finish”
-#' 
+#'
 #' 10. Excel should now show you the CSV file and display the characters
 #'     correctly.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}

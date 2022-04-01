@@ -1,16 +1,17 @@
 #' Obtain the information about the Research Topics of ILTER sites.
 #' @description This function obtains Research Topics as collected by all
 #' \href{https://www.ilter.network/network/global-coverage}{ILTER sites
-#' (more than 1200 around the world)}, as stored in 
-#' \href{https://deims.org}{DEIMS-SDR}. Note that the execution time for this function
-#' is very high.
-#' 
+#' (more than 1200 around the world)}, as stored in
+#' \href{https://deims.org}{DEIMS-SDR}. Note that the execution time for
+#' this function is very high.
+#'
 #' If the objective is to obtain information about Research Topics
 #' from a few sites, it is better to use other more specific functions (e.g.
 #' \href{get_network_research_topics.html}{`get_network_research_topics()`} or
 #' \href{get_site_info.html}{`get_site_info()`}) or using
 #' other methods
-#' (\href{../../articles/sites_information.html}{How to about sites informations}).
+#' (\href{../../articles/sites_information.html}{How to about sites
+#' informations}).
 #' @param sitesNum A `integer`. It is the number of the sites that are
 #' read to get the information. Use this parameter only to get an
 #' example of the output of this function. If the value of sitesNum is

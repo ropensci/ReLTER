@@ -10,7 +10,7 @@ get_site_ODS(deimsid, dataset = "landcover")
 }
 \arguments{
 \item{deimsid}{A `character`. The DEIMS ID of the site from
-DEIMS-SDR website. DEIMS ID information 
+DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here}.}
 
 \item{dataset}{A `character`. The requested dataset. One of:
@@ -54,7 +54,7 @@ All datasets are georeferenced to the
 EPSG:3035 coordinate reference system.
 and all except clc2018 have 30 meters resolution
 }
-\section{Here is an example graphic output}{
+\section{The function output}{
 
 \figure{get_site_ods_fig.png}{NDVI for Eisenwurzen}
 }

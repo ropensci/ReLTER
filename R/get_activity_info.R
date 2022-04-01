@@ -26,8 +26,9 @@
 #' )
 #' activities
 #'
-#' @section Here is an example graphic output:
-#' \figure{get_activity_info_fig.png}{Map of "Study of non-indigenous (alien) species in the Mar Piccolo of Taranto" activity}
+#' @section The function output:
+#' \figure{get_activity_info_fig.png}{Map of "Study of non-indigenous (alien)
+#' species in the Mar Piccolo of Taranto" activity}
 #'
 ### function get_activity_info
 get_activity_info <- function(activityid, show_map = FALSE) {
@@ -69,10 +70,14 @@ get_activity_info <- function(activityid, show_map = FALSE) {
         geoActivity_valid <- sf::st_is_valid(geoActivity)
         if (any(geoActivity_valid)) {
           map <- leaflet::leaflet(geoActivity) %>%
-            leaflet::addTiles() %>%
-            leaflet::addPolygons()
-          print(map)
-          geoActivity
+            leaflet::addTiles()
+            if (sf::st_geometry_type(geoActivity) == "POINT") {
+              map <- map %>%
+                leaflet::addMarkers()
+            } else if (sf::st_geometry_type(geoActivity) == "POLYGON") {
+              map <- map %>%
+                leaflet::addPolygons()
+            }
         } else {
           map <- leaflet::leaflet() %>%
             leaflet::addTiles()
@@ -80,12 +85,6 @@ get_activity_info <- function(activityid, show_map = FALSE) {
 activity, provided in DEIMS-SDR, has an invalid geometry.
 Please check the content and refers this error to DEIMS-SDR
 contact person of the activity, citing the Activity.iD.\n----\n")
-          if (show_map == TRUE) {
-            print(map)
-            geoActivity
-          } else {
-            geoActivity
-          }
         }
       }
     } else {
@@ -96,6 +95,10 @@ contact person of the activity, citing the Activity.iD.\n----\n")
     stop("\n----\nPage Not Found. The requested page could not be found. Please
 check again the Activity.iD\n----\n")
   }
-  print(map)
-  geoActivity
+  if (show_map == TRUE) {
+    print(map)
+    geoActivity
+  } else {
+    geoActivity
+  }
 }

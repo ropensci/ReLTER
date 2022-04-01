@@ -8,7 +8,7 @@ get_network_sites(networkDEIMSID)
 }
 \arguments{
 \item{networkDEIMSID}{A `character`. The DEIMS ID of the network from
-DEIMS-SDR website. DEIMS ID information 
+DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here} and Complete list of
 networks \href{https://deims.org/search?f[0]=result_type:network}{here}.
 The DEIMS ID of network is the URL for the network page.}
@@ -27,11 +27,19 @@ Italy network}).
 }
 \examples{
 \dontrun{
+# The sites of LTER-Italy network
 listSites <- get_network_sites(
   networkDEIMSID =
   "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 )
-listSites[1:10, ]
+listSites
+
+# The sites of LTER Europe network
+euSites <- get_network_sites(
+  networkDEIMSID =
+  "https://deims.org/networks/4742ffca-65ac-4aae-815f-83738500a1fc"
+)
+euSites
 }
 
 }

@@ -9,7 +9,7 @@ get_network_envcharacts(networkDEIMSID)
 }
 \arguments{
 \item{networkDEIMSID}{A `character`. DEIMS ID of network
-from DEIMS-SDR website. DEIMS ID information 
+from DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here} and Complete list of ILTER
 networks \href{https://deims.org/search?f[0]=result_type:network}{here}.
 The DEIMS ID of network is the URL for the network page.}

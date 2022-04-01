@@ -15,9 +15,10 @@ The output of the function is a `list` with the name and URI
 (Uniform Resource Identifier) of each procedure.
 }
 \description{
-Return a list of procedures (e.g. method, algorithm, instrument,
-sensor, or system which may be used in making observations)
-store into a \href{http://opengeospatial.github.io/e-learning/sos/text/index.html}{SOS
+Return a list of procedures (e.g. method, algorithm,
+instrument, sensor, or system which may be used in making observations)
+store into a
+\href{http://opengeospatial.github.io/e-learning/sos/text/index.html}{SOS
 (Sensor Observations Service OGC)}.
 }
 \examples{

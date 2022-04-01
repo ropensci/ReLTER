@@ -2,7 +2,7 @@
 #' @description Return a pie chart of Environmental Parameters, as a stored in
 #' \href{https://deims.org/}{DEIMS-SDR catalogue}, of a single eLTER site.
 #' @param deimsid A `character`. It is the DEIMS ID of site/network from
-#' DEIMS-SDR website. DEIMS ID information 
+#' DEIMS-SDR website. DEIMS ID information
 #' \href{https://deims.org/docs/deimsid.html}{here}.
 #' @return The output of the function is a pie chart and a `tibble`. The
 #' percentages, as a label in the pie charts and in the output table (
@@ -18,7 +18,7 @@
 #' @importFrom RColorBrewer brewer.pal
 #' @importFrom ggplot2 theme_minimal theme element_blank element_text ggplot
 #' @importFrom ggplot2 geom_text aes coord_fixed scale_x_continuous
-#' @importFrom ggplot2 scale_y_continuous scale_color_manual
+#' @importFrom ggplot2 scale_y_continuous scale_color_manual labs
 #' @importFrom ggforce geom_arc_bar
 #' @export
 #' @examples
@@ -29,17 +29,17 @@
 #' pie
 #' }
 #'
-#' @section Here is an example graphic output:
+#' @section The function output:
 #' \figure{produce_site_parameters_pie_fig.png}{Parameters pie chart}
 #'
 ### function produce_site_parameters_pie
 produce_site_parameters_pie <- function(deimsid) {
   # TODO add this by SPARQL query
-  paramsDeims <- ReLTER::get_site_info(
+  site <- ReLTER::get_site_info(
     deimsid = deimsid,
     category = "Parameters"
   )
-  paramsDeims <- tibble::as_tibble(paramsDeims$parameter[[1]])
+  paramsDeims <- tibble::as_tibble(site$parameter[[1]])
   if (length(paramsDeims) != 0) {
     params <- tibble::as_tibble(paramsDeims)
     params$parameterGroups <- paste0(
@@ -101,6 +101,13 @@ produce_site_parameters_pie <- function(deimsid) {
           end = end,
           fill = parameterGroups
         )
+      ) +
+      ggplot2::labs(
+        title =
+          paste0(
+            "Percentage of parameters type measured in the ",
+            site$title
+          )
       ) +
       ggplot2::geom_text(
         ggplot2::aes(

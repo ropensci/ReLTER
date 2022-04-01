@@ -2,7 +2,7 @@
 #' @description Return a QR code image of any provided DEIMS ID (e.g. dataset,
 #' site, activity).
 #' @param deimsid A `character`. The DEIMS ID of entities from
-#' DEIMS-SDR website. DEIMS ID information 
+#' DEIMS-SDR website. DEIMS ID information
 #' \href{https://deims.org/docs/deimsid.html}{here}.
 #' @param do_plot A `boolean`. Plot the computed QRCode. Default FALSE.
 #' @return The QR code as a logical matrix with "qr_code" class.
@@ -20,7 +20,7 @@
 #'   do_plot = TRUE
 #' )
 #'
-#' @section Here is an example graphic output:
+#' @section The function output:
 #' \figure{produce_site_qrcode_fig.png}{QRcode of Lake Maggiore site}
 #'
 ### function produce_site_qrcode

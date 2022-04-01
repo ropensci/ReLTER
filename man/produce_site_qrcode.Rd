@@ -8,7 +8,7 @@ produce_site_qrcode(deimsid, do_plot = FALSE)
 }
 \arguments{
 \item{deimsid}{A `character`. The DEIMS ID of entities from
-DEIMS-SDR website. DEIMS ID information 
+DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here}.}
 
 \item{do_plot}{A `boolean`. Plot the computed QRCode. Default FALSE.}
@@ -20,7 +20,7 @@ The QR code as a logical matrix with "qr_code" class.
 Return a QR code image of any provided DEIMS ID (e.g. dataset,
 site, activity).
 }
-\section{Here is an example graphic output}{
+\section{The function output}{
 
 \figure{produce_site_qrcode_fig.png}{QRcode of Lake Maggiore site}
 }

@@ -94,7 +94,7 @@ a given country and network.</p>
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>deimsid</dt>
 <dd><p>A `character`. The DEIMS ID of network from
-DEIMS-SDR website. DEIMS ID information 
+DEIMS-SDR website. DEIMS ID information
 <a href="https://deims.org/docs/deimsid.html" class="external-link">here</a>.</p></dd>
 <dt>countryCode</dt>
 <dd><p>A `character` following the SO 3166-1 alpha-3 codes.
@@ -142,7 +142,7 @@ Default FALSE.</p></dd>
 site, OSM as base map and all country sites map.</p>
     </div>
     <div class="section level2">
-    <h2 id="here-is-an-example-graphic-output">Here is an example graphic output<a class="anchor" aria-label="anchor" href="#here-is-an-example-graphic-output"></a></h2>
+    <h2 id="the-function-output">The function output<a class="anchor" aria-label="anchor" href="#the-function-output"></a></h2>
     
 
 <p><img src="figures/produce_site_map_fig.png" alt="Lake Maggiore site map"></p>
@@ -186,7 +186,7 @@ site, OSM as base map and all country sites map.</p>
   networkDEIMSID <span class="op">=</span>
   <span class="st">"https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"</span>
 <span class="op">)</span>
-<span class="co"># In the case of Italian sites are selected only true sites and exclused the</span>
+<span class="co"># In the case of Italian sites are selected only true sites and excluded the</span>
 <span class="co"># macrosites.</span>
 <span class="va">sitesNetwork</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">sitesNetwork</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span><span class="st">'^IT'</span>, <span class="va">sitesNetwork</span><span class="op">$</span><span class="va">title</span><span class="op">)</span>,<span class="op">]</span><span class="op">)</span>
 <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_crs.html" class="external-link">st_crs</a></span><span class="op">(</span><span class="va">sitesNetwork</span><span class="op">)</span> <span class="op">=</span> <span class="fl">4326</span>

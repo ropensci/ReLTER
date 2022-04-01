@@ -8,7 +8,7 @@ produce_site_parameters_waffle(deimsid)
 }
 \arguments{
 \item{deimsid}{A `character`. The DEIMS ID of site/network from:
-DEIMS-SDR website. DEIMS ID information 
+DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here}.}
 }
 \value{
@@ -18,10 +18,11 @@ site. The parameters with the same color belong to the same group (e.g.
 biological, atmospheric, etc.).
 }
 \description{
-Return a waffle chart of Environmental Parameters, as a stored in
-\href{https://deims.org/}{DEIMS-SDR catalogue}, of a single eLTER site.
+Return a waffle chart of Environmental Parameters, as a
+stored in \href{https://deims.org/}{DEIMS-SDR catalogue}, of a single
+eLTER site.
 }
-\section{Here is an example graphic output}{
+\section{The function output}{
 
 \figure{produce_site_parameters_waffle_fig.png}{Parameters waffle chart}
 }

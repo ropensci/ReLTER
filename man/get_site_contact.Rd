@@ -8,7 +8,7 @@ get_site_contact(deimsid)
 }
 \arguments{
 \item{deimsid}{A `character`. It is the DEIMS ID of the site from
-DEIMS-SDR website. DEIMS ID information 
+DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here}.}
 }
 \value{

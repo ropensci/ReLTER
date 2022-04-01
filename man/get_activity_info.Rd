@@ -25,9 +25,10 @@ activity (e.g.
 \url{https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845})
 provided in \href{https://deims.org/}{DEIMS-SDR catalogue}.
 }
-\section{Here is an example graphic output}{
+\section{The function output}{
 
-\figure{get_activity_info_fig.png}{Map of "Study of non-indigenous (alien) species in the Mar Piccolo of Taranto" activity}
+\figure{get_activity_info_fig.png}{Map of "Study of non-indigenous (alien)
+species in the Mar Piccolo of Taranto" activity}
 }
 
 \examples{

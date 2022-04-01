@@ -21,7 +21,7 @@ produce_site_map(
 }
 \arguments{
 \item{deimsid}{A `character`. The DEIMS ID of network from
-DEIMS-SDR website. DEIMS ID information 
+DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here}.}
 
 \item{countryCode}{A `character` following the SO 3166-1 alpha-3 codes.
@@ -72,7 +72,7 @@ This function produces a `map` of the site boundaries
 as provided by the \href{https://deims.org/}{DEIMS-SDR catalogue}, within
 a given country and network.
 }
-\section{Here is an example graphic output}{
+\section{The function output}{
 
 \figure{produce_site_map_fig.png}{Lake Maggiore site map}
 }
@@ -110,7 +110,7 @@ sitesNetwork <- get_network_sites(
   networkDEIMSID =
   "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 )
-# In the case of Italian sites are selected only true sites and exclused the
+# In the case of Italian sites are selected only true sites and excluded the
 # macrosites.
 sitesNetwork <- (sitesNetwork[!grepl('^IT', sitesNetwork$title),])
 sf::st_crs(sitesNetwork) = 4326
