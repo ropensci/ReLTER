@@ -174,12 +174,13 @@ produce_site_map <-
              deimsidExa)
       )$attributes$geographic$boundaries
     if (countryCode %in% isoCodes$Alpha_3 == TRUE) {
-      country <- raster::getData(
-        country = countryCode,
-        level = 0
-      )
-      country <-
-        rgeos::gSimplify(country, tol = 0.01, topologyPreserve = TRUE)
+      try({
+        country <- raster::getData(
+          country = countryCode,
+          level = 0
+        ) %>%
+          rgeos::gSimplify(tol = 0.01, topologyPreserve = TRUE)
+      }, silent = TRUE)
       if (is.null(geoBoundaries)) {
         lterCoords <- siteSelected
         lterSitesFeaturePointDEIMS <-
@@ -233,7 +234,8 @@ produce_site_map <-
             position = c("left", "bottom")
           ) +
           tmap::tm_basemap(leaflet::providers$Stamen.Watercolor)
-        mapOfCentroids <- tmap::tm_shape(country) +
+        if (exists("country")) {
+          mapOfCentroids <- tmap::tm_shape(country) +
           tmap::tm_borders("grey75", lwd = 1) +
           tmap::tm_shape(listOfSites) +
           tmap::tm_dots(
@@ -251,14 +253,19 @@ produce_site_map <-
             title = NA,
             legend.show = FALSE
           )
+        }
         # based on the value of show_map param
         if (show_map == TRUE) {
-          print(mapOfSite)
-          print(mapOfCentroids,
-                vp = grid::viewport(gridNx,
-                                    gridNy,
-                                    width = width,
-                                    height = height))
+          if (exists("mapOfCentroids")) {
+            print(mapOfSite)
+            print(mapOfCentroids,
+                  vp = grid::viewport(gridNx,
+                                      gridNy,
+                                      width = width,
+                                      height = height))
+          } else {
+            print(mapOfSite)
+          }
         } else {
           return(mapOfSite)
           return(mapOfCentroids,
@@ -327,6 +334,7 @@ produce_site_map <-
             position = c("left", "bottom")
           ) +
           tmap::tm_basemap(leaflet::providers$Stamen.Watercolor)
+        if (exists("country")) {
           mapOfCentroids <- tmap::tm_shape(country) +
             tmap::tm_borders("grey75", lwd = 1) +
             tmap::tm_shape(listOfSites) +
@@ -345,16 +353,21 @@ produce_site_map <-
               title = NA,
               legend.show = FALSE
             )
+        }
         if (show_map == TRUE) {
-          print(mapOfSite)
-          print(mapOfCentroids,
-                vp = grid::viewport(
-                  gridNx,
-                  gridNy,
-                  width = width,
-                  height = height
-                )
-          )
+          if (exists("mapOfCentroids")) {
+            print(mapOfSite)
+            print(mapOfCentroids,
+                  vp = grid::viewport(
+                    gridNx,
+                    gridNy,
+                    width = width,
+                    height = height
+                  )
+            )
+          } else {
+            print(mapOfSite)
+          }
         } else {
           return(mapOfSite)
           return(mapOfCentroids,
