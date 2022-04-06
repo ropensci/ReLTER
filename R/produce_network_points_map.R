@@ -81,14 +81,18 @@ produce_network_points_map <- function(networkDEIMSID, countryCode) {
       )
       if (any(networkSitesGeo_valid)) {
         if (countryCode %in% isoCodes$Alpha_3 == TRUE) {
-          country <- raster::getData(country = countryCode, level = 0)
-          country <- rgeos::gSimplify(
-            country,
-            tol = 0.01,
-            topologyPreserve = TRUE
-          )
-          mapOfSites <- tmap::tm_shape(country) +
-            tmap::tm_borders("grey75", lwd = 1) +
+          try({
+            country <- raster::getData(country = countryCode, level = 0) %>%
+              rgeos::gSimplify(
+                tol = 0.01,
+                topologyPreserve = TRUE
+              )
+          })
+          mapOfSites <- if (exists("country")) {
+            tmap::tm_shape(country) +
+              tmap::tm_borders("grey75", lwd = 1)
+          } else {NULL}
+          mapOfSites <- mapOfSites +
             tmap::tm_shape(networkSitesGeo) +
             tmap::tm_dots(
               col = NA,
