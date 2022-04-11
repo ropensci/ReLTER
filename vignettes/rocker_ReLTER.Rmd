@@ -2,7 +2,7 @@
 title: "Run ReLTER in a Docker container"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Run {`ReLTER`} in a Docker container}
+  %\VignetteIndexEntry{Run ReLTER in a Docker container}
   %\VignetteEngine{knitr::knitr}
   %\usepackage[UTF-8]{inputenc}
 author: "Paolo Tagliolato"

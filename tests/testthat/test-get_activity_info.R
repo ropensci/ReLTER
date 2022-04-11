@@ -30,7 +30,7 @@ test_that("Output of activities information function constructs 'sf' and
   expect_s3_class(result, "tbl_df")
   expect_true(ncol(result) == 16)
   expect_true(all(names(result) == c(
-    "title", "abstract", "keywords", "uri", "type", "created",              
+    "title", "abstract", "keywords", "uri", "type", "created",            
     "changed", "relatedSite", "siteTitle", "DEIMSiD_prefix", "DEIMSiD_suffix",
     "contacts.corresponding", "contacts.metadataProvider", "boundaries",
     "observationParameters", "relatedResources"
@@ -83,7 +83,7 @@ test_that("The activity ,iss the geo information", {
   expect_s3_class(result, "tbl_df")
   expect_true(ncol(result) == 16)
   expect_true(all(names(result) == c(
-    "title", "abstract", "keywords", "uri", "type", "created",               
+    "title", "abstract", "keywords", "uri", "type", "created",             
     "changed", "relatedSite", "siteTitle", "DEIMSiD_prefix",
     "DEIMSiD_suffix", "contacts.corresponding", "contacts.metadataProvider",
     "boundaries", "observationParameters", "relatedResources"

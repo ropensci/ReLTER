@@ -70,7 +70,7 @@ produce_network_points_map <- function(networkDEIMSID, countryCode) {
       )
       lterNetworkSitesCoords <- lterNetworkSitesCoords %>%
         dplyr::select("title", "uri", "changed", "coordinates")
-  
+
       networkSitesGeo <- sf::st_as_sf(
         tibble::as_tibble(lterNetworkSitesCoords),
         wkt = "coordinates"
@@ -91,7 +91,9 @@ produce_network_points_map <- function(networkDEIMSID, countryCode) {
           mapOfSites <- if (exists("country")) {
             tmap::tm_shape(country) +
               tmap::tm_borders("grey75", lwd = 1)
-          } else {NULL}
+          } else {
+            NULL
+          }
           mapOfSites <- mapOfSites +
             tmap::tm_shape(networkSitesGeo) +
             tmap::tm_dots(

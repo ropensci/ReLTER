@@ -149,6 +149,18 @@
     },
     {
       "@type": "SoftwareApplication",
+      "identifier": "rnaturalearthdata",
+      "name": "rnaturalearthdata",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=rnaturalearthdata"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "covr",
       "name": "covr",
       "provider": {
@@ -561,7 +573,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "60782.806KB",
+  "fileSize": "60951.122KB",
   "citation": [
     {
       "@type": "CreativeWork",
