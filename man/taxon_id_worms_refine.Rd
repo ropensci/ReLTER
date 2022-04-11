@@ -35,5 +35,7 @@ and possibly enables the user to interactively make his choice.
 }
 \author{
 Alessandro Oggioni, phD (2021) \email{oggioni.a@irea.cnr.it}
+
+Paolo Tagliolato, PhD (2021) \email{tagliolato.p@irea.cnr.it}
 }
 \keyword{internal}

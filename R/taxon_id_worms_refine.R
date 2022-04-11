@@ -13,6 +13,7 @@
 #' output of the function is a `tibble` with the refinement of the
 #' input, else the function simply returns the unchanged input.
 #' @author Alessandro Oggioni, phD (2021) \email{oggioni.a@@irea.cnr.it}
+#' @author Paolo Tagliolato, PhD (2021) \email{tagliolato.p@@irea.cnr.it}
 #' @importFrom dplyr filter select
 #' @keywords internal
 #'

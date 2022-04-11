@@ -19,6 +19,7 @@
 #' @importFrom jsonlite stream_in
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @author Luigi Ranghetti, phD (2021) \email{luigi@@ranghetti.info}
+#' @author Paolo Tagliolato, PhD (2021) \email{tagliolato.p@@irea.cnr.it}
 #' @keywords internal
 #'
 get_id <- function(deimsid, resource = "sites", test, ...) {

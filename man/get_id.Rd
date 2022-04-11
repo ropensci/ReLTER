@@ -33,5 +33,7 @@ Internal function to retrieve json content from ID
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
 
 Luigi Ranghetti, phD (2021) \email{luigi@ranghetti.info}
+
+Paolo Tagliolato, PhD (2021) \email{tagliolato.p@irea.cnr.it}
 }
 \keyword{internal}
