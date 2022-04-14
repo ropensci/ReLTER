@@ -26,11 +26,10 @@ test_that("Output of dataset function constructs ‘tibble’ as expected", {
   )
   expect_s3_class(result, "sf")
   expect_s3_class(result, "tbl_df")
-  expect_true(ncol(result) == 37)
+  expect_true(ncol(result) == 34)
   expect_true(all(names(result) == c(
     "title", "abstract", "keywords", "uri", "type",
-    "dateRange.from", "dateRange.to", "relatedSite", "siteTitle",
-    "DEIMSiD_prefix", "DEIMSiD_suffix", "contacts.corresponding",
+    "dateRange.from", "dateRange.to", "relatedSite", "contacts.corresponding",
     "contacts.creator", "contacts.metadataProvider", "observationParameters",
     "observationSpecies", "dataPolicy", "doi", "onlineLocation",
     "legal.accessUse", "legal.rights", "legal.legalAct", "legal.citation",
