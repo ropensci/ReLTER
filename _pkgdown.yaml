@@ -5,6 +5,9 @@ template:
   params:
     mathjax: true
     ganalytics: UA-12345678-0
+  includes:
+    in_header: |
+      <script defer data-domain="oggioniale.github.io/relter" src="https://plausible.io/js/plausible.js"></script>
 
 reference:
   - title: All functions

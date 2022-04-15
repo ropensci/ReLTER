@@ -8,7 +8,7 @@ ReLTER
 
 [![](https://img.shields.io/badge/doi-10.5281/zenodo.5576813-yellow.svg)](https://doi.org/10.5281/zenodo.5576813)
 <!-- the version is determined via the DESCRIPTION file -->
-[![](https://img.shields.io/badge/devel%20version-1.0.0-blue.svg)](https://github.com/oggioniale/ReLTER)
+[![](https://img.shields.io/badge/devel%20version-1.1.0-blue.svg)](https://github.com/oggioniale/ReLTER)
 <!-- CRAN badges -->
 <!-- [![](https://www.r-pkg.org/badges/version/oggioniale/ReLTER?color=orange)](https://cran.r-project.org/package=oggioniale/ReLTER) -->
 <!-- [![CRAN checks](https://cranchecks.info/badges/summary/ReLTER)](https://cran.r-project.org/web/checks/check_results_ReLTER.html) -->
@@ -46,16 +46,16 @@ The `{ReLTER}` package functions in particular allows to:
 
 -   retrieve the information about entities (e.g. sites, datasets, and
     activities) shared by [DEIMS-SDR](https://deims.org/) (see e.g.
-    [get\_site\_info
+    [get_site_info
     function](https://oggioniale.github.io/ReLTER/reference/get_site_info.html));
 
 -   elaborate the information of single site or merge info from national
     network sites or entire International LTER (ILTER) in order to
     provide maps, figures, graphs etc (see e.g.
-    [get\_network\_sites](https://oggioniale.github.io/ReLTER/reference/get_network_sites.html),
-    [produce\_site\_map](https://oggioniale.github.io/ReLTER/reference/produce_site_map.html)
+    [get_network_sites](https://oggioniale.github.io/ReLTER/reference/get_network_sites.html),
+    [produce_site_map](https://oggioniale.github.io/ReLTER/reference/produce_site_map.html)
     or
-    [produce\_site\_parameters\_pie](https://oggioniale.github.io/ReLTER/reference/produce_site_parameters_pie.html)
+    [produce_site_parameters_pie](https://oggioniale.github.io/ReLTER/reference/produce_site_parameters_pie.html)
     functions);
 
 -   interact with the [ODSEurope](maps.opendatascience.eu) managed by
@@ -63,11 +63,11 @@ The `{ReLTER}` package functions in particular allows to:
     [Geo-harmonizer](https://opendatascience.eu/geoharmonizer-project/)
     project starting with the dataset shared by
     [DEIMS-SDR](https://deims.org/) (see e.g.
-    [get\_site\_ODS](https://oggioniale.github.io/ReLTER/reference/get_site_ODS.html)
+    [get_site_ODS](https://oggioniale.github.io/ReLTER/reference/get_site_ODS.html)
     function);
 
 -   improve the quality of the dataset (see e.g.
-    [get\_id\_worms](https://oggioniale.github.io/ReLTER/reference/get_id_worms.html)).
+    [get_id_worms](https://oggioniale.github.io/ReLTER/reference/get_id_worms.html)).
 
 Functions currently implemented are derived from the discussion of the
 needs declared by eLTER users community.
@@ -78,22 +78,22 @@ tools.
 
 <!-- about the icons https://github.com/ikatyang/emoji-cheat-sheet -->
 
-## :notebook\_with\_decorative\_cover: Citation
+## :notebook_with_decorative_cover: Citation
 
 To cite `{ReLTER}` please use: Alessandro Oggioni, Micha Silver, Luigi
-Ranghetti & Paolo Tagliolato. (2021). oggioniale/ReLTER: ReLTER v1.0.0
-(1.0.0). Zenodo. <https://doi.org/10.5281/zenodo.5576813>
+Ranghetti & Paolo Tagliolato. (2022). oggioniale/ReLTER: ReLTER v1.1.0
+(1.1.0). Zenodo. <https://doi.org/10.5281/zenodo.5576813>
 
 or:
 
 ``` bibtex
 @software{alessandro_oggioni_2021_5576813,
   author       = {Alessandro Oggioni and Micha Silver and Luigi Ranghetti and Paolo Tagliolato},
-  title        = {oggioniale/ReLTER: ReLTER v1.0.0},
+  title        = {oggioniale/ReLTER: ReLTER v1.1.0},
   month        = nov,
-  year         = 2021,
+  year         = 2022,
   publisher    = {Zenodo},
-  version      = {1.0.0},
+  version      = {1.1.0},
   doi          = {10.5281/zenodo.5576813},
   url          = {https://doi.org/10.5281/zenodo.5576813}
 }
@@ -105,7 +105,7 @@ Visit the `{ReLTER}` website at
 [oggioniale.github.io/ReLTER/](https://oggioniale.github.io/ReLTER/) for
 further documentation, examples, and installation of the package.
 
-## :arrow\_double\_down: Installation
+## :arrow_double_down: Installation
 
 You can install the main version of `{ReLTER}` from
 [GitHub](https://github.com/oggioniale/ReLTER) with:
@@ -131,12 +131,12 @@ Some examples of the possible capabilities of this library appear below.
 These examples demonstrate interaction with the DEIMS-SDR
 [API](https://deims.org/api).
 
-#### *get\_ilter\_generalinfo()*
+#### *get_ilter_generalinfo()*
 
-In this initial example, the *get\_ilter\_generalinfo* function is
-called to find the DEIMS ID for a specific eLTER site. The function
-takes parameters “country\_name” and “site\_name”, and returns the site
-URL (the DEIMS ID) in the DEIMS SDR infrastructure.
+In this initial example, the *get_ilter_generalinfo* function is called
+to find the DEIMS ID for a specific eLTER site. The function takes
+parameters “country_name” and “site_name”, and returns the site URL (the
+DEIMS ID) in the DEIMS SDR infrastructure.
 
 ``` r
 # Obtain DEIMS ID for the Eisenwurzen site in Austria
@@ -178,12 +178,12 @@ idx <- which(stringr::str_detect(sites_germany$title,
 #> [1] "https://deims.org/a4dc71c4-de05-4883-ae53-7f57d51555fc"
 ```
 
-#### *get\_site\_info(category = “Boundaries”)*
+#### *get_site_info(category = “Boundaries”)*
 
-Next, the *get\_site\_info* function, using category “Boundaries”,
-returns an `sf` object. Furthermore, a map overlayed with the boundaries
-of the site is displayed, using the site geographical boundaries
-provided by [DEIMS-SDR](https://deims.org/).
+Next, the *get_site_info* function, using category “Boundaries”, returns
+an `sf` object. Furthermore, a map overlayed with the boundaries of the
+site is displayed, using the site geographical boundaries provided by
+[DEIMS-SDR](https://deims.org/).
 
 ``` r
 library(dplyr)
@@ -205,9 +205,9 @@ tmap::tm_shape(r) +
 
 ------------------------------------------------------------------------
 
-#### *get\_network\_parameters()*
+#### *get_network_parameters()*
 
-The *get\_network\_parameters* function retrieves a list of parameters
+The *get_network_parameters* function retrieves a list of parameters
 collected by sites that are part of a given network (e.g. LTER-Italy).
 Information is gathered from those sites that are part of the specified
 network id, on [DEIMS-SDR](https://deims.org/). The function returns a
@@ -241,30 +241,30 @@ knitr::kable(listParams[1:10, ] %>% dplyr::rows_insert(tibble(parameterLabel = "
 
 ------------------------------------------------------------------------
 
-#### *get\_dataset\_info()*
+#### *get_dataset_info()*
 
-The *get\_dataset\_info* function retrieves a table with information
-about specific datasets shared through [DEIMS-SDR](https://deims.org/).
+The *get_dataset_info* function retrieves a table with information about
+specific datasets shared through [DEIMS-SDR](https://deims.org/).
 
 ``` r
 tDataset <- ReLTER::get_dataset_info(datasetid = "https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef")
 print(tDataset)
-#> Simple feature collection with 1 feature and 33 fields
+#> Simple feature collection with 1 feature and 35 fields
 #> Geometry type: POLYGON
 #> Dimension:     XY
 #> Bounding box:  xmin: 11.88721 ymin: 43.20518 xmax: 15.86426 ymax: 45.91294
 #> Geodetic CRS:  WGS 84
-#> # A tibble: 1 × 34
-#>   title    abstract keywords uri   type  dateRange.from dateRange.to relatedSite
-#> * <chr>    <chr>    <list>   <chr> <chr> <chr>          <lgl>        <list>     
-#> 1 LTER No… The pre… <df>     http… data… 1965-01-01     NA           <df>       
-#> # … with 26 more variables: contacts.corresponding <list>,
-#> #   contacts.creator <list>, contacts.metadataProvider <lgl>,
-#> #   observationParameters <list>, observationSpecies <list>, dataPolicy <list>,
-#> #   doi <chr>, onlineLocation <list>, legal.accessUse <list>,
-#> #   legal.rights <lgl>, legal.legalAct <lgl>, legal.citation <lgl>,
-#> #   method.instrumentation <lgl>, method.qualityAssurance <lgl>,
-#> #   method.methodUrl <list>, method.methodDescription <list>, …
+#> # A tibble: 1 × 36
+#>   title  abstract   keywords uri   type  dateRange.from dateRange.to relatedSite
+#> * <chr>  <chr>      <list>   <chr> <chr> <chr>          <lgl>        <list>     
+#> 1 LTER … The prese… <df [5 … http… data… 1965-01-01     NA           <df [1 × 4…
+#> # … with 28 more variables: siteTitle <chr>, DEIMSiD <chr>,
+#> #   contacts.corresponding <list>, contacts.creator <list>,
+#> #   contacts.metadataProvider <lgl>, observationParameters <list>,
+#> #   observationSpecies <list>, dataPolicy <list>, doi <chr>,
+#> #   onlineLocation <list>, legal.accessUse <list>, legal.rights <lgl>,
+#> #   legal.legalAct <lgl>, legal.citation <lgl>, method.instrumentation <lgl>,
+#> #   method.qualityAssurance <lgl>, method.methodUrl <list>, …
 
 tmap::tmap_mode("plot")
 r <- tmaptools::read_osm(tDataset)
@@ -279,9 +279,9 @@ tmap::tm_shape(r) +
 
 ------------------------------------------------------------------------
 
-#### *get\_site\_info(category = “RelateRes”)*
+#### *get_site_info(category = “RelateRes”)*
 
-The *get\_site\_info* function, using category = “RelateRes”, provides a
+The *get_site_info* function, using category = “RelateRes”, provides a
 list of related resources associated with a site within
 [DEIMS-SDR](https://deims.org/).
 
@@ -319,9 +319,9 @@ print(tSiteRelatedResources$relatedResources[[1]])
 
 ------------------------------------------------------------------------
 
-#### *produce\_site\_parameters\_waffle()*
+#### *produce_site_parameters_waffle()*
 
-The *produce\_site\_parameters\_waffle* function provides a grouping of
+The *produce_site_parameters_waffle* function provides a grouping of
 parameters, as measured within a site, in a “waffle chart”
 representation.
 
@@ -349,9 +349,9 @@ ReLTER::produce_site_parameters_waffle(
 
 ------------------------------------------------------------------------
 
-#### *get\_site\_ODS()*
+#### *get_site_ODS()*
 
-The *get\_site\_ODS* function retrieves datasets from
+The *get_site_ODS* function retrieves datasets from
 [OpenDataScience](https://maps.opendatascience.eu/), and crops to the
 boundary of the specified eLTER site.
 
@@ -378,7 +378,7 @@ tmap::tm_shape(r) +
 
 <img src="man/figures/README-example_site_ODS-1.png" width="100%" />
 
-## :woman\_technologist: Persons involved :man\_technologist:
+## :woman_technologist: Persons involved :man_technologist:
 
 Alessandro Oggioni <https://orcid.org/0000-0002-7997-219X> (CNR,
 Institute for Electromagnetic Sensing of the Environment - IREA)

@@ -99,19 +99,19 @@ tools.
 ## :notebook_with_decorative_cover: Citation
 
 To cite `{ReLTER}` please use: Alessandro Oggioni, Micha Silver, Luigi
-Ranghetti & Paolo Tagliolato. (2021). oggioniale/ReLTER: ReLTER v1.0.0
-(1.0.0). Zenodo. <https://doi.org/10.5281/zenodo.5576813>
+Ranghetti & Paolo Tagliolato. (2022). oggioniale/ReLTER: ReLTER v1.1.0
+(1.1.0). Zenodo. <https://doi.org/10.5281/zenodo.5576813>
 
 or:
 
 ``` bibtex
 @software{alessandro_oggioni_2021_5576813,
   author       = {Alessandro Oggioni and Micha Silver and Luigi Ranghetti and Paolo Tagliolato},
-  title        = {oggioniale/ReLTER: ReLTER v1.0.0},
+  title        = {oggioniale/ReLTER: ReLTER v1.1.0},
   month        = nov,
-  year         = 2021,
+  year         = 2022,
   publisher    = {Zenodo},
-  version      = {1.0.0},
+  version      = {1.1.0},
   doi          = {10.5281/zenodo.5576813},
   url          = {https://doi.org/10.5281/zenodo.5576813}
 }
