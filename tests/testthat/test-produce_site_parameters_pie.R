@@ -23,23 +23,25 @@ test_that("Output of chart pie of parameters function constructs 'sf' and
     deimsid = TESTURLSite
   )
   expect_s3_class(result, "tbl_df")
-  expect_true(ncol(result) == 9)
+  #expect_true(ncol(result) == 9)
+  expect_true(ncol(result) == 4)
   expect_true(all(names(result) == c(
-    "parameterGroups", "n",
-    "freq", "label",
-    "end", "start",
-    "middle", "hjust",
-    "vjust"
+    "parameterGroups", "n", "freq", "perc"
+    #"freq", "label",
+    #"end", "start",
+    #"middle", "hjust",
+    #"vjust"
   )))
   expect_type(result$parameterGroups, "character")
   expect_type(result$n, "integer")
   expect_type(result$freq, "double")
-  expect_type(result$label, "character")
-  expect_type(result$end, "double")
-  expect_type(result$start, "double")
-  expect_type(result$middle, "double")
-  expect_type(result$hjust, "double")
-  expect_type(result$vjust, "double")
+  expect_type(result$perc, "character")
+  #expect_type(result$label, "character")
+  #expect_type(result$end, "double")
+  #expect_type(result$start, "double")
+  #expect_type(result$middle, "double")
+  #expect_type(result$hjust, "double")
+  #expect_type(result$vjust, "double")
 })
 
 test_that("Wrong input (but URL) constructs a NULL object", {

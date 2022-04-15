@@ -2,7 +2,6 @@
 # Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
 on:
   push:
-    branches: [main,dev]
   pull_request:
     branches: [main]
 
@@ -18,15 +17,18 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {os: macOS-latest,   r: 'release'}
-          - {os: windows-latest, r: 'release'}
-          - {os: ubuntu-20.04,   r: 'devel', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          - {os: ubuntu-20.04,   r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          - {os: ubuntu-20.04,   r: 'oldrel', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: macOS-latest,   r: 'release', usgs_user: 'modistsp_ci_macos_release',   test_mode: 'FALSE'}
+          - {os: windows-latest, r: 'release', usgs_user: 'modistsp_ci_windows_release', test_mode: 'FALSE'}
+          - {os: ubuntu-20.04,   r: 'devel',   usgs_user: 'modistsp_ci_ubuntu_release',  test_mode: 'FALSE', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-20.04,   r: 'release', usgs_user: 'modistsp_ci_ubuntu_devel',    test_mode: 'FALSE', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-20.04,   r: 'oldrel',  usgs_user: 'modistsp_ci_ubuntu_oldrel',   test_mode: 'FALSE', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      USGS_USER: ${{ matrix.config.usgs_user }}
+      USGS_PASSWORD: ${{ secrets.USGS_PASSWORD }}
       R_KEEP_PKG_SOURCE: yes
+      LOCAL_DEIMS: ${{ matrix.config.test_mode }}
       
     steps:
       - uses: actions/checkout@v2
@@ -42,6 +44,9 @@ jobs:
       - name: Query dependencies
         run: |
           install.packages("remotes")
+          install.packages("rnaturalearthdata")
+          install.packages("webshot")
+          webshot::install_phantomjs()
           saveRDS(remotes::dev_package_deps(dependencies = TRUE), "depends.Rds", version = 2)
         shell: Rscript {0}
 
@@ -63,6 +68,7 @@ jobs:
           
       - name: Install dependencies
         run: |
+          if (Sys.info()["sysname"]=="Darwin") {options("pkgType" = "binary")}
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("rcmdcheck")
         shell: Rscript {0}
@@ -86,12 +92,5 @@ jobs:
             libssl-dev \
             libcairo2-dev \
             libgit2-dev
-
-      - name: Reinstall {raster}
-        # temporary, see https://stackoverflow.com/questions/70674136/r-package-warning-multiple-methods-tables-found-for-direction
-        # remove when no longer needed
-        run: |
-          remotes::install_cran("raster", type = "source", repos = "https://stat.ethz.ch/CRAN/", force = TRUE)
-        shell: Rscript {0}
 
       - uses: r-lib/actions/check-r-package@v1

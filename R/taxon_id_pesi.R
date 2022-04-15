@@ -1,17 +1,66 @@
-#' @title eLTER taxon_id_pesi function
+#' Provide a taxon ID \href{https://en.wikipedia.org/wiki/LSID}{LSID} to a
+#' taxon list.
 #' @description This function provide a taxon ID, usually a
-#' \href{https://en.wikipedia.org/wiki/LSID}{LSID}, to a taxon. The input of
-#' the function is a csv file with a list of taxon and the provider is
-#' currently A Pan-European Species directories Infrastructure -
-#' \href{http://eu-nomen.eu/pesi/}{PESI}. `taxonID` takes advantage of taxize's
-#' `eubon_search` function \url{https://docs.ropensci.org/taxize/} and the
+#' \href{https://en.wikipedia.org/wiki/LSID}{LSID}, from a taxonomic list.
+#' The input of the function is a csv file with a list of taxa. The Taxon
+#' ID provided by this function is currently taken from Pan-European Species
+#' directories Infrastructure - \href{http://eu-nomen.eu/pesi/}{PESI}. This
+#' function takes advantage of taxize's `eubon_search` function
+#' \url{https://docs.ropensci.org/taxize/} and the
 #' \href{http://www.eu-nomen.eu/portal/rest/}{PESI RestAPI}.
-#' @param table `data.frame` containing column with a taxa
+#' @param table A `data.frame` containing column with a taxa
 #' (e.g. Sphaerosoma seidlitzi, Malthinus, etc.).
-#' @param taxaColumn `numeric` that identify the column containing taxa value.
-#' @return the output of the function is a `data.frame` containing all the
+#' @param taxaColumn A `numeric` that identify the column containing taxa
+#' value.
+#' @return The output of the function is a `tibble` containing all the
 #' columns provided as input and new columns as: 'canonicalName', 'authorship',
-#' 'synonyms', LSID', 'url', 'accordingTo', 'checkStatus' gathered from PESI.
+#' 'synonyms', 'LSID', 'url', 'accordingTo', 'checkStatus' gathered from PESI.
+#'
+#' An example to export dataset obtained by this function is:
+#' datasetMerged <- dplyr::bind_rows(table)
+#' write.csv(
+#'   datasetMerged,
+#'   "table.csv",
+#'   row.names = FALSE,
+#'   fileEncoding = "UTF-8"
+#' )
+#'
+#' Someone could have problems of characters encoding when CSV file is
+#' written.
+#' To resolve we suggest two different solutions:
+#'
+#' Solution 1 -
+#'
+#' 1. Open the CSV in Notepad.
+#' 2. Click “File” and “Save As”.
+#' 3. In the new popup that displays,  select “ANSI” from the “Encoding”
+#'    field.
+#' 4. Click “Save”.
+#' 5. Now, you should be able to open the file in Excel and display the
+#'    characters correctly.
+#'
+#' Solution 2 -
+#'
+#' 1. Open Excel
+#'
+#' 2. Click “File” and “New”
+#'
+#' 3. Click on the “Data” tab
+#'
+#' 4. Click “From Text” and select the CSV file
+#'
+#' 5. Select “Delimited”
+#'
+#' 6. For “File origin”, select “65001 : Unicode (UTF-8)”
+#'
+#' 7. Click “Next”
+#'
+#' 8. Select “Comma”
+#'
+#' 9. Click “Finish”
+#'
+#' 10. Excel should now show you the CSV file and display the characters
+#'     correctly.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom taxize eubon_search
 #' @importFrom dplyr bind_rows
@@ -33,49 +82,12 @@
 #' )
 #'
 #' # We perform a query from the `table` in order to associate the taxon
-#' # identifier (LSID) to the list of species present in the thirth column.
+#' # identifier (LSID) to the list of species present in the thirty column.
 #' taxon_id_pesi(
 #'   table = table,
 #'   taxaColumn = 3
 #' )
 #' }
-#'
-#' # An example to export dataset producted by this function is:
-#' # datasetMerged <- dplyr::bind_rows(table)
-#' # write.csv(
-#' # datasetMerged,
-#' #   "table.csv",
-#' #   row.names = FALSE,
-#' #   fileEncoding = "UTF-8"
-#' # )
-#'
-#' # Someone could have problems of characters encoding when csv file is
-#' # written.
-#' # To resolve we suggest two different methods:
-#' #
-#' # Solution 1
-#' #
-#' # 1. Open the CSV in Notepad.
-#' # 2. Click “File” and “Save As”.
-#' # 3. In the new popup that displays,  select “ANSI” from the “Encoding”
-#' #    field.
-#' # 4. Click “Save”.
-#' # 5. Now, you should be able to open the file in Excel and display the
-#' #    characters correctly.
-#' #
-#' # Solution 2
-#' #
-#' # 1. Open Excel
-#' # 2. Click “File” and “New”
-#' # 3. Click on the “Data” tab
-#' # 4. Click “From Text” and select the CSV file
-#' # 5. Select “Delimited”
-#' # 6. For “File origin”, select “65001 : Unicode (UTF-8)”
-#' # 7. Click “Next”
-#' # 8. Select “Comma”
-#' # 9. Click “Finish”
-#' # 10. Excel should now show you the CSV file and display the characters
-#' #     correctly.
 #'
 ### function taxon_id_pesi
 taxon_id_pesi <- function(table, taxaColumn) {

@@ -2,8 +2,6 @@ message("\n---- Test taxon_id_worms() ----")
 
 library(testthat)
 
-skip_on_ci()
-
 test_that("Output of taxon worms function constructs 'tibble' as expected", {
   input_table <- tibble::tibble(
      ID = c(1, 2, 3, 4, 5, 6, 7),

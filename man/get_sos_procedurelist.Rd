@@ -2,21 +2,24 @@
 % Please edit documentation in R/get_sos_procedurelist.R
 \name{get_sos_procedurelist}
 \alias{get_sos_procedurelist}
-\title{eLTER get_sos_procedurelist function}
+\title{List the procedures of a Sensor Observations Service (SOS).}
 \usage{
 get_sos_procedurelist(sosHost)
 }
 \arguments{
-\item{sosHost}{a `character`. An SOS endpoint (e.g.
+\item{sosHost}{A `list`. An SOS endpoint (e.g.
 \url{http://getit.lteritalia.it/observations/sos/kvp?}).}
 }
 \value{
-The output of the function is a `list` with the name and URI (Uniform
-Resource Identifier) of each procedure.
+The output of the function is a `list` with the name and URI
+(Uniform Resource Identifier) of each procedure.
 }
 \description{
-This function lists the procedures
-of a Sensor Observations Service (SOS).
+Return a list of procedures (e.g. method, algorithm,
+instrument, sensor, or system which may be used in making observations)
+store into a
+\href{http://opengeospatial.github.io/e-learning/sos/text/index.html}{SOS
+(Sensor Observations Service OGC)}.
 }
 \examples{
 \dontrun{
@@ -28,4 +31,6 @@ get_sos_procedurelist(
 }
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
+
+Paolo Tagliolato, PhD (2021) \email{tagliolato.p@irea.cnr.it}
 }

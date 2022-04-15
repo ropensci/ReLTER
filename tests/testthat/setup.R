@@ -4,10 +4,13 @@ TESTURLNetwork <-
 TESTURLSite <- "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
 
 # define test mode if...
-test_mode <- any(
-  isTRUE(as.logical(Sys.getenv("CI"))),
-  !identical(Sys.getenv("NOT_CRAN"), "true")
-)
+test_mode <- if (Sys.getenv("LOCAL_DEIMS") == "") {
+  any(
+    isTRUE(as.logical(Sys.getenv("CI"))),
+    !identical(Sys.getenv("NOT_CRAN"), "true")
+  )} else {
+    Sys.getenv("LOCAL_DEIMS")
+  }
 skip_in_test_mode <- test_mode
   
 # # overwrite manually to test "test mode" (this should be normally commented!)

@@ -1,12 +1,13 @@
-#' @title eLTER get_network_research_topics function
-#' @description This function obtains a list of Research Topics
-#' handled in the eLTER Network (e.g. Italy) througth
-#' the DEIMS-SDR sites API.
+#' Obtain a list of Research Topics handled in an eLTER Network.
+#' @description This function obtains Research Topics collected by all
+#' of the eLTER sites belonging to an eLTER Network (e.g.
+#' \href{https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3}{LTER-
+#' Italy network}), as a stored into \href{https://deims.org}{DEIMS-SDR}.
 #' @param networkDEIMSID A `character`. The DEIMS ID of a network
-#' from DEIMS-SDR website. More information about DEIMS network ID in these
-#' pages: \href{https://deims.org/docs/deimsid.html}{page}, and
-#' \href{https://deims.org/search?f[0]=result_type:network}{page} the
-#' complete list of ILTER networks.
+#' from DEIMS-SDR website. DEIMS ID information
+#' \href{https://deims.org/docs/deimsid.html}{here} and Complete list of ILTER
+#' networks \href{https://deims.org/search?f[0]=result_type:network}{here}.
+#' The DEIMS ID of network is the URL for the network page.
 #' @return The output of the function is a `tibble` containing the research
 #' topics and their URI (Uniform Resource Identifier) collected by network's
 #' sites.

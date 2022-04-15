@@ -2,16 +2,17 @@
 % Please edit documentation in R/get_network_parameters.R
 \name{get_network_parameters}
 \alias{get_network_parameters}
-\title{eLTER get_network_parameters function}
+\title{Obtain a list of all the Environmental Parameters of sites in an
+eLTER Network.}
 \usage{
 get_network_parameters(networkDEIMSID)
 }
 \arguments{
 \item{networkDEIMSID}{A `character`. The DEIMS ID of network
-from DEIMS-SDR website. For more information about DEIMS ID refer to these
-pages: \href{https://deims.org/docs/deimsid.html}{page}, and
-\href{https://deims.org/search?f[0]=result_type:network}{page}
-the complete list of ILTER networks.}
+from DEIMS-SDR website. DEIMS ID information
+\href{https://deims.org/docs/deimsid.html}{here} and Complete list of ILTER
+networks \href{https://deims.org/search?f[0]=result_type:network}{here}.
+The DEIMS ID of network is the URL for the network page.}
 }
 \value{
 The output of the function is a `tibble` containing the list
@@ -19,9 +20,10 @@ of parameters and their URI (Uniform Resource Identifier) collected
 by the network's sites.
 }
 \description{
-This function obtains a list of the environmental parameters
-collected on sites in the eLTER Network (e.g. Italy) through the DEIMS-SDR
-sites API.
+This function obtains all Environmental Parameters
+collected in an eLTER Network (e.g.
+\href{https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3}{LTER-
+Italy network}), through the DEIMS-SDR API.
 }
 \examples{
 \dontrun{

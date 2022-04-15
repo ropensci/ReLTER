@@ -19,7 +19,31 @@
     <loc>https://oggioniale.github.io/ReLTER/articles/ReLTER.html</loc>
   </url>
   <url>
+    <loc>https://oggioniale.github.io/ReLTER/articles/datasets_map.html</loc>
+  </url>
+  <url>
     <loc>https://oggioniale.github.io/ReLTER/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>https://oggioniale.github.io/ReLTER/articles/installation.html</loc>
+  </url>
+  <url>
+    <loc>https://oggioniale.github.io/ReLTER/articles/qrcode.html</loc>
+  </url>
+  <url>
+    <loc>https://oggioniale.github.io/ReLTER/articles/resources_delivered_eu_networks.html</loc>
+  </url>
+  <url>
+    <loc>https://oggioniale.github.io/ReLTER/articles/rocker_ReLTER.html</loc>
+  </url>
+  <url>
+    <loc>https://oggioniale.github.io/ReLTER/articles/site_information.html</loc>
+  </url>
+  <url>
+    <loc>https://oggioniale.github.io/ReLTER/articles/sites_contacts.html</loc>
+  </url>
+  <url>
+    <loc>https://oggioniale.github.io/ReLTER/articles/sites_information.html</loc>
   </url>
   <url>
     <loc>https://oggioniale.github.io/ReLTER/authors.html</loc>
@@ -103,10 +127,16 @@
     <loc>https://oggioniale.github.io/ReLTER/reference/get_network_sites.html</loc>
   </url>
   <url>
+    <loc>https://oggioniale.github.io/ReLTER/reference/get_site_MODIS.html</loc>
+  </url>
+  <url>
     <loc>https://oggioniale.github.io/ReLTER/reference/get_site_ODS.html</loc>
   </url>
   <url>
     <loc>https://oggioniale.github.io/ReLTER/reference/get_site_speciesOcc.html</loc>
+  </url>
+  <url>
+    <loc>https://oggioniale.github.io/ReLTER/reference/get_site_speciesOccurrences.html</loc>
   </url>
   <url>
     <loc>https://oggioniale.github.io/ReLTER/reference/get_sos_procedurelist.html</loc>

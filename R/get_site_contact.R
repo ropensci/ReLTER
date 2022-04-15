@@ -2,8 +2,8 @@
 #' @description This function obtains the contact information for an
 #' eLTER site through the DEIMS-SDR sites API.
 #' @param deimsid A `character`. It is the DEIMS ID of the site from
-#' DEIMS-SDR website. More information about DEIMS ID from:
-#' \href{https://deims.org/docs/deimsid.html}{page}.
+#' DEIMS-SDR website. DEIMS ID information
+#' \href{https://deims.org/docs/deimsid.html}{here}.
 #' @return The output of the function is a `tibble` with main features of the
 #' site and the contact information, such as: site manager, operation
 #' organization, metadata provider, founding agency and site url.
@@ -33,7 +33,7 @@ get_site_contact <- function(deimsid) {
     )
   } else {
     message("\n----\nThe requested page could not be found.
-Please check again the DEIMS.iD\n----\n")
+Please check again the DEIMS ID\n----\n")
     contact <- NULL
   }
   contact

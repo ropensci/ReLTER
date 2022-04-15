@@ -2,24 +2,29 @@
 % Please edit documentation in R/produce_site_qrcode.R
 \name{produce_site_qrcode}
 \alias{produce_site_qrcode}
-\title{eLTER produce_site_qrcode function}
+\title{Obtain the QRCode of any DEIMS-SDR entities.}
 \usage{
 produce_site_qrcode(deimsid, do_plot = FALSE)
 }
 \arguments{
-\item{deimsid}{a `character`. The DEIMS ID of entities from
-DEIMS-SDR website. More information about DEIMS iD in this
-\href{https://deims.org/docs/deimsid.html}{page}.}
+\item{deimsid}{A `character`. The DEIMS ID of entities from
+DEIMS-SDR website. DEIMS ID information
+\href{https://deims.org/docs/deimsid.html}{here}.}
 
-\item{do_plot}{a `boolean`. Plot the computed QRCode. Default FALSE.}
+\item{do_plot}{A `boolean`. Plot the computed QRCode. Default FALSE.}
 }
 \value{
 The QR code as a logical matrix with "qr_code" class.
 }
 \description{
-This function obtain the QRCode of any DEIMS-SDR
-entities of the eLTER.
+Return a QR code image of any provided DEIMS ID (e.g. dataset,
+site, activity).
 }
+\section{The function output}{
+
+\figure{produce_site_qrcode_fig.png}{QRcode of Lake Maggiore site}
+}
+
 \examples{
 qrcode <- produce_site_qrcode(
   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"

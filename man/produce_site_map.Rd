@@ -2,7 +2,7 @@
 % Please edit documentation in R/produce_site_map.R
 \name{produce_site_map}
 \alias{produce_site_map}
-\title{eLTER produce_site_map function}
+\title{Provide a map object of a sites LTER.}
 \usage{
 produce_site_map(
   deimsid,
@@ -20,11 +20,11 @@ produce_site_map(
 )
 }
 \arguments{
-\item{deimsid}{a `character`. The DEIMS ID of network from
-DEIMS-SDR website. More information about DEIMS iD in this
-\href{https://deims.org/docs/deimsid.html}{page}.}
+\item{deimsid}{A `character`. The DEIMS ID of network from
+DEIMS-SDR website. DEIMS ID information
+\href{https://deims.org/docs/deimsid.html}{here}.}
 
-\item{countryCode}{a `character` following the SO 3166-1 alpha-3 codes.
+\item{countryCode}{A `character` following the SO 3166-1 alpha-3 codes.
 This ISO convention consists of three-letter country codes
 as defined in ISO 3166-1, part of the ISO 3166 standard published by the
 International Organization for Standardization (ISO), to represent countries,
@@ -33,34 +33,34 @@ The map produced by this function will be limited to the country
 indicated in this parameter; if the network has a extraterritorial sites
 those will not represented.}
 
-\item{listOfSites}{a `sf`. List of sites of specific network. This list
+\item{listOfSites}{A `sf`. List of sites of specific network. This list
 is needed for showing another points on the map.}
 
-\item{gridNx}{a `double`. A numeric vector or unit object specifying
+\item{gridNx}{A `double`. A numeric vector or unit object specifying
 x-location of viewports about country provided by countryCode parameter.}
 
-\item{gridNy}{a `double`. A numeric vector or unit object specifying
+\item{gridNy}{A `double`. A numeric vector or unit object specifying
 y-location of viewports about country provided by countryCode parameter.}
 
-\item{width}{a `double`. A numeric vector or unit object specifying width
+\item{width}{A `double`. A numeric vector or unit object specifying width
 of viewports about country provided by countryCode parameter. Default 0.25.}
 
-\item{height}{a `double`. A numeric vector or unit object specifying height
+\item{height}{A `double`. A numeric vector or unit object specifying height
 of viewports about country provided by countryCode parameter. Default 0.25.}
 
-\item{bboxXMin}{a `double`. A numeric for add some unit of a bbox provided
+\item{bboxXMin}{A `double`. A numeric for add some unit of a bbox provided
 by centroid of the site. Default 0.}
 
-\item{bboxXMax}{a `double`. A numeric for add some unit of a bbox provided
+\item{bboxXMax}{A `double`. A numeric for add some unit of a bbox provided
 by centroid of the site. Default 0.}
 
-\item{bboxYMin}{a `double`. A numeric for add some unit of a bbox provided
+\item{bboxYMin}{A `double`. A numeric for add some unit of a bbox provided
 by centroid of the site. Default 0.}
 
-\item{bboxYMax}{a `double`. A numeric for add some unit of a bbox provided
+\item{bboxYMax}{A `double`. A numeric for add some unit of a bbox provided
 by centroid of the site. Default 0.}
 
-\item{show_map}{a `boolean`. When TRUE the immage of map will be plotted.
+\item{show_map}{A `boolean`. When TRUE the immage of map will be plotted.
 Default FALSE.}
 }
 \value{
@@ -69,8 +69,14 @@ site, OSM as base map and all country sites map.
 }
 \description{
 This function produces a `map` of the site boundaries
-as provided by the DEIMS-SDR, within a given country and network.
+as provided by the \href{https://deims.org/}{DEIMS-SDR catalogue}, within
+a given country and network.
 }
+\section{The function output}{
+
+\figure{produce_site_map_fig.png}{Lake Maggiore site map}
+}
+
 \examples{
 \dontrun{
 # Example of Lange Bramke site
@@ -104,7 +110,7 @@ sitesNetwork <- get_network_sites(
   networkDEIMSID =
   "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 )
-# In the case of Italian sites are selected only true sites and exclused the
+# In the case of Italian sites are selected only true sites and excluded the
 # macrosites.
 sitesNetwork <- (sitesNetwork[!grepl('^IT', sitesNetwork$title),])
 sf::st_crs(sitesNetwork) = 4326
@@ -117,6 +123,7 @@ siteMap <- produce_site_map(
   show_map = TRUE
 )
 siteMap
+
 # with show_map = FALSE
 siteMap <- produce_site_map(
   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",

@@ -1,10 +1,11 @@
-#' @title eLTER get_site_info function
-#' @description This function obtains details about an eLTER site
-#' through the DEIMS-SDR sites API.
-#' @param deimsid a character. The DEIMS ID of the site from
-#' DEIMS-SDR website. More information about DEIMS ID in this pages:
-#' \href{https://deims.org/docs/deimsid.html}{page}.
-#' @param category a `category`. This parameter selects which category
+#' Obtain details about an eLTER site.
+#' @description This function obtains information of a single eLTER site,
+#' as a stored in \href{https://deims.org/}{DEIMS-SDR catalogue},
+#' through the DEIMS-SDR API.
+#' @param deimsid A character. The DEIMS ID of the site from
+#' DEIMS-SDR website. DEIMS ID information
+#' \href{https://deims.org/docs/deimsid.html}{here}.
+#' @param category A `category`. This parameter selects which category
 #' or categories are retrieved and returned in the result.
 #' Possible value are:
 #' 'Affiliations', 'Boundaries', 'Contacts', 'EnvCharacts', 'General',
@@ -13,7 +14,7 @@
 #' @return The output of the function is a `tibble` with main features of the
 #' site and the selected information, such as: networks and projects in
 #' which the site is involved.
-#' If `category` "Boundaries" is indicated an `sf` object is returned
+#' If category 'Boundaries' is indicated an `sf` object is returned
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom httr RETRY content
 #' @importFrom jqr jq
@@ -23,17 +24,17 @@
 #' @importFrom leaflet leaflet addTiles addPolygons
 #' @export
 #' @examples
-#' siteInfo <- get_site_info(
-#'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
-#'   category = c("EnvCharacts", "Affiliations")
-#' )
-#' siteInfo
-#'
 #' site <- get_site_info(
 #'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
 #'   category = "Boundaries"
 #' )
 #' site
+#'
+#' siteInfo <- get_site_info(
+#'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
+#'   category = c("EnvCharacts", "Affiliations")
+#' )
+#' siteInfo
 #'
 ### function get_site_info
 get_site_info <- function(deimsid, category = NA) {

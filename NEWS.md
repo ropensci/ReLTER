@@ -1,3 +1,20 @@
+# ReLTER 1.1.0 Release Notes
+
+v1.1.0 was released on 15/04/2021
+
+## Major changes
+
+* all the suggestion from rOpenSci reviewers has been evaluated and taken into account in this release;
+* revised and linguistically corrected the documentation of package;
+* revised and graphically enriched the documentation of the functions;
+* created the vignettes of the package;
+* new functions (get_site_ODS and taxon_id_worms) has been implemented;
+* enriched the information downloaded for datasets and activities from DEIMS-SDR;
+* a solution for install package by Docker has been done.
+
+
+________________________________________________________________________________
+
 # ReLTER 1.0.0 Release Notes
 
 v1.0.0 was released on 15/11/2021
@@ -69,7 +86,7 @@ v0.1.0 was released on 28/01/2019
 
 Beta release of ReLTER package!
 
-* Some fuctions are relesed whitin this version of package:
+* Some functions are released within this version of package:
 1. getSiteAffiliations
 2. getSiteBoundaries
 3. getSiteContact

@@ -1,59 +1,60 @@
 title: ReLTER
 url: https://oggioniale.github.io/ReLTER/
 template:
+  bootstrap: 5
   params:
-    bootswatch: flatly
+    mathjax: true
     ganalytics: UA-12345678-0
+  includes:
+    in_header: |
+      <script defer data-domain="oggioniale.github.io/relter" src="https://plausible.io/js/plausible.js"></script>
+
 reference:
-  - title: DEIMS-SDR interaction functions
-  - subtitle: Sites
-    desc: For retrive information about LTER sites stored in DEIMS-SDR website
+  - title: All functions
     contents:
-      - '`get_site_info`'
-      - '`get_site_ODS`'
-  - subtitle: Networks
-    desc: For retrive information about LTER networks stored in DEIMS-SDR website
-    contents:
-      - '`get_network_envcharacts`'
-      - '`get_network_parameters`'
-      - '`get_network_research_topics`'
-      - '`get_network_related_resources`'
-      - '`get_network_sites`'
-  - subtitle: All ILTER
-    desc: For retrive information about all ILTER network stored in DEIMS-SDR website
-    contents:
-      - '`get_ilter_envcharacts`'
-      - '`get_ilter_generalinfo`'
-      - '`get_ilter_parameters`'
-      - '`get_ilter_research_topics`'
-  - subtitle: Other entities
-    desc: For retrive information about other entities (datasets and activites) stored in DEIMS-SDR website
-    contents:
-      - '`get_activity_info`'
-      - '`get_dataset_info`'
-  - title: Graphical functions
-    desc: Functions able of producing geographical images of sites and national networks or charts
-    contents:
-      - '`produce_network_points_map`'
-      - '`produce_site_map`'
-      - '`produce_site_qrcode`'
-      - '`produce_site_parameters_pie`'
-      - '`produce_site_parameters_waffle`'
-  - title: Other functions
-    desc: Functions able to some other interactions
-    contents:
-      - '`get_sos_procedurelist`'
-      - '`taxon_id_pesi`'
-      - '`taxon_id_worms`'
+    - get_site_info
+    - get_site_ODS
+    - get_network_envcharacts
+    - get_network_parameters
+    - get_network_research_topics
+    - get_network_related_resources
+    - get_network_sites
+    - get_ilter_envcharacts
+    - get_ilter_generalinfo
+    - get_ilter_parameters
+    - get_ilter_research_topics
+    - get_activity_info
+    - get_dataset_info
+    - produce_network_points_map
+    - produce_site_map
+    - produce_site_qrcode
+    - produce_site_parameters_pie
+    - produce_site_parameters_waffle
+    - get_sos_procedurelist
+    - taxon_id_pesi
+    - taxon_id_worms
+
 navbar:
-  type: inverse
-  left: []
-  right:
-    - icon: fa-home fa-lg
-      href: index.html
-    - text: "Reference"
-      icon: fa-file-code
-      href: reference/index.html
+  structure:
+    left: [
+      # intro,
+      reference,
+      articles,
+      # tutorials,
+      news
+    ]
+    right: [
+      # search,
+      github
+    ]
+  # type: inverse
+  # left: []
+  # right:
+    # - icon: fa-home fa-lg
+    #   href: index.html
+    # - text: "Reference"
+    #   icon: fa-file-code
+    #   href: reference/index.html
     #- text: "Articles"
     #  icon: fa-book
     #  menu:
@@ -67,10 +68,10 @@ navbar:
       #   href: articles/sen2r_cmd.html
       #-  text: "Output file structure"
       #   href: articles/outstructure.html
-    - text: "Changelog"
-      icon: fa-newspaper
-      href: news/index.html
-    - icon: fa-user
-      href: https://www.cnr.it/people/alessandro.oggioni
-    - icon: fa-github fa-lg
-      href: https://github.com/oggioniale/ReLTER/
+    # - text: "Changelog"
+    #   icon: fa-newspaper
+    #   href: news/index.html
+    # - icon: fa-user
+    #   href: https://www.cnr.it/people/alessandro.oggioni
+    # - icon: fa-github fa-lg
+    #   href: https://github.com/oggioniale/ReLTER/

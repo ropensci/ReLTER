@@ -18,7 +18,6 @@ test_that("Expect error if internet connection is down", {
 })
 
 skip_if_offline(host = "deims.org")
-skip_on_ci()
 skip_if(skip_in_test_mode)
 
 test_that("Output of network related resources function constructs 'tibble' as
@@ -35,7 +34,7 @@ test_that("Output of network related resources function constructs 'tibble' as
   )))
   expect_type(result$uri, "character")
   expect_type(result$relatedResourcesTitle, "character")
-  expect_type(result$relatedResourcesChanged, "character")
+  expect_type(result$relatedResourcesChanged, "double")
 })
 
 test_that("Wrong input (but URL) constructs a NULL object", {

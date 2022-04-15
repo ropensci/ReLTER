@@ -1,7 +1,7 @@
 #' @title eLTER taxon_id_worms_refine
 #' @description This function provides a refining of the output of
 #' function taxon_id_worms. It prints a list of possible matches
-#' and possibly enable the user to interactively make his choice.
+#' and possibly enables the user to interactively make his choice.
 #' @param input a `tibble`. The output of taxon_ID_Worms.
 #' @param taxaColumn a `numeric`. The cardinal number of the column where
 #' species list is. Default is `1`.
@@ -13,6 +13,7 @@
 #' output of the function is a `tibble` with the refinement of the
 #' input, else the function simply returns the unchanged input.
 #' @author Alessandro Oggioni, phD (2021) \email{oggioni.a@@irea.cnr.it}
+#' @author Paolo Tagliolato, PhD (2021) \email{tagliolato.p@@irea.cnr.it}
 #' @importFrom dplyr filter select
 #' @keywords internal
 #'
@@ -54,8 +55,8 @@ The Worms records most similar are:\n\n",
       if (interaction) {
         my.selection <-
           readline(prompt = "\n----\nPlease select the record that you think
-                 mostsimilar to the taxa name that you have provided.
-                 Insert the number of record:")
+most similar to the taxa name that you have provided.
+Insert the number of record:")
       } else if (!is.null(choiceNumber)) {
         my.selection <- choiceNumber
       }

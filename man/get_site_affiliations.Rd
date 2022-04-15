@@ -8,8 +8,8 @@ get_site_affiliations(deimsid)
 }
 \arguments{
 \item{deimsid}{A character. The DEIMS ID of the site from
-DEIMS-SDR website. More information about DEIMS ID in this pages:
-\href{https://deims.org/docs/deimsid.html}{page}.}
+DEIMS-SDR website. DEIMS ID information
+\href{https://deims.org/docs/deimsid.html}{here}.}
 }
 \value{
 The output of the function is a `tibble` with main features of the

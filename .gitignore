@@ -3,5 +3,6 @@
 .RData
 .Ruserdata
 R_newFunctions
-.github
 ReLTER.Rcheck
+_pkgdown.yaml
+*.rds

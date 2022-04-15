@@ -2,32 +2,44 @@
 % Please edit documentation in R/get_network_sites.R
 \name{get_network_sites}
 \alias{get_network_sites}
-\title{eLTER get_network_sites function}
+\title{Retrieve a list of sites in an eLTER Network.}
 \usage{
 get_network_sites(networkDEIMSID)
 }
 \arguments{
 \item{networkDEIMSID}{A `character`. The DEIMS ID of the network from
-DEIMS-SDR website. More information about DEIMS network ID from these pages:
-\href{https://deims.org/docs/deimsid.html}{page}, and
-\href{https://deims.org/search?f[0]=result_type:network}{page} the
-complete list of ILTER networks.}
+DEIMS-SDR website. DEIMS ID information
+\href{https://deims.org/docs/deimsid.html}{here} and Complete list of
+networks \href{https://deims.org/search?f[0]=result_type:network}{here}.
+The DEIMS ID of network is the URL for the network page.}
 }
 \value{
 The output of the function is a point vector of `sf` class
 (package sf) of the network's sites.
 }
 \description{
-This function retrieves a list of sites in the provided network
-including title, date late updated, URI, and coordinates
+This function return a spatial point vector object including
+title, date late updated, URI, and coordinates, stored in
+\href{https://deims.org/}{DEIMS-SDR catalogue}, of all the eLTER sites
+belonging to an eLTER Network (e.g.
+\href{https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3}{LTER-
+Italy network}).
 }
 \examples{
 \dontrun{
+# The sites of LTER-Italy network
 listSites <- get_network_sites(
   networkDEIMSID =
   "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 )
-listSites[1:10, ]
+listSites
+
+# The sites of LTER Europe network
+euSites <- get_network_sites(
+  networkDEIMSID =
+  "https://deims.org/networks/4742ffca-65ac-4aae-815f-83738500a1fc"
+)
+euSites
 }
 
 }
