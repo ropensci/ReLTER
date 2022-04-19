@@ -30,7 +30,7 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 
 [![R build
 status](https://github.com/rossellhayes/ipa/workflows/R-CMD-check/badge.svg)](https://github.com/rossellhayes/ipa/actions)
-[![codecov](https://codecov.io/gh/oggioniale/ReLTER/branch/dev/graph/badge.svg)](https://codecov.io/gh/oggioniale/ReLTER)
+[![codecov](https://codecov.io/gh/oggioniale/ReLTER/branch/main/graph/badge.svg)](https://codecov.io/gh/oggioniale/ReLTER)
 
 <!-- badges: end -->
 
