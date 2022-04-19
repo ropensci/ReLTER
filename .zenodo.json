@@ -1,0 +1,27 @@
+{
+  "title": "ReLTER: An Interface for the 'eLTER' Community",
+  "version": "1.1.0",
+  "creators": [
+    {
+      "name": "Oggioni, Alessandro",
+      "orcid": "0000-0002-7997-219X"
+    },
+    {
+      "name": "Silver, Micha",
+      "orcid": "0000-0002-1128-1325"
+    },
+    {
+      "name": "Tagliolato, Paolo",
+      "orcid": "0000-0002-0261-313X"
+    },
+    {
+      "name": "Ranghetti, Luigi",
+      "orcid": "0000-0001-6207-5188"
+    }
+  ],
+  "keywords": {},
+  "license": {
+    "id": "GPL-3.0-or-later"
+  },
+  "publication_date": "2022-04-19"
+}
