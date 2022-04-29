@@ -44,7 +44,7 @@ Description: ReLTER provides access to DEIMS-SDR (https://deims.org/),
     activities) shared by DEIMS-SDR (see e.g. get_site_info function);
     - interact with the [ODSEurope](maps.opendatascience.eu)
     starting with the dataset shared by [DEIMS-SDR](https://deims.org/)
-    (see e.g. [get_site_ODS](https://oggioniale.github.io/ReLTER/reference/get_site_ODS.html)
+    (see e.g. [get_site_ODS](https://ropensci.github.io/ReLTER/reference/get_site_ODS.html)
     function);
     - use the eLTER site informations to download and crop geospatial data
     from other platforms (see e.g. get_site_ODS function);
@@ -102,8 +102,8 @@ Suggests:
     rnaturalearthdata,
     covr
 VignetteBuilder: knitr
-URL: https://github.com/oggioniale/ReLTER
-BugReports: https://github.com/oggioniale/ReLTER/issues
+URL: https://github.com/ropensci/ReLTER
+BugReports: https://github.com/ropensci/ReLTER/issues
 Config/testthat/edition: 3
 RoxygenNote: 7.1.2
 Language: en-GB

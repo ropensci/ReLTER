@@ -7,7 +7,7 @@ template:
     ganalytics: UA-12345678-0
   includes:
     in_header: |
-      <script defer data-domain="oggioniale.github.io/relter" src="https://plausible.io/js/plausible.js"></script>
+      <script defer data-domain="ropensci.github.io/relter" src="https://plausible.io/js/plausible.js"></script>
 
 reference:
   - title: All functions
@@ -74,4 +74,4 @@ navbar:
     # - icon: fa-user
     #   href: https://www.cnr.it/people/alessandro.oggioni
     # - icon: fa-github fa-lg
-    #   href: https://github.com/oggioniale/ReLTER/
+    #   href: https://github.com/ropensci/ReLTER/

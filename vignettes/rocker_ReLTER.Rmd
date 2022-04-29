@@ -9,7 +9,7 @@ author: "Paolo Tagliolato"
 ---
 
 # rocker_ReLTER
-docker image for ReLTER package (https://github.com/oggioniale/ReLTER)
+docker image for ReLTER package (https://github.com/ropensci/ReLTER)
 
 ## About
 Run RStudio with preinstalled ReLTER package through Docker.
@@ -17,7 +17,7 @@ Run RStudio with preinstalled ReLTER package through Docker.
 ## Install a different branch of ReLTER package
 Edit the addReLTER.sh script and modify the last line, using the name of your preferred branch as the ref= parameter value:
 
-    R -e "devtools::install_github('https://github.com/oggioniale/ReLTER',ref = '<branchName>',dependencies = FALSE)"
+    R -e "devtools::install_github('https://github.com/ropensci/ReLTER',ref = '<branchName>',dependencies = FALSE)"
   
 ## Build the image
 

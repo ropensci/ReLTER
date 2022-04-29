@@ -8,17 +8,17 @@ ReLTER
 
 [![](https://img.shields.io/badge/doi-10.5281/zenodo.5576813-yellow.svg)](https://doi.org/10.5281/zenodo.5576813)
 <!-- the version is determined via the DESCRIPTION file -->
-[![](https://img.shields.io/badge/devel%20version-1.1.0-blue.svg)](https://github.com/oggioniale/ReLTER)
+[![](https://img.shields.io/badge/devel%20version-1.1.0-blue.svg)](https://github.com/ropensci/ReLTER)
 <!-- CRAN badges -->
-<!-- [![](https://www.r-pkg.org/badges/version/oggioniale/ReLTER?color=orange)](https://cran.r-project.org/package=oggioniale/ReLTER) -->
+<!-- [![](https://www.r-pkg.org/badges/version/ropensci/ReLTER?color=orange)](https://cran.r-project.org/package=ropensci/ReLTER) -->
 <!-- [![CRAN checks](https://cranchecks.info/badges/summary/ReLTER)](https://cran.r-project.org/web/checks/check_results_ReLTER.html) -->
 <!-- [![](http://cranlogs.r-pkg.org/badges/last-month/badger?color=green)](https://cran.r-project.org/package=badger) -->
 <!-- [![Rdoc](https://www.rdocumentation.org/badges/version/ReLTER)](https://www.rdocumentation.org/packages/ReLTER) -->
 <!-- work on github -->
-[![](https://img.shields.io/github/languages/code-size/oggioniale/ReLTER.svg)](https://github.com/oggioniale/ReLTER)
-[![](https://img.shields.io/github/last-commit/oggioniale/ReLTER.svg)](https://github.com/oggioniale/ReLTER/commits/main)
+[![](https://img.shields.io/github/languages/code-size/ropensci/ReLTER.svg)](https://github.com/ropensci/ReLTER)
+[![](https://img.shields.io/github/last-commit/ropensci/ReLTER.svg)](https://github.com/ropensci/ReLTER/commits/main)
 [![License:
-GPL-3.0](https://img.shields.io/badge/license-GPL--3.0-blue.svg)](https://cran.r-project.org/web/licenses/GPL-3.0)
+GPL-3](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://cran.r-project.org/web/licenses/GPL-3)
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
@@ -30,7 +30,7 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 
 [![R build
 status](https://github.com/rossellhayes/ipa/workflows/R-CMD-check/badge.svg)](https://github.com/rossellhayes/ipa/actions)
-[![codecov](https://codecov.io/gh/oggioniale/ReLTER/branch/dev/graph/badge.svg)](https://codecov.io/gh/oggioniale/ReLTER)
+[![codecov](https://codecov.io/gh/ropensci/ReLTER/branch/dev/graph/badge.svg)](https://codecov.io/gh/ropensci/ReLTER)
 
 <!-- badges: end -->
 
@@ -47,15 +47,15 @@ The `{ReLTER}` package functions in particular allows to:
 -   retrieve the information about entities (e.g. sites, datasets, and
     activities) shared by [DEIMS-SDR](https://deims.org/) (see e.g.
     [get_site_info
-    function](https://oggioniale.github.io/ReLTER/reference/get_site_info.html));
+    function](https://ropensci.github.io/ReLTER/reference/get_site_info.html));
 
 -   elaborate the information of single site or merge info from national
     network sites or entire International LTER (ILTER) in order to
     provide maps, figures, graphs etc (see e.g.
-    [get_network_sites](https://oggioniale.github.io/ReLTER/reference/get_network_sites.html),
-    [produce_site_map](https://oggioniale.github.io/ReLTER/reference/produce_site_map.html)
+    [get_network_sites](https://ropensci.github.io/ReLTER/reference/get_network_sites.html),
+    [produce_site_map](https://ropensci.github.io/ReLTER/reference/produce_site_map.html)
     or
-    [produce_site_parameters_pie](https://oggioniale.github.io/ReLTER/reference/produce_site_parameters_pie.html)
+    [produce_site_parameters_pie](https://ropensci.github.io/ReLTER/reference/produce_site_parameters_pie.html)
     functions);
 
 -   interact with the [ODSEurope](maps.opendatascience.eu) managed by
@@ -63,11 +63,11 @@ The `{ReLTER}` package functions in particular allows to:
     [Geo-harmonizer](https://opendatascience.eu/geoharmonizer-project/)
     project starting with the dataset shared by
     [DEIMS-SDR](https://deims.org/) (see e.g.
-    [get_site_ODS](https://oggioniale.github.io/ReLTER/reference/get_site_ODS.html)
+    [get_site_ODS](https://ropensci.github.io/ReLTER/reference/get_site_ODS.html)
     function);
 
 -   improve the quality of the dataset (see e.g.
-    [get_id_worms](https://oggioniale.github.io/ReLTER/reference/get_id_worms.html)).
+    [get_id_worms](https://ropensci.github.io/ReLTER/reference/get_id_worms.html)).
 
 Functions currently implemented are derived from the discussion of the
 needs declared by eLTER users community.
@@ -81,7 +81,7 @@ tools.
 ## :notebook_with_decorative_cover: Citation
 
 To cite `{ReLTER}` please use: Alessandro Oggioni, Micha Silver, Luigi
-Ranghetti & Paolo Tagliolato. (2022). oggioniale/ReLTER: ReLTER v1.1.0
+Ranghetti & Paolo Tagliolato. (2022). ropensci/ReLTER: ReLTER v1.1.0
 (1.1.0). Zenodo. <https://doi.org/10.5281/zenodo.5576813>
 
 or:
@@ -89,7 +89,7 @@ or:
 ``` bibtex
 @software{alessandro_oggioni_2021_5576813,
   author       = {Alessandro Oggioni and Micha Silver and Luigi Ranghetti and Paolo Tagliolato},
-  title        = {oggioniale/ReLTER: ReLTER v1.1.0},
+  title        = {ropensci/ReLTER: ReLTER v1.1.0},
   month        = nov,
   year         = 2022,
   publisher    = {Zenodo},
@@ -102,22 +102,22 @@ or:
 ## :book: Documentation
 
 Visit the `{ReLTER}` website at
-[oggioniale.github.io/ReLTER/](https://oggioniale.github.io/ReLTER/) for
+[ropensci.github.io/ReLTER/](https://ropensci.github.io/ReLTER/) for
 further documentation, examples, and installation of the package.
 
 ## :arrow_double_down: Installation
 
 You can install the main version of `{ReLTER}` from
-[GitHub](https://github.com/oggioniale/ReLTER) with:
+[GitHub](https://github.com/ropensci/ReLTER) with:
 
     install.packages("devtools")
-    devtools::install_github("oggioniale/ReLTER")
+    devtools::install_github("ropensci/ReLTER")
     library(ReLTER)
 
 If you want to install different package branch (e.g. ‘dev’) can you use
 this command:
 
-    devtools::install_github('https://github.com/oggioniale/ReLTER', ref = 'dev')
+    devtools::install_github('https://github.com/ropensci/ReLTER', ref = 'dev')
 
 Alternatively {`ReLTER`} can be used [in a Docker
 container](./articles/rocker_ReLTER.html).
@@ -225,19 +225,19 @@ invisible(
 knitr::kable(listParams[1:10, ] %>% dplyr::rows_insert(tibble(parameterLabel = "...", parameterUri = "...")))
 ```
 
-| parameterLabel                    | parameterUri                                  |
-|:----------------------------------|:----------------------------------------------|
-| atmospheric parameter             | <http://vocabs.lter-europe.net/EnvThes/20937> |
-| ecosystem parameter               | <http://vocabs.lter-europe.net/EnvThes/20939> |
-| conductivity                      | <http://vocabs.lter-europe.net/EnvThes/22089> |
-| dissolved nutrient                | <http://vocabs.lter-europe.net/EnvThes/22107> |
-| dissolved organic carbon in water | <http://vocabs.lter-europe.net/EnvThes/10307> |
-| ecosystem structure               | <http://vocabs.lter-europe.net/EnvThes/21475> |
-| inorganic nutrient content        | <http://vocabs.lter-europe.net/EnvThes/22137> |
-| percent carbon                    | <http://vocabs.lter-europe.net/EnvThes/22181> |
-| percent organic carbon            | <http://vocabs.lter-europe.net/EnvThes/22183> |
-| total carbon                      | <http://vocabs.lter-europe.net/EnvThes/22296> |
-| …                                 | …                                             |
+| parameterLabel               | parameterUri                                  |
+|:-----------------------------|:----------------------------------------------|
+| chlorophyll content of water | <http://vocabs.lter-europe.net/EnvThes/10088> |
+| community composition        | <http://vocabs.lter-europe.net/EnvThes/22086> |
+| dissolved nutrient           | <http://vocabs.lter-europe.net/EnvThes/22107> |
+| diversity index              | <http://vocabs.lter-europe.net/EnvThes/21513> |
+| ecosystem parameter          | <http://vocabs.lter-europe.net/EnvThes/20939> |
+| ecosystem structure          | <http://vocabs.lter-europe.net/EnvThes/21475> |
+| faunistic diversity          | <http://vocabs.lter-europe.net/EnvThes/22119> |
+| floristic diversity          | <http://vocabs.lter-europe.net/EnvThes/22122> |
+| inorganic nutrient content   | <http://vocabs.lter-europe.net/EnvThes/22137> |
+| secchi depth                 | <http://vocabs.lter-europe.net/EnvThes/22226> |
+| …                            | …                                             |
 
 ------------------------------------------------------------------------
 
@@ -255,9 +255,9 @@ print(tDataset)
 #> Bounding box:  xmin: 11.88721 ymin: 43.20518 xmax: 15.86426 ymax: 45.91294
 #> Geodetic CRS:  WGS 84
 #> # A tibble: 1 × 36
-#>   title  abstract   keywords uri   type  dateRange.from dateRange.to relatedSite
-#> * <chr>  <chr>      <list>   <chr> <chr> <chr>          <lgl>        <list>     
-#> 1 LTER … The prese… <df [5 … http… data… 1965-01-01     NA           <df [1 × 4…
+#>   title    abstract keywords uri   type  dateRange.from dateRange.to relatedSite
+#> * <chr>    <chr>    <list>   <chr> <chr> <chr>          <lgl>        <list>     
+#> 1 LTER No… The pre… <df>     http… data… 1965-01-01     NA           <df>       
 #> # … with 28 more variables: siteTitle <chr>, DEIMSiD <chr>,
 #> #   contacts.corresponding <list>, contacts.creator <list>,
 #> #   contacts.metadataProvider <lgl>, observationParameters <list>,
@@ -398,7 +398,7 @@ Paolo Tagliolato <https:://orcid.org/0000-0002-0261-313X> (CNR,
 Institute for Electromagnetic Sensing of the Environment - IREA)
 
 For a exhaustive list of contributors please visit [authors
-page](https://oggioniale.github.io/ReLTER/authors).
+page](https://ropensci.github.io/ReLTER/authors).
 
 ## :office: Contributing organizations
 
