@@ -6,11 +6,11 @@ First of all, thanks for considering contributing to *ReLTER*! 👍 It's people 
 
 *ReLTER* is an open source project, maintained by people who care. We are not directly funded to do so.
 
-[repo]: https://github.com/oggioniale/ReLTER
-[issues]: https://github.com/oggioniale/ReLTER/issues
-[new_issue]: https://github.com/oggioniale/ReLTER/issues/new
-[website]: https://oggioniale.github.io/ReLTER/
-[citation]: https://github.com/oggioniale/ReLTER#notebook_with_decorative_cover-citation
+[repo]: https://github.com/ropensci/ReLTER
+[issues]: https://github.com/ropensci/ReLTER/issues
+[new_issue]: https://github.com/ropensci/ReLTER/issues/new
+[website]: https://ropensci.github.io/ReLTER/
+[citation]: https://github.com/ropensci/ReLTER#notebook_with_decorative_cover-citation
 [email]: mailto:oggioni.a@irea.cnr.it
 
 ## Code of conduct

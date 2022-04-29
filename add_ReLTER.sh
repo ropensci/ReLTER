@@ -24,5 +24,5 @@ install2.r --error --skipinstalled -n $NCPUS \
 	rosm \
 	MODIStsp
 
-R -e "devtools::install_github('https://github.com/oggioniale/ReLTER',ref = 'main',dependencies = FALSE)"
-#R -e "devtools::install_github('https://github.com/oggioniale/ReLTER',ref = 'dev__withImprovements',dependencies = FALSE)"
+R -e "devtools::install_github('https://github.com/ropensci/ReLTER',ref = 'main',dependencies = FALSE)"
+#R -e "devtools::install_github('https://github.com/ropensci/ReLTER',ref = 'dev__withImprovements',dependencies = FALSE)"

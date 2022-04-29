@@ -21,7 +21,7 @@ abstract: 'ReLTER provides access to DEIMS-SDR (https://deims.org/), and allows 
   particular allow to: - retrieve the information about entities (e.g. sites, datasets,
   and activities) shared by DEIMS-SDR (see e.g. get_site_info function); - interact
   with the [ODSEurope](maps.opendatascience.eu) starting with the dataset shared by
-  [DEIMS-SDR](https://deims.org/) (see e.g. [get_site_ODS](https://oggioniale.github.io/ReLTER/reference/get_site_ODS.html)
+  [DEIMS-SDR](https://deims.org/) (see e.g. [get_site_ODS](https://ropensci.github.io/ReLTER/reference/get_site_ODS.html)
   function); - use the eLTER site informations to download and crop geospatial data
   from other platforms (see e.g. get_site_ODS function); - improve the quality of
   the dataset (see e.g. get_id_worms). Functions currently implemented are derived
@@ -47,7 +47,7 @@ authors:
   orcid: https://orcid.org/0000-0001-6207-5188
 preferred-citation:
   type: generic
-  title: 'oggioniale/ReLTER: ReLTER v1.1.0'
+  title: 'ropensci/ReLTER: ReLTER v1.1.0'
   authors:
   - family-names: Oggioni
     given-names: Alessandro
@@ -67,8 +67,8 @@ preferred-citation:
     orcid: https://orcid.org/0000-0002-0261-313X
   year: '2022'
   notes: R package version v1.1.0
-repository-code: https://github.com/oggioniale/ReLTER
-url: https://github.com/oggioniale/ReLTER
+repository-code: https://github.com/ropensci/ReLTER
+url: https://github.com/ropensci/ReLTER
 contact:
 - family-names: Oggioni
   given-names: Alessandro

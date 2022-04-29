@@ -28,15 +28,15 @@ knitr::opts_chunk$set(
 
 `r badger::badge_doi("10.5281/zenodo.5576813", "yellow")`
 <!-- the version is determined via the DESCRIPTION file -->
-`r badger::badge_devel("oggioniale/ReLTER", "blue")`
+`r badger::badge_devel("ropensci/ReLTER", "blue")`
 <!-- CRAN badges -->
-<!-- `r badger::badge_cran_release("oggioniale/ReLTER", "orange")` -->
+<!-- `r badger::badge_cran_release("ropensci/ReLTER", "orange")` -->
 <!-- `r badger::badge_cran_checks("ReLTER")` -->
 <!-- `r badger::badge_cran_download("badger", "last-month", "green")` -->
 <!-- `r badgecreatr::badge_rdocumentation("ReLTER")` -->
-<!-- work on github --> `r badger::badge_code_size("oggioniale/ReLTER")`
-`r badger::badge_last_commit("oggioniale/ReLTER")`
-`r badger::badge_license("GPL-3.0")` [![Project Status: Active – The
+<!-- work on github --> `r badger::badge_code_size("ropensci/ReLTER")`
+`r badger::badge_last_commit("ropensci/ReLTER")`
+`r badger::badge_license("GPL-3")` [![Project Status: Active – The
 project has reached a stable, usable state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![Lifecycle](https://lifecycle.r-lib.org/articles/figures/lifecycle-stable.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
@@ -48,7 +48,7 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 <!-- where issue_id is the number of the issue in the software-review repository. -->
 
 `r badger::badge_github_actions("rossellhayes/ipa")`
-[![codecov](https://codecov.io/gh/oggioniale/ReLTER/branch/dev/graph/badge.svg)](https://codecov.io/gh/oggioniale/ReLTER)
+[![codecov](https://codecov.io/gh/ropensci/ReLTER/branch/dev/graph/badge.svg)](https://codecov.io/gh/ropensci/ReLTER)
 
 <!-- badges: end -->
 
@@ -65,15 +65,15 @@ The `{ReLTER}` package functions in particular allows to:
 -   retrieve the information about entities (e.g. sites, datasets, and
     activities) shared by [DEIMS-SDR](https://deims.org/) (see e.g.
     [get_site_info
-    function](https://oggioniale.github.io/ReLTER/reference/get_site_info.html));
+    function](https://ropensci.github.io/ReLTER/reference/get_site_info.html));
 
 -   elaborate the information of single site or merge info from national
     network sites or entire International LTER (ILTER) in order to
     provide maps, figures, graphs etc (see e.g.
-    [get_network_sites](https://oggioniale.github.io/ReLTER/reference/get_network_sites.html),
-    [produce_site_map](https://oggioniale.github.io/ReLTER/reference/produce_site_map.html)
+    [get_network_sites](https://ropensci.github.io/ReLTER/reference/get_network_sites.html),
+    [produce_site_map](https://ropensci.github.io/ReLTER/reference/produce_site_map.html)
     or
-    [produce_site_parameters_pie](https://oggioniale.github.io/ReLTER/reference/produce_site_parameters_pie.html)
+    [produce_site_parameters_pie](https://ropensci.github.io/ReLTER/reference/produce_site_parameters_pie.html)
     functions);
 
 -   interact with the [ODSEurope](maps.opendatascience.eu) managed by
@@ -81,11 +81,11 @@ The `{ReLTER}` package functions in particular allows to:
     [Geo-harmonizer](https://opendatascience.eu/geoharmonizer-project/)
     project starting with the dataset shared by
     [DEIMS-SDR](https://deims.org/) (see e.g.
-    [get_site_ODS](https://oggioniale.github.io/ReLTER/reference/get_site_ODS.html)
+    [get_site_ODS](https://ropensci.github.io/ReLTER/reference/get_site_ODS.html)
     function);
 
 -   improve the quality of the dataset (see e.g.
-    [get_id_worms](https://oggioniale.github.io/ReLTER/reference/get_id_worms.html)).
+    [get_id_worms](https://ropensci.github.io/ReLTER/reference/get_id_worms.html)).
 
 Functions currently implemented are derived from the discussion of the
 needs declared by eLTER users community.
@@ -99,7 +99,7 @@ tools.
 ## :notebook_with_decorative_cover: Citation
 
 To cite `{ReLTER}` please use: Alessandro Oggioni, Micha Silver, Luigi
-Ranghetti & Paolo Tagliolato. (2022). oggioniale/ReLTER: ReLTER v1.1.0
+Ranghetti & Paolo Tagliolato. (2022). ropensci/ReLTER: ReLTER v1.1.0
 (1.1.0). Zenodo. <https://doi.org/10.5281/zenodo.5576813>
 
 or:
@@ -107,7 +107,7 @@ or:
 ``` bibtex
 @software{alessandro_oggioni_2021_5576813,
   author       = {Alessandro Oggioni and Micha Silver and Luigi Ranghetti and Paolo Tagliolato},
-  title        = {oggioniale/ReLTER: ReLTER v1.1.0},
+  title        = {ropensci/ReLTER: ReLTER v1.1.0},
   month        = nov,
   year         = 2022,
   publisher    = {Zenodo},
@@ -120,21 +120,21 @@ or:
 ## :book: Documentation
 
 Visit the `{ReLTER}` website at
-[oggioniale.github.io/ReLTER/](https://oggioniale.github.io/ReLTER/) for
+[ropensci.github.io/ReLTER/](https://ropensci.github.io/ReLTER/) for
 further documentation, examples, and installation of the package.
 
 ## :arrow_double_down: Installation
 
 You can install the main version of `{ReLTER}` from
-[GitHub](https://github.com/oggioniale/ReLTER) with:
+[GitHub](https://github.com/ropensci/ReLTER) with:
 
     install.packages("devtools")
-    devtools::install_github("oggioniale/ReLTER")
+    devtools::install_github("ropensci/ReLTER")
     library(ReLTER)
 
 If you want to install different package branch (e.g. 'dev') can you use this command:
 
-    devtools::install_github('https://github.com/oggioniale/ReLTER', ref = 'dev')
+    devtools::install_github('https://github.com/ropensci/ReLTER', ref = 'dev')
 
 Alternatively {`ReLTER`} can be used [in a Docker container](./articles/rocker_ReLTER.html).
 
@@ -316,7 +316,7 @@ Paolo Tagliolato <https:://orcid.org/0000-0002-0261-313X> (CNR,
 Institute for Electromagnetic Sensing of the Environment - IREA)
 
 For a exhaustive list of contributors please visit [authors
-page](https://oggioniale.github.io/ReLTER/authors).
+page](https://ropensci.github.io/ReLTER/authors).
 
 ## :office: Contributing organizations
 
