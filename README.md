@@ -4,8 +4,8 @@ ReLTER
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- badges: start -->
 <!-- other badges https://github.com/GuangchuangYu/badger -->
+[![StandWithUkraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg)](https://vshymanskyy.github.io/StandWithUkraine)
 <!-- DOI badge -->
-
 [![](https://img.shields.io/badge/doi-10.5281/zenodo.5576813-yellow.svg)](https://doi.org/10.5281/zenodo.5576813)
 <!-- the version is determined via the DESCRIPTION file -->
 [![](https://img.shields.io/badge/devel%20version-1.1.0-blue.svg)](https://github.com/ropensci/ReLTER)
@@ -30,7 +30,7 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 
 [![R build
 status](https://github.com/rossellhayes/ipa/workflows/R-CMD-check/badge.svg)](https://github.com/rossellhayes/ipa/actions)
-[![codecov](https://codecov.io/gh/ropensci/ReLTER/branch/dev/graph/badge.svg)](https://codecov.io/gh/ropensci/ReLTER)
+[![codecov](https://codecov.io/gh/oggioniale/ReLTER/branch/main/graph/badge.svg)](https://codecov.io/gh/oggioniale/ReLTER)
 
 <!-- badges: end -->
 
