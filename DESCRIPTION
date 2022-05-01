@@ -21,12 +21,15 @@ Authors@R: c(
         ),
         person("Allison", "Horst", 
           role = "rev",
-          comment = "Allison reviewed the package (v. 1.0.0) for rOpenSci, see <https://github.com/ropensci/software-review/issues/485>"
+          comment = "Allison reviewed the package (v. 1.0.0) for rOpenSci, see https://github.com/ropensci/software-review/issues/485"
         ),
         person("Will", "Bolton", 
           role = "rev",
-          comment = "Will reviewed the package (v. 1.0.0) for rOpenSci, see <https://github.com/ropensci/software-review/issues/485>"
-        )
+          comment = "Will reviewed the package (v. 1.0.0) for rOpenSci, see https://github.com/ropensci/software-review/issues/485"
+        ),
+        person("Mauro", "Lepore",
+        role = "edt",
+        comment = "Mauro was editor for rOpenSci, see https://github.com/ropensci/software-review/issues/485")
       )
 Maintainer: Alessandro Oggioni
     <alessandro.oggioni@cnr.it>
@@ -44,7 +47,7 @@ Description: ReLTER provides access to DEIMS-SDR (https://deims.org/),
     activities) shared by DEIMS-SDR (see e.g. get_site_info function);
     - interact with the [ODSEurope](maps.opendatascience.eu)
     starting with the dataset shared by [DEIMS-SDR](https://deims.org/)
-    (see e.g. [get_site_ODS](https://ropensci.github.io/ReLTER/reference/get_site_ODS.html)
+    (see e.g. [get_site_ODS](https://docs.ropensci.org/ReLTER/reference/get_site_ODS.html)
     function);
     - use the eLTER site informations to download and crop geospatial data
     from other platforms (see e.g. get_site_ODS function);

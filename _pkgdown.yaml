@@ -1,13 +1,12 @@
 title: ReLTER
-url: https://oggioniale.github.io/ReLTER/
+url: https://docs.ropensci.org/ReLTER/
 template:
   bootstrap: 5
   params:
     mathjax: true
-    ganalytics: UA-12345678-0
   includes:
     in_header: |
-      <script defer data-domain="ropensci.github.io/relter" src="https://plausible.io/js/plausible.js"></script>
+      <script defer data-domain="docs.ropensci.org/relter" src="https://plausible.io/js/plausible.js"></script>
 
 reference:
   - title: All functions

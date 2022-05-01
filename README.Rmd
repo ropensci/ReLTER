@@ -27,29 +27,21 @@ knitr::opts_chunk$set(
 <!-- DOI badge -->
 
 `r badger::badge_doi("10.5281/zenodo.5576813", "yellow")`
-<!-- the version is determined via the DESCRIPTION file -->
 `r badger::badge_devel("ropensci/ReLTER", "blue")`
-<!-- CRAN badges -->
-<!-- `r badger::badge_cran_release("ropensci/ReLTER", "orange")` -->
-<!-- `r badger::badge_cran_checks("ReLTER")` -->
-<!-- `r badger::badge_cran_download("badger", "last-month", "green")` -->
-<!-- `r badgecreatr::badge_rdocumentation("ReLTER")` -->
-<!-- work on github --> `r badger::badge_code_size("ropensci/ReLTER")`
+`r badger::badge_code_size("ropensci/ReLTER")`
 `r badger::badge_last_commit("ropensci/ReLTER")`
 `r badger::badge_license("GPL-3")` [![Project Status: Active – The
 project has reached a stable, usable state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![Lifecycle](https://lifecycle.r-lib.org/articles/figures/lifecycle-stable.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
-
-<!-- Once you have submitted a package and it has passed editor checks, add a peer-review badge via -->
-
-<!-- [![](https://badges.ropensci.org/485_status.svg)](https://github.com/ropensci/software-review/issues/485) -->
-
-<!-- where issue_id is the number of the issue in the software-review repository. -->
-
 `r badger::badge_github_actions("rossellhayes/ipa")`
+[![r-universe](https://ropensci.r-universe.dev/badges/ReLTER)](https://ropengov.r-universe.dev/)
 [![codecov](https://codecov.io/gh/ropensci/ReLTER/branch/dev/graph/badge.svg)](https://codecov.io/gh/ropensci/ReLTER)
-
+<!-- CRAN badges -->
+<!-- `r badger::badge_cran_release("ropensci/ReLTER", "orange")` -->
+<!-- `r badger::badge_cran_checks("ReLTER")` -->
+<!-- `r badger::badge_cran_download("badger", "last-month", "green")` -->
+<!-- `r badgecreatr::badge_rdocumentation("ReLTER")` -->
 <!-- badges: end -->
 
 `{ReLTER}` is an R package that provides access to
@@ -65,15 +57,15 @@ The `{ReLTER}` package functions in particular allows to:
 -   retrieve the information about entities (e.g. sites, datasets, and
     activities) shared by [DEIMS-SDR](https://deims.org/) (see e.g.
     [get_site_info
-    function](https://ropensci.github.io/ReLTER/reference/get_site_info.html));
+    function](https://docs.ropensci.org/ReLTER/reference/get_site_info.html));
 
 -   elaborate the information of single site or merge info from national
     network sites or entire International LTER (ILTER) in order to
     provide maps, figures, graphs etc (see e.g.
-    [get_network_sites](https://ropensci.github.io/ReLTER/reference/get_network_sites.html),
-    [produce_site_map](https://ropensci.github.io/ReLTER/reference/produce_site_map.html)
+    [get_network_sites](https://docs.ropensci.org/ReLTER/reference/get_network_sites.html),
+    [produce_site_map](https://docs.ropensci.org/ReLTER/reference/produce_site_map.html)
     or
-    [produce_site_parameters_pie](https://ropensci.github.io/ReLTER/reference/produce_site_parameters_pie.html)
+    [produce_site_parameters_pie](https://docs.ropensci.org/ReLTER/reference/produce_site_parameters_pie.html)
     functions);
 
 -   interact with the [ODSEurope](maps.opendatascience.eu) managed by
@@ -81,11 +73,11 @@ The `{ReLTER}` package functions in particular allows to:
     [Geo-harmonizer](https://opendatascience.eu/geoharmonizer-project/)
     project starting with the dataset shared by
     [DEIMS-SDR](https://deims.org/) (see e.g.
-    [get_site_ODS](https://ropensci.github.io/ReLTER/reference/get_site_ODS.html)
+    [get_site_ODS](https://docs.ropensci.org/ReLTER/reference/get_site_ODS.html)
     function);
 
 -   improve the quality of the dataset (see e.g.
-    [get_id_worms](https://ropensci.github.io/ReLTER/reference/get_id_worms.html)).
+    [get_id_worms](https://docs.ropensci.org/ReLTER/reference/get_id_worms.html)).
 
 Functions currently implemented are derived from the discussion of the
 needs declared by eLTER users community.
@@ -120,8 +112,11 @@ or:
 ## :book: Documentation
 
 Visit the `{ReLTER}` website at
-[ropensci.github.io/ReLTER/](https://ropensci.github.io/ReLTER/) for
+[docs.ropensci.org/ReLTER/](https://docs.ropensci.org/ReLTER/) for
 further documentation, examples, and installation of the package.
+
+The manual of `{ReLTER}` package could be found 
+[here](https://ropensci.r-universe.dev/manual/ReLTER.pdf).
 
 ## :arrow_double_down: Installation
 
@@ -135,6 +130,11 @@ You can install the main version of `{ReLTER}` from
 If you want to install different package branch (e.g. 'dev') can you use this command:
 
     devtools::install_github('https://github.com/ropensci/ReLTER', ref = 'dev')
+
+The `{ReLTER}` package is part of the [R-universe](https://r-universe.dev/) community
+and it can be installed also use this command:
+
+    utils::install.packages("ReLTER", repos = "https://ropensci.r-universe.dev")
 
 Alternatively {`ReLTER`} can be used [in a Docker container](./articles/rocker_ReLTER.html).
 
@@ -316,7 +316,7 @@ Paolo Tagliolato <https:://orcid.org/0000-0002-0261-313X> (CNR,
 Institute for Electromagnetic Sensing of the Environment - IREA)
 
 For a exhaustive list of contributors please visit [authors
-page](https://ropensci.github.io/ReLTER/authors).
+page](https://docs.ropensci.org/ReLTER/authors).
 
 ## :office: Contributing organizations
 
@@ -331,3 +331,5 @@ page](https://ropensci.github.io/ReLTER/authors).
 This work has been partially funded from the European Union's Horizon
 2020 research and innovation programme under the [H2020 eLTER-Plus
 Project](https://elter-ri.eu/elter-plus) grant agreement No 871128.
+
+Thanks to the reviewers and the editor ([more about authors](https://docs.ropensci.org/ReLTER/authors.html)) for their work.
