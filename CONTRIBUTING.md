@@ -9,7 +9,7 @@ First of all, thanks for considering contributing to *ReLTER*! 👍 It's people 
 [repo]: https://github.com/ropensci/ReLTER
 [issues]: https://github.com/ropensci/ReLTER/issues
 [new_issue]: https://github.com/ropensci/ReLTER/issues/new
-[website]: https://ropensci.github.io/ReLTER/
+[website]: https://docs.ropensci.org/ReLTER/
 [citation]: https://github.com/ropensci/ReLTER#notebook_with_decorative_cover-citation
 [email]: mailto:oggioni.a@irea.cnr.it
 

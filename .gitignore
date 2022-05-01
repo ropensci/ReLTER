@@ -4,5 +4,10 @@
 .Ruserdata
 R_newFunctions
 ReLTER.Rcheck
+cache
+doc
+miscellaneus
+rosm.cache
+submission_rOpenSci
 _pkgdown.yaml
 *.rds

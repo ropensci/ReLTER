@@ -1,5 +1,5 @@
 pandoc: 2.14.0.3
-pkgdown: 2.0.1
+pkgdown: 2.0.3
 pkgdown_sha: ~
 articles:
   resources_delivered_eu_networks: resources_delivered_eu_networks.html
@@ -7,8 +7,8 @@ articles:
   site_information: site_information.html
   sites_contacts: sites_contacts.html
   sites_information: sites_information.html
-last_built: 2022-04-29T12:04Z
+last_built: 2022-05-01T21:00Z
 urls:
-  reference: https://oggioniale.github.io/ReLTER/reference
-  article: https://oggioniale.github.io/ReLTER/articles
+  reference: https://docs.ropensci.org/ReLTER/reference
+  article: https://docs.ropensci.org/ReLTER/articles
 

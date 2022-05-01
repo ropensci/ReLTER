@@ -22,7 +22,7 @@ For each LTER site the information are provided, by site manager, into DEIMS-SDR
 
 For more details about the site data model please visit <https://deims.org/models/?id=site>.
 
-The [`get_site_info`](https://ropensci.github.io/ReLTER/reference/get_site_info.html) function of {ReLTER} allows to download details about a specific site, through the DEIMS-SDR sites API and the DEIMS ID (<https://deims.org/docs/deimsid.html>).
+The [`get_site_info`](https://docs.ropensci.org/ReLTER/reference/get_site_info.html) function of {ReLTER} allows to download details about a specific site, through the DEIMS-SDR sites API and the DEIMS ID (<https://deims.org/docs/deimsid.html>).
 
 ## Get affiliation info of the LTER site:
 
