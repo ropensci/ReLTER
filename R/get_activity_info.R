@@ -27,8 +27,7 @@
 #' activities
 #'
 #' @section The function output:
-#' \figure{get_activity_info_fig.png}{Map of "Study of non-indigenous (alien)
-#' species in the Mar Piccolo of Taranto" activity}
+#' \figure{get_activity_info_fig.png}{Map of "Study of non-indigenous (alien) species in the Mar Piccolo of Taranto" activity}
 #'
 ### function get_activity_info
 get_activity_info <- function(activityid, show_map = FALSE) {
