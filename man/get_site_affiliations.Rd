@@ -12,7 +12,7 @@ DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here}.}
 }
 \value{
-The output of the function is a `tibble` with main features of the
+The output of the function is a \code{tibble} with main features of the
 site and the affiliations information, such as: networks and projects in
 which the site is involved.
 }

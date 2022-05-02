@@ -7,14 +7,14 @@
 get_ilter_envcharacts(sitesNum = 0)
 }
 \arguments{
-\item{sitesNum}{A `integer`. The number of the sites that are
+\item{sitesNum}{A \code{integer}. The number of the sites that are
 read to get the information. Use this parameter only to get a
 sample of the output of this function. If the value of sitesNum is
 0 (default) all the ILTER sites will be parsed and the waiting time will
 be long.}
 }
 \value{
-The output of the function is a `tibble` containing all the
+The output of the function is a \code{tibble} containing all the
 Environmental Characteristics of ILTER's sites.
 }
 \description{
@@ -31,8 +31,8 @@ for this function is very high.
 
 If the objective is obtain information about Environmental Characteristics
 on a few sites, it is better to use other more specific functions (e.g.
-\href{get_network_envcharacts.html}{`get_network_envcharacts()`} or
-\href{get_site_info.html}{`get_site_info()`}) or using
+\href{get_network_envcharacts.html}{\code{get_network_envcharacts()}} or
+\href{get_site_info.html}{\code{get_site_info()}}) or using
 other methods
 (\href{../../articles/sites_information.html}{How to about sites
 informations}).
@@ -45,5 +45,5 @@ listEnvCharacts[1:20, ]
 
 }
 \author{
-Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
+Alessandro Oggioni, phD (2020) \href{mailto:oggioni.a@irea.cnr.it}{oggioni.a@irea.cnr.it}
 }

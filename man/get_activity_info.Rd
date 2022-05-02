@@ -7,17 +7,17 @@
 get_activity_info(activityid, show_map = FALSE)
 }
 \arguments{
-\item{activityid}{A `character`. It is the DEIMS ID of activity make from
+\item{activityid}{A \code{character}. It is the DEIMS ID of activity make from
 DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here}.
 The DEIMS.iD of activity is the URL for the activity page.}
 
-\item{show_map}{A `boolean`. If TRUE a Leaflet map with occurrences
+\item{show_map}{A \code{boolean}. If TRUE a Leaflet map with occurrences
 is shown. Default FALSE.}
 }
 \value{
-The output of the function is a `tibble` with main features of
-the activities in a site, and a `leaflet` map plot.
+The output of the function is a \code{tibble} with main features of
+the activities in a site, and a \code{leaflet} map plot.
 }
 \description{
 This function obtains the information about of an eLTER
@@ -27,8 +27,7 @@ provided in \href{https://deims.org/}{DEIMS-SDR catalogue}.
 }
 \section{The function output}{
 
-\figure{get_activity_info_fig.png}{Map of "Study of non-indigenous (alien)
-species in the Mar Piccolo of Taranto" activity}
+\figure{get_activity_info_fig.png}{Map of "Study of non-indigenous (alien) species in the Mar Piccolo of Taranto" activity}
 }
 
 \examples{

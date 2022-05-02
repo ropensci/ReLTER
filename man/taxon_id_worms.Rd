@@ -8,23 +8,23 @@ comparing with \href{https://www.marinespecies.org}{Worms}.}
 taxon_id_worms(input, taxaColumn = 1, verbose = TRUE, refine = FALSE)
 }
 \arguments{
-\item{input}{A `tibble`. The table that contain the species
+\item{input}{A \code{tibble}. The table that contain the species
 names list to be checked.}
 
-\item{taxaColumn}{A `numeric`. The cardinal number of the column where
-species list is. Default is `1`.}
+\item{taxaColumn}{A \code{numeric}. The cardinal number of the column where
+species list is. Default is \code{1}.}
 
-\item{verbose}{A `logical`. Whit this selection, the function returns a
+\item{verbose}{A \code{logical}. Whit this selection, the function returns a
 message with number of record(s) that don't match with any Worms names and
 the number of record(s) that match with more that one Worms name. Default
-is `TRUE`.}
+is \code{TRUE}.}
 
-\item{refine}{A `logical`. With this selection, the function allows to
+\item{refine}{A \code{logical}. With this selection, the function allows to
 refine the result(s) that match with more Worms records. By a interactive
-use of the terminal, the user can chose the result. Default is `FALSE`.}
+use of the terminal, the user can chose the result. Default is \code{FALSE}.}
 }
 \value{
-The output of the function is a `tibble` with the columns provided
+The output of the function is a \code{tibble} with the columns provided
 and new columns such as: valid_name, valid_authority, valid_AphiaID, status,
 synonyms, LSID, url, matchType, nOfWormsRecords, wormsRecords obtained by
 \href{http://www.marinespecies.org/rest/}{Worms rest API}.

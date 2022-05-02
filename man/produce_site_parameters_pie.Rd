@@ -7,12 +7,12 @@
 produce_site_parameters_pie(deimsid)
 }
 \arguments{
-\item{deimsid}{A `character`. It is the DEIMS ID of site/network from
+\item{deimsid}{A \code{character}. It is the DEIMS ID of site/network from
 DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here}.}
 }
 \value{
-The output of the function is a pie chart and a `tibble`. The
+The output of the function is a pie chart and a \code{tibble}. The
 percentages, as a label in the pie charts and in the output table (
 column 'perc'), refer to the number of the parameters, belonging to a type
 (e.g. biological, atmospheric, etc.), measured compared to all of parameters

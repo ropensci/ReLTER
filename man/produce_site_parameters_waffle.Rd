@@ -7,12 +7,12 @@
 produce_site_parameters_waffle(deimsid)
 }
 \arguments{
-\item{deimsid}{A `character`. The DEIMS ID of site/network from:
+\item{deimsid}{A \code{character}. The DEIMS ID of site/network from:
 DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here}.}
 }
 \value{
-The output of the function is a waffle chart and a `tibble`. Each
+The output of the function is a waffle chart and a \code{tibble}. Each
 of the squares represents a parameters measured into the selected eLTER
 site. The parameters with the same color belong to the same group (e.g.
 biological, atmospheric, etc.).

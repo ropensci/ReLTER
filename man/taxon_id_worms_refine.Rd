@@ -12,20 +12,20 @@ taxon_id_worms_refine(
 )
 }
 \arguments{
-\item{input}{a `tibble`. The output of taxon_ID_Worms.}
+\item{input}{a \code{tibble}. The output of taxon_ID_Worms.}
 
-\item{taxaColumn}{a `numeric`. The cardinal number of the column where
-species list is. Default is `1`.}
+\item{taxaColumn}{a \code{numeric}. The cardinal number of the column where
+species list is. Default is \code{1}.}
 
-\item{interaction}{a `boolean`. When `TRUE` the user can interact with
-the choice of one of the proposed matching. Default is `FALSE`.}
+\item{interaction}{a \code{boolean}. When \code{TRUE} the user can interact with
+the choice of one of the proposed matching. Default is \code{FALSE}.}
 
-\item{choiceNumber}{a `numeric`. The number of selected choice. Default
-is `NULL`. When `NULL` no choice is performed.}
+\item{choiceNumber}{a \code{numeric}. The number of selected choice. Default
+is \code{NULL}. When \code{NULL} no choice is performed.}
 }
 \value{
-In interactive mode or when the `choiceNumber` is `NULL` the
-output of the function is a `tibble` with the refinement of the
+In interactive mode or when the \code{choiceNumber} is \code{NULL} the
+output of the function is a \code{tibble} with the refinement of the
 input, else the function simply returns the unchanged input.
 }
 \description{

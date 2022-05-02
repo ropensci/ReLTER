@@ -7,11 +7,11 @@
 get_sos_procedurelist(sosHost)
 }
 \arguments{
-\item{sosHost}{A `list`. An SOS endpoint (e.g.
+\item{sosHost}{A \code{list}. An SOS endpoint (e.g.
 \url{http://getit.lteritalia.it/observations/sos/kvp?}).}
 }
 \value{
-The output of the function is a `list` with the name and URI
+The output of the function is a \code{list} with the name and URI
 (Uniform Resource Identifier) of each procedure.
 }
 \description{

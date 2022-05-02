@@ -7,14 +7,14 @@
 get_ilter_research_topics(sitesNum = NULL)
 }
 \arguments{
-\item{sitesNum}{A `integer`. It is the number of the sites that are
+\item{sitesNum}{A \code{integer}. It is the number of the sites that are
 read to get the information. Use this parameter only to get an
 example of the output of this function. If the value of sitesNum is
 0 (default) all the ILTER sites will be parsed and the waiting time will
 be long.}
 }
 \value{
-The output of the function is a `tibble` containing the research
+The output of the function is a \code{tibble} containing the research
 topics and their URI (Uniform Resource Identifier) of all ILTER sites.
 }
 \description{
@@ -26,8 +26,8 @@ this function is very high.
 
 If the objective is to obtain information about Research Topics
 from a few sites, it is better to use other more specific functions (e.g.
-\href{get_network_research_topics.html}{`get_network_research_topics()`} or
-\href{get_site_info.html}{`get_site_info()`}) or using
+\href{get_network_research_topics.html}{\code{get_network_research_topics()}} or
+\href{get_site_info.html}{\code{get_site_info()}}) or using
 other methods
 (\href{../../articles/sites_information.html}{How to about sites
 informations}).

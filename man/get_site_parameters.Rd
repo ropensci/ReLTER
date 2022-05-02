@@ -7,12 +7,12 @@
 get_site_parameters(deimsid)
 }
 \arguments{
-\item{deimsid}{A `character`. It is the DEIMS ID of the site from
+\item{deimsid}{A \code{character}. It is the DEIMS ID of the site from
 DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here}.}
 }
 \value{
-The output of the function is a `tibble` with main features of the
+The output of the function is a \code{tibble} with main features of the
 site and the parameters collected.
 }
 \description{

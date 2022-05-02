@@ -7,12 +7,12 @@
 get_site_research_topics(deimsid)
 }
 \arguments{
-\item{deimsid}{A `character`. The DEIMS ID of the site from
+\item{deimsid}{A \code{character}. The DEIMS ID of the site from
 DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here}.}
 }
 \value{
-The output of the function is a `tibble` with main features of the
+The output of the function is a \code{tibble} with main features of the
 site and a list of the research topics handled in this site.
 }
 \description{

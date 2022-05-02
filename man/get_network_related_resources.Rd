@@ -8,14 +8,14 @@ eLTER Network.}
 get_network_related_resources(networkDEIMSID)
 }
 \arguments{
-\item{networkDEIMSID}{A `character`. It is the DEIMS ID of network make
+\item{networkDEIMSID}{A \code{character}. It is the DEIMS ID of network make
 from DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here} and Complete list of ILTER
-networks \href{https://deims.org/search?f[0]=result_type:network}{here}.
+networks \href{https://deims.org/search?f\link{0}=result_type:network}{here}.
 The DEIMS ID of network is the URL for the network page.}
 }
 \value{
-The output of the function is a `tibble` containing the related
+The output of the function is a \code{tibble} containing the related
 resources shared by the network's sites.
 }
 \description{
