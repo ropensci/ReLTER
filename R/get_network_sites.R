@@ -1,5 +1,6 @@
 #' Retrieve a list of sites in an eLTER Network.
-#' @description This function return a spatial point vector object including
+#' @description `r lifecycle::badge("stable")`
+#' This function return a spatial point vector object including
 #' title, date late updated, URI, and coordinates, stored in
 #' \href{https://deims.org/}{DEIMS-SDR catalogue}, of all the eLTER sites
 #' belonging to an eLTER Network (e.g.
@@ -38,7 +39,8 @@
 #'
 ### function get_network_sites
 get_network_sites <- function(networkDEIMSID) {
-  url <- paste0("https://deims.org/",
+  deimsbaseurl <- get_deims_base_url()
+  url <- paste0(deimsbaseurl,
                 "api/sites?network=",
                 sub("^.+/", "", networkDEIMSID))
   export <- httr::RETRY("GET", url = url, times = 5)
@@ -63,7 +65,7 @@ get_network_sites <- function(networkDEIMSID) {
     lSNPD_valid <- sf::st_is_valid(
       lterSitesNetworkPointDEIMS
     )
-  
+
     # checking MULTIPOINT geometry
     lSNPD_type <- sf::st_geometry_type(
       x = lterSitesNetworkPointDEIMS,
@@ -90,7 +92,7 @@ get_network_sites <- function(networkDEIMSID) {
       )
     })
     # end checking
-  
+
     if (any(lSNPD_valid)) {
       map <- leaflet::leaflet(lterSitesNetworkPointDEIMS) %>%
         leaflet::addTiles() %>%

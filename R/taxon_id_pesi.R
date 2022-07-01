@@ -1,6 +1,7 @@
 #' Provide a taxon ID \href{https://en.wikipedia.org/wiki/LSID}{LSID} to a
 #' taxon list.
-#' @description This function provide a taxon ID, usually a
+#' @description `r lifecycle::badge("stable")`
+#' This function provide a taxon ID, usually a
 #' \href{https://en.wikipedia.org/wiki/LSID}{LSID}, from a taxonomic list.
 #' The input of the function is a csv file with a list of taxa. The Taxon
 #' ID provided by this function is currently taken from Pan-European Species

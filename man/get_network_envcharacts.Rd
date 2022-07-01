@@ -19,6 +19,7 @@ The output of the function is a \code{tibble} containing all the
 Environmental Characteristics of the network's sites.
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 This function obtains all Environmental Characteristics:
 title, URI, geo-coordinates, country name, and elevation
 of eLTER Network sites (e.g.

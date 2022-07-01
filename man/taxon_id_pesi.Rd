@@ -59,6 +59,7 @@ correctly.
 }
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 This function provide a taxon ID, usually a
 \href{https://en.wikipedia.org/wiki/LSID}{LSID}, from a taxonomic list.
 The input of the function is a csv file with a list of taxa. The Taxon

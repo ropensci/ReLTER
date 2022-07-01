@@ -14,24 +14,28 @@ reference:
     - get_site_info
     - get_site_ODS
     - get_network_envcharacts
-    - get_network_parameters
+    - get_network_observedProperties
     - get_network_research_topics
     - get_network_related_resources
     - get_network_sites
     - get_ilter_envcharacts
     - get_ilter_generalinfo
-    - get_ilter_parameters
+    - get_ilter_observedProperties
     - get_ilter_research_topics
     - get_activity_info
     - get_dataset_info
+    - get_deims_API_version
     - produce_network_points_map
     - produce_site_map
     - produce_site_qrcode
-    - produce_site_parameters_pie
-    - produce_site_parameters_waffle
+    - produce_site_observedProperties_pie
+    - produce_site_observedProperties_waffle
     - get_sos_procedurelist
     - taxon_id_pesi
     - taxon_id_worms
+    - package_settings
+    - set_deims_base_url
+    - get_deims_base_url
 
 navbar:
   structure:

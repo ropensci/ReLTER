@@ -32,6 +32,7 @@ The function also return, if verbose is TRUE, the list of records that don't
 match with Worms name species.
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 This function tibble object with all the columns of input table
 of taxa plus new columns such as valid_name, valid_authority, valid_AphiaID,
 status, synonyms, LSID, url, matchType, nOfWormsRecords, wormsRecords

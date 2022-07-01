@@ -15,7 +15,7 @@ Package settings that can be changed by the user
 }
 \seealso{
 Other package_customizable_settings: 
-\code{\link{getDeimsBaseUrl}()}
+\code{\link{get_deims_base_url}()}
 }
 \concept{package_customizable_settings}
 \keyword{datasets}

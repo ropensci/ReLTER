@@ -1,5 +1,6 @@
 #' @title eLTER get_site_related_resources function
-#' @description This function obtains a list of related resources
+#' @description `r lifecycle::badge("stable")`
+#' This function obtains a list of related resources
 #' collected in an eLTER site through the DEIMS-SDR sites API.
 #' @param deimsid A `character`. The DEIMS ID of the site from
 #' DEIMS-SDR website. DEIMS ID information
@@ -14,20 +15,12 @@
 #'
 ### function get_site_related_resources
 get_site_related_resources <- function(deimsid) {
-  q <- '{title: .title,
-       uri: "\\(.id.prefix)\\(.id.suffix)",
-       geoCoord: .attributes.geographic.coordinates,
-       country: .attributes.geographic.country,
-       geoElev: .attributes.geographic.elevation,
-       relatedResources: .attributes.relatedResources
-      }'
-  jj <- get_id(deimsid, "sites")
+  qo <- queries_jq[[get_deims_API_version()]]$site_relatedResources
+  jj <- get_id(deimsid, qo$path)
   if (is.na(attr(jj, "status"))) {
     invisible(
       utils::capture.output(
-        relatedResources <- dplyr::as_tibble(
-          do_Q(q, jj)
-        )
+        relatedResources <- dplyr::as_tibble(do_Q(qo$query, jj))
       )
     )
     if (!is.na(relatedResources$relatedResources)) {

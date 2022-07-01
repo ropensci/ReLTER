@@ -1,5 +1,6 @@
 #' @title eLTER get_site_infrastructure function
-#' @description This function obtains infrastructure information
+#' @description `r lifecycle::badge("stable")`
+#' This function obtains infrastructure information
 #' of an eLTER site through the DEIMS-SDR sites API.
 #' @param deimsid A `character`. The DEIMS ID of the site from
 #' DEIMS-SDR website. DEIMS ID information
@@ -15,20 +16,12 @@
 #'
 ### function get_site_infrastructure
 get_site_infrastructure <- function(deimsid) {
-  q <- '{title: .title,
-       uri: "\\(.id.prefix)\\(.id.suffix)",
-       geoCoord: .attributes.geographic.coordinates,
-       country: .attributes.geographic.country,
-       geoElev: .attributes.geographic.elevation,
-       generalInfo: .attributes.infrastructure
-      }'
-  jj <- get_id(deimsid, "sites")
+  qo <- queries_jq[[get_deims_API_version()]]$site_infrastructure
+  jj <- get_id(deimsid, qo$path)
   if (is.na(attr(jj, "status"))) {
     invisible(
       utils::capture.output(
-        infrastructure <- dplyr::as_tibble(
-          do_Q(q, jj)
-        )
+        infrastructure <- dplyr::as_tibble(do_Q(qo$query, jj))
       )
     )
     colnames(infrastructure$generalInfo.collection[[1]]) <- c(

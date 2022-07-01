@@ -95,7 +95,9 @@ Imports:
     rworldmap,
     rnaturalearth,
     gridExtra,
-    webshot
+    webshot,
+    lifecycle,
+    RCurl
 Suggests: 
     httptest,
     knitr,

@@ -1,5 +1,6 @@
 #' Obtain the information about of an eLTER activity.
-#' @description This function obtains the information about of an eLTER
+#' @description `r lifecycle::badge("stable")`
+#' This function obtains the information about of an eLTER
 #' activity (e.g.
 #' \url{https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845})
 #' provided in \href{https://deims.org/}{DEIMS-SDR catalogue}.
@@ -27,29 +28,17 @@
 #' activities
 #'
 #' @section The function output:
-#' \figure{get_activity_info_fig.png}{Map of "Study of non-indigenous (alien) species in the Mar Piccolo of Taranto" activity}
+#' \figure{get_activity_info_fig.png}{Map of "Study of non-indigenous (alien)
+#' species in the Mar Piccolo of Taranto" activity}
 #'
 ### function get_activity_info
 get_activity_info <- function(activityid, show_map = FALSE) {
-  q <- '{
-        title: .title,
-        abstract: .attributes.general.abstract,
-        keywords: .attributes.general.keywords,
-        uri: "\\(.id.prefix)\\(.id.suffix)",
-        type: .type,
-        created: .created,
-        changed: .changed,
-        relatedSite: .attributes.general.relatedSite,
-        contacts: .attributes.contact,
-        boundaries: .attributes.geographic.boundaries,
-        observationParameters: .attributes.observations.parameters,
-        relatedResources: .attributes.relatedResources
-        }'
-  jj <- get_id(activityid, "activities")
+  qo <- queries_jq[[get_deims_API_version()]]$activity_info
+  jj <- get_id(activityid, qo$path)
   if (is.na(attr(jj, "status"))) {
     invisible(
       utils::capture.output(
-        activity <- dplyr::as_tibble(do_Q(q, jj))
+        activity <- dplyr::as_tibble(do_Q(qo$query, jj))
       )
     )
     if (!is.null(activity)) {

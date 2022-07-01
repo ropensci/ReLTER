@@ -1,14 +1,15 @@
-#' Produce a waffle chart of the parameters collected in a site LTER.
-#' @description Return a waffle chart of Environmental Parameters, as a
+#' Produce a waffle chart of the observed properties collected in a site LTER.
+#' @description `r lifecycle::badge("stable")`
+#' Return a waffle chart of Environmental observed properties, as a
 #' stored in \href{https://deims.org/}{DEIMS-SDR catalogue}, of a single
 #' eLTER site.
 #' @param deimsid A `character`. The DEIMS ID of site/network from:
 #' DEIMS-SDR website. DEIMS ID information
 #' \href{https://deims.org/docs/deimsid.html}{here}.
 #' @return The output of the function is a waffle chart and a `tibble`. Each
-#' of the squares represents a parameters measured into the selected eLTER
-#' site. The parameters with the same color belong to the same group (e.g.
-#' biological, atmospheric, etc.).
+#' of the squares represents a observed properties measured into the selected
+#' eLTER site. The observed properties with the same color belong to the same
+#' group (e.g. biological, atmospheric, etc.).
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom tibble as_tibble
 #' @importFrom dplyr group_by tally mutate filter
@@ -18,21 +19,22 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' waffle <- produce_site_parameters_waffle(
+#' waffle <- produce_site_observedProperties_waffle(
 #'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
 #' )
 #' waffle
 #' }
 #'
 #' @section The function output:
-#' \figure{produce_site_parameters_waffle_fig.png}{Parameters waffle chart}
+#' \figure{produce_site_parameters_waffle_fig.png}{Observed properties
+#' waffle chart}
 #'
-### function produce_site_parameters_waffle
-produce_site_parameters_waffle <- function(deimsid) {
+### function produce_site_observedProperties_waffle
+produce_site_observedProperties_waffle <- function(deimsid) {
   # TODO add this by SPARQL query
   site <- ReLTER::get_site_info(
     deimsid = deimsid,
-    category = "Parameters"
+    category = "observedProperties"
   )
   paramsDeims <- tibble::as_tibble(site$parameter[[1]])
   if (length(paramsDeims) != 0) {
@@ -44,7 +46,7 @@ produce_site_parameters_waffle <- function(deimsid) {
       "s"
     )
     groupsIsNa <- params %>% dplyr::filter(is.na(parameterGroups))
-    # plot of parameters ----
+    # plot of observed properties ----
     params <- params %>%
       dplyr::group_by(parameterGroups) %>%
       dplyr::tally() %>%
@@ -70,16 +72,16 @@ produce_site_parameters_waffle <- function(deimsid) {
     waffle <- waffle::waffle(
       obsPropWaffle,
       title = paste0(
-        "Parameters measured in the ",
+        "Observed properties measured in the ",
         site$title,
         " grouped by type"
       ),
       rows = 8,
       size = 3,
       xlab = paste0(
-        "1 square is 1 parameter. A total of ",
+        "1 square is 1 observed property. A total of ",
         sum(params$n),
-        " parameters are collected in the ",
+        " observed properties are collected in the ",
         site$title, " site (DEIMS ID: ",
         site$uri, ")"
       ),
@@ -91,11 +93,11 @@ produce_site_parameters_waffle <- function(deimsid) {
       message("")
     } else {
       message(
-        "This parameters are not included, please contact the development of the
-        package by GitHub.\n",
+        "This observed properties are not included, please contact the
+        development of thepackage by GitHub.\n",
         "Paste this message into the GitHub issue.\n",
-        "I am using the parametersChart function and need to add the following
-        parameters in the mapping:\n",
+        "I am using the produce_site_observedProperties_waffle() function
+        and need to add the following observed properties in the mapping:\n",
         paste(groupsIsNa$parameterLabel, collapse = "\n")
       )
     }

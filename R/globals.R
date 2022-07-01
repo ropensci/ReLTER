@@ -9,7 +9,8 @@ utils::globalVariables(
     "parameterGroups",
     "vjust",
     "end",
-    "start"
+    "start",
+    "perc"
   )
 )
 
@@ -24,29 +25,30 @@ package_settings <- (function() {
   pe
 })()
 
-#' set deims api base url
-#' @param url A `character`. Set the base url to deims.
+#' Set DEIMS-SDR API base URL
+#' @param url A `character`. Set the base URL to DEIMS-SDR.
+#' @param force A `boolean`. Default FALSE.
 #' @export
 #' @importFrom RCurl url.exists
-setDeimsBaseUrl <- function(url = "https://deims.org/", force = FALSE) {
+set_deims_base_url <- function(url = "https://deims.org/", force = FALSE) {
   if (!endsWith(url, "/")) {
     url <- paste0(url, "/")
   }
   if (!RCurl::url.exists(url)) {
     if (force) {
-      warning("The url ", url, " is not reachable, I set it because 
+      warning("The URL ", url, " is not reachable, I set it because
               force TRUE is specified")
     }
-    stop("The url ", url, " is not reachable")
+    stop("The URL ", url, " is not reachable")
   }
-  message("Changing deims base url to: ", url)
+  message("Changing DEIMS-SDR base URL to: ", url)
   assign("deimsBaseUrl", url, envir = package_settings)
 }
 
-#' get deims base url
-#' @return deims base url
+#' Get DEIMS-SDR base URL
+#' @return DEIMS-SDR base URL
 #' @family package_customizable_settings
 #' @export
-getDeimsBaseUrl <- function() {
+get_deims_base_url <- function() {
   get("deimsBaseUrl", envir = package_settings)
 }

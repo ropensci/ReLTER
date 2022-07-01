@@ -1,6 +1,7 @@
 #' Enrich and certify a list of species names by
 #' comparing with \href{https://www.marinespecies.org}{Worms}.
-#' @description This function tibble object with all the columns of input table
+#' @description `r lifecycle::badge("stable")`
+#' This function tibble object with all the columns of input table
 #' of taxa plus new columns such as valid_name, valid_authority, valid_AphiaID,
 #' status, synonyms, LSID, url, matchType, nOfWormsRecords, wormsRecords
 #' obtained from:

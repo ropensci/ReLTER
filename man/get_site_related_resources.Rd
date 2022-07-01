@@ -16,6 +16,7 @@ The output of the function is a \code{tibble} with main features of the
 site and a list of the related resources collected by site.
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 This function obtains a list of related resources
 collected in an eLTER site through the DEIMS-SDR sites API.
 }

@@ -68,6 +68,7 @@ The output of the function is an \code{image} of the boundary of the
 site, OSM as base map and all country sites map.
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 This function produces a \code{map} of the site boundaries
 as provided by the \href{https://deims.org/}{DEIMS-SDR catalogue}, within
 a given country and network.

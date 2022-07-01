@@ -5,7 +5,7 @@ library(testthat)
 test_that("Output of SOS procedure list function constructs 'list'
           as expected", {
             result <- get_sos_procedurelist(
-              sosHost = "http://getit.lteritalia.it/observations/sos/kvp?"
+              sosHost = "http://getit.lteritalia.it/observations/service?"
             )
             expect_type(result, "list")
           })

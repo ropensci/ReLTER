@@ -1,6 +1,27 @@
+# ReLTER 1.2.0 Release Notes
+
+v1.2.0 was released on 01/07/2022
+
+## Changes
+
+* inserted new functions for set an environment for variables of the package,
+  for setting and for get the DEIMS-SDR base URL;
+* inserted a new function for get version of DEIMS-SDR API based on the
+  DEIMS-SDR base URL;
+* added an object (queries_jq) containing all the JQ queries (as a list);
+* added the new JQ queries accordingly with the structure of the new DEIMS-SDR
+  API version;
+* deleted the JQ queries call into the get_site_info(), get_activity_info(),
+  and get_dataset_info() and substitute with a variable;
+* changed the name of the functions containing "parameters" with "observed
+  properties";
+* added for some functions the life cycle badge.
+
+________________________________________________________________________________
+
 # ReLTER 1.1.0 Release Notes
 
-v1.1.0 was released on 15/04/2021
+v1.1.0 was released on 15/04/2022
 
 ## Major changes
 
@@ -11,7 +32,6 @@ v1.1.0 was released on 15/04/2021
 * new functions (get_site_ODS and taxon_id_worms) has been implemented;
 * enriched the information downloaded for datasets and activities from DEIMS-SDR;
 * a solution for install package by Docker has been done.
-
 
 ________________________________________________________________________________
 

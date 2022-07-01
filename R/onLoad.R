@@ -2,7 +2,7 @@
   # add here code to check deims api version and consequently load jq queries.
   sys_url <- Sys.getenv("ReLTER_deimsBaseURL")
   if (!is.null(sys_url) && sys_url != "") {
-    setDeimsBaseUrl(sys_url)
+    set_deims_base_url(sys_url)
   }
 }
 

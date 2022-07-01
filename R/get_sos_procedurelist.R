@@ -1,5 +1,6 @@
 #' List the procedures of a Sensor Observations Service (SOS).
-#' @description Return a list of procedures (e.g. method, algorithm,
+#' @description `r lifecycle::badge("stable")`
+#' Return a list of procedures (e.g. method, algorithm,
 #' instrument, sensor, or system which may be used in making observations)
 #' store into a
 #' \href{http://opengeospatial.github.io/e-learning/sos/text/index.html}{SOS
@@ -17,14 +18,17 @@
 #' @examples
 #' \dontrun{
 #' get_sos_procedurelist(
-#'   sosHost = "http://getit.lteritalia.it/observations/sos/kvp?"
+#'   sosHost = "http://getit.lteritalia.it/observations/service?"
 #' )
 #' }
 #'
 ### function get_sos_procedurelist
 get_sos_procedurelist <- function(sosHost) {
-  xslProcUrl.url <- paste0("https://www.get-it.it/objects/sensors/xslt/",
-                           "Capabilities_proceduresUrlList.xsl")
+  xslProcUrl.url <- paste0(
+    "http://www.get-it.it/objects/sensors/xslt/",
+    # "xslt/", # local
+    "Capabilities_proceduresUrlList.xsl"
+  )
   styleProcUrl <- xml2::read_xml(xslProcUrl.url, package = "xslt")
 
   listProcedure <- utils::read.csv(text = xslt::xml_xslt((

@@ -69,7 +69,7 @@ get_id <- function(deimsid, resource = "sites", test, ...) {
     ))
 
   } else {
-    deimsbaseurl <- getDeimsBaseUrl()
+    deimsbaseurl <- get_deims_base_url()
     if (resource == "networks") {
       url <- paste0(deimsbaseurl, "api/sites?network=", deimsid)
     } else {

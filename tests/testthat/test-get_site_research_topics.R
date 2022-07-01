@@ -23,11 +23,10 @@ test_that("Output of site reseearch topics function constructs ‘tibble’ as
     deimsid = TESTURLSite
   )
   expect_s3_class(result, "tbl_df")
-  expect_true(ncol(result) == 9)
+  expect_true(ncol(result) == 8)
   expect_true(all(names(result) == c(
     "title", "uri", "geoCoord", "country",
-    "geoElev.avg", "geoElev.min", "geoElev.max", "geoElev.unit",
-    "researchTopics"
+    "geoElev.avg", "geoElev.min", "geoElev.max", "geoElev.unit"
   )))
 
   expect_type(result$title, "character")

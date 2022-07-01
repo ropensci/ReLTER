@@ -16,6 +16,11 @@ The output of the function is a \code{tibble} with main features of the
 site and a list of the research topics handled in this site.
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#defunct}{\figure{lifecycle-defunct.svg}{options: alt='[Defunct]'}}}{\strong{[Defunct]}}
+This function was defunct because the section
+about research topics of the site in DEIMS-SDR API
+version 1.1 has been removed.
+
 This function obtains a list of research topics handled
 at an eLTER site through the DEIMS-SDR sites API.
 }

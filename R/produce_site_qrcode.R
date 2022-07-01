@@ -1,5 +1,6 @@
 #' Obtain the QRCode of any DEIMS-SDR entities.
-#' @description Return a QR code image of any provided DEIMS ID (e.g. dataset,
+#' @description `r lifecycle::badge("stable")`
+#' Return a QR code image of any provided DEIMS ID (e.g. dataset,
 #' site, activity).
 #' @param deimsid A `character`. The DEIMS ID of entities from
 #' DEIMS-SDR website. DEIMS ID information

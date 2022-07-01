@@ -1,5 +1,10 @@
 #' Obtain the information about the Research Topics of ILTER sites.
-#' @description This function obtains Research Topics as collected by all
+#' @description `r lifecycle::badge("defunct")`
+#' This function was defunct because the section
+#' about research topics of the site in DEIMS-SDR API
+#' version 1.1 has been removed.
+#' 
+#' This function obtains Research Topics as collected by all
 #' \href{https://www.ilter.network/network/global-coverage}{ILTER sites
 #' (more than 1200 around the world)}, as stored in
 #' \href{https://deims.org}{DEIMS-SDR}. Note that the execution time for
@@ -37,15 +42,21 @@
 #'
 ### function get_ilter_research_topics
 get_ilter_research_topics <- function(sitesNum = NULL) {
+  deimsbaseurl <- get_deims_base_url()
   if (is.null(sitesNum)) {
-    lterILTERSites <- as.list(jsonlite::fromJSON("https://deims.org/api/sites"))
+    lterILTERSites <- as.list(jsonlite::fromJSON(
+      paste0(
+        deimsbaseurl,
+        "api/sites"
+      )
+    ))
     allSiteResearchTopics <- lapply(
       as.list(paste0(lterILTERSites$id$prefix, lterILTERSites$id$suffix)),
       ReLTER::get_site_info,
       category = "ResearchTop"
     )
     uniteSiteResearchTopics <- dplyr::bind_rows(allSiteResearchTopics)
-    researchTopicsILTERList <- uniteSiteResearchTopics$researchTopics
+    researchTopicsILTERList <- NULL #uniteSiteResearchTopics$researchTopics
     researchTopicsILTERDF <- dplyr::bind_rows(researchTopicsILTERList)
     uniqueSiteResearchTopics <- dplyr::as_tibble(
       dplyr::distinct(
@@ -54,7 +65,12 @@ get_ilter_research_topics <- function(sitesNum = NULL) {
     )
     uniqueSiteResearchTopics
   } else if (typeof(sitesNum) == "double") {
-    lterILTERSites <- as.list(jsonlite::fromJSON("https://deims.org/api/sites"))
+    lterILTERSites <- as.list(jsonlite::fromJSON(
+      paste0(
+        deimsbaseurl,
+        "api/sites"
+      )
+    ))
     allSiteResearchTopics <- lapply(
       as.list(paste0(
         lterILTERSites$id$prefix[1:sitesNum],
@@ -64,7 +80,7 @@ get_ilter_research_topics <- function(sitesNum = NULL) {
       category = "ResearchTop"
     )
     uniteSiteResearchTopics <- dplyr::bind_rows(allSiteResearchTopics)
-    researchTopicsILTERList <- uniteSiteResearchTopics$researchTopics
+    researchTopicsILTERList <- NULL #uniteSiteResearchTopics$researchTopics
     researchTopicsILTERDF <- dplyr::bind_rows(researchTopicsILTERList)
     uniqueSiteResearchTopics <- dplyr::as_tibble(
       dplyr::distinct(

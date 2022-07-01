@@ -19,6 +19,7 @@ ecosystem land use, EUNIS habitat, geoBon biome, geology, hydrology, soils
 and vegetation.
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 This function obtains Environmental Characteristics
 of an eLTER site through the DEIMS-SDR sites API.
 }

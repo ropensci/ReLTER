@@ -20,6 +20,7 @@ The output of the function is a \code{tibble} with main features of
 the activities in a site, and a \code{leaflet} map plot.
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 This function obtains the information about of an eLTER
 activity (e.g.
 \url{https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845})
@@ -27,7 +28,8 @@ provided in \href{https://deims.org/}{DEIMS-SDR catalogue}.
 }
 \section{The function output}{
 
-\figure{get_activity_info_fig.png}{Map of "Study of non-indigenous (alien) species in the Mar Piccolo of Taranto" activity}
+\figure{get_activity_info_fig.png}{Map of "Study of non-indigenous (alien)
+species in the Mar Piccolo of Taranto" activity}
 }
 
 \examples{

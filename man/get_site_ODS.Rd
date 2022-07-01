@@ -25,6 +25,7 @@ The user should save the raster to disk, if necessary.
 i.e. writeRaster(ds_site, "site_dataset.tif")
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 Download and return a SpatRaster object containing the requested
 dataset from \href{https://maps.opendatascience.eu/}{ODS},
 cropped to an eLTER site boundary, which is obtained from the DEIMS-SDR API.

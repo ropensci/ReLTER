@@ -1,4 +1,4 @@
-message("\n---- Test get_site_parameters() ----")
+message("\n---- Test get_site_observedProperties() ----")
 
 library(testthat)
 
@@ -8,7 +8,7 @@ test_that("Expect error if internet connection is down", {
     httptest::without_internet(
       result <- ReLTER:::get_site_info(
         deimsid = TESTURLSite,
-        category = "Parameters"
+        category = "observedProperties"
       )
     ),
     "GET"
@@ -18,11 +18,11 @@ test_that("Expect error if internet connection is down", {
 
 skip_if_offline(host = "deims.org")
 
-test_that("Output of site parameters function constructs ‘tibble’ as
+test_that("Output of site observed properties function constructs ‘tibble’ as
           expected", {
   result <- ReLTER:::get_site_info(
     deimsid = TESTURLSite,
-    category = "Parameters"
+    category = "observedProperties"
   )
   expect_s3_class(result, "tbl_df")
   expect_true(ncol(result) == 9)

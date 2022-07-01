@@ -15,6 +15,7 @@ The output of the function is a \code{list} with the name and URI
 (Uniform Resource Identifier) of each procedure.
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 Return a list of procedures (e.g. method, algorithm,
 instrument, sensor, or system which may be used in making observations)
 store into a
@@ -24,7 +25,7 @@ store into a
 \examples{
 \dontrun{
 get_sos_procedurelist(
-  sosHost = "http://getit.lteritalia.it/observations/sos/kvp?"
+  sosHost = "http://getit.lteritalia.it/observations/service?"
 )
 }
 

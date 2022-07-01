@@ -1,17 +1,20 @@
-#' Obtain information about the parameters collected of all sites ILTER.
-#' @description Return a `tibble` object containing Parameters collected by all
+#' Obtain information about the observed properties collected of all sites
+#' ILTER.
+#' @description `r lifecycle::badge("questioning")`
+#' Return a `tibble` object containing observed properties
+#' collected by all
 #' of the \href{https://www.ilter.network/network/global-coverage}{ILTER sites
 #' (more than 1200 around the world)}, available from
 #' \href{https://deims.org}{DEIMS-SDR}.
 #'
-#' This function gathers in a unique tibble all the Parameters
+#' This function gathers in a unique tibble all the observed properties
 #' from all ILTER sites. Note that the execution time for this function
 #' is very high.
 #'
-#' If the objective is obtain information about Parameters
+#' If the objective is obtain information about observed properties
 #' on a few sites, it is better to use other more specific functions (e.g.
-#' \href{get_network_parameters.html}{`get_network_parameters()`} or
-#' \href{get_site_info.html}{`get_site_info()`}) or using
+#' \href{get_network_observedProperties.html}{`get_network_observedProperties()`}
+#' or \href{get_site_info.html}{`get_site_info()`}) or using
 #' other methods
 #' (\href{../../articles/sites_information.html}{How to about sites
 #' informations}).
@@ -20,7 +23,7 @@
 #' of this function. If the value of sitesNum is #' 0 (default)
 #' all the ILTER sites will be parsed and the waiting time will be long.
 #' @return The output of the function is a `tibble` containing the list
-#' of parameters and their URI (Uniform Resource Identifier) collected
+#' of observed properties and their URI (Uniform Resource Identifier) collected
 #' in all ILTER sites.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom jsonlite fromJSON
@@ -28,7 +31,7 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' listParams <- get_ilter_parameters(sitesNum = 20)
+#' listParams <- get_ilter_observedProperties(sitesNum = 20)
 #' listParams[1:10, ] %>%
 #'   dplyr::rows_insert(
 #'   dplyr::tibble(
@@ -37,10 +40,16 @@
 #' )
 #' }
 #'
-### function get_ilter_parameters
-get_ilter_parameters <- function(sitesNum = 0) {
+### function get_ilter_observedProperties
+get_ilter_observedProperties <- function(sitesNum = 0) {
+  deimsbaseurl <- get_deims_base_url()
   if (sitesNum == 0) {
-    lterILTERSites <- as.list(jsonlite::fromJSON("https://deims.org/api/sites"))
+    lterILTERSites <- as.list(jsonlite::fromJSON(
+      paste0(
+        deimsbaseurl,
+        "api/sites"
+      )
+    ))
     allSiteParameters <- lapply(
       as.list(
         paste0(
@@ -49,7 +58,7 @@ get_ilter_parameters <- function(sitesNum = 0) {
         )
       ),
       ReLTER::get_site_info,
-      category = "Parameters"
+      category = "observedProperties"
     )
     uniteSiteParameters <- dplyr::bind_rows(allSiteParameters)
     parametersILTERList <- uniteSiteParameters$parameter
@@ -59,7 +68,12 @@ get_ilter_parameters <- function(sitesNum = 0) {
     )
     uniqueSitesParameters
   } else if (typeof(sitesNum) == "double") {
-    lterILTERSites <- as.list(jsonlite::fromJSON("https://deims.org/api/sites"))
+    lterILTERSites <- as.list(jsonlite::fromJSON(
+      paste0(
+        deimsbaseurl,
+        "api/sites"
+      )
+    ))
     allSiteParameters <- lapply(
       as.list(
         paste0(
@@ -68,7 +82,7 @@ get_ilter_parameters <- function(sitesNum = 0) {
         )
       ),
       ReLTER::get_site_info,
-      category = "Parameters"
+      category = "observedProperties"
     )
     uniteSiteParameters <- dplyr::bind_rows(allSiteParameters)
     parametersILTERList <- uniteSiteParameters$parameter

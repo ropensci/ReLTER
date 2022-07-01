@@ -18,6 +18,7 @@ The output of the function is a \code{tibble} containing all the
 Environmental Characteristics of ILTER's sites.
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#questioning}{\figure{lifecycle-questioning.svg}{options: alt='[Questioning]'}}}{\strong{[Questioning]}}
 This function obtains all Environmental Characteristics:
 title, URI, geo-coordinates, country name, and elevation
 of all

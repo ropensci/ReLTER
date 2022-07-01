@@ -18,6 +18,7 @@ The output of the function is a point vector of \code{sf} class
 (package sf) of the network's sites.
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 This function return a spatial point vector object including
 title, date late updated, URI, and coordinates, stored in
 \href{https://deims.org/}{DEIMS-SDR catalogue}, of all the eLTER sites

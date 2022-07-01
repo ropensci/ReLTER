@@ -1,5 +1,6 @@
 #' Download information of all ILTER sites or a subset of ILTER sites.
-#' @description This function downloads generic information
+#' @description `r lifecycle::badge("questioning")`
+#' This function downloads generic information
 #' of all sites, or a subset of
 #' \href{https://www.ilter.network/network/global-coverage}{ILTER sites
 #' (more than 1200 around the world)},
@@ -57,8 +58,14 @@
 get_ilter_generalinfo <- function(country_name = NA, site_name = NA,
                                   show_map = FALSE) {
   # Get full set of sites
+  deimsbaseurl <- get_deims_base_url()
   lterILTERSites <- as.data.frame(
-    jsonlite::fromJSON("https://deims.org/api/sites")
+    jsonlite::fromJSON(
+      paste0(
+        deimsbaseurl,
+        "api/sites"
+      )
+    )
   )
   # First filter by country_name
   # (Getting site affiliations for all 1200 sites takes too long...)

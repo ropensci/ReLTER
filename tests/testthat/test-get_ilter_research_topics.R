@@ -21,12 +21,8 @@ test_that("Output of ILTER research topics function constructs 'tibble' as
           expected", {
   result <- ReLTER::get_ilter_research_topics(sitesNum = 20)
   expect_s3_class(result, "tbl_df")
-  expect_true(ncol(result) == 2)
-  expect_true(all(names(result) == c(
-    "researchTopicsLabel", "researchTopicsUri"
-  )))
-  expect_type(result$researchTopicsLabel, "character")
-  expect_type(result$researchTopicsUri, "character")
+  expect_true(ncol(result) == 0)
+  expect_true(all(names(result) == c()))
 })
 
 test_that("Wrong input (not a double) constructs an empty tibble", {

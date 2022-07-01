@@ -18,6 +18,7 @@ status, yearEstablished, yearClosed, hierarchy, siteName, short name, site
 type, protection level, images.
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 This function obtains general information
 about an eLTER site through the DEIMS-SDR sites API.
 }

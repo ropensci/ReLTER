@@ -1,4 +1,4 @@
-message("\n---- Test produce_site_parameters_waffle() ----")
+message("\n---- Test produce_site_observedProperties_waffle() ----")
 
 library(testthat)
 
@@ -6,7 +6,7 @@ test_that("Expect error if internet connection is down", {
   Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
   testthat::expect_error(
     httptest::without_internet(
-      result <- ReLTER::produce_site_parameters_waffle(
+      result <- ReLTER::produce_site_observedProperties_waffle(
         deimsid = TESTURLSite
       )
     ),
@@ -17,9 +17,9 @@ test_that("Expect error if internet connection is down", {
 
 skip_if_offline(host = "deims.org")
 
-test_that("Output of chart waffle of parameters function constructs 'sf' and
-          'tibble’ as expected", {
-  result <- ReLTER::produce_site_parameters_waffle(
+test_that("Output of chart waffle of observed properties function constructs
+'sf' and 'tibble’ as expected", {
+  result <- ReLTER::produce_site_observedProperties_waffle(
     deimsid = TESTURLSite
   )
   expect_s3_class(result, "tbl_df")
@@ -35,7 +35,7 @@ test_that("Output of chart waffle of parameters function constructs 'sf' and
 
 test_that("Wrong input (but URL) constructs a NULL object", {
   Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
-  result <- ReLTER::produce_site_parameters_waffle(
+  result <- ReLTER::produce_site_observedProperties_waffle(
     deimsid = "https://deims.org/ljhnhbkihubib"
   )
   expect_type(result, "NULL")
@@ -44,7 +44,7 @@ test_that("Wrong input (but URL) constructs a NULL object", {
 
 test_that("Wrong input (not URL) constructs an empty tibble", {
   Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
-  result <- ReLTER::produce_site_parameters_waffle(
+  result <- ReLTER::produce_site_observedProperties_waffle(
     deimsid = "ljhnhbkihubib"
   )
   expect_type(result, "NULL")
