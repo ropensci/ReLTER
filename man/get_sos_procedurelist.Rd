@@ -29,6 +29,13 @@ get_sos_procedurelist(
 }
 
 }
+\references{
+\insertRef{xml2R}{ReLTER}
+  
+  \insertRef{xsltR}{ReLTER}
+  
+  \insertRef{utilsR}{ReLTER}
+}
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
 

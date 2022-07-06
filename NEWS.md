@@ -10,7 +10,8 @@ v1.1.0 was released on 15/04/2021
 * created the vignettes of the package;
 * new functions (get_site_ODS and taxon_id_worms) has been implemented;
 * enriched the information downloaded for datasets and activities from DEIMS-SDR;
-* a solution for install package by Docker has been done.
+* a solution for install package by Docker has been done;
+* all the packages used in the `ReLTER` have been referenced in each functions manual.
 
 
 ________________________________________________________________________________

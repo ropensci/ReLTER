@@ -45,6 +45,23 @@
 #' @importFrom tmap tm_shape tm_rgb tm_dots tm_compass tm_scale_bar tm_layout
 #' @importFrom tmap tm_credits tm_basemap tm_borders tm_fill tm_lines
 #' @importFrom grid viewport
+#' @importFrom Rdpack reprompt
+#' @references
+#'   \insertRef{sfR}{ReLTER}
+#'
+#'   \insertRef{jsonliteR}{ReLTER}
+#'
+#'   \insertRef{tibbleR}{ReLTER}
+#'
+#'   \insertRef{rasterR}{ReLTER}
+#'
+#'   \insertRef{rgeosR}{ReLTER}
+#'
+#'   \insertRef{rosmR}{ReLTER}
+#'
+#'   \insertRef{tmapR}{ReLTER}
+#'
+#'   \insertRef{gridR}{ReLTER}
 #' @export
 #' @examples
 #' \dontrun{

@@ -13,6 +13,13 @@
 #' @importFrom xml2 read_xml xml_ns xml_find_all
 #' @importFrom xslt xml_xslt
 #' @importFrom utils read.csv
+#' @importFrom Rdpack reprompt
+#' @references
+#'   \insertRef{xml2R}{ReLTER}
+#'
+#'   \insertRef{xsltR}{ReLTER}
+#'
+#'   \insertRef{utilsR}{ReLTER}
 #' @export
 #' @examples
 #' \dontrun{

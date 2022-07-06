@@ -18,6 +18,17 @@
 #' @importFrom dplyr select as_tibble
 #' @importFrom leaflet leaflet addTiles addMarkers
 #' @importFrom httr RETRY content
+#' @importFrom Rdpack reprompt
+#' @references
+#'   \insertRef{httrR}{ReLTER}
+#'
+#'   \insertRef{dplyrR}{ReLTER}
+#'
+#'   \insertRef{jsonliteR}{ReLTER}
+#'
+#'   \insertRef{sfR}{ReLTER}
+#'
+#'   \insertRef{leafletR}{ReLTER}
 #' @export
 #' @examples
 #' \dontrun{
@@ -63,7 +74,7 @@ get_network_sites <- function(networkDEIMSID) {
     lSNPD_valid <- sf::st_is_valid(
       lterSitesNetworkPointDEIMS
     )
-  
+
     # checking MULTIPOINT geometry
     lSNPD_type <- sf::st_geometry_type(
       x = lterSitesNetworkPointDEIMS,
@@ -90,7 +101,7 @@ get_network_sites <- function(networkDEIMSID) {
       )
     })
     # end checking
-  
+
     if (any(lSNPD_valid)) {
       map <- leaflet::leaflet(lterSitesNetworkPointDEIMS) %>%
         leaflet::addTiles() %>%

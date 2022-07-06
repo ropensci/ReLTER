@@ -15,6 +15,17 @@
 #' @importFrom grDevices colorRampPalette
 #' @importFrom RColorBrewer brewer.pal
 #' @importFrom waffle waffle
+#' @importFrom Rdpack reprompt
+#' @references
+#'   \insertRef{tibbleR}{ReLTER}
+#'
+#'   \insertRef{dplyrR}{ReLTER}
+#'
+#'   \insertRef{grDevicesR}{ReLTER}
+#'
+#'   \insertRef{RColorBrewerR}{ReLTER}
+#'
+#'   \insertRef{waffleR}{ReLTER}
 #' @export
 #' @examples
 #' \dontrun{

@@ -43,6 +43,13 @@
 #' @importFrom dplyr case_when
 #' @importFrom sf st_transform
 #' @importFrom terra mask crop vect rast crs plot
+#' @importFrom Rdpack reprompt
+#' @references
+#'   \insertRef{dplyrR}{ReLTER}
+#'
+#'   \insertRef{sfR}{ReLTER}
+#'
+#'   \insertRef{terraR}{ReLTER}
 #' @export
 #' @examples
 #'  \dontrun{

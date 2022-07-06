@@ -17,11 +17,20 @@
 #' If category 'Boundaries' is indicated an `sf` object is returned
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom httr RETRY content
-#' @importFrom jqr jq
-#' @importFrom jsonlite fromJSON stream_in
 #' @importFrom dplyr as_tibble left_join
 #' @importFrom utils capture.output
 #' @importFrom leaflet leaflet addTiles addPolygons
+#' @importFrom Rdpack reprompt
+#' @references
+#'   \insertRef{httrR}{ReLTER}
+#'
+#'   \insertRef{dplyrR}{ReLTER}
+#'
+#'   \insertRef{utilsR}{ReLTER}
+#'
+#'   \insertRef{sfR}{ReLTER}
+#'
+#'   \insertRef{leafletR}{ReLTER}
 #' @export
 #' @examples
 #' site <- get_site_info(

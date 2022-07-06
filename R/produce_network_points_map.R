@@ -26,6 +26,21 @@
 #' @importFrom dplyr select
 #' @importFrom tibble as_tibble
 #' @importFrom httr RETRY content
+#' @importFrom Rdpack reprompt
+#' @references
+#'   \insertRef{jsonliteR}{ReLTER}
+#'
+#'   \insertRef{sfR}{ReLTER}
+#'
+#'   \insertRef{rasterR}{ReLTER}
+#'
+#'   \insertRef{tmapR}{ReLTER}
+#'
+#'   \insertRef{dplyrR}{ReLTER}
+#'
+#'   \insertRef{tibbleR}{ReLTER}
+#'
+#'   \insertRef{httrR}{ReLTER}
 #' @export
 #' @examples
 #' \dontrun{

@@ -571,9 +571,21 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=webshot"
     },
+    "36": {
+      "@type": "SoftwareApplication",
+      "identifier": "Rdpack",
+      "name": "Rdpack",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=Rdpack"
+    },
     "SystemRequirements": null
   },
-  "fileSize": "58134.846KB",
+  "fileSize": "60156.28KB",
   "citation": [
     {
       "@type": "CreativeWork",

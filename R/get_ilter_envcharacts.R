@@ -27,6 +27,10 @@
 #' @author Alessandro Oggioni, phD (2020) <oggioni.a@@irea.cnr.it>
 #' @importFrom jsonlite fromJSON
 #' @importFrom dplyr as_tibble
+#' @importFrom Rdpack reprompt
+#' @references
+#'   \insertRef{dplyrR}{ReLTER}
+#'
 #' @export
 #' @examples
 #' \dontrun{

@@ -17,8 +17,17 @@
 #' @importFrom utils capture.output
 #' @importFrom sf st_as_sf st_is_valid
 #' @importFrom leaflet leaflet addTiles addPolygons
-#' @importFrom jqr jq
-#' @importFrom jsonlite stream_in
+#' @importFrom Rdpack reprompt
+#' @references
+#'   \insertRef{httrR}{ReLTER}
+#'
+#'   \insertRef{dplyrR}{ReLTER}
+#'
+#'   \insertRef{utilsR}{ReLTER}
+#'
+#'   \insertRef{sfR}{ReLTER}
+#'
+#'   \insertRef{leafletR}{ReLTER}
 #' @export
 #' @examples
 #' tDataset <- get_dataset_info(

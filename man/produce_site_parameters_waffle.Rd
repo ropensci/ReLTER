@@ -36,6 +36,17 @@ waffle
 }
 
 }
+\references{
+\insertRef{tibbleR}{ReLTER}
+  
+  \insertRef{dplyrR}{ReLTER}
+  
+  \insertRef{grDevicesR}{ReLTER}
+  
+  \insertRef{RColorBrewerR}{ReLTER}
+  
+  \insertRef{waffleR}{ReLTER}
+}
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
 }

@@ -64,6 +64,13 @@
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom taxize eubon_search
 #' @importFrom dplyr bind_rows
+#' @importFrom Rdpack reprompt
+#' @references
+#'   \insertRef{taxizeR1}{ReLTER}
+#'
+#'   \insertRef{taxizeR2}{ReLTER}
+#'
+#'   \insertRef{dplyrR}{ReLTER}
 #' @export
 #' @examples
 #' \dontrun{
