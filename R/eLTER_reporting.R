@@ -395,3 +395,169 @@ reference_variables_obis <- as_tibble(
 #   "~/Desktop/D4.1/dataMapping/inat.shp",
 #   append = TRUE
 # )
+
+#' eLTER reporting format naming convention for files
+#' @description compose file name following eLTER naming convention
+#' @author Paolo Tagliolato, phD \email{tagliolato.p@@irea.cnr.it}
+#' @author Alessandro Oggioni, phD \email{oggioni.a@@irea.cnr.it}
+#' @param deimsid
+#' @param country_code automatically evaluated if deimsid is provided
+#' @param site_name automatically evaluated if deimsid is provided
+#' @param data_topic
+#' @param variable_group
+#' @param time_span
+#' @param version version in format "VYYYYMMDD". Defaults to current date
+#' @return filename (without extension) following naming convention
+#' @example 
+#' deimsid<-"https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6"
+#' time_span = 2015 # e.g. whole year
+#' time_span = "20150302-20180415" # e.g. span between two dates
+#' data_topic = "VEG" # data provider defined abbreviation of "vegetation"
+#' variable_group = "SPECCOVER" # data provider defined abbreviation
+#' version = "V20220907"
+#' eLTER_reporting_compose_file_name(deimsid, country_code = NA, 
+#' site_name = NA, data_topic, variable_group, time_span, version)
+#' @importFrom stringr str_replace_all
+#' @importFrom countrycode countrycode
+#' @importFrom dplyr pull
+#' @seealso Peterseil, Geiger et al. (2020) Field Specification for data reporting. TEchnical Document
+#' TechDoc.01. EU Horizon 2020 eLTER PLUS Project, Grant agreement No. 871128
+#' @note This method must be intended as a signpost for future implementation
+#' @export
+reporting_compose_file_name <- function(deimsid = NULL, 
+                                              country_code = NULL, site_name = NULL, 
+                                              data_topic, variable_group = "", 
+                                              time_span, version = Sys.Date() %>% format("V%Y%m%d"))
+                                              {
+  
+  if(! is.null(deimsid)){
+    
+    info <- get_site_info(deimsid)
+    
+    country_code = info %>% dplyr::pull(country) %>% unlist() %>% .[1] %>% 
+      countrycode::countrycode(origin = "country.name", destination = "iso2c")
+    
+    site_name = stringr::str_replace_all(info$title, " ", replacement = "-")
+  }
+  
+  return(
+    paste(country_code, site_name, data_topic, variable_group, time_span, version, sep = "_")
+  )
+}
+
+#' compose an lterDataReportingFormat object
+#' @description Given several tables, creates an eLTER data reporting format object
+#' @author Paolo Tagliolato, phD \email{tagliolato.p@@irea.cnr.it}
+#' @author Alessandro Oggioni, phD \email{oggioni.a@@irea.cnr.it}
+#' @param data A `tibble`. See eLTER data specification format for details
+#' @param station A `tibble`
+#' @param method A `tibble`
+#' @param reference A `tibble`
+#' @param event A `tibble`
+#' @param sample A `tibble`
+#' @param licence A `character`
+#' @param data_type
+#' @param filename optional filename associated with the object, of the form provided as output by
+#' the function `reporting_compose_file_name`
+#' @seealso Peterseil, Geiger et al. (2020) 
+#' Field Specification for data reporting. Technical Document.
+#' TechDoc.01. EU Horizon 2020 eLTER PLUS Project, Grant agreement No. 871128
+#' @return list with eLTER reporting format slots
+#' @example
+#' deimsid<-"https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6"
+#' data = dplyr::tribble(
+#'   ~id, ~value, 
+#'   1, 7.5, 
+#'   2, 4.2
+#' )
+#' station = dplyr::tribble(
+#'   ~SITE_CODE, ~STATION_CODE, ~STYPE, ~LAT,      ~LON,       ~ALTITUDE,
+#'   deimsid,    "IP2",         "AREA",  45.340805, 7.88887495, 265
+#' )
+#' 
+#' method = dplyr::tribble(
+#'   ~VARIABLE, ~METH_DESCR,
+#'   "COVE_F",  "Analysis of ammonium..."  
+#' )
+#' 
+#'   
+#' res<-reporting_produce_data_object_v1.3(data=data, station=station, method=method)
+#' res %>% purrr::
+#' lapply(FUN = function(x){print("tbl_df" %in% class(x)); if("tbl_df" %in% class(x)) return(x)})
+#' @note This method must be intended as a signpost for future implementation
+#' @export
+reporting_produce_data_object_v1.3 <- function(data = NULL, station = NULL, method = NULL,
+                                      reference = NULL, event = NULL, sample = NULL,
+                                      licence = "",
+                                      deims_id ="",
+                                      data_type = "measurement", 
+                                      filename = NULL) {
+  if(!data_type %in% c("measurement", "mapping"))
+    stop("data type must be one of measurement or mapping")
+  return(list(
+    filename = filename,
+    type = data_type,
+    DATA = data,
+    STATION = station,
+    METHOD =method,
+    REFERENCE = reference,
+    EVENT = event,
+    SAMPLE = sample,
+    LICENCE = licence
+  ))
+}
+
+#' creates an archive with files following the eLTER reportingFormat
+#' @description creates a zip archive <filename>.zip
+#' @param x A `list` like the one created by reporting_produce_data_object_v1.3
+#' @param filename optional filename associated with the object, of the form provided as output by
+#' the function `reporting_compose_file_name`. Defaults to random string
+#' @param filepath A `character` file path. Defaults to temporary directory
+#' @param saveRDS A `logical`. Save also object in RDS format. Defaults to FALSE
+#' @return named `list` containing paths to saved files filepaths.
+#' Slots are named "zip" and possibly "RDS".
+#' @author Paolo Tagliolato, phD \email{tagliolato.p@@irea.cnr.it}
+#' @author Alessandro Oggioni, phD \email{oggioni.a@@irea.cnr.it}
+#' @importFrom utils zip write.csv2
+#' @importFrom stringi stri_rand_strings
+#' @note This method must be intended as a signpost for future implementation
+#' @export
+reporting_save_archive <- function(x, filename=NULL, filepath = tempdir(), saveRDS=FALSE) {
+  if(is.null(filename)) filename = stringi::stri_rand_strings(1, 10)
+  sr <- filename
+  deimsid <- x$deimsid
+  
+  dirsr <- paste0(filepath, "/", sr)
+  
+  lx<-purrr::map_lgl(x, function(y){"tbl_df" %in% class(y)})
+  slotstosave<-names(lx)[lx]
+  filenames <- paste0(dirsr, "/", slotstosave, ".csv")
+  
+  # clean up existing previous work
+  if (dir.exists(dirsr)) {
+    file.remove(paste0(dirsr, "/", list.files(dirsr)))
+    file.remove(dirsr)
+  }
+  
+  dir.create(dirsr)
+  
+  lapply(slotstosave, FUN=function(y){
+    fname <- paste0(dirsr, "/", y, ".csv")
+    write.csv2(x[y], fname)
+  })
+  
+  zip(
+    paste0(filepath,"/",filename,".zip"),
+    files = dirsr,
+    extras = "-j"
+  )
+  savedFiles <- list()
+  savedFiles["zip"] <- paste0(filepath,"/",filename,".zip")
+    
+  if(saveRDS==TRUE){
+    saveRDS(x, file=paste0(filepath, "/", filename, ".RDS"))
+    savedFiles["RDS"] <- paste0(filepath, "/", filename, ".RDS")
+  }
+  
+  return(savedFiles)
+}
