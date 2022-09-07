@@ -7,7 +7,7 @@
 save_occ_eLTER_reporting_Archive(lterReportOut)
 }
 \arguments{
-\item{eLterReportOut}{a list like the one created by gbif2elter}
+\item{lterReportOut}{A `list` like the one created by gbif2elter}
 }
 \description{
 creates a zip archive named

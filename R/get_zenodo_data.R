@@ -7,7 +7,7 @@
 #' @return 
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom zen4R ZenodoManager
-#' @import stringr str_replace_all
+#' @importFrom stringr str_replace_all
 #' @export
 #' @examples
 #' get_zenodo_data(
