@@ -13,7 +13,6 @@
 #' QUDT is a public charity nonprofit organization founded to provide
 #' semantic specifications for units of measure, quantity kind, dimensions
 #' and data types.
-#' 
 #' NB this function returns a valued string only in the case where the
 #' UOM refers to a NERC vocabulary term (e.g.
 #' http://vocab.nerc.ac.uk/collection/P06/current/UPAA/ for °C).

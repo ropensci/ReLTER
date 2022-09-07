@@ -1,8 +1,8 @@
 #' @title eLTER get_sos_procedurelist function
 #' @description This function lists the procedures
 #' of a Sensor Observations Service (SOS).
-#' @param sosHost a `character`. An SOS endpoint (e.g.
-#' \url{http://getit.lteritalia.it/observations/sos/kvp?}).
+#' @param sosURL A `character`. The endpoint of the Sensor Observation Service
+#' (SOS) service.
 #' @return The output of the function is a `list` with the name and URI (Uniform
 #' Resource Identifier) of each procedure.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
@@ -13,21 +13,23 @@
 #' @examples
 #' \dontrun{
 #' get_sos_procedurelist(
-#'   sosHost = "http://getit.lteritalia.it/observations/sos/kvp?"
+#'   sosURL = "http://getit.lteritalia.it/observations/service"
 #' )
 #' }
 #'
 ### function get_sos_procedurelist
-get_sos_procedurelist <- function(sosHost) {
+get_sos_procedurelist <- function(sosURL) {
+  # FIX this the error is: "Error in open.connection(x, "rb") : 
+  # SSL: no alternative certificate subject name matches target host name
+  # 'www.get-it.it'"
   xslProcUrl.url <- paste0("https://www.get-it.it/objects/sensors/xslt/",
                            "Capabilities_proceduresUrlList.xsl")
   styleProcUrl <- xml2::read_xml(xslProcUrl.url, package = "xslt")
-
   listProcedure <- utils::read.csv(text = xslt::xml_xslt((
     xml2::read_xml(
       paste0(
-        sosHost,
-        "service=SOS&request=",
+        sosURL,
+        "?service=SOS&request=",
         "GetCapabilities&Sections=Contents"
       ),
       package = "xslt"
@@ -39,7 +41,7 @@ get_sos_procedurelist <- function(sosHost) {
     SensorML <- xml2::read_xml(
       as.character(
         paste0(
-          sosHost,
+          sosURL,
           "service=SOS&amp;version=2.0.0&amp;",
           "request=DescribeSensor&amp;procedure=",
           listProcedure$uri[i],

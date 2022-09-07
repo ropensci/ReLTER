@@ -1,3 +1,18 @@
+#' Obtain the information from a sensor.
+#' @description `r lifecycle::badge("experimental")`
+#' This function obtains the information (metadata) shared by
+#' procedure/sensor through Sensor Observation Service (SOS).
+#' @param sosURL A `character`. The endpoint of the Sensor Observation Service
+#' (SOS) service.
+#' @param procedure A `character`. It is a procedure/sensor ID.
+#' @return The output of the function is a `character` containing attributes
+#' such as name of the sensor, id and their description.
+#' All the information are collected by requests to Sensor Observation
+#' Service (SOS).
+#' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
+#' @author Paolo Tagliolato, PhD (2021) \email{tagliolato.p@@irea.cnr.it}
+#' @importFrom xml2 xml_text xml_find_all
+#' @export
 #' @examples
 #' FP <- get_sos_procedure_info(
 #'   sosURL = "http://getit.lteritalia.it/observations/service",
@@ -26,7 +41,7 @@
 #' 
 #' NIVA <- get_sos_procedure_info(
 #'   sosURL = "https://hydro-sos.niwa.co.nz/",
-#'   procedure = "Hydrometric_Station"
+#'   procedure = "Water_Quality_Site"
 #' )
 #' NIVA
 #'
