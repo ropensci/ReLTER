@@ -1,10 +1,10 @@
 #' @title eLTER get_site_info function
 #' @description This function obtains details about an eLTER site
 #' through the DEIMS-SDR sites API.
-#' @param deimsid a character. The DEIMS ID of the site from
+#' @param deimsid A `character` The DEIMS ID of the site from
 #' DEIMS-SDR website. More information about DEIMS ID in this pages:
 #' \href{https://deims.org/docs/deimsid.html}{page}.
-#' @param category a `category`. This parameter selects which category
+#' @param category A `character`. This parameter selects which category
 #' or categories are retrieved and returned in the result.
 #' Possible value are:
 #' 'Affiliations', 'Boundaries', 'Contacts', 'EnvCharacts', 'General',
