@@ -7,11 +7,11 @@
 get_site_info(deimsid, category = NA)
 }
 \arguments{
-\item{deimsid}{a character. The DEIMS ID of the site from
+\item{deimsid}{A `character` The DEIMS ID of the site from
 DEIMS-SDR website. More information about DEIMS ID in this pages:
 \href{https://deims.org/docs/deimsid.html}{page}.}
 
-\item{category}{a `category`. This parameter selects which category
+\item{category}{A `character`. This parameter selects which category
 or categories are retrieved and returned in the result.
 Possible value are:
 'Affiliations', 'Boundaries', 'Contacts', 'EnvCharacts', 'General',

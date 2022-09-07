@@ -4,11 +4,11 @@
 \alias{get_sos_procedurelist}
 \title{eLTER get_sos_procedurelist function}
 \usage{
-get_sos_procedurelist(sosHost)
+get_sos_procedurelist(sosURL)
 }
 \arguments{
-\item{sosHost}{a `character`. An SOS endpoint (e.g.
-\url{http://getit.lteritalia.it/observations/sos/kvp?}).}
+\item{sosURL}{A `character`. The endpoint of the Sensor Observation Service
+(SOS) service.}
 }
 \value{
 The output of the function is a `list` with the name and URI (Uniform
@@ -21,7 +21,7 @@ of a Sensor Observations Service (SOS).
 \examples{
 \dontrun{
 get_sos_procedurelist(
-  sosHost = "http://getit.lteritalia.it/observations/sos/kvp?"
+  sosURL = "http://getit.lteritalia.it/observations/service"
 )
 }
 

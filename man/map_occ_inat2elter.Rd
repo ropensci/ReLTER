@@ -8,10 +8,11 @@ reporting format}
 map_occ_inat2elter(x, deimsid)
 }
 \arguments{
-\item{x}{Tibble like one that can be obtained by
+\item{x}{A `tibble` like one that can be obtained by
 as_tibble(get_site_speciesOccurrence(deimsid, "gbif")$gbif)}
 
-\item{deimsid}{deims id of the site of interest}
+\item{deimsid}{A `character`. The DEIMS.iD of the site from
+DEIMS-SDR website. DEIMS.iD information}
 }
 \value{
 list with the following named elements:
