@@ -82,7 +82,7 @@ test_that("After successfull download, Function returns SpatRaster", {
           ))
   if (!is.null(ds) & !inherits(ds, "try-error")) {
   expect_s4_class(ds, "SpatRaster")
-  # In this case, with both Aqua and Terra platforms, 
+  # In this case, with both Aqua and Terra platforms,
   # and datasets for 4 months, should be 8 layers (Aqua and Terra)
   expect_equal(terra::nlyr(ds), 8)
   }
