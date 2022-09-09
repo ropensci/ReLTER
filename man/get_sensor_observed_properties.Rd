@@ -64,5 +64,5 @@ NIVA
 
 }
 \author{
-Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
+Alessandro Oggioni, phD \email{oggioni.a@irea.cnr.it}
 }

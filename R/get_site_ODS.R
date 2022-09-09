@@ -129,8 +129,8 @@ get_site_ODS <- function(deimsid, dataset = "landcover") {
   boundary <- terra::vect(boundary)
   ds_site <- terra::mask(terra::crop(ds, boundary), boundary)
   # If this is NDVI, rescale back to (-1.0,1.0) range
-  if (length(grep(pattern="ndvi", x=dataset, fixed = TRUE)) > 0) {
-    ds_site = (ds_site - 100) / 100.0
+  if (length(grep(pattern = "ndvi", x = dataset, fixed = TRUE)) > 0) {
+    ds_site <- (ds_site - 100) / 100.0
   }
   return(ds_site)
 }

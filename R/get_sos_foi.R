@@ -12,8 +12,8 @@
 #' The columns are about: sampling feature (typeSf,
 #' description, name), sampled feature id (sampledFeature), coordinate reference
 #' system code (srsName) and coordinates (geometry).
-#' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @author Paolo Tagliolato, PhD (2021) \email{tagliolato.p@@irea.cnr.it}
+#' @author Alessandro Oggioni, phD \email{oggioni.a@@irea.cnr.it}
+#' @author Paolo Tagliolato, phD \email{tagliolato.p@@irea.cnr.it}
 #' @importFrom xml2 read_xml xml_text xml_find_all xml_ns xml_attr
 #' @importFrom purrr map_dfr
 #' @importFrom dplyr filter

@@ -16,7 +16,7 @@
 #' NB this function returns a valued string only in the case where the
 #' UOM refers to a NERC vocabulary term (e.g.
 #' http://vocab.nerc.ac.uk/collection/P06/current/UPAA/ for °C).
-#' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
+#' @author Alessandro Oggioni, phD \email{oggioni.a@@irea.cnr.it}
 #' @importFrom SPARQL SPARQL
 #' @importFrom xml2 xml_attr xml_find_all xml_text
 #' @importFrom tibble tibble add_row tibble_row add_column

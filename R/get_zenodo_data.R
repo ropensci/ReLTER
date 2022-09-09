@@ -2,15 +2,15 @@
 #' @description `r lifecycle::badge("experimental")`
 #' The function 
 #' @param doi A `character`. It is the DOI of the Zenodo record.
-#' @param rdata_exist A `logical`. Is the .RData file in the record we are
-#' questioning? Default TRUE.
-#' @return 
-#' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
+#' @param rdata_exist A `logical`. Is the .RData or .rds file in the record
+#' we are questioning? Default TRUE.
+#' @return a file(s) containing in the Zenodo record.
+#' @author Alessandro Oggioni, phD \email{oggioni.a@@irea.cnr.it}
 #' @importFrom zen4R ZenodoManager
 #' @importFrom stringr str_replace_all
 #' @export
 #' @examples
-#' get_zenodo_data(
+#' record <- get_zenodo_data(
 #'   doi = "10.5281/zenodo.7041152", # test dataset
 #'   rdata_exist = TRUE
 #' )

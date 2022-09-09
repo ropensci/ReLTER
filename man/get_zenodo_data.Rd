@@ -9,23 +9,23 @@ get_zenodo_data(doi, rdata_exist = TRUE)
 \arguments{
 \item{doi}{A `character`. It is the DOI of the Zenodo record.}
 
-\item{rdata_exist}{A `logical`. Is the .RData file in the record we are
-questioning? Default TRUE.}
+\item{rdata_exist}{A `logical`. Is the .RData or .rds file in the record
+we are questioning? Default TRUE.}
 }
 \value{
-
+a file(s) containing in the Zenodo record.
 }
 \description{
 `r lifecycle::badge("experimental")`
 The function
 }
 \examples{
-get_zenodo_data(
+record <- get_zenodo_data(
   doi = "10.5281/zenodo.7041152", # test dataset
   rdata_exist = TRUE
 )
 
 }
 \author{
-Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
+Alessandro Oggioni, phD \email{oggioni.a@irea.cnr.it}
 }

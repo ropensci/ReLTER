@@ -34,11 +34,11 @@
 #' attribute contains all URIs of the terms indicated in the headers columns.
 #' To the observed properties columns are labeled with a unit of measurement,
 #' as mentioned in the SOS, using R package
-#' \href{https://r-quantities.github.io/units/index.html}{`units`}
-#' \insertCite{@ @utilsR}{ReLTER}. This labelling simplify the propagation,
+#' \href{https://r-quantities.github.io/units/index.html}{`units`}.
+#' This labelling simplify the propagation,
 #' conversion and derivation of units of collected observed properties.
-#' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @author Paolo Tagliolato, PhD (2021) \email{tagliolato.p@@irea.cnr.it}
+#' @author Alessandro Oggioni, phD \email{oggioni.a@@irea.cnr.it}
+#' @author Paolo Tagliolato, phD \email{tagliolato.p@@irea.cnr.it}
 #' @importFrom xml2 read_xml xml_attr xml_find_all xml_text xml_find_first
 #' @importFrom tidyr separate_rows separate
 #' @importFrom dplyr mutate mutate_if arrange filter full_join select

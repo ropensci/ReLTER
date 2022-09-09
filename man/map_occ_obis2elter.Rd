@@ -30,9 +30,9 @@ Harmonize outputs of get_site_speciesOccurrence and map them into eLTER
 reporting format
 }
 \author{
-Paolo Tagliolato, phD (2020) \email{tagliolato.p@irea.cnr.it}
+Paolo Tagliolato, phD \email{tagliolato.p@irea.cnr.it}
 
 Martina Zilioli \email{zilioli.m@irea.cnr.it}
 
-Alessandro Oggioni, PhD (2020) \email{oggioni.a@irea.cnr.it}
+Alessandro Oggioni, phD \email{oggioni.a@irea.cnr.it}
 }

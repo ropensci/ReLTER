@@ -16,5 +16,5 @@ where <deimsid_code> is the uuid in the last part of the deimsid,
 and <source> is one of "gbif", "inat", "obis"
 }
 \author{
-Paolo Tagliolato, phD (2020) \email{tagliolato.p@irea.cnr.it}
+Paolo Tagliolato, phD \email{tagliolato.p@irea.cnr.it}
 }

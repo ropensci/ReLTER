@@ -5,7 +5,7 @@
 #' (SOS) service.
 #' @return The output of the function is a `list` with the name and URI (Uniform
 #' Resource Identifier) of each procedure.
-#' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
+#' @author Alessandro Oggioni, phD \email{oggioni.a@@irea.cnr.it}
 #' @importFrom xml2 read_xml xml_ns xml_find_all
 #' @importFrom xslt xml_xslt
 #' @importFrom utils read.csv
@@ -19,7 +19,7 @@
 #'
 ### function get_sos_procedurelist
 get_sos_procedurelist <- function(sosURL) {
-  # FIX this the error is: "Error in open.connection(x, "rb") : 
+  # FIX this the error is: "Error in open.connection(x, "rb") :
   # SSL: no alternative certificate subject name matches target host name
   # 'www.get-it.it'"
   xslProcUrl.url <- paste0("https://www.get-it.it/objects/sensors/xslt/",

@@ -5,7 +5,7 @@
 #' OBIS \url{https://obis.org/} and crops to an eLTER site
 #' boundary, which is obtained from the DEIMS-SDR sites API.
 #' @param deimsid A `character`. The DEIMS.iD of the site from
-#' DEIMS-SDR website. DEIMS.iD information 
+#' DEIMS-SDR website. DEIMS.iD information
 #' \href{https://deims.org/docs/deimsid.html}{here}.
 #' @param list_DS A `character`. Data source to get data from, any
 #' combination of gbif, inat and/or obis.
@@ -18,7 +18,7 @@
 #' something smallish so that you can get a result quickly, then do more as
 #' needed.
 #' @param exclude_inat_from_gbif A `boolean`. If TRUE, when list_DS contains
-#' both "gbif" and "inat", filter out gbif records originating 
+#' both "gbif" and "inat", filter out gbif records originating
 #' from iNaturalist (in order to avoid duplicates). Default TRUE.
 #' @return The output of the function is a `list` of `sf` one for each of the
 #' repositories specified in the list_DS parameter.
@@ -111,7 +111,7 @@ get_site_speciesOccurrences <- function(
       geometry = bbox_wkt
     )
   }
-  
+
   # find 0 record to dataset
   list_DS_exclude <- NULL
   if (!is.null(site_occ_spocc) && site_occ_spocc$gbif$meta$returned == 0) {
@@ -124,13 +124,13 @@ get_site_speciesOccurrences <- function(
     list_DS_exclude <- c(list_DS_exclude, "obis")
   }
   list_DS <- list_DS[!(list_DS %in% list_DS_exclude)]
-  
+
   # combine results from occ calls to a single data.frame ----
   occ_df <- NULL
   if ("gbif" %in% list_DS) {
     occ_df_gbif <- site_occ_spocc$gbif$data[[1]] %>%
       tibble::as_tibble()
-    if("inat" %in% list_DS && exclude_inat_from_gbif){
+    if ("inat" %in% list_DS && exclude_inat_from_gbif) {
       occ_df_gbif <- occ_df_gbif %>%
         dplyr::filter(institutionCode != "iNaturalist")
     }
@@ -146,14 +146,14 @@ get_site_speciesOccurrences <- function(
       dplyr::mutate(
         date = as.character(date)
       )
-    
+  
     if (nrow(occ_df_gbif) > 0) {
       occ_df <- rbind(occ_df, occ_df_gbif)
     } else {
       list_DS <- list_DS[!(list_DS == "gbif")]
     }
   }
-  
+
   if ("inat" %in% list_DS) {
     occ_df_inat <- site_occ_spocc$inat$data[[1]] %>%
       tibble::as_tibble() %>%
@@ -167,7 +167,7 @@ get_site_speciesOccurrences <- function(
       )
     occ_df <- rbind(occ_df, occ_df_inat)
   }
-  
+
   if ("obis" %in% list_DS) {
     occ_df_obis <- site_occ_spocc_obis$results %>%
       dplyr::mutate(
@@ -188,7 +188,6 @@ get_site_speciesOccurrences <- function(
     )
     occ_df <- rbind(occ_df, occ_df_obis)
   }
-  
 
   # print map ----
   if (length(list_DS) < 3) {

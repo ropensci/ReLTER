@@ -53,7 +53,7 @@ NIVA
 
 }
 \author{
-Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
+Alessandro Oggioni, phD \email{oggioni.a@irea.cnr.it}
 
-Paolo Tagliolato, PhD (2021) \email{tagliolato.p@irea.cnr.it}
+Paolo Tagliolato, phD \email{tagliolato.p@irea.cnr.it}
 }

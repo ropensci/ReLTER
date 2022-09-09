@@ -3,7 +3,7 @@
 #' @param x A `tibble` like one that can be obtained by
 #' as_tibble(get_site_speciesOccurrence(deimsid, "gbif")$gbif)
 #' @param deimsid A `character`. The DEIMS.iD of the site from
-#' DEIMS-SDR website. DEIMS.iD information 
+#' DEIMS-SDR website. DEIMS ID information
 #' @return list with the following named elements:
 #' * deimsid: the same deimsid passed in input
 #' * source: one of "gbif", "inat", "obis"
@@ -13,9 +13,9 @@
 #' eLTER reporting format
 #' * reference_VARIABLES: tibble structured according to reference_VARIABLES
 #' of eLTER reporting format
-#' @author Paolo Tagliolato, phD (2020) \email{tagliolato.p@@irea.cnr.it}
+#' @author Paolo Tagliolato, phD \email{tagliolato.p@@irea.cnr.it}
 #' @author Martina Zilioli \email{zilioli.m@@irea.cnr.it}
-#' @author Alessandro Oggioni, PhD (2020) \email{oggioni.a@@irea.cnr.it}
+#' @author Alessandro Oggioni, phD \email{oggioni.a@@irea.cnr.it}
 #' @importFrom tibble as_tibble
 #' @importFrom dplyr select mutate filter
 #' @export
@@ -240,7 +240,7 @@ map_occ_obis2elter <- function(x, deimsid) {
 #' biodiv_occurrence_site_<deimsid_code>_<source>.zip
 #' where <deimsid_code> is the uuid in the last part of the deimsid,
 #' and <source> is one of "gbif", "inat", "obis"
-#' @author Paolo Tagliolato, phD (2020) \email{tagliolato.p@@irea.cnr.it}
+#' @author Paolo Tagliolato, phD \email{tagliolato.p@@irea.cnr.it}
 #' @importFrom utils zip write.csv2
 #' @export
 save_occ_eLTER_reporting_Archive <- function(lterReportOut) {
@@ -319,7 +319,6 @@ eLTER_reporting.mapping.extendedFields <- c(
   "FLAGSTA"
 )
 
-
 #' @noRd
 reference_variables_gbif <- as_tibble(
   data.frame(
@@ -389,7 +388,7 @@ reference_variables_obis <- as_tibble(
 #   "~/Desktop/D4.1/dataMapping/gbif.shp",
 #   append = TRUE
 # )
-# 
+#
 # sf::st_write(
 #   resGarda$inat,
 #   "~/Desktop/D4.1/dataMapping/inat.shp",
@@ -400,52 +399,75 @@ reference_variables_obis <- as_tibble(
 #' @description compose file name following eLTER naming convention
 #' @author Paolo Tagliolato, phD \email{tagliolato.p@@irea.cnr.it}
 #' @author Alessandro Oggioni, phD \email{oggioni.a@@irea.cnr.it}
-#' @param deimsid
-#' @param country_code automatically evaluated if deimsid is provided
-#' @param site_name automatically evaluated if deimsid is provided
-#' @param data_topic
-#' @param variable_group
-#' @param time_span
-#' @param version version in format "VYYYYMMDD". Defaults to current date
+#' @param deimsid A `character` The DEIMS ID of the site from
+#' DEIMS-SDR website. More information about DEIMS ID in this pages:
+#' \href{https://deims.org/docs/deimsid.html}{page}.
+#' @param country_code A `character` automatically evaluated if
+#' DEIMS ID is provided.
+#' Otherwise reference to the country of the site as two-digit country
+#' code according to ISO 3166-1 alpha-2.
+#' @param site_name A `character` Automatically evaluated if DEIMS ID is
+#' provided.
+#' Otherwise the name of the site according to DEIMS-SDR, if the name is
+#' too long the site name can be shortened.
+#' @param data_topic A `character`. Max 5-digit code for data topic or
+#' observation programme, e.g. METEO (Meteorology), BIODIV (Biodiversity),
+#' DEPO (deposition), GHG (Green House gas), SW (Soil water), VEG (Vegetation).
+#' The abbreviation is defined by the data provider depending on the data.
+#' @param variable_group A `character`. Optional, list of variables or
+#' variable groups contained in the data. The abbreviation is defined by the
+#' data provider depending on the data.
+#' @param time_span A `numeric` or a `character`. Time span covered in the
+#' data.
+#' @param version version in format "VYYYYMMDD". Data version in the format
+#' “V”YYYYMMDD.
+#' Defaults to current date.
 #' @return filename (without extension) following naming convention
-#' @example 
-#' deimsid<-"https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6"
-#' time_span = 2015 # e.g. whole year
-#' time_span = "20150302-20180415" # e.g. span between two dates
-#' data_topic = "VEG" # data provider defined abbreviation of "vegetation"
-#' variable_group = "SPECCOVER" # data provider defined abbreviation
-#' version = "V20220907"
-#' eLTER_reporting_compose_file_name(deimsid, country_code = NA, 
-#' site_name = NA, data_topic, variable_group, time_span, version)
 #' @importFrom stringr str_replace_all
 #' @importFrom countrycode countrycode
 #' @importFrom dplyr pull
-#' @seealso Peterseil, Geiger et al. (2020) Field Specification for data reporting. TEchnical Document
+#' @seealso Peterseil, Geiger et al. (2020)
+#' Field Specification for data reporting. Technical Document.
 #' TechDoc.01. EU Horizon 2020 eLTER PLUS Project, Grant agreement No. 871128
+#' \url{https://zenodo.org/record/6373410}
 #' @note This method must be intended as a signpost for future implementation
 #' @export
-reporting_compose_file_name <- function(deimsid = NULL, 
-                                              country_code = NULL, site_name = NULL, 
-                                              data_topic, variable_group = "", 
-                                              time_span, version = Sys.Date() %>% format("V%Y%m%d"))
-                                              {
-  
-  if(! is.null(deimsid)){
-    
+#' @examples
+#' deimsid <- "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6"
+#' time_span <- 2015 # e.g. whole year
+#' # time_span <- "20150302-20180415" # e.g. span between two dates
+#' data_topic <- "VEG" # data provider defined abbreviation of "vegetation"
+#' variable_group <- "SPECCOVER" # data provider defined abbreviation
+#' version <- "V20220907"
+#'
+#' filename <- reporting_compose_file_name(
+#'   deimsid = deimsid,
+#'   data_topic = data_topic,
+#'   variable_group = variable_group,
+#'   time_span = time_span,
+#'   version = version
+#' )
+#'
+### function reporting_compose_file_name
+reporting_compose_file_name <- function(
+  deimsid = NULL,
+  country_code = NULL, site_name = NULL,
+  data_topic, variable_group = "",
+  time_span, version = Sys.Date() %>% format("V%Y%m%d")
+) {
+
+  if (!is.null(deimsid)) {
     info <- get_site_info(deimsid)
-    
-    country_code = info %>% dplyr::pull(country) %>% unlist() %>% .[1] %>% 
+    country_code <- info %>% dplyr::pull(country) %>% unlist() %>% .[1] %>%
       countrycode::countrycode(origin = "country.name", destination = "iso2c")
-    
-    site_name = stringr::str_replace_all(info$title, " ", replacement = "-")
+    site_name <- stringr::str_replace_all(info$title, " ", replacement = "-")
   }
-  
   return(
     paste(country_code, site_name, data_topic, variable_group, time_span, version, sep = "_")
   )
 }
 
-#' compose an lterDataReportingFormat object
+#' Compose an eLTER Data Reporting Format object
 #' @description Given several tables, creates an eLTER data reporting format object
 #' @author Paolo Tagliolato, phD \email{tagliolato.p@@irea.cnr.it}
 #' @author Alessandro Oggioni, phD \email{oggioni.a@@irea.cnr.it}
@@ -456,50 +478,71 @@ reporting_compose_file_name <- function(deimsid = NULL,
 #' @param event A `tibble`
 #' @param sample A `tibble`
 #' @param licence A `character`
-#' @param data_type
+#' @param data_type A `character`
 #' @param filename optional filename associated with the object, of the form provided as output by
 #' the function `reporting_compose_file_name`
 #' @seealso Peterseil, Geiger et al. (2020) 
 #' Field Specification for data reporting. Technical Document.
 #' TechDoc.01. EU Horizon 2020 eLTER PLUS Project, Grant agreement No. 871128
+#' \url{https://zenodo.org/record/6373410}
 #' @return list with eLTER reporting format slots
-#' @example
-#' deimsid<-"https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6"
-#' data = dplyr::tribble(
+#' @examples
+#' deimsid <- "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6"
+#' time_span <- 2015 # e.g. whole year
+#' # time_span <- "20150302-20180415" # e.g. span between two dates
+#' data_topic <- "VEG" # data provider defined abbreviation of "vegetation"
+#' variable_group <- "SPECCOVER" # data provider defined abbreviation
+#' version <- "V20220907"
+#' 
+#' filename <- reporting_compose_file_name(
+#'   deimsid = deimsid,
+#'   data_topic = data_topic,
+#'   variable_group = variable_group,
+#'   time_span = time_span,
+#'   version = version
+#' )
+#' 
+#' data <- dplyr::tribble(
 #'   ~id, ~value, 
 #'   1, 7.5, 
 #'   2, 4.2
 #' )
-#' station = dplyr::tribble(
+#' station <- dplyr::tribble(
 #'   ~SITE_CODE, ~STATION_CODE, ~STYPE, ~LAT,      ~LON,       ~ALTITUDE,
 #'   deimsid,    "IP2",         "AREA",  45.340805, 7.88887495, 265
 #' )
-#' 
-#' method = dplyr::tribble(
+#' method <- dplyr::tribble(
 #'   ~VARIABLE, ~METH_DESCR,
 #'   "COVE_F",  "Analysis of ammonium..."  
 #' )
-#' 
 #'   
-#' res<-reporting_produce_data_object_v1.3(data=data, station=station, method=method)
-#' res %>% purrr::
-#' lapply(FUN = function(x){print("tbl_df" %in% class(x)); if("tbl_df" %in% class(x)) return(x)})
+#' research_object <- reporting_produce_data_object_v1.3(
+#'  filename = filename,
+#'  deimsid = deimsid,
+#'  data = data,
+#'  station = station,
+#'  method = method
+#' )
+#' 
 #' @note This method must be intended as a signpost for future implementation
 #' @export
-reporting_produce_data_object_v1.3 <- function(data = NULL, station = NULL, method = NULL,
-                                      reference = NULL, event = NULL, sample = NULL,
-                                      licence = "",
-                                      deims_id ="",
-                                      data_type = "measurement", 
-                                      filename = NULL) {
+#'
+### function reporting_produce_data_object_v1.3
+reporting_produce_data_object_v1.3 <- function(data = NULL, station = NULL,
+                                               method = NULL, reference = NULL,
+                                               event = NULL, sample = NULL,
+                                               licence = "", deimsid = "",
+                                               data_type = "measurement",
+                                               filename = NULL) {
   if(!data_type %in% c("measurement", "mapping"))
     stop("data type must be one of measurement or mapping")
   return(list(
     filename = filename,
     type = data_type,
+    deimsid = deimsid,
     DATA = data,
     STATION = station,
-    METHOD =method,
+    METHOD = method,
     REFERENCE = reference,
     EVENT = event,
     SAMPLE = sample,
@@ -509,28 +552,95 @@ reporting_produce_data_object_v1.3 <- function(data = NULL, station = NULL, meth
 
 #' creates an archive with files following the eLTER reportingFormat
 #' @description creates a zip archive <filename>.zip
-#' @param x A `list` like the one created by reporting_produce_data_object_v1.3
-#' @param filename optional filename associated with the object, of the form provided as output by
-#' the function `reporting_compose_file_name`. Defaults to random string
+#' @param x A `list` like the one created by function
+#' `reporting_produce_data_object_v1.3`
+#' @param filename A `character`. Optional filename associated with the object,
+#' of the form provided as output by the function
+#' `reporting_compose_file_name`.
+#' Defaults to random string
 #' @param filepath A `character` file path. Defaults to temporary directory
-#' @param saveRDS A `logical`. Save also object in RDS format. Defaults to FALSE
-#' @return named `list` containing paths to saved files filepaths.
+#' @param saveRDS A `logical`. Save also object in RDS format.
+#' Defaults to FALSE
+#' @return named A `list` containing paths to saved files filepaths.
 #' Slots are named "zip" and possibly "RDS".
 #' @author Paolo Tagliolato, phD \email{tagliolato.p@@irea.cnr.it}
 #' @author Alessandro Oggioni, phD \email{oggioni.a@@irea.cnr.it}
 #' @importFrom utils zip write.csv2
 #' @importFrom stringi stri_rand_strings
 #' @note This method must be intended as a signpost for future implementation
+#' @seealso Peterseil, Geiger et al. (2020) 
+#' Field Specification for data reporting. Technical Document.
+#' TechDoc.01. EU Horizon 2020 eLTER PLUS Project, Grant agreement No. 871128
+#' \url{https://zenodo.org/record/6373410}
 #' @export
-reporting_save_archive <- function(x, filename=NULL, filepath = tempdir(), saveRDS=FALSE) {
+#' @examples
+#' \dontrun{
+#' ## Not run:
+#' deimsid <- "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6"
+#' time_span <- 2015 # e.g. whole year
+#' # time_span <- "20150302-20180415" # e.g. span between two dates
+#' data_topic <- "VEG" # data provider defined abbreviation of "vegetation"
+#' variable_group <- "SPECCOVER" # data provider defined abbreviation
+#' version <- "V20220907"
+#' 
+#' filename <- reporting_compose_file_name(
+#'   deimsid = deimsid,
+#'   data_topic = data_topic,
+#'   variable_group = variable_group,
+#'   time_span = time_span,
+#'   version = version
+#' )
+#' 
+#' data <- dplyr::tribble(
+#'   ~id, ~value, 
+#'   1, 7.5, 
+#'   2, 4.2
+#' )
+#' station <- dplyr::tribble(
+#'   ~SITE_CODE, ~STATION_CODE, ~STYPE, ~LAT,      ~LON,       ~ALTITUDE,
+#'   deimsid,    "IP2",         "AREA",  45.340805, 7.88887495, 265
+#' )
+#' 
+#' method <- dplyr::tribble(
+#'   ~VARIABLE, ~METH_DESCR,
+#'   "COVE_F",  "Analysis of ammonium..."  
+#' )
+#'   
+#' research_object <- reporting_produce_data_object_v1.3(
+#'  filename = filename,
+#'  deimsid = deimsid,
+#'  data = data,
+#'  station = station,
+#'  method = method
+#' )
+#' 
+#' archive <- reporting_save_archive(
+#'   x = research_object,
+#'   # obtained from the function `reporting_produce_data_object_v1.3()`
+#'   filename = filename,
+#'   # obtained from the function `reporting_compose_file_name()`
+#'   filepath = ".",
+#'   saveRDS = TRUE
+#' )
+#' }
+#' 
+#' ## End (Not run)
+#'
+### function reporting_save_archive
+reporting_save_archive <- function(
+  x,
+  filename = NULL,
+  filepath = tempdir(),
+  saveRDS = FALSE
+) {
   if(is.null(filename)) filename = stringi::stri_rand_strings(1, 10)
   sr <- filename
   deimsid <- x$deimsid
   
   dirsr <- paste0(filepath, "/", sr)
   
-  lx<-purrr::map_lgl(x, function(y){"tbl_df" %in% class(y)})
-  slotstosave<-names(lx)[lx]
+  lx <- purrr::map_lgl(x, function(y){"tbl_df" %in% class(y)})
+  slotstosave <- names(lx)[lx]
   filenames <- paste0(dirsr, "/", slotstosave, ".csv")
   
   # clean up existing previous work
@@ -554,10 +664,65 @@ reporting_save_archive <- function(x, filename=NULL, filepath = tempdir(), saveR
   savedFiles <- list()
   savedFiles["zip"] <- paste0(filepath,"/",filename,".zip")
     
-  if(saveRDS==TRUE){
+  if (saveRDS == TRUE){
     saveRDS(x, file=paste0(filepath, "/", filename, ".RDS"))
     savedFiles["RDS"] <- paste0(filepath, "/", filename, ".RDS")
   }
   
   return(savedFiles)
+}
+
+#' eLTER write rds data function
+#' @description This function write a rds file from csv, tsv, txt, xls or xlsx
+#' dataset
+#' @param myfiles A `character`. The list of the files to deposit in Zenodo.
+#' Please provide all files only with 'csv' extension.
+#' @param delim A `character`. Provide the character used to separate fields
+#' within a record. Only if the extension of the file(s) are 'csv', 'tsv', or
+#' 'txt'.
+#' @return This function returns a rds files.
+#' @author Alessandro Oggioni, phD \email{oggioni.a@@irea.cnr.it}
+#' @importFrom readr read_delim
+#' @keywords internal
+#' @examples
+#' elter_write_rdata(
+#'   myfiles = c(
+#'    "miscellaneus/file_show/data_mapping.csv",
+#'    "miscellaneus/file_show/reference_TAXA.csv",
+#'    "miscellaneus/file_show/reference_VARIABLES.csv"
+#'   ),
+#'   delim = ";"
+#' )
+#' 
+### function elter_write_rdata
+elter_write_rdata <- function(myfiles, delim) {
+  exts <- strsplit(basename(myfiles), split="\\.")
+  num_files <- length(myfiles)
+  if (!all(grepl("\\.csv$", myfiles))) {
+    message(
+      paste0(
+        "\n----\n",
+        "Please provide all files with 'csv' extension.",
+        "\n----\n"
+      )
+    )
+  } else {
+    files_name <- as.character()
+    for (i in seq_len(num_files)) {
+      name <- paste0(exts[[i]][1])
+      assign(
+        name,
+        readr::read_delim(
+          myfiles[i],
+          delim = delim,
+          show_col_types = FALSE
+        )
+      )
+      files_name <- append(files_name, name)
+    }
+    save(
+      list = files_name,
+      file = "data.RData"
+    )
+  }
 }

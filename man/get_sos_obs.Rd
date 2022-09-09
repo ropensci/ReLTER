@@ -44,8 +44,8 @@ The output contains also a semantic link, as provided by SOS. The `uri`
 attribute contains all URIs of the terms indicated in the headers columns.
 To the observed properties columns are labeled with a unit of measurement,
 as mentioned in the SOS, using R package
-\href{https://r-quantities.github.io/units/index.html}{`units`}
-\insertCite{@ @utilsR}{ReLTER}. This labelling simplify the propagation,
+\href{https://r-quantities.github.io/units/index.html}{`units`}.
+This labelling simplify the propagation,
 conversion and derivation of units of collected observed properties.
 }
 \description{
@@ -95,7 +95,7 @@ ggplot2::ggplot(airTemp, ggplot2::aes(x = phenomenonTime, y = Air_Temperature)) 
 
 }
 \author{
-Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
+Alessandro Oggioni, phD \email{oggioni.a@irea.cnr.it}
 
-Paolo Tagliolato, PhD (2021) \email{tagliolato.p@irea.cnr.it}
+Paolo Tagliolato, phD \email{tagliolato.p@irea.cnr.it}
 }
