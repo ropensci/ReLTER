@@ -4,9 +4,9 @@
 #' All the info are taken from the DEIMS-SDR sites API.
 #' If the boundary is missing, a warning message is printed in the R console.
 #' @param deimsid A `character`. The DEIMS ID of the site from
-#' DEIMS-SDR website. More information about DEIMS ID in this page:
-#' \href{https://deims.org/docs/deimsid.html}{page}.
-#' @param show_map a `boolean`. When TRUE the boundary will be plotted on a
+#' DEIMS-SDR website. DEIMS ID information
+#' \href{https://deims.org/docs/deimsid.html}{here}.
+#' @param show_map A `boolean`. When TRUE the boundary will be plotted on a
 #' Leaflet map. Default FALSE.
 #' @return The output of the function is an `sf` object, the boundary of the
 #' site or NA if the boundary is missing from DEIMS-SDR. In addition, as

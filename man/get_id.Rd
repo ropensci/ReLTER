@@ -8,8 +8,8 @@ get_id(deimsid, resource = "sites", test, ...)
 }
 \arguments{
 \item{deimsid}{A `character`. It is the DEIMS ID of the site, activity or
-dataset from DEIMS-SDR website. More information about DEIMS ID from:
-\href{https://deims.org/docs/deimsid.html}{page}.}
+dataset from DEIMS-SDR website. DEIMS ID information
+\href{https://deims.org/docs/deimsid.html}{here}.}
 
 \item{resource}{Character: one among `"sites"` (default), `"activities"` or
 `"datasets"` (`"networks"` currently not tested).}
@@ -33,5 +33,7 @@ Internal function to retrieve json content from ID
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
 
 Luigi Ranghetti, phD (2021) \email{luigi@ranghetti.info}
+
+Paolo Tagliolato, PhD (2021) \email{tagliolato.p@irea.cnr.it}
 }
 \keyword{internal}

@@ -1,15 +1,32 @@
-#' @title eLTER get_ilter_research_topics function
-#' @description This function allows to obtain the information about the
-#' Research Topics collected in all sites of ILTER, through the DEIMS-SDR
-#' sites API.
+#' Obtain the information about the Research Topics of ILTER sites.
+#' @description This function obtains Research Topics as collected by all
+#' \href{https://www.ilter.network/network/global-coverage}{ILTER sites
+#' (more than 1200 around the world)}, as stored in
+#' \href{https://deims.org}{DEIMS-SDR}. Note that the execution time for
+#' this function is very high.
+#'
+#' If the objective is to obtain information about Research Topics
+#' from a few sites, it is better to use other more specific functions (e.g.
+#' \href{get_network_research_topics.html}{`get_network_research_topics()`} or
+#' \href{get_site_info.html}{`get_site_info()`}) or using
+#' other methods
+#' (\href{../../articles/sites_information.html}{How to about sites
+#' informations}).
 #' @param sitesNum A `integer`. It is the number of the sites that are
-#' read to get the information. Use this parameters moreover for provide
-#' example of this function.
+#' read to get the information. Use this parameter only to get an
+#' example of the output of this function. If the value of sitesNum is
+#' 0 (default) all the ILTER sites will be parsed and the waiting time will
+#' be long.
 #' @return The output of the function is a `tibble` containing the research
 #' topics and their URI (Uniform Resource Identifier) of all ILTER sites.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom jsonlite fromJSON
 #' @importFrom dplyr bind_rows distinct as_tibble
+#' @importFrom Rdpack reprompt
+#' @references
+#'   \insertRef{jsonliteR}{ReLTER}
+#'
+#'   \insertRef{dplyrR}{ReLTER}
 #' @export
 #' @examples
 #' \dontrun{
@@ -25,7 +42,7 @@
 #'
 ### function get_ilter_research_topics
 get_ilter_research_topics <- function(sitesNum = NULL) {
-  if (is.na(sitesNum)) {
+  if (is.null(sitesNum)) {
     lterILTERSites <- as.list(jsonlite::fromJSON("https://deims.org/api/sites"))
     allSiteResearchTopics <- lapply(
       as.list(paste0(lterILTERSites$id$prefix, lterILTERSites$id$suffix)),

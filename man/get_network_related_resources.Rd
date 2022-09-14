@@ -2,25 +2,28 @@
 % Please edit documentation in R/get_network_related_resources.R
 \name{get_network_related_resources}
 \alias{get_network_related_resources}
-\title{eLTER get_network_related_resources function}
+\title{Obtain information about the Related Resources (dataset and activity) of a
+eLTER Network.}
 \usage{
 get_network_related_resources(networkDEIMSID)
 }
 \arguments{
-\item{networkDEIMSID}{A `character`. It is the DEIMS iD of network make
-from DEIMS-SDR website. More information about DEIMS iD in this
-\href{https://deims.org/docs/deimsid.html}{page}, and at this
-\href{https://deims.org/search?f[0]=result_type:network}{page} the
-complete list of ILTER networks.}
+\item{networkDEIMSID}{A `character`. It is the DEIMS ID of network make
+from DEIMS-SDR website. DEIMS ID information
+\href{https://deims.org/docs/deimsid.html}{here} and Complete list of ILTER
+networks \href{https://deims.org/search?f[0]=result_type:network}{here}.
+The DEIMS ID of network is the URL for the network page.}
 }
 \value{
 The output of the function is a `tibble` containing the related
 resources shared by the network's sites.
 }
 \description{
-This function obtains information about the
-related resources (e.g. dataset) shared in the eLTER Network (e.g. Italy)
-througth the DEIMS-SDR sites API.
+This function obtains the Related Resources information (title
+and URL), as a stored in \href{https://deims.org/}{DEIMS-SDR catalogue}, of
+all eLTER sites belonging to an eLTER Network (e.g.
+\href{https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3}{LTER
+Italy network}).
 }
 \examples{
 \dontrun{
@@ -28,9 +31,14 @@ listRelatedResources <- get_network_related_resources(
   networkDEIMSID =
   "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 )
-listRelatedResources[1:10, ]
+listRelatedResources
 }
 
+}
+\references{
+\insertRef{jsonliteR}{ReLTER}
+  
+  \insertRef{dplyrR}{ReLTER}
 }
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}

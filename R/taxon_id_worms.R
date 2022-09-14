@@ -1,15 +1,19 @@
-#' @title eLTER taxon_id_worms function
-#' @description This function enriches and certifies a list of species names by
-#' comparing with \href{https://www.marinespecies.org}{Worms records}
-#' @param input a `tibble`. The table that contain the species
+#' Enrich and certify a list of species names by
+#' comparing with \href{https://www.marinespecies.org}{Worms}.
+#' @description This function tibble object with all the columns of input table
+#' of taxa plus new columns such as valid_name, valid_authority, valid_AphiaID,
+#' status, synonyms, LSID, url, matchType, nOfWormsRecords, wormsRecords
+#' obtained from:
+#' \href{http://www.marinespecies.org/rest/}{Worms rest API}.
+#' @param input A `tibble`. The table that contain the species
 #' names list to be checked.
-#' @param taxaColumn a `numeric`. The cardinal number of the column where
+#' @param taxaColumn A `numeric`. The cardinal number of the column where
 #' species list is. Default is `1`.
-#' @param verbose a `logical`. Whit this selection, the function returns a
+#' @param verbose A `logical`. Whit this selection, the function returns a
 #' message with number of record(s) that don't match with any Worms names and
 #' the number of record(s) that match with more that one Worms name. Default
 #' is `TRUE`.
-#' @param refine a `logical`. With this selection, the function allows to
+#' @param refine A `logical`. With this selection, the function allows to
 #' refine the result(s) that match with more Worms records. By a interactive
 #' use of the terminal, the user can chose the result. Default is `FALSE`.
 #' @return The output of the function is a `tibble` with the columns provided
@@ -22,6 +26,11 @@
 #' @author Paolo Tagliolato, phD (2021) \email{tagliolato.p@@irea.cnr.it}
 #' @importFrom worrms wm_records_names
 #' @importFrom dplyr filter
+#' @importFrom Rdpack reprompt
+#' @references
+#'   \insertRef{worrmsR}{ReLTER}
+#'
+#'   \insertRef{dplyrR}{ReLTER}
 #' @export
 #' @examples
 #' phytoplankton <- tibble::tibble(

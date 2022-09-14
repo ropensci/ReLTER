@@ -21,7 +21,8 @@ skip_if_offline(host = "deims.org")
 test_that("Output of dataset function constructs ‘tibble’ as expected", {
   result <- ReLTER::get_dataset_info(
     datasetid =
-      "https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef"
+      "https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef",
+    show_map = FALSE
   )
   expect_s3_class(result, "sf")
   expect_s3_class(result, "tbl_df")
@@ -116,7 +117,8 @@ test_that("Output of dataset function constructs ‘tibble’ as expected", {
 test_that("Wrong input (but URL) constructs a NULL object", {
   Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
   result <- ReLTER::get_dataset_info(
-    datasetid = "https://deims.org/dataset/ljhnhbkihubib"
+    datasetid = "https://deims.org/dataset/ljhnhbkihubib",
+    show_map = FALSE
   )
   expect_type(result, "NULL")
   Sys.setenv("LOCAL_DEIMS" = test_mode) # restore test mode
@@ -124,7 +126,10 @@ test_that("Wrong input (but URL) constructs a NULL object", {
 
 test_that("Wrong input (not URL) constructs an empty tibble", {
   Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
-  result <- ReLTER::get_dataset_info(datasetid = "ljhnhbkihubib")
+  result <- ReLTER::get_dataset_info(
+    datasetid = "ljhnhbkihubib",
+    show_map = FALSE
+  )
   expect_type(result, "NULL")
   Sys.setenv("LOCAL_DEIMS" = test_mode) # restore test mode
 })
@@ -133,7 +138,8 @@ test_that("Output of get dataset information function constructs 'sf' with
           valid geometries", {
   result <- ReLTER::get_dataset_info(
     datasetid =
-      "https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef"
+      "https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef",
+    show_map = FALSE
   )
   result_valid <- sf::st_is_valid(result)
   expect_true(any(result_valid))
@@ -142,7 +148,8 @@ test_that("Output of get dataset information function constructs 'sf' with
 test_that("Verify that 'observationParameters' is NULL", {
   result <- ReLTER::get_dataset_info(
     datasetid =
-      "https://deims.org/dataset/3cd76d66-cadc-4d10-9fa7-75fe8d60663c"
+      "https://deims.org/dataset/3cd76d66-cadc-4d10-9fa7-75fe8d60663c",
+    show_map = FALSE
   )
   expect_equal(
     result$observationParameters[[1]]$parametersLabel,
@@ -157,7 +164,8 @@ test_that("Verify that 'observationParameters' is NULL", {
 test_that("Verify that 'observationSpecies' is NULL", {
   result <- ReLTER::get_dataset_info(
     datasetid =
-      "https://deims.org/dataset/3cd76d66-cadc-4d10-9fa7-75fe8d60663c"
+      "https://deims.org/dataset/3cd76d66-cadc-4d10-9fa7-75fe8d60663c",
+    show_map = FALSE
   )
   expect_type(
     result$observationSpecies[[1]]$parametersLabel,

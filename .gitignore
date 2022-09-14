@@ -5,3 +5,10 @@
 R_newFunctions
 ReLTER.Rcheck
 *.Rproj
+cache
+doc
+miscellaneus
+rosm.cache
+submission_rOpenSci
+_pkgdown.yaml
+*.rds

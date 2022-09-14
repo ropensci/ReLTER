@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_ilter_generalinfo.R
 \name{get_ilter_generalinfo}
 \alias{get_ilter_generalinfo}
-\title{eLTER get_ilter_generalinfo function}
+\title{Download information of all ILTER sites or a subset of ILTER sites.}
 \usage{
 get_ilter_generalinfo(country_name = NA, site_name = NA, show_map = FALSE)
 }
@@ -24,10 +24,15 @@ If no bounding box is available,the centroid is returned.
 }
 \description{
 This function downloads generic information
-of all sites, or a subset of sites of ILTER, through the DEIMS-SDR
-API. If no `country_name` or `site_name` are specified,
-the whole list of sites is returned. If either or both of the filtering
-strings is specified, then a filtered subset of the sites is acquired.
+of all sites, or a subset of
+\href{https://www.ilter.network/network/global-coverage}{ILTER sites
+(more than 1200 around the world)},
+through the DEIMS-SDR API. If no `country_name` or `site_name` are
+specified, the whole list of sites is returned. If either or both of the
+filtering strings is specified, then a filtered subset of the sites is
+acquired.
+
+Return a `tibble` object.
 }
 \examples{
 \dontrun{
@@ -57,6 +62,13 @@ get_ilter_generalinfo(
   show_map = TRUE
 )
 }
+}
+\references{
+\insertRef{jsonliteR}{ReLTER}
+  
+  \insertRef{sfR}{ReLTER}
+  
+  \insertRef{leafletR}{ReLTER}
 }
 \author{
 Alessandro Oggioni, phD (2021) \email{oggioni.a@irea.cnr.it}

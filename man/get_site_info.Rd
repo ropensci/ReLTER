@@ -2,16 +2,24 @@
 % Please edit documentation in R/get_site_info.R
 \name{get_site_info}
 \alias{get_site_info}
-\title{eLTER get_site_info function}
+\title{Obtain details about an eLTER site.}
 \usage{
 get_site_info(deimsid, category = NA)
 }
 \arguments{
+<<<<<<< HEAD
 \item{deimsid}{A `character` The DEIMS ID of the site from
 DEIMS-SDR website. More information about DEIMS ID in this pages:
 \href{https://deims.org/docs/deimsid.html}{page}.}
 
 \item{category}{A `character`. This parameter selects which category
+=======
+\item{deimsid}{A character. The DEIMS ID of the site from
+DEIMS-SDR website. DEIMS ID information
+\href{https://deims.org/docs/deimsid.html}{here}.}
+
+\item{category}{A `category`. This parameter selects which category
+>>>>>>> dev
 or categories are retrieved and returned in the result.
 Possible value are:
 'Affiliations', 'Boundaries', 'Contacts', 'EnvCharacts', 'General',
@@ -25,22 +33,34 @@ which the site is involved.
 If category 'Boundaries' is indicated an `sf` object is returned
 }
 \description{
-This function obtains details about an eLTER site
-through the DEIMS-SDR sites API.
+This function obtains information of a single eLTER site,
+as a stored in \href{https://deims.org/}{DEIMS-SDR catalogue},
+through the DEIMS-SDR API.
 }
 \examples{
-siteInfo <- get_site_info(
-  deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
-  category = c("EnvCharacts", "Affiliations")
-)
-siteInfo
-
 site <- get_site_info(
   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
   category = "Boundaries"
 )
 site
 
+siteInfo <- get_site_info(
+  deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
+  category = c("EnvCharacts", "Affiliations")
+)
+siteInfo
+
+}
+\references{
+\insertRef{httrR}{ReLTER}
+  
+  \insertRef{dplyrR}{ReLTER}
+  
+  \insertRef{utilsR}{ReLTER}
+  
+  \insertRef{sfR}{ReLTER}
+  
+  \insertRef{leafletR}{ReLTER}
 }
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}

@@ -25,17 +25,7 @@ test_that("Output of network point function constructs ‘tibble’ as expected"
       "https://deims.org/networks/e904354a-f3a0-40ce-a9b5-61741f66c824",
     countryCode = "DEU"
   )
-  expect_s3_class(result, "tbl_df")
-  expect_s3_class(result, "sf")
-  expect_true(ncol(result) == 4)
-  expect_true(all(names(result) == c(
-    "title", "uri", "changed", "coordinates"
-  )))
-
-  expect_type(result$title, "character")
-  expect_type(result$uri, "character")
-  expect_type(result$changed, "character")
-  expect_type(result$coordinates, "list")
+  expect_s3_class(result, "tmap")
 })
 
 test_that("Wrong networkDEIMSID (but URL) constructs a NULL object", {
@@ -64,17 +54,17 @@ test_that("Wrong countryCode constructs a NULL object", {
       "https://deims.org/networks/e904354a-f3a0-40ce-a9b5-61741f66c824",
     countryCode = "EEA"
   )
-  expect_s3_class(result, "tbl_df")
-  expect_s3_class(result, "sf")
-  expect_true(ncol(result) == 4)
-  expect_true(all(names(result) == c(
+  expect_s3_class(result, "tmap")
+
+  expect_true(ncol(result$tm_shape$shp) == 4)
+  expect_true(all(names(result$tm_shape$shp) == c(
     "title", "uri", "changed", "coordinates"
   )))
 
-  expect_type(result$title, "character")
-  expect_type(result$uri, "character")
-  expect_type(result$changed, "character")
-  expect_type(result$coordinates, "list")
+  expect_type(result$tm_shape$shp$title, "character")
+  expect_type(result$tm_shape$shp$uri, "character")
+  expect_type(result$tm_shape$shp$changed, "character")
+  expect_type(result$tm_shape$shp$coordinates, "list")
 })
 
 test_that("Wrong both networkDEIMSID (but URL) and countryCode constructs
@@ -106,6 +96,5 @@ test_that("Output of site affiliation information function constructs ‘sf' wit
       "https://deims.org/networks/e904354a-f3a0-40ce-a9b5-61741f66c824",
     countryCode = "DEU"
   )
-  result_valid <- sf::st_is_valid(result$coordinates)
-  expect_true(any(result_valid))
+  expect_s3_class(result, "tmap")
 })

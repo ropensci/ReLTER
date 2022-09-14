@@ -1,10 +1,11 @@
-#' @title eLTER produce_site_map function
+#' Provide a map object of a sites LTER.
 #' @description This function produces a `map` of the site boundaries
-#' as provided by the DEIMS-SDR, within a given country and network.
-#' @param deimsid a `character`. The DEIMS ID of network from
-#' DEIMS-SDR website. More information about DEIMS iD in this
-#' \href{https://deims.org/docs/deimsid.html}{page}.
-#' @param countryCode a `character` following the SO 3166-1 alpha-3 codes.
+#' as provided by the \href{https://deims.org/}{DEIMS-SDR catalogue}, within
+#' a given country and network.
+#' @param deimsid A `character`. The DEIMS ID of network from
+#' DEIMS-SDR website. DEIMS ID information
+#' \href{https://deims.org/docs/deimsid.html}{here}.
+#' @param countryCode A `character` following the SO 3166-1 alpha-3 codes.
 #' This ISO convention consists of three-letter country codes
 #' as defined in ISO 3166-1, part of the ISO 3166 standard published by the
 #' International Organization for Standardization (ISO), to represent countries,
@@ -12,25 +13,25 @@
 #' The map produced by this function will be limited to the country
 #' indicated in this parameter; if the network has a extraterritorial sites
 #' those will not represented.
-#' @param listOfSites a `sf`. List of sites of specific network. This list
+#' @param listOfSites A `sf`. List of sites of specific network. This list
 #' is needed for showing another points on the map.
-#' @param gridNx a `double`. A numeric vector or unit object specifying
+#' @param gridNx A `double`. A numeric vector or unit object specifying
 #' x-location of viewports about country provided by countryCode parameter.
-#' @param gridNy a `double`. A numeric vector or unit object specifying
+#' @param gridNy A `double`. A numeric vector or unit object specifying
 #' y-location of viewports about country provided by countryCode parameter.
-#' @param width a `double`. A numeric vector or unit object specifying width
+#' @param width A `double`. A numeric vector or unit object specifying width
 #' of viewports about country provided by countryCode parameter. Default 0.25.
-#' @param height a `double`. A numeric vector or unit object specifying height
+#' @param height A `double`. A numeric vector or unit object specifying height
 #' of viewports about country provided by countryCode parameter. Default 0.25.
-#' @param bboxXMin a `double`. A numeric for add some unit of a bbox provided
+#' @param bboxXMin A `double`. A numeric for add some unit of a bbox provided
 #' by centroid of the site. Default 0.
-#' @param bboxYMin a `double`. A numeric for add some unit of a bbox provided
+#' @param bboxYMin A `double`. A numeric for add some unit of a bbox provided
 #' by centroid of the site. Default 0.
-#' @param bboxXMax a `double`. A numeric for add some unit of a bbox provided
+#' @param bboxXMax A `double`. A numeric for add some unit of a bbox provided
 #' by centroid of the site. Default 0.
-#' @param bboxYMax a `double`. A numeric for add some unit of a bbox provided
+#' @param bboxYMax A `double`. A numeric for add some unit of a bbox provided
 #' by centroid of the site. Default 0.
-#' @param show_map a `boolean`. When TRUE the immage of map will be plotted.
+#' @param show_map A `boolean`. When TRUE the immage of map will be plotted.
 #' Default FALSE.
 #' @return The output of the function is an `image` of the boundary of the
 #' site, OSM as base map and all country sites map.
@@ -44,6 +45,23 @@
 #' @importFrom tmap tm_shape tm_rgb tm_dots tm_compass tm_scale_bar tm_layout
 #' @importFrom tmap tm_credits tm_basemap tm_borders tm_fill tm_lines
 #' @importFrom grid viewport
+#' @importFrom Rdpack reprompt
+#' @references
+#'   \insertRef{sfR}{ReLTER}
+#'
+#'   \insertRef{jsonliteR}{ReLTER}
+#'
+#'   \insertRef{tibbleR}{ReLTER}
+#'
+#'   \insertRef{rasterR}{ReLTER}
+#'
+#'   \insertRef{rgeosR}{ReLTER}
+#'
+#'   \insertRef{rosmR}{ReLTER}
+#'
+#'   \insertRef{tmapR}{ReLTER}
+#'
+#'   \insertRef{gridR}{ReLTER}
 #' @export
 #' @examples
 #' \dontrun{
@@ -78,7 +96,7 @@
 #'   networkDEIMSID =
 #'   "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 #' )
-#' # In the case of Italian sites are selected only true sites and exclused the
+#' # In the case of Italian sites are selected only true sites and excluded the
 #' # macrosites.
 #' sitesNetwork <- (sitesNetwork[!grepl('^IT', sitesNetwork$title),])
 #' sf::st_crs(sitesNetwork) = 4326
@@ -91,6 +109,7 @@
 #'   show_map = TRUE
 #' )
 #' siteMap
+#'
 #' # with show_map = FALSE
 #' siteMap <- produce_site_map(
 #'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
@@ -101,6 +120,9 @@
 #' )
 #' siteMap
 #' }
+#'
+#' @section The function output:
+#' \figure{produce_site_map_fig.png}{Lake Maggiore site map}
 #'
 ### function produce_site_map
 produce_site_map <-
@@ -169,12 +191,13 @@ produce_site_map <-
              deimsidExa)
       )$attributes$geographic$boundaries
     if (countryCode %in% isoCodes$Alpha_3 == TRUE) {
-      country <- raster::getData(
-        country = countryCode,
-        level = 0
-      )
-      country <-
-        rgeos::gSimplify(country, tol = 0.01, topologyPreserve = TRUE)
+      try({
+        country <- raster::getData(
+          country = countryCode,
+          level = 0
+        ) %>%
+          rgeos::gSimplify(tol = 0.01, topologyPreserve = TRUE)
+      }, silent = TRUE)
       if (is.null(geoBoundaries)) {
         lterCoords <- siteSelected
         lterSitesFeaturePointDEIMS <-
@@ -228,7 +251,8 @@ produce_site_map <-
             position = c("left", "bottom")
           ) +
           tmap::tm_basemap(leaflet::providers$Stamen.Watercolor)
-        mapOfCentroids <- tmap::tm_shape(country) +
+        if (exists("country")) {
+          mapOfCentroids <- tmap::tm_shape(country) +
           tmap::tm_borders("grey75", lwd = 1) +
           tmap::tm_shape(listOfSites) +
           tmap::tm_dots(
@@ -246,14 +270,19 @@ produce_site_map <-
             title = NA,
             legend.show = FALSE
           )
+        }
         # based on the value of show_map param
         if (show_map == TRUE) {
-          print(mapOfSite)
-          print(mapOfCentroids,
-                vp = grid::viewport(gridNx,
-                                    gridNy,
-                                    width = width,
-                                    height = height))
+          if (exists("mapOfCentroids")) {
+            print(mapOfSite)
+            print(mapOfCentroids,
+                  vp = grid::viewport(gridNx,
+                                      gridNy,
+                                      width = width,
+                                      height = height))
+          } else {
+            print(mapOfSite)
+          }
         } else {
           return(mapOfSite)
           return(mapOfCentroids,
@@ -303,7 +332,7 @@ produce_site_map <-
                 substring(deimsid,
                           19)
               ))$title,
-              "\nDEIMS.iD ",
+              "\nDEIMS ID ",
               deimsid
             ),
             main.title.position = "center",
@@ -322,6 +351,7 @@ produce_site_map <-
             position = c("left", "bottom")
           ) +
           tmap::tm_basemap(leaflet::providers$Stamen.Watercolor)
+        if (exists("country")) {
           mapOfCentroids <- tmap::tm_shape(country) +
             tmap::tm_borders("grey75", lwd = 1) +
             tmap::tm_shape(listOfSites) +
@@ -340,16 +370,21 @@ produce_site_map <-
               title = NA,
               legend.show = FALSE
             )
+        }
         if (show_map == TRUE) {
-          print(mapOfSite)
-          print(mapOfCentroids,
-                vp = grid::viewport(
-                  gridNx,
-                  gridNy,
-                  width = width,
-                  height = height
-                )
-          )
+          if (exists("mapOfCentroids")) {
+            print(mapOfSite)
+            print(mapOfCentroids,
+                  vp = grid::viewport(
+                    gridNx,
+                    gridNy,
+                    width = width,
+                    height = height
+                  )
+            )
+          } else {
+            print(mapOfSite)
+          }
         } else {
           return(mapOfSite)
           return(mapOfCentroids,

@@ -1,8 +1,8 @@
 #' @title eLTER get_id function
 #' @description Internal function to retrieve json content from ID
 #' @param deimsid A `character`. It is the DEIMS ID of the site, activity or
-#' dataset from DEIMS-SDR website. More information about DEIMS ID from:
-#' \href{https://deims.org/docs/deimsid.html}{page}.
+#' dataset from DEIMS-SDR website. DEIMS ID information
+#' \href{https://deims.org/docs/deimsid.html}{here}.
 #' @param resource Character: one among `"sites"` (default), `"activities"` or
 #'  `"datasets"` (`"networks"` currently not tested).
 #' @param test Logical: if TRUE, content is not retrieved from
@@ -19,6 +19,7 @@
 #' @importFrom jsonlite stream_in
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @author Luigi Ranghetti, phD (2021) \email{luigi@@ranghetti.info}
+#' @author Paolo Tagliolato, PhD (2021) \email{tagliolato.p@@irea.cnr.it}
 #' @keywords internal
 #'
 get_id <- function(deimsid, resource = "sites", test, ...) {

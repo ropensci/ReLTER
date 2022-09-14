@@ -1,8 +1,15 @@
 ---
+<<<<<<< HEAD
 title: "How to get the info of a (one) LTER Site by knowing the DEIMS.ID"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{How to get the info of a (one) LTER Site by knowing the DEIMS.ID}
+=======
+title: "How to get the info of a (one) LTER Site by knowing the DEIMS ID"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{How to get the info of a (one) LTER Site by knowing the DEIMS ID}
+>>>>>>> dev
   %\VignetteEngine{knitr::knitr}
   %\usepackage[UTF-8]{inputenc}
 author: "Alessandro Oggioni"
@@ -22,7 +29,11 @@ For each LTER site the information are provided, by site manager, into DEIMS-SDR
 
 For more details about the site data model please visit <https://deims.org/models/?id=site>.
 
+<<<<<<< HEAD
 The [`get_site_info`](https://oggioniale.github.io/ReLTER/reference/get_site_info.html) function of {ReLTER} allows to download details about a specific site, through the DEIMS-SDR sites API and the DEIMS.ID (<https://deims.org/docs/deimsid.html>).
+=======
+The [`get_site_info`](https://docs.ropensci.org/ReLTER/reference/get_site_info.html) function of {ReLTER} allows to download details about a specific site, through the DEIMS-SDR sites API and the DEIMS ID (<https://deims.org/docs/deimsid.html>).
+>>>>>>> dev
 
 ## Get affiliation info of the LTER site:
 

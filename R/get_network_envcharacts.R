@@ -1,17 +1,25 @@
-#' @title eLTER get_network_envcharacts function
-#' @description This function obtains several Envinronmental Characteristics:
-#' title, URI, geocoordinates, country name, and elevation
-#' of sites in an eLTER Network (e.g. Italy) through the DEIMS-SDR sites API.
+#' Obtain a list of all Environmental Characteristics of sites in an
+#' eLTER Network.
+#' @description This function obtains all Environmental Characteristics:
+#' title, URI, geo-coordinates, country name, and elevation
+#' of eLTER Network sites (e.g.
+#' \href{https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3}{LTER-
+#' Italy network}), through the DEIMS-SDR API.
 #' @param networkDEIMSID A `character`. DEIMS ID of network
-#' from DEIMS-SDR website. More information about DEIMS ID refer to these pages:
-#' \href{https://deims.org/docs/deimsid.html}{page}, and
-#' \href{https://deims.org/search?f[0]=result_type:network}{page}
-#' the complete list of ILTER networks.
+#' from DEIMS-SDR website. DEIMS ID information
+#' \href{https://deims.org/docs/deimsid.html}{here} and Complete list of ILTER
+#' networks \href{https://deims.org/search?f[0]=result_type:network}{here}.
+#' The DEIMS ID of network is the URL for the network page.
 #' @return The output of the function is a `tibble` containing all the
 #' Environmental Characteristics of the network's sites.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom jsonlite fromJSON
 #' @importFrom dplyr as_tibble
+#' @importFrom Rdpack reprompt
+#' @references
+#'   \insertRef{jsonliteR}{ReLTER}
+#'
+#'   \insertRef{dplyrR}{ReLTER}
 #' @export
 #' @examples
 #' \dontrun{

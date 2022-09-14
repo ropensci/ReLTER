@@ -2,30 +2,54 @@
 % Please edit documentation in R/get_dataset_info.R
 \name{get_dataset_info}
 \alias{get_dataset_info}
-\title{eLTER get_dataset_info function}
+\title{Obtain the information about of an eLTER dataset.}
 \usage{
-get_dataset_info(datasetid)
+get_dataset_info(datasetid, show_map = FALSE)
 }
 \arguments{
-\item{datasetid}{A character. It is the DEIMS iD of dataset make from
-DEIMS-SDR website. More information about DEIMS iD in this
-\href{https://deims.org/docs/deimsid.html}{page}.}
+\item{datasetid}{A `character`. It is the DEIMS ID of dataset make from
+DEIMS-SDR website. DEIMS ID information
+\href{https://deims.org/docs/deimsid.html}{here}.
+The DEIMS ID of dataset is the URL for the dataset page.}
+
+\item{show_map}{A `boolean`. If TRUE a Leaflet map with occurrences
+is shown. Default FALSE.}
 }
 \value{
 The output of the function is a `tibble` with main features
 of the site and the related resources collected by site.
 }
 \description{
-This function allows to obtain the info of dataset provided in
-DEIMS-SDR.
+This function obtains the information about of an eLTER
+dataset (e.g.
+\url{https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845})
+provided in \href{https://deims.org/}{DEIMS-SDR catalogue}.
 }
+\section{The function output}{
+
+\figure{get_dataset_info_fig.png}{Map of "LTER Northern Adriatic Sea
+(Italy) marine data from 1965 to 2015" dataset}
+}
+
 \examples{
 tDataset <- get_dataset_info(
   datasetid =
-  "https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef"
+  "https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef",
+  show_map = TRUE
 )
 tDataset
 
+}
+\references{
+\insertRef{httrR}{ReLTER}
+  
+  \insertRef{dplyrR}{ReLTER}
+  
+  \insertRef{utilsR}{ReLTER}
+  
+  \insertRef{sfR}{ReLTER}
+  
+  \insertRef{leafletR}{ReLTER}
 }
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}

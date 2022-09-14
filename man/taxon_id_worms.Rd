@@ -2,23 +2,24 @@
 % Please edit documentation in R/taxon_id_worms.R
 \name{taxon_id_worms}
 \alias{taxon_id_worms}
-\title{eLTER taxon_id_worms function}
+\title{Enrich and certify a list of species names by
+comparing with \href{https://www.marinespecies.org}{Worms}.}
 \usage{
 taxon_id_worms(input, taxaColumn = 1, verbose = TRUE, refine = FALSE)
 }
 \arguments{
-\item{input}{a `tibble`. The table that contain the species
+\item{input}{A `tibble`. The table that contain the species
 names list to be checked.}
 
-\item{taxaColumn}{a `numeric`. The cardinal number of the column where
+\item{taxaColumn}{A `numeric`. The cardinal number of the column where
 species list is. Default is `1`.}
 
-\item{verbose}{a `logical`. Whit this selection, the function returns a
+\item{verbose}{A `logical`. Whit this selection, the function returns a
 message with number of record(s) that don't match with any Worms names and
 the number of record(s) that match with more that one Worms name. Default
 is `TRUE`.}
 
-\item{refine}{a `logical`. With this selection, the function allows to
+\item{refine}{A `logical`. With this selection, the function allows to
 refine the result(s) that match with more Worms records. By a interactive
 use of the terminal, the user can chose the result. Default is `FALSE`.}
 }
@@ -31,8 +32,11 @@ The function also return, if verbose is TRUE, the list of records that don't
 match with Worms name species.
 }
 \description{
-This function enriches and certifies a list of species names by
-comparing with \href{https://www.marinespecies.org}{Worms records}
+This function tibble object with all the columns of input table
+of taxa plus new columns such as valid_name, valid_authority, valid_AphiaID,
+status, synonyms, LSID, url, matchType, nOfWormsRecords, wormsRecords
+obtained from:
+\href{http://www.marinespecies.org/rest/}{Worms rest API}.
 }
 \examples{
 phytoplankton <- tibble::tibble(
@@ -52,6 +56,11 @@ table <- taxon_id_worms(
 )
 table
 
+}
+\references{
+\insertRef{worrmsR}{ReLTER}
+  
+  \insertRef{dplyrR}{ReLTER}
 }
 \author{
 Alessandro Oggioni, phD (2021) \email{oggioni.a@irea.cnr.it}

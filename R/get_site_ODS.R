@@ -1,13 +1,13 @@
-#' @title eLTER get_site_ODS function
-#' @description This function acquires various raster layers from
-#' ODS Europe:  https://maps.opendatascience.eu/
-#' and crops to an eLTER site boundary, which is obtained
-#' from the DEIMS-SDR sites API.
-#'
-#' @param deimsid  a `character`. The DEIMS ID of the site from
-#' DEIMS-SDR website. More information about DEIMS ID from:
-#' \href{https://deims.org/docs/deimsid.html}{page}.
-#' @param dataset a `character`. The requested dataset. One of:
+#' Acquire various raster layers from
+#' \href{https://maps.opendatascience.eu/}{ODS Europe}
+#' and crops to an eLTER site boundary.
+#' @description Download and return a SpatRaster object containing the requested
+#' dataset from \href{https://maps.opendatascience.eu/}{ODS},
+#' cropped to an eLTER site boundary, which is obtained from the DEIMS-SDR API.
+#' @param deimsid  A `character`. The DEIMS ID of the site from
+#' DEIMS-SDR website. DEIMS ID information
+#' \href{https://deims.org/docs/deimsid.html}{here}.
+#' @param dataset A `character`. The requested dataset. One of:
 #' "landcover", "clc2018", "osm_buildings", "natura2000",
 #' "ndvi_spring", "ndvi_summer", "ndvi_autumn", "ndvi_winter".
 #' Default is "landcover".
@@ -43,6 +43,13 @@
 #' @importFrom dplyr case_when
 #' @importFrom sf st_transform
 #' @importFrom terra mask crop vect rast crs plot
+#' @importFrom Rdpack reprompt
+#' @references
+#'   \insertRef{dplyrR}{ReLTER}
+#'
+#'   \insertRef{sfR}{ReLTER}
+#'
+#'   \insertRef{terraR}{ReLTER}
 #' @export
 #' @examples
 #'  \dontrun{
@@ -62,6 +69,9 @@
 #' siteNDVI
 #' terra::plot(siteNDVI)
 #' }
+#'
+#' @section The function output:
+#' \figure{get_site_ods_fig.png}{NDVI for Eisenwurzen}
 #'
 ### function get_site_ODS
 get_site_ODS <- function(deimsid, dataset = "landcover") {

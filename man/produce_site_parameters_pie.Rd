@@ -2,22 +2,34 @@
 % Please edit documentation in R/produce_site_parameters_pie.R
 \name{produce_site_parameters_pie}
 \alias{produce_site_parameters_pie}
-\title{eLTER produce_site_parameters_pie function}
+\title{Produce a pie chart of the parameters collected in a site LTER.}
 \usage{
 produce_site_parameters_pie(deimsid)
 }
 \arguments{
 \item{deimsid}{A `character`. It is the DEIMS ID of site/network from
-DEIMS-SDR website. More information about DEIMS ID from:
-\href{https://deims.org/docs/deimsid.html}{page}.}
+DEIMS-SDR website. DEIMS ID information
+\href{https://deims.org/docs/deimsid.html}{here}.}
 }
 \value{
-The output of the function is a pie chart.
+The output of the function is a pie chart and a `tibble`. The
+percentages, as a label in the pie charts and in the output table (
+column 'perc'), refer to the number of the parameters, belonging to a type
+(e.g. biological, atmospheric, etc.), measured compared to all of parameters
+measured into selected eLTER site. This function allows to show what type
+of parameters are most measured into a site. In the example below the
+atmospheric parameters corresponds to the 15 percent of all parameters
+measured into the site.
 }
 \description{
-This function produces a pie chart of the parameters
-collected in a site or network grouped into compounds.
+Return a pie chart of Environmental Parameters, as a stored in
+\href{https://deims.org/}{DEIMS-SDR catalogue}, of a single eLTER site.
 }
+\section{The function output}{
+
+\figure{produce_site_parameters_pie_fig.png}{Parameters pie chart}
+}
+
 \examples{
 \dontrun{
 pie <- produce_site_parameters_pie(
@@ -26,6 +38,17 @@ pie <- produce_site_parameters_pie(
 pie
 }
 
+}
+\references{
+\insertRef{tibbleR}{ReLTER}
+  
+  \insertRef{dplyrR}{ReLTER}
+  
+  \insertRef{RColorBrewerR}{ReLTER}
+  
+  \insertRef{ggplot2R}{ReLTER}
+  
+  \insertRef{ggforceR}{ReLTER}
 }
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}

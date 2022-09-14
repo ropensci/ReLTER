@@ -1,38 +1,59 @@
-#' @title eLTER produce_site_parameters_waffle function
-#' @description This function produces a waffle chart of the parameters
-#' collected in a site or network grouped into compounds.
+#' Produce a waffle chart of the parameters collected in a site LTER.
+#' @description Return a waffle chart of Environmental Parameters, as a
+#' stored in \href{https://deims.org/}{DEIMS-SDR catalogue}, of a single
+#' eLTER site.
 #' @param deimsid A `character`. The DEIMS ID of site/network from:
-#' DEIMS-SDR website. More information about DEIMS ID from:
-#' \href{https://deims.org/docs/deimsid.html}{page}.
-#' @return The output of the function is a waffle chart.
+#' DEIMS-SDR website. DEIMS ID information
+#' \href{https://deims.org/docs/deimsid.html}{here}.
+#' @return The output of the function is a waffle chart and a `tibble`. Each
+#' of the squares represents a parameters measured into the selected eLTER
+#' site. The parameters with the same color belong to the same group (e.g.
+#' biological, atmospheric, etc.).
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom tibble as_tibble
 #' @importFrom dplyr group_by tally mutate filter
 #' @importFrom grDevices colorRampPalette
 #' @importFrom RColorBrewer brewer.pal
 #' @importFrom waffle waffle
+#' @importFrom Rdpack reprompt
+#' @references
+#'   \insertRef{tibbleR}{ReLTER}
+#'
+#'   \insertRef{dplyrR}{ReLTER}
+#'
+#'   \insertRef{grDevicesR}{ReLTER}
+#'
+#'   \insertRef{RColorBrewerR}{ReLTER}
+#'
+#'   \insertRef{waffleR}{ReLTER}
 #' @export
 #' @examples
 #' \dontrun{
 #' waffle <- produce_site_parameters_waffle(
 #'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
 #' )
-#' print(waffle)
+#' waffle
 #' }
+#'
+#' @section The function output:
+#' \figure{produce_site_parameters_waffle_fig.png}{Parameters waffle chart}
 #'
 ### function produce_site_parameters_waffle
 produce_site_parameters_waffle <- function(deimsid) {
   # TODO add this by SPARQL query
-  paramsDeims <- ReLTER::get_site_info(
+  site <- ReLTER::get_site_info(
     deimsid = deimsid,
     category = "Parameters"
   )
-  paramsDeims <- tibble::as_tibble(paramsDeims$parameter[[1]])
+  paramsDeims <- tibble::as_tibble(site$parameter[[1]])
   if (length(paramsDeims) != 0) {
     params <- tibble::as_tibble(paramsDeims)
-    params$parameterGroups <- parametersStructureEnvThes$category[
-      match(params$parameterLabel, parametersStructureEnvThes$parameter)
-    ]
+    params$parameterGroups <- paste0(
+      parametersStructureEnvThes$category[
+        match(params$parameterLabel, parametersStructureEnvThes$parameter)
+      ],
+      "s"
+    )
     groupsIsNa <- params %>% dplyr::filter(is.na(parameterGroups))
     # plot of parameters ----
     params <- params %>%
@@ -59,12 +80,19 @@ produce_site_parameters_waffle <- function(deimsid) {
     )
     waffle <- waffle::waffle(
       obsPropWaffle,
+      title = paste0(
+        "Parameters measured in the ",
+        site$title,
+        " grouped by type"
+      ),
       rows = 8,
       size = 3,
       xlab = paste0(
-        "1 square is 1 parameter. Total of ",
+        "1 square is 1 parameter. A total of ",
         sum(params$n),
-        " parameters"
+        " parameters are collected in the ",
+        site$title, " site (DEIMS ID: ",
+        site$uri, ")"
       ),
       keep = FALSE,
       colors = mycolors
@@ -86,7 +114,7 @@ produce_site_parameters_waffle <- function(deimsid) {
     params
   } else {
     message("\n----\nThe requested page could not be found.
-Please check again the DEIMS.iD\n----\n")
+Please check again the DEIMS ID\n----\n")
     waffle <- NULL
     params <- NULL
   }

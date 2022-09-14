@@ -5,6 +5,17 @@ vignette: >
   %\VignetteIndexEntry{Related resources delivered by EU eLTER sites}
   %\VignetteEngine{knitr::knitr}
   %\usepackage[UTF-8]{inputenc}
+<<<<<<< HEAD
+=======
+  %\VignetteDepends{purrr}
+  %\VignetteDepends{readr}
+  %\VignetteDepends{stringr}
+  %\VignetteDepends{tidyr}
+  %\VignetteDepends{rworldmap}
+  %\VignetteDepends{rnaturalearth}
+  %\VignetteDepends{gridExtra}
+  %\VignetteDepends{webshot}
+>>>>>>> dev
 author: "Alessandro Oggioni, Paolo Tagliolato"
 ---
 
@@ -14,7 +25,11 @@ library(dplyr)
 ```
 
 ```{r related_resources}
+<<<<<<< HEAD
 eLTER_eu_networks <- readr::read_csv("../extdata/eLTER_eu_networks.csv", show_col_types = FALSE) %>%
+=======
+eLTER_eu_networks <- readr::read_csv("./data/eLTER_eu_networks.csv", show_col_types = FALSE) %>%
+>>>>>>> dev
   tibble::as_tibble()
 
 related_resources <- purrr::map_dfr(
@@ -59,7 +74,11 @@ knitr::kable(
 worldMap <- rworldmap::getMap()
 
 library(rnaturalearth)
+<<<<<<< HEAD
 world_map <- ne_countries(scale = 50, returnclass = 'sf')
+=======
+world_map <- rnaturalearth::ne_countries(scale = 50, returnclass = 'sf')
+>>>>>>> dev
 europe_map <- world_map %>%
   filter(name %in% related_resources$country)
 
@@ -85,7 +104,11 @@ gridExtra::grid.arrange(
   map_activities,
   map_sensors,
   nrow = 1,
+<<<<<<< HEAD
   top = "Distribution of activities in eLTER countries"#,
+=======
+  top = "Distribution of resources in eLTER countries"#,
+>>>>>>> dev
   # bottom = grid::textGrob(
   #   "this footnote is right-justified",
   #   gp = grid::gpar(fontface = 3, fontsize = 9),
@@ -117,8 +140,17 @@ dataset_uploaded <- related_resources %>%
     cumsum = cumsum(frequency)
   )
 
+<<<<<<< HEAD
 fig <- plotly::plot_ly(dataset_uploaded, type = 'scatter', mode = 'lines') %>%
   plotly::add_trace(x = ~lastChanged, y = ~cumsum) %>%
   plotly::layout(showlegend = F)
+=======
+fig <- 
+  ggplot2::ggplot(dataset_uploaded, ggplot2::aes(x = lastChanged, y = cumsum)) +
+  ggplot2::geom_line(color = "#00AFBB", size = 1) +
+  ggplot2::scale_x_date(date_labels = "%b-%Y") +
+  ggplot2::theme_minimal()
+
+>>>>>>> dev
 fig
 ```

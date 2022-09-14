@@ -2,8 +2,8 @@
 #' @description This function obtains details about an eLTER site
 #' through the DEIMS-SDR sites API.
 #' @param deimsid A character. The DEIMS ID of the site from
-#' DEIMS-SDR website. More information about DEIMS ID in this pages:
-#' \href{https://deims.org/docs/deimsid.html}{page}.
+#' DEIMS-SDR website. DEIMS ID information
+#' \href{https://deims.org/docs/deimsid.html}{here}.
 #' @return The output of the function is a `tibble` with main features of the
 #' site and the affiliations information, such as: networks and projects in
 #' which the site is involved.
@@ -35,7 +35,7 @@ get_site_affiliations <- function(deimsid) {
     )
   } else {
     message("\n----\nThe requested page could not be found.
-Please check again the DEIMS.iD\n----\n")
+Please check again the DEIMS ID\n----\n")
     affiliations <- NULL
   }
   affiliations

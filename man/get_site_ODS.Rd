@@ -2,16 +2,18 @@
 % Please edit documentation in R/get_site_ODS.R
 \name{get_site_ODS}
 \alias{get_site_ODS}
-\title{eLTER get_site_ODS function}
+\title{Acquire various raster layers from
+\href{https://maps.opendatascience.eu/}{ODS Europe}
+and crops to an eLTER site boundary.}
 \usage{
 get_site_ODS(deimsid, dataset = "landcover")
 }
 \arguments{
-\item{deimsid}{a `character`. The DEIMS ID of the site from
-DEIMS-SDR website. More information about DEIMS ID from:
-\href{https://deims.org/docs/deimsid.html}{page}.}
+\item{deimsid}{A `character`. The DEIMS ID of the site from
+DEIMS-SDR website. DEIMS ID information
+\href{https://deims.org/docs/deimsid.html}{here}.}
 
-\item{dataset}{a `character`. The requested dataset. One of:
+\item{dataset}{A `character`. The requested dataset. One of:
 "landcover", "clc2018", "osm_buildings", "natura2000",
 "ndvi_spring", "ndvi_summer", "ndvi_autumn", "ndvi_winter".
 Default is "landcover".}
@@ -23,10 +25,9 @@ The user should save the raster to disk, if necessary.
 i.e. writeRaster(ds_site, "site_dataset.tif")
 }
 \description{
-This function acquires various raster layers from
-ODS Europe:  https://maps.opendatascience.eu/
-and crops to an eLTER site boundary, which is obtained
-from the DEIMS-SDR sites API.
+Download and return a SpatRaster object containing the requested
+dataset from \href{https://maps.opendatascience.eu/}{ODS},
+cropped to an eLTER site boundary, which is obtained from the DEIMS-SDR API.
 }
 \details{
 Supported datasets from the ODS repository include:
@@ -53,6 +54,11 @@ All datasets are georeferenced to the
 EPSG:3035 coordinate reference system.
 and all except clc2018 have 30 meters resolution
 }
+\section{The function output}{
+
+\figure{get_site_ods_fig.png}{NDVI for Eisenwurzen}
+}
+
 \examples{
  \dontrun{
 # Landcover for Angelo Mosso
@@ -72,6 +78,13 @@ siteNDVI
 terra::plot(siteNDVI)
 }
 
+}
+\references{
+\insertRef{dplyrR}{ReLTER}
+  
+  \insertRef{sfR}{ReLTER}
+  
+  \insertRef{terraR}{ReLTER}
 }
 \author{
 Micha Silver, phD (2020) \email{silverm@post.bgu.ac.il}

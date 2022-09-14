@@ -2,23 +2,40 @@
 % Please edit documentation in R/get_ilter_envcharacts.R
 \name{get_ilter_envcharacts}
 \alias{get_ilter_envcharacts}
-\title{eLTER get_ilter_envcharacts function}
+\title{Obtain a list of all Environmental Characteristics of ILTER sites.}
 \usage{
 get_ilter_envcharacts(sitesNum = 0)
 }
 \arguments{
-\item{sitesNum}{A `integer`. It is the number of the sites that are
-read to get the information. Use this parameters moreover for provide
-example of this function.}
+\item{sitesNum}{A `integer`. The number of the sites that are
+read to get the information. Use this parameter only to get a
+sample of the output of this function. If the value of sitesNum is
+0 (default) all the ILTER sites will be parsed and the waiting time will
+be long.}
 }
 \value{
 The output of the function is a `tibble` containing all the
 Environmental Characteristics of ILTER's sites.
 }
 \description{
-This function obtains the information about the
-Environmental Characteristics of ILTER sites, through the DEIMS-SDR sites
-API.
+This function obtains all Environmental Characteristics:
+title, URI, geo-coordinates, country name, and elevation
+of all
+\href{https://www.ilter.network/network/global-coverage}{ILTER sites
+(more than 1200 around the world)},
+through the DEIMS-SDR API.
+
+This function gathers in a unique tibble all the Environmental
+Characteristics from all ILTER sites. Note that the execution time
+for this function is very high.
+
+If the objective is obtain information about Environmental Characteristics
+on a few sites, it is better to use other more specific functions (e.g.
+\href{get_network_envcharacts.html}{`get_network_envcharacts()`} or
+\href{get_site_info.html}{`get_site_info()`}) or using
+other methods
+(\href{../../articles/sites_information.html}{How to about sites
+informations}).
 }
 \examples{
 \dontrun{
@@ -26,6 +43,9 @@ listEnvCharacts <- get_ilter_envcharacts(sitesNum = 10)
 listEnvCharacts[1:20, ]
 }
 
+}
+\references{
+\insertRef{dplyrR}{ReLTER}
 }
 \author{
 Alessandro Oggioni, phD (2020) <oggioni.a@irea.cnr.it>
