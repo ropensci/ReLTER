@@ -32,7 +32,6 @@ reference:
     - get_sos_procedurelist
     - taxon_id_pesi
     - taxon_id_worms
-
 navbar:
   structure:
     left: [

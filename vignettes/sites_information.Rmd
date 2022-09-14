@@ -16,7 +16,11 @@ Through the 5 functions developed for get network information, access and downlo
 
 ### Get general information of the network's sites:
 
+<<<<<<< HEAD
+Knowing the network elTER id (DEIMS.iD of the Network, e.g. LTER-Italy <https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3>), the [`get_network_sites`](https://oggioniale.github.io/ReLTER/reference/get_network_sites.html) can download general info, such as name, DEIMS.iD and coordinates of the sites belonging to the network selected. A map of the sites can be returned.
+=======
 Knowing the network elTER id (DEIMS ID of the Network, e.g. LTER-Italy <https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3>), the [`get_network_sites`](https://docs.ropensci.org/ReLTER/reference/get_network_sites.html) can download general info, such as name, DEIMS.iD and coordinates of the sites belonging to the network selected. A map of the sites can be returned.
+>>>>>>> dev
 
 ```{r getnetworksites, warning=FALSE, message=FALSE}
 library(dplyr)
@@ -24,9 +28,13 @@ library(dplyr)
 listItaSites <- ReLTER::get_network_sites(
  networkDEIMSID =
    "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
+<<<<<<< HEAD
+)
+=======
 ) %>%
   dplyr::filter(!grepl('^IT', title))
 
+>>>>>>> dev
 knitr::kable(
   listItaSites[1:10, ],
   caption = "The list of site for LTER-Italy network"
@@ -52,10 +60,17 @@ listItaSitesMap
 
 Another 4 functions are been implemented to obtain network's sites information. Each functions get specific information:
 
+<<<<<<< HEAD
+* Environmental characteristics by [`get_network_envcharacts`](https://oggioniale.github.io/ReLTER/reference/get_network_envcharacts.html)
+* Parameters by [`get_network_parameters`](https://oggioniale.github.io/ReLTER/reference/get_network_parameters.html)
+* Related resources  by [`get_network_related_resources`](https://oggioniale.github.io/ReLTER/reference/get_network_related_resources.html)
+* Research topics by [`get_network_research_topics`](https://oggioniale.github.io/ReLTER/reference/get_network_research_topics.html)
+=======
 * Environmental characteristics by [`get_network_envcharacts`](https://docs.ropensci.org/ReLTER/reference/get_network_envcharacts.html)
 * Parameters by [`get_network_parameters`](https://docs.ropensci.org/ReLTER/reference/get_network_parameters.html)
 * Related resources  by [`get_network_related_resources`](https://docs.ropensci.org/ReLTER/reference/get_network_related_resources.html)
 * Research topics by [`get_network_research_topics`](https://docs.ropensci.org/ReLTER/reference/get_network_research_topics.html)
+>>>>>>> dev
 
 The following example perform the request to get all related resources (e.g. activities, datasets, etc.) of the network. The output is a table containing the title, id and time stamp of the last changes of the related resources shared by the network's sites.
 
@@ -74,7 +89,11 @@ knitr::kable(
 
 ## By get_site_info function:
 
+<<<<<<< HEAD
+Starting by the list of the LTER-Italy network's sites ([see first example above](#firstExample)), or by using any DEIMS.iD list, through the [`get_site_info`](https://oggioniale.github.io/ReLTER/reference/get_site_info.html) function (already described [here](./site_information.html)).
+=======
 Starting by the list of the LTER-Italy network's sites ([see first example above](#firstExample)), or by using any DEIMS ID list, through the [`get_site_info`](https://docs.ropensci.org/ReLTER/reference/get_site_info.html) function (already described [here](./site_information.html)).
+>>>>>>> dev
 In the example below is proposed the selection, from the list of LTER-Italy sites, only the lakes environments and the map of these sites is made.
 
 ```{r getsiteinfo, warning=FALSE, message=FALSE}

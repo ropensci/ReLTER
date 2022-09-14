@@ -93,9 +93,9 @@ boundary, which is obtained from the DEIMS-SDR sites API.</p>
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>deimsid</dt>
-<dd><p>a `character`. The DEIMS ID of the site from
-DEIMS-SDR website. More information about DEIMS ID from:
-<a href="https://deims.org/docs/deimsid.html" class="external-link">page</a>.</p></dd>
+<dd><p>a `character`. The DEIMS.iD of the site from
+DEIMS-SDR website. DEIMS.iD information 
+<a href="https://deims.org/docs/deimsid.html" class="external-link">here</a>.</p></dd>
 <dt>list_DS</dt>
 <dd><p>a `character`. Data source to get data from, any
 combination of gbif, inat and/or obis.</p></dd>
@@ -117,7 +117,9 @@ repositories specified in the list_DS parameter.</p>
     </div>
     <div id="author">
     <h2>Author</h2>
-    <p>Alessandro Oggioni, phD (2020) <a href="mailto:oggioni.a@irea.cnr.it">oggioni.a@irea.cnr.it</a></p>
+    <p>Alessandro Oggioni, PhD (2020) <a href="mailto:oggioni.a@irea.cnr.it">oggioni.a@irea.cnr.it</a></p>
+<p>Paolo Tagliolato, PhD (2020) <a href="mailto:tagliolato.p@irea.cnr.it">tagliolato.p@irea.cnr.it</a></p>
+<p>Martina Zilioli <a href="mailto:zilioli.m@irea.cnr.it">zilioli.m@irea.cnr.it</a></p>
     </div>
 
     <div id="ref-examples">
@@ -139,7 +141,7 @@ repositories specified in the list_DS parameter.</p>
 <span class="r-in">  <span class="st">"https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd"</span>,</span>
 <span class="r-in">  list_DS <span class="op">=</span> <span class="st">"obis"</span>,</span>
 <span class="r-in">  show_map <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span class="r-in">  limit <span class="op">=</span> <span class="fl">100</span></span>
+<span class="r-in">  limit <span class="op">=</span> <span class="fl">10</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-in"><span class="va">occ_GoV</span></span>
 <span class="r-in"></span>
@@ -150,7 +152,7 @@ repositories specified in the list_DS parameter.</p>
 <span class="r-in">  <span class="st">"https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd"</span>,</span>
 <span class="r-in">  list_DS <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"gbif"</span>, <span class="st">"inat"</span>, <span class="st">"obis"</span><span class="op">)</span>,</span>
 <span class="r-in">  show_map <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span class="r-in">  limit <span class="op">=</span> <span class="fl">300</span></span>
+<span class="r-in">  limit <span class="op">=</span> <span class="fl">100</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-in"><span class="va">occ_GoV_all</span></span>
 <span class="r-in"><span class="op">}</span></span>

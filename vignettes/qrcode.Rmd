@@ -1,0 +1,17 @@
+---
+title: "How to produce qrcode of any DEIMS-SDR entities"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{How to produce qrcode of any DEIMS-SDR entities}
+  %\VignetteEngine{knitr::knitr}
+  %\usepackage[UTF-8]{inputenc}
+---
+
+The [`produce_site_qrcode`](https://oggioniale.github.io/ReLTER/reference/produce_site_qrcode.html) function allows to create QRCode of activity, dataset, sensor and site by DEIMS.iD.
+
+```{r qrcode, warning=FALSE, message=FALSE}
+qrcode <- ReLTER::produce_site_qrcode(
+  deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
+)
+plot(qrcode)
+```

@@ -1,4 +1,13 @@
 ---
+<<<<<<< HEAD
+title: "How to get the list of contacts from list of DEIMS.iD within csv file"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{How to get the list of contacts from list of DEIMS.iD within csv file}
+  %\VignetteEngine{knitr::knitr}
+  %\usepackage[UTF-8]{inputenc}
+author: "Alessandro Oggioni"
+=======
 title: "How to get the list of contacts from list of DEIMS ID within csv file"
 output: rmarkdown::html_vignette
 vignette: >
@@ -6,6 +15,7 @@ vignette: >
   %\VignetteEngine{knitr::knitr}
   %\usepackage[UTF-8]{inputenc}
 author: "Alessandro Oggioni, Paolo Tagliolato"
+>>>>>>> dev
 ---
 
 Starting from the [DEIMS-SDR "Advanced Search - Sites" interface](https://deims.org/search/sites), an user can download a csv file of the sites. Some filters can be used for selecting sites based on countries, projects, Biome, etc. The list of sites selected can be downloaded in csv format file.
@@ -18,6 +28,46 @@ This documentation, starting from this file csv, shows how to:
 
 ```{r listContacts, warning=FALSE, message=FALSE}
 library(dplyr)
+<<<<<<< HEAD
+site_results <- readr::read.csv("./data/site_contacts_data.csv", sep=";") %>%
+  dplyr::as_tibble()
+
+allSiteContact <- lapply(
+    as.list(
+      paste0("https://deims.org/", site_results$DEIMS.ID)
+    ),
+    ReLTER::get_site_info,
+    category = "Contacts"
+  )
+contacts <- tibble::tibble(
+  siteName = NA,
+  managerName = NA,
+  managerEmail = NA,
+  managerORCID = NA
+)
+for (i in seq_len(length(allSiteContact))) {
+  if (is.na(allSiteContact[[i]]$generalInfo.siteManager[[1]])) {
+    contacts <- contacts %>% 
+      tibble::add_row(
+        siteName = allSiteContact[[i]]$title,
+        managerName = NA,
+        managerEmail = NA,
+        managerORCID = NA
+      )
+  } else {
+    contacts <- contacts %>% 
+      tibble::add_row(
+        siteName = allSiteContact[[i]]$title,
+        managerName = allSiteContact[[i]]$generalInfo.siteManager[[1]]$name,
+        managerEmail = allSiteContact[[i]]$generalInfo.siteManager[[1]]$email,
+        managerORCID = allSiteContact[[i]]$generalInfo.siteManager[[1]]$orcid
+      )
+  }
+}
+# Contacts table
+knitr::kable(
+  contacts,
+=======
 site_results <- read.csv("./data/site_contacts_data.csv", sep = ";") %>%
   dplyr::as_tibble() %>% 
   dplyr::mutate(url = paste0("https://deims.org/", DEIMS.ID))
@@ -37,6 +87,7 @@ contacts <- site_results$url %>%
 # Contacts table
 knitr::kable(
   (contacts %>% dplyr::select(site, contact)),
+>>>>>>> dev
   caption = "List of the contacts",
   booktabs = TRUE, longtable = TRUE
 )
@@ -49,8 +100,13 @@ knitr::kable(
 ```{r geoSites, warning=FALSE, message=FALSE}
 library(dplyr)
 site_results_geo <- sf::st_as_sf(
+<<<<<<< HEAD
+      site_results,
+      wkt = "Coordinates"
+=======
       contacts,
       wkt = "geoCoord"
+>>>>>>> dev
     )
 
 listItaSitesMap <- leaflet::leaflet(site_results_geo) %>%
@@ -64,6 +120,9 @@ listItaSitesMap <- leaflet::leaflet(site_results_geo) %>%
     weight = 2,
     opacity = 0.5,
     fill = TRUE,
+<<<<<<< HEAD
+    fillOpacity = 0.2
+=======
     fillOpacity = 0.2,
     popup = paste0(
       '<b>eLTER site: </b><br><a href="',
@@ -71,6 +130,7 @@ listItaSitesMap <- leaflet::leaflet(site_results_geo) %>%
       '<b>Contact:</b> <br><a href="mailto:', site_results_geo$email, '">',
       site_results_geo$name, '</a>'
     )
+>>>>>>> dev
   )
 listItaSitesMap
 ```
