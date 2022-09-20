@@ -64,6 +64,13 @@ get_ilter_generalinfo(
 )
 }
 }
+\references{
+\insertRef{jsonliteR}{ReLTER}
+
+  \insertRef{sfR}{ReLTER}
+
+  \insertRef{leafletR}{ReLTER}
+}
 \author{
 Alessandro Oggioni, phD (2021) \email{oggioni.a@irea.cnr.it}
 

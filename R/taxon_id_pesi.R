@@ -65,6 +65,13 @@
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom taxize eubon_search
 #' @importFrom dplyr bind_rows
+#' @importFrom Rdpack reprompt
+#' @references
+#'   \insertRef{taxizeR1}{ReLTER}
+#'
+#'   \insertRef{taxizeR2}{ReLTER}
+#'
+#'   \insertRef{dplyrR}{ReLTER}
 #' @export
 #' @examples
 #' \dontrun{
@@ -126,25 +133,29 @@ taxon_id_pesi <- function(table, taxaColumn) {
       i <- i + 1
     } else if (length(a[[1]]) > 1) {
       a <- subset(a, "matchingNameType" == "TAXON")
-      table$canonicalName[[i]] <-
-        a$taxon.taxonName.canonicalName
-      table$authorship[[i]] <-
-        a$taxon.taxonName.authorship
-      # TODO add synonyms as a nested list
-      # e.g. for this record table$scientificName[53] the result is:
-      # matchingNameType
-      # SYNONYM
-      # SYNONYM
-      # TAXON
-      table$LSID[[i]] <- a$taxon.identifier
-      table$url[[i]] <- a$taxon.url
-      if (is.null(a$taxon.accordingTo)) {
-        table$accordingTo[[i]] <- NA
+      if (nrow(a) == 0) {
+        i <- i + 1
       } else {
-        table$accordingTo[[i]] <- a$taxon.accordingTo
+        table$canonicalName[[i]] <-
+          a$taxon.taxonName.canonicalName
+        table$authorship[[i]] <-
+          a$taxon.taxonName.authorship
+        # TODO add synonyms as a nested list
+        # e.g. for this record table$scientificName[53] the result is:
+        # matchingNameType
+        # SYNONYM
+        # SYNONYM
+        # TAXON
+        table$LSID[[i]] <- a$taxon.identifier
+        table$url[[i]] <- a$taxon.url
+        if (is.null(a$taxon.accordingTo)) {
+          table$accordingTo[[i]] <- NA
+        } else {
+          table$accordingTo[[i]] <- a$taxon.accordingTo
+        }
+        table$checkStatus[[i]] <- a$taxon.taxonomicStatus
+        i <- i + 1
       }
-      table$checkStatus[[i]] <- a$taxon.taxonomicStatus
-      i <- i + 1
     }
   }
   datasetMerged <- dplyr::bind_rows(table)

@@ -12,7 +12,12 @@ reference:
   - title: All functions
     contents:
     - get_site_info
+    - get_sensor_observed_properties
+    - get_sensor_info
+    - get_activity_info
+    - get_dataset_info
     - get_site_ODS
+    - get_site_speciesOccurrences
     - get_network_envcharacts
     - get_network_observedProperties
     - get_network_research_topics
@@ -22,6 +27,7 @@ reference:
     - get_ilter_generalinfo
     - get_ilter_observedProperties
     - get_ilter_research_topics
+<<<<<<< HEAD
     - get_activity_info
     - get_dataset_info
     - get_deims_API_version
@@ -37,6 +43,31 @@ reference:
     - set_deims_base_url
     - get_deims_base_url
 
+=======
+    - get_sos_foi
+    - get_sos_obs
+    - get_sos_osbserved_properties
+    - get_sos_procedure_info
+    - get_sos_procedurelist
+    - get_zenodo_data
+    - produce_network_points_map
+    - produce_site_map
+    - produce_site_qrcode
+    - produce_site_parameters_pie
+    - produce_site_parameters_waffle
+    - produce_zenodo_record
+    - produce_zenodo_record_from_elter_reporting
+    - get_sos_procedurelist
+    - taxon_id_pesi
+    - taxon_id_worms
+    - map_occ_gbif2elter
+    - map_occ_inat2elter
+    - map_occ_obis2elter
+    - save_occ_eLTER_reporting_Archive
+    - reporting_compose_file_name
+    - reporting_produce_data_object_v1.3
+    - reporting_save_archive
+>>>>>>> dev
 navbar:
   structure:
     left: [

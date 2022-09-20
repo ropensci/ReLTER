@@ -74,6 +74,7 @@ knitr::kable(
 ## By get_site_info function:
 
 Starting by the list of the LTER-Italy network's sites ([see first example above](#firstExample)), or by using any DEIMS ID list, through the [`get_site_info`](https://docs.ropensci.org/ReLTER/reference/get_site_info.html) function (already described [here](./site_information.html)).
+
 In the example below is proposed the selection, from the list of LTER-Italy sites, only the lakes environments and the map of these sites is made.
 
 ```{r getsiteinfo, warning=FALSE, message=FALSE}

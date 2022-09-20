@@ -573,31 +573,118 @@
     },
     "36": {
       "@type": "SoftwareApplication",
+<<<<<<< HEAD
       "identifier": "lifecycle",
       "name": "lifecycle",
+=======
+      "identifier": "Rdpack",
+      "name": "Rdpack",
+>>>>>>> dev
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
+<<<<<<< HEAD
       "sameAs": "https://CRAN.R-project.org/package=lifecycle"
     },
     "37": {
       "@type": "SoftwareApplication",
       "identifier": "RCurl",
       "name": "RCurl",
+=======
+      "sameAs": "https://CRAN.R-project.org/package=Rdpack"
+    },
+    "37": {
+      "@type": "SoftwareApplication",
+      "identifier": "zen4R",
+      "name": "zen4R",
+>>>>>>> dev
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
+<<<<<<< HEAD
       "sameAs": "https://CRAN.R-project.org/package=RCurl"
     },
     "SystemRequirements": null
   },
   "fileSize": "61986.725KB",
+=======
+      "sameAs": "https://CRAN.R-project.org/package=zen4R"
+    },
+    "38": {
+      "@type": "SoftwareApplication",
+      "identifier": "SPARQL",
+      "name": "SPARQL"
+    },
+    "39": {
+      "@type": "SoftwareApplication",
+      "identifier": "lubridate",
+      "name": "lubridate",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=lubridate"
+    },
+    "40": {
+      "@type": "SoftwareApplication",
+      "identifier": "units",
+      "name": "units",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=units"
+    },
+    "41": {
+      "@type": "SoftwareApplication",
+      "identifier": "spocc",
+      "name": "spocc",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=spocc"
+    },
+    "42": {
+      "@type": "SoftwareApplication",
+      "identifier": "countrycode",
+      "name": "countrycode",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=countrycode"
+    },
+    "43": {
+      "@type": "SoftwareApplication",
+      "identifier": "stringi",
+      "name": "stringi",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=stringi"
+    },
+    "SystemRequirements": null
+  },
+  "fileSize": "92660.834KB",
+>>>>>>> dev
   "citation": [
     {
       "@type": "CreativeWork",

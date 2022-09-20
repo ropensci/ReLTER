@@ -15,6 +15,9 @@
 #' @author Alessandro Oggioni, phD (2021) \email{oggioni.a@@irea.cnr.it}
 #' @author Paolo Tagliolato, PhD (2021) \email{tagliolato.p@@irea.cnr.it}
 #' @importFrom dplyr filter select
+#' @importFrom Rdpack reprompt
+#' @references
+#'   \insertRef{dplyrR}{ReLTER}
 #' @keywords internal
 #'
 ### function taxon_id_worms_refine

@@ -137,6 +137,23 @@ siteMap
 }
 
 }
+\references{
+\insertRef{sfR}{ReLTER}
+
+  \insertRef{jsonliteR}{ReLTER}
+
+  \insertRef{tibbleR}{ReLTER}
+
+  \insertRef{rasterR}{ReLTER}
+
+  \insertRef{rgeosR}{ReLTER}
+
+  \insertRef{rosmR}{ReLTER}
+
+  \insertRef{tmapR}{ReLTER}
+
+  \insertRef{gridR}{ReLTER}
+}
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
 }

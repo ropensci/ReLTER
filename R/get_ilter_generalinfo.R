@@ -25,6 +25,13 @@
 #' @importFrom jsonlite fromJSON
 #' @importFrom sf st_as_sf st_is_valid
 #' @importFrom leaflet leaflet addTiles addMarkers
+#' @importFrom Rdpack reprompt
+#' @references
+#'   \insertRef{jsonliteR}{ReLTER}
+#'
+#'   \insertRef{sfR}{ReLTER}
+#'
+#'   \insertRef{leafletR}{ReLTER}
 #' @export
 #' @examples
 #' \dontrun{

@@ -135,13 +135,13 @@ By selecting the category Infrastructure you can obtain info as:
 ## Get list of parameters or related resources declared to the LTER site:
 
 ```{r listInfo}
-siteParameters <- ReLTER::get_site_info(
+siteObsProp <- ReLTER::get_site_info(
   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
-  category = "Parameters"
+  category = "observedProperties"
 )
 # parameter(s) collected in the site
 knitr::kable(
-  siteParameters$parameter[[1]],
+  siteObsProp$observedProperties[[1]],
   caption = "The list of the funding agency(ies) of site"
 )
 

@@ -28,6 +28,11 @@
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom jsonlite fromJSON
 #' @importFrom dplyr as_tibble bind_rows distinct
+#' @importFrom Rdpack reprompt
+#' @references
+#'   \insertRef{jsonliteR}{ReLTER}
+#'
+#'   \insertRef{dplyrR}{ReLTER}
 #' @export
 #' @examples
 #' \dontrun{

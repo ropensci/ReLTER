@@ -14,28 +14,34 @@
 #' @importFrom xml2 read_xml xml_ns xml_find_all
 #' @importFrom xslt xml_xslt
 #' @importFrom utils read.csv
+#' @importFrom Rdpack reprompt
+#' @references
+#'   \insertRef{xml2R}{ReLTER}
+#'
+#'   \insertRef{xsltR}{ReLTER}
+#'
+#'   \insertRef{utilsR}{ReLTER}
 #' @export
 #' @examples
 #' \dontrun{
 #' get_sos_procedurelist(
-#'   sosHost = "http://getit.lteritalia.it/observations/service?"
+#'   sosURL = "http://getit.lteritalia.it/observations/service"
 #' )
 #' }
 #'
 ### function get_sos_procedurelist
-get_sos_procedurelist <- function(sosHost) {
-  xslProcUrl.url <- paste0(
-    "http://www.get-it.it/objects/sensors/xslt/",
-    # "xslt/", # local
-    "Capabilities_proceduresUrlList.xsl"
-  )
+get_sos_procedurelist <- function(sosURL) {
+  # FIX this the error is: "Error in open.connection(x, "rb") :
+  # SSL: no alternative certificate subject name matches target host name
+  # 'www.get-it.it'"
+  xslProcUrl.url <- paste0("https://www.get-it.it/objects/sensors/xslt/",
+                           "Capabilities_proceduresUrlList.xsl")
   styleProcUrl <- xml2::read_xml(xslProcUrl.url, package = "xslt")
-
   listProcedure <- utils::read.csv(text = xslt::xml_xslt((
     xml2::read_xml(
       paste0(
-        sosHost,
-        "service=SOS&request=",
+        sosURL,
+        "?service=SOS&request=",
         "GetCapabilities&Sections=Contents"
       ),
       package = "xslt"
@@ -47,7 +53,7 @@ get_sos_procedurelist <- function(sosHost) {
     SensorML <- xml2::read_xml(
       as.character(
         paste0(
-          sosHost,
+          sosURL,
           "service=SOS&amp;version=2.0.0&amp;",
           "request=DescribeSensor&amp;procedure=",
           listProcedure$uri[i],

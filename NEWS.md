@@ -1,5 +1,6 @@
 # ReLTER 1.2.0 Release Notes
 
+<<<<<<< HEAD
 v1.2.0 was released on 01/07/2022
 
 ## Changes
@@ -16,6 +17,22 @@ v1.2.0 was released on 01/07/2022
 * changed the name of the functions containing "parameters" with "observed
   properties";
 * added for some functions the life cycle badge.
+=======
+v1.1.0 was released on 15/09/2022
+
+## Major changes
+
+The new implemented functionalities concern:
+
+* acquisition to species occurrences from GBIF, iNaturalist and OBIS;
+* harmonisation to the output of species occurrences in eLTER Data Reporting Format (v3.1);
+* creation the archive (zip) with files following the eLTER Data Reporting Format (v3.1);
+* composition of file naming convention following the eLTER Data Reporting Format (v3.1);
+* composition of the object containing the eLTER Data Reporting Format (v3.1) tables;
+* interaction with Sensor Observations Services (SOS - v2.0) for acquire procedure list, procedure info, feature of interest info, observed property info, and observations;
+* interaction to the Zenodo repository in order to upload record or download dataset record.
+
+>>>>>>> dev
 
 ________________________________________________________________________________
 
@@ -31,7 +48,8 @@ v1.1.0 was released on 15/04/2022
 * created the vignettes of the package;
 * new functions (get_site_ODS and taxon_id_worms) has been implemented;
 * enriched the information downloaded for datasets and activities from DEIMS-SDR;
-* a solution for install package by Docker has been done.
+* a solution for install package by Docker has been done;
+* all the packages used in the `ReLTER` have been referenced in each functions manual.
 
 ________________________________________________________________________________
 

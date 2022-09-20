@@ -23,25 +23,25 @@ get_site_observedProperties <- function(deimsid) {
         parameters <- dplyr::as_tibble(do_Q(qo$query, jj))
       )
     )
-    if (!is.na(parameters$parameter)) {
-      colnames(parameters$parameter[[1]]) <- c(
-        "parameterLabel",
-        "parameterUri"
+    if (!is.na(observedProperties$observedProperties)) {
+      colnames(observedProperties$observedProperties[[1]]) <- c(
+        "observedPropertiesLabel",
+        "observedPropertiesUri"
       )
     } else {
-      parameterLabel <- NULL
-      parameterUri <- NULL
-      parameters$parameter <- list(
+      observedPropertiesLabel <- NULL
+      observedPropertiesUri <- NULL
+      observedProperties$observedProperties <- list(
         data.frame(
-          parameterLabel,
-          parameterUri
+          observedPropertiesLabel,
+          observedPropertiesUri
         )
       )
     }
   } else {
     message("\n----\nThe requested page could not be found.
 Please check again the DEIMS ID\n----\n")
-    parameters <- NULL
+    observedProperties <- NULL
   }
-  parameters
+  observedProperties
 }

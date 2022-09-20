@@ -18,6 +18,17 @@
 #' @importFrom utils capture.output
 #' @importFrom sf st_as_sf st_is_valid
 #' @importFrom leaflet leaflet addTiles addPolygons
+#' @importFrom Rdpack reprompt
+#' @references
+#'   \insertRef{httrR}{ReLTER}
+#'
+#'   \insertRef{dplyrR}{ReLTER}
+#'
+#'   \insertRef{utilsR}{ReLTER}
+#'
+#'   \insertRef{sfR}{ReLTER}
+#'
+#'   \insertRef{leafletR}{ReLTER}
 #' @export
 #' @examples
 #' activities <- get_activity_info(

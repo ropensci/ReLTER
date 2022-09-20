@@ -44,6 +44,17 @@ euSites
 }
 
 }
+\references{
+\insertRef{httrR}{ReLTER}
+
+  \insertRef{dplyrR}{ReLTER}
+
+  \insertRef{jsonliteR}{ReLTER}
+
+  \insertRef{sfR}{ReLTER}
+
+  \insertRef{leafletR}{ReLTER}
+}
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
 }

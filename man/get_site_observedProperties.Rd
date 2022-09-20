@@ -2,21 +2,20 @@
 % Please edit documentation in R/get_site_observedProperties.R
 \name{get_site_observedProperties}
 \alias{get_site_observedProperties}
-\title{eLTER get_site_observedProperties function}
+\title{eLTER get_site_parameters function}
 \usage{
 get_site_observedProperties(deimsid)
 }
 \arguments{
-\item{deimsid}{A \code{character}. It is the DEIMS ID of the site from
+\item{deimsid}{A `character`. It is the DEIMS ID of the site from
 DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here}.}
 }
 \value{
-The output of the function is a \code{tibble} with main features of the
+The output of the function is a `tibble` with main features of the
 site and the observed properties collected.
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 This function obtains the list of observed properties measured
 in the eLTER site through the DEIMS-SDR sites API.
 }

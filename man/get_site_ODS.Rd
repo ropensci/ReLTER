@@ -80,6 +80,13 @@ terra::plot(siteNDVI)
 }
 
 }
+\references{
+\insertRef{dplyrR}{ReLTER}
+
+  \insertRef{sfR}{ReLTER}
+
+  \insertRef{terraR}{ReLTER}
+}
 \author{
 Micha Silver, phD (2020) \email{silverm@post.bgu.ac.il}
 

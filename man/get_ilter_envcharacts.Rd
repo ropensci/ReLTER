@@ -45,6 +45,9 @@ listEnvCharacts[1:20, ]
 }
 
 }
+\references{
+\insertRef{dplyrR}{ReLTER}
+}
 \author{
 Alessandro Oggioni, phD (2020) \href{mailto:oggioni.a@irea.cnr.it}{oggioni.a@irea.cnr.it}
 }

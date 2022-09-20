@@ -4,6 +4,7 @@
 .Ruserdata
 R_newFunctions
 ReLTER.Rcheck
+*.Rproj
 cache
 doc
 miscellaneus

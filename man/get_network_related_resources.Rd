@@ -36,6 +36,11 @@ listRelatedResources
 }
 
 }
+\references{
+\insertRef{jsonliteR}{ReLTER}
+
+  \insertRef{dplyrR}{ReLTER}
+}
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
 }

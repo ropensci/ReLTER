@@ -4,7 +4,7 @@
 \alias{get_sos_procedurelist}
 \title{List the procedures of a Sensor Observations Service (SOS).}
 \usage{
-get_sos_procedurelist(sosHost)
+get_sos_procedurelist(sosURL)
 }
 \arguments{
 \item{sosHost}{A \code{list}. An SOS endpoint (e.g.
@@ -25,10 +25,21 @@ store into a
 \examples{
 \dontrun{
 get_sos_procedurelist(
+<<<<<<< HEAD
   sosHost = "http://getit.lteritalia.it/observations/service?"
+=======
+  sosURL = "http://getit.lteritalia.it/observations/service"
+>>>>>>> dev
 )
 }
 
+}
+\references{
+\insertRef{xml2R}{ReLTER}
+
+  \insertRef{xsltR}{ReLTER}
+
+  \insertRef{utilsR}{ReLTER}
 }
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}

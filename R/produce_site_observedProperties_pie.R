@@ -22,6 +22,17 @@
 #' @importFrom ggplot2 geom_text aes coord_fixed scale_x_continuous
 #' @importFrom ggplot2 scale_y_continuous scale_color_manual labs
 #' @importFrom ggforce geom_arc_bar
+#' @importFrom Rdpack reprompt
+#' @references
+#'   \insertRef{tibbleR}{ReLTER}
+#'
+#'   \insertRef{dplyrR}{ReLTER}
+#'
+#'   \insertRef{RColorBrewerR}{ReLTER}
+#'
+#'   \insertRef{ggplot2R}{ReLTER}
+#'
+#'   \insertRef{ggforceR}{ReLTER}
 #' @export
 #' @examples
 #' \dontrun{
