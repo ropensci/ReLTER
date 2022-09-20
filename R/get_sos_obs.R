@@ -50,16 +50,21 @@
 #' @importFrom leaflet leaflet addTiles addMarkers
 #' @importFrom units set_units
 #' @importFrom purrr map_dfr
+#' @import RCurl
+#' @import XML
 #' @export
 #' @examples
+#' \dontrun{
+#' ## Not run:
+#' 
 #' # Fluoro Probe sensor
-#' FP <- get_sos_obs(
-#'   sosURL = "http://getit.lteritalia.it/observations/service",
-#'   procedure = "http://www.get-it.it/sensors/getit.lteritalia.it/procedure/noOwnerDeclared/noModelDeclared/noSerialNumberDeclared/1286194C-A5DF-11DF-8ED7-1602DFD72097",
-#'   foi = c("http://www.get-it.it/sensors/getit.lteritalia.it/sensors/foi/SSF/SP/4326/45.3245/7.90412", "http://www.get-it.it/sensors/getit.lteritalia.it/sensors/foi/SSF/SP/4326/45.322/7.90251"),
-#'   show_map = TRUE
-#' )
-#' FP
+#' # FP <- get_sos_obs(
+#' #   sosURL = "http://getit.lteritalia.it/observations/service",
+#' #   procedure = "http://www.get-it.it/sensors/getit.lteritalia.it/procedure/noOwnerDeclared/noModelDeclared/noSerialNumberDeclared/1286194C-A5DF-11DF-8ED7-1602DFD72097",
+#' #   foi = c("http://www.get-it.it/sensors/getit.lteritalia.it/sensors/foi/SSF/SP/4326/45.3245/7.90412", "http://www.get-it.it/sensors/getit.lteritalia.it/sensors/foi/SSF/SP/4326/45.322/7.90251"),
+#' #   show_map = TRUE
+#' # )
+#' # FP
 #' 
 #' # Air temperature sensor
 #' airTemp <- get_sos_obs(
@@ -68,29 +73,49 @@
 #'   show_map = TRUE
 #' )
 #' airTemp
-#' #
+#'
 #' # about units of measurement (UOM)
 #' # the UOM of this observed property is °C
 #' airTemp$Air_Temperature
+#'
 #' # is is easily convert to °F
 #' units::set_units(airTemp$Air_Temperature, "°F")
-#' #
+#'
 #' # about semantic enrichment
 #' # the URI of the label of first two columns
 #' # of `airTemp`
 #' attributes(airTemp)$uri
-#' #
+#'
 #' # plot
 #' library(ggforce)
-#' ggplot2::ggplot(airTemp, ggplot2::aes(x = phenomenonTime, y = Air_Temperature)) +
+#' library(units)
+#' ggplot2::ggplot(airTemp, ggplot2::aes(
+#'     x = phenomenonTime, y = Air_Temperature
+#'   )) +
 #'   ggplot2::geom_line(data = airTemp, color = "blue") +
 #'   ggplot2::geom_point(data = airTemp, color = "blue", size = 1)
 #' # same for °F
-#' ggplot2::ggplot(airTemp, ggplot2::aes(x = phenomenonTime, y = Air_Temperature)) +
+#' ggplot2::ggplot(airTemp, ggplot2::aes(
+#'     x = phenomenonTime, y = Air_Temperature
+#'   )) +
 #'   ggplot2::geom_line(data = airTemp, color = "blue") +
 #'   ggplot2::geom_point(data = airTemp, color = "blue", size = 1) +
 #'   ggforce::scale_y_unit(unit = "°F")
-#'
+#'   
+#' }
+#' ## End (Not run)
+#' 
+#' @section The function output:
+#' \figure{get_sos_obs_fig.png}{Map of the point where the observations
+#' are collected.}
+#' 
+#' @section Possible output from function result:
+#' \figure{get_sos_obs_plot_C.png}{Plot of the observations where the
+#' unit of menasure is expressed in °C}
+#' 
+#' \figure{get_sos_obs_plot_F.png}{Plot of the same observations are
+#' converted in °F}
+#' 
 ### function get_sos_obs
 get_sos_obs <- function(sosURL, procedure, foi = NULL, show_map = FALSE) {
   if (is.null(foi)) {
@@ -208,7 +233,7 @@ get_sos_obs <- function(sosURL, procedure, foi = NULL, show_map = FALSE) {
             )
         } else {
           ireaQuery <- paste0(
-            "PREFIX owl: <http://www.w3.org/2002/07/owl#>
+       "PREFIX owl: <http://www.w3.org/2002/07/owl#>
        PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
        PREFIX qudt: <http://qudt.org/schema/qudt/>

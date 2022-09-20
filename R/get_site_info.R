@@ -9,7 +9,7 @@
 #' or categories are retrieved and returned in the result.
 #' Possible value are:
 #' 'Affiliations', 'Boundaries', 'Contacts', 'EnvCharacts', 'General',
-#' 'Infrastructure', 'Parameters', 'RelateRes', 'ResearchTop'.
+#' 'Infrastructure', 'observedProperties', 'RelateRes', 'ResearchTop'.
 #' Multiple values can be indicated.
 #' @return The output of the function is a `tibble` with main features of the
 #' site and the selected information, such as: networks and projects in
@@ -165,9 +165,9 @@ get_site_info <- function(deimsid, category = NA) {
       } else {
         siteInfo <- siteInfo
       }
-      # add 'Parameters' info
-      if (any(grepl("Parameters", category))) {
-        siteParam <- get_site_parameters(deimsid = deimsid)
+      # add 'observedProperties' info
+      if (any(grepl("observedProperties", category))) {
+        siteParam <- get_site_observedProperties(deimsid = deimsid)
         siteInfo <- dplyr::left_join(
           siteInfo,
           siteParam,

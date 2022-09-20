@@ -24,7 +24,7 @@
 #' sensor_B3 <- get_sensor_info(
 #'   sensorid =
 #'   "https://deims.org/sensors/3845475c-4aec-4dd7-83b4-0ab6ba95db35",
-#'   show_map = FALSE
+#'   show_map = TRUE
 #' )
 #' sensor_B3
 #' 
@@ -32,14 +32,14 @@
 #' Licor <- get_sensor_info(
 #'   sensorid =
 #'   "https://deims.org/sensors/4a7ad644-f2e7-4224-965b-ec5ef5365655",
-#'   show_map = TRUE
+#'   show_map = FALSE
 #' )
 #' Licor
 #' 
 #' # Moldaenke FluoroProbe sensor
 #' sensor_FP <- get_sensor_info(
 #'   sensorid = "https://deims.org/sensors/82635223-a4f4-498c-b283-9c95999d9d2f",
-#'   show_map = TRUE
+#'   show_map = FALSE
 #' )
 #' sensor_FP
 #'

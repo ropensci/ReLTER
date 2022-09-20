@@ -12,7 +12,7 @@ map_occ_obis2elter(x, deimsid)
 as_tibble(get_site_speciesOccurrence(deimsid, "gbif")$gbif)}
 
 \item{deimsid}{A `character`. The DEIMS.iD of the site from
-DEIMS-SDR website. DEIMS.iD information}
+DEIMS-SDR website. DEIMS ID information}
 }
 \value{
 list with the following named elements:

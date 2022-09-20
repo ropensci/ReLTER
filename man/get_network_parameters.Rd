@@ -40,7 +40,7 @@ dplyr::rows_insert(
 }
 \references{
 \insertRef{jsonliteR}{ReLTER}
-  
+
   \insertRef{dplyrR}{ReLTER}
 }
 \author{

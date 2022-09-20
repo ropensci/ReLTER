@@ -81,9 +81,9 @@ terra::plot(siteNDVI)
 }
 \references{
 \insertRef{dplyrR}{ReLTER}
-  
+
   \insertRef{sfR}{ReLTER}
-  
+
   \insertRef{terraR}{ReLTER}
 }
 \author{

@@ -53,15 +53,33 @@ conversion and derivation of units of collected observed properties.
 This function obtains the observations shared by Sensor Observation
 Service (SOS).
 }
+\section{The function output}{
+
+\figure{get_sos_obs_fig.png}{Map of the point where the observations
+are collected.}
+}
+
+\section{Possible output from function result}{
+
+\figure{get_sos_obs_plot_C.png}{Plot of the observations where the
+unit of menasure is expressed in °C}
+
+\figure{get_sos_obs_plot_F.png}{Plot of the same observations are
+converted in °F}
+}
+
 \examples{
+\dontrun{
+## Not run:
+
 # Fluoro Probe sensor
-FP <- get_sos_obs(
-  sosURL = "http://getit.lteritalia.it/observations/service",
-  procedure = "http://www.get-it.it/sensors/getit.lteritalia.it/procedure/noOwnerDeclared/noModelDeclared/noSerialNumberDeclared/1286194C-A5DF-11DF-8ED7-1602DFD72097",
-  foi = c("http://www.get-it.it/sensors/getit.lteritalia.it/sensors/foi/SSF/SP/4326/45.3245/7.90412", "http://www.get-it.it/sensors/getit.lteritalia.it/sensors/foi/SSF/SP/4326/45.322/7.90251"),
-  show_map = TRUE
-)
-FP
+# FP <- get_sos_obs(
+#   sosURL = "http://getit.lteritalia.it/observations/service",
+#   procedure = "http://www.get-it.it/sensors/getit.lteritalia.it/procedure/noOwnerDeclared/noModelDeclared/noSerialNumberDeclared/1286194C-A5DF-11DF-8ED7-1602DFD72097",
+#   foi = c("http://www.get-it.it/sensors/getit.lteritalia.it/sensors/foi/SSF/SP/4326/45.3245/7.90412", "http://www.get-it.it/sensors/getit.lteritalia.it/sensors/foi/SSF/SP/4326/45.322/7.90251"),
+#   show_map = TRUE
+# )
+# FP
 
 # Air temperature sensor
 airTemp <- get_sos_obs(
@@ -70,28 +88,37 @@ airTemp <- get_sos_obs(
   show_map = TRUE
 )
 airTemp
-#
+
 # about units of measurement (UOM)
 # the UOM of this observed property is °C
 airTemp$Air_Temperature
+
 # is is easily convert to °F
 units::set_units(airTemp$Air_Temperature, "°F")
-#
+
 # about semantic enrichment
 # the URI of the label of first two columns
 # of `airTemp`
 attributes(airTemp)$uri
-#
+
 # plot
 library(ggforce)
-ggplot2::ggplot(airTemp, ggplot2::aes(x = phenomenonTime, y = Air_Temperature)) +
+library(units)
+ggplot2::ggplot(airTemp, ggplot2::aes(
+    x = phenomenonTime, y = Air_Temperature
+  )) +
   ggplot2::geom_line(data = airTemp, color = "blue") +
   ggplot2::geom_point(data = airTemp, color = "blue", size = 1)
 # same for °F
-ggplot2::ggplot(airTemp, ggplot2::aes(x = phenomenonTime, y = Air_Temperature)) +
+ggplot2::ggplot(airTemp, ggplot2::aes(
+    x = phenomenonTime, y = Air_Temperature
+  )) +
   ggplot2::geom_line(data = airTemp, color = "blue") +
   ggplot2::geom_point(data = airTemp, color = "blue", size = 1) +
   ggforce::scale_y_unit(unit = "°F")
+  
+}
+## End (Not run)
 
 }
 \author{

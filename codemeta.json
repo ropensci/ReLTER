@@ -2,11 +2,7 @@
   "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "ReLTER",
-<<<<<<< HEAD
-  "description": "ReLTER provides access to DEIMS-SDR (https://deims.org/), and allows interaction with data and software implemented by eLTER Research Infrastructure (RI) thus improving data sharing among European LTER projects. ReLTER uses the R language to access and interact with the DEIMS-SDR archive of information shared by the Long Term Ecological Research (LTER) network. This package grew within eLTER H2020 as a major project that will help advance the development of European Long-Term Ecosystem Research Infrastructures (eLTER RI - https://elter-ri.eu). The ReLTER package functions in particular allow to: - retrieve the information about entities (e.g. sites, datasets, and activities) shared by DEIMS-SDR (see e.g. get_site_info function); - interact with the [ODSEurope](maps.opendatascience.eu), MODIS Land Products archive managed by members of the [Geo-harmonizer](https://opendatascience.eu/geoharmonizer-project/) project, [GBIF](https://www.gbif.org), [iNaturalist](https://www.inaturalist.org/) and [OBIS](https://obis.org/) starting with the dataset shared by [DEIMS-SDR](https://deims.org/) (see e.g. [get_site_ODS](https://oggioniale.github.io/ReLTER/reference/get_site_ODS.html) function, [get_site_MODIS](https://oggioniale.github.io/ReLTER/reference/get_site_MODIS.html) function and [get_site_speciesOccurrences](https://oggioniale.github.io/ReLTER/reference/get_site_speciesOccurrences.html)); - use the eLTER site informations to download and crop geospatial data from other platforms (see e.g. get_site_ODS or get_site_MODIS functions); - improve the quality of the dataset (see e.g. get_id_worms). Functions currently implemented are derived from discussions of the needs among the eLTER users community. The ReLTER package will continue to follow the progress of eLTER-RI and evolve, adding new tools and improvements as required.",
-=======
   "description": "ReLTER provides access to DEIMS-SDR (https://deims.org/), and allows interaction with data and software implemented by eLTER Research Infrastructure (RI) thus improving data sharing among European LTER projects. ReLTER uses the R language to access and interact with the DEIMS-SDR archive of information shared by the Long Term Ecological Research (LTER) network. This package grew within eLTER H2020 as a major project that will help advance the development of European Long-Term Ecosystem Research Infrastructures (eLTER RI - https://elter-ri.eu). The ReLTER package functions in particular allow to: - retrieve the information about entities (e.g. sites, datasets, and activities) shared by DEIMS-SDR (see e.g. get_site_info function); - interact with the [ODSEurope](maps.opendatascience.eu) starting with the dataset shared by [DEIMS-SDR](https://deims.org/) (see e.g. [get_site_ODS](https://docs.ropensci.org/ReLTER/reference/get_site_ODS.html) function); - use the eLTER site informations to download and crop geospatial data from other platforms (see e.g. get_site_ODS function); - improve the quality of the dataset (see e.g. get_id_worms). Functions currently implemented are derived from discussions of the needs among the eLTER users community. The ReLTER package will continue to follow the progress of eLTER-RI and evolve, adding new tools and improvements as required.",
->>>>>>> dev
   "name": "ReLTER: An Interface for the 'eLTER' Community",
   "codeRepository": "https://github.com/ropensci/ReLTER",
   "issueTracker": "https://github.com/ropensci/ReLTER/issues",
@@ -587,13 +583,86 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=Rdpack"
     },
+    "37": {
+      "@type": "SoftwareApplication",
+      "identifier": "zen4R",
+      "name": "zen4R",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=zen4R"
+    },
+    "38": {
+      "@type": "SoftwareApplication",
+      "identifier": "SPARQL",
+      "name": "SPARQL"
+    },
+    "39": {
+      "@type": "SoftwareApplication",
+      "identifier": "lubridate",
+      "name": "lubridate",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=lubridate"
+    },
+    "40": {
+      "@type": "SoftwareApplication",
+      "identifier": "units",
+      "name": "units",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=units"
+    },
+    "41": {
+      "@type": "SoftwareApplication",
+      "identifier": "spocc",
+      "name": "spocc",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=spocc"
+    },
+    "42": {
+      "@type": "SoftwareApplication",
+      "identifier": "countrycode",
+      "name": "countrycode",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=countrycode"
+    },
+    "43": {
+      "@type": "SoftwareApplication",
+      "identifier": "stringi",
+      "name": "stringi",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=stringi"
+    },
     "SystemRequirements": null
   },
-<<<<<<< HEAD
-  "fileSize": "3860.194KB",
-=======
-  "fileSize": "60156.28KB",
->>>>>>> dev
+  "fileSize": "92660.834KB",
   "citation": [
     {
       "@type": "CreativeWork",

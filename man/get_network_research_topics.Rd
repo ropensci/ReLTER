@@ -42,7 +42,7 @@ listResearchTopics[1:10, ] \%>\%
 }
 \references{
 \insertRef{jsonliteR}{ReLTER}
-  
+
   \insertRef{dplyrR}{ReLTER}
 }
 \author{

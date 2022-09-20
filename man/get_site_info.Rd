@@ -7,23 +7,15 @@
 get_site_info(deimsid, category = NA)
 }
 \arguments{
-<<<<<<< HEAD
-\item{deimsid}{A `character` The DEIMS ID of the site from
-DEIMS-SDR website. More information about DEIMS ID in this pages:
-\href{https://deims.org/docs/deimsid.html}{page}.}
-
-\item{category}{A `character`. This parameter selects which category
-=======
 \item{deimsid}{A character. The DEIMS ID of the site from
 DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here}.}
 
 \item{category}{A `category`. This parameter selects which category
->>>>>>> dev
 or categories are retrieved and returned in the result.
 Possible value are:
 'Affiliations', 'Boundaries', 'Contacts', 'EnvCharacts', 'General',
-'Infrastructure', 'Parameters', 'RelateRes', 'ResearchTop'.
+'Infrastructure', 'observedProperties', 'RelateRes', 'ResearchTop'.
 Multiple values can be indicated.}
 }
 \value{
@@ -53,13 +45,13 @@ siteInfo
 }
 \references{
 \insertRef{httrR}{ReLTER}
-  
+
   \insertRef{dplyrR}{ReLTER}
-  
+
   \insertRef{utilsR}{ReLTER}
-  
+
   \insertRef{sfR}{ReLTER}
-  
+
   \insertRef{leafletR}{ReLTER}
 }
 \author{

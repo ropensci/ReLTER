@@ -38,13 +38,13 @@ waffle
 }
 \references{
 \insertRef{tibbleR}{ReLTER}
-  
+
   \insertRef{dplyrR}{ReLTER}
-  
+
   \insertRef{grDevicesR}{ReLTER}
-  
+
   \insertRef{RColorBrewerR}{ReLTER}
-  
+
   \insertRef{waffleR}{ReLTER}
 }
 \author{

@@ -14,7 +14,7 @@ get_site_speciesOccurrences(
 }
 \arguments{
 \item{deimsid}{A `character`. The DEIMS.iD of the site from
-DEIMS-SDR website. DEIMS.iD information 
+DEIMS-SDR website. DEIMS.iD information
 \href{https://deims.org/docs/deimsid.html}{here}.}
 
 \item{list_DS}{A `character`. Data source to get data from, any
@@ -31,7 +31,7 @@ something smallish so that you can get a result quickly, then do more as
 needed.}
 
 \item{exclude_inat_from_gbif}{A `boolean`. If TRUE, when list_DS contains
-both "gbif" and "inat", filter out gbif records originating 
+both "gbif" and "inat", filter out gbif records originating
 from iNaturalist (in order to avoid duplicates). Default TRUE.}
 }
 \value{

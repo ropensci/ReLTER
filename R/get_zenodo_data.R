@@ -10,10 +10,16 @@
 #' @importFrom stringr str_replace_all
 #' @export
 #' @examples
+#' \dontrun{
+#' ## Not run:
+#' 
 #' record <- get_zenodo_data(
 #'   doi = "10.5281/zenodo.7041152", # test dataset
 #'   rdata_exist = TRUE
 #' )
+#' 
+#' ## End (Not run)
+#' }
 #'
 ### function get_zenodo_data
 get_zenodo_data <- function(doi, rdata_exist = TRUE) {

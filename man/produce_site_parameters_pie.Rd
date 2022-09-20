@@ -41,13 +41,13 @@ pie
 }
 \references{
 \insertRef{tibbleR}{ReLTER}
-  
+
   \insertRef{dplyrR}{ReLTER}
-  
+
   \insertRef{RColorBrewerR}{ReLTER}
-  
+
   \insertRef{ggplot2R}{ReLTER}
-  
+
   \insertRef{ggforceR}{ReLTER}
 }
 \author{

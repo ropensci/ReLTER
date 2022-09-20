@@ -43,13 +43,6 @@ eurac_monalisa <- get_sensor_observed_properties(
 )
 eurac_monalisa
 
-# umweltbundesamt <- get_sensor_observed_properties(
-#   sosURL = "https://ltercwn.umweltbundesamt.at/cwn-sos2/service",
-#   procedure = "KAS_M"
-# )
-# The value 'D:/deployment/projects/cwnsos2node0140100/Tomcat/sensorML/sos2/sml2/KAS_M.xml' of the parameter 'procedure' is invalid
-
-
 obsProsAir <- get_sensor_observed_properties(
   sosURL = "http://getit.lteritalia.it/observations/service",
   procedure = "http://www.get-it.it/sensors/getit.lteritalia.it/procedure/noOwnerDeclared/noModelDeclared/noSerialNumberDeclared/SI000049-1675AirTemp"

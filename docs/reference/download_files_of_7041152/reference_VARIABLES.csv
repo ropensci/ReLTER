@@ -1,0 +1,4 @@
+"";"FIELD_NAME";"VARIABLE_CODE";"VARIABLE_NAME";"VARIABLE_DEFINITION"
+"1";"VARIABLE";"RECORD_ID";"inat record id";""
+"2";"VARIABLE";"AUTHOR_ID";"author id of inat observations";""
+"3";"VARIABLE";"LICENSE";"licence applied to each inat record";""

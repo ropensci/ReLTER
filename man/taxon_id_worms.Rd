@@ -59,7 +59,7 @@ table
 }
 \references{
 \insertRef{worrmsR}{ReLTER}
-  
+
   \insertRef{dplyrR}{ReLTER}
 }
 \author{

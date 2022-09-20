@@ -7,13 +7,8 @@
 get_sos_procedurelist(sosURL)
 }
 \arguments{
-<<<<<<< HEAD
-\item{sosURL}{A `character`. The endpoint of the Sensor Observation Service
-(SOS) service.}
-=======
 \item{sosHost}{A `list`. An SOS endpoint (e.g.
 \url{http://getit.lteritalia.it/observations/sos/kvp?}).}
->>>>>>> dev
 }
 \value{
 The output of the function is a `list` with the name and URI
@@ -36,17 +31,13 @@ get_sos_procedurelist(
 }
 \references{
 \insertRef{xml2R}{ReLTER}
-  
+
   \insertRef{xsltR}{ReLTER}
-  
+
   \insertRef{utilsR}{ReLTER}
 }
 \author{
-<<<<<<< HEAD
-Alessandro Oggioni, phD \email{oggioni.a@irea.cnr.it}
-=======
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
 
 Paolo Tagliolato, PhD (2021) \email{tagliolato.p@irea.cnr.it}
->>>>>>> dev
 }

@@ -37,7 +37,7 @@ listRelatedResources
 }
 \references{
 \insertRef{jsonliteR}{ReLTER}
-  
+
   \insertRef{dplyrR}{ReLTER}
 }
 \author{

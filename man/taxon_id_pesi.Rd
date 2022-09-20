@@ -102,9 +102,9 @@ taxon_id_pesi(
 }
 \references{
 \insertRef{taxizeR1}{ReLTER}
-  
+
   \insertRef{taxizeR2}{ReLTER}
-  
+
   \insertRef{dplyrR}{ReLTER}
 }
 \author{

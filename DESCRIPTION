@@ -96,7 +96,14 @@ Imports:
     rnaturalearth,
     gridExtra,
     webshot,
-    Rdpack
+    Rdpack,
+    zen4R,
+    SPARQL,
+    lubridate,
+    units,
+    spocc,
+    countrycode,
+    stringi
 RdMacros: Rdpack
 Suggests: 
     httptest,

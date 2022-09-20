@@ -26,7 +26,16 @@ system code (srsName) and coordinates (geometry).
 This function obtains the information about Feature(s) Of Interest (FOI(s))
 provided by a Sensor Observation Services (SOS).
 }
+\section{The function output}{
+
+\figure{get_sos_foi_fig.png}{Map of the Feature(s) Of Interest (FOI(s))
+provided by LTER-Italy Sensor Observation Services (SOS)}
+}
+
 \examples{
+\dontrun{
+## Not run:
+
 LTERItaly <- get_sos_foi(
   sosURL = "http://getit.lteritalia.it/observations/service",
   show_map = TRUE
@@ -35,21 +44,18 @@ LTERItaly
 
 eurac_monalisa <- get_sos_foi(
   sosURL = "http://monalisasos.eurac.edu/sos/service",
-  show_map = TRUE
+  show_map = FALSE
 )
 eurac_monalisa
 
-# umweltbundesamt <- get_sos_foi(
-#   sosURL = "https://ltercwn.umweltbundesamt.at/cwn-sos2/service"
-# )
-# The value 'D:/deployment/projects/cwnsos2node0140100/Tomcat/sensorML/sos2/sml2/KAS_M.xml' of the parameter 'procedure' is invalid
-
-
 NIVA <- get_sos_foi(
   sosURL = "https://hydro-sos.niwa.co.nz/",
-  show_map = TRUE
+  show_map = FALSE
 )
 NIVA
+}
+
+## End (Not run)
 
 }
 \author{

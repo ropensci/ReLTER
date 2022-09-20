@@ -42,13 +42,13 @@ tDataset
 }
 \references{
 \insertRef{httrR}{ReLTER}
-  
+
   \insertRef{dplyrR}{ReLTER}
-  
+
   \insertRef{utilsR}{ReLTER}
-  
+
   \insertRef{sfR}{ReLTER}
-  
+
   \insertRef{leafletR}{ReLTER}
 }
 \author{

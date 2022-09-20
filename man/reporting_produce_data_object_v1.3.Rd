@@ -34,19 +34,23 @@ reporting_produce_data_object_v1.3(
 
 \item{data_type}{A `character`}
 
-\item{filename}{optional filename associated with the object, of the form provided as output by
-the function `reporting_compose_file_name`}
+\item{filename}{optional filename associated with the object, of the form
+provided as output by the function `reporting_compose_file_name`}
 }
 \value{
 list with eLTER reporting format slots
 }
 \description{
-Given several tables, creates an eLTER data reporting format object
+Given several tables, creates an eLTER data reporting format
+object
 }
 \note{
 This method must be intended as a signpost for future implementation
 }
 \examples{
+\dontrun{
+## Not run:
+
 deimsid <- "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6"
 time_span <- 2015 # e.g. whole year
 # time_span <- "20150302-20180415" # e.g. span between two dates
@@ -63,8 +67,8 @@ filename <- reporting_compose_file_name(
 )
 
 data <- dplyr::tribble(
-  ~id, ~value, 
-  1, 7.5, 
+  ~id, ~value,
+  1, 7.5,
   2, 4.2
 )
 station <- dplyr::tribble(
@@ -73,9 +77,9 @@ station <- dplyr::tribble(
 )
 method <- dplyr::tribble(
   ~VARIABLE, ~METH_DESCR,
-  "COVE_F",  "Analysis of ammonium..."  
+  "COVE_F",  "Analysis of ammonium..." 
 )
-  
+
 research_object <- reporting_produce_data_object_v1.3(
  filename = filename,
  deimsid = deimsid,
@@ -85,8 +89,11 @@ research_object <- reporting_produce_data_object_v1.3(
 )
 
 }
+## End (Not run)
+
+}
 \seealso{
-Peterseil, Geiger et al. (2020) 
+Peterseil, Geiger et al. (2020)
 Field Specification for data reporting. Technical Document.
 TechDoc.01. EU Horizon 2020 eLTER PLUS Project, Grant agreement No. 871128
 \url{https://zenodo.org/record/6373410}
