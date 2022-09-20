@@ -7,19 +7,20 @@
 get_dataset_info(datasetid, show_map = FALSE)
 }
 \arguments{
-\item{datasetid}{A `character`. It is the DEIMS ID of dataset make from
+\item{datasetid}{A \code{character}. It is the DEIMS ID of dataset make from
 DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here}.
 The DEIMS ID of dataset is the URL for the dataset page.}
 
-\item{show_map}{A `boolean`. If TRUE a Leaflet map with occurrences
+\item{show_map}{A \code{boolean}. If TRUE a Leaflet map with occurrences
 is shown. Default FALSE.}
 }
 \value{
-The output of the function is a `tibble` with main features
+The output of the function is a \code{tibble} with main features
 of the site and the related resources collected by site.
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 This function obtains the information about of an eLTER
 dataset (e.g.
 \url{https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845})
@@ -27,8 +28,8 @@ provided in \href{https://deims.org/}{DEIMS-SDR catalogue}.
 }
 \section{The function output}{
 
-\figure{get_dataset_info_fig.png}{Map of "LTER Northern Adriatic Sea
-(Italy) marine data from 1965 to 2015" dataset}
+\figure{get_dataset_info_fig.png}{Map of "LTER Northern Adriatic Sea (Italy)
+marine data from 1965 to 2015" dataset}
 }
 
 \examples{

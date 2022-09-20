@@ -1,6 +1,7 @@
 #' Obtain a list of all Environmental Characteristics of sites in an
 #' eLTER Network.
-#' @description This function obtains all Environmental Characteristics:
+#' @description `r lifecycle::badge("stable")`
+#' This function obtains all Environmental Characteristics:
 #' title, URI, geo-coordinates, country name, and elevation
 #' of eLTER Network sites (e.g.
 #' \href{https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3}{LTER-
@@ -32,10 +33,11 @@
 #'
 ### function get_network_envcharacts
 get_network_envcharacts <- function(networkDEIMSID) {
+  deimsbaseurl <- get_deims_base_url()
   lterNetworkSites <- as.list(
     jsonlite::fromJSON(
       paste0(
-        "https://deims.org/",
+        deimsbaseurl,
         "api/sites?network=",
         sub("^.+/", "", networkDEIMSID)
       )

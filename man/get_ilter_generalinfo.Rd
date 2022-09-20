@@ -7,32 +7,33 @@
 get_ilter_generalinfo(country_name = NA, site_name = NA, show_map = FALSE)
 }
 \arguments{
-\item{country_name}{A `character`. This character string filters
+\item{country_name}{A \code{character}. This character string filters
 the full set of DEIMS sites by country name. Partial matching is supported.}
 
-\item{site_name}{A `character`. This character string filters by site name
+\item{site_name}{A \code{character}. This character string filters by site name
 where, again, partial matching is supported}
 
-\item{show_map}{A `boolean`. If TRUE a Leaflet map of site locations
+\item{show_map}{A \code{boolean}. If TRUE a Leaflet map of site locations
 is shown. Default FALSE}
 }
 \value{
-An `sf` object of the bounding boxes of sites in the filtered list,
+An \code{sf} object of the bounding boxes of sites in the filtered list,
 containing the name, DEIMS ID, longitude, latitude, average altitude,
 and affiliation of the filtered ILTER sites.
 If no bounding box is available,the centroid is returned.
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#questioning}{\figure{lifecycle-questioning.svg}{options: alt='[Questioning]'}}}{\strong{[Questioning]}}
 This function downloads generic information
 of all sites, or a subset of
 \href{https://www.ilter.network/network/global-coverage}{ILTER sites
 (more than 1200 around the world)},
-through the DEIMS-SDR API. If no `country_name` or `site_name` are
+through the DEIMS-SDR API. If no \code{country_name} or \code{site_name} are
 specified, the whole list of sites is returned. If either or both of the
 filtering strings is specified, then a filtered subset of the sites is
 acquired.
 
-Return a `tibble` object.
+Return a \code{tibble} object.
 }
 \examples{
 \dontrun{

@@ -7,19 +7,20 @@
 get_site_boundaries(deimsid, show_map = FALSE)
 }
 \arguments{
-\item{deimsid}{A `character`. The DEIMS ID of the site from
+\item{deimsid}{A \code{character}. The DEIMS ID of the site from
 DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here}.}
 
-\item{show_map}{A `boolean`. When TRUE the boundary will be plotted on a
+\item{show_map}{A \code{boolean}. When TRUE the boundary will be plotted on a
 Leaflet map. Default FALSE.}
 }
 \value{
-The output of the function is an `sf` object, the boundary of the
+The output of the function is an \code{sf} object, the boundary of the
 site or NA if the boundary is missing from DEIMS-SDR. In addition, as
-`html map` with boundaries of the site is plotted.
+\verb{html map} with boundaries of the site is plotted.
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 This function retrieves the boundary of a specified eLTER site
 and a view of the site boundaries on a leaflet map is shown.
 All the info are taken from the DEIMS-SDR sites API.

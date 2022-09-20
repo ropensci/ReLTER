@@ -1,5 +1,6 @@
 #' Obtain details about an eLTER site.
-#' @description This function obtains information of a single eLTER site,
+#' @description `r lifecycle::badge("stable")`
+#' This function obtains information of a single eLTER site,
 #' as a stored in \href{https://deims.org/}{DEIMS-SDR catalogue},
 #' through the DEIMS-SDR API.
 #' @param deimsid A character. The DEIMS ID of the site from
@@ -9,7 +10,7 @@
 #' or categories are retrieved and returned in the result.
 #' Possible value are:
 #' 'Affiliations', 'Boundaries', 'Contacts', 'EnvCharacts', 'General',
-#' 'Infrastructure', 'observedProperties', 'RelateRes', 'ResearchTop'.
+#' 'Infrastructure', 'observedProperties', 'RelateRes'.
 #' Multiple values can be indicated.
 #' @return The output of the function is a `tibble` with main features of the
 #' site and the selected information, such as: networks and projects in
@@ -47,19 +48,12 @@
 #'
 ### function get_site_info
 get_site_info <- function(deimsid, category = NA) {
-  q <- '{title: .title,
-       uri: "\\(.id.prefix)\\(.id.suffix)",
-       geoCoord: .attributes.geographic.coordinates,
-       country: .attributes.geographic.country,
-       geoElev: .attributes.geographic.elevation
-      }'
-  jj <- get_id(deimsid, "sites")
+  qo <- queries_jq[[get_deims_API_version()]]$site_info
+  jj <- get_id(deimsid, qo$path)
   if (is.na(attr(jj, "status"))) {
     invisible(
       utils::capture.output(
-        siteInfo <- dplyr::as_tibble(
-          do_Q(q, jj)
-        )
+        siteInfo <- dplyr::as_tibble(do_Q(qo$query, jj))
       )
     )
     if (any(is.na(category))) {
@@ -165,7 +159,7 @@ get_site_info <- function(deimsid, category = NA) {
       } else {
         siteInfo <- siteInfo
       }
-      # add 'observedProperties' info
+      # add 'Observed properties' info
       if (any(grepl("observedProperties", category))) {
         siteParam <- get_site_observedProperties(deimsid = deimsid)
         siteInfo <- dplyr::left_join(
@@ -206,25 +200,28 @@ get_site_info <- function(deimsid, category = NA) {
         siteInfo <- siteInfo
       }
       # add 'ResearchTop' info
-      if (any(grepl("ResearchTop", category))) {
-        siteResea <- get_site_research_topics(deimsid = deimsid)
-        siteInfo <- dplyr::left_join(
-          siteInfo,
-          siteResea,
-          by = c(
-            "title" = "title",
-            "uri" = "uri",
-            "geoCoord" = "geoCoord",
-            "country" = "country",
-            "geoElev.avg" = "geoElev.avg",
-            "geoElev.min" = "geoElev.min",
-            "geoElev.max" = "geoElev.max",
-            "geoElev.unit" = "geoElev.unit"
-          )
-        )
-      } else {
-        siteInfo <- siteInfo
-      }
+      # the section about research topics of the site in DEIMS-SDR API version
+      # 1.1 has been removed
+      #
+      # if (any(grepl("ResearchTop", category))) {
+      #   siteResea <- get_site_research_topics(deimsid = deimsid)
+      #   siteInfo <- dplyr::left_join(
+      #     siteInfo,
+      #     siteResea,
+      #     by = c(
+      #       "title" = "title",
+      #       "uri" = "uri",
+      #       "geoCoord" = "geoCoord",
+      #       "country" = "country",
+      #       "geoElev.avg" = "geoElev.avg",
+      #       "geoElev.min" = "geoElev.min",
+      #       "geoElev.max" = "geoElev.max",
+      #       "geoElev.unit" = "geoElev.unit"
+      #     )
+      #   )
+      # } else {
+      #   siteInfo <- siteInfo
+      # }
       # add 'Boundaries' info
       if (any(grepl("Boundaries", category))) {
         siteBound <- get_site_boundaries(deimsid = deimsid)

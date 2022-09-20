@@ -7,24 +7,24 @@
 get_id(deimsid, resource = "sites", test, ...)
 }
 \arguments{
-\item{deimsid}{A `character`. It is the DEIMS ID of the site, activity or
+\item{deimsid}{A \code{character}. It is the DEIMS ID of the site, activity or
 dataset from DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here}.}
 
-\item{resource}{Character: one among `"sites"` (default), `"activities"` or
-`"datasets"` (`"networks"` currently not tested).}
+\item{resource}{Character: one among \code{"sites"} (default), \code{"activities"} or
+\code{"datasets"} (\code{"networks"} currently not tested).}
 
 \item{test}{Logical: if TRUE, content is not retrieved from
 \url{https://deims.org} but internally (only for some defined IDs).
 Used for testing purposes to avoid errors in case or HTTP error 500.
 If missing, the content of the internal variable}
 
-\item{...}{Arguments to be passed to `httr::RETRY()`.}
+\item{...}{Arguments to be passed to \code{httr::RETRY()}.}
 
 \item{jj}{a character}
 }
 \value{
-A character containing the json content, and an attribute `status`.
+A character containing the json content, and an attribute \code{status}.
 }
 \description{
 Internal function to retrieve json content from ID

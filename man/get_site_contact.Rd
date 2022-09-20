@@ -7,16 +7,17 @@
 get_site_contact(deimsid)
 }
 \arguments{
-\item{deimsid}{A `character`. It is the DEIMS ID of the site from
+\item{deimsid}{A \code{character}. It is the DEIMS ID of the site from
 DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here}.}
 }
 \value{
-The output of the function is a `tibble` with main features of the
+The output of the function is a \code{tibble} with main features of the
 site and the contact information, such as: site manager, operation
 organization, metadata provider, founding agency and site url.
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 This function obtains the contact information for an
 eLTER site through the DEIMS-SDR sites API.
 }

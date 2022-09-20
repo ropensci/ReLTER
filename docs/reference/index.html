@@ -29,7 +29,7 @@
     <a class="dropdown-item" href="../articles/occurrences_into_site.html">How to retrieve occurrence records by exploiting the {`ReLTER`} get_site_speciesOccurrences() function</a>
     <a class="dropdown-item" href="../articles/resources_delivered_eu_networks.html">Related resources delivered by EU eLTER sites</a>
     <a class="dropdown-item" href="../articles/rocker_ReLTER.html">Run ReLTER in a Docker container</a>
-    <a class="dropdown-item" href="../articles/site_information.html">How to get the info of a (one) LTER Site by knowing the DEIMS ID</a>
+    <a class="dropdown-item" href="../articles/site_information.html">How to get the info of a (one) LTER Site by knowing the DEIMS.ID</a>
     <a class="dropdown-item" href="../articles/sites_contacts.html">How to get the list of contacts from list of DEIMS ID within csv file</a>
     <a class="dropdown-item" href="../articles/sites_information.html">How to get the info of many than one LTER Sites</a>
   </div>
@@ -112,9 +112,9 @@ and crops to an eLTER site boundary.</dd>
 eLTER Network.</dd>
       </dl><dl><dt>
           
-          <code><a href="get_network_parameters.html">get_network_parameters()</a></code> 
+          <code><a href="get_network_observedProperties.html">get_network_observedProperties()</a></code> 
         </dt>
-        <dd>Obtain a list of all the Environmental Parameters of sites in an
+        <dd>Obtain a list of all the observed properties of sites in an
 eLTER Network.</dd>
       </dl><dl><dt>
           
@@ -144,9 +144,10 @@ eLTER Network.</dd>
         <dd>Download information of all ILTER sites or a subset of ILTER sites.</dd>
       </dl><dl><dt>
           
-          <code><a href="get_ilter_parameters.html">get_ilter_parameters()</a></code> 
+          <code><a href="get_ilter_observedProperties.html">get_ilter_observedProperties()</a></code> 
         </dt>
-        <dd>Obtain information about the parameters collected of all sites ILTER.</dd>
+        <dd>Obtain information about the observed properties collected of all sites
+ILTER.</dd>
       </dl><dl><dt>
           
           <code><a href="get_ilter_research_topics.html">get_ilter_research_topics()</a></code> 
@@ -179,6 +180,11 @@ eLTER Network.</dd>
         <dd>Obtain the data from a dataset deposited in Zenodo record.</dd>
       </dl><dl><dt>
           
+          <code><a href="get_deims_API_version.html">get_deims_API_version()</a></code> 
+        </dt>
+        <dd>Get version of DEIMS-SDR API</dd>
+      </dl><dl><dt>
+          
           <code><a href="produce_network_points_map.html">produce_network_points_map()</a></code> 
         </dt>
         <dd>Provide a map (image) of sites in an eLTER Network.</dd>
@@ -194,14 +200,14 @@ eLTER Network.</dd>
         <dd>Obtain the QRCode of any DEIMS-SDR entities.</dd>
       </dl><dl><dt>
           
-          <code><a href="produce_site_parameters_pie.html">produce_site_parameters_pie()</a></code> 
+          <code><a href="produce_site_observedProperties_pie.html">produce_site_observedProperties_pie()</a></code> 
         </dt>
-        <dd>Produce a pie chart of the parameters collected in a site LTER.</dd>
+        <dd>Produce a pie chart of the observed properties collected in a site LTER.</dd>
       </dl><dl><dt>
           
-          <code><a href="produce_site_parameters_waffle.html">produce_site_parameters_waffle()</a></code> 
+          <code><a href="produce_site_observedProperties_waffle.html">produce_site_observedProperties_waffle()</a></code> 
         </dt>
-        <dd>Produce a waffle chart of the parameters collected in a site LTER.</dd>
+        <dd>Produce a waffle chart of the observed properties collected in a site LTER.</dd>
       </dl><dl><dt>
           
           <code><a href="produce_zenodo_record.html">produce_zenodo_record()</a></code> 
@@ -226,6 +232,21 @@ taxon list.</dd>
 comparing with <a href="https://www.marinespecies.org" class="external-link">Worms</a>.</dd>
       </dl><dl><dt>
           
+<<<<<<< HEAD
+          <code><a href="package_settings.html">package_settings</a></code> 
+        </dt>
+        <dd>Package settings that can be changed by the user</dd>
+      </dl><dl><dt>
+          
+          <code><a href="set_deims_base_url.html">set_deims_base_url()</a></code> 
+        </dt>
+        <dd>Set DEIMS-SDR API base URL</dd>
+      </dl><dl><dt>
+          
+          <code><a href="get_deims_base_url.html">get_deims_base_url()</a></code> 
+        </dt>
+        <dd>Get DEIMS-SDR base URL</dd>
+=======
           <code><a href="map_occ_gbif2elter.html">map_occ_gbif2elter()</a></code> 
         </dt>
         <dd>Harmonize outputs of get_site_speciesOccurrence and map them into eLTER
@@ -262,6 +283,7 @@ reporting format</dd>
           <code><a href="reporting_save_archive.html">reporting_save_archive()</a></code> 
         </dt>
         <dd>creates an archive with files following the eLTER reportingFormat</dd>
+>>>>>>> dev
       </dl></div>
   </main></div>
 

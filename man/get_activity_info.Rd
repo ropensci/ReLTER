@@ -7,19 +7,20 @@
 get_activity_info(activityid, show_map = FALSE)
 }
 \arguments{
-\item{activityid}{A `character`. It is the DEIMS ID of activity make from
+\item{activityid}{A \code{character}. It is the DEIMS ID of activity make from
 DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here}.
 The DEIMS.iD of activity is the URL for the activity page.}
 
-\item{show_map}{A `boolean`. If TRUE a Leaflet map with occurrences
+\item{show_map}{A \code{boolean}. If TRUE a Leaflet map with occurrences
 is shown. Default FALSE.}
 }
 \value{
-The output of the function is a `tibble` with main features of
-the activities in a site, and a `leaflet` map plot.
+The output of the function is a \code{tibble} with main features of
+the activities in a site, and a \code{leaflet} map plot.
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 This function obtains the information about of an eLTER
 activity (e.g.
 \url{https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845})

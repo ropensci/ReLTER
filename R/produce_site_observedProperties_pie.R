@@ -1,17 +1,19 @@
-#' Produce a pie chart of the parameters collected in a site LTER.
-#' @description Return a pie chart of Environmental Parameters, as a stored in
-#' \href{https://deims.org/}{DEIMS-SDR catalogue}, of a single eLTER site.
+#' Produce a pie chart of the observed properties collected in a site LTER.
+#' @description `r lifecycle::badge("stable")`
+#' Return a pie chart of Environmental observed properties, as
+#' a stored in \href{https://deims.org/}{DEIMS-SDR catalogue}, of a single
+#' eLTER site.
 #' @param deimsid A `character`. It is the DEIMS ID of site/network from
 #' DEIMS-SDR website. DEIMS ID information
 #' \href{https://deims.org/docs/deimsid.html}{here}.
 #' @return The output of the function is a pie chart and a `tibble`. The
 #' percentages, as a label in the pie charts and in the output table (
-#' column 'perc'), refer to the number of the parameters, belonging to a type
-#' (e.g. biological, atmospheric, etc.), measured compared to all of parameters
-#' measured into selected eLTER site. This function allows to show what type
-#' of parameters are most measured into a site. In the example below the
-#' atmospheric parameters corresponds to the 15 percent of all parameters
-#' measured into the site.
+#' column 'perc'), refer to the number of the observed properties, belonging
+#' to a type (e.g. biological, atmospheric, etc.), measured compared to all of
+#' observed properties measured into selected eLTER site. This function allows
+#' to show what type of observed properties are most measured into a site. In
+#' the example below the atmospheric observed properties corresponds to the
+#' 15 percent of all observed properties measured into the site.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom tibble as_tibble
 #' @importFrom dplyr group_by tally mutate filter lag
@@ -34,21 +36,21 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' pie <- produce_site_parameters_pie(
+#' pie <- produce_site_observedProperties_pie(
 #'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
 #' )
 #' pie
 #' }
 #'
 #' @section The function output:
-#' \figure{produce_site_parameters_pie_fig.png}{Parameters pie chart}
+#' \figure{produce_site_parameters_pie_fig.png}{Observed properties pie chart}
 #'
-### function produce_site_parameters_pie
-produce_site_parameters_pie <- function(deimsid) {
+### function produce_site_observedProperties_pie
+produce_site_observedProperties_pie <- function(deimsid) {
   # TODO add this by SPARQL query
   site <- ReLTER::get_site_info(
     deimsid = deimsid,
-    category = "Parameters"
+    category = "observedProperties"
   )
   paramsDeims <- tibble::as_tibble(site$parameter[[1]])
   if (length(paramsDeims) != 0) {
@@ -60,7 +62,7 @@ produce_site_parameters_pie <- function(deimsid) {
       "s"
     )
     groupsIsNa <- params %>% dplyr::filter(is.na(parameterGroups))
-    # parameters ----
+    # observed properties ----
     params <- params %>%
       dplyr::group_by(parameterGroups) %>%
       dplyr::tally() %>%
@@ -116,7 +118,7 @@ produce_site_parameters_pie <- function(deimsid) {
       ggplot2::labs(
         title =
           paste0(
-            "Percentage of parameters type measured in the ",
+            "Percentage of observed properties type measured in the ",
             site$title
           )
       ) +
@@ -151,11 +153,11 @@ produce_site_parameters_pie <- function(deimsid) {
       message("")
     } else {
       message(
-        "This parameters are not included, please contact the development of the
-      package by GitHub.\n",
+        "This observed properties are not included, please contact the
+        development of the package by GitHub.\n",
         "Paste this message into the GitHub issue.\n",
-        "I am using the parametersChart function and need to add the following
-      parameters in the mapping:\n",
+        "I am using the produce_site_observedProperties_pie function and need
+        to add the following observed properties in the mapping:\n",
         paste(groupsIsNa$parameterLabel, collapse = "\n")
       )
     }

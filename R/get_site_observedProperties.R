@@ -1,5 +1,6 @@
-#' @title eLTER get_site_parameters function
-#' @description This function obtains the list of observed properties measured
+#' @title eLTER get_site_observedProperties function
+#' @description `r lifecycle::badge("stable")`
+#' This function obtains the list of observed properties measured
 #' in the eLTER site through the DEIMS-SDR sites API.
 #' @param deimsid A `character`. It is the DEIMS ID of the site from
 #' DEIMS-SDR website. DEIMS ID information
@@ -14,20 +15,12 @@
 #'
 ### function get_site_observedProperties
 get_site_observedProperties <- function(deimsid) {
-  q <- '{title: .title,
-       uri: "\\(.id.prefix)\\(.id.suffix)",
-       geoCoord: .attributes.geographic.coordinates,
-       country: .attributes.geographic.country,
-       geoElev: .attributes.geographic.elevation,
-       observedProperties: .attributes.focusDesignScale.observedProperties
-      }'
-  jj <- get_id(deimsid, "sites")
+  qo <- queries_jq[[get_deims_API_version()]]$site_parameters
+  jj <- get_id(deimsid, qo$path)
   if (is.na(attr(jj, "status"))) {
     invisible(
       utils::capture.output(
-        observedProperties <- dplyr::as_tibble(
-          do_Q(q, jj)
-        )
+        parameters <- dplyr::as_tibble(do_Q(qo$query, jj))
       )
     )
     if (!is.na(observedProperties$observedProperties)) {

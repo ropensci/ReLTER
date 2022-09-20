@@ -55,10 +55,16 @@
     <loc>https://docs.ropensci.org/ReLTER/news/index.html</loc>
   </url>
   <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/ReLTER-package.html</loc>
+  </url>
+  <url>
     <loc>https://docs.ropensci.org/ReLTER/reference/ReLTER.html</loc>
   </url>
   <url>
     <loc>https://docs.ropensci.org/ReLTER/reference/do_Q.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/getDeimsBaseUrl.html</loc>
   </url>
   <url>
     <loc>https://docs.ropensci.org/ReLTER/reference/get_Site_Affiliations.html</loc>
@@ -97,6 +103,12 @@
     <loc>https://docs.ropensci.org/ReLTER/reference/get_dataset_info.html</loc>
   </url>
   <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/get_deims_API_version.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/get_deims_base_url.html</loc>
+  </url>
+  <url>
     <loc>https://docs.ropensci.org/ReLTER/reference/get_id.html</loc>
   </url>
   <url>
@@ -106,6 +118,9 @@
     <loc>https://docs.ropensci.org/ReLTER/reference/get_ilter_generalinfo.html</loc>
   </url>
   <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/get_ilter_observedProperties.html</loc>
+  </url>
+  <url>
     <loc>https://docs.ropensci.org/ReLTER/reference/get_ilter_parameters.html</loc>
   </url>
   <url>
@@ -113,6 +128,9 @@
   </url>
   <url>
     <loc>https://docs.ropensci.org/ReLTER/reference/get_network_envcharacts.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/get_network_observedProperties.html</loc>
   </url>
   <url>
     <loc>https://docs.ropensci.org/ReLTER/reference/get_network_parameters.html</loc>
@@ -133,6 +151,9 @@
     <loc>https://docs.ropensci.org/ReLTER/reference/get_site_ODS.html</loc>
   </url>
   <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/get_site_observedProperties.html</loc>
+  </url>
+  <url>
     <loc>https://docs.ropensci.org/ReLTER/reference/get_site_speciesOcc.html</loc>
   </url>
   <url>
@@ -145,6 +166,9 @@
     <loc>https://docs.ropensci.org/ReLTER/reference/index.html</loc>
   </url>
   <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/package_settings.html</loc>
+  </url>
+  <url>
     <loc>https://docs.ropensci.org/ReLTER/reference/pipe.html</loc>
   </url>
   <url>
@@ -152,6 +176,12 @@
   </url>
   <url>
     <loc>https://docs.ropensci.org/ReLTER/reference/produce_site_map.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/produce_site_observedProperties_pie.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/produce_site_observedProperties_waffle.html</loc>
   </url>
   <url>
     <loc>https://docs.ropensci.org/ReLTER/reference/produce_site_parameters_pie.html</loc>
@@ -164,6 +194,12 @@
   </url>
   <url>
     <loc>https://docs.ropensci.org/ReLTER/reference/produce_zenodo_record.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/setDeimsBaseUrl.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/set_deims_base_url.html</loc>
   </url>
   <url>
     <loc>https://docs.ropensci.org/ReLTER/reference/taxon_ID_Pesi.html</loc>

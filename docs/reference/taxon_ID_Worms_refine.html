@@ -33,7 +33,7 @@ and possibly enables the user to interactively make his choice."><meta property=
     <a class="dropdown-item" href="../articles/occurrences_into_site.html">How to retrieve occurrence records by exploiting the {`ReLTER`} get_site_speciesOccurrences() function</a>
     <a class="dropdown-item" href="../articles/resources_delivered_eu_networks.html">Related resources delivered by EU eLTER sites</a>
     <a class="dropdown-item" href="../articles/rocker_ReLTER.html">Run ReLTER in a Docker container</a>
-    <a class="dropdown-item" href="../articles/site_information.html">How to get the info of a (one) LTER Site by knowing the DEIMS ID</a>
+    <a class="dropdown-item" href="../articles/site_information.html">How to get the info of a (one) LTER Site by knowing the DEIMS.ID</a>
     <a class="dropdown-item" href="../articles/sites_contacts.html">How to get the list of contacts from list of DEIMS ID within csv file</a>
     <a class="dropdown-item" href="../articles/sites_information.html">How to get the info of many than one LTER Sites</a>
   </div>
@@ -81,21 +81,21 @@ and possibly enables the user to interactively make his choice.</p>
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>input</dt>
-<dd><p>a `tibble`. The output of taxon_ID_Worms.</p></dd>
+<dd><p>a <code>tibble</code>. The output of taxon_ID_Worms.</p></dd>
 <dt>taxaColumn</dt>
-<dd><p>a `numeric`. The cardinal number of the column where
-species list is. Default is `1`.</p></dd>
+<dd><p>a <code>numeric</code>. The cardinal number of the column where
+species list is. Default is <code>1</code>.</p></dd>
 <dt>interaction</dt>
-<dd><p>a `boolean`. When `TRUE` the user can interact with
-the choice of one of the proposed matching. Default is `FALSE`.</p></dd>
+<dd><p>a <code>boolean</code>. When <code>TRUE</code> the user can interact with
+the choice of one of the proposed matching. Default is <code>FALSE</code>.</p></dd>
 <dt>choiceNumber</dt>
-<dd><p>a `numeric`. The number of selected choice. Default
-is `NULL`. When `NULL` no choice is performed.</p></dd>
+<dd><p>a <code>numeric</code>. The number of selected choice. Default
+is <code>NULL</code>. When <code>NULL</code> no choice is performed.</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>In interactive mode or when the `choiceNumber` is `NULL` the
-output of the function is a `tibble` with the refinement of the
+    <p>In interactive mode or when the <code>choiceNumber</code> is <code>NULL</code> the
+output of the function is a <code>tibble</code> with the refinement of the
 input, else the function simply returns the unchanged input.</p>
     </div>
     <div class="section level2">

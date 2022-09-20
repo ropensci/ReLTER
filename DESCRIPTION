@@ -96,6 +96,10 @@ Imports:
     rnaturalearth,
     gridExtra,
     webshot,
+<<<<<<< HEAD
+    lifecycle,
+    RCurl
+=======
     Rdpack,
     zen4R,
     SPARQL,
@@ -105,6 +109,7 @@ Imports:
     countrycode,
     stringi
 RdMacros: Rdpack
+>>>>>>> dev
 Suggests: 
     httptest,
     knitr,
@@ -119,3 +124,4 @@ BugReports: https://github.com/ropensci/ReLTER/issues
 Config/testthat/edition: 3
 RoxygenNote: 7.2.1
 Language: en-GB
+Roxygen: list(markdown = TRUE)

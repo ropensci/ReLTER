@@ -26,12 +26,8 @@ test_that("Output of network research topics function constructs ‘tibble’ as
     networkDEIMSID = TESTURLNetwork
   )
   expect_s3_class(result, "tbl_df")
-  expect_true(ncol(result) == 2)
-  expect_true(all(names(result) == c(
-    "researchTopicsLabel", "researchTopicsUri"
-  )))
-  expect_type(result$researchTopicsLabel, "character")
-  expect_type(result$researchTopicsUri, "character")
+  expect_true(ncol(result) == 0)
+  expect_true(all(names(result) == c()))
 })
 
 test_that("Wrong input (but URL) constructs a NULL object", {

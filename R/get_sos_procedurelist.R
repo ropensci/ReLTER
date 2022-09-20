@@ -1,5 +1,6 @@
 #' List the procedures of a Sensor Observations Service (SOS).
-#' @description Return a list of procedures (e.g. method, algorithm,
+#' @description `r lifecycle::badge("stable")`
+#' Return a list of procedures (e.g. method, algorithm,
 #' instrument, sensor, or system which may be used in making observations)
 #' store into a
 #' \href{http://opengeospatial.github.io/e-learning/sos/text/index.html}{SOS

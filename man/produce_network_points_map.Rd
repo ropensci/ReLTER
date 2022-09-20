@@ -7,12 +7,12 @@
 produce_network_points_map(networkDEIMSID, countryCode)
 }
 \arguments{
-\item{networkDEIMSID}{A `character`. The DEIMS ID of the network
+\item{networkDEIMSID}{A \code{character}. The DEIMS ID of the network
 from DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here} and Complete list of ILTER
-networks \href{https://deims.org/search?f[0]=result_type:network}{here}.}
+networks \href{https://deims.org/search?f\link{0}=result_type:network}{here}.}
 
-\item{countryCode}{A `character` following the ISO 3166-1 alpha-3 codes.
+\item{countryCode}{A \code{character} following the ISO 3166-1 alpha-3 codes.
 This ISO convention consists of three-letter country codes as defined in
 ISO 3166-1. The ISO 3166 standard published by the International
 Organization for Standardization (ISO), to represent countries, dependent
@@ -22,11 +22,12 @@ parameter, if the network has a extraterritorial sites those will not
 represented.}
 }
 \value{
-The output of the function is a `tmap` plot containing an image of
+The output of the function is a \code{tmap} plot containing an image of
 geographic distribution of the network of sites present in the chosen
 country.
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 Return a image map object of all of the eLTER sites belonging
 to an eLTER Network (e.g.
 \href{https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3}{LTER

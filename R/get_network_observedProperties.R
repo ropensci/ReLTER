@@ -1,6 +1,7 @@
-#' Obtain a list of all the Environmental Parameters of sites in an
+#' Obtain a list of all the observed properties of sites in an
 #' eLTER Network.
-#' @description This function obtains all Environmental Parameters
+#' @description `r lifecycle::badge("stable")`
+#' This function obtains all observed properties
 #' collected in an eLTER Network (e.g.
 #' \href{https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3}{LTER-
 #' Italy network}), through the DEIMS-SDR API.
@@ -10,7 +11,7 @@
 #' networks \href{https://deims.org/search?f[0]=result_type:network}{here}.
 #' The DEIMS ID of network is the URL for the network page.
 #' @return The output of the function is a `tibble` containing the list
-#' of parameters and their URI (Uniform Resource Identifier) collected
+#' of observed properties and their URI (Uniform Resource Identifier) collected
 #' by the network's sites.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom jsonlite fromJSON
@@ -23,7 +24,7 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' listParams <- get_network_parameters(
+#' listParams <- get_network_observedProperties(
 #'   networkDEIMSID =
 #'   "https://deims.org/networks/e0f680c2-22b1-4424-bf54-58aa9b7476a0"
 #' )
@@ -33,11 +34,12 @@
 #' )
 #' }
 #'
-### function get_network_parameters
-get_network_parameters <- function(networkDEIMSID) {
+### function get_network_observedProperties
+get_network_observedProperties <- function(networkDEIMSID) {
+  deimsbaseurl <- get_deims_base_url()
   lterNetworkSites <- as.list(
     jsonlite::fromJSON(
-      paste0("https://deims.org/",
+      paste0(deimsbaseurl,
              "api/sites?network=",
              sub("^.+/", "", networkDEIMSID)
             )
@@ -51,7 +53,7 @@ get_network_parameters <- function(networkDEIMSID) {
       )
     ),
     ReLTER::get_site_info,
-    category = "Parameters"
+    category = "observedProperties"
   )
   if (length(allSiteParameters) != 0) {
     uniteSiteParameters <- dplyr::bind_rows(allSiteParameters)

@@ -7,18 +7,19 @@
 get_site_envcharacts(deimsid)
 }
 \arguments{
-\item{deimsid}{A `character`. The DEIMS ID of a site from
+\item{deimsid}{A \code{character}. The DEIMS ID of a site from
 DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here}.}
 }
 \value{
-The output of the function is a `tibble` with main features of the
+The output of the function is a \code{tibble} with main features of the
 site and the environmental characteristics where available,
 such as: air temperature, precipitation, biogeographical region, biome,
 ecosystem land use, EUNIS habitat, geoBon biome, geology, hydrology, soils
 and vegetation.
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 This function obtains Environmental Characteristics
 of an eLTER site through the DEIMS-SDR sites API.
 }

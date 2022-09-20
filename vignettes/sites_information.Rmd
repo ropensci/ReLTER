@@ -53,9 +53,8 @@ listItaSitesMap
 Another 4 functions are been implemented to obtain network's sites information. Each functions get specific information:
 
 * Environmental characteristics by [`get_network_envcharacts`](https://docs.ropensci.org/ReLTER/reference/get_network_envcharacts.html)
-* Parameters by [`get_network_parameters`](https://docs.ropensci.org/ReLTER/reference/get_network_parameters.html)
+* Observed properties by [`get_network_observedProperties`](https://docs.ropensci.org/ReLTER/reference/get_network_observedProperties.html)
 * Related resources  by [`get_network_related_resources`](https://docs.ropensci.org/ReLTER/reference/get_network_related_resources.html)
-* Research topics by [`get_network_research_topics`](https://docs.ropensci.org/ReLTER/reference/get_network_research_topics.html)
 
 The following example perform the request to get all related resources (e.g. activities, datasets, etc.) of the network. The output is a table containing the title, id and time stamp of the last changes of the related resources shared by the network's sites.
 

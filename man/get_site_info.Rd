@@ -11,20 +11,25 @@ get_site_info(deimsid, category = NA)
 DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here}.}
 
-\item{category}{A `category`. This parameter selects which category
+\item{category}{A \code{category}. This parameter selects which category
 or categories are retrieved and returned in the result.
 Possible value are:
 'Affiliations', 'Boundaries', 'Contacts', 'EnvCharacts', 'General',
+<<<<<<< HEAD
+'Infrastructure', 'observedProperties', 'RelateRes'.
+=======
 'Infrastructure', 'observedProperties', 'RelateRes', 'ResearchTop'.
+>>>>>>> dev
 Multiple values can be indicated.}
 }
 \value{
-The output of the function is a `tibble` with main features of the
+The output of the function is a \code{tibble} with main features of the
 site and the selected information, such as: networks and projects in
 which the site is involved.
-If category 'Boundaries' is indicated an `sf` object is returned
+If category 'Boundaries' is indicated an \code{sf} object is returned
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 This function obtains information of a single eLTER site,
 as a stored in \href{https://deims.org/}{DEIMS-SDR catalogue},
 through the DEIMS-SDR API.

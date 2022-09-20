@@ -65,7 +65,7 @@ The `{ReLTER}` package functions in particular allows to:
     [get_network_sites](https://docs.ropensci.org/ReLTER/reference/get_network_sites.html),
     [produce_site_map](https://docs.ropensci.org/ReLTER/reference/produce_site_map.html)
     or
-    [produce_site_parameters_pie](https://docs.ropensci.org/ReLTER/reference/produce_site_parameters_pie.html)
+    [produce_site_observedProperties_pie](https://docs.ropensci.org/ReLTER/reference/produce_site_observedProperties_pie.html)
     functions);
 
 -   interact with the [ODSEurope](maps.opendatascience.eu) managed by
@@ -150,7 +150,7 @@ These examples demonstrate interaction with the DEIMS-SDR
 #### *get_ilter_generalinfo()*
 In this initial example, the *get_ilter_generalinfo* function is called
 to find the DEIMS ID for a specific eLTER site. The function takes
-parameters "country_name" and "site_name", and returns the site URL (the
+observed properties "country_name" and "site_name", and returns the site URL (the
 DEIMS ID) in the DEIMS SDR infrastructure.
 
 ```{r ilter, message=FALSE, warning=FALSE}
@@ -198,9 +198,9 @@ tmap::tm_shape(r) +
 
 ------------------------------------------------------------------------
 
-#### *get_network_parameters()*
+#### *get_network_observedProperties()*
 
-The *get_network_parameters* function retrieves a list of parameters
+The *get_network_observedProperties* function retrieves a list of observed properties
 collected by sites that are part of a given network (e.g. LTER-Italy).
 Information is gathered from those sites that are part of the specified
 network id, on [DEIMS-SDR](https://deims.org/). The function returns a
@@ -210,7 +210,7 @@ network id, on [DEIMS-SDR](https://deims.org/). The function returns a
 library(dplyr)
 invisible(
   utils::capture.output(
-    listParams <- ReLTER::get_network_parameters(
+    listParams <- ReLTER::get_network_observedProperties(
       networkDEIMSID = 'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3'
     )
   )
@@ -256,14 +256,14 @@ print(tSiteRelatedResources$relatedResources[[1]])
 
 ------------------------------------------------------------------------
 
-#### *produce_site_parameters_waffle()*
+#### *produce_site_observedProperties_waffle()*
 
-The *produce_site_parameters_waffle* function provides a grouping of
-parameters, as measured within a site, in a "waffle chart"
+The *produce_site_observedProperties_waffle* function provides a grouping of
+observed properties, as measured within a site, in a "waffle chart"
 representation.
 
-```{r, message = FALSE, warning = FALSE, exampleproduce_site_parameters_waffle}
-ReLTER::produce_site_parameters_waffle(
+```{r, message = FALSE, warning = FALSE, exampleproduce_site_observedProperties_waffle}
+ReLTER::produce_site_observedProperties_waffle(
   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe")
 ```
 

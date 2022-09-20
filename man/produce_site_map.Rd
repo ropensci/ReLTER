@@ -20,11 +20,11 @@ produce_site_map(
 )
 }
 \arguments{
-\item{deimsid}{A `character`. The DEIMS ID of network from
+\item{deimsid}{A \code{character}. The DEIMS ID of network from
 DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here}.}
 
-\item{countryCode}{A `character` following the SO 3166-1 alpha-3 codes.
+\item{countryCode}{A \code{character} following the SO 3166-1 alpha-3 codes.
 This ISO convention consists of three-letter country codes
 as defined in ISO 3166-1, part of the ISO 3166 standard published by the
 International Organization for Standardization (ISO), to represent countries,
@@ -33,42 +33,43 @@ The map produced by this function will be limited to the country
 indicated in this parameter; if the network has a extraterritorial sites
 those will not represented.}
 
-\item{listOfSites}{A `sf`. List of sites of specific network. This list
+\item{listOfSites}{A \code{sf}. List of sites of specific network. This list
 is needed for showing another points on the map.}
 
-\item{gridNx}{A `double`. A numeric vector or unit object specifying
+\item{gridNx}{A \code{double}. A numeric vector or unit object specifying
 x-location of viewports about country provided by countryCode parameter.}
 
-\item{gridNy}{A `double`. A numeric vector or unit object specifying
+\item{gridNy}{A \code{double}. A numeric vector or unit object specifying
 y-location of viewports about country provided by countryCode parameter.}
 
-\item{width}{A `double`. A numeric vector or unit object specifying width
+\item{width}{A \code{double}. A numeric vector or unit object specifying width
 of viewports about country provided by countryCode parameter. Default 0.25.}
 
-\item{height}{A `double`. A numeric vector or unit object specifying height
+\item{height}{A \code{double}. A numeric vector or unit object specifying height
 of viewports about country provided by countryCode parameter. Default 0.25.}
 
-\item{bboxXMin}{A `double`. A numeric for add some unit of a bbox provided
+\item{bboxXMin}{A \code{double}. A numeric for add some unit of a bbox provided
 by centroid of the site. Default 0.}
 
-\item{bboxXMax}{A `double`. A numeric for add some unit of a bbox provided
+\item{bboxXMax}{A \code{double}. A numeric for add some unit of a bbox provided
 by centroid of the site. Default 0.}
 
-\item{bboxYMin}{A `double`. A numeric for add some unit of a bbox provided
+\item{bboxYMin}{A \code{double}. A numeric for add some unit of a bbox provided
 by centroid of the site. Default 0.}
 
-\item{bboxYMax}{A `double`. A numeric for add some unit of a bbox provided
+\item{bboxYMax}{A \code{double}. A numeric for add some unit of a bbox provided
 by centroid of the site. Default 0.}
 
-\item{show_map}{A `boolean`. When TRUE the immage of map will be plotted.
+\item{show_map}{A \code{boolean}. When TRUE the immage of map will be plotted.
 Default FALSE.}
 }
 \value{
-The output of the function is an `image` of the boundary of the
+The output of the function is an \code{image} of the boundary of the
 site, OSM as base map and all country sites map.
 }
 \description{
-This function produces a `map` of the site boundaries
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
+This function produces a \code{map} of the site boundaries
 as provided by the \href{https://deims.org/}{DEIMS-SDR catalogue}, within
 a given country and network.
 }

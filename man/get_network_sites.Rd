@@ -7,17 +7,18 @@
 get_network_sites(networkDEIMSID)
 }
 \arguments{
-\item{networkDEIMSID}{A `character`. The DEIMS ID of the network from
+\item{networkDEIMSID}{A \code{character}. The DEIMS ID of the network from
 DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here} and Complete list of
-networks \href{https://deims.org/search?f[0]=result_type:network}{here}.
+networks \href{https://deims.org/search?f\link{0}=result_type:network}{here}.
 The DEIMS ID of network is the URL for the network page.}
 }
 \value{
-The output of the function is a point vector of `sf` class
+The output of the function is a point vector of \code{sf} class
 (package sf) of the network's sites.
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 This function return a spatial point vector object including
 title, date late updated, URI, and coordinates, stored in
 \href{https://deims.org/}{DEIMS-SDR catalogue}, of all the eLTER sites

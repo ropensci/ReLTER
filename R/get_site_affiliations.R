@@ -1,5 +1,6 @@
 #' @title eLTER get_site_affiliations function
-#' @description This function obtains details about an eLTER site
+#' @description `r lifecycle::badge("stable")`
+#' This function obtains details about an eLTER site
 #' through the DEIMS-SDR sites API.
 #' @param deimsid A character. The DEIMS ID of the site from
 #' DEIMS-SDR website. DEIMS ID information
@@ -17,20 +18,12 @@
 #'
 ### function get_site_affiliations
 get_site_affiliations <- function(deimsid) {
-  q <- '{title: .title,
-       uri: "\\(.id.prefix)\\(.id.suffix)",
-       geoCoord: .attributes.geographic.coordinates,
-       country: .attributes.geographic.country,
-       geoElev: .attributes.geographic.elevation,
-       affiliation: .attributes.affiliation
-      }'
-  jj <- get_id(deimsid, "sites")
+  qo <- queries_jq[[get_deims_API_version()]]$site_affiliations
+  jj <- get_id(deimsid, qo$path)
   if (is.na(attr(jj, "status"))) {
     invisible(
       utils::capture.output(
-        affiliations <- dplyr::as_tibble(
-          do_Q(q, jj)
-        )
+        affiliations <- dplyr::as_tibble(do_Q(qo$query, jj))
       )
     )
   } else {

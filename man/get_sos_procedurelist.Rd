@@ -7,14 +7,15 @@
 get_sos_procedurelist(sosURL)
 }
 \arguments{
-\item{sosHost}{A `list`. An SOS endpoint (e.g.
+\item{sosHost}{A \code{list}. An SOS endpoint (e.g.
 \url{http://getit.lteritalia.it/observations/sos/kvp?}).}
 }
 \value{
-The output of the function is a `list` with the name and URI
+The output of the function is a \code{list} with the name and URI
 (Uniform Resource Identifier) of each procedure.
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 Return a list of procedures (e.g. method, algorithm,
 instrument, sensor, or system which may be used in making observations)
 store into a
@@ -24,7 +25,11 @@ store into a
 \examples{
 \dontrun{
 get_sos_procedurelist(
+<<<<<<< HEAD
+  sosHost = "http://getit.lteritalia.it/observations/service?"
+=======
   sosURL = "http://getit.lteritalia.it/observations/service"
+>>>>>>> dev
 )
 }
 

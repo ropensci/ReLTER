@@ -1,7 +1,8 @@
 #' Acquire various raster layers from
 #' \href{https://maps.opendatascience.eu/}{ODS Europe}
 #' and crops to an eLTER site boundary.
-#' @description Download and return a SpatRaster object containing the requested
+#' @description `r lifecycle::badge("stable")`
+#' Download and return a SpatRaster object containing the requested
 #' dataset from \href{https://maps.opendatascience.eu/}{ODS},
 #' cropped to an eLTER site boundary, which is obtained from the DEIMS-SDR API.
 #' @param deimsid  A `character`. The DEIMS ID of the site from

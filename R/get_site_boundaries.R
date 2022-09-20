@@ -1,5 +1,6 @@
 #' @title eLTER get_site_boundaries function
-#' @description This function retrieves the boundary of a specified eLTER site
+#' @description `r lifecycle::badge("stable")`
+#' This function retrieves the boundary of a specified eLTER site
 #' and a view of the site boundaries on a leaflet map is shown.
 #' All the info are taken from the DEIMS-SDR sites API.
 #' If the boundary is missing, a warning message is printed in the R console.
@@ -24,15 +25,12 @@
 #'
 ### function get_site_boundaries
 get_site_boundaries <- function(deimsid, show_map = FALSE) {
-  q <- '{title: .title,
-        uri: "\\(.id.prefix)\\(.id.suffix)",
-        boundaries: .attributes.geographic.boundaries
-       }'
-  jj <- get_id(deimsid, "sites")
+  qo <- queries_jq[[get_deims_API_version()]]$site_boundaries
+  jj <- get_id(deimsid, qo$path)
   if (is.na(attr(jj, "status"))) {
     invisible(
       utils::capture.output(
-        boundaries <- dplyr::as_tibble(do_Q(q, jj))
+        boundaries <- dplyr::as_tibble(do_Q(qo$query, jj))
       )
     )
     if (!is.null(boundaries)) {

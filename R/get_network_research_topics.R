@@ -1,5 +1,10 @@
 #' Obtain a list of Research Topics handled in an eLTER Network.
-#' @description This function obtains Research Topics collected by all
+#' @description `r lifecycle::badge("defunct")`
+#' This function was defunct because the section
+#' about research topics of the site in DEIMS-SDR API
+#' version 1.1 has been removed.
+#' 
+#' This function obtains Research Topics collected by all
 #' of the eLTER sites belonging to an eLTER Network (e.g.
 #' \href{https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3}{LTER-
 #' Italy network}), as a stored into \href{https://deims.org}{DEIMS-SDR}.
@@ -37,10 +42,11 @@
 #'
 ### function get_network_research_topics
 get_network_research_topics <- function(networkDEIMSID) {
+  deimsbaseurl <- get_deims_base_url()
   lterNetworkSites <- as.list(
     jsonlite::fromJSON(
       paste0(
-        "https://deims.org/",
+        deimsbaseurl,
         "api/sites?network=",
         sub("^.+/", "", networkDEIMSID)
       )
@@ -53,12 +59,12 @@ get_network_research_topics <- function(networkDEIMSID) {
         lterNetworkSites$id$suffix
       )
     ),
-    ReLTER::get_site_info,
-    category = "ResearchTop"
+    ReLTER::get_site_info#,
+    # category = "ResearchTop"
   )
   if (length(allSiteResearchTopics) != 0) {
     uniteSiteResearchTopics <- dplyr::bind_rows(allSiteResearchTopics)
-    researchTopicsNetworkList <- uniteSiteResearchTopics$researchTopics
+    researchTopicsNetworkList <- NULL #uniteSiteResearchTopics$researchTopics
     researchTopicsNetworkDF <- dplyr::bind_rows(researchTopicsNetworkList)
     uniqueSiteResearchTopics <- dplyr::as_tibble(
       dplyr::distinct(

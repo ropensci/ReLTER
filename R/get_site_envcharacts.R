@@ -1,5 +1,6 @@
 #' @title eLTER get_site_envcharacts function
-#' @description This function obtains Environmental Characteristics
+#' @description `r lifecycle::badge("stable")`
+#' This function obtains Environmental Characteristics
 #' of an eLTER site through the DEIMS-SDR sites API.
 #' @param deimsid A `character`. The DEIMS ID of a site from
 #' DEIMS-SDR website. DEIMS ID information
@@ -17,20 +18,12 @@
 #'
 ### function get_site_envcharacts
 get_site_envcharacts <- function(deimsid) {
-  q <- '{title: .title,
-       uri: "\\(.id.prefix)\\(.id.suffix)",
-       geoCoord: .attributes.geographic.coordinates,
-       country: .attributes.geographic.country,
-       geoElev: .attributes.geographic.elevation,
-       envCharacteristics: .attributes.environmentalCharacteristics
-      }'
-  jj <- get_id(deimsid, "sites")
+  qo <- queries_jq[[get_deims_API_version()]]$site_envCharacts
+  jj <- get_id(deimsid, qo$path)
   if (is.na(attr(jj, "status"))) {
     invisible(
       utils::capture.output(
-        envCharacteristics <- dplyr::as_tibble(
-          do_Q(q, jj)
-        )
+        envCharacteristics <- dplyr::as_tibble(do_Q(qo$query, jj))
       )
     )
   } else {
