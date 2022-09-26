@@ -1,5 +1,6 @@
 #' Harmonize outputs of get_site_speciesOccurrence and map them into eLTER
 #' reporting format
+#' @description `r lifecycle::badge("experimental")`
 #' @param x A `tibble` like one that can be obtained by
 #' as_tibble(get_site_speciesOccurrence(deimsid, "gbif")$gbif)
 #' @param deimsid A `character`. The DEIMS.iD of the site from
@@ -234,12 +235,13 @@ map_occ_obis2elter <- function(x, deimsid) {
   ))
 }
 
-#' creates an archive with files following the eLTER reportingFormat
+#' Creates an archive with files following the eLTER reportingFormat
+#' @description `r lifecycle::badge("experimental")`
+#' Creates a zip archive named
+#' biodiv_occurrence_site_"deimsid_code"_"source".zip
+#' where "deimsid_code" is the uuid in the last part of the deimsid,
+#' and "source" is one of "gbif", "inat", "obis"
 #' @param lterReportOut A `list` like the one created by gbif2elter
-#' @description creates a zip archive named
-#' biodiv_occurrence_site_<deimsid_code>_<source>.zip
-#' where <deimsid_code> is the uuid in the last part of the deimsid,
-#' and <source> is one of "gbif", "inat", "obis"
 #' @author Paolo Tagliolato, phD \email{tagliolato.p@@irea.cnr.it}
 #' @importFrom utils zip write.csv2
 #' @export
@@ -396,7 +398,8 @@ reference_variables_obis <- as_tibble(
 # )
 
 #' eLTER reporting format naming convention for files
-#' @description compose file name following eLTER naming convention
+#' @description `r lifecycle::badge("experimental")`
+#' Compose file name following eLTER naming convention
 #' @author Paolo Tagliolato, phD \email{tagliolato.p@@irea.cnr.it}
 #' @author Alessandro Oggioni, phD \email{oggioni.a@@irea.cnr.it}
 #' @param deimsid A `character` The DEIMS ID of the site from
@@ -482,7 +485,8 @@ reporting_compose_file_name <- function(
 }
 
 #' Compose an eLTER Data Reporting Format object
-#' @description Given several tables, creates an eLTER data reporting format
+#' @description `r lifecycle::badge("experimental")`
+#' Given several tables, creates an eLTER data reporting format
 #' object
 #' @author Paolo Tagliolato, phD \email{tagliolato.p@@irea.cnr.it}
 #' @author Alessandro Oggioni, phD \email{oggioni.a@@irea.cnr.it}
@@ -570,8 +574,9 @@ reporting_produce_data_object_v1.3 <- function(data = NULL, station = NULL,
   ))
 }
 
-#' creates an archive with files following the eLTER reportingFormat
-#' @description creates a zip archive <filename>.zip
+#' Creates an archive with files following the eLTER reportingFormat
+#' @description `r lifecycle::badge("experimental")`
+#' Creates a zip archive "filename".zip
 #' @param x A `list` like the one created by function
 #' `reporting_produce_data_object_v1.3`
 #' @param filename A `character`. Optional filename associated with the object,
@@ -694,7 +699,8 @@ reporting_save_archive <- function(
 }
 
 #' eLTER write rds data function
-#' @description This function write a rds file from csv, tsv, txt, xls or xlsx
+#' @description `r lifecycle::badge("experimental")`
+#' This function write a rds file from csv, tsv, txt, xls or xlsx
 #' dataset
 #' @param myfiles A `character`. The list of the files to deposit in Zenodo.
 #' Please provide all files only with 'csv' extension.

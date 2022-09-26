@@ -25,56 +25,56 @@ produce_zenodo_record(
 )
 }
 \arguments{
-\item{mytoken}{A `character`. Scopes assign permissions to your personal
+\item{mytoken}{A \code{character}. Scopes assign permissions to your personal
 access token. A personal access token works just like a normal OAuth access
 token for authentication against the API. This token can be created at
 application
 \href{https://zenodo.org/account/settings/applications/tokens/new/}{page}.}
 
-\item{myfiles}{A `character`. The list of the file(s) to deposit in Zenodo.}
+\item{myfiles}{A \code{character}. The list of the file(s) to deposit in Zenodo.}
 
-\item{delim}{A `character`. Provide the character used to separate fields
+\item{delim}{A \code{character}. Provide the character used to separate fields
 within a record. Only if you want to upload to Zenodo a dataset (see param
 record_type below) with extension 'csv', 'tsv' or 'txt' and if you want
 to upload also a copy of your dataset in Rdata format (see param
 upload_rdata below).}
 
-\item{upload_rdata}{A `logical`. Do you  want also upload a version of
+\item{upload_rdata}{A \code{logical}. Do you  want also upload a version of
 the dataset in RData format onto this record?
 Default FALSE.}
 
-\item{record_type}{A `character`. A type of record among the following
+\item{record_type}{A \code{character}. A type of record among the following
 values: 'publication', 'poster', 'presentation', 'dataset', 'image',
 'video', 'software', 'lesson', 'physicalobject', 'other'.
 Default 'dataset'.}
 
-\item{record_title}{A `character`. The title of the record.}
+\item{record_title}{A \code{character}. The title of the record.}
 
-\item{record_description}{A `character`. The description of the record.}
+\item{record_description}{A \code{character}. The description of the record.}
 
-\item{record_authors}{A `tibble`. It is a list of creator(s) of the
+\item{record_authors}{A \code{tibble}. It is a list of creator(s) of the
 record. The approach is to use the firstname, lastname, affiliation,
 orcid of the authors of the record. Please follow the example.}
 
-\item{record_license}{A `character`. It is the license with which the
+\item{record_license}{A \code{character}. It is the license with which the
 record is released. The license should be set with the Zenodo id of the
 license. Default "CC-BY-SA-4.0".
 The supported licenses values are from \url{https://opendefinition.org}
 and \url{https://spdx.org}.}
 
-\item{record_accessRight}{A `character`. Default "open". Other options are:
+\item{record_accessRight}{A \code{character}. Default "open". Other options are:
 'embargoed', 'restricted' and 'closed'.}
 
-\item{record_version}{A `character`. It is a version of the record.
+\item{record_version}{A \code{character}. It is a version of the record.
 Default "1.0".}
 
-\item{record_language}{A `character`. It is the language of the record.
+\item{record_language}{A \code{character}. It is the language of the record.
 Only one value is possible. Default "eng".}
 
-\item{record_keywords}{A `character`. A multiple values are possible. The
+\item{record_keywords}{A \code{character}. A multiple values are possible. The
 keyword to the record of record.}
 
-\item{record_relatedIdentifier}{A `tibble`. It is the related entities
+\item{record_relatedIdentifier}{A \code{tibble}. It is the related entities
 (e.g. scientific paper, data paper, etc.) with the detaset. The tibble is
 composed by 2 variables: relation and identifier. Relation can be one of
 among following values: "isCitedBy", "cites", "isSupplementTo",
@@ -83,28 +83,30 @@ among following values: "isCitedBy", "cites", "isSupplementTo",
 "isAlternateIdentifier". While identifier is any type of identifier
 (e.g. DOI).}
 
-\item{record_grants}{A `character`. A multiple values are possible. Put a
+\item{record_grants}{A \code{character}. A multiple values are possible. Put a
 list of project identifier as well as showed by the European Commission via
 \href{http://www.openaire.eu/}{OpenAIRE}.}
 
-\item{record_publish}{A `logical`. State whether the Zenodo record is to
+\item{record_publish}{A \code{logical}. State whether the Zenodo record is to
 be published. The parameter publish can be set to TRUE (to use CAUTIOUSLY,
 only if you want to publish your record). Default FALSE.}
 
-\item{record_community}{A `character`. It is a name of community as created
+\item{record_community}{A \code{character}. It is a name of community as created
 in Zenodo. A multiple values are possible. Default "lter-italy" and "elter".}
 }
 \value{
 A link (URL) of the deposited record in Zenodo. The user must then:
-1. visit the webpage of record, 2. check the information provided, 3.
+\enumerate{
+\item visit the webpage of record, 2. check the information provided, 3.
 'save' and 'publish' the record on Zenodo repository, 4. use the DOI to
 cite the record.
 }
+}
 \description{
-`r lifecycle::badge("experimental")`
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 This function allows to deposit a record to
 \href{https://zenodo.org}{Zenodo} repository.
-The function use the functions implemented by `zen4r` package.
+The function use the functions implemented by \code{zen4r} package.
 Blondel, Emmanuel, & Barde, Julien. (2021).
 zen4R: R Interface to Zenodo REST API (0.5-2). Zenodo.
 \url{https://doi.org/10.5281/zenodo.5741143}.

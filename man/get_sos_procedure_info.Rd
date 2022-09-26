@@ -7,19 +7,19 @@
 get_sos_procedure_info(sosURL, procedure)
 }
 \arguments{
-\item{sosURL}{A `character`. The endpoint of the Sensor Observation Service
+\item{sosURL}{A \code{character}. The endpoint of the Sensor Observation Service
 (SOS) service.}
 
-\item{procedure}{A `character`. It is a procedure/sensor ID.}
+\item{procedure}{A \code{character}. It is a procedure/sensor ID.}
 }
 \value{
-The output of the function is a `character` containing attributes
+The output of the function is a \code{character} containing attributes
 such as name of the sensor, id and their description.
 All the information are collected by requests to Sensor Observation
 Service (SOS).
 }
 \description{
-`r lifecycle::badge("experimental")`
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 This function obtains the information (metadata) shared by
 procedure/sensor through Sensor Observation Service (SOS).
 }
@@ -31,7 +31,7 @@ FP <- get_sos_procedure_info(
 FP
 
 
-# \href{https://www.eurac.edu/}{EURAC} SOS 
+# EURAC (https://www.eurac.edu/) 
 # eurac_monalisa <- get_sos_procedure_info(
 #   sosURL = "http://monalisasos.eurac.edu/sos/service",
 #   procedure = "QuantumSensor_nemef2000"
@@ -45,7 +45,7 @@ FP
 # obsProsAir
 
 
-# \href{https://niwa.co.nz}{NIVA}
+# NIVA (https://niwa.co.nz)
 # NIVA <- get_sos_procedure_info(
 #   sosURL = "https://hydro-sos.niwa.co.nz/",
 #   procedure = "Water_Quality_Site"

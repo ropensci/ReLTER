@@ -41,6 +41,17 @@ pie
 }
 
 }
+\references{
+\insertRef{tibbleR}{ReLTER}
+
+\insertRef{dplyrR}{ReLTER}
+
+\insertRef{RColorBrewerR}{ReLTER}
+
+\insertRef{ggplot2R}{ReLTER}
+
+\insertRef{ggforceR}{ReLTER}
+}
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
 }

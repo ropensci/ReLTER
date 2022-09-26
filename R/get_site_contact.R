@@ -1,6 +1,6 @@
-#' @title eLTER get_site_contact function
+#' eLTER get_site_contact function
 #' @description `r lifecycle::badge("stable")`
-#' This function obtains the contact information for an
+#' This internal function obtains the contact information for an
 #' eLTER site through the DEIMS-SDR sites API.
 #' @param deimsid A `character`. It is the DEIMS ID of the site from
 #' DEIMS-SDR website. DEIMS ID information

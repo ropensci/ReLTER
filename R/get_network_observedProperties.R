@@ -45,7 +45,7 @@ get_network_observedProperties <- function(networkDEIMSID) {
             )
     )
   )
-  allSiteParameters <- lapply(
+  allSiteObservedProperties <- lapply(
     as.list(
       paste0(
         lterNetworkSites$id$prefix,
@@ -55,19 +55,19 @@ get_network_observedProperties <- function(networkDEIMSID) {
     ReLTER::get_site_info,
     category = "observedProperties"
   )
-  if (length(allSiteParameters) != 0) {
-    uniteSiteParameters <- dplyr::bind_rows(allSiteParameters)
-    parametersNetworkList <- uniteSiteParameters$parameter
-    parametersNetworkDF <- dplyr::bind_rows(parametersNetworkList)
-    uniqueSiteParameters <- dplyr::as_tibble(
+  if (length(allSiteObservedProperties) != 0) {
+    uniteSiteObservedProperties <- dplyr::bind_rows(allSiteObservedProperties)
+    observedPropertiesNetworkList <- uniteSiteObservedProperties$observedProperties
+    observedPropertiesNetworkDF <- dplyr::bind_rows(observedPropertiesNetworkList)
+    uniqueSiteObservedProperties <- dplyr::as_tibble(
       dplyr::distinct(
-        parametersNetworkDF
+        observedPropertiesNetworkDF
       )
     )
-    uniqueSiteParameters
+    uniqueSiteObservedProperties
   } else {
     message("\n----\nThe requested page could not be found.
 Please check again the Network.iD\n----\n")
-    uniqueSiteParameters <- NULL
+    uniqueSiteObservedProperties <- NULL
   }
 }

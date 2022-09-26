@@ -7,20 +7,20 @@
 get_sensor_info(sensorid, show_map = FALSE)
 }
 \arguments{
-\item{sensorid}{A `character`. It is the DEIMS ID of sensor make from
+\item{sensorid}{A \code{character}. It is the DEIMS ID of sensor make from
 DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here}.
 The DEIMS.iD of sensor is the URL for the sensor page.}
 
-\item{show_map}{A `boolean`. If TRUE a Leaflet map with occurrences
+\item{show_map}{A \code{boolean}. If TRUE a Leaflet map with occurrences
 is shown. Default FALSE.}
 }
 \value{
-The output of the function is a `tibble` with main features of
-the activities in a site, and a `leaflet` map plot.
+The output of the function is a \code{tibble} with main features of
+the activities in a site, and a \code{leaflet} map plot.
 }
 \description{
-`r lifecycle::badge("experimental")`
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 This function obtains the information about of an eLTER
 sensor (e.g.
 \url{https://deims.org/sensors/3845475c-4aec-4dd7-83b4-0ab6ba95db35})
@@ -35,7 +35,7 @@ provided in \href{https://deims.org/}{DEIMS-SDR catalogue}.
 # only table of sensor information
 sensor_B3 <- get_sensor_info(
   sensorid =
-  "https://deims.org/sensors/3845475c-4aec-4dd7-83b4-0ab6ba95db35",
+    "https://deims.org/sensors/3845475c-4aec-4dd7-83b4-0ab6ba95db35",
   show_map = TRUE
 )
 sensor_B3
@@ -43,7 +43,7 @@ sensor_B3
 # print the map of the sensor
 Licor <- get_sensor_info(
   sensorid =
-  "https://deims.org/sensors/4a7ad644-f2e7-4224-965b-ec5ef5365655",
+    "https://deims.org/sensors/4a7ad644-f2e7-4224-965b-ec5ef5365655",
   show_map = FALSE
 )
 Licor

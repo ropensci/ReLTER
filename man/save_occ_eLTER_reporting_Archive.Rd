@@ -2,18 +2,19 @@
 % Please edit documentation in R/eLTER_reporting.R
 \name{save_occ_eLTER_reporting_Archive}
 \alias{save_occ_eLTER_reporting_Archive}
-\title{creates an archive with files following the eLTER reportingFormat}
+\title{Creates an archive with files following the eLTER reportingFormat}
 \usage{
 save_occ_eLTER_reporting_Archive(lterReportOut)
 }
 \arguments{
-\item{lterReportOut}{A `list` like the one created by gbif2elter}
+\item{lterReportOut}{A \code{list} like the one created by gbif2elter}
 }
 \description{
-creates a zip archive named
-biodiv_occurrence_site_<deimsid_code>_<source>.zip
-where <deimsid_code> is the uuid in the last part of the deimsid,
-and <source> is one of "gbif", "inat", "obis"
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+Creates a zip archive named
+biodiv_occurrence_site_"deimsid_code"_"source".zip
+where "deimsid_code" is the uuid in the last part of the deimsid,
+and "source" is one of "gbif", "inat", "obis"
 }
 \author{
 Paolo Tagliolato, phD \email{tagliolato.p@irea.cnr.it}

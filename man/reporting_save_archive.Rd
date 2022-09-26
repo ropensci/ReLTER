@@ -2,7 +2,7 @@
 % Please edit documentation in R/eLTER_reporting.R
 \name{reporting_save_archive}
 \alias{reporting_save_archive}
-\title{creates an archive with files following the eLTER reportingFormat}
+\title{Creates an archive with files following the eLTER reportingFormat}
 \usage{
 reporting_save_archive(
   x,
@@ -12,25 +12,26 @@ reporting_save_archive(
 )
 }
 \arguments{
-\item{x}{A `list` like the one created by function
-`reporting_produce_data_object_v1.3`}
+\item{x}{A \code{list} like the one created by function
+\code{reporting_produce_data_object_v1.3}}
 
-\item{filename}{A `character`. Optional filename associated with the object,
+\item{filename}{A \code{character}. Optional filename associated with the object,
 of the form provided as output by the function
-`reporting_compose_file_name`.
+\code{reporting_compose_file_name}.
 Defaults to random string}
 
-\item{filepath}{A `character` file path. Defaults to temporary directory}
+\item{filepath}{A \code{character} file path. Defaults to temporary directory}
 
-\item{saveRDS}{A `logical`. Save also object in RDS format.
+\item{saveRDS}{A \code{logical}. Save also object in RDS format.
 Defaults to FALSE}
 }
 \value{
-named A `list` containing paths to saved files filepaths.
+named A \code{list} containing paths to saved files filepaths.
 Slots are named "zip" and possibly "RDS".
 }
 \description{
-creates a zip archive <filename>.zip
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+Creates a zip archive "filename".zip
 }
 \note{
 This method must be intended as a signpost for future implementation

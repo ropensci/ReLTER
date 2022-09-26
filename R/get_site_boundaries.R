@@ -1,6 +1,6 @@
-#' @title eLTER get_site_boundaries function
+#' eLTER get_site_boundaries function
 #' @description `r lifecycle::badge("stable")`
-#' This function retrieves the boundary of a specified eLTER site
+#' This internal function retrieves the boundary of a specified eLTER site
 #' and a view of the site boundaries on a leaflet map is shown.
 #' All the info are taken from the DEIMS-SDR sites API.
 #' If the boundary is missing, a warning message is printed in the R console.

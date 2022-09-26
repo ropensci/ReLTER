@@ -29,7 +29,7 @@ test_that("Output of site observed properties function constructs ‘tibble’ a
   expect_true(all(names(result) == c(
     "title", "uri", "geoCoord", "country",
     "geoElev.avg", "geoElev.min", "geoElev.max", "geoElev.unit",
-    "parameter"
+    "observedProperties"
   )))
 
   expect_type(result$title, "character")

@@ -23,7 +23,7 @@
 #' # only table of sensor information
 #' sensor_B3 <- get_sensor_info(
 #'   sensorid =
-#'   "https://deims.org/sensors/3845475c-4aec-4dd7-83b4-0ab6ba95db35",
+#'     "https://deims.org/sensors/3845475c-4aec-4dd7-83b4-0ab6ba95db35",
 #'   show_map = TRUE
 #' )
 #' sensor_B3
@@ -31,7 +31,7 @@
 #' # print the map of the sensor
 #' Licor <- get_sensor_info(
 #'   sensorid =
-#'   "https://deims.org/sensors/4a7ad644-f2e7-4224-965b-ec5ef5365655",
+#'     "https://deims.org/sensors/4a7ad644-f2e7-4224-965b-ec5ef5365655",
 #'   show_map = FALSE
 #' )
 #' Licor
@@ -49,7 +49,7 @@
 ### function get_sensor_info
 get_sensor_info <- function(sensorid, show_map = FALSE) {
   qo <- queries_jq[[get_deims_API_version()]]$sensor_info
-  jj <- get_id(deimsid, qo$path)
+  jj <- get_id(sensorid, qo$path)
   if (is.na(attr(jj, "status"))) {
     invisible(
       utils::capture.output(

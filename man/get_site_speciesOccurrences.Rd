@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_site_speciesOccurrences.R
 \name{get_site_speciesOccurrences}
 \alias{get_site_speciesOccurrences}
-\title{eLTER get_site_speciesOccurrences function}
+\title{Trims by eLTER site the species occurrence from different sources}
 \usage{
 get_site_speciesOccurrences(
   deimsid,
@@ -13,38 +13,45 @@ get_site_speciesOccurrences(
 )
 }
 \arguments{
-\item{deimsid}{A `character`. The DEIMS.iD of the site from
+\item{deimsid}{A \code{character}. The DEIMS.iD of the site from
 DEIMS-SDR website. DEIMS.iD information
 \href{https://deims.org/docs/deimsid.html}{here}.}
 
-\item{list_DS}{A `character`. Data source to get data from, any
+\item{list_DS}{A \code{character}. Data source to get data from, any
 combination of gbif, inat and/or obis.}
 
-\item{show_map}{A `boolean`. If TRUE a Leaflet map with occurrences
+\item{show_map}{A \code{boolean}. If TRUE a Leaflet map with occurrences
 is shown. Default FALSE.}
 
-\item{limit}{A `numeric`. Number of records to return. This is passed
+\item{limit}{A \code{numeric}. Number of records to return. This is passed
 across all sources. Default: 500 for each source. BEWARE: if you have a
 lot of species to query for (e.g., n = 10), that's 10 * 500 = 5000, which
 can take a while to collect. So, when you first query, set the limit to
 something smallish so that you can get a result quickly, then do more as
 needed.}
 
-\item{exclude_inat_from_gbif}{A `boolean`. If TRUE, when list_DS contains
+\item{exclude_inat_from_gbif}{A \code{boolean}. If TRUE, when list_DS contains
 both "gbif" and "inat", filter out gbif records originating
 from iNaturalist (in order to avoid duplicates). Default TRUE.}
 }
 \value{
-The output of the function is a `list` of `sf` one for each of the
+The output of the function is a \code{list} of \code{sf} one for each of the
 repositories specified in the list_DS parameter.
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 This function acquires data from
-GBIF \url{https://www.gbif.org} (via `rgbif`),
+GBIF \url{https://www.gbif.org} (via \code{rgbif}),
 iNaturalist \url{https://www.inaturalist.org/} and
 OBIS \url{https://obis.org/} and crops to an eLTER site
 boundary, which is obtained from the DEIMS-SDR sites API.
 }
+\section{The function output}{
+
+\figure{get_site_speciesOccurrencese_fig.png}{Map of first 100 occurrences
+acquired from iNaturalist and OBIS in the marine site Gulf of Venice}
+}
+
 \examples{
 \dontrun{
 # terrestrial site Saldur River Catchment
@@ -62,7 +69,7 @@ occ_GoV <- get_site_speciesOccurrences(
   deimsid =
   "https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd",
   list_DS = "obis",
-  show_map = TRUE,
+  show_map = FALSE,
   limit = 10
 )
 occ_GoV
@@ -71,7 +78,7 @@ occ_GoV
 # gbif, inat and obis
 occ_GoV_all <- get_site_speciesOccurrences(
   deimsid =
-  "https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd",
+    "https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd",
   list_DS = c("gbif", "inat", "obis"),
   show_map = TRUE,
   limit = 100

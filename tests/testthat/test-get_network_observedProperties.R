@@ -28,10 +28,10 @@ test_that("Output of network observed properties function constructs 'tibble' as
   expect_s3_class(result, "tbl_df")
   expect_true(ncol(result) == 2)
   expect_true(all(names(result) == c(
-    "parameterLabel", "parameterUri"
+    "observedPropertiesLabel", "observedPropertiesUri"
   )))
-  expect_type(result$parameterLabel, "character")
-  expect_type(result$parameterUri, "character")
+  expect_type(result$observedPropertiesLabel, "character")
+  expect_type(result$observedPropertiesUri, "character")
 })
 
 test_that("Wrong input (but URL) constructs a NULL object", {

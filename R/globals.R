@@ -15,7 +15,6 @@ utils::globalVariables(
 )
 
 #' Package settings that can be changed by the user
-#' @export
 #' @family package_customizable_settings
 #' @export
 package_settings <- (function() {

@@ -17,6 +17,7 @@
 #' @importFrom jsonlite fromJSON
 #' @importFrom dplyr as_tibble
 #' @importFrom Rdpack reprompt
+#' @import purrr map_dfr
 #' @references
 #'   \insertRef{jsonliteR}{ReLTER}
 #'
@@ -26,7 +27,7 @@
 #' \dontrun{
 #' listEnvCharacts <- get_network_envcharacts(
 #'   networkDEIMSID =
-#'   "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
+#'     "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 #' )
 #' listEnvCharacts[1:10, ]
 #' }
@@ -43,19 +44,18 @@ get_network_envcharacts <- function(networkDEIMSID) {
       )
     )
   )
-  allSiteEnvCharacts <- lapply(
+  allSiteEnvCharacts <- purrr::map_dfr(
     as.list(
       paste0(
         lterNetworkSites$id$prefix,
         lterNetworkSites$id$suffix
       )
     ),
-    ReLTER::get_site_info,
-    category = "EnvCharacts"
+    function (x) {
+      ReLTER::get_site_info(x, category = "EnvCharacts")
+    }
   )
   if (length(allSiteEnvCharacts) != 0) {
-    allSiteEnvCharacts_matrix <- do.call(rbind, allSiteEnvCharacts)
-    allSiteEnvCharacts <- dplyr::as_tibble(allSiteEnvCharacts_matrix)
     allSiteEnvCharacts
   } else {
     message("\n----\nThe requested page could not be found.

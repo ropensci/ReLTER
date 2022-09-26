@@ -1,4 +1,4 @@
-#' @title eLTER get_id function
+#' eLTER get_id function
 #' @description Internal function to retrieve json content from ID
 #' @param deimsid A `character`. It is the DEIMS ID of the site, activity or
 #' dataset from DEIMS-SDR website. DEIMS ID information

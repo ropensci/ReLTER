@@ -1,7 +1,6 @@
 # ReLTER 1.2.0 Release Notes
 
-<<<<<<< HEAD
-v1.2.0 was released on 01/07/2022
+v1.2.0 was released on 20/09/2022
 
 ## Changes
 
@@ -16,25 +15,24 @@ v1.2.0 was released on 01/07/2022
   and get_dataset_info() and substitute with a variable;
 * changed the name of the functions containing "parameters" with "observed
   properties";
-* added for some functions the life cycle badge.
-=======
-v1.1.0 was released on 15/09/2022
-
-## Major changes
-
-The new implemented functionalities concern:
-
+* added for some functions the life cycle badge;
 * acquisition to species occurrences from GBIF, iNaturalist and OBIS;
-* harmonisation to the output of species occurrences in eLTER Data Reporting Format (v3.1);
-* creation the archive (zip) with files following the eLTER Data Reporting Format (v3.1);
-* composition of file naming convention following the eLTER Data Reporting Format (v3.1);
-* composition of the object containing the eLTER Data Reporting Format (v3.1) tables;
-* interaction with Sensor Observations Services (SOS - v2.0) for acquire procedure list, procedure info, feature of interest info, observed property info, and observations;
-* interaction to the Zenodo repository in order to upload record or download dataset record.
-
->>>>>>> dev
+* harmonisation to the output of species occurrences in eLTER Data Reporting
+  Format (v3.1);
+* creation the archive (zip) with files following the eLTER Data Reporting
+  Format (v3.1);
+* composition of file naming convention following the eLTER Data Reporting
+  Format (v3.1);
+* composition of the object containing the eLTER Data Reporting Format
+  (v3.1) tables;
+* interaction with Sensor Observations Services (SOS - v2.0) for acquire
+  procedure list, procedure info, feature of interest info, observed property
+  info, and observations;
+* interaction to the Zenodo repository in order to upload record or download
+  dataset record.
 
 ________________________________________________________________________________
+
 
 # ReLTER 1.1.0 Release Notes
 

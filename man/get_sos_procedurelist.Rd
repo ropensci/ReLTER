@@ -15,7 +15,7 @@ The output of the function is a \code{list} with the name and URI
 (Uniform Resource Identifier) of each procedure.
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 Return a list of procedures (e.g. method, algorithm,
 instrument, sensor, or system which may be used in making observations)
 store into a
@@ -25,11 +25,7 @@ store into a
 \examples{
 \dontrun{
 get_sos_procedurelist(
-<<<<<<< HEAD
-  sosHost = "http://getit.lteritalia.it/observations/service?"
-=======
   sosURL = "http://getit.lteritalia.it/observations/service"
->>>>>>> dev
 )
 }
 
@@ -37,9 +33,9 @@ get_sos_procedurelist(
 \references{
 \insertRef{xml2R}{ReLTER}
 
-  \insertRef{xsltR}{ReLTER}
+\insertRef{xsltR}{ReLTER}
 
-  \insertRef{utilsR}{ReLTER}
+\insertRef{utilsR}{ReLTER}
 }
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}

@@ -19,6 +19,9 @@
     <loc>https://docs.ropensci.org/ReLTER/articles/ReLTER.html</loc>
   </url>
   <url>
+    <loc>https://docs.ropensci.org/ReLTER/articles/datasets_delivered_eu_networks.html</loc>
+  </url>
+  <url>
     <loc>https://docs.ropensci.org/ReLTER/articles/datasets_map.html</loc>
   </url>
   <url>
@@ -26,6 +29,9 @@
   </url>
   <url>
     <loc>https://docs.ropensci.org/ReLTER/articles/installation.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/ReLTER/articles/occurrences_into_site.html</loc>
   </url>
   <url>
     <loc>https://docs.ropensci.org/ReLTER/articles/qrcode.html</loc>
@@ -64,37 +70,19 @@
     <loc>https://docs.ropensci.org/ReLTER/reference/do_Q.html</loc>
   </url>
   <url>
-    <loc>https://docs.ropensci.org/ReLTER/reference/getDeimsBaseUrl.html</loc>
+    <loc>https://docs.ropensci.org/ReLTER/reference/elter_write_rdata.html</loc>
   </url>
   <url>
-    <loc>https://docs.ropensci.org/ReLTER/reference/get_Site_Affiliations.html</loc>
+    <loc>https://docs.ropensci.org/ReLTER/reference/getDeimsBaseUrl.html</loc>
   </url>
   <url>
     <loc>https://docs.ropensci.org/ReLTER/reference/get_Site_Boundaries.html</loc>
   </url>
   <url>
-    <loc>https://docs.ropensci.org/ReLTER/reference/get_Site_Contact.html</loc>
-  </url>
-  <url>
-    <loc>https://docs.ropensci.org/ReLTER/reference/get_Site_EnvCharacts.html</loc>
-  </url>
-  <url>
-    <loc>https://docs.ropensci.org/ReLTER/reference/get_Site_General.html</loc>
-  </url>
-  <url>
     <loc>https://docs.ropensci.org/ReLTER/reference/get_Site_Info.html</loc>
   </url>
   <url>
-    <loc>https://docs.ropensci.org/ReLTER/reference/get_Site_Infrastructure.html</loc>
-  </url>
-  <url>
     <loc>https://docs.ropensci.org/ReLTER/reference/get_Site_Parameters.html</loc>
-  </url>
-  <url>
-    <loc>https://docs.ropensci.org/ReLTER/reference/get_Site_Related_Resources.html</loc>
-  </url>
-  <url>
-    <loc>https://docs.ropensci.org/ReLTER/reference/get_Site_Research_Topics.html</loc>
   </url>
   <url>
     <loc>https://docs.ropensci.org/ReLTER/reference/get_activity_info.html</loc>
@@ -145,13 +133,40 @@
     <loc>https://docs.ropensci.org/ReLTER/reference/get_network_sites.html</loc>
   </url>
   <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/get_sensor_info.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/get_sensor_observed_properties.html</loc>
+  </url>
+  <url>
     <loc>https://docs.ropensci.org/ReLTER/reference/get_site_MODIS.html</loc>
   </url>
   <url>
     <loc>https://docs.ropensci.org/ReLTER/reference/get_site_ODS.html</loc>
   </url>
   <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/get_site_affiliations.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/get_site_contact.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/get_site_envcharacts.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/get_site_general.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/get_site_infrastructure.html</loc>
+  </url>
+  <url>
     <loc>https://docs.ropensci.org/ReLTER/reference/get_site_observedProperties.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/get_site_related_resources.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/get_site_research_topics.html</loc>
   </url>
   <url>
     <loc>https://docs.ropensci.org/ReLTER/reference/get_site_speciesOcc.html</loc>
@@ -160,10 +175,31 @@
     <loc>https://docs.ropensci.org/ReLTER/reference/get_site_speciesOccurrences.html</loc>
   </url>
   <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/get_sos_foi.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/get_sos_obs.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/get_sos_procedure_info.html</loc>
+  </url>
+  <url>
     <loc>https://docs.ropensci.org/ReLTER/reference/get_sos_procedurelist.html</loc>
   </url>
   <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/get_zenodo_data.html</loc>
+  </url>
+  <url>
     <loc>https://docs.ropensci.org/ReLTER/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/map_occ_gbif2elter.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/map_occ_inat2elter.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/map_occ_obis2elter.html</loc>
   </url>
   <url>
     <loc>https://docs.ropensci.org/ReLTER/reference/package_settings.html</loc>
@@ -194,6 +230,21 @@
   </url>
   <url>
     <loc>https://docs.ropensci.org/ReLTER/reference/produce_zenodo_record.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/produce_zenodo_record_from_elter_reporting.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/reporting_compose_file_name.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/reporting_produce_data_object_v1.3.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/reporting_save_archive.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/save_occ_eLTER_reporting_Archive.html</loc>
   </url>
   <url>
     <loc>https://docs.ropensci.org/ReLTER/reference/setDeimsBaseUrl.html</loc>

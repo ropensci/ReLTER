@@ -7,17 +7,17 @@
 get_zenodo_data(doi, rdata_exist = TRUE)
 }
 \arguments{
-\item{doi}{A `character`. It is the DOI of the Zenodo record.}
+\item{doi}{A \code{character}. It is the DOI of the Zenodo record.}
 
-\item{rdata_exist}{A `logical`. Is the .RData or .rds file in the record
+\item{rdata_exist}{A \code{logical}. Is the .RData or .rds file in the record
 we are questioning? Default TRUE.}
 }
 \value{
 a file(s) containing in the Zenodo record.
 }
 \description{
-`r lifecycle::badge("experimental")`
-The function
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+The function returns the dataset, or file(s), deposited in Zenodo record.
 }
 \examples{
 \dontrun{

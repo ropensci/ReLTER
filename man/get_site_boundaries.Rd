@@ -21,7 +21,7 @@ site or NA if the boundary is missing from DEIMS-SDR. In addition, as
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
-This function retrieves the boundary of a specified eLTER site
+This internal function retrieves the boundary of a specified eLTER site
 and a view of the site boundaries on a leaflet map is shown.
 All the info are taken from the DEIMS-SDR sites API.
 If the boundary is missing, a warning message is printed in the R console.

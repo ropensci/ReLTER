@@ -7,7 +7,7 @@ ReLTER
 <!-- DOI badge -->
 
 [![](https://img.shields.io/badge/doi-10.5281/zenodo.5576813-yellow.svg)](https://doi.org/10.5281/zenodo.5576813)
-[![](https://img.shields.io/badge/devel%20version-1.1.0-blue.svg)](https://github.com/ropensci/ReLTER)
+[![](https://img.shields.io/badge/devel%20version-1.2.0-blue.svg)](https://github.com/ropensci/ReLTER)
 [![](https://img.shields.io/github/languages/code-size/ropensci/ReLTER.svg)](https://github.com/ropensci/ReLTER)
 [![](https://img.shields.io/github/last-commit/ropensci/ReLTER.svg)](https://github.com/ropensci/ReLTER/commits/main)
 [![License:
@@ -48,7 +48,7 @@ The `{ReLTER}` package functions in particular allows to:
     [get_network_sites](https://docs.ropensci.org/ReLTER/reference/get_network_sites.html),
     [produce_site_map](https://docs.ropensci.org/ReLTER/reference/produce_site_map.html)
     or
-    [produce_site_parameters_pie](https://docs.ropensci.org/ReLTER/reference/produce_site_parameters_pie.html)
+    [produce_site_observedProperties_pie](https://docs.ropensci.org/ReLTER/reference/produce_site_observedProperties_pie.html)
     functions);
 
 -   interact with the [ODSEurope](maps.opendatascience.eu) managed by
@@ -74,19 +74,19 @@ tools.
 ## :notebook_with_decorative_cover: Citation
 
 To cite `{ReLTER}` please use: Alessandro Oggioni, Micha Silver, Luigi
-Ranghetti & Paolo Tagliolato. (2022). ropensci/ReLTER: ReLTER v1.1.0
-(1.1.0). Zenodo. <https://doi.org/10.5281/zenodo.5576813>
+Ranghetti & Paolo Tagliolato. (2022). ropensci/ReLTER: ReLTER v1.2.0
+(1.2.0). Zenodo. <https://doi.org/10.5281/zenodo.5576813>
 
 or:
 
 ``` bibtex
 @software{alessandro_oggioni_2021_5576813,
   author       = {Alessandro Oggioni and Micha Silver and Luigi Ranghetti and Paolo Tagliolato},
-  title        = {ropensci/ReLTER: ReLTER v1.1.0},
+  title        = {ropensci/ReLTER: ReLTER v1.2.0},
   month        = nov,
   year         = 2022,
   publisher    = {Zenodo},
-  version      = {1.1.0},
+  version      = {1.2.0},
   doi          = {10.5281/zenodo.5576813},
   url          = {https://doi.org/10.5281/zenodo.5576813}
 }
@@ -127,259 +127,6 @@ container](./articles/rocker_ReLTER.html).
 If you wish to help develop this package, please follow the
 [contributing guidelines](CONTRIBUTING.md).
 
-## :memo: Examples
-
-Some examples of the possible capabilities of this library appear below.
-These examples demonstrate interaction with the DEIMS-SDR
-[API](https://deims.org/api).
-
-#### *get_ilter_generalinfo()*
-
-In this initial example, the *get_ilter_generalinfo* function is called
-to find the DEIMS ID for a specific eLTER site. The function takes
-parameters “country_name” and “site_name”, and returns the site URL (the
-DEIMS ID) in the DEIMS SDR infrastructure.
-
-``` r
-# Obtain DEIMS ID for the Eisenwurzen site in Austria
-eisenwurzen <- ReLTER::get_ilter_generalinfo(country_name = "Austri",
-                                     site_name = "Eisen")
-# extract DEIMS ID
-(eisenwurzen_deimsid <- eisenwurzen$uri)
-#> [1] "https://deims.org/d0a8da18-0881-4ebe-bccf-bc4cb4e25701"
-```
-
-In some countries, many sites have similar names. Here is a method to
-find the DEIMS ID of the specific site of interest.
-
-``` r
-# Obtain DEIMS ID for sites in Germany, with names like "TERENO"
-sites_germany <- ReLTER::get_ilter_generalinfo(country_name = "Germ",
-                                     site_name = "TERENO")
-# List full names of these sites
-sites_germany$title
-#>  [1] "TERENO Harz/Central German Lowland LTER - Germany"          
-#>  [2] "TERENO - Bad Lauchstaedt - Germany"                         
-#>  [3] "TERENO - Bode catchment - Germany"                          
-#>  [4] "TERENO - Friedeburg - Germany"                              
-#>  [5] "TERENO - Gimritz - Germany"                                 
-#>  [6] "TERENO - Greifenhagen - Germany"                            
-#>  [7] "TERENO - Schafstaedt - Germany"                             
-#>  [8] "TERENO - Siptenfelde - Germany"                             
-#>  [9] "TERENO - Wanzleben - Germany"                               
-#> [10] "TERENO - Wüstebach - Germany"                               
-#> [11] "TERENO - Harsleben - Germany"                               
-#> [12] "TERENO Harz - central german lowland - Hohes Holz - Germany"
-#> [13] "TERENO - Rollesbroich - Germany"                            
-#> [14] "TERENO - Selhausen - Germany"                               
-#> [15] "TERENO Eifel Lower Rhine Valley - Germany"
-# Get the DEIMS ID of the site of interest by partial string match on the title
-idx <- which(stringr::str_detect(sites_germany$title,
-                                 "Friedeburg"))
-(friedeburg_deims_id <- sites_germany$uri[idx])
-#> [1] "https://deims.org/a4dc71c4-de05-4883-ae53-7f57d51555fc"
-```
-
-#### *get_site_info(category = “Boundaries”)*
-
-Next, the *get_site_info* function, using category “Boundaries”, returns
-an `sf` object. Furthermore, a map overlayed with the boundaries of the
-site is displayed, using the site geographical boundaries provided by
-[DEIMS-SDR](https://deims.org/).
-
-``` r
-library(dplyr)
-siteBoundaries <- ReLTER::get_site_info(
-  deimsid = 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe',
-  category = "Boundaries"
-)
-
-tmap::tmap_mode("plot")
-r <- tmaptools::read_osm(siteBoundaries)
-tmap::tm_shape(r) +
-  tmap::tm_rgb() +
-  tmap::tm_shape(siteBoundaries) +
-  tmap::tm_fill(col="blue", alpha = 0.5) +
-  tmap::tm_borders(col = "blue")
-```
-
-<img src="man/figures/README-exampleSiteBoundaries-1.png" width="100%" />
-
-------------------------------------------------------------------------
-
-#### *get_network_parameters()*
-
-The *get_network_parameters* function retrieves a list of parameters
-collected by sites that are part of a given network (e.g. LTER-Italy).
-Information is gathered from those sites that are part of the specified
-network id, on [DEIMS-SDR](https://deims.org/). The function returns a
-`tibble`.
-
-``` r
-library(dplyr)
-invisible(
-  utils::capture.output(
-    listParams <- ReLTER::get_network_parameters(
-      networkDEIMSID = 'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3'
-    )
-  )
-)
-knitr::kable(listParams[1:10, ] %>% dplyr::rows_insert(tibble(parameterLabel = "...", parameterUri = "...")))
-```
-
-| parameterLabel               | parameterUri                                  |
-|:-----------------------------|:----------------------------------------------|
-| chlorophyll content of water | <http://vocabs.lter-europe.net/EnvThes/10088> |
-| community composition        | <http://vocabs.lter-europe.net/EnvThes/22086> |
-| dissolved nutrient           | <http://vocabs.lter-europe.net/EnvThes/22107> |
-| diversity index              | <http://vocabs.lter-europe.net/EnvThes/21513> |
-| ecosystem parameter          | <http://vocabs.lter-europe.net/EnvThes/20939> |
-| ecosystem structure          | <http://vocabs.lter-europe.net/EnvThes/21475> |
-| faunistic diversity          | <http://vocabs.lter-europe.net/EnvThes/22119> |
-| floristic diversity          | <http://vocabs.lter-europe.net/EnvThes/22122> |
-| inorganic nutrient content   | <http://vocabs.lter-europe.net/EnvThes/22137> |
-| secchi depth                 | <http://vocabs.lter-europe.net/EnvThes/22226> |
-| …                            | …                                             |
-
-------------------------------------------------------------------------
-
-#### *get_dataset_info()*
-
-The *get_dataset_info* function retrieves a table with information about
-specific datasets shared through [DEIMS-SDR](https://deims.org/).
-
-``` r
-tDataset <- ReLTER::get_dataset_info(datasetid = "https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef")
-print(tDataset)
-#> Simple feature collection with 1 feature and 33 fields
-#> Geometry type: POLYGON
-#> Dimension:     XY
-#> Bounding box:  xmin: 11.88721 ymin: 43.20518 xmax: 15.86426 ymax: 45.91294
-#> Geodetic CRS:  WGS 84
-#> # A tibble: 1 × 34
-#>   title    abstract keywords uri   type  dateRange.from dateRange.to relatedSite
-#> * <chr>    <chr>    <list>   <chr> <chr> <chr>          <lgl>        <list>     
-#> 1 LTER No… The pre… <df>     http… data… 1965-01-01     NA           <df>       
-#> # … with 26 more variables: contacts.corresponding <list>,
-#> #   contacts.creator <list>, contacts.metadataProvider <lgl>,
-#> #   observationParameters <list>, observationSpecies <list>, dataPolicy <list>,
-#> #   doi <chr>, onlineLocation <list>, legal.accessUse <list>,
-#> #   legal.rights <lgl>, legal.legalAct <lgl>, legal.citation <lgl>,
-#> #   method.instrumentation <lgl>, method.qualityAssurance <lgl>,
-#> #   method.methodUrl <list>, method.methodDescription <list>, …
-
-tmap::tmap_mode("plot")
-r <- tmaptools::read_osm(tDataset)
-tmap::tm_shape(r) +
-  tmap::tm_rgb() +
-  tmap::tm_shape(tDataset) +
-  tmap::tm_fill(col="blue", alpha = 0.5) +
-  tmap::tm_borders(col = "blue")
-```
-
-<img src="man/figures/README-exampleGetDataset-1.png" width="100%" />
-
-------------------------------------------------------------------------
-
-#### *get_site_info(category = “RelateRes”)*
-
-The *get_site_info* function, using category = “RelateRes”, provides a
-list of related resources associated with a site within
-[DEIMS-SDR](https://deims.org/).
-
-``` r
-tSiteRelatedResources <- ReLTER::get_site_info(
-  deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
-  category = "RelateRes"
-)
-print(tSiteRelatedResources$relatedResources[[1]])
-#>                                                                              relatedResourcesTitle
-#> 1 Biovolume of Phytoplankton in Lake Maggiore site code  IT_SI001137_within the period 1981 - 2010
-#> 2                           Atmospheric deposition in Pallanza, Lake Maggiore watershed, 1980-2018
-#> 3                                     Phytoplankton_Biomass_Lake Maggiore_Ghiffa_station-1984-2018
-#> 4                                      Water chemistry of Lake Maggiore, Ghiffa station, 1988-2018
-#> 5                          Transparency (Secchi depth) of Lake Maggiore, Ghiffa station, 1988-2018
-#> 6                                             Chlorophyll a_Lake_Maggiore_Ghiffa_Station-1984-2018
-#> 7                                 Water discharge of River Ticino, Lake Maggiore outlet, 1988-2018
-#>   relatedResourcesChanged
-#> 1     2021-08-25 16:38:00
-#> 2     2020-12-13 20:06:00
-#> 3     2020-12-16 10:46:00
-#> 4     2021-11-03 06:10:00
-#> 5     2022-02-16 11:36:00
-#> 6     2021-01-10 21:48:00
-#> 7     2021-07-21 12:35:00
-#>                                                              uri
-#> 1 https://deims.org/dataset/d9e94776-e7a8-11e2-a655-005056ab003f
-#> 2 https://deims.org/dataset/0ce46362-0aab-482a-b1f0-a444a5dada39
-#> 3 https://deims.org/dataset/0ab8425a-d574-4575-8ba9-5275c607b0c5
-#> 4 https://deims.org/dataset/69564188-89de-4879-ad88-4aa97c1d005d
-#> 5 https://deims.org/dataset/e538c743-2149-49e3-9025-14a04ea7c90d
-#> 6 https://deims.org/dataset/c857c8e2-48aa-4dcd-a7fb-e089bd4c5c4e
-#> 7 https://deims.org/dataset/fb3a8fec-0c1f-4c3a-81d5-364c7e6078c4
-```
-
-------------------------------------------------------------------------
-
-#### *produce_site_parameters_waffle()*
-
-The *produce_site_parameters_waffle* function provides a grouping of
-parameters, as measured within a site, in a “waffle chart”
-representation.
-
-``` r
-ReLTER::produce_site_parameters_waffle(
-  deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe")
-```
-
-<img src="man/figures/README-exampleproduce_site_parameters_waffle-1.png" width="100%" />
-
-    #> # A tibble: 11 × 4
-    #>    parameterGroups               n   freq label
-    #>    <chr>                     <int>  <dbl> <chr>
-    #>  1 agricultural parameters       1 0.0105 1%   
-    #>  2 atmospheric parameters       14 0.147  15%  
-    #>  3 biological parameters         8 0.0842 8%   
-    #>  4 chemical parameters          24 0.253  25%  
-    #>  5 ecosystem parameters         23 0.242  24%  
-    #>  6 genetic parameters            2 0.0211 2%   
-    #>  7 landscape parameters          4 0.0421 4%   
-    #>  8 physical parameters           1 0.0105 1%   
-    #>  9 remote sensing parameters     1 0.0105 1%   
-    #> 10 soil parameters               1 0.0105 1%   
-    #> 11 water parameters             16 0.168  17%
-
-------------------------------------------------------------------------
-
-#### *get_site_ODS()*
-
-The *get_site_ODS* function retrieves datasets from
-[OpenDataScience](https://maps.opendatascience.eu/), and crops to the
-boundary of the specified eLTER site.
-
-``` r
-siteNDVI <- ReLTER::get_site_ODS(
-   deimsid = "https://deims.org/d0a8da18-0881-4ebe-bccf-bc4cb4e25701",
-   dataset = "ndvi_summer"
-)
-siteBoundary <- ReLTER::get_site_info(
-  deimsid = "https://deims.org/d0a8da18-0881-4ebe-bccf-bc4cb4e25701",
-  category = "Boundaries"
-)
-
-tmap::tmap_mode("plot")
-pal <- RColorBrewer::brewer.pal("RdYlGn", n = 5)
-r <- tmaptools::read_osm(siteBoundary)
-tmap::tm_shape(r) +
-  tmap::tm_rgb() +
-  tmap::tm_shape(siteNDVI, raster.downsample = TRUE) +
-  tmap::tm_raster(palette = pal, alpha = 0.7) + 
-  tmap::tm_shape(siteBoundary) +
-  tmap::tm_borders("black")
-```
-
-<img src="man/figures/README-example_site_ODS-1.png" width="100%" />
-
 ## :woman_technologist: Persons involved :man_technologist:
 
 Alessandro Oggioni <https://orcid.org/0000-0002-7997-219X> (CNR,
@@ -404,7 +151,7 @@ page](https://docs.ropensci.org/ReLTER/authors).
 
 ## :office: Contributing organizations
 
-<img src="man/figures/irea_logo.png" height="70" alt="CNR-IREA" />
+<img src="man/figures/irea_logo.png" height="72" alt="CNR-IREA" />
 <!--a href="http://www.irea.cnr.it/en/"><img src="man/figures/irea_logo.png" height="40" align="left" /></a-->
 
 <img src="man/figures/bgu_logo.png" height="80" alt="BGU" />

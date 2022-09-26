@@ -8,26 +8,27 @@ reporting format}
 map_occ_obis2elter(x, deimsid)
 }
 \arguments{
-\item{x}{A `tibble` like one that can be obtained by
+\item{x}{A \code{tibble} like one that can be obtained by
 as_tibble(get_site_speciesOccurrence(deimsid, "gbif")$gbif)}
 
-\item{deimsid}{A `character`. The DEIMS.iD of the site from
+\item{deimsid}{A \code{character}. The DEIMS.iD of the site from
 DEIMS-SDR website. DEIMS ID information}
 }
 \value{
 list with the following named elements:
-* deimsid: the same deimsid passed in input
-* source: one of "gbif", "inat", "obis"
-* data_mapping: tibble structured according to data_mapping of
+\itemize{
+\item deimsid: the same deimsid passed in input
+\item source: one of "gbif", "inat", "obis"
+\item data_mapping: tibble structured according to data_mapping of
 eLTER reporting format
-* reference_TAXA: tibble structured according to reference_TAXA of
+\item reference_TAXA: tibble structured according to reference_TAXA of
 eLTER reporting format
-* reference_VARIABLES: tibble structured according to reference_VARIABLES
+\item reference_VARIABLES: tibble structured according to reference_VARIABLES
 of eLTER reporting format
 }
+}
 \description{
-Harmonize outputs of get_site_speciesOccurrence and map them into eLTER
-reporting format
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 }
 \author{
 Paolo Tagliolato, phD \email{tagliolato.p@irea.cnr.it}

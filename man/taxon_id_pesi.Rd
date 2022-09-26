@@ -97,9 +97,9 @@ taxon_id_pesi(
 \references{
 \insertRef{taxizeR1}{ReLTER}
 
-  \insertRef{taxizeR2}{ReLTER}
+\insertRef{taxizeR2}{ReLTER}
 
-  \insertRef{dplyrR}{ReLTER}
+\insertRef{dplyrR}{ReLTER}
 }
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}

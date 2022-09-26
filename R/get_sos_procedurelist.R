@@ -1,5 +1,5 @@
 #' List the procedures of a Sensor Observations Service (SOS).
-#' @description `r lifecycle::badge("stable")`
+#' @description `r lifecycle::badge("experimental")`
 #' Return a list of procedures (e.g. method, algorithm,
 #' instrument, sensor, or system which may be used in making observations)
 #' store into a

@@ -27,19 +27,24 @@ test_that("Output of site environmental characteristics function constructs
   expect_true(all(names(result) == c(
     "title", "uri", "geoCoord", "country",
     "geoElev.avg", "geoElev.min", "geoElev.max", "geoElev.unit",
-    "envCharacteristics.airTemperature.avg",
-    "envCharacteristics.airTemperature.min",
-    "envCharacteristics.airTemperature.max",
+    "envCharacteristics.airTemperature.yearlyAverage",
+    "envCharacteristics.airTemperature.monthlyAverage",
     "envCharacteristics.airTemperature.unit",
-    "envCharacteristics.precipitation.annual",
-    "envCharacteristics.precipitation.min",
-    "envCharacteristics.precipitation.max",
+    "envCharacteristics.airTemperature.referencePeriod",
+    "envCharacteristics.precipitation.yearlyAverage",
+    "envCharacteristics.precipitation.monthlyAverage",
     "envCharacteristics.precipitation.unit",
-    "envCharacteristics.biogeographicalRegion", "envCharacteristics.biome",
-    "envCharacteristics.ecosystemType", "envCharacteristics.eunisHabitat",
-    "envCharacteristics.landforms", "envCharacteristics.geoBonBiome",
-    "envCharacteristics.geology", "envCharacteristics.hydrology",
-    "envCharacteristics.soils", "envCharacteristics.vegetation"
+    "envCharacteristics.precipitation.referencePeriod",
+    "envCharacteristics.biogeographicalRegion",
+    "envCharacteristics.biome",
+    "envCharacteristics.ecosystemType",
+    "envCharacteristics.eunisHabitat",
+    "envCharacteristics.landforms",
+    "envCharacteristics.geoBonBiome",
+    "envCharacteristics.geology",
+    "envCharacteristics.hydrology",
+    "envCharacteristics.soils",
+    "envCharacteristics.vegetation"
   )))
 
   expect_type(result$title, "character")

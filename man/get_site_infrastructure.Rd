@@ -18,7 +18,7 @@ power supply, accessibility, maintenaince interval, etc.
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
-This function obtains infrastructure information
+This internal function obtains infrastructure information
 of an eLTER site through the DEIMS-SDR sites API.
 }
 \author{

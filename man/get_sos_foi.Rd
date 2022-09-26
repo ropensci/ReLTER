@@ -7,14 +7,14 @@
 get_sos_foi(sosURL, show_map = FALSE)
 }
 \arguments{
-\item{sosURL}{A `character`. The endpoint of the Sensor Observation Service
+\item{sosURL}{A \code{character}. The endpoint of the Sensor Observation Service
 (SOS) service.}
 
-\item{show_map}{A `logical`. When TRUE the boundary will be plotted on a
+\item{show_map}{A \code{logical}. When TRUE the boundary will be plotted on a
 Leaflet map. Default FALSE.}
 }
 \value{
-The output of the function is a `sf`. The table contains all the information
+The output of the function is a \code{sf}. The table contains all the information
 about Feature(s) Of Interest (FOI(s)) provided by a Sensor Observation
 Services (SOS).
 The columns are about: sampling feature (typeSf,
@@ -22,7 +22,7 @@ description, name), sampled feature id (sampledFeature), coordinate reference
 system code (srsName) and coordinates (geometry).
 }
 \description{
-`r lifecycle::badge("experimental")`
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 This function obtains the information about Feature(s) Of Interest (FOI(s))
 provided by a Sensor Observation Services (SOS).
 }

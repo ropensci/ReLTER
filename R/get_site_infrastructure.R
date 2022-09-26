@@ -1,6 +1,6 @@
-#' @title eLTER get_site_infrastructure function
+#' eLTER get_site_infrastructure function
 #' @description `r lifecycle::badge("stable")`
-#' This function obtains infrastructure information
+#' This internal function obtains infrastructure information
 #' of an eLTER site through the DEIMS-SDR sites API.
 #' @param deimsid A `character`. The DEIMS ID of the site from
 #' DEIMS-SDR website. DEIMS ID information

@@ -15,11 +15,7 @@ DEIMS-SDR website. DEIMS ID information
 or categories are retrieved and returned in the result.
 Possible value are:
 'Affiliations', 'Boundaries', 'Contacts', 'EnvCharacts', 'General',
-<<<<<<< HEAD
 'Infrastructure', 'observedProperties', 'RelateRes'.
-=======
-'Infrastructure', 'observedProperties', 'RelateRes', 'ResearchTop'.
->>>>>>> dev
 Multiple values can be indicated.}
 }
 \value{
@@ -51,13 +47,13 @@ siteInfo
 \references{
 \insertRef{httrR}{ReLTER}
 
-  \insertRef{dplyrR}{ReLTER}
+\insertRef{dplyrR}{ReLTER}
 
-  \insertRef{utilsR}{ReLTER}
+\insertRef{utilsR}{ReLTER}
 
-  \insertRef{sfR}{ReLTER}
+\insertRef{sfR}{ReLTER}
 
-  \insertRef{leafletR}{ReLTER}
+\insertRef{leafletR}{ReLTER}
 }
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}

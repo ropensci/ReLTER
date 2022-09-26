@@ -1,6 +1,6 @@
-#' @title eLTER get_site_affiliations function
+#' eLTER get_site_affiliations function
 #' @description `r lifecycle::badge("stable")`
-#' This function obtains details about an eLTER site
+#' This internal function obtains details about an eLTER site
 #' through the DEIMS-SDR sites API.
 #' @param deimsid A character. The DEIMS ID of the site from
 #' DEIMS-SDR website. DEIMS ID information

@@ -7,49 +7,49 @@
 get_sos_obs(sosURL, procedure, foi = NULL, show_map = FALSE)
 }
 \arguments{
-\item{sosURL}{A `character`. The endpoint of the Sensor Observation Service
+\item{sosURL}{A \code{character}. The endpoint of the Sensor Observation Service
 (SOS) service.}
 
-\item{procedure}{A `character`. It is a procedure/sensor ID.
+\item{procedure}{A \code{character}. It is a procedure/sensor ID.
 Possible value are the FOI(s) ID, which can be obtained via the
-`get_sos_procedure_info()` function.}
+\code{get_sos_procedure_info()} function.}
 
-\item{foi}{A `character`. This parameter selects which Feature(s) Of
+\item{foi}{A \code{character}. This parameter selects which Feature(s) Of
 Interest (FOI(s)) are retrieved and returned in the observations.
 Possible value are the FOI(s) ID, which can be obtained via the
-`get_sos_foi()` function.
+\code{get_sos_foi()} function.
 If the FOI parameter is not set, all observations reached in all FOIs
 by a sensor, will be downloaded. Note that the request time may
 be very long!
 Multiple values can be indicated.
 Default NA.}
 
-\item{show_map}{A `logical`. When TRUE the boundary will be plotted on a
+\item{show_map}{A \code{logical}. When TRUE the boundary will be plotted on a
 Leaflet map. Default FALSE.}
 }
 \value{
-The output of the function is a `tibble`. The output
+The output of the function is a \code{tibble}. The output
 can be divided in two parts: the columns concerning the observations and the
 ancillary information concerning who and where the observations were made.
 The first part, usually starting with date and time values, contains all
 columns representing all the observed properties (e.g. air temperature)
 measured by sensor.
 The second part contains columns about: Feature(s) Of Interest - FOI (
-foiLabel and foiID), identifier of the observations block (obsBlockID), 
+foiLabel and foiID), identifier of the observations block (obsBlockID),
 procedure/sensor (procedureID and procedureName), sampling feature (typeSf,
 description, name), sampled feature id (sampledFeature), coordinate reference
 system code (srsName) and coordinates (lon and lat).
-A map can be obtained indicating the parameter `show_map` TRUE.
-The output contains also a semantic link, as provided by SOS. The `uri`
+A map can be obtained indicating the parameter \code{show_map} TRUE.
+The output contains also a semantic link, as provided by SOS. The \code{uri}
 attribute contains all URIs of the terms indicated in the headers columns.
 To the observed properties columns are labeled with a unit of measurement,
 as mentioned in the SOS, using R package
-\href{https://r-quantities.github.io/units/index.html}{`units`}.
+\href{https://r-quantities.github.io/units/index.html}{\code{units}}.
 This labelling simplify the propagation,
 conversion and derivation of units of collected observed properties.
 }
 \description{
-`r lifecycle::badge("experimental")`
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 This function obtains the observations shared by Sensor Observation
 Service (SOS).
 }

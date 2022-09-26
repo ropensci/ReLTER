@@ -1,6 +1,6 @@
-#' @title eLTER get_site_observedProperties function
+#' eLTER get_site_observedProperties function
 #' @description `r lifecycle::badge("stable")`
-#' This function obtains the list of observed properties measured
+#' This internal function obtains the list of observed properties measured
 #' in the eLTER site through the DEIMS-SDR sites API.
 #' @param deimsid A `character`. It is the DEIMS ID of the site from
 #' DEIMS-SDR website. DEIMS ID information
@@ -15,12 +15,12 @@
 #'
 ### function get_site_observedProperties
 get_site_observedProperties <- function(deimsid) {
-  qo <- queries_jq[[get_deims_API_version()]]$site_parameters
+  qo <- queries_jq[[get_deims_API_version()]]$site_observedProperties
   jj <- get_id(deimsid, qo$path)
   if (is.na(attr(jj, "status"))) {
     invisible(
       utils::capture.output(
-        parameters <- dplyr::as_tibble(do_Q(qo$query, jj))
+        observedProperties <- dplyr::as_tibble(do_Q(qo$query, jj))
       )
     )
     if (!is.na(observedProperties$observedProperties)) {

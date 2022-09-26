@@ -112,7 +112,7 @@ queries_jq <- list(
        generalInfo: .attributes.infrastructure
       }'
     ),
-    site_parameters = list(
+    site_observedProperties = list(
       path = "sites",
       query = '{
        title: .title,
@@ -120,7 +120,7 @@ queries_jq <- list(
        geoCoord: .attributes.geographic.coordinates,
        country: .attributes.geographic.country,
        geoElev: .attributes.geographic.elevation,
-       parameter: .attributes.focusDesignScale.parameters
+       observedProperties: .attributes.focusDesignScale.parameters
       }'
     ),
     site_relatedResources = list(
@@ -278,7 +278,7 @@ queries_jq <- list(
        generalInfo: .attributes.infrastructure
       }'
     ),
-    site_parameters = list(
+    site_observedProperties = list(
       path = "sites",
       query = '{
        title: .title,
@@ -286,7 +286,7 @@ queries_jq <- list(
        geoCoord: .attributes.geographic.coordinates,
        country: .attributes.geographic.country,
        geoElev: .attributes.geographic.elevation,
-       parameter: .attributes.focusDesignScale.observedProperties
+       observedProperties: .attributes.focusDesignScale.observedProperties
       }'
     ),
     site_relatedResources = list(

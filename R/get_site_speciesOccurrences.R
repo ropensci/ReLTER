@@ -1,5 +1,6 @@
-#' @title eLTER get_site_speciesOccurrences function
-#' @description This function acquires data from
+#' Trims by eLTER site the species occurrence from different sources
+#' @description `r lifecycle::badge("stable")`
+#' This function acquires data from
 #' GBIF \url{https://www.gbif.org} (via `rgbif`),
 #' iNaturalist \url{https://www.inaturalist.org/} and
 #' OBIS \url{https://obis.org/} and crops to an eLTER site
@@ -39,19 +40,19 @@
 #' # terrestrial site Saldur River Catchment
 #' occ_SRC <- get_site_speciesOccurrences(
 #'   deimsid =
-#'   "https://deims.org/97ff6180-e5d1-45f2-a559-8a7872eb26b1",
+#'     "https://deims.org/97ff6180-e5d1-45f2-a559-8a7872eb26b1",
 #'   list_DS = c("gbif", "inat"),
 #'   show_map = FALSE,
-#'   limit = 100
+#'   limit = 10
 #' )
 #' occ_SRC
 #'
 #' # marine site Gulf of Venice only obis
 #' occ_GoV <- get_site_speciesOccurrences(
 #'   deimsid =
-#'   "https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd",
+#'     "https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd",
 #'   list_DS = "obis",
-#'   show_map = TRUE,
+#'   show_map = FALSE,
 #'   limit = 10
 #' )
 #' occ_GoV
@@ -60,13 +61,17 @@
 #' # gbif, inat and obis
 #' occ_GoV_all <- get_site_speciesOccurrences(
 #'   deimsid =
-#'   "https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd",
+#'     "https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd",
 #'   list_DS = c("gbif", "inat", "obis"),
 #'   show_map = TRUE,
-#'   limit = 100
+#'   limit = 10
 #' )
 #' occ_GoV_all
 #' }
+#'
+#' @section The function output:
+#' \figure{get_site_speciesOccurrencese_fig.png}{Map of first 100 occurrences
+#' acquired from iNaturalist and OBIS in the marine site Gulf of Venice}
 #'
 ### function get_site_speciesOccurrences
 get_site_speciesOccurrences <- function(
@@ -114,13 +119,13 @@ get_site_speciesOccurrences <- function(
 
   # find 0 record to dataset
   list_DS_exclude <- NULL
-  if (!is.null(site_occ_spocc) && site_occ_spocc$gbif$meta$returned == 0) {
+  if (!is.null(site_occ_spocc) && is.null(site_occ_spocc$gbif$meta$returned)) {
     list_DS_exclude <- c(list_DS_exclude, "gbif")
   }
-  if (!is.null(site_occ_spocc) && site_occ_spocc$inat$meta$returned == 0) {
+  if (!is.null(site_occ_spocc) && is.null(site_occ_spocc$inat$meta$returned)) {
     list_DS_exclude <- c(list_DS_exclude, "inat")
   }
-  if (!is.null(site_occ_spocc_obis) && nrow(site_occ_spocc_obis$results) == 0) {
+  if (is.null(site_occ_spocc_obis) && is.null(site_occ_spocc_obis$results)) {
     list_DS_exclude <- c(list_DS_exclude, "obis")
   }
   list_DS <- list_DS[!(list_DS %in% list_DS_exclude)]
@@ -149,9 +154,9 @@ get_site_speciesOccurrences <- function(
   
     if (nrow(occ_df_gbif) > 0) {
       occ_df <- rbind(occ_df, occ_df_gbif)
-    } else {
-      list_DS <- list_DS[!(list_DS == "gbif")]
-    }
+    } #else {
+      # list_DS <- list_DS[!(list_DS == "gbif")]
+    # }
   }
 
   if ("inat" %in% list_DS) {

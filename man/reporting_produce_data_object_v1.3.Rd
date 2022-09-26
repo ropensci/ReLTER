@@ -18,29 +18,30 @@ reporting_produce_data_object_v1.3(
 )
 }
 \arguments{
-\item{data}{A `tibble`. See eLTER data specification format for details}
+\item{data}{A \code{tibble}. See eLTER data specification format for details}
 
-\item{station}{A `tibble`}
+\item{station}{A \code{tibble}}
 
-\item{method}{A `tibble`}
+\item{method}{A \code{tibble}}
 
-\item{reference}{A `tibble`}
+\item{reference}{A \code{tibble}}
 
-\item{event}{A `tibble`}
+\item{event}{A \code{tibble}}
 
-\item{sample}{A `tibble`}
+\item{sample}{A \code{tibble}}
 
-\item{licence}{A `character`}
+\item{licence}{A \code{character}}
 
-\item{data_type}{A `character`}
+\item{data_type}{A \code{character}}
 
 \item{filename}{optional filename associated with the object, of the form
-provided as output by the function `reporting_compose_file_name`}
+provided as output by the function \code{reporting_compose_file_name}}
 }
 \value{
 list with eLTER reporting format slots
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 Given several tables, creates an eLTER data reporting format
 object
 }

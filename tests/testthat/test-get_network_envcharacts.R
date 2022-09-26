@@ -26,23 +26,32 @@ test_that("Output of network environmental characteristics function constructs
     networkDEIMSID = TESTURLNetwork
   )
   expect_s3_class(result, "tbl_df")
-  expect_true(ncol(result) == 26)
+  expect_true(ncol(result) == 30)
   expect_true(all(names(result) == c(
     "title", "uri", "geoCoord", "country",
     "geoElev.avg", "geoElev.min", "geoElev.max", "geoElev.unit",
-    "envCharacteristics.airTemperature.avg",
-    "envCharacteristics.airTemperature.min",
-    "envCharacteristics.airTemperature.max",
+    "envCharacteristics.airTemperature.yearlyAverage",
+    "envCharacteristics.airTemperature.monthlyAverage",
     "envCharacteristics.airTemperature.unit",
-    "envCharacteristics.precipitation.annual",
-    "envCharacteristics.precipitation.min",
-    "envCharacteristics.precipitation.max",
+    "envCharacteristics.airTemperature.referencePeriod",
+    "envCharacteristics.precipitation.yearlyAverage",
+    "envCharacteristics.precipitation.monthlyAverage",
     "envCharacteristics.precipitation.unit",
-    "envCharacteristics.biogeographicalRegion", "envCharacteristics.biome",
-    "envCharacteristics.ecosystemType", "envCharacteristics.eunisHabitat",
-    "envCharacteristics.landforms", "envCharacteristics.geoBonBiome",
-    "envCharacteristics.geology", "envCharacteristics.hydrology",
-    "envCharacteristics.soils", "envCharacteristics.vegetation"
+    "envCharacteristics.precipitation.referencePeriod",
+    "envCharacteristics.biogeographicalRegion",
+    "envCharacteristics.biome",
+    "envCharacteristics.ecosystemType",
+    "envCharacteristics.eunisHabitat",
+    "envCharacteristics.landforms",
+    "envCharacteristics.geoBonBiome",
+    "envCharacteristics.geology",
+    "envCharacteristics.hydrology",
+    "envCharacteristics.soils",
+    "envCharacteristics.vegetation",
+    "envCharacteristics.airTemperature.referencePeriod.label",
+    "envCharacteristics.airTemperature.referencePeriod.uri",
+    "envCharacteristics.precipitation.referencePeriod.label",
+    "envCharacteristics.precipitation.referencePeriod.uri"
   )))
 
   expect_type(result$title, "character")

@@ -1,6 +1,6 @@
-#' @title eLTER get_site_envcharacts function
+#' eLTER get_site_envcharacts function
 #' @description `r lifecycle::badge("stable")`
-#' This function obtains Environmental Characteristics
+#' This internal function obtains Environmental Characteristics
 #' of an eLTER site through the DEIMS-SDR sites API.
 #' @param deimsid A `character`. The DEIMS ID of a site from
 #' DEIMS-SDR website. DEIMS ID information

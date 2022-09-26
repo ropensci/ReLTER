@@ -7,10 +7,10 @@
 elter_write_rdata(myfiles, delim)
 }
 \arguments{
-\item{myfiles}{A `character`. The list of the files to deposit in Zenodo.
+\item{myfiles}{A \code{character}. The list of the files to deposit in Zenodo.
 Please provide all files only with 'csv' extension.}
 
-\item{delim}{A `character`. Provide the character used to separate fields
+\item{delim}{A \code{character}. Provide the character used to separate fields
 within a record. Only if the extension of the file(s) are 'csv', 'tsv', or
 'txt'.}
 }
@@ -18,6 +18,7 @@ within a record. Only if the extension of the file(s) are 'csv', 'tsv', or
 This function returns a rds files.
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 This function write a rds file from csv, tsv, txt, xls or xlsx
 dataset
 }

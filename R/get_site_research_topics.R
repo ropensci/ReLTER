@@ -1,6 +1,6 @@
-#' @title eLTER get_site_research_topics function
+#' eLTER get_site_research_topics function
 #' @description `r lifecycle::badge("defunct")`
-#' This function was defunct because the section
+#' This internal function was defunct because the section
 #' about research topics of the site in DEIMS-SDR API
 #' version 1.1 has been removed.
 #' 

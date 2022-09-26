@@ -21,7 +21,7 @@
 #' FP
 #'
 #' 
-#' # \href{https://www.eurac.edu/}{EURAC} SOS 
+#' # EURAC (https://www.eurac.edu/) 
 #' # eurac_monalisa <- get_sos_procedure_info(
 #' #   sosURL = "http://monalisasos.eurac.edu/sos/service",
 #' #   procedure = "QuantumSensor_nemef2000"
@@ -35,7 +35,7 @@
 #' # obsProsAir
 #' 
 #' 
-#' # \href{https://niwa.co.nz}{NIVA}
+#' # NIVA (https://niwa.co.nz)
 #' # NIVA <- get_sos_procedure_info(
 #' #   sosURL = "https://hydro-sos.niwa.co.nz/",
 #' #   procedure = "Water_Quality_Site"

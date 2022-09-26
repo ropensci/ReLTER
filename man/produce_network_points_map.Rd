@@ -63,17 +63,17 @@ map_LTERGermanSites +
 \references{
 \insertRef{jsonliteR}{ReLTER}
 
-  \insertRef{sfR}{ReLTER}
+\insertRef{sfR}{ReLTER}
 
-  \insertRef{rasterR}{ReLTER}
+\insertRef{rasterR}{ReLTER}
 
-  \insertRef{tmapR}{ReLTER}
+\insertRef{tmapR}{ReLTER}
 
-  \insertRef{dplyrR}{ReLTER}
+\insertRef{dplyrR}{ReLTER}
 
-  \insertRef{tibbleR}{ReLTER}
+\insertRef{tibbleR}{ReLTER}
 
-  \insertRef{httrR}{ReLTER}
+\insertRef{httrR}{ReLTER}
 }
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}

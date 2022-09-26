@@ -1,6 +1,6 @@
 {
   "title": "ReLTER: An Interface for the 'eLTER' Community",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "creators": [
     {
       "name": "Oggioni, Alessandro",
@@ -19,7 +19,7 @@
       "orcid": "0000-0001-6207-5188"
     }
   ],
-  "keywords": {},
+  "keywords": ["biodiversity-informatics", "data-science", "ecology", "elter", "r", "research-infrastructure"],
   "license": {
     "id": "GPL-3.0-or-later"
   },

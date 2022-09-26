@@ -17,7 +17,7 @@ site and a list of the related resources collected by site.
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
-This function obtains a list of related resources
+This internal function obtains a list of related resources
 collected in an eLTER site through the DEIMS-SDR sites API.
 }
 \author{

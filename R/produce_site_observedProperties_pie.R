@@ -52,12 +52,12 @@ produce_site_observedProperties_pie <- function(deimsid) {
     deimsid = deimsid,
     category = "observedProperties"
   )
-  paramsDeims <- tibble::as_tibble(site$parameter[[1]])
+  paramsDeims <- tibble::as_tibble(site$observedProperties[[1]])
   if (length(paramsDeims) != 0) {
     params <- tibble::as_tibble(paramsDeims)
     params$parameterGroups <- paste0(
       parametersStructureEnvThes$category[
-        match(params$parameterLabel, parametersStructureEnvThes$parameter)
+        match(params$observedPropertiesLabel, parametersStructureEnvThes$parameter)
       ],
       "s"
     )
@@ -149,7 +149,7 @@ produce_site_observedProperties_pie <- function(deimsid) {
         values = mycolors
       )
     # warning about the Insufficient values in manual scale
-    if (length(groupsIsNa$parameterLabel) == 0) {
+    if (length(groupsIsNa$observedPropertiesLabel) == 0) {
       message("")
     } else {
       message(
@@ -158,7 +158,7 @@ produce_site_observedProperties_pie <- function(deimsid) {
         "Paste this message into the GitHub issue.\n",
         "I am using the produce_site_observedProperties_pie function and need
         to add the following observed properties in the mapping:\n",
-        paste(groupsIsNa$parameterLabel, collapse = "\n")
+        paste(groupsIsNa$observedPropertiesLabel, collapse = "\n")
       )
     }
     print(pie)

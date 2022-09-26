@@ -1,6 +1,6 @@
-#' @title eLTER get_site_related_resources function
+#' eLTER get_site_related_resources function
 #' @description `r lifecycle::badge("stable")`
-#' This function obtains a list of related resources
+#' This internal function obtains a list of related resources
 #' collected in an eLTER site through the DEIMS-SDR sites API.
 #' @param deimsid A `character`. The DEIMS ID of the site from
 #' DEIMS-SDR website. DEIMS ID information

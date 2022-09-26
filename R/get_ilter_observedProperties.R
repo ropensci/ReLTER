@@ -29,6 +29,7 @@
 #' @importFrom jsonlite fromJSON
 #' @importFrom dplyr as_tibble bind_rows distinct
 #' @importFrom Rdpack reprompt
+#' @importFrom purrr map_dfr
 #' @references
 #'   \insertRef{jsonliteR}{ReLTER}
 #'
@@ -55,18 +56,19 @@ get_ilter_observedProperties <- function(sitesNum = 0) {
         "api/sites"
       )
     ))
-    allSiteParameters <- lapply(
+    allSiteParameters <- purrr::map_dfr(
       as.list(
         paste0(
           lterILTERSites$id$prefix,
           lterILTERSites$id$suffix
         )
       ),
-      ReLTER::get_site_info,
-      category = "observedProperties"
+      function(x) {
+        ReLTER::get_site_info (x, category = "observedProperties")
+      }
     )
     uniteSiteParameters <- dplyr::bind_rows(allSiteParameters)
-    parametersILTERList <- uniteSiteParameters$parameter
+    parametersILTERList <- uniteSiteParameters$observedProperties
     parametersILTERDF <- dplyr::bind_rows(parametersILTERList)
     uniqueSitesParameters <- dplyr::as_tibble(
       dplyr::distinct(parametersILTERDF)
@@ -90,7 +92,7 @@ get_ilter_observedProperties <- function(sitesNum = 0) {
       category = "observedProperties"
     )
     uniteSiteParameters <- dplyr::bind_rows(allSiteParameters)
-    parametersILTERList <- uniteSiteParameters$parameter
+    parametersILTERList <- uniteSiteParameters$observedProperties
     parametersILTERDF <- dplyr::bind_rows(parametersILTERList)
     uniqueSitesParameters <- dplyr::as_tibble(
       dplyr::distinct(parametersILTERDF)
