@@ -17,7 +17,7 @@
 #' @importFrom jsonlite fromJSON
 #' @importFrom dplyr as_tibble
 #' @importFrom Rdpack reprompt
-#' @import purrr map_dfr
+#' @importFrom purrr map_dfr
 #' @references
 #'   \insertRef{jsonliteR}{ReLTER}
 #'
