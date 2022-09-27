@@ -66,6 +66,7 @@ unit of menasure is expressed in °C}
 
 \figure{get_sos_obs_plot_F.png}{Plot of the same observations are
 converted in °F}
+
 }
 
 \examples{

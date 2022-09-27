@@ -57,17 +57,17 @@ acquired from iNaturalist and OBIS in the marine site Gulf of Venice}
 # terrestrial site Saldur River Catchment
 occ_SRC <- get_site_speciesOccurrences(
   deimsid =
-  "https://deims.org/97ff6180-e5d1-45f2-a559-8a7872eb26b1",
+    "https://deims.org/97ff6180-e5d1-45f2-a559-8a7872eb26b1",
   list_DS = c("gbif", "inat"),
   show_map = FALSE,
-  limit = 100
+  limit = 10
 )
 occ_SRC
 
 # marine site Gulf of Venice only obis
 occ_GoV <- get_site_speciesOccurrences(
   deimsid =
-  "https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd",
+    "https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd",
   list_DS = "obis",
   show_map = FALSE,
   limit = 10
@@ -81,7 +81,7 @@ occ_GoV_all <- get_site_speciesOccurrences(
     "https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd",
   list_DS = c("gbif", "inat", "obis"),
   show_map = TRUE,
-  limit = 100
+  limit = 10
 )
 occ_GoV_all
 }

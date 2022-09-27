@@ -4,10 +4,15 @@
 \alias{save_occ_eLTER_reporting_Archive}
 \title{Creates an archive with files following the eLTER reportingFormat}
 \usage{
-save_occ_eLTER_reporting_Archive(lterReportOut)
+save_occ_eLTER_reporting_Archive(lterReportOut, path = tempdir())
 }
 \arguments{
-\item{lterReportOut}{A \code{list} like the one created by gbif2elter}
+\item{lterReportOut}{A \code{list} like the one created by \code{map_occ_gbif2elter}}
+
+\item{path}{path of the zip file. Defaults to temporary folder}
+}
+\value{
+the path to the created file
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
