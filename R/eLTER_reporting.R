@@ -168,10 +168,9 @@ map_occ_obis2elter <- function(x, deimsid) {
   # compose output for eLTER reporting format
   # (intermediate step: info both for data and for reference)
   lter_temp <- x %>%
-    .add_site_code(deimsid) %>%
     # add new (computed) columns
     dplyr::mutate(
-      SITE_CODE = GOFid,
+      SITE_CODE = deimsid,
       ABS_POSITION = paste0(
         as.numeric(gsub(
           ".* ([-]*[0-9]+[.][0-9]+).*", "\\1", geometry
@@ -241,11 +240,17 @@ map_occ_obis2elter <- function(x, deimsid) {
 #' biodiv_occurrence_site_"deimsid_code"_"source".zip
 #' where "deimsid_code" is the uuid in the last part of the deimsid,
 #' and "source" is one of "gbif", "inat", "obis"
-#' @param lterReportOut A `list` like the one created by gbif2elter
+#' @param lterReportOut A `list` like the one created by `map_occ_gbif2elter`
+#' @param path path of the zip file. Defaults to temporary folder
+#' @return the path to the created file
 #' @author Paolo Tagliolato, phD \email{tagliolato.p@@irea.cnr.it}
 #' @importFrom utils zip write.csv2
 #' @export
-save_occ_eLTER_reporting_Archive <- function(lterReportOut) {
+save_occ_eLTER_reporting_Archive <- function(lterReportOut, path = tempdir()) {
+  if(!endsWith(path,"/"))
+    path <- paste0(path,"/")
+  if(!dir.exists(path))
+    stop("specified directory does not exists")
   sr <- lterReportOut$source
   deimsid <- lterReportOut$deimsid
 
@@ -266,17 +271,18 @@ save_occ_eLTER_reporting_Archive <- function(lterReportOut) {
   write.csv2(lterReportOut$reference_VARIABLES, file_reference_VARIABLES)
   write.csv2(lterReportOut$reference_TAXA, file_reference_TAXA)
 
-  zip(
-    paste0(
-      "biodiv_occurrence_site_",
-      .short_id(deimsid),
-      "_",
-      sr,
-      ".zip"
-    ),
-  files = dirsr,
-  extras = "-j"
+  zipname<-paste0(
+    "biodiv_occurrence_site_",
+    .short_id(deimsid),
+    "_",
+    sr,
+    ".zip"
   )
+  filepath <- paste0(path, zipname)
+  
+  zip(zipfile = filepath, files = dirsr, extras = "-j")
+  
+  return(filepath)
 }
 
 # from eLTER Plus tech doc 01 "Field specification for data reporting"
@@ -473,7 +479,8 @@ reporting_compose_file_name <- function(
       .[1] %>%
       countrycode::countrycode(origin = "country.name", destination = "iso2c")
     site_name <- stringr::str_replace_all(info$title, " ", replacement = "-")
-  }
+  } else if(is.null(country_code) || is.null(site_name)) 
+    stop("if deimsid is not specified, both country_code and site_name are required")
   return(
     paste(
       country_code, site_name,

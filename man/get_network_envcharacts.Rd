@@ -30,7 +30,7 @@ Italy network}), through the DEIMS-SDR API.
 \dontrun{
 listEnvCharacts <- get_network_envcharacts(
   networkDEIMSID =
-  "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
+    "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 )
 listEnvCharacts[1:10, ]
 }

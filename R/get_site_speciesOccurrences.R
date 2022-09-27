@@ -173,7 +173,7 @@ get_site_speciesOccurrences <- function(
     occ_df <- rbind(occ_df, occ_df_inat)
   }
 
-  if ("obis" %in% list_DS) {
+  if ("obis" %in% list_DS && !length(site_occ_spocc_obis$results)==0) {
     occ_df_obis <- site_occ_spocc_obis$results %>%
       dplyr::mutate(
         prov = rep("obis", nrow(site_occ_spocc_obis$results))
