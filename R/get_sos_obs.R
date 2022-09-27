@@ -351,7 +351,7 @@ get_sos_obs <- function(sosURL, procedure, foi = NULL, show_map = FALSE) {
           lon, lat
         ) %>%
         dplyr::group_by(foiID) %>%
-        dplyr::mutate(n = n()) %>%
+        dplyr::mutate(n = dplyr::n()) %>%
         unique() %>%
         sf::st_as_sf(
           coords = c("lat", "lon"),

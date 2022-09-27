@@ -1,4 +1,4 @@
-message("\n---- Test get_activity_info() ----")
+message("\n---- Test get_zenodo_data() ----")
 
 library(testthat)
 
@@ -14,9 +14,20 @@ test_that("Expect error if internet connection is down", {
   )
 })
 
-test_that("The input is not a Zenodo DOI (but DOI) constructs a NULL object", {
+skip_if_offline(host = "zenodo.org")
+
+test_that("The input is a Zenodo DOI but is not a dataset type,
+          constructs a NULL object", {
   result <- ReLTER::get_zenodo_data(
-    doi = "10.1109/5.771073", # test dataset
+    doi = "10.5281/zenodo.6469530", # test dataset
+    rdata_exist = FALSE
+  )
+  expect_type(result, "NULL")
+})
+
+test_that("The input is not a Zenodo DOI constructs a NULL object", {
+  result <- ReLTER::get_zenodo_data(
+    doi = "10.3897/rio.8.e82597", # test dataset
     rdata_exist = FALSE
   )
   expect_type(result, "NULL")
@@ -26,14 +37,6 @@ test_that("Wrong input (not DOI) constructs an empty tibble", {
   result <- ReLTER::get_zenodo_data(
     doi = "dakoobdadas", # test dataset
     rdata_exist = FALSE
-  )
-  expect_type(result, "NULL")
-})
-
-test_that("Wrong input .RData or .rds file exist in the record ", {
-  result <- ReLTER::get_zenodo_data(
-    doi = "10.5281/zenodo.5575831", # test dataset
-    rdata_exist = TRUE
   )
   expect_type(result, "NULL")
 })
