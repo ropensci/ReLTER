@@ -50,8 +50,9 @@
 #' "isPartOf", "hasPart", "compiles", "isCompiledBy", "isIdenticalTo",
 #' "isAlternateIdentifier". While identifier is any type of identifier
 #' (e.g. DOI).
-#' @param record_community A `character`. It is a name of community as created
-#' in Zenodo. A multiple values are possible. Default "lter-italy" and "elter".
+#' @param record_communities A `character`. It is a name of communities as
+#' created in Zenodo. A multiple values are possible. Default "lter-italy"
+#' and "elter".
 #' @param record_grants A `character`. A multiple values are possible. Put a
 #' list of project identifier as well as showed by the European Commission via
 #' \href{http://www.openaire.eu/}{OpenAIRE}.
@@ -263,8 +264,9 @@ produce_zenodo_record <- function(
 #' "isPartOf", "hasPart", "compiles", "isCompiledBy", "isIdenticalTo",
 #' "isAlternateIdentifier". While identifier is any type of identifier
 #' (e.g. DOI).
-#' @param record_community A `character`. It is a name of community as created
-#' in Zenodo. A multiple values are possible. Default "lter-italy" and "elter".
+#' @param record_communities A `character`. It is a name of communities as
+#' created in Zenodo. A multiple values are possible. Default "lter-italy"
+#' and "elter".
 #' @param record_grants A `character`. A multiple values are possible. Put a
 #' list of project identifier as well as showed by the European Commission via
 #' \href{http://www.openaire.eu/}{OpenAIRE}.

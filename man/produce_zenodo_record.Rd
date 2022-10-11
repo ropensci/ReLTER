@@ -83,6 +83,10 @@ among following values: "isCitedBy", "cites", "isSupplementTo",
 "isAlternateIdentifier". While identifier is any type of identifier
 (e.g. DOI).}
 
+\item{record_communities}{A \code{character}. It is a name of communities as
+created in Zenodo. A multiple values are possible. Default "lter-italy"
+and "elter".}
+
 \item{record_grants}{A \code{character}. A multiple values are possible. Put a
 list of project identifier as well as showed by the European Commission via
 \href{http://www.openaire.eu/}{OpenAIRE}.}
@@ -90,9 +94,6 @@ list of project identifier as well as showed by the European Commission via
 \item{record_publish}{A \code{logical}. State whether the Zenodo record is to
 be published. The parameter publish can be set to TRUE (to use CAUTIOUSLY,
 only if you want to publish your record). Default FALSE.}
-
-\item{record_community}{A \code{character}. It is a name of community as created
-in Zenodo. A multiple values are possible. Default "lter-italy" and "elter".}
 }
 \value{
 A link (URL) of the deposited record in Zenodo. The user must then:

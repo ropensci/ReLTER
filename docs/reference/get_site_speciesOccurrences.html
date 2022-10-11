@@ -21,7 +21,7 @@ boundary, which is obtained from the DEIMS-SDR sites API."><meta property="og:im
     <a href="https://ropensci.org" class="external-link"><img src="https://ropensci.org/img/icon_short_white.svg" id="hexlogo" alt="rOpenSci"></a>
     <a class="navbar-brand me-2" href="../index.html">ReLTER</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.0.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -137,17 +137,17 @@ repositories specified in the list_DS parameter.</p>
 <span class="r-in"><span class="co"># terrestrial site Saldur River Catchment</span></span>
 <span class="r-in"><span class="va">occ_SRC</span> <span class="op">&lt;-</span> <span class="fu">get_site_speciesOccurrences</span><span class="op">(</span></span>
 <span class="r-in">  deimsid <span class="op">=</span></span>
-<span class="r-in">  <span class="st">"https://deims.org/97ff6180-e5d1-45f2-a559-8a7872eb26b1"</span>,</span>
+<span class="r-in">    <span class="st">"https://deims.org/97ff6180-e5d1-45f2-a559-8a7872eb26b1"</span>,</span>
 <span class="r-in">  list_DS <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"gbif"</span>, <span class="st">"inat"</span><span class="op">)</span>,</span>
 <span class="r-in">  show_map <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span class="r-in">  limit <span class="op">=</span> <span class="fl">100</span></span>
+<span class="r-in">  limit <span class="op">=</span> <span class="fl">10</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-in"><span class="va">occ_SRC</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># marine site Gulf of Venice only obis</span></span>
 <span class="r-in"><span class="va">occ_GoV</span> <span class="op">&lt;-</span> <span class="fu">get_site_speciesOccurrences</span><span class="op">(</span></span>
 <span class="r-in">  deimsid <span class="op">=</span></span>
-<span class="r-in">  <span class="st">"https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd"</span>,</span>
+<span class="r-in">    <span class="st">"https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd"</span>,</span>
 <span class="r-in">  list_DS <span class="op">=</span> <span class="st">"obis"</span>,</span>
 <span class="r-in">  show_map <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span class="r-in">  limit <span class="op">=</span> <span class="fl">10</span></span>
@@ -161,7 +161,7 @@ repositories specified in the list_DS parameter.</p>
 <span class="r-in">    <span class="st">"https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd"</span>,</span>
 <span class="r-in">  list_DS <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"gbif"</span>, <span class="st">"inat"</span>, <span class="st">"obis"</span><span class="op">)</span>,</span>
 <span class="r-in">  show_map <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span class="r-in">  limit <span class="op">=</span> <span class="fl">100</span></span>
+<span class="r-in">  limit <span class="op">=</span> <span class="fl">10</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-in"><span class="va">occ_GoV_all</span></span>
 <span class="r-in"><span class="op">}</span></span>

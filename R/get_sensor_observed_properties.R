@@ -22,6 +22,7 @@
 #' @importFrom tibble tibble add_row tibble_row add_column
 #' @export
 #' @examples
+#' \dontrun{
 #' FP <- get_sensor_observed_properties(
 #'   sosURL = "http://getit.lteritalia.it/observations/service",
 #'   procedure = "http://www.get-it.it/sensors/getit.lteritalia.it/procedure/noOwnerDeclared/noModelDeclared/noSerialNumberDeclared/1286194C-A5DF-11DF-8ED7-1602DFD72097"
@@ -45,6 +46,7 @@
 #'   procedure = "Hydrometric_Station"
 #' )
 #' NIVA
+#' }
 #'
 ### function get_sensor_observed_properties
 get_sensor_observed_properties <- function(sosURL, procedure) {

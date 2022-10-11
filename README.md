@@ -7,7 +7,7 @@ ReLTER
 <!-- DOI badge -->
 
 [![](https://img.shields.io/badge/doi-10.5281/zenodo.5576813-yellow.svg)](https://doi.org/10.5281/zenodo.5576813)
-[![](https://img.shields.io/badge/devel%20version-1.2.0-blue.svg)](https://github.com/ropensci/ReLTER)
+[![](https://img.shields.io/badge/devel%20version-2.0.0-blue.svg)](https://github.com/ropensci/ReLTER)
 [![](https://img.shields.io/github/languages/code-size/ropensci/ReLTER.svg)](https://github.com/ropensci/ReLTER)
 [![](https://img.shields.io/github/last-commit/ropensci/ReLTER.svg)](https://github.com/ropensci/ReLTER/commits/main)
 [![License:
@@ -74,19 +74,19 @@ tools.
 ## :notebook_with_decorative_cover: Citation
 
 To cite `{ReLTER}` please use: Alessandro Oggioni, Micha Silver, Luigi
-Ranghetti & Paolo Tagliolato. (2022). ropensci/ReLTER: ReLTER v1.2.0
-(1.2.0). Zenodo. <https://doi.org/10.5281/zenodo.5576813>
+Ranghetti & Paolo Tagliolato. (2022). ropensci/ReLTER: ReLTER v2.0.0
+(2.0.0). Zenodo. <https://doi.org/10.5281/zenodo.5576813>
 
 or:
 
 ``` bibtex
 @software{alessandro_oggioni_2021_5576813,
   author       = {Alessandro Oggioni and Micha Silver and Luigi Ranghetti and Paolo Tagliolato},
-  title        = {ropensci/ReLTER: ReLTER v1.2.0},
+  title        = {ropensci/ReLTER: ReLTER v2.0.0},
   month        = nov,
   year         = 2022,
   publisher    = {Zenodo},
-  version      = {1.2.0},
+  version      = {2.0.0},
   doi          = {10.5281/zenodo.5576813},
   url          = {https://doi.org/10.5281/zenodo.5576813}
 }

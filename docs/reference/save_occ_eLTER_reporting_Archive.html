@@ -19,7 +19,7 @@ and "source" is one of "gbif", "inat", "obis"'><meta property="og:image" content
     <a href="https://ropensci.org" class="external-link"><img src="https://ropensci.org/img/icon_short_white.svg" id="hexlogo" alt="rOpenSci"></a>
     <a class="navbar-brand me-2" href="../index.html">ReLTER</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.0.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,14 +76,20 @@ and "source" is one of "gbif", "inat", "obis"</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">save_occ_eLTER_reporting_Archive</span><span class="op">(</span><span class="va">lterReportOut</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">save_occ_eLTER_reporting_Archive</span><span class="op">(</span><span class="va">lterReportOut</span>, path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>lterReportOut</dt>
-<dd><p>A <code>list</code> like the one created by gbif2elter</p></dd>
+<dd><p>A <code>list</code> like the one created by <code>map_occ_gbif2elter</code></p></dd>
+<dt>path</dt>
+<dd><p>path of the zip file. Defaults to temporary folder</p></dd>
 </dl></div>
+    <div class="section level2">
+    <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
+    <p>the path to the created file</p>
+    </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
     <p>Paolo Tagliolato, phD <a href="mailto:tagliolato.p@irea.cnr.it">tagliolato.p@irea.cnr.it</a></p>

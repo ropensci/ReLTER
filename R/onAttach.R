@@ -7,7 +7,7 @@
     developers (https://github.com/ropensci/ReLTER).\n\n",
     "If you use this package, please cite as:\n\n",
     "Alessandro Oggioni, Micha Silver, Luigi Ranghetti & Paolo Tagliolato.
-    (2022) ropensci/ReLTER: ReLTER v1.2.0 (1.2.0). Zenodo.
+    (2022) ropensci/ReLTER: ReLTER v2.0.0 (2.0.0). Zenodo.
     https://doi.org/10.5281/zenodo.5576813\n\n",
     "Type 'citation(package = 'ReLTER')' on how to cite R packages in
     publications.\n\n",

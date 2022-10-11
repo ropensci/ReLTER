@@ -32,6 +32,10 @@ reporting_produce_data_object_v1.3(
 
 \item{licence}{A \code{character}}
 
+\item{deimsid}{A character. The DEIMS ID of the site from
+DEIMS-SDR website. DEIMS ID information
+\href{https://deims.org/docs/deimsid.html}{here}.}
+
 \item{data_type}{A \code{character}}
 
 \item{filename}{optional filename associated with the object, of the form

@@ -1,6 +1,6 @@
-# ReLTER 1.2.0 Release Notes
+# ReLTER 2.0.0 Release Notes
 
-v1.2.0 was released on 20/09/2022
+v2.0.0 was released on 30/09/2022
 
 ## Changes
 

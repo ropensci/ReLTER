@@ -287,7 +287,7 @@ get_sos_obs <- function(sosURL, procedure, foi = NULL, show_map = FALSE) {
           )
       }
     }
-    if (!is.na(results[[m]])) {
+    if (!is.null(results[[m]])) {
       if (any(names(results[[m]]) == "phenomenonTime")) {
         results[[m]] <- results[[m]] %>%
           dplyr::arrange(phenomenonTime)

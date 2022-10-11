@@ -1,6 +1,7 @@
 message("\n---- Test get_sos_obs() ----")
 
 library(testthat)
+library(SPARQL)
 
 skip_if_offline(host = "getit.lteritalia.it")
 

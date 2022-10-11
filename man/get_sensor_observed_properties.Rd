@@ -31,6 +31,7 @@ This function obtains the observed properties by
 procedure/sensor through Sensor Observation Service (SOS).
 }
 \examples{
+\dontrun{
 FP <- get_sensor_observed_properties(
   sosURL = "http://getit.lteritalia.it/observations/service",
   procedure = "http://www.get-it.it/sensors/getit.lteritalia.it/procedure/noOwnerDeclared/noModelDeclared/noSerialNumberDeclared/1286194C-A5DF-11DF-8ED7-1602DFD72097"
@@ -54,6 +55,7 @@ NIVA <- get_sensor_observed_properties(
   procedure = "Hydrometric_Station"
 )
 NIVA
+}
 
 }
 \author{

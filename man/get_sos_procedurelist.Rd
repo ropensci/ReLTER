@@ -7,7 +7,7 @@
 get_sos_procedurelist(sosURL)
 }
 \arguments{
-\item{sosHost}{A \code{list}. An SOS endpoint (e.g.
+\item{sosURL}{A \code{list}. An SOS endpoint (e.g.
 \url{http://getit.lteritalia.it/observations/sos/kvp?}).}
 }
 \value{

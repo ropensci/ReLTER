@@ -8,9 +8,9 @@ message: 'To cite package "ReLTER" in publications use:'
 type: software
 license: GPL-3.0-or-later
 title: 'ReLTER: An Interface for the ''eLTER'' Community'
-version: 1.2.0
+version: 2.0.0
 doi: 10.5281/zenodo.5576813
-date-released: 2022-04-19
+date-released: 2022-09-30
 abstract: 'ReLTER provides access to DEIMS-SDR (https://deims.org/), and allows interaction
   with data and software implemented by eLTER Research Infrastructure (RI) thus improving
   data sharing among European LTER projects. ReLTER uses the R language to access
@@ -47,7 +47,7 @@ authors:
   orcid: https://orcid.org/0000-0001-6207-5188
 preferred-citation:
   type: generic
-  title: 'ropensci/ReLTER: ReLTER v1.2.0'
+  title: 'ropensci/ReLTER: ReLTER v2.0.0'
   authors:
   - family-names: Oggioni
     given-names: Alessandro

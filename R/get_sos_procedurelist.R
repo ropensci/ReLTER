@@ -5,7 +5,7 @@
 #' store into a
 #' \href{http://opengeospatial.github.io/e-learning/sos/text/index.html}{SOS
 #' (Sensor Observations Service OGC)}.
-#' @param sosHost A `list`. An SOS endpoint (e.g.
+#' @param sosURL A `list`. An SOS endpoint (e.g.
 #' \url{http://getit.lteritalia.it/observations/sos/kvp?}).
 #' @return The output of the function is a `list` with the name and URI
 #' (Uniform Resource Identifier) of each procedure.
