@@ -8,7 +8,6 @@
 #' @return The output of the function is a `tibble` with main features of the
 #' site and the observed properties collected.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @importFrom httr RETRY content
 #' @importFrom utils capture.output
 #' @importFrom dplyr as_tibble
 #' @keywords internal

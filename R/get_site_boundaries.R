@@ -17,7 +17,6 @@
 #' @importFrom tibble tribble
 #' @importFrom dplyr as_tibble
 #' @importFrom jsonlite fromJSON
-#' @importFrom httr RETRY content
 #' @importFrom utils capture.output
 #' @importFrom sf st_as_sf write_sf st_write
 #' @importFrom leaflet leaflet addTiles addPolygons

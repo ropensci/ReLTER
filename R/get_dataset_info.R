@@ -13,15 +13,12 @@
 #' @return The output of the function is a `tibble` with main features
 #' of the site and the related resources collected by site.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @importFrom httr RETRY content
 #' @importFrom dplyr as_tibble
 #' @importFrom utils capture.output
 #' @importFrom sf st_as_sf st_is_valid
 #' @importFrom leaflet leaflet addTiles addPolygons
 #' @importFrom Rdpack reprompt
 #' @references
-#'   \insertRef{httrR}{ReLTER}
-#'
 #'   \insertRef{dplyrR}{ReLTER}
 #'
 #'   \insertRef{utilsR}{ReLTER}

@@ -17,7 +17,9 @@
 #' UOM refers to a NERC vocabulary term (e.g.
 #' http://vocab.nerc.ac.uk/collection/P06/current/UPAA/ for °C).
 #' @author Alessandro Oggioni, phD \email{oggioni.a@@irea.cnr.it}
-#' @importFrom SPARQL SPARQL
+#' @importFrom httr2 request req_url_query req_method req_headers
+#' @importFrom httr2 req_user_agent req_retry req_perform resp_check_status
+#' @importFrom httr2 resp_body_json
 #' @importFrom xml2 xml_attr xml_find_all xml_text
 #' @importFrom tibble tibble add_row tibble_row add_column
 #' @export
@@ -202,12 +204,17 @@ get_sensor_observed_properties <- function(sosURL, procedure) {
       ORDER BY ASC(?l)
       LIMIT 1"
           )
-          qudtUOM <- SPARQL::SPARQL(
-            url = ireaEndpoint,
-            query = ireaQuery,
-            curl_args = list(.encoding = "UTF-8")
-          )
-          qudtTibble[i, ] <- qudtUOM$results[, c(3:4)]
+          qudtUOM <- httr2::request(ireaEndpoint) %>%
+            httr2::req_url_query(query = ireaQuery) %>%
+            httr2::req_method("POST") %>%
+            httr2::req_headers(Accept = "application/sparql-results+json") %>%
+            httr2::req_user_agent("ReLTER dev") %>%
+            httr2::req_retry(max_tries = 3, max_seconds = 120) %>%
+            httr2::req_perform()
+          httr2::resp_check_status(qudtUOM)
+          qudtUOM_JSON <- httr2::resp_body_json(qudtUOM)
+          qudtTibble[i, 1] <- qudtUOM_JSON$results$bindings[[1]]$code$value
+          qudtTibble[i, 2] <- qudtUOM_JSON$results$bindings[[1]]$s$value
         }
       }
     }

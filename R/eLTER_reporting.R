@@ -507,7 +507,15 @@ reporting_compose_file_name <- function(
 #' @param deimsid A character. The DEIMS ID of the site from
 #' DEIMS-SDR website. DEIMS ID information
 #' \href{https://deims.org/docs/deimsid.html}{here}.
-#' @param data_type A `character`
+#' @param data_type A `character`. Data must be provided by one of measurement
+#' or mapping.
+#' @param data_orientation A `character`. Data must be provided in to ways by
+#' row or by column. Indicate 'row' if each observation, defined as the
+#' combination of location, time, variable and value, is organised in a single
+#' row. Indicate 'column' if each observation is organised as spreadsheet with
+#' location and time in rows, variables in column and value as cell entry. The
+#' method, the unit as well as additional information (like quality flags) for
+#' the variable needs to be defined in the METHOD if possible.
 #' @param filename optional filename associated with the object, of the form
 #' provided as output by the function `reporting_compose_file_name`
 #' @seealso Peterseil, Geiger et al. (2020)
@@ -536,10 +544,14 @@ reporting_compose_file_name <- function(
 #'   version = version
 #' )
 #'
-#' data <- dplyr::tribble(
-#'   ~id, ~value,
-#'   1, 7.5,
-#'   2, 4.2
+#' data <- tibble::tribble(
+#'                                                 ~`SITE_CODE`, ~`VARIABLE`,      ~`TIME`, ~`VALUE`,  ~`UNIT`,
+#'      "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6",      "TEMP", "2016-03-15",    "5.5",     "°C",
+#'      "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6",      "PREC", "2016-03-03",   "10.2",     "mm",
+#'      "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6",      "TEMP", "2016-02-15",    "2.5",     "°C",
+#'      "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6",      "NH4N",    "2016-03",    "5.5",   "mg/l",
+#'      "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6",      "SO4S",    "2016-03",   "10.2",   "mg/l",
+#'      "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6",        "CA",    "2016-03",    "2.5",   "mg/l"
 #' )
 #' station <- dplyr::tribble(
 #'   ~SITE_CODE, ~STATION_CODE, ~STYPE, ~LAT,      ~LON,       ~ALTITUDE,
@@ -555,7 +567,9 @@ reporting_compose_file_name <- function(
 #'  deimsid = deimsid,
 #'  data = data,
 #'  station = station,
-#'  method = method
+#'  method = method,
+#'  data_type = "measurement",
+#'  data_orientation = "row"
 #' )
 #' 
 #' }
@@ -566,10 +580,12 @@ reporting_produce_data_object_v1.3 <- function(data = NULL, station = NULL,
                                                method = NULL, reference = NULL,
                                                event = NULL, sample = NULL,
                                                licence = "", deimsid = "",
-                                               data_type = "measurement",
+                                               data_type, data_orientation,
                                                filename = NULL) {
   if (!data_type %in% c("measurement", "mapping"))
     stop("data type must be one of measurement or mapping")
+  if (!data_type %in% c("row", "column"))
+    stop("data orientation must be one of row or column")
   return(list(
     filename = filename,
     type = data_type,

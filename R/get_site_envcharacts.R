@@ -11,7 +11,6 @@
 #' ecosystem land use, EUNIS habitat, geoBon biome, geology, hydrology, soils
 #' and vegetation.
 #' @author Alessandro Oggioni, phD (2021) \email{oggioni.a@@irea.cnr.it}
-#' @importFrom httr RETRY content
 #' @importFrom utils capture.output
 #' @importFrom dplyr as_tibble
 #' @keywords internal

@@ -10,7 +10,6 @@
 #' status, yearEstablished, yearClosed, hierarchy, siteName, short name, site
 #' type, protection level, images.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @importFrom httr RETRY content
 #' @importFrom utils capture.output
 #' @importFrom dplyr as_tibble
 #' @keywords internal

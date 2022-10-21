@@ -45,7 +45,9 @@
 #' @importFrom dplyr group_by
 #' @importFrom lubridate ymd_hms
 #' @importFrom tibble tibble add_row tibble_row as_tibble
-#' @importFrom SPARQL SPARQL
+#' @importFrom httr2 request req_url_query req_method req_headers
+#' @importFrom httr2 req_user_agent req_retry req_perform resp_check_status
+#' @importFrom httr2 resp_body_json
 #' @importFrom sf st_as_sf
 #' @importFrom leaflet leaflet addTiles addMarkers
 #' @importFrom units set_units
@@ -85,22 +87,6 @@
 #' # the URI of the label of first two columns
 #' # of `airTemp`
 #' attributes(airTemp)$uri
-#'
-#' # plot
-#' library(ggforce)
-#' library(units)
-#' ggplot2::ggplot(airTemp, ggplot2::aes(
-#'     x = phenomenonTime, y = Air_Temperature
-#'   )) +
-#'   ggplot2::geom_line(data = airTemp, color = "blue") +
-#'   ggplot2::geom_point(data = airTemp, color = "blue", size = 1)
-#' # same for °F
-#' ggplot2::ggplot(airTemp, ggplot2::aes(
-#'     x = phenomenonTime, y = Air_Temperature
-#'   )) +
-#'   ggplot2::geom_line(data = airTemp, color = "blue") +
-#'   ggplot2::geom_point(data = airTemp, color = "blue", size = 1) +
-#'   ggforce::scale_y_unit(unit = "°F")
 #'   
 #' }
 #' ## End (Not run)
@@ -259,12 +245,17 @@ get_sos_obs <- function(sosURL, procedure, foi = NULL, show_map = FALSE) {
       ORDER BY ASC(?l)
       LIMIT 1"
           )
-          qudtUOM <- SPARQL::SPARQL(
-            url = ireaEndpoint,
-            query = ireaQuery,
-            curl_args = list(.encoding = "UTF-8")
-          )
-          qudtTibble[i, ] <- qudtUOM$results[, c(3:4)]
+          qudtUOM <- httr2::request(ireaEndpoint) %>%
+            httr2::req_url_query(query = ireaQuery) %>%
+            httr2::req_method("POST") %>%
+            httr2::req_headers(Accept = "application/sparql-results+json") %>%
+            httr2::req_user_agent("ReLTER dev") %>%
+            httr2::req_retry(max_tries = 3, max_seconds = 120) %>%
+            httr2::req_perform()
+          httr2::resp_check_status(qudtUOM)
+          qudtUOM_JSON <- httr2::resp_body_json(qudtUOM)
+          qudtTibble[i, 1] <- qudtUOM_JSON$results$bindings[[1]]$code$value
+          qudtTibble[i, 2] <- qudtUOM_JSON$results$bindings[[1]]$s$value
         }
       }
     }

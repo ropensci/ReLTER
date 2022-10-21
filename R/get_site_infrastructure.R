@@ -9,7 +9,6 @@
 #' site and infrastructure information where available, such as:
 #' power supply, accessibility, maintenaince interval, etc.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @importFrom httr RETRY content
 #' @importFrom utils capture.output
 #' @importFrom dplyr as_tibble
 #' @keywords internal

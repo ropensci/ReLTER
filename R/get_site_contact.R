@@ -9,7 +9,6 @@
 #' site and the contact information, such as: site manager, operation
 #' organization, metadata provider, founding agency and site url.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @importFrom httr RETRY content
 #' @importFrom utils capture.output
 #' @importFrom dplyr as_tibble
 #' @keywords internal
