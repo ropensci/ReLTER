@@ -509,6 +509,7 @@ reporting_compose_file_name <- function(
 #' \href{https://deims.org/docs/deimsid.html}{here}.
 #' @param data_type A `character`. Data must be provided by one of measurement
 #' or mapping.
+#' Default 'measurement'
 #' @param data_orientation A `character`. Data must be provided in to ways by
 #' row or by column. Indicate 'row' if each observation, defined as the
 #' combination of location, time, variable and value, is organised in a single
@@ -516,6 +517,7 @@ reporting_compose_file_name <- function(
 #' location and time in rows, variables in column and value as cell entry. The
 #' method, the unit as well as additional information (like quality flags) for
 #' the variable needs to be defined in the METHOD if possible.
+#' Default 'row'.
 #' @param filename optional filename associated with the object, of the form
 #' provided as output by the function `reporting_compose_file_name`
 #' @seealso Peterseil, Geiger et al. (2020)
@@ -567,9 +569,7 @@ reporting_compose_file_name <- function(
 #'  deimsid = deimsid,
 #'  data = data,
 #'  station = station,
-#'  method = method,
-#'  data_type = "measurement",
-#'  data_orientation = "row"
+#'  method = method
 #' )
 #' 
 #' }
@@ -580,12 +580,13 @@ reporting_produce_data_object_v1.3 <- function(data = NULL, station = NULL,
                                                method = NULL, reference = NULL,
                                                event = NULL, sample = NULL,
                                                licence = "", deimsid = "",
-                                               data_type, data_orientation,
+                                               data_type = "measurement",
+                                               #data_orientation = "row",
                                                filename = NULL) {
   if (!data_type %in% c("measurement", "mapping"))
     stop("data type must be one of measurement or mapping")
-  if (!data_type %in% c("row", "column"))
-    stop("data orientation must be one of row or column")
+  # if (!data_orientation %in% c("row", "column"))
+  #   stop("data orientation must be one of row or column")
   return(list(
     filename = filename,
     type = data_type,
