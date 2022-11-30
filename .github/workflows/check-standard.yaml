@@ -84,14 +84,12 @@ jobs:
             libgdal-dev \
             libjq-dev \
             libssl-dev \
-            libcurl4-openssl-dev \
             libxml2-dev \
             libprotobuf-dev \
             protobuf-compiler \
             libv8-dev \
             libssl-dev \
             libcairo2-dev \
-            libgit2-dev \
-            libcurl4-gnutls-dev
+            libgit2-dev
 
       - uses: r-lib/actions/check-r-package@v1

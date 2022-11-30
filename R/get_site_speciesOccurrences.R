@@ -134,10 +134,12 @@ get_site_speciesOccurrences <- function(
   occ_df <- NULL
   if ("gbif" %in% list_DS) {
     occ_df_gbif <- site_occ_spocc$gbif$data[[1]] %>%
-      tibble::as_tibble()
+      tibble::as_tibble() %>%
+      dplyr::mutate(institutionCode = NA)
     if ("inat" %in% list_DS && exclude_inat_from_gbif) {
       occ_df_gbif <- occ_df_gbif %>%
-        dplyr::filter(institutionCode != "iNaturalist")
+        dplyr::filter(is.na(institutionCode)) %>%
+        dplyr::mutate(institutionCode = prov)
     }
     occ_df_gbif <- occ_df_gbif %>%
       dplyr::select(
@@ -265,11 +267,11 @@ get_site_speciesOccurrences <- function(
     )
     names(occ_list) <- unique(occ_df$prov)
     if ("gbif" %in% list_DS) {
-      occ_list$gbif <- site_occ_spocc$gbif$data[[1]]
+      occ_list$gbif <- site_occ_spocc$gbif$data[[1]] %>%
+        dplyr::mutate(institutionCode = NA)
       occ_list$gbif <- occ_list$gbif %>%
-        dplyr::filter(
-          institutionCode != "iNaturalist"
-        )
+        dplyr::filter(is.na(institutionCode)) %>%
+        dplyr::mutate(institutionCode = prov)
       if (nrow(occ_list$gbif) != 0) {
         occ_list$gbif <- sf::st_as_sf(
           occ_list$gbif,
@@ -308,11 +310,11 @@ get_site_speciesOccurrences <- function(
     )
     names(occ_list) <- unique(occ_df$prov)
     if ("gbif" %in% list_DS) {
-      occ_list$gbif <- site_occ_spocc$gbif$data[[1]]
+      occ_list$gbif <- site_occ_spocc$gbif$data[[1]] %>%
+        dplyr::mutate(institutionCode = NA)
       occ_list$gbif <- occ_list$gbif %>%
-        dplyr::filter(
-          institutionCode != "iNaturalist"
-        )
+        dplyr::filter(is.na(institutionCode)) %>%
+        dplyr::mutate(institutionCode = prov)
       occ_list$gbif <- sf::st_as_sf(
         occ_list$gbif,
         coords = c("longitude", "latitude"),

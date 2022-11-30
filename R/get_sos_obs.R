@@ -63,7 +63,7 @@
 #' # FP <- get_sos_obs(
 #' #   sosURL = "http://getit.lteritalia.it/observations/service",
 #' #   procedure = "http://www.get-it.it/sensors/getit.lteritalia.it/procedure/noOwnerDeclared/noModelDeclared/noSerialNumberDeclared/1286194C-A5DF-11DF-8ED7-1602DFD72097",
-#' #   foi = c("http://www.get-it.it/sensors/getit.lteritalia.it/sensors/foi/SSF/SP/4326/45.3245/7.90412", "http://www.get-it.it/sensors/getit.lteritalia.it/sensors/foi/SSF/SP/4326/45.322/7.90251"),
+#' #   foi = c("http://www.get-it.it/sensors/getit.lteritalia.it/sensors/foi/SSF/SP/4326/45.9547/8.63403"),
 #' #   show_map = TRUE
 #' # )
 #' # FP
