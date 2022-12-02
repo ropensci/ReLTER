@@ -11,7 +11,7 @@
     https://doi.org/10.5281/zenodo.5576813\n\n",
     "Type 'citation(package = 'ReLTER')' on how to cite R packages in
     publications.\n\n",
-    "Currently the DEIMS-SDR base URL is setted as: ", deimsbaseurl,
+    "Currently the DEIMS-SDR base URL is set as: ", deimsbaseurl,
     ".\nFor change it please use set_deims_base_url()."
   )
   packageStartupMessage(startMessage)

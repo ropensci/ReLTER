@@ -93,3 +93,29 @@ get_id <- function(deimsid, resource = "sites", test, ...) {
   jj
 
 }
+
+#' INTERNAL FUNCTION for package development only. Add new internal json for local tests.
+#' @param deimsid A `character`. It is the DEIMS ID of the site, activity or
+#' dataset from DEIMS-SDR website. DEIMS ID information
+#' \href{https://deims.org/docs/deimsid.html}{here}.
+#' @param resource Character: one among `"sites"` (default), `"activities"` or
+#'  `"datasets"` (`"networks"` currently not tested).
+#' @noRd
+.save_id<-function(resource, deimsid, ...){
+  # code to store locally
+  if (resource == "networks") {
+    # for Network
+    url <- paste0("https://deims.org/api/sites?network=", deimsid)
+  } else {
+    # for other entities
+    url <- file.path("https://deims.org/api", resource, deimsid)
+  }
+  export <- httr::RETRY("GET", url = url, ...)
+  jj <- suppressMessages(httr::content(
+          export, "text", encoding = "UTF-8")
+        )
+  saveRDS(jj, file.path(
+    system.file(file.path("deimsid", resource), package = "ReLTER"),
+    paste0(deimsid, ".rds")
+  ))
+}
