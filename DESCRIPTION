@@ -120,6 +120,6 @@ VignetteBuilder: knitr
 URL: https://github.com/ropensci/ReLTER
 BugReports: https://github.com/ropensci/ReLTER/issues
 Config/testthat/edition: 3
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
 Language: en-GB
 Roxygen: list(markdown = TRUE)
