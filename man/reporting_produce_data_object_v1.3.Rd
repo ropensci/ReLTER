@@ -36,10 +36,21 @@ reporting_produce_data_object_v1.3(
 DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here}.}
 
-\item{data_type}{A \code{character}}
+\item{data_type}{A \code{character}. Data must be provided by one of measurement
+or mapping.
+Default 'measurement'}
 
 \item{filename}{optional filename associated with the object, of the form
 provided as output by the function \code{reporting_compose_file_name}}
+
+\item{data_orientation}{A \code{character}. Data must be provided in to ways by
+row or by column. Indicate 'row' if each observation, defined as the
+combination of location, time, variable and value, is organised in a single
+row. Indicate 'column' if each observation is organised as spreadsheet with
+location and time in rows, variables in column and value as cell entry. The
+method, the unit as well as additional information (like quality flags) for
+the variable needs to be defined in the METHOD if possible.
+Default 'row'.}
 }
 \value{
 list with eLTER reporting format slots
@@ -71,10 +82,14 @@ filename <- reporting_compose_file_name(
   version = version
 )
 
-data <- dplyr::tribble(
-  ~id, ~value,
-  1, 7.5,
-  2, 4.2
+data <- tibble::tribble(
+                                                ~`SITE_CODE`, ~`VARIABLE`,      ~`TIME`, ~`VALUE`,  ~`UNIT`,
+     "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6",      "TEMP", "2016-03-15",    "5.5",     "°C",
+     "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6",      "PREC", "2016-03-03",   "10.2",     "mm",
+     "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6",      "TEMP", "2016-02-15",    "2.5",     "°C",
+     "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6",      "NH4N",    "2016-03",    "5.5",   "mg/l",
+     "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6",      "SO4S",    "2016-03",   "10.2",   "mg/l",
+     "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6",        "CA",    "2016-03",    "2.5",   "mg/l"
 )
 station <- dplyr::tribble(
   ~SITE_CODE, ~STATION_CODE, ~STYPE, ~LAT,      ~LON,       ~ALTITUDE,
