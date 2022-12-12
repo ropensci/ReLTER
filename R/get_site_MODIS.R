@@ -25,7 +25,8 @@
 #' @param output_dir a `character`, where to save downloaded rasters
 #' @param plot_ts a `boolean`, whether to plot the time series, 
 #'    default TRUE
-#'    
+#' @param output_proj a `character`, the EPSG code of desired output projection
+#' default is "3035", the European LAEA coordinate reference system.    
 #' @details Certain layers from one of these MODIS products are acquired.
 #' from:
 #'    "LST_3band_emissivity_Daily_1km (M*D21A1D)" and
@@ -49,19 +50,22 @@
 #' @export
 #' @examples
 #'  \dontrun{
+#' # Example in Northern Negev LTER
 #' deimsid <- "https://deims.org/871a90b2-e372-456a-93e3-518ad1e11239"
 #' from_date <- "2018.01.01"
-#' to_date <- "2019.12.31"
-#' output_dir <- "/home/micha/work/tmp/MODIS"
+#' to_date <- "2019.06.30"
+#' output_dir <- tempdir()
 #' ReLTER::get_site_MODIS(deimsid, dataset="VI",
-#'     from_date=from_date, to_date=to_date, output_dir=output_dir)
+#'     from_date=from_date, to_date=to_date,
+#'     output_dir=output_dir, plot_ts=FALSE, output_proj="6991")
 #' }
 #'
 ### function get_site_MODIS
 get_site_MODIS <- function(deimsid, dataset = "VI",
                          from_date='2010.01.01', to_date='2020.31.12',
                          output_dir=NULL,
-                         plot_ts=TRUE) {
+                         plot_ts=TRUE,
+                         output_proj = "3035") {
   prod <- dplyr::case_when(
     dataset == "VI" ~ "M*D13Q1",
     dataset == "LST_day" ~ "M*D21A1D",
@@ -76,11 +80,11 @@ get_site_MODIS <- function(deimsid, dataset = "VI",
   if (dataset == "VI") {
     bands <- c("NDVI", "EVI")
     scale_val <- TRUE
-    output_res  <-  250
+    output_res  <-  "250"
   } else {
     bands <- "LST_1KM"
     scale_val <- FALSE
-    output_res = 1000
+    output_res = "1000"
     }
   # check that site has a boundary
   boundary <- ReLTER::get_site_info(
@@ -91,7 +95,9 @@ get_site_MODIS <- function(deimsid, dataset = "VI",
     stop("No boundary for requested DEIMS site.")
     return(NULL)
   }
-  bbox = sf::st_bbox(boundary)
+  # Reproject to target CRS, then get bbox
+  bndry <- sf::st_transform(boundary, as.numeric(output_proj))
+  bbox = sf::st_bbox(bndry)
   # Make sure we have login credentials for EarthData
   user <- Sys.getenv("earthdata_user")
   pass <- Sys.getenv("earthdata_pass")
@@ -114,7 +120,8 @@ get_site_MODIS <- function(deimsid, dataset = "VI",
             error=function(e) {stop("Cannot create: ", output_dir, e)})
   }
   # Read in a standard json config file for MODIStsp
-  cfg <- file.path("extdata", "modistsp_options.json")
+  # TODO: remove "inst"
+  cfg <- file.path("inst", "extdata", "modistsp_options.json")
   # Which downloader
   dldr <- system("which aria2c", intern = TRUE)
   if (is.null(dldr) | dldr=="") {
@@ -137,8 +144,9 @@ get_site_MODIS <- function(deimsid, dataset = "VI",
                      start_date = from_date,
                      end_date = to_date,
                      # sensor = "Aqua",  # "Both" set in json options
-                     # output_proj = 3035,  # set in json options file
-                     output_res = output_res,
+                     # output_proj = "3035",  # set in json options file
+                     out_res = output_res,
+                     output_proj = as.character(output_proj),
                      downloader = dldr, # "html" or "aria2" if it is installed
                      scale_val = scale_val,
                      verbose = FALSE
@@ -204,29 +212,54 @@ plot_timeseries = function(deimsid, dataset, output_dir) {
   
   # Get subdirs for each product
   dir_list <- list.dirs(output_dir, full.names = TRUE, recursive = TRUE)
-  # Read all *.tif into terra::rast stack
-  tif_list <- list.files(output_dir, pattern = ".tif$", full.names = TRUE)
-  stk <- terra::rast(tif_list)
-  # Convert boundary to terra vect
-  bndry <- terra::vect(boundary)
-  mean_values <- terra::extract(stk, bndry, fun=mean,
-                                ID=FALSE, exact=TRUE, bind=FALSE, raw=FALSE)
-
-  pl = ggplot2::ggplot(data = mean_values) +
-    ggplot2::geom_line(aes(x=Date, y=Value, color = Statistic),
-              size = 0.6, alpha=0.7 ) + 
-    ggplot2::geom_point(aes(x=Date, y=Value, color = Statistic),
-               size = 0.6, alpha=0.5 ) + 
-    #scale_color_manual(values = clrs) +
-    ggplot2::ggtitle(paste(site, prod)) +
-    ggplot2::theme(axis.text = element_text(size=10),
-          axis.title = element_text(size=12),
-          title = element_text(size=12, face="bold"))
-  #print(pl)
-
-  # save merged plot
-  png_file = paste(site_name, dataset, "timeseries.png", sep="_")
-  png_path = file.path(output_dir, png_file)
-  ggplot2::ggsave(png_path)
-  return(png_path)
+  # Loop over directories and create a time series plot for each
+  pths <- lapply(dir_list, function(d){
+    # Read all *.tif into terra::rast stack
+    tif_list <- list.files(d, pattern = ".tif$", full.names = TRUE)
+    if (length(tif_list) == 0) {
+      # This is an intermediate directory, not a leaf. Just skip
+      continue
+    }
+    stk <- terra::rast(tif_list)
+    
+    # Get dates from file names
+    date_list <- lapply(tif_list, function(t){
+      # Underscore is MODIStsp default separator
+      dte = gsub(pattern=".tif", replacement="", x=basename(t))
+      parts <- unlist(strsplit(dte, split = "_")) 
+      # Get real date
+      dte <- strptime(paste(parts[length(parts)-1],
+                            parts[length(parts)]), format="%Y %j")
+      # Convert back to string
+      return(strftime(dte, "%Y-%m-%d"))
+    })
+    dates_df <- do.call(rbind, date_list)
+    names(dates_df) <- "Date"
+    # Convert boundary to terra vect
+    bndry <- terra::vect(boundary)
+    mean_values <- terra::extract(stk, bndry, fun=mean,
+                                  ID=FALSE, exact=TRUE, bind=FALSE, raw=FALSE)
+    # Join dates
+    mean_values <- cbind(mean_values, dates_df)
+    pl = ggplot2::ggplot(data = mean_values) +
+      ggplot2::geom_line(aes(x=Date, y=Value, color = Statistic),
+                size = 0.6, alpha=0.7 ) + 
+      ggplot2::geom_point(aes(x=Date, y=Value, color = Statistic),
+                 size = 0.6, alpha=0.5 ) + 
+      #scale_color_manual(values = clrs) +
+      ggplot2::ggtitle(paste(site, prod)) +
+      ggplot2::theme(axis.text = element_text(size=10),
+            axis.title = element_text(size=12),
+            title = element_text(size=12, face="bold"))
+    #print(pl)
+  
+    # save merged plot
+    png_file = paste(site_name, dataset, "timeseries.png", sep="_")
+    png_path = file.path(output_dir, png_file)
+    ggplot2::ggsave(png_path)
+  
+    return(png_path)
+  })
+  # Return list of paths to png files
+  return(pths)
 }

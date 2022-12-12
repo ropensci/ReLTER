@@ -1,7 +1,7 @@
 {
   "selcat": "Ecosystem Variables - Vegetation Indices",
   "selprod": "Vegetation Indexes_16Days_250m (M*D13Q1)",
-  "prod_version": "6",
+  "prod_version": "061",
   "sensor": "Both",
   "bandsel": "NDVI",
   "quality_bandsel": null,
@@ -14,11 +14,11 @@
   "spatmeth": "bbox",
   "spafile": "",
   "drawnext": null,
-  "out_projsel": "User Defined",
+  "out_projsel": "Native",
   "output_proj": "3035",
-  "out_res_sel": "User Defined",
+  "out_res_sel": "Resampled",
   "out_res": 250,
-  "resampling": "near",
+  "resampling": "bilinear",
   "reprocess": false,
   "delete_hdf": true,
   "nodata_change": false,
@@ -26,5 +26,5 @@
   "out_format": "GTiff",
   "ts_format": "GDAL VRT",
   "compress": "LZW",
-  "MODIStspVersion": "2.0.5"
+  "MODIStspVersion": "2.0.9"
 }
