@@ -37,8 +37,8 @@
 #' NOTE that the default `output_dir` is tempdir(), so the downloaded files
 #' will be deleted when exiting R.
 #' 
-#' @return Full path to the downloaded Geotiff rasters.
-#' This folder will contain requested datasets, cropped to the site boundaries.
+#' @return Full path of all downloaded Geotiff files,
+#' cropped to the site boundaries.
 #' 
 #' @author Micha Silver, phD (2020) \email{silverm@@post.bgu.ac.il}
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
@@ -49,7 +49,12 @@
 #' @export
 #' @examples
 #'  \dontrun{
-#' 
+#' deimsid <- "https://deims.org/871a90b2-e372-456a-93e3-518ad1e11239"
+#' from_date <- "2018.01.01"
+#' to_date <- "2019.12.31"
+#' output_dir <- "/home/micha/work/tmp/MODIS"
+#' ReLTER::get_site_MODIS(deimsid, dataset="VI",
+#'     from_date=from_date, to_date=to_date, output_dir=output_dir)
 #' }
 #'
 ### function get_site_MODIS
@@ -69,8 +74,14 @@ get_site_MODIS <- function(deimsid, dataset = "VI",
     return(NULL)
   }
   if (dataset == "VI") {
-    bands <-  c("NDVI", "EVI")
-  } else {bands <- "LST_1KM" }
+    bands <- c("NDVI", "EVI")
+    scale_val <- TRUE
+    output_res  <-  250
+  } else {
+    bands <- "LST_1KM"
+    scale_val <- FALSE
+    output_res = 1000
+    }
   # check that site has a boundary
   boundary <- ReLTER::get_site_info(
     deimsid,
@@ -111,11 +122,13 @@ get_site_MODIS <- function(deimsid, dataset = "VI",
   } else {dldr <- "aria2"}
   
   # All set, get the requested rasters
+  t0 <- Sys.time()
+  message(t0, " - Download starting.")
   MODIStsp::MODIStsp(gui = FALSE,
                      opts_file = cfg,
                      out_folder = output_dir,
                      out_folder_mod = tempdir(),
-                     #spafile = boundary,
+                     #spafile = boundary, # We are using bbox
                      bandsel = bands,
                      spameth = "bbox",
                      bbox = bbox,
@@ -123,18 +136,26 @@ get_site_MODIS <- function(deimsid, dataset = "VI",
                      password = pass,
                      start_date = from_date,
                      end_date = to_date,
-                     #sensor = "Aqua",  # "Terra" or "Both"
+                     # sensor = "Aqua",  # "Both" set in json options
+                     # output_proj = 3035,  # set in json options file
+                     output_res = output_res,
                      downloader = dldr, # "html" or "aria2" if it is installed
+                     scale_val = scale_val,
                      verbose = FALSE
   )
-  cnt_dl <- length(list.files(output_dir))
+  t1 <- Sys.time()
+  message(t1, " - Download completed.")
+  elapsed <- difftime(t1, t0, "mins")
+  message("Elapsed time: ", sprintf("%.2f", elapsed), "minutes")
+  dl_list <- list.files(output_dir, pattern=".tif$", recursive=TRUE)
+  cnt_dl <- length(dl_list)
   message("Downloaded: ", cnt_dl, " MODIS files")
   if (plot_ts) {
     plot_png <- ReLTER::plot_timeseries(deimsid,
                                         dataset, output_dir)
     message("Timeseries plot saved to", plot_png)
   }
-  return(output_dir)
+  return(dl_list)
 }
 
 
@@ -181,6 +202,8 @@ plot_timeseries = function(deimsid, dataset, output_dir) {
   site_name <- str_replace_all(boundary$title, "[^[:alnum:]]", "_")
   site_name <- str_replace_all(site_name, "_+", "_")
   
+  # Get subdirs for each product
+  dir_list <- list.dirs(output_dir, full.names = TRUE, recursive = TRUE)
   # Read all *.tif into terra::rast stack
   tif_list <- list.files(output_dir, pattern = ".tif$", full.names = TRUE)
   stk <- terra::rast(tif_list)
