@@ -42,8 +42,6 @@ tDataset
 
 }
 \references{
-\insertRef{httrR}{ReLTER}
-
 \insertRef{dplyrR}{ReLTER}
 
 \insertRef{utilsR}{ReLTER}

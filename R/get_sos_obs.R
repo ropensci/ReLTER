@@ -4,9 +4,9 @@
 #' Service (SOS).
 #' @param sosURL A `character`. The endpoint of the Sensor Observation Service
 #' (SOS) service.
-#' @param procedure A `character`. It is a procedure/sensor ID.
-#' Possible value are the FOI(s) ID, which can be obtained via the
-#' `get_sos_procedure_info()` function.
+#' @param procedure A `character`. The procedure/sensor ID.
+#' Possible value are the Feature of Interest(FOI) ID,
+#' which can be obtained via the `get_sos_procedure_info()` function.
 #' @param foi A `character`. This parameter selects which Feature(s) Of
 #' Interest (FOI(s)) are retrieved and returned in the observations.
 #' Possible value are the FOI(s) ID, which can be obtained via the

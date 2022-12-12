@@ -10,9 +10,9 @@ get_sos_obs(sosURL, procedure, foi = NULL, show_map = FALSE)
 \item{sosURL}{A \code{character}. The endpoint of the Sensor Observation Service
 (SOS) service.}
 
-\item{procedure}{A \code{character}. It is a procedure/sensor ID.
-Possible value are the FOI(s) ID, which can be obtained via the
-\code{get_sos_procedure_info()} function.}
+\item{procedure}{A \code{character}. The procedure/sensor ID.
+Possible value are the Feature of Interest(FOI) ID,
+which can be obtained via the \code{get_sos_procedure_info()} function.}
 
 \item{foi}{A \code{character}. This parameter selects which Feature(s) Of
 Interest (FOI(s)) are retrieved and returned in the observations.
@@ -76,7 +76,7 @@ converted in °F}
 # FP <- get_sos_obs(
 #   sosURL = "http://getit.lteritalia.it/observations/service",
 #   procedure = "http://www.get-it.it/sensors/getit.lteritalia.it/procedure/noOwnerDeclared/noModelDeclared/noSerialNumberDeclared/1286194C-A5DF-11DF-8ED7-1602DFD72097",
-#   foi = c("http://www.get-it.it/sensors/getit.lteritalia.it/sensors/foi/SSF/SP/4326/45.3245/7.90412", "http://www.get-it.it/sensors/getit.lteritalia.it/sensors/foi/SSF/SP/4326/45.322/7.90251"),
+#   foi = c("http://www.get-it.it/sensors/getit.lteritalia.it/sensors/foi/SSF/SP/4326/45.9547/8.63403"),
 #   show_map = TRUE
 # )
 # FP
@@ -100,22 +100,6 @@ units::set_units(airTemp$Air_Temperature, "°F")
 # the URI of the label of first two columns
 # of `airTemp`
 attributes(airTemp)$uri
-
-# plot
-library(ggforce)
-library(units)
-ggplot2::ggplot(airTemp, ggplot2::aes(
-    x = phenomenonTime, y = Air_Temperature
-  )) +
-  ggplot2::geom_line(data = airTemp, color = "blue") +
-  ggplot2::geom_point(data = airTemp, color = "blue", size = 1)
-# same for °F
-ggplot2::ggplot(airTemp, ggplot2::aes(
-    x = phenomenonTime, y = Air_Temperature
-  )) +
-  ggplot2::geom_line(data = airTemp, color = "blue") +
-  ggplot2::geom_point(data = airTemp, color = "blue", size = 1) +
-  ggforce::scale_y_unit(unit = "°F")
   
 }
 ## End (Not run)
