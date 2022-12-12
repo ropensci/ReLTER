@@ -75,6 +75,7 @@ Imports:
     jsonlite,
     leaflet (>= 2.1.1),
     magrittr,
+    MODIStsp,
     qrcode,
     raster (>= 3.3-13),
     rgeos,
