@@ -48,7 +48,6 @@
 <li class="active nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/datasets_map.html">Related resources delivered by EU eLTER sites</a>
     <a class="dropdown-item" href="../articles/occurrences_into_site.html">How to retrieve occurrence records by exploiting the {`ReLTER`} get_site_speciesOccurrences() function</a>
     <a class="dropdown-item" href="../articles/resources_delivered_eu_networks.html">Related resources delivered by EU eLTER sites</a>
     <a class="dropdown-item" href="../articles/rocker_ReLTER.html">Run ReLTER in a Docker container</a>
@@ -85,7 +84,8 @@
 <div class="row">
   <main id="main"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>How to retrieve occurrence records by exploiting the {`ReLTER`} get_site_speciesOccurrences() function</h1>
-                        <h4 data-toc-skip class="author">Alessandro Oggioni, Paolo Tagliolato, Martina Zilioli</h4>
+                        <h4 data-toc-skip class="author">Alessandro
+Oggioni, Paolo Tagliolato, Martina Zilioli</h4>
             
       
       <small class="dont-index">Source: <a href="https://github.com/ropensci/ReLTER/blob/HEAD/vignettes/occurrences_into_site.Rmd" class="external-link"><code>vignettes/occurrences_into_site.Rmd</code></a></small>
@@ -94,20 +94,36 @@
 
     
     
-<p>__ <em>get_site_speciesOccurrences()</em>, <em>map_occ_gbif2elter</em> and <em>save_occ_eLTER_reporting_Archive()</em> are delivered only with dev__withImprovements branch __</p>
-<p>Starting from the eLTER site id (DEIMS.iD), by ReLTER get_site_speciesOccurrences function, anyone can retrieve occurrence records from <a href="https://www.gbif.org" class="external-link">GBIF</a> (via <a href="https://docs.ropensci.org/rgbif/" class="external-link"><code>rgbif</code> R package</a>), <a href="https://www.inaturalist.org/" class="external-link">iNaturalist</a> and <a href="https://obis.org/" class="external-link">OBIS</a> carried out within the boundaries of the site.</p>
+<p>__ <em>get_site_speciesOccurrences()</em>,
+<em>map_occ_gbif2elter</em> and
+<em>save_occ_eLTER_reporting_Archive()</em> are delivered only with
+dev__withImprovements branch __</p>
+<p>Starting from the eLTER site id (DEIMS.iD), by ReLTER
+get_site_speciesOccurrences function, anyone can retrieve occurrence
+records from <a href="https://www.gbif.org" class="external-link">GBIF</a> (via <a href="https://docs.ropensci.org/rgbif/" class="external-link"><code>rgbif</code> R
+package</a>), <a href="https://www.inaturalist.org/" class="external-link">iNaturalist</a> and
+<a href="https://obis.org/" class="external-link">OBIS</a> carried out within the boundaries
+of the site.</p>
 <div class="section level3">
-<h3 id="what-the-output-of-the-relter-get_site_speciesoccurrences-is">What the output of the <code>ReLTER</code> get_site_speciesOccurrences() is?<a class="anchor" aria-label="anchor" href="#what-the-output-of-the-relter-get_site_speciesoccurrences-is"></a>
+<h3 id="what-the-output-of-the-relter-get_site_speciesoccurrences-is">What the output of the <code>ReLTER</code>
+get_site_speciesOccurrences() is?<a class="anchor" aria-label="anchor" href="#what-the-output-of-the-relter-get_site_speciesoccurrences-is"></a>
 </h3>
-<p>The user sets the parameters of the function and, through these choose, defines the output.</p>
+<p>The user sets the parameters of the function and, through these
+choose, defines the output.</p>
 <p>The parameters of the function are:</p>
 <ul>
-<li><p>user sets parameter ‘deimsid’ to select the area of interest from which data are to be harvested (i.e., paste DEIMS.ID of the site of interest; e.g., Gulf Of Venice - GOV <a href="https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd" class="external-link uri">https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd</a>)</p></li>
-<li><p>user sets parameter ‘list_DS’ to select the external data service to be queried (i.e., ‘gbif’ or ‘obis’ or ‘inaturalist’)</p></li>
-<li><p>user sets parameter ‘show_map’ to get data in map format in addition to tabular format (i.e., show_map = TRUE)</p></li>
-<li><p>user sets parameter ‘limit’ to select the records number (i.e., species presence record) to be extracted</p></li>
+<li><p>user sets parameter ‘deimsid’ to select the area of interest from
+which data are to be harvested (i.e., paste DEIMS.ID of the site of
+interest; e.g., Gulf Of Venice - GOV <a href="https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd" class="external-link uri">https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd</a>)</p></li>
+<li><p>user sets parameter ‘list_DS’ to select the external data service
+to be queried (i.e., ‘gbif’ or ‘obis’ or ‘inaturalist’)</p></li>
+<li><p>user sets parameter ‘show_map’ to get data in map format in
+addition to tabular format (i.e., show_map = TRUE)</p></li>
+<li><p>user sets parameter ‘limit’ to select the records number (i.e.,
+species presence record) to be extracted</p></li>
 </ul>
-<p>The output are two type: a map and a table(s), for each external data service selected.</p>
+<p>The output are two type: a map and a table(s), for each external data
+service selected.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># DEIMS.iD of eLTER site Gulf Of Venice (GOV)</span>
 <span class="va">GOVid</span> <span class="op">&lt;-</span> <span class="st">"https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd"</span>
@@ -128,12 +144,13 @@
   caption <span class="op">=</span> <span class="st">"The first 10 occurrence records of iNaturalist on the selected eLTER site."</span>
 <span class="op">)</span></code></pre></div>
 <table class="table">
-<caption>The first 10 occurrence records of iNaturalist on the selected eLTER site.</caption>
+<caption>The first 10 occurrence records of iNaturalist on the selected
+eLTER site.</caption>
 <colgroup>
 <col width="0%">
 <col width="0%">
 <col width="0%">
-<col width="97%">
+<col width="94%">
 <col width="0%">
 <col width="0%">
 <col width="0%">
@@ -157,265 +174,275 @@
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td align="left">research</td>
-<td align="left">2022-09-27T16:22:27+02:00</td>
-<td align="left">NA</td>
-<td align="left">1620314 , 1620314 , 1620314 , 1620314 , 1|2 , 9|10 , 17|18 , 22|24 , 1 , 9 , 17 , 22 , 60578bf0-a865-4518-a4df-011b320eb1c3 , 2c6e328a-027a-4467-be08-b7e45d39607d , 03925bcd-d1f5-4a4b-be8a-5d1c3884f48a , b5c91e1e-4caa-4335-a608-1cc1ef4dfdc1 , 0 , 0 , 0 , 0 , 2 , 10 , 18 , 24 , 1620314 , 1620314 , 1620314 , 1620314 , gbohne , gbohne , gbohne , gbohne , FALSE , FALSE , FALSE , FALSE , FALSE , FALSE , FALSE , FALSE , 2019-04-16T10:53:52+00:00 , 2019-04-16T10:53:52+00:00 , 2019-04-16T10:53:52+00:00 , 2019-04-16T10:53:52+00:00 , gbohne , gbohne , gbohne , gbohne , gbohne , gbohne , gbohne , gbohne , Dr. Guido Bohne , Dr. Guido Bohne , Dr. Guido Bohne , Dr. Guido Bohne , Dr. Guido Bohne , Dr. Guido Bohne , Dr. Guido Bohne , Dr. Guido Bohne , NA , NA , NA , NA , <a href="https://static.inaturalist.org/attachments/users/icons/1620314/thumb.jpg?1560274884" class="external-link uri">https://static.inaturalist.org/attachments/users/icons/1620314/thumb.jpg?1560274884</a> , <a href="https://static.inaturalist.org/attachments/users/icons/1620314/thumb.jpg?1560274884" class="external-link uri">https://static.inaturalist.org/attachments/users/icons/1620314/thumb.jpg?1560274884</a> , <a href="https://static.inaturalist.org/attachments/users/icons/1620314/thumb.jpg?1560274884" class="external-link uri">https://static.inaturalist.org/attachments/users/icons/1620314/thumb.jpg?1560274884</a> , <a href="https://static.inaturalist.org/attachments/users/icons/1620314/thumb.jpg?1560274884" class="external-link uri">https://static.inaturalist.org/attachments/users/icons/1620314/thumb.jpg?1560274884</a> , 7010 , 7010 , 7010 , 7010 , 33657 , 33657 , 33657 , 33657 , 0 , 0 , 0 , 0 , 40667 , 40667 , 40667 , 40667 , 3027 , 3027 , 3027 , 3027 , 7010 , 7010 , 7010 , 7010 , 1 , 1 , 1 , 1 , <a href="https://static.inaturalist.org/attachments/users/icons/1620314/medium.jpg?1560274884" class="external-link uri">https://static.inaturalist.org/attachments/users/icons/1620314/medium.jpg?1560274884</a>, <a href="https://static.inaturalist.org/attachments/users/icons/1620314/medium.jpg?1560274884" class="external-link uri">https://static.inaturalist.org/attachments/users/icons/1620314/medium.jpg?1560274884</a>, <a href="https://static.inaturalist.org/attachments/users/icons/1620314/medium.jpg?1560274884" class="external-link uri">https://static.inaturalist.org/attachments/users/icons/1620314/medium.jpg?1560274884</a>, <a href="https://static.inaturalist.org/attachments/users/icons/1620314/medium.jpg?1560274884" class="external-link uri">https://static.inaturalist.org/attachments/users/icons/1620314/medium.jpg?1560274884</a>
-</td>
-<td align="left">f3c1efcd-01ec-4a53-bc30-333867570d86</td>
-<td align="right">136700930</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">Lederlaufkäfer</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.39251 45.54435)</td>
-</tr>
-<tr class="even">
-<td align="left">research</td>
-<td align="left">2022-09-18T13:14:48+02:00</td>
+<td align="left">needs_id</td>
+<td align="left">2022-06-15T06:43:00+02:00</td>
 <td align="left">NA</td>
 <td align="left">NULL</td>
-<td align="left">0d4949cf-5479-46cd-a9b2-74a462359f7c</td>
-<td align="right">136683895</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">Paguro pugile</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.33242 45.09162)</td>
-</tr>
-<tr class="odd">
-<td align="left">casual</td>
-<td align="left">2022-09-27T10:27:07+02:00</td>
-<td align="left">NA</td>
-<td align="left">NULL</td>
-<td align="left">69a5e9c9-6a38-4963-af13-c9cc5df16d9b</td>
-<td align="right">136667805</td>
+<td align="left">2d15ec40-58bb-4b87-a8cd-bdf9a179bff1</td>
+<td align="right">144285776</td>
 <td align="right">0</td>
 <td align="left">FALSE</td>
-<td align="left">NA</td>
+<td align="left">Rhizostoma pulmo</td>
 <td align="left">FALSE</td>
-<td align="left">POINT (12.342 45.43482)</td>
+<td align="left">POINT (12.58041 45.47847)</td>
 </tr>
 <tr class="even">
 <td align="left">needs_id</td>
-<td align="left">2022-09-20T12:57:00+02:00</td>
+<td align="left">2022-06-15T06:02:00+02:00</td>
 <td align="left">NA</td>
 <td align="left">NULL</td>
-<td align="left">e0ea1db4-ebb0-4733-8ff6-ef079013f215</td>
-<td align="right">136621226</td>
+<td align="left">829f916a-5670-43f7-952c-fd46372f9f5e</td>
+<td align="right">144285775</td>
 <td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">ostrica concava</td>
 <td align="left">FALSE</td>
-<td align="left">POINT (12.32587 45.43754)</td>
+<td align="left">Seeanemonen</td>
+<td align="left">FALSE</td>
+<td align="left">POINT (12.58041 45.47847)</td>
 </tr>
 <tr class="odd">
-<td align="left">research</td>
-<td align="left">2022-09-20T13:09:00+02:00</td>
+<td align="left">needs_id</td>
+<td align="left">2022-06-15T06:01:00+02:00</td>
 <td align="left">NA</td>
 <td align="left">NULL</td>
-<td align="left">99e36505-320d-4071-92be-94898168a9d4</td>
-<td align="right">136621222</td>
+<td align="left">999ab09e-42ca-40b0-9266-0cad7fc2e0a5</td>
+<td align="right">144285774</td>
 <td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">wall-rue</td>
 <td align="left">FALSE</td>
-<td align="left">POINT (12.32587 45.43754)</td>
+<td align="left">Seeanemonen</td>
+<td align="left">FALSE</td>
+<td align="left">POINT (12.58041 45.47847)</td>
+</tr>
+<tr class="even">
+<td align="left">needs_id</td>
+<td align="left">2022-06-15T05:50:00+02:00</td>
+<td align="left">NA</td>
+<td align="left">NULL</td>
+<td align="left">799bf7ec-f99c-442e-972d-7f1107798262</td>
+<td align="right">144285773</td>
+<td align="right">0</td>
+<td align="left">FALSE</td>
+<td align="left">Schnecken</td>
+<td align="left">FALSE</td>
+<td align="left">POINT (12.58041 45.47847)</td>
+</tr>
+<tr class="odd">
+<td align="left">needs_id</td>
+<td align="left">2022-06-15T05:49:00+02:00</td>
+<td align="left">NA</td>
+<td align="left">NULL</td>
+<td align="left">8b69146d-bdd8-4726-99fc-265d133386ae</td>
+<td align="right">144285772</td>
+<td align="right">0</td>
+<td align="left">FALSE</td>
+<td align="left">Schnecken</td>
+<td align="left">FALSE</td>
+<td align="left">POINT (12.58041 45.47847)</td>
+</tr>
+<tr class="even">
+<td align="left">needs_id</td>
+<td align="left">2022-06-15T05:49:00+02:00</td>
+<td align="left">NA</td>
+<td align="left">NULL</td>
+<td align="left">329ecdec-cad7-472f-9b2a-6de7c1c099d8</td>
+<td align="right">144285771</td>
+<td align="right">0</td>
+<td align="left">FALSE</td>
+<td align="left">Schnecken</td>
+<td align="left">FALSE</td>
+<td align="left">POINT (12.58041 45.47847)</td>
+</tr>
+<tr class="odd">
+<td align="left">needs_id</td>
+<td align="left">2022-06-14T19:00:00+02:00</td>
+<td align="left">NA</td>
+<td align="left">NULL</td>
+<td align="left">d9a62ddc-1e01-406f-bea3-d9eb12efc8fd</td>
+<td align="right">144285769</td>
+<td align="right">0</td>
+<td align="left">FALSE</td>
+<td align="left">Weißpunktierte Schmetterlingsmücke</td>
+<td align="left">FALSE</td>
+<td align="left">POINT (12.58041 45.47847)</td>
+</tr>
+<tr class="even">
+<td align="left">needs_id</td>
+<td align="left">2022-06-10T07:57:00+02:00</td>
+<td align="left">NA</td>
+<td align="left">NULL</td>
+<td align="left">901f119d-9409-4265-b826-02a8a99a9358</td>
+<td align="right">144285768</td>
+<td align="right">0</td>
+<td align="left">FALSE</td>
+<td align="left">Schnecken</td>
+<td align="left">FALSE</td>
+<td align="left">POINT (12.58041 45.47847)</td>
+</tr>
+<tr class="odd">
+<td align="left">needs_id</td>
+<td align="left">2022-06-10T08:15:00+02:00</td>
+<td align="left">NA</td>
+<td align="left">NULL</td>
+<td align="left">69e7e09c-4735-4d75-9218-bc33cde801ad</td>
+<td align="right">144285767</td>
+<td align="right">0</td>
+<td align="left">FALSE</td>
+<td align="left">Schnecken</td>
+<td align="left">FALSE</td>
+<td align="left">POINT (12.58041 45.47847)</td>
 </tr>
 <tr class="even">
 <td align="left">research</td>
-<td align="left">2022-09-20T12:57:00+02:00</td>
-<td align="left">NA</td>
-<td align="left">NULL</td>
-<td align="left">eb445c0d-1e56-48df-a84e-fd3d6961ed3d</td>
-<td align="right">136621221</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">Pulce di mare italica</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.32587 45.43754)</td>
-</tr>
-<tr class="odd">
-<td align="left">research</td>
-<td align="left">2022-09-20T12:58:00+02:00</td>
-<td align="left">NA</td>
-<td align="left">NULL</td>
-<td align="left">b3a2bd18-f499-4792-ad0a-e263ddeef4b6</td>
-<td align="right">136621216</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">Pulce di mare italica</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.32587 45.43754)</td>
-</tr>
-<tr class="even">
-<td align="left">research</td>
-<td align="left">2022-09-26T11:28:00+02:00</td>
+<td align="left">2022-06-10T07:31:00+02:00</td>
 <td align="left">open</td>
 <td align="left">NULL</td>
-<td align="left">b9c7709a-a94c-4f39-9300-a97769dbcc3b</td>
-<td align="right">136620130</td>
+<td align="left">7abad48f-2bae-42bb-9baa-27bba87ffae6</td>
+<td align="right">144255313</td>
 <td align="right">0</td>
 <td align="left">TRUE</td>
 <td align="left">Black-headed Gull</td>
 <td align="left">FALSE</td>
-<td align="left">POINT (12.32905 45.05173)</td>
-</tr>
-<tr class="odd">
-<td align="left">research</td>
-<td align="left">2022-09-26T11:22:00+02:00</td>
-<td align="left">open</td>
-<td align="left">NULL</td>
-<td align="left">a66b08de-5399-4a2e-8e56-c86e9fb902d8</td>
-<td align="right">136620129</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">Dunlin</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.32905 45.05173)</td>
-</tr>
-<tr class="even">
-<td align="left">research</td>
-<td align="left">2022-09-26T11:21:00+02:00</td>
-<td align="left">open</td>
-<td align="left">NULL</td>
-<td align="left">75d25053-b5c3-4660-8a3e-03a40bb71755</td>
-<td align="right">136620127</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">Common Greenshank</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.32905 45.05173)</td>
-</tr>
-<tr class="odd">
-<td align="left">research</td>
-<td align="left">2022-09-26T11:25:00+02:00</td>
-<td align="left">open</td>
-<td align="left">NULL</td>
-<td align="left">33803a03-781a-44a3-8fa7-11f6ab85f897</td>
-<td align="right">136620125</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">Suosirri</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.32905 45.05173)</td>
-</tr>
-<tr class="even">
-<td align="left">research</td>
-<td align="left">2022-09-26T11:27:00+02:00</td>
-<td align="left">open</td>
-<td align="left">NULL</td>
-<td align="left">f1fe09eb-f333-41f9-bb8d-55ab1ea1d243</td>
-<td align="right">136620124</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">Common Greenshank</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.32905 45.05173)</td>
-</tr>
-<tr class="odd">
-<td align="left">research</td>
-<td align="left">2022-09-26T11:15:00+02:00</td>
-<td align="left">open</td>
-<td align="left">NULL</td>
-<td align="left">8351d4a8-6d83-45cb-8a72-57f57648e28f</td>
-<td align="right">136620123</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">Pygmy Cormorant</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.32029 45.06385)</td>
-</tr>
-<tr class="even">
-<td align="left">needs_id</td>
-<td align="left">2022-09-26T18:37:21+02:00</td>
-<td align="left">NA</td>
-<td align="left">NULL</td>
-<td align="left">7fb0a2fa-c642-405a-a5a1-5cf72d0df2e0</td>
-<td align="right">136600047</td>
-<td align="right">0</td>
-<td align="left">FALSE</td>
-<td align="left">NA</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.9195 45.62119)</td>
-</tr>
-<tr class="odd">
-<td align="left">research</td>
-<td align="left">2022-09-26T16:57:55+02:00</td>
-<td align="left">open</td>
-<td align="left">NULL</td>
-<td align="left">7345b1ed-c9f0-485d-b753-9f6e393403b9</td>
-<td align="right">136594158</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">Tasso Europeo</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.44082 44.97839)</td>
-</tr>
-<tr class="even">
-<td align="left">research</td>
-<td align="left">2022-09-26T16:47:43+02:00</td>
-<td align="left">open</td>
-<td align="left">NULL</td>
-<td align="left">07dcf4c5-4e2d-49c5-be78-c832bea74c36</td>
-<td align="right">136593982</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">Tasso Europeo</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.48547 44.97598)</td>
+<td align="left">POINT (12.58104 45.47848)</td>
 </tr>
 <tr class="odd">
 <td align="left">needs_id</td>
-<td align="left">2022-09-26T16:47:17+02:00</td>
+<td align="left">2022-10-23T11:15:00+02:00</td>
+<td align="left">NA</td>
+<td align="left">NULL</td>
+<td align="left">2c129aa2-0ce8-4e2a-8a9a-182f4807a4a9</td>
+<td align="right">144247303</td>
+<td align="right">0</td>
+<td align="left">FALSE</td>
+<td align="left">Peucedanum venetum</td>
+<td align="left">FALSE</td>
+<td align="left">POINT (12.41388 45.49552)</td>
+</tr>
+<tr class="even">
+<td align="left">needs_id</td>
+<td align="left">2022-12-12T16:23:00+01:00</td>
 <td align="left">open</td>
 <td align="left">NULL</td>
-<td align="left">e974a596-f9c2-42a0-8cf9-bd1746c5b34a</td>
-<td align="right">136593923</td>
+<td align="left">8824a5ff-7e2d-4187-be62-8ad79385c6e2</td>
+<td align="right">144234113</td>
 <td align="right">0</td>
 <td align="left">TRUE</td>
-<td align="left">Tasso Europeo</td>
+<td align="left">Large White-headed Gulls</td>
 <td align="left">FALSE</td>
-<td align="left">POINT (12.47472 44.9904)</td>
+<td align="left">POINT (12.44908 45.54074)</td>
+</tr>
+<tr class="odd">
+<td align="left">research</td>
+<td align="left">2022-12-10T08:56:00+01:00</td>
+<td align="left">open</td>
+<td align="left">NULL</td>
+<td align="left">7fa3b837-04e2-48bf-8bf6-96f6c95e0b27</td>
+<td align="right">144178628</td>
+<td align="right">0</td>
+<td align="left">TRUE</td>
+<td align="left">mustakaulauikku</td>
+<td align="left">FALSE</td>
+<td align="left">POINT (12.37645 45.04669)</td>
 </tr>
 <tr class="even">
 <td align="left">casual</td>
-<td align="left">2022-09-26T14:54:20+02:00</td>
-<td align="left">NA</td>
+<td align="left">2022-05-11T12:21:32+02:00</td>
+<td align="left">open</td>
 <td align="left">NULL</td>
-<td align="left">eb5c8405-48fe-4c38-b813-a47173635fe8</td>
-<td align="right">136562980</td>
+<td align="left">7f9f5766-10e7-4c2b-a5ee-6ca87d36fb05</td>
+<td align="right">144151063</td>
 <td align="right">0</td>
 <td align="left">FALSE</td>
-<td align="left">jaapani vaiguseemnik</td>
+<td align="left">NA</td>
 <td align="left">FALSE</td>
-<td align="left">POINT (12.41855 45.49829)</td>
+<td align="left">POINT (12.32726 45.43057)</td>
 </tr>
 <tr class="odd">
-<td align="left">research</td>
-<td align="left">2022-09-10T05:07:00+02:00</td>
-<td align="left">open</td>
-<td align="left">4770956 , 4770956 , 4770956 , 1|2 , 17|18 , 22|24 , 1 , 17 , 22 , f4f8525b-8a8c-4325-a6a1-ed7c3ba7324c, bbd288aa-7f1a-41e0-b78c-7b64d501a8e0, 089d7cde-8935-4d7f-8cb3-f95ac3d2f458, 0 , 0 , 0 , 2 , 18 , 24 , 4770956 , 4770956 , 4770956 , sadhus , sadhus , sadhus , FALSE , FALSE , FALSE , FALSE , FALSE , FALSE , 2021-07-24T07:53:24+00:00 , 2021-07-24T07:53:24+00:00 , 2021-07-24T07:53:24+00:00 , sadhus , sadhus , sadhus , sadhus , sadhus , sadhus , , , , , , , NA , NA , NA , NA , NA , NA , 279 , 279 , 279 , 1019 , 1019 , 1019 , 0 , 0 , 0 , 1298 , 1298 , 1298 , 230 , 230 , 230 , 279 , 279 , 279 , 1 , 1 , 1 , NA , NA , NA</td>
-<td align="left">a307c513-ebaa-453a-b782-9635e6987ff6</td>
-<td align="right">136496622</td>
+<td align="left">needs_id</td>
+<td align="left">2022-12-10T15:34:32+01:00</td>
+<td align="left">NA</td>
+<td align="left">2399135 , 1981263 , 17|20 , 22|23 , 17 , 22 ,
+2f94cd2c-b3a6-40bf-9569-f21c4175dfe8 ,
+b6a8ee9a-ac64-4b17-a524-d0d7bbb7104d , 0 , 0 , 20 , 23 , 2399135 ,
+1981263 , reosarevok , pavelne , FALSE , FALSE , FALSE , FALSE ,
+2019-10-27T12:51:11+00:00 , 2019-07-13T09:30:00+00:00 , reosarevok ,
+pavelne , reosarevok , pavelne , Nicolás Tamargo , Павел Несмеянов ,
+Nicolás Tamargo , Павел Несмеянов , NA , NA , <a href="https://static.inaturalist.org/attachments/users/icons/2399135/thumb.jpg?1572183281" class="external-link uri">https://static.inaturalist.org/attachments/users/icons/2399135/thumb.jpg?1572183281</a>
+, <a href="https://static.inaturalist.org/attachments/users/icons/1981263/thumb.jpg?1596235075" class="external-link uri">https://static.inaturalist.org/attachments/users/icons/1981263/thumb.jpg?1596235075</a>
+, 7796 , 2644 , 10034 , 1708 , 0 , 0 , 17830 , 4352 , 1459 , 1580 , 7796
+, 2644 , 1 , 1 , <a href="https://static.inaturalist.org/attachments/users/icons/2399135/medium.jpg?1572183281" class="external-link uri">https://static.inaturalist.org/attachments/users/icons/2399135/medium.jpg?1572183281</a>,
+<a href="https://static.inaturalist.org/attachments/users/icons/1981263/medium.jpg?1596235075" class="external-link uri">https://static.inaturalist.org/attachments/users/icons/1981263/medium.jpg?1596235075</a>
+</td>
+<td align="left">d02765d2-f162-4a4c-af42-1855f0b25e76</td>
+<td align="right">144136887</td>
 <td align="right">0</td>
 <td align="left">TRUE</td>
-<td align="left">pyhäiibis</td>
+<td align="left">Ducks, Geese, and Swans</td>
 <td align="left">FALSE</td>
-<td align="left">POINT (12.42286 45.48445)</td>
+<td align="left">POINT (12.96582 45.62285)</td>
 </tr>
 <tr class="even">
 <td align="left">research</td>
-<td align="left">2022-09-25T15:23:11+02:00</td>
+<td align="left">NA</td>
 <td align="left">open</td>
 <td align="left">NULL</td>
-<td align="left">63cd6c7c-e00b-47cf-beef-6507b054b223</td>
-<td align="right">136464242</td>
+<td align="left">00559467-a308-4d90-9f11-88eb4e969c15</td>
+<td align="right">144133877</td>
 <td align="right">0</td>
 <td align="left">TRUE</td>
-<td align="left">Scoiattolo comune</td>
+<td align="left">Zorzal real</td>
 <td align="left">FALSE</td>
-<td align="left">POINT (12.33858 45.61497)</td>
+<td align="left">POINT (12.39477 45.00199)</td>
+</tr>
+<tr class="odd">
+<td align="left">research</td>
+<td align="left">2022-12-10T14:41:00+01:00</td>
+<td align="left">NA</td>
+<td align="left">NULL</td>
+<td align="left">268f01a9-d141-4421-bd27-1be693c51a1e</td>
+<td align="right">144094678</td>
+<td align="right">0</td>
+<td align="left">TRUE</td>
+<td align="left">Vanneau huppé</td>
+<td align="left">FALSE</td>
+<td align="left">POINT (12.88596 45.60302)</td>
+</tr>
+<tr class="even">
+<td align="left">research</td>
+<td align="left">2022-12-10T14:41:00+01:00</td>
+<td align="left">open</td>
+<td align="left">NULL</td>
+<td align="left">f51d3204-bcd2-454f-9c6a-c76819be784c</td>
+<td align="right">144094677</td>
+<td align="right">0</td>
+<td align="left">TRUE</td>
+<td align="left">Pluvier doré</td>
+<td align="left">FALSE</td>
+<td align="left">POINT (12.88596 45.60302)</td>
+</tr>
+<tr class="odd">
+<td align="left">research</td>
+<td align="left">2022-12-10T14:41:00+01:00</td>
+<td align="left">open</td>
+<td align="left">NULL</td>
+<td align="left">95b89c78-6922-432c-ba89-6065556909ed</td>
+<td align="right">144094676</td>
+<td align="right">0</td>
+<td align="left">TRUE</td>
+<td align="left">Ouette d’Egypte</td>
+<td align="left">FALSE</td>
+<td align="left">POINT (12.88596 45.60302)</td>
+</tr>
+<tr class="even">
+<td align="left">research</td>
+<td align="left">2022-12-10T14:34:00+01:00</td>
+<td align="left">open</td>
+<td align="left">NULL</td>
+<td align="left">b8511cc2-c45d-41fe-a41c-425baa914dca</td>
+<td align="right">144093761</td>
+<td align="right">0</td>
+<td align="left">TRUE</td>
+<td align="left">Black-bellied Plover</td>
+<td align="left">FALSE</td>
+<td align="left">POINT (12.88596 45.60302)</td>
 </tr>
 </tbody>
 </table>
@@ -426,215 +453,216 @@
   caption <span class="op">=</span> <span class="st">"The first 10 occurrence records of OBIS on the selected eLTER site."</span>
 <span class="op">)</span></code></pre></div>
 <table class="table">
-<caption>The first 10 occurrence records of OBIS on the selected eLTER site.</caption>
+<caption>The first 10 occurrence records of OBIS on the selected eLTER
+site.</caption>
 <colgroup>
-<col width="4%">
+<col width="8%">
 <col width="5%">
-<col width="25%">
+<col width="24%">
 <col width="2%">
-<col width="18%">
-<col width="4%">
+<col width="16%">
 <col width="4%">
 <col width="6%">
+<col width="4%">
 <col width="5%">
-<col width="5%">
+<col width="6%">
 <col width="15%">
 </colgroup>
 <thead><tr class="header">
-<th align="left">country</th>
+<th align="left">infraphylum</th>
 <th align="right">date_year</th>
 <th align="left">scientificNameID</th>
 <th align="left">year</th>
 <th align="left">scientificName</th>
 <th align="left">dropped</th>
+<th align="right">gigaclassid</th>
 <th align="right">aphiaID</th>
+<th align="left">language</th>
 <th align="right">subclassid</th>
-<th align="right">phylumid</th>
-<th align="right">familyid</th>
 <th align="left">geometry</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td align="left">Italy</td>
-<td align="right">2008</td>
-<td align="left"><a href="urn:lsid:marinespecies.org:taxname:149093" class="uri">urn:lsid:marinespecies.org:taxname:149093</a></td>
-<td align="left">2008</td>
-<td align="left">Thalassionema nitzschioides</td>
+<td align="left">Gnathostomata</td>
+<td align="right">1978</td>
+<td align="left"><a href="urn:lsid:marinespecies.org:taxname:126977" class="uri">urn:lsid:marinespecies.org:taxname:126977</a></td>
+<td align="left">1978</td>
+<td align="left">Chelon labrosus</td>
 <td align="left">FALSE</td>
-<td align="right">149093</td>
-<td align="right">148978</td>
-<td align="right">345465</td>
-<td align="right">149091</td>
+<td align="right">10194</td>
+<td align="right">126977</td>
+<td align="left">en</td>
+<td align="right">293496</td>
+<td align="left">POINT (12.3774 45.3867)</td>
+</tr>
+<tr class="even">
+<td align="left">NA</td>
+<td align="right">1991</td>
+<td align="left"><a href="urn:lsid:marinespecies.org:taxname:107682" class="uri">urn:lsid:marinespecies.org:taxname:107682</a></td>
+<td align="left">1991</td>
+<td align="left">Processa canaliculata</td>
+<td align="left">FALSE</td>
+<td align="right">NA</td>
+<td align="right">107682</td>
+<td align="left">NA</td>
+<td align="right">1086</td>
+<td align="left">POINT (13.09 45.49)</td>
+</tr>
+<tr class="odd">
+<td align="left">NA</td>
+<td align="right">1988</td>
+<td align="left"><a href="urn:lsid:marinespecies.org:taxname:141872" class="uri">urn:lsid:marinespecies.org:taxname:141872</a></td>
+<td align="left">1988</td>
+<td align="left">Turritellinella tricarinata</td>
+<td align="left">FALSE</td>
+<td align="right">NA</td>
+<td align="right">1381415</td>
+<td align="left">NA</td>
+<td align="right">224570</td>
+<td align="left">POINT (13.05 45.09)</td>
+</tr>
+<tr class="even">
+<td align="left">Gnathostomata</td>
+<td align="right">1925</td>
+<td align="left"><a href="urn:lsid:marinespecies.org:taxname:151523" class="uri">urn:lsid:marinespecies.org:taxname:151523</a></td>
+<td align="left">1925</td>
+<td align="left">Sparus aurata</td>
+<td align="left">FALSE</td>
+<td align="right">10194</td>
+<td align="right">151523</td>
+<td align="left">en</td>
+<td align="right">293496</td>
+<td align="left">POINT (12.9377 45.0629)</td>
+</tr>
+<tr class="odd">
+<td align="left">NA</td>
+<td align="right">2017</td>
+<td align="left"><a href="urn:lsid:marinespecies.org:taxname:103641" class="uri">urn:lsid:marinespecies.org:taxname:103641</a></td>
+<td align="left">2017</td>
+<td align="left">Aplidium conicum</td>
+<td align="left">FALSE</td>
+<td align="right">NA</td>
+<td align="right">103641</td>
+<td align="left">en</td>
+<td align="right">NA</td>
+<td align="left">POINT (13.2468 45.5344)</td>
+</tr>
+<tr class="even">
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left"><a href="urn:lsid:marinespecies.org:taxname:130303" class="uri">urn:lsid:marinespecies.org:taxname:130303</a></td>
+<td align="left">NA</td>
+<td align="left">Maldane glebifex</td>
+<td align="left">FALSE</td>
+<td align="right">NA</td>
+<td align="right">130303</td>
+<td align="left">NA</td>
+<td align="right">754175</td>
+<td align="left">POINT (13.17 45.46)</td>
+</tr>
+<tr class="odd">
+<td align="left">Gnathostomata</td>
+<td align="right">1922</td>
+<td align="left"><a href="urn:lsid:marinespecies.org:taxname:125570" class="uri">urn:lsid:marinespecies.org:taxname:125570</a></td>
+<td align="left">1922</td>
+<td align="left">Trachinidae</td>
+<td align="left">FALSE</td>
+<td align="right">10194</td>
+<td align="right">125570</td>
+<td align="left">en</td>
+<td align="right">293496</td>
+<td align="left">POINT (12.9377 45.0629)</td>
+</tr>
+<tr class="even">
+<td align="left">NA</td>
+<td align="right">2008</td>
+<td align="left"><a href="urn:lsid:marinespecies.org:taxname:149126" class="uri">urn:lsid:marinespecies.org:taxname:149126</a></td>
+<td align="left">2008</td>
+<td align="left">Chaetoceros decipiens</td>
+<td align="left">FALSE</td>
+<td align="right">NA</td>
+<td align="right">149126</td>
+<td align="left">NA</td>
+<td align="right">148971</td>
 <td align="left">POINT (12.9203 45.401)</td>
+</tr>
+<tr class="odd">
+<td align="left">NA</td>
+<td align="right">1990</td>
+<td align="left"><a href="urn:lsid:marinespecies.org:taxname:149045" class="uri">urn:lsid:marinespecies.org:taxname:149045</a></td>
+<td align="left">1990</td>
+<td align="left">Nitzschia</td>
+<td align="left">FALSE</td>
+<td align="right">NA</td>
+<td align="right">149045</td>
+<td align="left">NA</td>
+<td align="right">148902</td>
+<td align="left">POINT (13.19617 45.436)</td>
 </tr>
 <tr class="even">
 <td align="left">NA</td>
 <td align="right">1934</td>
-<td align="left"><a href="urn:lsid:marinespecies.org:taxname:125073" class="uri">urn:lsid:marinespecies.org:taxname:125073</a></td>
+<td align="left"><a href="urn:lsid:marinespecies.org:taxname:131067" class="uri">urn:lsid:marinespecies.org:taxname:131067</a></td>
 <td align="left">1934</td>
-<td align="left">Amphiura chiajei</td>
+<td align="left">Labioleanira yhleni</td>
 <td align="left">FALSE</td>
-<td align="right">125073</td>
-<td align="right">1416548</td>
-<td align="right">1806</td>
-<td align="right">123206</td>
-<td align="left">POINT (12.371 45.349)</td>
+<td align="right">NA</td>
+<td align="right">131067</td>
+<td align="left">en</td>
+<td align="right">754174</td>
+<td align="left">POINT (13.075 45.231)</td>
 </tr>
 <tr class="odd">
 <td align="left">NA</td>
-<td align="right">NA</td>
-<td align="left"><a href="urn:lsid:marinespecies.org:taxname:140735" class="uri">urn:lsid:marinespecies.org:taxname:140735</a></td>
-<td align="left">NA</td>
-<td align="left">Ensis siliqua</td>
+<td align="right">2006</td>
+<td align="left"><a href="urn:lsid:marinespecies.org:taxname:132077" class="uri">urn:lsid:marinespecies.org:taxname:132077</a></td>
+<td align="left">2006</td>
+<td align="left">Tethya</td>
 <td align="left">FALSE</td>
-<td align="right">140735</td>
-<td align="right">1424948</td>
-<td align="right">51</td>
-<td align="right">23091</td>
-<td align="left">POINT (12.33 45.33)</td>
-</tr>
-<tr class="even">
-<td align="left">NA</td>
-<td align="right">2011</td>
-<td align="left"><a href="urn:lsid:marinespecies.org:taxname:1368" class="uri">urn:lsid:marinespecies.org:taxname:1368</a></td>
-<td align="left">2011</td>
-<td align="left">Stolonifera</td>
-<td align="left">FALSE</td>
-<td align="right">1368</td>
-<td align="right">1341</td>
-<td align="right">1267</td>
 <td align="right">NA</td>
-<td align="left">POINT (12.4059 45.20375)</td>
-</tr>
-<tr class="odd">
-<td align="left">NA</td>
-<td align="right">2011</td>
-<td align="left"><a href="urn:lsid:marinespecies.org:taxname:103625" class="uri">urn:lsid:marinespecies.org:taxname:103625</a></td>
-<td align="left">2011</td>
-<td align="left">Polycitor adriaticus</td>
-<td align="left">FALSE</td>
-<td align="right">103625</td>
-<td align="right">NA</td>
-<td align="right">1821</td>
-<td align="right">103440</td>
-<td align="left">POINT (12.48941 45.23041)</td>
-</tr>
-<tr class="even">
-<td align="left">Italy</td>
-<td align="right">1993</td>
-<td align="left"><a href="urn:lsid:marinespecies.org:taxname:19542" class="uri">urn:lsid:marinespecies.org:taxname:19542</a></td>
-<td align="left">1993</td>
-<td align="left">Dinophyceae</td>
-<td align="left">FALSE</td>
-<td align="right">19542</td>
-<td align="right">NA</td>
-<td align="right">450030</td>
-<td align="right">NA</td>
-<td align="left">POINT (13.19617 45.436)</td>
-</tr>
-<tr class="odd">
-<td align="left">NA</td>
-<td align="right">NA</td>
-<td align="left"><a href="urn:lsid:marinespecies.org:taxname:133899" class="uri">urn:lsid:marinespecies.org:taxname:133899</a></td>
-<td align="left">NA</td>
-<td align="left">Hymedesmia (Hymedesmia) veneta</td>
-<td align="left">FALSE</td>
-<td align="right">133663</td>
+<td align="right">132077</td>
+<td align="left">en</td>
 <td align="right">607950</td>
-<td align="right">558</td>
-<td align="right">131655</td>
-<td align="left">POINT (12.36667 45.36667)</td>
+<td align="left">POINT (12.51665 45.17106)</td>
 </tr>
 <tr class="even">
-<td align="left">NA</td>
-<td align="right">2014</td>
-<td align="left"><a href="urn:lsid:marinespecies.org:taxname:135279" class="uri">urn:lsid:marinespecies.org:taxname:135279</a></td>
-<td align="left">2014</td>
-<td align="left">Carybdea marsupialis</td>
+<td align="left">Gnathostomata</td>
+<td align="right">1927</td>
+<td align="left"><a href="urn:lsid:marinespecies.org:taxname:127021" class="uri">urn:lsid:marinespecies.org:taxname:127021</a></td>
+<td align="left">1927</td>
+<td align="left">Sarda sarda</td>
 <td align="left">FALSE</td>
-<td align="right">135279</td>
-<td align="right">NA</td>
-<td align="right">1267</td>
-<td align="right">135228</td>
-<td align="left">POINT (12.45668 45.39183)</td>
-</tr>
-<tr class="odd">
-<td align="left">NA</td>
-<td align="right">2008</td>
-<td align="left"><a href="urn:lsid:marinespecies.org:taxname:158540" class="uri">urn:lsid:marinespecies.org:taxname:158540</a></td>
-<td align="left">2008</td>
-<td align="left">Pteroplatytrygon violacea</td>
-<td align="left">FALSE</td>
-<td align="right">158540</td>
-<td align="right">368407</td>
-<td align="right">1821</td>
-<td align="right">105708</td>
-<td align="left">POINT (12.60319 45.33256)</td>
-</tr>
-<tr class="even">
-<td align="left">NA</td>
-<td align="right">1958</td>
-<td align="left"><a href="urn:lsid:marinespecies.org:taxname:127160" class="uri">urn:lsid:marinespecies.org:taxname:127160</a></td>
-<td align="left">1958</td>
-<td align="left">Solea solea</td>
-<td align="left">FALSE</td>
-<td align="right">127160</td>
+<td align="right">10194</td>
+<td align="right">127021</td>
+<td align="left">en</td>
 <td align="right">293496</td>
-<td align="right">1821</td>
-<td align="right">125581</td>
-<td align="left">POINT (12.3774 45.3867)</td>
+<td align="left">POINT (12.9377 45.0629)</td>
 </tr>
 <tr class="odd">
-<td align="left">Italy</td>
-<td align="right">2008</td>
-<td align="left"><a href="urn:lsid:marinespecies.org:taxname:157463" class="uri">urn:lsid:marinespecies.org:taxname:157463</a></td>
-<td align="left">2008</td>
-<td align="left">Dictyocha fibula</td>
+<td align="left">NA</td>
+<td align="right">1934</td>
+<td align="left"><a href="urn:lsid:marinespecies.org:taxname:129856" class="uri">urn:lsid:marinespecies.org:taxname:129856</a></td>
+<td align="left">1934</td>
+<td align="left">Drilonereis filum</td>
 <td align="left">FALSE</td>
-<td align="right">157463</td>
 <td align="right">NA</td>
-<td align="right">345465</td>
-<td align="right">157257</td>
-<td align="left">POINT (12.9203 45.401)</td>
+<td align="right">129856</td>
+<td align="left">en</td>
+<td align="right">754174</td>
+<td align="left">POINT (12.528 45.423)</td>
 </tr>
 <tr class="even">
+<td align="left">Gnathostomata</td>
+<td align="right">NA</td>
 <td align="left">NA</td>
-<td align="right">2016</td>
-<td align="left"><a href="urn:lsid:marinespecies.org:taxname:105923" class="uri">urn:lsid:marinespecies.org:taxname:105923</a></td>
-<td align="left">2016</td>
-<td align="left">Squalus acanthias</td>
-<td align="left">FALSE</td>
-<td align="right">105923</td>
-<td align="right">368407</td>
-<td align="right">1821</td>
-<td align="right">105716</td>
-<td align="left">POINT (12.68719 45.08056)</td>
-</tr>
-<tr class="odd">
 <td align="left">NA</td>
-<td align="right">1985</td>
-<td align="left"><a href="urn:lsid:marinespecies.org:taxname:107552" class="uri">urn:lsid:marinespecies.org:taxname:107552</a></td>
-<td align="left">1985</td>
-<td align="left">Crangon crangon</td>
+<td align="left">Sparus aurata</td>
 <td align="left">FALSE</td>
-<td align="right">107552</td>
-<td align="right">1086</td>
-<td align="right">1065</td>
-<td align="right">106782</td>
-<td align="left">POINT (12.3774 45.3867)</td>
-</tr>
-<tr class="even">
-<td align="left">Italy</td>
-<td align="right">2008</td>
-<td align="left"><a href="urn:lsid:marinespecies.org:taxname:149619" class="uri">urn:lsid:marinespecies.org:taxname:149619</a></td>
-<td align="left">2008</td>
-<td align="left">Cerataulina bergonii</td>
-<td align="left">FALSE</td>
-<td align="right">961694</td>
-<td align="right">148971</td>
-<td align="right">345465</td>
-<td align="right">149235</td>
-<td align="left">POINT (12.9658 44.9748)</td>
+<td align="right">10194</td>
+<td align="right">151523</td>
+<td align="left">en</td>
+<td align="right">293496</td>
+<td align="left">POINT (12.33195 45.4414)</td>
 </tr>
 <tr class="odd">
 <td align="left">NA</td>
@@ -643,50 +671,24 @@
 <td align="left">NA</td>
 <td align="left">Tursiops truncatus</td>
 <td align="left">FALSE</td>
+<td align="right">NA</td>
 <td align="right">137111</td>
+<td align="left">NA</td>
 <td align="right">380416</td>
-<td align="right">1821</td>
-<td align="right">136980</td>
 <td align="left">POINT (13.25167 45.58333)</td>
 </tr>
 <tr class="even">
-<td align="left">NA</td>
-<td align="right">1934</td>
-<td align="left"><a href="urn:lsid:marinespecies.org:taxname:141433" class="uri">urn:lsid:marinespecies.org:taxname:141433</a></td>
-<td align="left">1934</td>
-<td align="left">Abra alba</td>
+<td align="left">Gnathostomata</td>
+<td align="right">2001</td>
+<td align="left"><a href="urn:lsid:marinespecies.org:taxname:126076" class="uri">urn:lsid:marinespecies.org:taxname:126076</a></td>
+<td align="left">2001</td>
+<td align="left">Diplodus</td>
 <td align="left">FALSE</td>
-<td align="right">141433</td>
-<td align="right">1424948</td>
-<td align="right">51</td>
-<td align="right">1781</td>
-<td align="left">POINT (12.458 45.416)</td>
-</tr>
-<tr class="odd">
-<td align="left">NA</td>
-<td align="right">1991</td>
-<td align="left"><a href="urn:lsid:marinespecies.org:taxname:141790" class="uri">urn:lsid:marinespecies.org:taxname:141790</a></td>
-<td align="left">1991</td>
-<td align="left">Gibbula magus</td>
-<td align="left">FALSE</td>
-<td align="right">141790</td>
-<td align="right">156485</td>
-<td align="right">51</td>
-<td align="right">443</td>
-<td align="left">POINT (12.62 45.27)</td>
-</tr>
-<tr class="even">
-<td align="left">NA</td>
-<td align="right">1982</td>
-<td align="left"><a href="urn:lsid:marinespecies.org:taxname:139488" class="uri">urn:lsid:marinespecies.org:taxname:139488</a></td>
-<td align="left">1982</td>
-<td align="left">Scaphander lignarius</td>
-<td align="left">FALSE</td>
-<td align="right">139488</td>
-<td align="right">14712</td>
-<td align="right">51</td>
-<td align="right">158</td>
-<td align="left">POINT (13.05 45.14)</td>
+<td align="right">10194</td>
+<td align="right">126076</td>
+<td align="left">en</td>
+<td align="right">293496</td>
+<td align="left">POINT (12.66687 45.43341)</td>
 </tr>
 <tr class="odd">
 <td align="left">NA</td>
@@ -695,34 +697,73 @@
 <td align="left">NA</td>
 <td align="left">Tursiops truncatus</td>
 <td align="left">FALSE</td>
+<td align="right">NA</td>
 <td align="right">137111</td>
+<td align="left">NA</td>
 <td align="right">380416</td>
-<td align="right">1821</td>
-<td align="right">136980</td>
 <td align="left">POINT (13.035 45.13333)</td>
 </tr>
 <tr class="even">
-<td align="left">NA</td>
-<td align="right">1919</td>
-<td align="left"><a href="urn:lsid:marinespecies.org:taxname:140481" class="uri">urn:lsid:marinespecies.org:taxname:140481</a></td>
-<td align="left">1919</td>
-<td align="left">Mytilus galloprovincialis</td>
+<td align="left">Gnathostomata</td>
+<td align="right">2012</td>
+<td align="left"><a href="urn:lsid:marinespecies.org:taxname:105923" class="uri">urn:lsid:marinespecies.org:taxname:105923</a></td>
+<td align="left">2012</td>
+<td align="left">Squalus acanthias</td>
 <td align="left">FALSE</td>
-<td align="right">140481</td>
-<td align="right">1424948</td>
-<td align="right">51</td>
-<td align="right">211</td>
-<td align="left">POINT (12.9377 45.0629)</td>
+<td align="right">NA</td>
+<td align="right">105923</td>
+<td align="left">en</td>
+<td align="right">368407</td>
+<td align="left">POINT (12.77119 45.33256)</td>
+</tr>
+<tr class="odd">
+<td align="left">Gnathostomata</td>
+<td align="right">2012</td>
+<td align="left"><a href="urn:lsid:marinespecies.org:taxname:105822" class="uri">urn:lsid:marinespecies.org:taxname:105822</a></td>
+<td align="left">2012</td>
+<td align="left">Mustelus mustelus</td>
+<td align="left">FALSE</td>
+<td align="right">NA</td>
+<td align="right">105822</td>
+<td align="left">en</td>
+<td align="right">368407</td>
+<td align="left">POINT (12.51919 45.33256)</td>
+</tr>
+<tr class="even">
+<td align="left">NA</td>
+<td align="right">1990</td>
+<td align="left"><a href="urn:lsid:marinespecies.org:taxname:163932" class="uri">urn:lsid:marinespecies.org:taxname:163932</a></td>
+<td align="left">1990</td>
+<td align="left">Ceratoneis closterium</td>
+<td align="left">FALSE</td>
+<td align="right">NA</td>
+<td align="right">163932</td>
+<td align="left">NA</td>
+<td align="right">148978</td>
+<td align="left">POINT (13.19617 45.436)</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section level3">
-<h3 id="how-to-trasform-external-service-data-schemas-into-elter-data-reporting-template">How to trasform external service data schemas into eLTER data-reporting template?<a class="anchor" aria-label="anchor" href="#how-to-trasform-external-service-data-schemas-into-elter-data-reporting-template"></a>
+<h3 id="how-to-trasform-external-service-data-schemas-into-elter-data-reporting-template">How to trasform external service data schemas into eLTER
+data-reporting template?<a class="anchor" aria-label="anchor" href="#how-to-trasform-external-service-data-schemas-into-elter-data-reporting-template"></a>
 </h3>
-<p>The structure of species occurrence records reflects the exporting schema of the original data publisher. Fields mapping among the three data source schemas (i.e., GBIF, iNaturalist, OBIS) and the eLTER data-reporting template (<span class="citation">Peterseil J. (2020)</span>) was carried out so as to design functions to structure fetched data in three simplified output data formats. These output data formats result i) harmonised to eLTER data-reporting requirements/template and ii) more readable since only essential attributes are maintained.</p>
-<p>Using 2 other R functions, developed for solve this issue, data from external data service can be exported into eLTER data-reporting template.</p>
-<p>Below an example for the eLTER <a href="https://deims.org/97ff6180-e5d1-45f2-a559-8a7872eb26b1" class="external-link">Saldur River Catchment site</a>, where the external data service to be queried are GBIF and iNaturalist.</p>
+<p>The structure of species occurrence records reflects the exporting
+schema of the original data publisher. Fields mapping among the three
+data source schemas (i.e., GBIF, iNaturalist, OBIS) and the eLTER
+data-reporting template (<span class="citation">Peterseil J.
+(2020)</span>) was carried out so as to design functions to structure
+fetched data in three simplified output data formats. These output data
+formats result i) harmonised to eLTER data-reporting
+requirements/template and ii) more readable since only essential
+attributes are maintained.</p>
+<p>Using 2 other R functions, developed for solve this issue, data from
+external data service can be exported into eLTER data-reporting
+template.</p>
+<p>Below an example for the eLTER <a href="https://deims.org/97ff6180-e5d1-45f2-a559-8a7872eb26b1" class="external-link">Saldur
+River Catchment site</a>, where the external data service to be queried
+are GBIF and iNaturalist.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">saldurid</span> <span class="op">&lt;-</span> <span class="st">"https://deims.org/97ff6180-e5d1-45f2-a559-8a7872eb26b1"</span>
 
@@ -740,13 +781,15 @@
   <span class="va">outGbif</span> <span class="op">&lt;-</span> <span class="va">tblSaldur_gbif</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
     <span class="fu">ReLTER</span><span class="fu">::</span><span class="fu"><a href="../reference/map_occ_gbif2elter.html">map_occ_gbif2elter</a></span><span class="op">(</span>deimsid <span class="op">=</span> <span class="va">saldurid</span><span class="op">)</span>
   <span class="fu">ReLTER</span><span class="fu">::</span><span class="fu"><a href="../reference/save_occ_eLTER_reporting_Archive.html">save_occ_eLTER_reporting_Archive</a></span><span class="op">(</span><span class="va">outGbif</span><span class="op">)</span>
-<span class="op">}</span>
-<span class="co"># iNaturalist</span>
+<span class="op">}</span></code></pre></div>
+<pre><code><span class="co">## [1] "/var/folders/p1/110rx8q101z0wn0bwh4njrcw0000gn/T//RtmpxzcaUC/biodiv_occurrence_site_97ff6180-e5d1-45f2-a559-8a7872eb26b1_gbif.zip"</span></code></pre>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># iNaturalist</span>
 <span class="va">tblSaldur_inat</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="va">resSaldur</span><span class="op">$</span><span class="va">inat</span><span class="op">)</span>
 <span class="va">outInat</span> <span class="op">&lt;-</span> <span class="va">tblSaldur_inat</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu">ReLTER</span><span class="fu">::</span><span class="fu"><a href="../reference/map_occ_inat2elter.html">map_occ_inat2elter</a></span><span class="op">(</span>deimsid <span class="op">=</span> <span class="va">saldurid</span><span class="op">)</span>
 <span class="fu">ReLTER</span><span class="fu">::</span><span class="fu"><a href="../reference/save_occ_eLTER_reporting_Archive.html">save_occ_eLTER_reporting_Archive</a></span><span class="op">(</span><span class="va">outInat</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## [1] "/var/folders/p1/110rx8q101z0wn0bwh4njrcw0000gn/T//RtmphMitcW/biodiv_occurrence_site_97ff6180-e5d1-45f2-a559-8a7872eb26b1_inat.zip"</span></code></pre>
+<pre><code><span class="co">## [1] "/var/folders/p1/110rx8q101z0wn0bwh4njrcw0000gn/T//RtmpxzcaUC/biodiv_occurrence_site_97ff6180-e5d1-45f2-a559-8a7872eb26b1_inat.zip"</span></code></pre>
 <p>The eLTER useful archive created are:</p>
 <ul>
 <li><p>biodiv_occurrence_site_97ff6180-e5d1-45f2-a559-8a7872eb26b1_gbif.zip</p></li>
@@ -758,7 +801,8 @@
 </h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-Peterseil2021" class="csl-entry">
-Peterseil J., Geiger S. 2020. <span>“Field Specification for Data Reporting.”</span> <a href="https://www.lter-europe.net/projects/PLUS/eLTER_TechDoc_TemplateSpecification.pdf" class="external-link">https://www.lter-europe.net/projects/PLUS/eLTER_TechDoc_TemplateSpecification.pdf</a>.
+Peterseil J., Geiger S. 2020. <span>“Field Specification for Data
+Reporting.”</span> <a href="https://www.lter-europe.net/projects/PLUS/eLTER_TechDoc_TemplateSpecification.pdf" class="external-link">https://www.lter-europe.net/projects/PLUS/eLTER_TechDoc_TemplateSpecification.pdf</a>.
 </div>
 </div>
 </div>

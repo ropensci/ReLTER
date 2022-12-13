@@ -35,7 +35,6 @@ cropped to an eLTER site boundary, which is obtained from the DEIMS-SDR API."><m
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/datasets_map.html">Related resources delivered by EU eLTER sites</a>
     <a class="dropdown-item" href="../articles/occurrences_into_site.html">How to retrieve occurrence records by exploiting the {`ReLTER`} get_site_speciesOccurrences() function</a>
     <a class="dropdown-item" href="../articles/resources_delivered_eu_networks.html">Related resources delivered by EU eLTER sites</a>
     <a class="dropdown-item" href="../articles/rocker_ReLTER.html">Run ReLTER in a Docker container</a>
@@ -91,7 +90,8 @@ DEIMS-SDR website. DEIMS ID information
 <dt>dataset</dt>
 <dd><p>A <code>character</code>. The requested dataset. One of:
 "landcover", "clc2018", "osm_buildings", "natura2000",
-"ndvi_spring", "ndvi_summer", "ndvi_autumn", "ndvi_winter".
+"ndvi_spring", "ndvi_summer", "ndvi_autumn", "ndvi_winter", "ndvi_trend",
+"forest_broadleaf", "forest_mixed", "forest_coniferous".
 Default is "landcover".</p></dd>
 </dl></div>
     <div class="section level2">
@@ -118,10 +118,12 @@ and OSM (IUCN Ia, IUCN Ib, IUCN 2, IUCN 3, IUCN 4, IUCN 5, IUCN 6
 and others categories),
 first to 10m spatial resolution and after downsampled
 to 30m by spatial average.
-The overlap areas are indicated in a new category.</p>
-<p>NDVI:  NDVI time-series,
-derived from the Landsat quarterly temporal composites</p>
-<p>All datasets are georeferenced to the
+The overlap areas are indicated in a new category.
+NDVI:  NDVI time-series,
+derived from the Landsat quarterly temporal composites
+NDVI Trend from 2000 - 2019 as OLS regression
+Forests: Broadleaf, coniferous or mixed forests
+All datasets are georeferenced to the
 EPSG:3035 coordinate reference system.
 and all except clc2018 have 30 meters resolution</p>
     </div>

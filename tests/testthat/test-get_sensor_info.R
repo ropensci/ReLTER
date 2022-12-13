@@ -31,7 +31,8 @@ test_that("Output of sensor information function constructs 'sf' and
             expect_true(ncol(object) == 14)
             expect_true(all(names(object) == c(
               "title", "abstract", "uri", "type", "created", "changed",
-              "relatedSite", "contacts", "geography", "elevation", "sensorType.label",
+              "relatedSite", "contacts", "geography",
+              "elevation", "sensorType.label",
               "sensorType.uri", "resultAcquisitionSource", "observedProperty"
             )))
             expect_type(object$title, "character")

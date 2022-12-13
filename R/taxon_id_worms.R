@@ -80,7 +80,7 @@ taxon_id_worms <- function(
     a[[length(a) + 1]] <- new_element
   }
   for (i in seq_len(length(a))) {
-    if (is.na(a[[i]][[1]])) {
+    if (is.na(a[[i]])) {
       input$valid_name[[i]] <- NA
       input$valid_authority[[i]] <- NA
       input$valid_AphiaID[[i]] <- NA

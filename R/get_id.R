@@ -94,14 +94,15 @@ get_id <- function(deimsid, resource = "sites", test, ...) {
 
 }
 
-#' INTERNAL FUNCTION for package development only. Add new internal json for local tests.
-#' @param deimsid A `character`. It is the DEIMS ID of the site, activity or
-#' dataset from DEIMS-SDR website. DEIMS ID information
-#' \href{https://deims.org/docs/deimsid.html}{here}.
-#' @param resource Character: one among `"sites"` (default), `"activities"` or
+#' INTERNAL FUNCTION for package development only. Add new internal
+#' json for local tests.
+#' @param deimsid A `character`. It is the DEIMS ID (without url prefix)
+#' of the site, activity or dataset from DEIMS-SDR website. DEIMS ID
+#' information \href{https://deims.org/docs/deimsid.html}{here}.
+#' @param resource Character: one among `"sites"`, `"activities"` or
 #'  `"datasets"` (`"networks"` currently not tested).
 #' @noRd
-.save_id<-function(resource, deimsid, ...){
+.save_id <- function(resource, deimsid, ...) {
   # code to store locally
   if (resource == "networks") {
     # for Network

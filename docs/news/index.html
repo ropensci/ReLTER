@@ -25,7 +25,6 @@
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/datasets_map.html">Related resources delivered by EU eLTER sites</a>
     <a class="dropdown-item" href="../articles/occurrences_into_site.html">How to retrieve occurrence records by exploiting the {`ReLTER`} get_site_speciesOccurrences() function</a>
     <a class="dropdown-item" href="../articles/resources_delivered_eu_networks.html">Related resources delivered by EU eLTER sites</a>
     <a class="dropdown-item" href="../articles/rocker_ReLTER.html">Run ReLTER in a Docker container</a>
@@ -75,7 +74,8 @@
 <li>composition of file naming convention following the eLTER Data Reporting Format (v3.1);</li>
 <li>composition of the object containing the eLTER Data Reporting Format (v3.1) tables;</li>
 <li>interaction with Sensor Observations Services (SOS - v2.0) for acquire procedure list, procedure info, feature of interest info, observed property info, and observations;</li>
-<li>interaction to the Zenodo repository in order to upload record or download dataset record.</li>
+<li>interaction to the Zenodo repository in order to upload record or download dataset record;</li>
+<li>substituted the SPARQL package with httr2.</li>
 </ul><hr></div>
 </div>
     <div class="section level2">
@@ -120,7 +120,8 @@
 </div>
 <div class="section level3">
 <h3 id="bug-fixes-0-2-0">Bug Fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-0-2-0"></a></h3>
-<ul><li>all the warnings, generated during installation, have been removed.</li></ul><hr></div>
+<ul><li>all the warnings, generated during installation, have been removed.</li>
+</ul><hr></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.1" id="relter-011-release-notes">ReLTER 0.1.1 Release Notes<a class="anchor" aria-label="anchor" href="#relter-011-release-notes"></a></h2>
@@ -131,10 +132,12 @@
 </div>
 <div class="section level3">
 <h3 id="minor-changes-0-1-1">Minor Changes<a class="anchor" aria-label="anchor" href="#minor-changes-0-1-1"></a></h3>
-<ul><li>The examples for all functions have been improved</li></ul></div>
+<ul><li>The examples for all functions have been improved</li>
+</ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-0-1-1">Bug Fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-0-1-1"></a></h3>
-<ul><li>The problem of installing the package has been resolved</li></ul><hr></div>
+<ul><li>The problem of installing the package has been resolved</li>
+</ul><hr></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.0" id="relter-010-release-notes">ReLTER 0.1.0 Release Notes<a class="anchor" aria-label="anchor" href="#relter-010-release-notes"></a></h2>
@@ -142,7 +145,8 @@
 <div class="section level3">
 <h3 id="major-changes-0-1-0">Major changes<a class="anchor" aria-label="anchor" href="#major-changes-0-1-0"></a></h3>
 <p>Beta release of ReLTER package!</p>
-<ul><li>Some functions are released within this version of package:</li></ul><ol style="list-style-type: decimal"><li>getSiteAffiliations</li>
+<ul><li>Some functions are released within this version of package:</li>
+</ul><ol style="list-style-type: decimal"><li>getSiteAffiliations</li>
 <li>getSiteBoundaries</li>
 <li>getSiteContact</li>
 <li>getSiteEnvCharacts</li>

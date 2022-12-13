@@ -73,7 +73,6 @@ Imports:
     httr2,
     jqr,
     jsonlite,
-    leaflet (>= 2.1.1),
     magrittr,
     qrcode,
     raster (>= 3.3-13),
@@ -106,7 +105,8 @@ Imports:
     units,
     stringi,
     spocc,
-    countrycode
+    countrycode,
+    leaflet (>= 2.1.1)
 RdMacros: Rdpack
 Suggests: 
     httptest,

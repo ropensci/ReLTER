@@ -29,7 +29,6 @@ Service (SOS)."><meta property="og:image" content="https://docs.ropensci.org/ReL
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/datasets_map.html">Related resources delivered by EU eLTER sites</a>
     <a class="dropdown-item" href="../articles/occurrences_into_site.html">How to retrieve occurrence records by exploiting the {`ReLTER`} get_site_speciesOccurrences() function</a>
     <a class="dropdown-item" href="../articles/resources_delivered_eu_networks.html">Related resources delivered by EU eLTER sites</a>
     <a class="dropdown-item" href="../articles/rocker_ReLTER.html">Run ReLTER in a Docker container</a>
@@ -79,9 +78,9 @@ Service (SOS).</p>
 <dd><p>A <code>character</code>. The endpoint of the Sensor Observation Service
 (SOS) service.</p></dd>
 <dt>procedure</dt>
-<dd><p>A <code>character</code>. It is a procedure/sensor ID.
-Possible value are the FOI(s) ID, which can be obtained via the
-<code><a href="get_sos_procedure_info.html">get_sos_procedure_info()</a></code> function.</p></dd>
+<dd><p>A <code>character</code>. The procedure/sensor ID.
+Possible value are the Feature of Interest(FOI) ID,
+which can be obtained via the <code><a href="get_sos_procedure_info.html">get_sos_procedure_info()</a></code> function.</p></dd>
 <dt>foi</dt>
 <dd><p>A <code>character</code>. This parameter selects which Feature(s) Of
 Interest (FOI(s)) are retrieved and returned in the observations.
@@ -148,7 +147,7 @@ conversion and derivation of units of collected observed properties.</p>
 <span class="r-in"><span class="co"># FP &lt;- get_sos_obs(</span></span>
 <span class="r-in"><span class="co">#   sosURL = "http://getit.lteritalia.it/observations/service",</span></span>
 <span class="r-in"><span class="co">#   procedure = "http://www.get-it.it/sensors/getit.lteritalia.it/procedure/noOwnerDeclared/noModelDeclared/noSerialNumberDeclared/1286194C-A5DF-11DF-8ED7-1602DFD72097",</span></span>
-<span class="r-in"><span class="co">#   foi = c("http://www.get-it.it/sensors/getit.lteritalia.it/sensors/foi/SSF/SP/4326/45.3245/7.90412", "http://www.get-it.it/sensors/getit.lteritalia.it/sensors/foi/SSF/SP/4326/45.322/7.90251"),</span></span>
+<span class="r-in"><span class="co">#   foi = c("http://www.get-it.it/sensors/getit.lteritalia.it/sensors/foi/SSF/SP/4326/45.9547/8.63403"),</span></span>
 <span class="r-in"><span class="co">#   show_map = TRUE</span></span>
 <span class="r-in"><span class="co"># )</span></span>
 <span class="r-in"><span class="co"># FP</span></span>
@@ -172,22 +171,6 @@ conversion and derivation of units of collected observed properties.</p>
 <span class="r-in"><span class="co"># the URI of the label of first two columns</span></span>
 <span class="r-in"><span class="co"># of `airTemp`</span></span>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/attributes.html" class="external-link">attributes</a></span><span class="op">(</span><span class="va">airTemp</span><span class="op">)</span><span class="op">$</span><span class="va">uri</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># plot</span></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggforce.data-imaginist.com" class="external-link">ggforce</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-quantities/units/" class="external-link">units</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">airTemp</span>, <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span></span>
-<span class="r-in">    x <span class="op">=</span> <span class="va">phenomenonTime</span>, y <span class="op">=</span> <span class="va">Air_Temperature</span></span>
-<span class="r-in">  <span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">airTemp</span>, color <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">airTemp</span>, color <span class="op">=</span> <span class="st">"blue"</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
-<span class="r-in"><span class="co"># same for °F</span></span>
-<span class="r-in"><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">airTemp</span>, <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span></span>
-<span class="r-in">    x <span class="op">=</span> <span class="va">phenomenonTime</span>, y <span class="op">=</span> <span class="va">Air_Temperature</span></span>
-<span class="r-in">  <span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">airTemp</span>, color <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">airTemp</span>, color <span class="op">=</span> <span class="st">"blue"</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu">ggforce</span><span class="fu">::</span><span class="fu"><a href="https://ggforce.data-imaginist.com/reference/scale_unit.html" class="external-link">scale_y_unit</a></span><span class="op">(</span>unit <span class="op">=</span> <span class="st">"°F"</span><span class="op">)</span></span>
 <span class="r-in">  </span>
 <span class="r-in"><span class="op">}</span></span>
 <span class="r-in"><span class="co">## End (Not run)</span></span>

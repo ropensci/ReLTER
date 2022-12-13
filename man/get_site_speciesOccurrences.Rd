@@ -48,7 +48,7 @@ boundary, which is obtained from the DEIMS-SDR sites API.
 }
 \section{The function output}{
 
-\figure{get_site_speciesOccurrencese_fig.png}{Map of first 100 occurrences
+\figure{get_site_speciesOccurrences_fig.png}{Map of first 100 occurrences
 acquired from iNaturalist and OBIS in the marine site Gulf of Venice}
 }
 
