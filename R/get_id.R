@@ -40,6 +40,9 @@ get_id <- function(deimsid, resource = "sites", test, ...) {
       "\\.rds$"
     ))
     if (!deimsid %in% valid_ids) {
+      if(Sys.getenv("DEV_MODE")!="" && Sys.getenv("DEV_MODE")=="TRUE"){
+        .save_id(resource, deimsid, development = TRUE)
+      }
       stop(paste0(
         "deimsid '", deimsid,
         "' cannot be used in test mode with resource = '", resource, "'."
@@ -101,6 +104,12 @@ get_id <- function(deimsid, resource = "sites", test, ...) {
 #' information \href{https://deims.org/docs/deimsid.html}{here}.
 #' @param resource Character: one among `"sites"`, `"activities"` or
 #'  `"datasets"` (`"networks"` currently not tested).
+#' @note for development, in order to add new deims resources, set
+#' the environment variables "DEV_MODE" and "RELTER_DEV_INST_PATH"
+#' e.g.
+#' Sys.setenv("RELTER_DEV_INST_PATH",file.path(getwd(), "inst"))
+#' in order to silently enable cache creation of missing resources while
+#' testing the package during development
 #' @noRd
 .save_id <- function(resource, deimsid, development=FALSE, ...) {
   message("This function is intended for development purposes only.")
@@ -123,8 +132,14 @@ get_id <- function(deimsid, resource = "sites", test, ...) {
     if(development) file.path("inst","deimsid", resource) else file.path(
     system.file(file.path("deimsid", resource), package = "ReLTER"))
   
+  if(Sys.getenv("DEV_MODE")!="" && Sys.getenv("DEV_MODE")=="TRUE" && dir.exists(Sys.getenv("RELTER_DEV_INST_PATH"))){
+    path <- file.path(Sys.getenv("RELTER_DEV_INST_PATH"), "deimsid", resource)
+    if(!dir.exists(path)) dir.create(path)
+  }
+  
   if(!dir.exists(path)) 
-    stop("you are trying to save in a folder that does not exist in your computer: ", path)
+      stop("you are trying to save in a folder that does not exist on your computer: ", path)
+  
   saveRDS(jj, file.path(path, paste0(deimsid, ".rds")))
 }
 
