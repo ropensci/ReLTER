@@ -102,7 +102,10 @@ get_id <- function(deimsid, resource = "sites", test, ...) {
 #' @param resource Character: one among `"sites"`, `"activities"` or
 #'  `"datasets"` (`"networks"` currently not tested).
 #' @noRd
-.save_id <- function(resource, deimsid, ...) {
+.save_id <- function(resource, deimsid, development=FALSE, ...) {
+  message("This function is intended for development purposes only.")
+  if(!development) warning("Caching a deims entity in the package internal folder")
+  
   # code to store locally
   if (resource == "networks") {
     # for Network
@@ -115,8 +118,34 @@ get_id <- function(deimsid, resource = "sites", test, ...) {
   jj <- suppressMessages(httr::content(
           export, "text", encoding = "UTF-8")
         )
-  saveRDS(jj, file.path(
-    system.file(file.path("deimsid", resource), package = "ReLTER"),
-    paste0(deimsid, ".rds")
-  ))
+  
+  path <- 
+    if(development) file.path("inst","deimsid", resource) else file.path(
+    system.file(file.path("deimsid", resource), package = "ReLTER"))
+  
+  if(!dir.exists(path)) 
+    stop("you are trying to save in a folder that does not exist in your computer: ", path)
+  saveRDS(jj, file.path(path, paste0(deimsid, ".rds")))
+}
+
+.recreate_deims_cache<-function(development=TRUE){
+  message("This function is intended for development purposes only.")
+  if(!development) warning("Recreating all the DEIMS object cache in the package internal folder.")
+  
+  path <- 
+    if(development) file.path("inst","deimsid") else file.path(
+      system.file(file.path("deimsid"), package = "ReLTER"))
+  
+  if(!dir.exists(path)) 
+    stop("you are trying to save in a folder that does not exist on your computer: ", path)
+  
+  allfilenames <- dir(path = path, recursive = T)
+  myfun<-function(resource, deimsid, ...){
+    message("executing .save_id(", resource,",", deimsid,")")
+    .save_id(resource, deimsid, development, ...)
+  }
+  objs<-strcapture("(?<resource>.*)/(?<deimsid>.*)\\.rds", allfilenames, proto = data.frame(resource=character(), deimsid=character()), perl=T) %>% 
+    dplyr::as_tibble()
+  objs %>% purrr::pmap(myfun)
+  
 }
