@@ -29,7 +29,8 @@ v2.0.0 was released on 30/09/2022
   procedure list, procedure info, feature of interest info, observed property
   info, and observations;
 * interaction to the Zenodo repository in order to upload record or download
-  dataset record.
+  dataset record;
+* substituted the SPARQL package with httr2.
 
 ________________________________________________________________________________
 

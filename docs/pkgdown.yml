@@ -1,15 +1,14 @@
-pandoc: 2.14.0.3
+pandoc: 2.19.2
 pkgdown: 2.0.3
 pkgdown_sha: ~
 articles:
-  datasets_map: datasets_map.html
   occurrences_into_site: occurrences_into_site.html
   resources_delivered_eu_networks: resources_delivered_eu_networks.html
   rocker_ReLTER: rocker_ReLTER.html
   site_information: site_information.html
   sites_contacts: sites_contacts.html
   sites_information: sites_information.html
-last_built: 2022-09-28T10:19Z
+last_built: 2022-12-13T09:15Z
 urls:
   reference: https://docs.ropensci.org/ReLTER/reference
   article: https://docs.ropensci.org/ReLTER/articles

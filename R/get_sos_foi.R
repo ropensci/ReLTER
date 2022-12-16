@@ -57,7 +57,10 @@ get_sos_foi <- function(sosURL, show_map = FALSE) {
     "?service=SOS&version=2.0.0&request=GetCapabilities&Sections=OperationsMetadata"
   )
   observationDataXML <- xml2::read_xml(requestObs)
-  foiID <- xml2::xml_text(xml2::xml_find_all(observationDataXML, xpath = ".//ows:Operation[@name='GetObservation']/ows:Parameter[@name='featureOfInterest']/ows:AllowedValues/ows:Value"))
+  foiID <- 
+    xml2::xml_text(
+      xml2::xml_find_all(observationDataXML, 
+                         xpath = ".//ows:Operation[@name='GetObservation']/ows:Parameter[@name='featureOfInterest']/ows:AllowedValues/ows:Value"))
   requestFOI <- list()
   for (i in 1:length(foiID)) {
     requestFOI[[i]] <- paste0(
@@ -73,7 +76,22 @@ get_sos_foi <- function(sosURL, show_map = FALSE) {
     x <- xml2::read_xml(requestFOI[[l]])
     y <- list()
     prefix <- if ("sam" %in% names(xml2::xml_ns(x))) "sam:" else "sf:"
-    if (!is.na(xml2::xml_attr(xml2::xml_find_first(x, ".//sos:featureMember"), "href"))) {
+    if(prefix=="sf:"){
+      ns_additional = c("sf"="http://www.opengis.net/sampling/2.0")
+    } else {
+      ns_additional = c("sam"="http://www.opengis.net/sampling/2.0")
+    }
+    iserror <- "ows" %in% names(xml2::xml_ns(x)) && !is.na(xml2::xml_find_first(x, "ows:Exception"))
+    if (iserror) {
+      y["typeSf"] <- ""
+      y["description"] <-  ""
+      y["name"] <- ""
+      y["foiID"] <- ""
+      y["sampledFeature"] <- ""
+      y["srsName"] <- ""
+      y["pos"] <- ""
+      foi[[l]] <- y
+    } else if (!is.na(xml2::xml_attr(xml2::xml_find_first(x, ".//sos:featureMember"), "href"))) {
       y["typeSf"] <- ""
       y["description"] <-  ""
       y["name"] <- ""
@@ -83,11 +101,11 @@ get_sos_foi <- function(sosURL, show_map = FALSE) {
       y["pos"] <- ""
       foi[[l]] <- y
     } else {
-      y["typeSf"] <- xml2::xml_attr(xml2::xml_find_first(x, xpath = paste0(".//", prefix, "type")), "href")
+      y["typeSf"] <- xml2::xml_attr(xml2::xml_find_first(x, xpath = paste0(".//", prefix, "type"), ns = ns_additional), "href")
       y["description"] <-  xml2::xml_text(xml2::xml_find_first(x, ".//gml:description"))
       y["name"] <- xml2::xml_text(xml2::xml_find_first(x, ".//gml:name"))
       y["foiID"] <- xml2::xml_text(xml2::xml_find_first(x, ".//gml:identifier"))
-      y["sampledFeature"] <- xml2::xml_attr(xml2::xml_find_first(x, xpath = paste0(".//", prefix, "sampledFeature")), "href")
+      y["sampledFeature"] <- xml2::xml_attr(xml2::xml_find_first(x, xpath = paste0(".//", prefix, "sampledFeature"), ns = ns_additional), "href")
       y["srsName"] <- xml2::xml_attr(xml2::xml_find_first(x, ".//gml:pos"), "srsName")
       y["pos"] <- xml2::xml_text(xml2::xml_find_first(x, ".//gml:pos/text()"))
       foi[[l]] <- y

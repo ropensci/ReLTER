@@ -48,7 +48,6 @@
 <li class="active nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/datasets_map.html">Related resources delivered by EU eLTER sites</a>
     <a class="dropdown-item" href="../articles/occurrences_into_site.html">How to retrieve occurrence records by exploiting the {`ReLTER`} get_site_speciesOccurrences() function</a>
     <a class="dropdown-item" href="../articles/resources_delivered_eu_networks.html">Related resources delivered by EU eLTER sites</a>
     <a class="dropdown-item" href="../articles/rocker_ReLTER.html">Run ReLTER in a Docker container</a>
@@ -85,7 +84,8 @@
 <div class="row">
   <main id="main"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Run ReLTER in a Docker container</h1>
-                        <h4 data-toc-skip class="author">Paolo Tagliolato</h4>
+                        <h4 data-toc-skip class="author">Paolo
+Tagliolato</h4>
             
       
       <small class="dont-index">Source: <a href="https://github.com/ropensci/ReLTER/blob/HEAD/vignettes/rocker_ReLTER.Rmd" class="external-link"><code>vignettes/rocker_ReLTER.Rmd</code></a></small>
@@ -106,7 +106,8 @@
 <div class="section level3">
 <h3 id="install-a-different-branch-of-relter-package">Install a different branch of ReLTER package<a class="anchor" aria-label="anchor" href="#install-a-different-branch-of-relter-package"></a>
 </h3>
-<p>Edit the addReLTER.sh script and modify the last line, using the name of your preferred branch as the ref= parameter value:</p>
+<p>Edit the addReLTER.sh script and modify the last line, using the name
+of your preferred branch as the ref= parameter value:</p>
 <pre><code>R -e "devtools::install_github('https://github.com/ropensci/ReLTER',ref = '&lt;branchName&gt;',dependencies = FALSE)"</code></pre>
 </div>
 <div class="section level3">
@@ -117,7 +118,8 @@
 <div class="section level3">
 <h3 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h3>
-<p>Run locally on port 8080 (change port as you like). You can change “yourpasswordW with the password you prefer.</p>
+<p>Run locally on port 8080 (change port as you like). You can change
+“yourpasswordW with the password you prefer.</p>
 <pre><code>docker run -d -e PASSWORD=yourpassword -p 8080:8787 rocker_relter</code></pre>
 <p>Open browser at localhost:8080 and login with</p>
 <pre><code><span class="va">user</span><span class="op">:</span> <span class="va">rstudio</span>
@@ -126,7 +128,10 @@
 <div class="section level3">
 <h3 id="preserve-your-work-use-a-docker-volume">Preserve your work (use a docker volume)<a class="anchor" aria-label="anchor" href="#preserve-your-work-use-a-docker-volume"></a>
 </h3>
-<p>When you stop a docker container, the files created within it are lost. In order to preserve your work across different runs, link a local volume (in this example, the current working directory, $(pwd)) to the container:</p>
+<p>When you stop a docker container, the files created within it are
+lost. In order to preserve your work across different runs, link a local
+volume (in this example, the current working directory, $(pwd)) to the
+container:</p>
 <pre><code>docker run -d -v $(pwd):/home/rstudio -e PASSWORD=yourpassword -p 8080:8787 rocker_relter</code></pre>
 </div>
 <div class="section level3">

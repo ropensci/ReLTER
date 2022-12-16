@@ -42,15 +42,6 @@ Default 'measurement'}
 
 \item{filename}{optional filename associated with the object, of the form
 provided as output by the function \code{reporting_compose_file_name}}
-
-\item{data_orientation}{A \code{character}. Data must be provided in to ways by
-row or by column. Indicate 'row' if each observation, defined as the
-combination of location, time, variable and value, is organised in a single
-row. Indicate 'column' if each observation is organised as spreadsheet with
-location and time in rows, variables in column and value as cell entry. The
-method, the unit as well as additional information (like quality flags) for
-the variable needs to be defined in the METHOD if possible.
-Default 'row'.}
 }
 \value{
 list with eLTER reporting format slots

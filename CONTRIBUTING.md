@@ -85,3 +85,36 @@ We try to follow the [GitHub flow](https://guides.github.com/introduction/flow/)
 5. Commit and push your changes.
 6. Submit a [pull request](https://guides.github.com/activities/forking/#making-a-pull-request).
 
+### Note for test developers - caching DEIMS resources
+
+ReLTER repository makes use of github actions for checking committed code.
+When you execute tests locally, you could have different results than the github action.
+To execute tests like the github actions will do, just set your environment variable 
+```
+Sys.setenv("LOCAL_DEIMS"=TRUE)
+```
+This activates a caching mechanism implemented in ReLTER to avoid timeouts 
+with github actions making requests to deims.org.
+
+DEIMS resources can be cached for development purposes in the inst/deimsid subfolder-structure.
+
+If in your tests you use resources that are not already cached, you can
+add them manually to the cache folder by executing the (internal) function:
+```
+ReLTER:::.save_id(resource, deimsid, development=TRUE, ...).
+```
+Alternatively, set your current directory in the root of ReLTER project (the directory
+of this file) and set two environment variables as follows:
+```
+Sys.setenv("DEV_MODE"=TRUE)
+Sys.setenv("RELTER_DEV_INST_PATH"=file.path(getwd(), "inst"))
+```
+When these variables are set, missing files are automatically cached (e.g. within tests)
+
+If you need to recreate all the cache (for example after a change of the deims api), 
+execute:
+```
+ReLTER:::.recreate_deims_cache(development=TRUE)
+```
+
+

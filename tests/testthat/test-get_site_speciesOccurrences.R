@@ -31,7 +31,7 @@ test_that("Output of function constructs 'sf' and list as expected", {
     limit = limit
   )
   expect_type(result, "list")
-  expect_identical(names(result), list_DS)
+  expect_identical(sort(names(result)), sort(list_DS))
   expect_true(length(result) == length(list_DS))
   for (i in list_DS) {
     expect_s3_class(result[[i]], "sf")

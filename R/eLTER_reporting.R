@@ -510,14 +510,14 @@ reporting_compose_file_name <- function(
 #' @param data_type A `character`. Data must be provided by one of measurement
 #' or mapping.
 #' Default 'measurement'
-#' @param data_orientation A `character`. Data must be provided in to ways by
-#' row or by column. Indicate 'row' if each observation, defined as the
-#' combination of location, time, variable and value, is organised in a single
-#' row. Indicate 'column' if each observation is organised as spreadsheet with
-#' location and time in rows, variables in column and value as cell entry. The
-#' method, the unit as well as additional information (like quality flags) for
-#' the variable needs to be defined in the METHOD if possible.
-#' Default 'row'.
+# @param data_orientation A `character`. Data must be provided in to ways by
+# row or by column. Indicate 'row' if each observation, defined as the
+# combination of location, time, variable and value, is organised in a single
+# row. Indicate 'column' if each observation is organised as spreadsheet with
+# location and time in rows, variables in column and value as cell entry. The
+# method, the unit as well as additional information (like quality flags) for
+# the variable needs to be defined in the METHOD if possible.
+# Default 'row'.
 #' @param filename optional filename associated with the object, of the form
 #' provided as output by the function `reporting_compose_file_name`
 #' @seealso Peterseil, Geiger et al. (2020)
