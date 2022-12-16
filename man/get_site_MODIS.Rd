@@ -2,44 +2,64 @@
 % Please edit documentation in R/get_site_MODIS.R
 \name{get_site_MODIS}
 \alias{get_site_MODIS}
-\title{Acquire a time series either of two datasets from MODIS satellites:
-Land Surface Temperature (LST) or Vegetation Index (NDVI)}
+\title{Acquire a time series products from MODIS satellites:}
 \usage{
 get_site_MODIS(
   deimsid,
-  dataset = "VI",
+  product = "VI",
   from_date = "2010.01.01",
   to_date = "2020.31.12",
   output_dir = NULL,
-  plot_ts = TRUE
+  plot_ts = TRUE,
+  output_proj = "3035",
+  download_range = "Full",
+  show_map = FALSE
 )
 }
 \arguments{
-\item{deimsid}{A \code{character}. The DEIMS ID of the site from
+\item{deimsid}{\code{character}. The DEIMS ID of the site from
 DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here}.}
 
-\item{dataset}{A \code{character}. The requested dataset. One of:
-"LST_day", "LST_night", VI"
+\item{product}{\code{character}. The requested product.\link{"LST" | "VI"}.
+"LST" for Land Surface Temperature, night and day,
+8 day intervals at 1000m resolution
+"VI" for Vegetation Indices, NDVI and EVI
+16 day intervals at 250m resolution
 Default is "VI".}
 
-\item{from_date}{a \code{character}, the start date formatted as YYYY.MM.DD}
+\item{from_date}{\code{character}, the start date formatted as YYYY.MM.DD}
 
-\item{output_dir}{a \code{character}, where to save downloaded rasters}
+\item{output_dir}{\code{character}, where to save downloaded rasters}
 
-\item{plot_ts}{a \code{boolean}, whether to plot the time series,
+\item{plot_ts}{\code{boolean}, whether to plot the time series,
 default TRUE}
 
-\item{to_data}{a \code{character}, the end date formatted as YYYY.MM.DD}
+\item{output_proj}{\code{character}, the EPSG code of desired output projection
+default is "3035", the European LAEA coordinate reference system.}
+
+\item{download_range}{\code{character}, \link{"Full" | "Seasonal"}.
+Specifies whether to acquire all images between start and end dates, or
+only for a specific season. e.g. if the starting date is "2010.01.01"
+and the ending date is "2020.02.28" then only images for
+January and February are acquired, over the 10 year time span.
+(See example)}
+
+\item{show_map}{\code{character} Whether to display and save a map of
+time series aggregated product. This string must be one of:
+FALSE (the default): no map is shown or created.
+Otherwise: an aggregation function such as "mean", "max", or "min.}
+
+\item{to_data}{\code{character}, the end date formatted as YYYY.MM.DD}
 }
 \value{
-Full path to the downloaded Geotiff rasters.
-This folder will contain requested datasets, cropped to the site boundaries.
+Full path of all downloaded Geotiff files,
+cropped to the site boundaries.
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 Download a timeseries of MODIS images containing the requested
-dataset and optionally plot a time series graph
+product and optionally plot a time series graph
 of the average values over the site.
 Use of this function requires registering on the EarthData website:
 Requires registration on EarthData website:
@@ -50,29 +70,76 @@ Sys.setenv(earthdata_user="homer_simpson")
 Sys.setenv(earthdata_pass="bart&lucy")
 }
 \details{
+Land Surface Temperature (LST) or Vegetation Index (NDVI)
+
 cropped to an eLTER site boundary.
 
 Certain layers from one of these MODIS products are acquired.
 from:
-"LST_3band_emissivity_Daily_1km (M\emph{D21A1D)" and
-"LST_3band_emissivity_Daily_1km_night (M}D21A1N)"
-the "Land surface temperature" band is acquired.
+"LST_3band_emissivity_8day_1km (M\emph{D21A2)" )"
+two "Land surface temperature" bands are acquired:
+"LST_Day_1KM", "LST_Night_1KM"
 from:
-"Vegetation Indexes_16Days_250m (M*D13Q1)"
-two bands are acquired: "16 day NDVI average" and "16 day EVI average"
-NOTE that the default \code{output_dir} is tempdir(), so the downloaded files
-will be deleted when exiting R.
+"Vegetation Indexes_16Days_250m (M}D13Q1)"
+two VI bands are acquired:
+"NDVI" and "EVI"
+NOTE that the default \code{output_dir} is tempdir(), so the downloaded
+MODIS files will be deleted when exiting R.
+Enter a path for \code{output_dir} to save the files.
+
+Use the \code{plot_ts} parameter to create and save line plots of
+a time series of average pixel values over the site.
+Use the \code{show_map} parameter to create and show a time series
+aggregation map of the product over the site.
 }
 \examples{
  \dontrun{
+# Lago Maggiore - Italy, LST over an 8 month time span
+# Saved in LAEA ETRS89 coordinate reference system
+deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
+from_date <- "2018.03.01"
+to_date <- "2018.08.30"
+output_dir <- tempdir()
+download_list <- ReLTER::get_site_MODIS(deimsid, product="LST",
+    from_date=from_date, to_date=to_date,
+    output_dir=output_dir, plot_ts=TRUE,
+    output_proj="3035")
 
+# Northern Negev LTER - Israel, NDVI over 3 winter months,
+# projected to Israeli 05/12 CRS
+deimsid <- "https://deims.org/871a90b2-e372-456a-93e3-518ad1e11239"
+from_date <- "2018.01.01"
+to_date <- "2018.04.30"
+output_dir <- tempdir()
+download_list <- ReLTER::get_site_MODIS(deimsid, product="VI",
+    from_date=from_date, to_date=to_date,
+    output_dir=output_dir, plot_ts=TRUE,
+    output_proj="6991")
+
+# Hillsborough - Ireland, NDVI over 12 years, only for summer,
+# projected to UTM zone 29, EPSG:32629
+deimsid <- "https://deims.org/371c5259-6f38-4aa7-9517-c56f608c62cc"
+from_date <- "2010.06.01"
+to_date <- "2020.07.30"
+output_dir <- tempdir()
+download_list <- ReLTER::get_site_MODIS(deimsid, product="VI",
+    from_date=from_date, to_date=to_date,
+    output_dir=output_dir, plot_ts=TRUE,
+    output_proj="32629",
+    download_range="Seasonal",
+    show_map="mean")
 }
 
 }
 \references{
-\insertRef{sfR}{ReLTER}
+\insertRef{sfR}{terraR}{ReLTER}
 
-\insertRef{terraR}{ReLTER}
+MODIS images from:
+https://lpdaac.usgs.gov, maintained by the NASA EOSDIS
+Land Processes Distributed Active Archive Center (LP DAAC)
+at the USGS Earth Resources Observation and Science (EROS) Center,
+Sioux Falls, South Dakota. 2018,
+https://lpdaac.usgs.gov/resources/data-action/aster-ultimate-2018-winter-olympics-observer/.
 }
 \author{
 Micha Silver, phD (2020) \email{silverm@post.bgu.ac.il}

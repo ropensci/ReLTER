@@ -37,7 +37,7 @@
 #'     and the ending date is "2020.02.28" then only images for
 #'     January and February are acquired, over the 10 year time span.
 #'     (See example)
-#' @show_map `character` Whether to display and save a map of 
+#' @param show_map `character` Whether to display and save a map of 
 #'     time series aggregated product. This string must be one of:
 #'     FALSE (the default): no map is shown or created. 
 #'     Otherwise: an aggregation function such as "mean", "max", or "min.
@@ -87,7 +87,6 @@
 #'     from_date=from_date, to_date=to_date,
 #'     output_dir=output_dir, plot_ts=TRUE,
 #'     output_proj="3035")
-#' }
 #' 
 #' # Northern Negev LTER - Israel, NDVI over 3 winter months,
 #' # projected to Israeli 05/12 CRS

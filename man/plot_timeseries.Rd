@@ -2,13 +2,13 @@
 % Please edit documentation in R/get_site_MODIS.R
 \name{plot_timeseries}
 \alias{plot_timeseries}
-\title{Plot a time series of average pixel values from MODIS images
+\title{Plot a time series of averaged pixel values from MODIS images
 cropped to an eLTER site boundary.}
 \usage{
-plot_timeseries(deimsid, dataset, output_dir)
+plot_timeseries(deimsid, product, output_dir, output_proj = "3035")
 }
 \arguments{
-\item{dataset}{A \code{character}. The requested dataset. One of:
+\item{product}{A \code{character}. The requested product. One of:
 "LST_day", "LST_night", VI"
 Default is "VI".}
 
@@ -28,10 +28,16 @@ DEIMS-SDR website. DEIMS ID information
 \details{
 Read all images in \code{output_dir} and prepare line plots
 of average values over the site boundary for each band.
+This function is not exported. It is called by \code{get_site_MODIS()}
 }
 \examples{
  \dontrun{
-
+ # Example in Northern Negev LTER
+deimsid <- "https://deims.org/871a90b2-e372-456a-93e3-518ad1e11239"
+output_dir <- tempdir()
+png_files <- ReLTER::plot_timeseries(deimsid, product="VI",
+    output_dir=output_dir, output_proj="6991")
+message("Output plots: ", png_files)
 }
 
 }
