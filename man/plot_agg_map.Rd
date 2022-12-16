@@ -2,25 +2,31 @@
 % Please edit documentation in R/get_site_MODIS.R
 \name{plot_agg_map}
 \alias{plot_agg_map}
-\title{Aggregate time series of MODIS images
-Save and show a map}
+\title{Map of aggregated time series of MODIS images}
 \usage{
 plot_agg_map(product, output_dir, site_name, agg_function = "mean")
 }
 \arguments{
+\item{product}{\code{character} one of "LST" or "VI"}
+
 \item{output_dir}{\code{character}, where MODIS images were saved
 This directory is returned by \code{get_site_MODIS()}
 The final map, as png image file will be saved here also.}
+
+\item{site_name}{\code{character} the site (passed from get_site_MODIS())}
+
+\item{agg_function}{\code{character} either FALSE (the default) or one of
+"mean", "max", "min". All maps in time series will be aggregated
+using this function.}
 }
 \value{
 Full paths to saved Geotiff rasters
 }
 \description{
-Aggregate time series of MODIS images
-Save and show a map
+Prepare, show and save an aggregated map of acquired MODIS products
 }
 \details{
-Read all vrt time series images in \code{output_dir}
+Read all time series images (from *.vrt file) in \code{output_dir}
 Prepare an aggregation raster of all maps in the time series
 Save and show a plot of the aggregated map
 

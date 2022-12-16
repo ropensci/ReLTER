@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_site_MODIS.R
 \name{get_site_MODIS}
 \alias{get_site_MODIS}
-\title{Acquire a time series products from MODIS satellites:}
+\title{Acquire a time series of MODIS satellite products}
 \usage{
 get_site_MODIS(
   deimsid,
@@ -30,65 +30,72 @@ Default is "VI".}
 
 \item{from_date}{\code{character}, the start date formatted as YYYY.MM.DD}
 
-\item{output_dir}{\code{character}, where to save downloaded rasters}
+\item{output_dir}{\code{character}, where to save downloaded rasters (Default is \code{tempdir()})}
 
 \item{plot_ts}{\code{boolean}, whether to plot the time series,
-default TRUE}
+Default TRUE.}
 
-\item{output_proj}{\code{character}, the EPSG code of desired output projection
-default is "3035", the European LAEA coordinate reference system.}
+\item{output_proj}{\code{character}, the EPSG code of desired output projection.
+Default is "3035", the European LAEA coordinate reference system.}
 
 \item{download_range}{\code{character}, \link{"Full" | "Seasonal"}.
 Specifies whether to acquire all images between start and end dates, or
 only for a specific season. e.g. if the starting date is "2010.01.01"
 and the ending date is "2020.02.28" then only images for
-January and February are acquired, over the 10 year time span.
-(See example)}
+January and February are acquired, over the 10 year time span. (See example)}
 
-\item{show_map}{\code{character} Whether to display and save a map of
-time series aggregated product. This string must be one of:
-FALSE (the default): no map is shown or created.
-Otherwise: an aggregation function such as "mean", "max", or "min.}
+\item{show_map}{\code{character} Whether to create, save and display an
+aggregated map from the time series of acquired MODIS products.
+This string must be one of:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{FALSE (the default): no map is shown or created. 
+Otherwise: an aggregation function such as "mean", "max", or "min.
+}\if{html}{\out{</div>}}}
 
 \item{to_data}{\code{character}, the end date formatted as YYYY.MM.DD}
 }
 \value{
-Full path of all downloaded Geotiff files,
-cropped to the site boundaries.
+Full path of all downloaded and cropeed Geotiff files
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
-Download a timeseries of MODIS images containing the requested
-product and optionally plot a time series graph
-of the average values over the site.
+Acquire either Land Surface Temperature (LST) or Vegetation Index (NDVI)
+both cropped to an eLTER site boundary. Download a timeseries of MODIS images containing the requested
+product and optionally:
+
+plot a time series graph of the average values over the site.
+
+create and show an aggregated map of the acquired product
+
 Use of this function requires registering on the EarthData website:
-Requires registration on EarthData website:
+
 https://urs.earthdata.nasa.gov/home
 In order to guard your user credentials, please save
 your username and password to environment variables. i.e.
-Sys.setenv(earthdata_user="homer_simpson")
-Sys.setenv(earthdata_pass="bart&lucy")
+
+Sys.setenv("earthdata_user"="homer_simpson")
+
+Sys.setenv("earthdata_pass"="bart&lucy")
 }
 \details{
-Land Surface Temperature (LST) or Vegetation Index (NDVI)
-
-cropped to an eLTER site boundary.
-
 Certain layers from one of these MODIS products are acquired.
-from:
-"LST_3band_emissivity_8day_1km (M\emph{D21A2)" )"
-two "Land surface temperature" bands are acquired:
+from: "LST_3band_emissivity_8day_1km (M*D21A2)" )"
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{two "Land surface temperature" bands are acquired:
 "LST_Day_1KM", "LST_Night_1KM"
-from:
-"Vegetation Indexes_16Days_250m (M}D13Q1)"
+}\if{html}{\out{</div>}}
+
+from: "Vegetation Indexes_16Days_250m (M*D13Q1)"
 two VI bands are acquired:
 "NDVI" and "EVI"
+
 NOTE that the default \code{output_dir} is tempdir(), so the downloaded
 MODIS files will be deleted when exiting R.
 Enter a path for \code{output_dir} to save the files.
 
 Use the \code{plot_ts} parameter to create and save line plots of
 a time series of average pixel values over the site.
+
 Use the \code{show_map} parameter to create and show a time series
 aggregation map of the product over the site.
 }
