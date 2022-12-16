@@ -218,16 +218,23 @@ get_site_MODIS <- function(deimsid, product = "VI",
   dl_list <- list.files(output_dir, pattern=".tif$", recursive=TRUE)
   cnt_dl <- length(dl_list)
   message("Downloaded: ", cnt_dl, " MODIS files")
+  
+  # Additional functionality:
+  # Time series line plots
   if (plot_ts) {
-    ReLTER::plot_timeseries(deimsid,
+    ReLTER:::plot_timeseries(deimsid,
                             product = product,
                             output_dir = output_dir,
                             output_proj=output_proj)
   }
+  
+  # Aggregated raster of all images in time series
   if (!show_map == FALSE) {
     if (show_map %in% c("mean", "max", "min")){
-    ReLTER::plot_agg_map(output_dir, product,
-                            site_name, agg_function=show_map)
+    ReLTER:::plot_agg_map(product=product,
+                          output_dir=output_dir,
+                          site_name-site_name,
+                          agg_function=show_map)
     }
   }
   return(dl_list)
@@ -250,6 +257,7 @@ get_site_MODIS <- function(deimsid, product = "VI",
 
 #' @details Read all images in `output_dir` and prepare line plots
 #' of average values over the site boundary for each band.
+#' This function is not exported. It is called by `get_site_MODIS()`
 #' 
 #' @return Full path to the saved png image.
 #' 
@@ -259,7 +267,6 @@ get_site_MODIS <- function(deimsid, product = "VI",
 #'   \insertRef{sfR}{ReLTER}
 #'
 #'   \insertRef{terraR}{ReLTER}
-#' @export
 #' @examples
 #'  \dontrun{
 #'  # Example in Northern Negev LTER
@@ -366,6 +373,7 @@ plot_timeseries = function(deimsid, product,
   } # end for (d in dir_list)...
   message("Paths to time series plots:")
   print(unlist(pths))
+  return(pths)
 }
 
 
@@ -381,7 +389,7 @@ plot_timeseries = function(deimsid, product,
 #' Save and show a plot of the aggregated map
 #' 
 #' This function is not exported. It is called by `get_site_MODIS()`
-#' @return Full path to the saved map image.
+#' @return Full paths to saved Geotiff rasters
 #' 
 #' @author Micha Silver, phD (2020) \email{silverm@@post.bgu.ac.il}
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
@@ -394,7 +402,7 @@ plot_timeseries = function(deimsid, product,
 #'  \dontrun{
 #' }
 #'
-plot_agg_map = function(output_dir, product,
+plot_agg_map = function(product, output_dir,
                         site_name, agg_function="mean") {
   # Use parameters to find full path to output subdir
   opts_file <- system.file("ExtData/MODIStsp_ProdOpts.RData",
@@ -412,6 +420,11 @@ plot_agg_map = function(output_dir, product,
                           "Time_Series", "GDAL", "Mixed")
   vrt_list <- list.files(out_subdir, pattern=".vrt$",
                         full.names = TRUE, recursive = TRUE)
+  if (length(vrt_list)==0) {
+    # Something is wrong with time series
+    stop("No time series data were found.")
+    return(NULL)
+  }
   pths <- list()
   lapply(vrt_list, function(v){
     pth_parts <- unlist(strsplit(v, "/"))
@@ -426,4 +439,5 @@ plot_agg_map = function(output_dir, product,
   })
   message("Paths to aggregated maps:")
   print(unlist(pths))
+  return(pths)
 }
