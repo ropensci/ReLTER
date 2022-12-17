@@ -13,7 +13,8 @@ get_site_MODIS(
   plot_ts = TRUE,
   output_proj = "3035",
   download_range = "Full",
-  show_map = FALSE
+  show_map = FALSE,
+  prod_version = "061"
 )
 }
 \arguments{
@@ -21,30 +22,32 @@ get_site_MODIS(
 DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here}.}
 
-\item{product}{\code{character}. The requested product.\link{"LST" | "VI"}.
+\item{product}{\code{character}. The requested product.\link{"LST" | "VI", "ET"}.
 "LST" for Land Surface Temperature, night and day,
 8 day intervals at 1000m resolution
 "VI" for Vegetation Indices, NDVI and EVI
 16 day intervals at 250m resolution
+"ET" for Evapotranspiration
+8 day interval at 500m resolution
 Default is "VI".}
 
-\item{from_date}{\code{character}, the start date formatted as YYYY.MM.DD}
+\item{from_date}{\code{character}: the start date formatted as YYYY.MM.DD}
 
-\item{output_dir}{\code{character}, where to save downloaded rasters (Default is \code{tempdir()})}
+\item{output_dir}{\code{character}: where to save downloaded rasters (Default is \code{tempdir()})}
 
-\item{plot_ts}{\code{boolean}, whether to plot the time series,
+\item{plot_ts}{\code{boolean}: whether to plot the time series,
 Default TRUE.}
 
-\item{output_proj}{\code{character}, the EPSG code of desired output projection.
+\item{output_proj}{\code{character}: the EPSG code of desired output projection.
 Default is "3035", the European LAEA coordinate reference system.}
 
-\item{download_range}{\code{character}, \link{"Full" | "Seasonal"}.
+\item{download_range}{\code{character}: \link{"Full" | "Seasonal"}.
 Specifies whether to acquire all images between start and end dates, or
 only for a specific season. e.g. if the starting date is "2010.01.01"
 and the ending date is "2020.02.28" then only images for
 January and February are acquired, over the 10 year time span. (See example)}
 
-\item{show_map}{\code{character} Whether to create, save and display an
+\item{show_map}{\code{character}: Whether to create, save and display an
 aggregated map from the time series of acquired MODIS products.
 This string must be one of:
 
@@ -52,10 +55,10 @@ This string must be one of:
 Otherwise: an aggregation function such as "mean", "max", or "min.
 }\if{html}{\out{</div>}}}
 
-\item{to_data}{\code{character}, the end date formatted as YYYY.MM.DD}
+\item{to_data}{\code{character}: the end date formatted as YYYY.MM.DD}
 }
 \value{
-Full path of all downloaded and cropeed Geotiff files
+Full path of all downloaded and cropped Geotiff files
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
@@ -63,9 +66,9 @@ Acquire either Land Surface Temperature (LST) or Vegetation Index (NDVI)
 both cropped to an eLTER site boundary. Download a timeseries of MODIS images containing the requested
 product and optionally:
 
-plot a time series graph of the average values over the site.
+Plot a time series graph of the average values over the site.
 
-create and show an aggregated map of the acquired product
+Create and show an aggregated map of the acquired product
 
 Use of this function requires registering on the EarthData website:
 
@@ -78,68 +81,125 @@ Sys.setenv("earthdata_user"="homer_simpson")
 Sys.setenv("earthdata_pass"="bart&lucy")
 }
 \details{
-Certain layers from one of these MODIS products are acquired.
-from: "LST_3band_emissivity_8day_1km (M*D21A2)" )"
+Certain layers from each of the supported MODIS products are acquired.
+\itemize{
+\item from: "LST_3band_emissivity_8day_1km (M*D21A2)" two "Land surface temperature" bands are acquired:
 
-\if{html}{\out{<div class="sourceCode">}}\preformatted{two "Land surface temperature" bands are acquired:
 "LST_Day_1KM", "LST_Night_1KM"
-}\if{html}{\out{</div>}}
+\item from: "Vegetation Indexes_16Days_250m (M*D13Q1)" two Vegetation Indicies
+are acquired:
 
-from: "Vegetation Indexes_16Days_250m (M*D13Q1)"
-two VI bands are acquired:
 "NDVI" and "EVI"
+\item from: "Net_ET_8Day_500m (M*D16A2)" two band Evapotranspiration bands are acquired:
 
-NOTE that the default \code{output_dir} is tempdir(), so the downloaded
-MODIS files will be deleted when exiting R.
-Enter a path for \code{output_dir} to save the files.
+"ET" and "PET" (Potential EvapoTranspiration)
+}
 
-Use the \code{plot_ts} parameter to create and save line plots of
+NOTES:
+\itemize{
+\item The default \code{output_dir} is tempdir(), so the downloaded MODIS files will be deleted when exiting R.
+Enter a permanent path for \code{output_dir} to save the files.
+\item Use the \code{plot_ts} parameter to create and save line plots of
 a time series of average pixel values over the site.
-
-Use the \code{show_map} parameter to create and show a time series
+\item Use the \code{show_map} parameter to create and show a time series
 aggregation map of the product over the site.
+\item Evapotranspiration products are available only up to 2018
+}
 }
 \examples{
  \dontrun{
 # Lago Maggiore - Italy, LST over an 8 month time span
 # Saved in LAEA ETRS89 coordinate reference system
 deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
+product <- "LST"
 from_date <- "2018.03.01"
 to_date <- "2018.08.30"
 output_dir <- tempdir()
-download_list <- ReLTER::get_site_MODIS(deimsid, product="LST",
+output_proj <- "3035"
+download_list <- ReLTER::get_site_MODIS(deimsid,
+    product=product,
     from_date=from_date, to_date=to_date,
-    output_dir=output_dir, plot_ts=TRUE,
-    output_proj="3035")
+    output_dir=output_dir,
+    plot_ts=TRUE,
+    output_proj=output_proj)
 
-# Northern Negev LTER - Israel, NDVI over 3 winter months,
+# Northern Negev LTER - Israel, NDVI over 4 winter months,
 # projected to Israeli 05/12 CRS
 deimsid <- "https://deims.org/871a90b2-e372-456a-93e3-518ad1e11239"
 from_date <- "2018.01.01"
 to_date <- "2018.04.30"
+product="VI"
 output_dir <- tempdir()
-download_list <- ReLTER::get_site_MODIS(deimsid, product="VI",
+output_proj <- "6991"
+download_list <- ReLTER::get_site_MODIS(deimsid,
+    product=product,
     from_date=from_date, to_date=to_date,
-    output_dir=output_dir, plot_ts=TRUE,
-    output_proj="6991")
+    output_dir=output_dir,
+    plot_ts=TRUE,
+    output_proj=output_proj)
 
 # Hillsborough - Ireland, NDVI over 12 years, only for summer,
 # projected to UTM zone 29, EPSG:32629
+# This example takes about 1 hour to run...
 deimsid <- "https://deims.org/371c5259-6f38-4aa7-9517-c56f608c62cc"
 from_date <- "2010.06.01"
 to_date <- "2020.07.30"
+product <- "VI"
+output_proj <- "32629" 
 output_dir <- tempdir()
-download_list <- ReLTER::get_site_MODIS(deimsid, product="VI",
+download_list <- ReLTER::get_site_MODIS(deimsid,
+    product=product,
     from_date=from_date, to_date=to_date,
-    output_dir=output_dir, plot_ts=TRUE,
-    output_proj="32629",
+    output_dir=output_dir,
+    output_proj=output_proj,
     download_range="Seasonal",
+    plot_ts=FALSE,
     show_map="mean")
+ 
+ 
+# Nationalpark Mols Bjerge - Denmark, 10 year aggregated VI, only July 
+# projected to EPSG:25832 (UTM zone 32, ETRS89)
+# Takes about 1.5 hours to run
+deimsid <- "https://deims.org/8407da23-d75d-4a02-a5a5-7b9701a86743"
+from_date <- "2005.07.01"
+to_date <- "2015.08.01"
+output_dir <- tempdir()
+output_proj <- "25832"
+product <- "VI"
+download_list <- ReLTER::get_site_MODIS(deimsid,
+    product=product,
+    from_date=from_date, to_date=to_date,
+    output_dir=output_dir,
+    output_proj=output_proj,
+    download_range="Seasonal",
+    plot_ts=FALSE,
+    show_map="mean")
+
+# Doñana Long-Term Socio-ecological Research Platform - Spain
+# 2 year time series of evapotranspiration
+# projected to ERTS89 LAEA, EPSG:3035
+deimsid <- "https://deims.org/bcbc866c-3f4f-47a8-bbbc-0a93df6de7b2"
+from_date <- "2015.01.01"
+to_date <- "2017.12.31"
+output_dir <- tempdir()
+output_proj <- "3035"
+product <- "ET"
+download_list <- ReLTER::get_site_MODIS(deimsid,
+    product=product,
+    from_date=from_date, to_date=to_date,
+    output_dir=output_dir,
+    output_proj=output_proj,
+    download_range="Full",
+    plot_ts=TRUE,
+    show_map=FALSE)
+    
 }
 
 }
 \references{
-\insertRef{sfR}{terraR}{ReLTER}
+\insertRef{sfR}{ReLTER}
+
+\insertRef{terraR}{ReLTER}
 
 MODIS images from:
 https://lpdaac.usgs.gov, maintained by the NASA EOSDIS

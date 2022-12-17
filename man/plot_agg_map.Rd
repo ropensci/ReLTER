@@ -23,7 +23,8 @@ using this function.}
 Full paths to saved Geotiff rasters
 }
 \description{
-Prepare, show and save an aggregated map of acquired MODIS products
+Prepare, show and save an aggregated map
+of acquired MODIS products
 }
 \details{
 Read all time series images (from *.vrt file) in \code{output_dir}
