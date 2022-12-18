@@ -24,11 +24,12 @@
 #' @param deimsid  `character`. The DEIMS ID of the site from
 #' DEIMS-SDR website. DEIMS ID information
 #' \href{https://deims.org/docs/deimsid.html}{here}.
-#' @param product `character`. The requested product.["LST" | "VI", "ET"]. 
+#' @param product `character`. The requested product. One of: ["LST" | "VI" | "ET" | "LAI"]. 
 #'     "LST" for Land Surface Temperature, night and day,
 #'     8 day intervals at 1000m resolution
 #'     "VI" for Vegetation Indices, NDVI and EVI
 #'     16 day intervals at 250m resolution
+#'     "LAI" for Leaf area index and FPAR at 500m resolution
 #'     "ET" for Evapotranspiration
 #'     8 day interval at 500m resolution
 #' Default is "VI".
@@ -62,6 +63,10 @@
 #' are acquired:
 #' 
 #'     "NDVI" and "EVI"
+#'  
+#' * from: "LAI_8Days_500m (M*D15A2H)" two indicies are acquired:
+#' 
+#'     "Fpar" and "Lai" 
 #' 
 #' * from: "Net_ET_8Day_500m (M*D16A2)" two band Evapotranspiration bands are acquired:
 #' 
@@ -166,12 +171,12 @@
 #'     plot_ts=FALSE,
 #'     show_map="mean")
 #' 
-#' # Doñana Long-Term Socio-ecological Research Platform - Spain
-#' # 2 year time series of evapotranspiration
-#' # projected to ERTS89 LAEA, EPSG:3035
-#' deimsid <- "https://deims.org/bcbc866c-3f4f-47a8-bbbc-0a93df6de7b2"
+#' # LTSER-Sabor - Portugal, 2 year time series of evapotranspiration
+#' # projected to ETRS89 LAEA, EPSG:3035
+#' # Takes about 45 mins to run
+#' deimsid <- "https://deims.org/45722713-80e3-4387-a47b-82c97a6ef62b"
 #' from_date <- "2015.01.01"
-#' to_date <- "2017.12.31"
+#' to_date <- "2016.12.31"
 #' output_dir <- tempdir()
 #' output_proj <- "3035"
 #' product <- "ET"
@@ -184,6 +189,24 @@
 #'     plot_ts=TRUE,
 #'     show_map=FALSE)
 #'     
+#' # Gran Paradiso National Park - Italy, 1 year time series of LAI and aggregated map
+#' # projected to ETRS89 LAEA, EPSG:3035
+#' # Takes about 40 mins to run
+#' deimsid <- "https://deims.org/e33c983a-19ad-4f40-a6fd-1210ee0b3a4b"
+#' from_date <- "2020.01.01"
+#' to_date <- "2020.12.31"
+#' output_dir <- tempdir()
+#' output_proj <- "3035"
+#' product <- "LAI"
+#' download_list <- ReLTER::get_site_MODIS(deimsid,
+#'     product=product,
+#'     from_date=from_date, to_date=to_date,
+#'     output_dir=output_dir,
+#'     output_proj=output_proj,
+#'     download_range="Full",
+#'     plot_ts=TRUE,
+#'     show_map="mean")
+#'
 #' }
 #'
 ### function get_site_MODIS
@@ -197,7 +220,7 @@ get_site_MODIS <- function(deimsid, product = "VI",
                          prod_version="061") {
 
   # Make sure the requested product is among those supported
-  if (! product %in% c("VI", "LST", "ET")) {
+  if (! product %in% c("VI", "LST", "ET", "LAI")) {
     stop(paste(product, "not supported"))
   }
   # Setup category and product for the chosen product
@@ -213,6 +236,12 @@ get_site_MODIS <- function(deimsid, product = "VI",
     bands <- c("LST_Day_1KM", "LST_Night_1KM")
     scale_val <- TRUE
     output_res <-  "1000"
+  } else if (product == "LAI") { 
+    prod <-  "LAI_8Days_500m (M*D15A2H)"
+    categ <- "Ecosystem Variables - Vegetation Indices"
+    bands <- c("Fpar", "Lai")
+    scale_val <- TRUE
+    output_res <-  "500"
   } else {  # "ET"
     prod <- "Net_ET_8Day_500m (M*D16A2)"
     bands <- c("ET_500m", "PET_500m")
@@ -385,39 +414,56 @@ plot_timeseries = function(deimsid, product,
   opts_file <- system.file("ExtData/MODIStsp_ProdOpts.RData",
                            package="MODIStsp")
   load(opts_file)  # Now we have the list 'prod_opt_list'
-  vers='061'
+  
   if (product == "VI") {
     prod <- 'Vegetation Indexes_16Days_250m (M*D13Q1)'
+    vers='061'
   } else if (product == "LST") {
     prod <- "LST_3band_emissivity_8day_1km (M*D21A2)"
+    vers='061'
+  } else if (product == "LAI") {
+    prod <- "LAI_8Days_500m (M*D15A2H)"
+    vers='061'
   } else {  # "ET"
     prod <- "Net_ET_8Day_500m (M*D16A2)"
+    vers='006'
   }
   out_subdir <- prod_opt_list[[prod]][[vers]]$main_out_folder
-  out_subdir <- file.path(output_dir, out_subdir)
-  dir_list <- list.dirs(out_subdir,
-                        full.names = TRUE, recursive = TRUE)
-  # Loop over directories (each band is separate directory)
-  # and create a time series plot for each
-  pths <- list()
-  for (d in dir_list) {
+  # Get directory of time series VRT files
+  prod_dir <- file.path(output_dir, out_subdir)
+  # and list of subdirs of each band
+  dir_list <- list.dirs(prod_dir,
+                        full.names = TRUE,
+                        recursive=FALSE) # avoid the subdirs
+  # Ignore the Time_Series subdir
+  dir_list <- dir_list[! grepl("Time_Series", dir_list)]
+  # Now we are left with only the band subdirs
+  # Loop over band directories and create a time series plot for each
+  pths <- lapply(1:length(dir_list), function(dl) {
+    
     # Read all *.tif into terra::rast stack
-    tif_list <- list.files(d, pattern = ".tif$", full.names = TRUE)
-    if (length(tif_list) > 0) {
-      #message("Dir:", d, "Num files:", length(tif_list))  
+    band_dir <- dir_list[dl]
+    #print(paste(dl, band_dir))
+    tif_list <- list.files(band_dir,
+                           pattern = ".tif$", full.names = TRUE)
+    #print(tif_list[90])
+
+    if (length(tif_list) == 0) {
+      stop("No timeseries files in: ", band_dir)
+    } else {
       stk <- terra::rast(tif_list)
-      
+      # The MODIStsp rasters are set with PROJCRS='unknown', so set CRS
+      terra::crs(stk) <- paste0("EPSG:", output_proj)
       # Get dates from file names
-      date_list <- lapply(tif_list, function(t){
+      date_list <- lapply(tif_list, function(f){
         # Underscore is MODIStsp default separator
-        dte = gsub(pattern=".tif", replacement="", x=basename(t))
+        dte = gsub(pattern=".tif", replacement="", x=basename(f))
         parts <- unlist(strsplit(dte, split = "_")) 
         # Get real date
         dte <- as.Date(paste(parts[length(parts)-1],
                              parts[length(parts)]), format="%Y %j")
         # Convert back to string
         dte <- data.frame("Date" = dte)
-        # return(strptime(dte, format("%d-%m-%Y")))
         return(dte)
       })
       dates_df = do.call(rbind, date_list)
@@ -436,8 +482,8 @@ plot_timeseries = function(deimsid, product,
       #message("Site DataFrame: ", length(site_df$Value))
       
       # Now plot
-      ttl <- paste0(site_name, ": ", basename(d))
-      print(ggplot2::ggplot(data = site_df) +
+      ttl <- paste0(site_name, ": ", basename(band_dir))
+      pl <- ggplot2::ggplot(data = site_df) +
         ggplot2::geom_line(aes(x=Date, y=Value, group = 1),
                            color="blue", size = 0.8, alpha=0.7 ) + 
         ggplot2::geom_point(aes(x=Date, y=Value),
@@ -448,16 +494,21 @@ plot_timeseries = function(deimsid, product,
               axis.title = element_text(size=10),
               axis.text.x = element_text(angle = 30, size=8,
                                          hjust=1, vjust=1),
-              title = element_text(size=12, face="bold")))
-
+              title = element_text(size=12, face="bold"))
+      
+      print(pl)
       # and save plot to png
-      png_file = paste(site_name, basename(d), "timeseries.png", sep="_")
-      png_path = file.path(d, png_file)
-      ggplot2::ggsave(filename = png_path,
-                     width=18, height=9, units = "cm")
-      pths <- append(pths, png_path)
+      png_file = paste(site_name, basename(band_dir),
+                       "timeseries.png", sep="_")
+      png_path = file.path(prod_dir, png_file)
+      png(png_path, width=800)
+      print(pl)
+      dev.off()
+      #ggplot2::ggsave(filename = png_path,plot = pl,
+      #               width=8, height=5)
+      return(png_path)
     } # end if(length(tif_list...))
-  } # end for (d in dir_list)...
+  }) # end lapply
   message("Paths to time series plots:")
   print(unlist(pths))
   return(pths)
@@ -507,12 +558,16 @@ plot_agg_map = function(product, output_dir,
     prod <- 'Vegetation Indexes_16Days_250m (M*D13Q1)'
   } else if (product == "LST") { # LST
     prod <- "LST_3band_emissivity_8day_1km (M*D21A2)"
+  } else if (product == "LAI") {
+    prod <- "LAI_8Days_500m (M*D15A2H)"
   } else {  # "ET"
     prod <- "Net_ET_8Day_500m (M*D16A2)"
+    vers <- "006"
   }
   out_subdir <- prod_opt_list[[prod]][[vers]]$main_out_folder
   # Use "Time_Series" subdir, with Mixed Aqua and Terra 
-  vrt_subdir <- file.path(output_dir, out_subdir,
+  prod_dir <- file.path(output_dir, out_subdir)
+  vrt_subdir <- file.path(prod_dir,
                           "Time_Series", "GDAL", "Mixed")
   vrt_list <- list.files(vrt_subdir, pattern=".vrt$",
                         full.names = TRUE, recursive = TRUE)

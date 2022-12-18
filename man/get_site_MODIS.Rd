@@ -22,11 +22,12 @@ get_site_MODIS(
 DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here}.}
 
-\item{product}{\code{character}. The requested product.\link{"LST" | "VI", "ET"}.
+\item{product}{\code{character}. The requested product. One of: \link{"LST" | "VI" | "ET" | "LAI"}.
 "LST" for Land Surface Temperature, night and day,
 8 day intervals at 1000m resolution
 "VI" for Vegetation Indices, NDVI and EVI
 16 day intervals at 250m resolution
+"LAI" for Leaf area index and FPAR at 500m resolution
 "ET" for Evapotranspiration
 8 day interval at 500m resolution
 Default is "VI".}
@@ -90,6 +91,9 @@ Certain layers from each of the supported MODIS products are acquired.
 are acquired:
 
 "NDVI" and "EVI"
+\item from: "LAI_8Days_500m (M*D15A2H)" two indicies are acquired:
+
+"Fpar" and "Lai"
 \item from: "Net_ET_8Day_500m (M*D16A2)" two band Evapotranspiration bands are acquired:
 
 "ET" and "PET" (Potential EvapoTranspiration)
@@ -175,12 +179,12 @@ download_list <- ReLTER::get_site_MODIS(deimsid,
     plot_ts=FALSE,
     show_map="mean")
 
-# Doñana Long-Term Socio-ecological Research Platform - Spain
-# 2 year time series of evapotranspiration
-# projected to ERTS89 LAEA, EPSG:3035
-deimsid <- "https://deims.org/bcbc866c-3f4f-47a8-bbbc-0a93df6de7b2"
+# LTSER-Sabor - Portugal, 2 year time series of evapotranspiration
+# projected to ETRS89 LAEA, EPSG:3035
+# Takes about 45 mins to run
+deimsid <- "https://deims.org/45722713-80e3-4387-a47b-82c97a6ef62b"
 from_date <- "2015.01.01"
-to_date <- "2017.12.31"
+to_date <- "2016.12.31"
 output_dir <- tempdir()
 output_proj <- "3035"
 product <- "ET"
@@ -192,6 +196,24 @@ download_list <- ReLTER::get_site_MODIS(deimsid,
     download_range="Full",
     plot_ts=TRUE,
     show_map=FALSE)
+    
+# Gran Paradiso National Park - Italy, 1 year time series of LAI and aggregated map
+# projected to ETRS89 LAEA, EPSG:3035
+deimsid <- "https://deims.org/e33c983a-19ad-4f40-a6fd-1210ee0b3a4b"
+from_date <- "2020.01.01"
+to_date <- "2020.12.31"
+output_dir <- tempdir()
+output_proj <- "3035"
+product <- "LAI"
+download_list <- ReLTER::get_site_MODIS(deimsid,
+    product=product,
+    from_date=from_date, to_date=to_date,
+    output_dir=output_dir,
+    output_proj=output_proj,
+    download_range="Full",
+    plot_ts=TRUE,
+    show_map="mean")
+    
     
 }
 
