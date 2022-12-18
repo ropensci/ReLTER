@@ -17,6 +17,8 @@ DEIMS-SDR website. DEIMS ID information
 \item{output_dir}{a \code{character}, where MODIS images were saved
 This directory is returned by \code{get_site_MODIS()}
 The final graph as png image file will be saved here also.}
+
+\item{output_proj}{\code{character}: The EPSG code of output rasters}
 }
 \value{
 Full path to the saved png image.

@@ -24,23 +24,22 @@
 #' @param deimsid  `character`. The DEIMS ID of the site from
 #' DEIMS-SDR website. DEIMS ID information
 #' \href{https://deims.org/docs/deimsid.html}{here}.
-#' @param product `character`. The requested product. One of: ["LST" | "VI" | "ET" | "LAI"]. 
+#' @param product `character`. The requested product. One of: "LST", "VI", "ET", "LAI". 
 #'     "LST" for Land Surface Temperature, night and day,
 #'     8 day intervals at 1000m resolution
 #'     "VI" for Vegetation Indices, NDVI and EVI
 #'     16 day intervals at 250m resolution
 #'     "LAI" for Leaf area index and FPAR at 500m resolution
-#'     "ET" for Evapotranspiration
-#'     8 day interval at 500m resolution
+#'     "ET" for Evapotranspiration, 8 day interval at 500m resolution
 #' Default is "VI".
 #' @param from_date `character`: the start date formatted as YYYY.MM.DD 
-#' @param to_data `character`: the end date formatted as YYYY.MM.DD
+#' @param to_date `character`: the end date formatted as YYYY.MM.DD
 #' @param output_dir `character`: where to save downloaded rasters (Default is `tempdir()`)
 #' @param plot_ts `boolean`: whether to plot the time series, 
 #' Default TRUE.
 #' @param output_proj `character`: the EPSG code of desired output projection.
 #' Default is "3035", the European LAEA coordinate reference system.
-#' @param download_range `character`: ["Full" | "Seasonal"].
+#' @param download_range `character`: one of "Full" or "Seasonal".
 #' Specifies whether to acquire all images between start and end dates, or
 #' only for a specific season. e.g. if the starting date is "2010.01.01"
 #' and the ending date is "2020.02.28" then only images for
@@ -68,9 +67,9 @@
 #' 
 #'     "Fpar" and "Lai" 
 #' 
-#' * from: "Net_ET_8Day_500m (M*D16A2)" two band Evapotranspiration bands are acquired:
+#' * from: "Net_ET_8Day_500m (M*D16A2)" one Evapotranspiration band:
 #' 
-#'     "ET" and "PET" (Potential EvapoTranspiration)
+#'     "PET" (Potential EvapoTranspiration)
 #'     
 #' NOTES:
 #' 
@@ -104,8 +103,9 @@
 #' @export
 #' @examples
 #'  \dontrun{
-#' # Lago Maggiore - Italy, LST over an 8 month time span
+#' # Lago Maggiore - Italy, LST over an 6 month time span
 #' # Saved in LAEA ETRS89 coordinate reference system
+#' # This example completes in about 10 mins
 #' deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
 #' product <- "LST"
 #' from_date <- "2018.03.01"
@@ -121,6 +121,7 @@
 #' 
 #' # Northern Negev LTER - Israel, NDVI over 4 winter months,
 #' # projected to Israeli 05/12 CRS
+#' # This example completes in about 30 mins
 #' deimsid <- "https://deims.org/871a90b2-e372-456a-93e3-518ad1e11239"
 #' from_date <- "2018.01.01"
 #' to_date <- "2018.04.30"
@@ -134,28 +135,11 @@
 #'     plot_ts=TRUE,
 #'     output_proj=output_proj)
 #'
-#' # Hillsborough - Ireland, NDVI over 12 years, only for summer,
-#' # projected to UTM zone 29, EPSG:32629
-#' # This example takes about 1 hour to run...
-#' deimsid <- "https://deims.org/371c5259-6f38-4aa7-9517-c56f608c62cc"
-#' from_date <- "2010.06.01"
-#' to_date <- "2020.07.30"
-#' product <- "VI"
-#' output_proj <- "32629" 
-#' output_dir <- tempdir()
-#' download_list <- ReLTER::get_site_MODIS(deimsid,
-#'     product=product,
-#'     from_date=from_date, to_date=to_date,
-#'     output_dir=output_dir,
-#'     output_proj=output_proj,
-#'     download_range="Seasonal",
-#'     plot_ts=FALSE,
-#'     show_map="mean")
 #'  
-#'  
-#' # Nationalpark Mols Bjerge - Denmark, 10 year aggregated VI, only July 
+#' # Nationalpark Mols Bjerge - Denmark, 10 year only for July 
+#' # Show aggregated mean NDVI and EVI, (No time series plot)
 #' # projected to EPSG:25832 (UTM zone 32, ETRS89)
-#' # Takes about 1.5 hours to run
+#' # Takes about 3/4 hour to run...
 #' deimsid <- "https://deims.org/8407da23-d75d-4a02-a5a5-7b9701a86743"
 #' from_date <- "2005.07.01"
 #' to_date <- "2015.08.01"
@@ -171,14 +155,15 @@
 #'     plot_ts=FALSE,
 #'     show_map="mean")
 #' 
-#' # LTSER-Sabor - Portugal, 2 year time series of evapotranspiration
-#' # projected to ETRS89 LAEA, EPSG:3035
-#' # Takes about 45 mins to run
-#' deimsid <- "https://deims.org/45722713-80e3-4387-a47b-82c97a6ef62b"
+#'
+#' # Braila Islands - Romania, 2 year time series of evapotranspiration
+#' # projected to Pulkova 1942(59) Zone 9 CRS, EPSG:3839
+#' # Takes almost 1.5 hours to run (requires 2 MODIS tiles)
+#' deimsid <- "https://deims.org/d4854af8-9d9f-42a2-af96-f1ed9cb25712"
 #' from_date <- "2015.01.01"
 #' to_date <- "2016.12.31"
 #' output_dir <- tempdir()
-#' output_proj <- "3035"
+#' output_proj <- "3839"
 #' product <- "ET"
 #' download_list <- ReLTER::get_site_MODIS(deimsid,
 #'     product=product,
@@ -189,9 +174,10 @@
 #'     plot_ts=TRUE,
 #'     show_map=FALSE)
 #'     
+#'     
 #' # Gran Paradiso National Park - Italy, 1 year time series of LAI and aggregated map
 #' # projected to ETRS89 LAEA, EPSG:3035
-#' # Takes about 40 mins to run
+#' # Takes about 3/4 hour to run
 #' deimsid <- "https://deims.org/e33c983a-19ad-4f40-a6fd-1210ee0b3a4b"
 #' from_date <- "2020.01.01"
 #' to_date <- "2020.12.31"
@@ -209,6 +195,7 @@
 #'
 #' }
 #'
+#'
 ### function get_site_MODIS
 get_site_MODIS <- function(deimsid, product = "VI",
                          from_date='2010.01.01', to_date='2020.31.12',
@@ -216,14 +203,14 @@ get_site_MODIS <- function(deimsid, product = "VI",
                          plot_ts=TRUE,
                          output_proj = "3035",
                          download_range="Full",
-                         show_map=FALSE,
-                         prod_version="061") {
+                         show_map=FALSE) {
 
   # Make sure the requested product is among those supported
   if (! product %in% c("VI", "LST", "ET", "LAI")) {
     stop(paste(product, "not supported"))
   }
   # Setup category and product for the chosen product
+  prod_version="061"
   if (product == "VI") {
     prod <- 'Vegetation Indexes_16Days_250m (M*D13Q1)'
     categ <- "Ecosystem Variables - Vegetation Indices"
@@ -244,7 +231,7 @@ get_site_MODIS <- function(deimsid, product = "VI",
     output_res <-  "500"
   } else {  # "ET"
     prod <- "Net_ET_8Day_500m (M*D16A2)"
-    bands <- c("ET_500m", "PET_500m")
+    bands <- c("PET_500m")
     scale_val <- TRUE
     output_res <- "500"
     categ <- "Ecosystem Variables - Evapotranspiration"
@@ -368,6 +355,7 @@ get_site_MODIS <- function(deimsid, product = "VI",
 #' @param output_dir a `character`, where MODIS images were saved
 #' This directory is returned by `get_site_MODIS()`
 #' The final graph as png image file will be saved here also.
+#' @param output_proj `character`: The EPSG code of output rasters
 
 #' @details 
 #' Read all images in `output_dir` and prepare line plots
