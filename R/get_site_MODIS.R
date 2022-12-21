@@ -86,6 +86,7 @@
 #' 
 #' @return Full path of all downloaded and cropped Geotiff files
 #' 
+#' @importFrom stats complete.cases
 #' @author Micha Silver, phD (2020) \email{silverm@@post.bgu.ac.il}
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @references
@@ -318,7 +319,7 @@ get_site_MODIS <- function(deimsid, product = "VI",
   # Additional functionality:
   # Time series line plots
   if (plot_ts) {
-    ReLTER:::plot_timeseries(deimsid,
+    ReLTER::plot_timeseries(deimsid,
                             product = product,
                             output_dir = output_dir,
                             output_proj=output_proj)
@@ -331,7 +332,7 @@ get_site_MODIS <- function(deimsid, product = "VI",
     site_name <- str_replace_all(boundary$title, "[^[:alnum:]]", "_")
     site_name <- str_replace_all(site_name, "_+", "_")
       
-    ReLTER:::plot_agg_map(product=product,
+    ReLTER::plot_agg_map(product=product,
                           output_dir=output_dir,
                           site_name=site_name,
                           agg_function=show_map)
@@ -531,10 +532,7 @@ plot_timeseries = function(deimsid, product,
 #'
 #'   \insertRef{terraR}{ReLTER}
 #' 
-#' @examples
-#'  \dontrun{
-#' }
-#'
+
 plot_agg_map = function(product, output_dir,
                         site_name, agg_function="mean") {
   # Use parameters to find full path to output subdir

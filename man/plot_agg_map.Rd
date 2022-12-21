@@ -33,11 +33,6 @@ Save and show a plot of the aggregated map
 
 This function is not exported. It is called by \code{get_site_MODIS()}
 }
-\examples{
- \dontrun{
-}
-
-}
 \references{
 \insertRef{sfR}{ReLTER}
 
