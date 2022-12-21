@@ -381,7 +381,8 @@ get_site_MODIS <- function(deimsid, product = "VI",
 #'     output_dir=output_dir, output_proj="6991")
 #' message("Output plots: ", png_files)
 #' }
-#'
+#' @keyword Internal
+#' 
 plot_timeseries = function(deimsid, product,
                            output_dir, output_proj="3035") {
   boundary <- ReLTER::get_site_info(
@@ -531,7 +532,7 @@ plot_timeseries = function(deimsid, product,
 #'   \insertRef{sfR}{ReLTER}
 #'
 #'   \insertRef{terraR}{ReLTER}
-#' 
+#' @keyword Internal
 
 plot_agg_map = function(product, output_dir,
                         site_name, agg_function="mean") {
