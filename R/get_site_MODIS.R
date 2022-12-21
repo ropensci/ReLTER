@@ -253,9 +253,9 @@ get_site_MODIS <- function(deimsid, product = "VI",
   user <- Sys.getenv("earthdata_user")
   pass <- Sys.getenv("earthdata_pass")
   if (user == "" | is.null(user) | pass == "" | is.null(pass)) {
-    warning("Please register at: https://urs.earthdata.nasa.gov/home")
-    warning("then set `earthdata_user` and `earhtdata_pass`
-            environment variables. i.e. Sys.setenv(...)")
+    warning("Please register at: https://urs.earthdata.nasa.gov/home",
+    "then set `earthdata_user` and `earhtdata_pass`  environment variables.",
+    "i.e. Sys.setenv(...)")
     stop("No login credentials for EarthData.")
   }
   if (is.null(output_dir) | output_dir==""){
