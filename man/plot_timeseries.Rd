@@ -43,7 +43,6 @@ png_files <- ReLTER::plot_timeseries(deimsid, product="VI",
     output_dir=output_dir, output_proj="6991")
 message("Output plots: ", png_files)
 }
-
 }
 \references{
 \insertRef{sfR}{ReLTER}
@@ -55,3 +54,4 @@ Micha Silver, phD (2020) \email{silverm@post.bgu.ac.il}
 
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
 }
+\keyword{Internal}
