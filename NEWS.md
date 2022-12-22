@@ -1,6 +1,43 @@
+# ReLTER 2.0.0 Release Notes
+
+v2.0.0 was released on 30/09/2022
+
+## Changes
+
+* inserted new functions for set an environment for variables of the package,
+  for setting and for get the DEIMS-SDR base URL;
+* inserted a new function for get version of DEIMS-SDR API based on the
+  DEIMS-SDR base URL;
+* added an object (queries_jq) containing all the JQ queries (as a list);
+* added the new JQ queries accordingly with the structure of the new DEIMS-SDR
+  API version;
+* deleted the JQ queries call into the get_site_info(), get_activity_info(),
+  and get_dataset_info() and substitute with a variable;
+* changed the name of the functions containing "parameters" with "observed
+  properties";
+* added for some functions the life cycle badge;
+* acquisition to species occurrences from GBIF, iNaturalist and OBIS;
+* harmonisation to the output of species occurrences in eLTER Data Reporting
+  Format (v3.1);
+* creation the archive (zip) with files following the eLTER Data Reporting
+  Format (v3.1);
+* composition of file naming convention following the eLTER Data Reporting
+  Format (v3.1);
+* composition of the object containing the eLTER Data Reporting Format
+  (v3.1) tables;
+* interaction with Sensor Observations Services (SOS - v2.0) for acquire
+  procedure list, procedure info, feature of interest info, observed property
+  info, and observations;
+* interaction to the Zenodo repository in order to upload record or download
+  dataset record;
+* substituted the SPARQL package with httr2.
+
+________________________________________________________________________________
+
+
 # ReLTER 1.1.0 Release Notes
 
-v1.1.0 was released on 15/04/2021
+v1.1.0 was released on 15/04/2022
 
 ## Major changes
 
@@ -10,8 +47,8 @@ v1.1.0 was released on 15/04/2021
 * created the vignettes of the package;
 * new functions (get_site_ODS and taxon_id_worms) has been implemented;
 * enriched the information downloaded for datasets and activities from DEIMS-SDR;
-* a solution for install package by Docker has been done.
-
+* a solution for install package by Docker has been done;
+* all the packages used in the `ReLTER` have been referenced in each functions manual.
 
 ________________________________________________________________________________
 

@@ -18,6 +18,11 @@ The output of the function is a \code{tibble} containing the research
 topics and their URI (Uniform Resource Identifier) of all ILTER sites.
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#defunct}{\figure{lifecycle-defunct.svg}{options: alt='[Defunct]'}}}{\strong{[Defunct]}}
+This function was defunct because the section
+about research topics of the site in DEIMS-SDR API
+version 1.1 has been removed.
+
 This function obtains Research Topics as collected by all
 \href{https://www.ilter.network/network/global-coverage}{ILTER sites
 (more than 1200 around the world)}, as stored in
@@ -44,6 +49,11 @@ listResearchTopics[1:10, ] \%>\%
 )
 }
 
+}
+\references{
+\insertRef{jsonliteR}{ReLTER}
+
+\insertRef{dplyrR}{ReLTER}
 }
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}

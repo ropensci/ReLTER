@@ -13,3 +13,5 @@
 ^depends\.Rds$
 ^figure$
 ^miscellaneus$
+^.*\.zenodo.json$
+^CITATION\.cff$

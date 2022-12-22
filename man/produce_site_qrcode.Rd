@@ -17,6 +17,7 @@ DEIMS-SDR website. DEIMS ID information
 The QR code as a logical matrix with "qr_code" class.
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 Return a QR code image of any provided DEIMS ID (e.g. dataset,
 site, activity).
 }
@@ -36,6 +37,9 @@ a <- produce_site_qrcode(
   do_plot = TRUE
 )
 
+}
+\references{
+\insertRef{qrcodeR}{ReLTER}
 }
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}

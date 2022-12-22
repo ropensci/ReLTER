@@ -1,5 +1,6 @@
 #' Provide a map (image) of sites in an eLTER Network.
-#' @description Return a image map object of all of the eLTER sites belonging
+#' @description `r lifecycle::badge("stable")`
+#' Return a image map object of all of the eLTER sites belonging
 #' to an eLTER Network (e.g.
 #' \href{https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3}{LTER
 #' Italy network}), as a stored into \href{https://deims.org}{DEIMS-SDR}.
@@ -26,6 +27,21 @@
 #' @importFrom dplyr select
 #' @importFrom tibble as_tibble
 #' @importFrom httr RETRY content
+#' @importFrom Rdpack reprompt
+#' @references
+#'   \insertRef{jsonliteR}{ReLTER}
+#'
+#'   \insertRef{sfR}{ReLTER}
+#'
+#'   \insertRef{rasterR}{ReLTER}
+#'
+#'   \insertRef{tmapR}{ReLTER}
+#'
+#'   \insertRef{dplyrR}{ReLTER}
+#'
+#'   \insertRef{tibbleR}{ReLTER}
+#'
+#'   \insertRef{httrR}{ReLTER}
 #' @export
 #' @examples
 #' \dontrun{
@@ -53,9 +69,10 @@
 #'
 ### function produce_network_points_map
 produce_network_points_map <- function(networkDEIMSID, countryCode) {
+  deimsbaseurl <- get_deims_base_url()
   # suppressWarnings({
     url <- paste0(
-      "https://deims.org/",
+      deimsbaseurl,
       "api/sites?network=",
       sub("^.+/", "", networkDEIMSID)
     )

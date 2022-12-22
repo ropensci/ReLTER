@@ -7,7 +7,7 @@
   "codeRepository": "https://github.com/ropensci/ReLTER",
   "issueTracker": "https://github.com/ropensci/ReLTER/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -263,6 +263,18 @@
     },
     "10": {
       "@type": "SoftwareApplication",
+      "identifier": "httr2",
+      "name": "httr2",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=httr2"
+    },
+    "11": {
+      "@type": "SoftwareApplication",
       "identifier": "jqr",
       "name": "jqr",
       "provider": {
@@ -273,7 +285,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=jqr"
     },
-    "11": {
+    "12": {
       "@type": "SoftwareApplication",
       "identifier": "jsonlite",
       "name": "jsonlite",
@@ -284,19 +296,6 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=jsonlite"
-    },
-    "12": {
-      "@type": "SoftwareApplication",
-      "identifier": "leaflet",
-      "name": "leaflet",
-      "version": ">= 2.1.1",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=leaflet"
     },
     "13": {
       "@type": "SoftwareApplication",
@@ -571,9 +570,142 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=webshot"
     },
+    "36": {
+      "@type": "SoftwareApplication",
+      "identifier": "XML",
+      "name": "XML",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=XML"
+    },
+    "37": {
+      "@type": "SoftwareApplication",
+      "identifier": "lifecycle",
+      "name": "lifecycle",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=lifecycle"
+    },
+    "38": {
+      "@type": "SoftwareApplication",
+      "identifier": "RCurl",
+      "name": "RCurl",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=RCurl"
+    },
+    "39": {
+      "@type": "SoftwareApplication",
+      "identifier": "Rdpack",
+      "name": "Rdpack",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=Rdpack"
+    },
+    "40": {
+      "@type": "SoftwareApplication",
+      "identifier": "zen4R",
+      "name": "zen4R",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=zen4R"
+    },
+    "41": {
+      "@type": "SoftwareApplication",
+      "identifier": "lubridate",
+      "name": "lubridate",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=lubridate"
+    },
+    "42": {
+      "@type": "SoftwareApplication",
+      "identifier": "units",
+      "name": "units",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=units"
+    },
+    "43": {
+      "@type": "SoftwareApplication",
+      "identifier": "stringi",
+      "name": "stringi",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=stringi"
+    },
+    "44": {
+      "@type": "SoftwareApplication",
+      "identifier": "spocc",
+      "name": "spocc",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=spocc"
+    },
+    "45": {
+      "@type": "SoftwareApplication",
+      "identifier": "countrycode",
+      "name": "countrycode",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=countrycode"
+    },
+    "46": {
+      "@type": "SoftwareApplication",
+      "identifier": "leaflet",
+      "name": "leaflet",
+      "version": ">= 2.1.1",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=leaflet"
+    },
     "SystemRequirements": null
   },
-  "fileSize": "58134.846KB",
+  "fileSize": "110442.113KB",
   "citation": [
     {
       "@type": "CreativeWork",
@@ -600,8 +732,8 @@
           "familyName": "Tagliolato"
         }
       ],
-      "name": "ropensci/ReLTER: ReLTER v1.1.0",
-      "description": "R package version v1.1.0"
+      "name": "ropensci/ReLTER: ReLTER v2.0.0",
+      "description": "R package version v1.2.0"
     }
   ]
 }

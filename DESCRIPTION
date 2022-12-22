@@ -1,7 +1,7 @@
 Package: ReLTER
 Type: Package
 Title: An Interface for the 'eLTER' Community
-Version: 1.1.0
+Version: 2.0.0
 Authors@R: c(
         person("Alessandro", "Oggioni", email = "alessandro.oggioni@cnr.it", 
           role = c("aut", "cre", "fnd"),
@@ -70,9 +70,9 @@ Imports:
     grDevices,
     grid,
     httr,
+    httr2,
     jqr,
     jsonlite,
-    leaflet (>= 2.1.1),
     magrittr,
     qrcode,
     raster (>= 3.3-13),
@@ -95,7 +95,19 @@ Imports:
     rworldmap,
     rnaturalearth,
     gridExtra,
-    webshot
+    webshot,
+    XML,
+    lifecycle,
+    RCurl,
+    Rdpack,
+    zen4R,
+    lubridate,
+    units,
+    stringi,
+    spocc,
+    countrycode,
+    leaflet (>= 2.1.1)
+RdMacros: Rdpack
 Suggests: 
     httptest,
     knitr,
@@ -108,6 +120,6 @@ VignetteBuilder: knitr
 URL: https://github.com/ropensci/ReLTER
 BugReports: https://github.com/ropensci/ReLTER/issues
 Config/testthat/edition: 3
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.3
 Language: en-GB
 Roxygen: list(markdown = TRUE)

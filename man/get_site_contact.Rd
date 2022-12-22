@@ -17,7 +17,8 @@ site and the contact information, such as: site manager, operation
 organization, metadata provider, founding agency and site url.
 }
 \description{
-This function obtains the contact information for an
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
+This internal function obtains the contact information for an
 eLTER site through the DEIMS-SDR sites API.
 }
 \author{

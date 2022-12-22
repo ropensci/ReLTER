@@ -19,14 +19,12 @@ skip_if_offline(host = "deims.org")
 
 test_that("Output of ILTER research topics function constructs 'tibble' as
           expected", {
+  Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
   result <- ReLTER::get_ilter_research_topics(sitesNum = 20)
   expect_s3_class(result, "tbl_df")
-  expect_true(ncol(result) == 2)
-  expect_true(all(names(result) == c(
-    "researchTopicsLabel", "researchTopicsUri"
-  )))
-  expect_type(result$researchTopicsLabel, "character")
-  expect_type(result$researchTopicsUri, "character")
+  expect_true(ncol(result) == 0)
+  expect_true(all(names(result) == c()))
+  Sys.setenv("LOCAL_DEIMS" = test_mode) # restore test mode
 })
 
 test_that("Wrong input (not a double) constructs an empty tibble", {

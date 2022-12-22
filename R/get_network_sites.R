@@ -1,5 +1,6 @@
 #' Retrieve a list of sites in an eLTER Network.
-#' @description This function return a spatial point vector object including
+#' @description `r lifecycle::badge("stable")`
+#' This function return a spatial point vector object including
 #' title, date late updated, URI, and coordinates, stored in
 #' \href{https://deims.org/}{DEIMS-SDR catalogue}, of all the eLTER sites
 #' belonging to an eLTER Network (e.g.
@@ -15,9 +16,20 @@
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom jsonlite fromJSON
 #' @importFrom sf st_as_sf st_is_valid st_cast
-#' @importFrom dplyr select as_tibble
+#' @importFrom dplyr select mutate as_tibble add_row
 #' @importFrom leaflet leaflet addTiles addMarkers
 #' @importFrom httr RETRY content
+#' @importFrom Rdpack reprompt
+#' @references
+#'   \insertRef{httrR}{ReLTER}
+#'
+#'   \insertRef{dplyrR}{ReLTER}
+#'
+#'   \insertRef{jsonliteR}{ReLTER}
+#'
+#'   \insertRef{sfR}{ReLTER}
+#'
+#'   \insertRef{leafletR}{ReLTER}
 #' @export
 #' @examples
 #' \dontrun{
@@ -38,7 +50,8 @@
 #'
 ### function get_network_sites
 get_network_sites <- function(networkDEIMSID) {
-  url <- paste0("https://deims.org/",
+  deimsbaseurl <- get_deims_base_url()
+  url <- paste0(deimsbaseurl,
                 "api/sites?network=",
                 sub("^.+/", "", networkDEIMSID))
   export <- httr::RETRY("GET", url = url, times = 5)
@@ -47,6 +60,41 @@ get_network_sites <- function(networkDEIMSID) {
 
   lterNetworkSitesCoords <- dplyr::as_tibble(lterNetworkSitesCoords)
   if (length(lterNetworkSitesCoords) != 0) {
+    # check if some site has MULTIPOINTS instead POINT and convert it
+    for (i in seq_len(nrow(lterNetworkSitesCoords))) {
+      
+      geom_new_points_sf <- sf::st_sfc()
+      class(geom_new_points_sf)[1] <- "sfc_POINT" # for points
+      new_points_sf <- sf::st_sf(
+        title = character(0),
+        changed = character(0),
+        uri = character(0),
+        coordinates = geom_new_points_sf,
+        crs = 4326
+      )
+      
+      if (grepl("MULTIPOINT", lterNetworkSitesCoords$coordinates[i])) {
+        multipoint_site_sf <- sf::st_as_sf(
+          lterNetworkSitesCoords[i, ],
+          wkt = "coordinates",
+          crs = 4326
+        )
+        points_site_sf <- sf::st_cast(x = multipoint_site_sf, to = "POINT") %>%
+          dplyr::mutate(
+            uri = paste0(
+              id$prefix,
+              id$suffix
+            )
+          ) %>%
+          dplyr::select(
+            "title", "changed", "uri", "coordinates"
+          )
+        new_points_sf <- new_points_sf %>%
+          dplyr::add_row(points_site_sf)
+        lterNetworkSitesCoords <- lterNetworkSitesCoords[-i, ]
+      }
+    }
+    # transform to sf
     lterSitesNetworkPointDEIMS <- sf::st_as_sf(
       lterNetworkSitesCoords,
       wkt = "coordinates",
@@ -60,10 +108,12 @@ get_network_sites <- function(networkDEIMSID) {
       dplyr::select(
         "title", "changed", "uri", "coordinates"
       )
+    lterSitesNetworkPointDEIMS <- lterSitesNetworkPointDEIMS %>%
+      dplyr::add_row(new_points_sf)
     lSNPD_valid <- sf::st_is_valid(
       lterSitesNetworkPointDEIMS
     )
-  
+
     # checking MULTIPOINT geometry
     lSNPD_type <- sf::st_geometry_type(
       x = lterSitesNetworkPointDEIMS,
@@ -90,7 +140,7 @@ get_network_sites <- function(networkDEIMSID) {
       )
     })
     # end checking
-  
+
     if (any(lSNPD_valid)) {
       map <- leaflet::leaflet(lterSitesNetworkPointDEIMS) %>%
         leaflet::addTiles() %>%

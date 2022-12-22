@@ -13,12 +13,13 @@ DEIMS-SDR website. DEIMS ID information
 }
 \value{
 The output of the function is a \code{tibble} with main features of the
-site and the general information, such as: abstract, keywords, purpose,
+site and the general information, such as: abstract, purpose,
 status, yearEstablished, yearClosed, hierarchy, siteName, short name, site
 type, protection level, images.
 }
 \description{
-This function obtains general information
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
+This internal function obtains general information
 about an eLTER site through the DEIMS-SDR sites API.
 }
 \author{

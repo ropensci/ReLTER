@@ -1,5 +1,6 @@
 #' Obtain the information about of an eLTER dataset.
-#' @description This function obtains the information about of an eLTER
+#' @description `r lifecycle::badge("stable")`
+#' This function obtains the information about of an eLTER
 #' dataset (e.g.
 #' \url{https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845})
 #' provided in \href{https://deims.org/}{DEIMS-SDR catalogue}.
@@ -12,13 +13,19 @@
 #' @return The output of the function is a `tibble` with main features
 #' of the site and the related resources collected by site.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @importFrom httr RETRY content
 #' @importFrom dplyr as_tibble
 #' @importFrom utils capture.output
 #' @importFrom sf st_as_sf st_is_valid
 #' @importFrom leaflet leaflet addTiles addPolygons
-#' @importFrom jqr jq
-#' @importFrom jsonlite stream_in
+#' @importFrom Rdpack reprompt
+#' @references
+#'   \insertRef{dplyrR}{ReLTER}
+#'
+#'   \insertRef{utilsR}{ReLTER}
+#'
+#'   \insertRef{sfR}{ReLTER}
+#'
+#'   \insertRef{leafletR}{ReLTER}
 #' @export
 #' @examples
 #' tDataset <- get_dataset_info(
@@ -29,34 +36,17 @@
 #' tDataset
 #'
 #' @section The function output:
-#' \figure{get_dataset_info_fig.png}{Map of "LTER Northern Adriatic Sea (Italy) marine data from 1965 to 2015" dataset}
+#' \figure{get_dataset_info_fig.png}{Map of "LTER Northern Adriatic Sea (Italy)
+#' marine data from 1965 to 2015" dataset}
 #'
 ### function get_dataset_info
 get_dataset_info <- function(datasetid, show_map = FALSE) {
-  q <- '{
-       title: .title,
-       abstract: .attributes.general.abstract,
-       keywords: .attributes.general.keywords,
-       uri: "\\(.id.prefix)\\(.id.suffix)",
-       type: .type,
-       dateRange: .attributes.general.dateRange,
-       relatedSite: .attributes.general.relatedSite,
-       contacts: .attributes.contact,
-       observationParameters: .attributes.observations.parameters,
-       observationSpecies: .attributes.observations.speciesGroups,
-       dataPolicy: .attributes.onlineDistribution.dataPolicyUrl,
-       doi: .attributes.onlineDistribution.doi,
-       onlineLocation: .attributes.onlineDistribution.onlineLocation,
-       legal: .attributes.legal,
-       method: .attributes.method,
-       boundaries: .attributes.geographic[].boundaries,
-       boundariesDescription: .attributes.geographic[].abstract
-      }'
-  jj <- get_id(datasetid, "datasets")
+  qo <- queries_jq[[get_deims_API_version()]]$dataset_info
+  jj <- get_id(datasetid, qo$path)
   if (is.na(attr(jj, "status"))) {
     invisible(
       utils::capture.output(
-        dataset <- dplyr::as_tibble(do_Q(q, jj))
+        dataset <- dplyr::as_tibble(do_Q(qo$query, jj))
       )
     )
     # fix the observationParameters columns name

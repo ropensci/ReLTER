@@ -3,15 +3,15 @@ citHeader("To cite the 'ReLTER' package in publications use:")
 year <- format(Sys.Date(), "%Y")
 
 citEntry(entry = "Misc",
-         title = "ropensci/ReLTER: ReLTER v1.1.0",
+         title = "ropensci/ReLTER: ReLTER v2.0.0",
          author = personList(as.person("Alessandro Oggioni"),
                              as.person("Micha Silver"),
                              as.person("Luigi Ranghetti"),
                              as.person("Paolo Tagliolato")),
          year = year,
-         note = paste("R package version", "v1.1.0"),
+         note = paste("R package version", "v1.2.0"),
          textVersion =
-         paste("Alessandro Oggioni, Micha Silver, Luigi Ranghetti & Paolo",
-         "Tagliolato. (2022). ropensci/ReLTER: ReLTER v1.1.0 (1.1.0).",
+         paste("Alessandro Oggioni, Micha Silver, Luigi Ranghetti & Paolo ",
+         "Tagliolato. (2022). ropensci/ReLTER: ReLTER v2.0.0 (2.0.0).",
          "Zenodo. https://doi.org/10.5281/zenodo.5576813")
          )

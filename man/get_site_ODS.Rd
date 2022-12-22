@@ -15,7 +15,8 @@ DEIMS-SDR website. DEIMS ID information
 
 \item{dataset}{A \code{character}. The requested dataset. One of:
 "landcover", "clc2018", "osm_buildings", "natura2000",
-"ndvi_spring", "ndvi_summer", "ndvi_autumn", "ndvi_winter".
+"ndvi_spring", "ndvi_summer", "ndvi_autumn", "ndvi_winter", "ndvi_trend",
+"forest_broadleaf", "forest_mixed", "forest_coniferous".
 Default is "landcover".}
 }
 \value{
@@ -25,6 +26,7 @@ The user should save the raster to disk, if necessary.
 i.e. writeRaster(ds_site, "site_dataset.tif")
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 Download and return a SpatRaster object containing the requested
 dataset from \href{https://maps.opendatascience.eu/}{ODS},
 cropped to an eLTER site boundary, which is obtained from the DEIMS-SDR API.
@@ -46,10 +48,10 @@ and others categories),
 first to 10m spatial resolution and after downsampled
 to 30m by spatial average.
 The overlap areas are indicated in a new category.
-
 NDVI:  NDVI time-series,
 derived from the Landsat quarterly temporal composites
-
+NDVI Trend from 2000 - 2019 as OLS regression
+Forests: Broadleaf, coniferous or mixed forests
 All datasets are georeferenced to the
 EPSG:3035 coordinate reference system.
 and all except clc2018 have 30 meters resolution
@@ -78,6 +80,13 @@ siteNDVI
 terra::plot(siteNDVI)
 }
 
+}
+\references{
+\insertRef{dplyrR}{ReLTER}
+
+\insertRef{sfR}{ReLTER}
+
+\insertRef{terraR}{ReLTER}
 }
 \author{
 Micha Silver, phD (2020) \email{silverm@post.bgu.ac.il}

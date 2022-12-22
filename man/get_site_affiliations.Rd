@@ -17,7 +17,8 @@ site and the affiliations information, such as: networks and projects in
 which the site is involved.
 }
 \description{
-This function obtains details about an eLTER site
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
+This internal function obtains details about an eLTER site
 through the DEIMS-SDR sites API.
 }
 \author{

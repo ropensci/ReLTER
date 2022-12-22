@@ -8,9 +8,9 @@ message: 'To cite package "ReLTER" in publications use:'
 type: software
 license: GPL-3.0-or-later
 title: 'ReLTER: An Interface for the ''eLTER'' Community'
-version: 1.1.0
+version: 2.0.0
 doi: 10.5281/zenodo.5576813
-date-released: 2022-04-19
+date-released: 2022-09-30
 abstract: 'ReLTER provides access to DEIMS-SDR (https://deims.org/), and allows interaction
   with data and software implemented by eLTER Research Infrastructure (RI) thus improving
   data sharing among European LTER projects. ReLTER uses the R language to access
@@ -47,7 +47,7 @@ authors:
   orcid: https://orcid.org/0000-0001-6207-5188
 preferred-citation:
   type: generic
-  title: 'ropensci/ReLTER: ReLTER v1.1.0'
+  title: 'ropensci/ReLTER: ReLTER v2.0.0'
   authors:
   - family-names: Oggioni
     given-names: Alessandro
@@ -66,7 +66,7 @@ preferred-citation:
     email: tagliolato.a@irea.cnr.it
     orcid: https://orcid.org/0000-0002-0261-313X
   year: '2022'
-  notes: R package version v1.1.0
+  notes: R package version v1.2.0
 repository-code: https://github.com/ropensci/ReLTER
 url: https://github.com/ropensci/ReLTER
 contact:
@@ -74,6 +74,13 @@ contact:
   given-names: Alessandro
   email: alessandro.oggioni@cnr.it
   orcid: https://orcid.org/0000-0002-7997-219X
+keywords:
+- biodiversity-informatics
+- data-science
+- ecology
+- elter
+- r
+- research-infrastructure
 references:
 - type: software
   title: 'R: A Language and Environment for Statistical Computing'
@@ -344,6 +351,7 @@ references:
     given-names: Eduard
   - family-names: Foster
     given-names: Zachary
+    email: zacharyfoster1989@gmail.com
   - family-names: Arendsee
     given-names: Zebulun
   year: '2022'
@@ -491,6 +499,8 @@ references:
   - family-names: Wickham
     given-names: Hadley
     email: hadley@rstudio.com
+  - family-names: Girlich
+    given-names: Maximilian
   year: '2022'
   url: https://CRAN.R-project.org/package=tidyr
 - type: software
@@ -532,6 +542,161 @@ references:
     email: winston@rstudio.com
   year: '2022'
   url: https://CRAN.R-project.org/package=webshot
+- type: software
+  title: XML
+  abstract: 'XML: Tools for Parsing and Generating XML Within R and S-Plus'
+  notes: Imports
+  authors:
+  - family-names: Temple Lang
+    given-names: Duncan
+    email: duncan@r-project.org
+    orcid: https://orcid.org/0000-0003-0159-1546
+  year: '2022'
+  url: https://CRAN.R-project.org/package=XML
+- type: software
+  title: lifecycle
+  abstract: 'lifecycle: Manage the Life Cycle of your Package Functions'
+  notes: Imports
+  authors:
+  - family-names: Henry
+    given-names: Lionel
+    email: lionel@rstudio.com
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+    orcid: https://orcid.org/0000-0003-4757-117X
+  year: '2022'
+  url: https://CRAN.R-project.org/package=lifecycle
+- type: software
+  title: RCurl
+  abstract: 'RCurl: General Network (HTTP/FTP/...) Client Interface for R'
+  notes: Imports
+  authors:
+  - family-names: Temple Lang
+    given-names: Duncan
+    email: duncan@r-project.org
+    orcid: https://orcid.org/0000-0003-0159-1546
+  year: '2022'
+  url: https://CRAN.R-project.org/package=RCurl
+- type: software
+  title: Rdpack
+  abstract: 'Rdpack: Update and Manipulate Rd Documentation Objects'
+  notes: Imports
+  authors:
+  - family-names: Boshnakov
+    given-names: Georgi N.
+    email: georgi.boshnakov@manchester.ac.uk
+  year: '2022'
+  url: https://CRAN.R-project.org/package=Rdpack
+- type: software
+  title: zen4R
+  abstract: 'zen4R: Interface to ''Zenodo'' REST API'
+  notes: Imports
+  authors:
+  - family-names: Blondel
+    given-names: Emmanuel
+    email: emmanuel.blondel1@gmail.com
+    orcid: https://orcid.org/0000-0002-5870-5762
+  year: '2022'
+  url: https://github.com/eblondel/zen4R
+- type: software
+  title: SPARQL
+  abstract: 'SPARQL: SPARQL client'
+  notes: Imports
+  authors:
+  - family-names: van Hage
+    given-names: Willem Robert
+    email: willem.van.hage@synerscope.com
+  - family-names: Kauppinen
+    given-names: 'with contributions from: Tomi'
+  - family-names: Graeler
+    given-names: Benedikt
+  - family-names: Davis
+    given-names: Christopher
+  - family-names: Hoeksema
+    given-names: Jesper
+  - family-names: Ruttenberg
+    given-names: Alan
+  - family-names: Bahls.
+    given-names: Daniel
+  year: '2022'
+  url: https://CRAN.R-project.org/package=SPARQL
+- type: software
+  title: lubridate
+  abstract: 'lubridate: Make Dealing with Dates a Little Easier'
+  notes: Imports
+  authors:
+  - family-names: Spinu
+    given-names: Vitalie
+    email: spinuvit@gmail.com
+  - family-names: Grolemund
+    given-names: Garrett
+  - family-names: Wickham
+    given-names: Hadley
+  year: '2022'
+  url: https://CRAN.R-project.org/package=lubridate
+- type: software
+  title: units
+  abstract: 'units: Measurement Units for R Vectors'
+  notes: Imports
+  authors:
+  - family-names: Pebesma
+    given-names: Edzer
+    email: edzer.pebesma@uni-muenster.de
+    orcid: https://orcid.org/0000-0001-8049-7069
+  - family-names: Mailund
+    given-names: Thomas
+    email: mailund@birc.au.dk
+  - family-names: Kalinowski
+    given-names: Tomasz
+  - family-names: Ucar
+    given-names: Iñaki
+    email: iucar@fedoraproject.org
+    orcid: https://orcid.org/0000-0001-6403-5550
+  year: '2022'
+  url: https://CRAN.R-project.org/package=units
+- type: software
+  title: stringi
+  abstract: 'stringi: Fast and Portable Character String Processing Facilities'
+  notes: Imports
+  authors:
+  - family-names: Gagolewski
+    given-names: Marek
+  - family-names: Tartanus
+    given-names: Bartek
+  - family-names: Unicode
+    given-names: others;
+  - name: Inc.
+  - name: others
+  year: '2022'
+  url: https://CRAN.R-project.org/package=stringi
+- type: software
+  title: spocc
+  abstract: 'spocc: Interface to Species Occurrence Data Sources'
+  notes: Imports
+  authors:
+  - family-names: Owens
+    given-names: Hannah
+    email: hannah.owens@gmail.com
+    orcid: https://orcid.org/0000-0003-0071-1745
+  - family-names: Barve
+    given-names: Vijay
+    orcid: https://orcid.org/0000-0002-4852-2567
+  - family-names: Chamberlain
+    given-names: Scott
+    orcid: https://orcid.org/0000-0003-1444-9135
+  year: '2022'
+- type: software
+  title: countrycode
+  abstract: 'countrycode: Convert Country Names and Country Codes'
+  notes: Imports
+  authors:
+  - family-names: Arel-Bundock
+    given-names: Vincent
+    email: vincent.arel-bundock@umontreal.ca
+    orcid: https://orcid.org/0000-0003-2042-7063
+  year: '2022'
+  url: https://vincentarelbundock.github.io/countrycode/
 - type: software
   title: httptest
   abstract: 'httptest: A Test Environment for HTTP Requests'

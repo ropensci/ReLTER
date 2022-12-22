@@ -1,6 +1,7 @@
 #' Enrich and certify a list of species names by
 #' comparing with \href{https://www.marinespecies.org}{Worms}.
-#' @description This function tibble object with all the columns of input table
+#' @description `r lifecycle::badge("stable")`
+#' This function tibble object with all the columns of input table
 #' of taxa plus new columns such as valid_name, valid_authority, valid_AphiaID,
 #' status, synonyms, LSID, url, matchType, nOfWormsRecords, wormsRecords
 #' obtained from:
@@ -26,6 +27,11 @@
 #' @author Paolo Tagliolato, phD (2021) \email{tagliolato.p@@irea.cnr.it}
 #' @importFrom worrms wm_records_names
 #' @importFrom dplyr filter
+#' @importFrom Rdpack reprompt
+#' @references
+#'   \insertRef{worrmsR}{ReLTER}
+#'
+#'   \insertRef{dplyrR}{ReLTER}
 #' @export
 #' @examples
 #' phytoplankton <- tibble::tibble(
@@ -64,30 +70,47 @@ taxon_id_worms <- function(
     "nOfWormsResults",
     "wormsRecords"
   )] <- NA
-  a <- worrms::wm_records_names(
-    name = input[[taxaColumn]],
-    marine_only = FALSE
-  )
+  a <- list()
+  for (m in seq_len(length(input[[taxaColumn]]))) {
+    new_element <- tryCatch(
+      worrms::wm_records_names(
+      name = input[[taxaColumn]][m],
+      marine_only = FALSE
+    ), error=function(err) NA)
+    a[[length(a) + 1]] <- new_element
+  }
   for (i in seq_len(length(a))) {
-    if (nrow(a[[i]]) == 0) {
+    if (is.na(a[[i]])) {
+      input$valid_name[[i]] <- NA
+      input$valid_authority[[i]] <- NA
+      input$valid_AphiaID[[i]] <- NA
+      input$status[[i]] <- NA
+      input$synonyms[[i]] <- NA
+      input$LSID[[i]] <- NA
+      input$url[[i]] <- NA
+      input$matchType[[i]] <- NA
+      input$nOfWormsResults[[i]] <- 0
+      input$wormsRecords[[i]] <- NA
+      input$wormsRecords[[i]] <- NA
+    } else if (nrow(a[[i]][[1]]) == 0) {
       input$nOfWormsResults[[i]] <- 0
       input$valid_name[[i]] <- NA
-    } else if (nrow(a[[i]]) == 1) {
-      input$valid_name[[i]] <- a[[i]]$valid_name
-      input$valid_authority[[i]] <- a[[i]]$valid_authority
-      input$valid_AphiaID[[i]] <- a[[i]]$valid_AphiaID
-      input$status[[i]] <- a[[i]]$status
-      input$synonyms[[i]] <- a[[i]]$unacceptreason
-      input$LSID[[i]] <- a[[i]]$lsid
-      input$url[[i]] <- a[[i]]$url
-      input$matchType[[i]] <- a[[i]]$match_type
+    } else if (nrow(a[[i]][[1]]) == 1) {
+      input$valid_name[[i]] <- a[[i]][[1]]$valid_name
+      input$valid_authority[[i]] <- a[[i]][[1]]$valid_authority
+      input$valid_AphiaID[[i]] <- a[[i]][[1]]$valid_AphiaID
+      input$status[[i]] <- a[[i]][[1]]$status
+      input$synonyms[[i]] <- a[[i]][[1]]$unacceptreason
+      input$LSID[[i]] <- a[[i]][[1]]$lsid
+      input$url[[i]] <- a[[i]][[1]]$url
+      input$matchType[[i]] <- a[[i]][[1]]$match_type
       input$nOfWormsResults[[i]] <- 1
-      input$wormsRecords[[i]] <- list(a[[i]])
-      input$wormsRecords[[i]] <- tibble::tibble(a[[i]])
-    } else if (nrow(a[[i]]) > 1) {
-      input$nOfWormsResults[[i]] <- nrow(a[[i]])
-      input$wormsRecords[[i]] <- list(a[[i]])
-      input$wormsRecords[[i]] <- tibble::tibble(a[[i]])
+      input$wormsRecords[[i]] <- list(a[[i]][[1]])
+      input$wormsRecords[[i]] <- tibble::tibble(a[[i]][[1]])
+    } else if (nrow(a[[i]][[1]]) > 1) {
+      input$nOfWormsResults[[i]] <- nrow(a[[i]][[1]])
+      input$wormsRecords[[i]] <- list(a[[i]][[1]])
+      input$wormsRecords[[i]] <- tibble::tibble(a[[i]][[1]])
     }
   }
   newTable <- input

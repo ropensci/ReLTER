@@ -1,5 +1,6 @@
 #' Provide a map object of a sites LTER.
-#' @description This function produces a `map` of the site boundaries
+#' @description `r lifecycle::badge("stable")`
+#' This function produces a `map` of the site boundaries
 #' as provided by the \href{https://deims.org/}{DEIMS-SDR catalogue}, within
 #' a given country and network.
 #' @param deimsid A `character`. The DEIMS ID of network from
@@ -45,6 +46,23 @@
 #' @importFrom tmap tm_shape tm_rgb tm_dots tm_compass tm_scale_bar tm_layout
 #' @importFrom tmap tm_credits tm_basemap tm_borders tm_fill tm_lines
 #' @importFrom grid viewport
+#' @importFrom Rdpack reprompt
+#' @references
+#'   \insertRef{sfR}{ReLTER}
+#'
+#'   \insertRef{jsonliteR}{ReLTER}
+#'
+#'   \insertRef{tibbleR}{ReLTER}
+#'
+#'   \insertRef{rasterR}{ReLTER}
+#'
+#'   \insertRef{rgeosR}{ReLTER}
+#'
+#'   \insertRef{rosmR}{ReLTER}
+#'
+#'   \insertRef{tmapR}{ReLTER}
+#'
+#'   \insertRef{gridR}{ReLTER}
 #' @export
 #' @examples
 #' \dontrun{
@@ -121,6 +139,7 @@ produce_site_map <-
            bboxYMin = 0,
            bboxYMax = 0,
            show_map = FALSE) {
+    deimsbaseurl <- get_deims_base_url()
     deimsidExa <- sub("^.+/", "", deimsid)
     q <- '{title: .title,
         uri: "\\(.id.prefix)\\(.id.suffix)",
@@ -161,7 +180,7 @@ produce_site_map <-
       "#e8a303"
     )
     geoBonBiome <- jsonlite::fromJSON(
-      paste0("https://deims.org/",
+      paste0(deimsbaseurl,
              "api/sites/",
              deimsidExa)
       )$attributes$environmentalCharacteristics$geoBonBiome
@@ -169,7 +188,7 @@ produce_site_map <-
     colorBorder <-
       biomeColor$border[biomeColor$geoBonBiome == geoBonBiome[[1]]]
     geoBoundaries <- jsonlite::fromJSON(
-      paste0("https://deims.org/",
+      paste0(deimsbaseurl,
              "api/sites/",
              deimsidExa)
       )$attributes$geographic$boundaries
@@ -212,7 +231,7 @@ produce_site_map <-
           tmap::tm_scale_bar(position = c("right", "bottom")) +
           tmap::tm_layout(
             main.title = paste0(jsonlite::fromJSON(
-              paste0("https://deims.org/",
+              paste0(deimsbaseurl,
                      "api/sites/",
                      deimsidExa)
             )$title,
@@ -310,7 +329,7 @@ produce_site_map <-
           tmap::tm_layout(
             main.title = paste0(
               jsonlite::fromJSON(paste0(
-                "https://deims.org/",
+                deimsbaseurl,
                 "api/sites/",
                 substring(deimsid,
                           19)

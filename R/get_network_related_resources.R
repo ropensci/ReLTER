@@ -1,6 +1,7 @@
 #' Obtain information about the Related Resources (dataset and activity) of a
 #' eLTER Network.
-#' @description This function obtains the Related Resources information (title
+#' @description `r lifecycle::badge("stable")`
+#' This function obtains the Related Resources information (title
 #' and URL), as a stored in \href{https://deims.org/}{DEIMS-SDR catalogue}, of
 #' all eLTER sites belonging to an eLTER Network (e.g.
 #' \href{https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3}{LTER
@@ -15,6 +16,11 @@
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom jsonlite fromJSON
 #' @importFrom dplyr bind_rows distinct as_tibble
+#' @importFrom Rdpack reprompt
+#' @references
+#'   \insertRef{jsonliteR}{ReLTER}
+#'
+#'   \insertRef{dplyrR}{ReLTER}
 #' @export
 #' @examples
 #' \dontrun{
@@ -27,10 +33,11 @@
 #'
 ### function get_network_related_resources
 get_network_related_resources <- function(networkDEIMSID) {
+  deimsbaseurl <- get_deims_base_url()
   lterNetworkSites <- as.list(
     jsonlite::fromJSON(
       paste0(
-        "https://deims.org/",
+        deimsbaseurl,
         "api/sites?network=",
         sub("^.+/", "", networkDEIMSID)
       )

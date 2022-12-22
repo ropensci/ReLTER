@@ -19,6 +19,7 @@ The output of the function is a \code{tibble} containing the related
 resources shared by the network's sites.
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 This function obtains the Related Resources information (title
 and URL), as a stored in \href{https://deims.org/}{DEIMS-SDR catalogue}, of
 all eLTER sites belonging to an eLTER Network (e.g.
@@ -34,6 +35,11 @@ listRelatedResources <- get_network_related_resources(
 listRelatedResources
 }
 
+}
+\references{
+\insertRef{jsonliteR}{ReLTER}
+
+\insertRef{dplyrR}{ReLTER}
 }
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}

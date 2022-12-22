@@ -23,16 +23,16 @@ test_that("Output of site general info function constructs 'tibble' as
     deimsid = TESTURLSite
   )
   expect_s3_class(result, "tbl_df")
-  expect_true(ncol(result) == 22)
+  expect_true(ncol(result) == 21)
   expect_true(all(names(result) == c(
-    "title", "uri", "geoCoord", "country",
-    "geoElev.avg", "geoElev.min", "geoElev.max", "geoElev.unit",
-    "generalInfo.abstract", "generalInfo.keywords", "generalInfo.status.label",
-    "generalInfo.status.uri", "generalInfo.yearEstablished",
-    "generalInfo.yearClosed", "generalInfo.hierarchy.parent",
-    "generalInfo.hierarchy.children", "generalInfo.siteName",
-    "generalInfo.shortName", "generalInfo.siteType",
-    "generalInfo.protectionLevel", "generalInfo.landUse", "generalInfo.images"
+    "title", "uri", "geoCoord", "country", "geoElev.avg",
+    "geoElev.min", "geoElev.max", "geoElev.unit", "generalInfo.abstract",
+    "generalInfo.status.label", "generalInfo.status.uri",
+    "generalInfo.yearEstablished", "generalInfo.yearClosed",
+    "generalInfo.hierarchy.parent", "generalInfo.hierarchy.children",
+    "generalInfo.siteName", "generalInfo.shortName", "generalInfo.siteType",
+    "generalInfo.protectionLevel", "generalInfo.landUse",
+    "generalInfo.images"
   )))
 
   expect_type(result$title, "character")

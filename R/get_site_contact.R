@@ -1,5 +1,6 @@
-#' @title eLTER get_site_contact function
-#' @description This function obtains the contact information for an
+#' eLTER get_site_contact function
+#' @description `r lifecycle::badge("stable")`
+#' This internal function obtains the contact information for an
 #' eLTER site through the DEIMS-SDR sites API.
 #' @param deimsid A `character`. It is the DEIMS ID of the site from
 #' DEIMS-SDR website. DEIMS ID information
@@ -8,27 +9,18 @@
 #' site and the contact information, such as: site manager, operation
 #' organization, metadata provider, founding agency and site url.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @importFrom httr RETRY content
 #' @importFrom utils capture.output
 #' @importFrom dplyr as_tibble
 #' @keywords internal
 #'
 ### function get_site_contact
 get_site_contact <- function(deimsid) {
-  q <- '{title: .title,
-       uri: "\\(.id.prefix)\\(.id.suffix)",
-       geoCoord: .attributes.geographic.coordinates,
-       country: .attributes.geographic.country,
-       geoElev: .attributes.geographic.elevation,
-       generalInfo: .attributes.contact
-      }'
-  jj <- get_id(deimsid, "sites")
+  qo <- queries_jq[[get_deims_API_version()]]$site_contact
+  jj <- get_id(deimsid, qo$path)
   if (is.na(attr(jj, "status"))) {
     invisible(
       utils::capture.output(
-        contact <- dplyr::as_tibble(
-          do_Q(q, jj)
-        )
+        contact <- dplyr::as_tibble(do_Q(qo$query, jj))
       )
     )
   } else {

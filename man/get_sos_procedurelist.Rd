@@ -4,10 +4,10 @@
 \alias{get_sos_procedurelist}
 \title{List the procedures of a Sensor Observations Service (SOS).}
 \usage{
-get_sos_procedurelist(sosHost)
+get_sos_procedurelist(sosURL)
 }
 \arguments{
-\item{sosHost}{A \code{list}. An SOS endpoint (e.g.
+\item{sosURL}{A \code{list}. An SOS endpoint (e.g.
 \url{http://getit.lteritalia.it/observations/sos/kvp?}).}
 }
 \value{
@@ -15,6 +15,7 @@ The output of the function is a \code{list} with the name and URI
 (Uniform Resource Identifier) of each procedure.
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 Return a list of procedures (e.g. method, algorithm,
 instrument, sensor, or system which may be used in making observations)
 store into a
@@ -24,10 +25,17 @@ store into a
 \examples{
 \dontrun{
 get_sos_procedurelist(
-  sosHost = "http://getit.lteritalia.it/observations/sos/kvp?"
+  sosURL = "http://getit.lteritalia.it/observations/service"
 )
 }
 
+}
+\references{
+\insertRef{xml2R}{ReLTER}
+
+\insertRef{xsltR}{ReLTER}
+
+\insertRef{utilsR}{ReLTER}
 }
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}

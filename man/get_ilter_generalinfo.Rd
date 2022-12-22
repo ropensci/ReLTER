@@ -23,6 +23,7 @@ and affiliation of the filtered ILTER sites.
 If no bounding box is available,the centroid is returned.
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#questioning}{\figure{lifecycle-questioning.svg}{options: alt='[Questioning]'}}}{\strong{[Questioning]}}
 This function downloads generic information
 of all sites, or a subset of
 \href{https://www.ilter.network/network/global-coverage}{ILTER sites
@@ -62,6 +63,13 @@ get_ilter_generalinfo(
   show_map = TRUE
 )
 }
+}
+\references{
+\insertRef{jsonliteR}{ReLTER}
+
+\insertRef{sfR}{ReLTER}
+
+\insertRef{leafletR}{ReLTER}
 }
 \author{
 Alessandro Oggioni, phD (2021) \email{oggioni.a@irea.cnr.it}

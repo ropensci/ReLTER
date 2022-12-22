@@ -1,6 +1,7 @@
 #' Obtain a list of all Environmental Characteristics of sites in an
 #' eLTER Network.
-#' @description This function obtains all Environmental Characteristics:
+#' @description `r lifecycle::badge("stable")`
+#' This function obtains all Environmental Characteristics:
 #' title, URI, geo-coordinates, country name, and elevation
 #' of eLTER Network sites (e.g.
 #' \href{https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3}{LTER-
@@ -15,40 +16,46 @@
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom jsonlite fromJSON
 #' @importFrom dplyr as_tibble
+#' @importFrom Rdpack reprompt
+#' @importFrom purrr map_dfr
+#' @references
+#'   \insertRef{jsonliteR}{ReLTER}
+#'
+#'   \insertRef{dplyrR}{ReLTER}
 #' @export
 #' @examples
 #' \dontrun{
 #' listEnvCharacts <- get_network_envcharacts(
 #'   networkDEIMSID =
-#'   "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
+#'     "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 #' )
 #' listEnvCharacts[1:10, ]
 #' }
 #'
 ### function get_network_envcharacts
 get_network_envcharacts <- function(networkDEIMSID) {
+  deimsbaseurl <- get_deims_base_url()
   lterNetworkSites <- as.list(
     jsonlite::fromJSON(
       paste0(
-        "https://deims.org/",
+        deimsbaseurl,
         "api/sites?network=",
         sub("^.+/", "", networkDEIMSID)
       )
     )
   )
-  allSiteEnvCharacts <- lapply(
+  allSiteEnvCharacts <- purrr::map_dfr(
     as.list(
       paste0(
         lterNetworkSites$id$prefix,
         lterNetworkSites$id$suffix
       )
     ),
-    ReLTER::get_site_info,
-    category = "EnvCharacts"
+    function (x) {
+      ReLTER::get_site_info(x, category = "EnvCharacts")
+    }
   )
   if (length(allSiteEnvCharacts) != 0) {
-    allSiteEnvCharacts_matrix <- do.call(rbind, allSiteEnvCharacts)
-    allSiteEnvCharacts <- dplyr::as_tibble(allSiteEnvCharacts_matrix)
     allSiteEnvCharacts
   } else {
     message("\n----\nThe requested page could not be found.

@@ -19,6 +19,11 @@ topics and their URI (Uniform Resource Identifier) collected by network's
 sites.
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#defunct}{\figure{lifecycle-defunct.svg}{options: alt='[Defunct]'}}}{\strong{[Defunct]}}
+This function was defunct because the section
+about research topics of the site in DEIMS-SDR API
+version 1.1 has been removed.
+
 This function obtains Research Topics collected by all
 of the eLTER sites belonging to an eLTER Network (e.g.
 \href{https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3}{LTER-
@@ -39,6 +44,11 @@ listResearchTopics[1:10, ] \%>\%
   )
 }
 
+}
+\references{
+\insertRef{jsonliteR}{ReLTER}
+
+\insertRef{dplyrR}{ReLTER}
 }
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}

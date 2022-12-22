@@ -15,7 +15,7 @@ DEIMS-SDR website. DEIMS ID information
 or categories are retrieved and returned in the result.
 Possible value are:
 'Affiliations', 'Boundaries', 'Contacts', 'EnvCharacts', 'General',
-'Infrastructure', 'Parameters', 'RelateRes', 'ResearchTop'.
+'Infrastructure', 'observedProperties', 'RelateRes'.
 Multiple values can be indicated.}
 }
 \value{
@@ -25,6 +25,7 @@ which the site is involved.
 If category 'Boundaries' is indicated an \code{sf} object is returned
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 This function obtains information of a single eLTER site,
 as a stored in \href{https://deims.org/}{DEIMS-SDR catalogue},
 through the DEIMS-SDR API.
@@ -42,6 +43,15 @@ siteInfo <- get_site_info(
 )
 siteInfo
 
+}
+\references{
+\insertRef{dplyrR}{ReLTER}
+
+\insertRef{utilsR}{ReLTER}
+
+\insertRef{sfR}{ReLTER}
+
+\insertRef{leafletR}{ReLTER}
 }
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}

@@ -1,7 +1,8 @@
 #' Acquire various raster layers from
 #' \href{https://maps.opendatascience.eu/}{ODS Europe}
 #' and crops to an eLTER site boundary.
-#' @description Download and return a SpatRaster object containing the requested
+#' @description `r lifecycle::badge("stable")`
+#' Download and return a SpatRaster object containing the requested
 #' dataset from \href{https://maps.opendatascience.eu/}{ODS},
 #' cropped to an eLTER site boundary, which is obtained from the DEIMS-SDR API.
 #' @param deimsid  A `character`. The DEIMS ID of the site from
@@ -9,7 +10,8 @@
 #' \href{https://deims.org/docs/deimsid.html}{here}.
 #' @param dataset A `character`. The requested dataset. One of:
 #' "landcover", "clc2018", "osm_buildings", "natura2000",
-#' "ndvi_spring", "ndvi_summer", "ndvi_autumn", "ndvi_winter".
+#' "ndvi_spring", "ndvi_summer", "ndvi_autumn", "ndvi_winter", "ndvi_trend",
+#' "forest_broadleaf", "forest_mixed", "forest_coniferous".
 #' Default is "landcover".
 #' @details Supported datasets from the ODS repository include:
 #' Landcover: Land-cover class according to the highest probability,
@@ -27,10 +29,10 @@
 #'    first to 10m spatial resolution and after downsampled
 #'    to 30m by spatial average.
 #'    The overlap areas are indicated in a new category.
-#'
 #' NDVI:  NDVI time-series,
 #'    derived from the Landsat quarterly temporal composites
-#'
+#'    NDVI Trend from 2000 - 2019 as OLS regression
+#' Forests: Broadleaf, coniferous or mixed forests
 #' All datasets are georeferenced to the
 #' EPSG:3035 coordinate reference system.
 #' and all except clc2018 have 30 meters resolution
@@ -43,6 +45,13 @@
 #' @importFrom dplyr case_when
 #' @importFrom sf st_transform
 #' @importFrom terra mask crop vect rast crs plot
+#' @importFrom Rdpack reprompt
+#' @references
+#'   \insertRef{dplyrR}{ReLTER}
+#'
+#'   \insertRef{sfR}{ReLTER}
+#'
+#'   \insertRef{terraR}{ReLTER}
 #' @export
 #' @examples
 #'  \dontrun{
@@ -94,6 +103,14 @@ get_site_ODS <- function(deimsid, dataset = "landcover") {
                         "_eumap_epsg3035_v1.0.tif")
   ndvi_winter <- paste0("lcv/lcv_ndvi_landsat.glad.ard_p50_30m_0..0cm_201912",
                         "_eumap_epsg3035_v1.0.tif")
+  ndvi_trend <- paste0("lcv/lcv_ndvi_landsat.glad.trend.slope_p50_30m",
+                       "_0..0cm_2000..2019_eumap_epsg3035_v1.0.tif")
+  forest_broadleaf <- paste0("lcv/lcv_landcover.311_lucas.corine.eml_p_30m",
+                             "_0..0cm_2019_eumap_epsg3035_v0.2.tif")
+  forest_coniferous <- paste0("lcv/lcv_landcover.312_lucas.corine.eml_p_30m",
+                              "_0..0cm_2019_eumap_epsg3035_v0.2.tif")
+  forest_mixed <- paste0("/lcv/lcv_landcover.313_lucas.corine.eml_p_30m",
+                         "_0..0cm_2019_eumap_epsg3035_v0.2.tif")
   full_url <- dplyr::case_when(
                 dataset == "landcover" ~ paste0(ods_url, landcover),
                 dataset == "clc2018" ~ paste0(ods_url, clc2018),
@@ -103,6 +120,10 @@ get_site_ODS <- function(deimsid, dataset = "landcover") {
                 dataset == "ndvi_summer" ~ paste0(ods_url, ndvi_summer),
                 dataset == "ndvi_autumn" ~ paste0(ods_url, ndvi_autumn),
                 dataset == "ndvi_winter" ~ paste0(ods_url, ndvi_winter),
+                dataset == "ndvi_trend" ~ paste0(ods_url, ndvi_trend),
+                dataset == "forest_broadleaf" ~ paste0(ods_url, forest_broadleaf),
+                dataset == "forest_coniferous" ~ paste0(ods_url, forest_coniferous),
+                dataset == "forest_mixed" ~ paste0(ods_url, forest_mixed),
                 TRUE ~ paste("Dataset:", dataset, "unavailable")
               )
   # Make sure `dataset` is among the list of implemented datasets

@@ -68,6 +68,7 @@ The output of the function is an \code{image} of the boundary of the
 site, OSM as base map and all country sites map.
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 This function produces a \code{map} of the site boundaries
 as provided by the \href{https://deims.org/}{DEIMS-SDR catalogue}, within
 a given country and network.
@@ -135,6 +136,23 @@ siteMap <- produce_site_map(
 siteMap
 }
 
+}
+\references{
+\insertRef{sfR}{ReLTER}
+
+\insertRef{jsonliteR}{ReLTER}
+
+\insertRef{tibbleR}{ReLTER}
+
+\insertRef{rasterR}{ReLTER}
+
+\insertRef{rgeosR}{ReLTER}
+
+\insertRef{rosmR}{ReLTER}
+
+\insertRef{tmapR}{ReLTER}
+
+\insertRef{gridR}{ReLTER}
 }
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}

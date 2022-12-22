@@ -84,7 +84,6 @@ jobs:
             libgdal-dev \
             libjq-dev \
             libssl-dev \
-            libcurl4-openssl-dev \
             libxml2-dev \
             libprotobuf-dev \
             protobuf-compiler \

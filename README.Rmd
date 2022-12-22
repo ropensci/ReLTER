@@ -65,7 +65,7 @@ The `{ReLTER}` package functions in particular allows to:
     [get_network_sites](https://docs.ropensci.org/ReLTER/reference/get_network_sites.html),
     [produce_site_map](https://docs.ropensci.org/ReLTER/reference/produce_site_map.html)
     or
-    [produce_site_parameters_pie](https://docs.ropensci.org/ReLTER/reference/produce_site_parameters_pie.html)
+    [produce_site_observedProperties_pie](https://docs.ropensci.org/ReLTER/reference/produce_site_observedProperties_pie.html)
     functions);
 
 -   interact with the [ODSEurope](maps.opendatascience.eu) managed by
@@ -90,20 +90,20 @@ tools.
 
 ## :notebook_with_decorative_cover: Citation
 
-To cite `{ReLTER}` please use: Alessandro Oggioni, Micha Silver, Luigi
-Ranghetti & Paolo Tagliolato. (2022). ropensci/ReLTER: ReLTER v1.1.0
-(1.1.0). Zenodo. <https://doi.org/10.5281/zenodo.5576813>
+To cite `{ReLTER}` please use: Alessandro Oggioni, Micha Silver, Luigi Ranghetti
+& Paolo Tagliolato. (2022). ropensci/ReLTER: ReLTER v2.0.0
+(2.0.0). Zenodo. <https://doi.org/10.5281/zenodo.5576813>
 
 or:
 
 ``` bibtex
 @software{alessandro_oggioni_2021_5576813,
   author       = {Alessandro Oggioni and Micha Silver and Luigi Ranghetti and Paolo Tagliolato},
-  title        = {ropensci/ReLTER: ReLTER v1.1.0},
+  title        = {ropensci/ReLTER: ReLTER v2.0.0},
   month        = nov,
   year         = 2022,
   publisher    = {Zenodo},
-  version      = {1.1.0},
+  version      = {2.0.0},
   doi          = {10.5281/zenodo.5576813},
   url          = {https://doi.org/10.5281/zenodo.5576813}
 }
@@ -141,161 +141,6 @@ Alternatively {`ReLTER`} can be used [in a Docker container](./articles/rocker_R
 If you wish to help develop this package, please follow the
 [contributing guidelines](CONTRIBUTING.md).
 
-## :memo: Examples
-
-Some examples of the possible capabilities of this library appear below.
-These examples demonstrate interaction with the DEIMS-SDR
-[API](https://deims.org/api).
-
-#### *get_ilter_generalinfo()*
-In this initial example, the *get_ilter_generalinfo* function is called
-to find the DEIMS ID for a specific eLTER site. The function takes
-parameters "country_name" and "site_name", and returns the site URL (the
-DEIMS ID) in the DEIMS SDR infrastructure.
-
-```{r ilter, message=FALSE, warning=FALSE}
-# Obtain DEIMS ID for the Eisenwurzen site in Austria
-eisenwurzen <- ReLTER::get_ilter_generalinfo(country_name = "Austri",
-                                     site_name = "Eisen")
-# extract DEIMS ID
-(eisenwurzen_deimsid <- eisenwurzen$uri)
-```
-
-In some countries, many sites have similar names. Here is a method to
-find the DEIMS ID of the specific site of interest.
-
-```{r ilter_multi, message=FALSE, warning=FALSE}
-# Obtain DEIMS ID for sites in Germany, with names like "TERENO"
-sites_germany <- ReLTER::get_ilter_generalinfo(country_name = "Germ",
-                                     site_name = "TERENO")
-# List full names of these sites
-sites_germany$title
-# Get the DEIMS ID of the site of interest by partial string match on the title
-idx <- which(stringr::str_detect(sites_germany$title,
-                                 "Friedeburg"))
-(friedeburg_deims_id <- sites_germany$uri[idx])
-```
-
-#### *get_site_info(category = "Boundaries")*
-
-Next, the *get_site_info* function, using category "Boundaries", returns an `sf` object. Furthermore, a map overlayed with the boundaries of the site is displayed, using the site geographical boundaries provided by [DEIMS-SDR](https://deims.org/).
-
-```{r, message = FALSE, warning = FALSE, fig.show='hold', exampleSiteBoundaries}
-library(dplyr)
-siteBoundaries <- ReLTER::get_site_info(
-  deimsid = 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe',
-  category = "Boundaries"
-)
-
-tmap::tmap_mode("plot")
-r <- tmaptools::read_osm(siteBoundaries)
-tmap::tm_shape(r) +
-  tmap::tm_rgb() +
-  tmap::tm_shape(siteBoundaries) +
-  tmap::tm_fill(col="blue", alpha = 0.5) +
-  tmap::tm_borders(col = "blue")
-```
-
-------------------------------------------------------------------------
-
-#### *get_network_parameters()*
-
-The *get_network_parameters* function retrieves a list of parameters
-collected by sites that are part of a given network (e.g. LTER-Italy).
-Information is gathered from those sites that are part of the specified
-network id, on [DEIMS-SDR](https://deims.org/). The function returns a
-`tibble`.
-
-```{r, warning = FALSE, message = FALSE, exampleSiteParameters}
-library(dplyr)
-invisible(
-  utils::capture.output(
-    listParams <- ReLTER::get_network_parameters(
-      networkDEIMSID = 'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3'
-    )
-  )
-)
-knitr::kable(listParams[1:10, ] %>% dplyr::rows_insert(tibble(parameterLabel = "...", parameterUri = "...")))
-```
-
-------------------------------------------------------------------------
-
-#### *get_dataset_info()*
-
-The *get_dataset_info* function retrieves a table with information about
-specific datasets shared through [DEIMS-SDR](https://deims.org/).
-
-```{r, warning = FALSE, message = FALSE, fig.show='hold', exampleGetDataset}
-tDataset <- ReLTER::get_dataset_info(datasetid = "https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef")
-print(tDataset)
-
-tmap::tmap_mode("plot")
-r <- tmaptools::read_osm(tDataset)
-tmap::tm_shape(r) +
-  tmap::tm_rgb() +
-  tmap::tm_shape(tDataset) +
-  tmap::tm_fill(col="blue", alpha = 0.5) +
-  tmap::tm_borders(col = "blue")
-```
-
-------------------------------------------------------------------------
-
-#### *get_site_info(category = "RelateRes")*
-
-The *get_site_info* function, using category = "RelateRes", provides a
-list of related resources associated with a site within
-[DEIMS-SDR](https://deims.org/).
-
-```{r, warning = FALSE, message = FALSE, exampleGetSiteInfoRelatedResources}
-tSiteRelatedResources <- ReLTER::get_site_info(
-  deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
-  category = "RelateRes"
-)
-print(tSiteRelatedResources$relatedResources[[1]])
-```
-
-------------------------------------------------------------------------
-
-#### *produce_site_parameters_waffle()*
-
-The *produce_site_parameters_waffle* function provides a grouping of
-parameters, as measured within a site, in a "waffle chart"
-representation.
-
-```{r, message = FALSE, warning = FALSE, exampleproduce_site_parameters_waffle}
-ReLTER::produce_site_parameters_waffle(
-  deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe")
-```
-
-------------------------------------------------------------------------
-
-#### *get_site_ODS()*
-
-The *get_site_ODS* function retrieves datasets from
-[OpenDataScience](https://maps.opendatascience.eu/), and crops to the
-boundary of the specified eLTER site.
-
-```{r example_site_ODS, message=FALSE, warning=FALSE, fig.show='hold'}
-siteNDVI <- ReLTER::get_site_ODS(
-   deimsid = "https://deims.org/d0a8da18-0881-4ebe-bccf-bc4cb4e25701",
-   dataset = "ndvi_summer"
-)
-siteBoundary <- ReLTER::get_site_info(
-  deimsid = "https://deims.org/d0a8da18-0881-4ebe-bccf-bc4cb4e25701",
-  category = "Boundaries"
-)
-
-tmap::tmap_mode("plot")
-pal <- RColorBrewer::brewer.pal("RdYlGn", n = 5)
-r <- tmaptools::read_osm(siteBoundary)
-tmap::tm_shape(r) +
-  tmap::tm_rgb() +
-  tmap::tm_shape(siteNDVI, raster.downsample = TRUE) +
-  tmap::tm_raster(palette = pal, alpha = 0.7) + 
-  tmap::tm_shape(siteBoundary) +
-  tmap::tm_borders("black")
-```
-
 ## :woman_technologist: Persons involved :man_technologist:
 
 Alessandro Oggioni <https://orcid.org/0000-0002-7997-219X> (CNR,
@@ -320,7 +165,7 @@ page](https://docs.ropensci.org/ReLTER/authors).
 
 ## :office: Contributing organizations
 
-![CNR-IREA](man/figures/irea_logo.png){height="70"}
+![CNR-IREA](man/figures/irea_logo.png){height="72"}
 <!--a href="http://www.irea.cnr.it/en/"><img src="man/figures/irea_logo.png" height="40" align="left" /></a-->
 
 ![BGU](man/figures/bgu_logo.png){height="80"}

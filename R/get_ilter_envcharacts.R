@@ -1,5 +1,6 @@
 #' Obtain a list of all Environmental Characteristics of ILTER sites.
-#' @description This function obtains all Environmental Characteristics:
+#' @description `r lifecycle::badge("questioning")`
+#' This function obtains all Environmental Characteristics:
 #' title, URI, geo-coordinates, country name, and elevation
 #' of all
 #' \href{https://www.ilter.network/network/global-coverage}{ILTER sites
@@ -27,6 +28,10 @@
 #' @author Alessandro Oggioni, phD (2020) <oggioni.a@@irea.cnr.it>
 #' @importFrom jsonlite fromJSON
 #' @importFrom dplyr as_tibble
+#' @importFrom Rdpack reprompt
+#' @references
+#'   \insertRef{dplyrR}{ReLTER}
+#'
 #' @export
 #' @examples
 #' \dontrun{
@@ -36,9 +41,15 @@
 #'
 ### function get_ilter_envcharacts
 get_ilter_envcharacts <- function(sitesNum = 0) {
+  deimsbaseurl <- get_deims_base_url()
   if (sitesNum == 0) {
     lterILTERSites <- as.list(
-      jsonlite::fromJSON("https://deims.org/api/sites")
+      jsonlite::fromJSON(
+        paste0(
+          deimsbaseurl,
+          "api/sites"
+        )
+      )
     )
     allSiteEnvCharacts <- lapply(
       as.list(
@@ -59,7 +70,12 @@ get_ilter_envcharacts <- function(sitesNum = 0) {
     allSiteEnvCharacts
   } else if (typeof(sitesNum) == "double") {
     lterILTERSites <- as.list(
-      jsonlite::fromJSON("https://deims.org/api/sites")
+      jsonlite::fromJSON(
+        paste0(
+          deimsbaseurl,
+          "api/sites"
+        )
+      )
     )
     allSiteEnvCharacts <- lapply(
       as.list(

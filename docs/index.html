@@ -33,8 +33,8 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/apple-touch-icon.png">
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link href="deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="An Interface for the eLTER Community">
 <meta property="og:description" content="ReLTER provides access to DEIMS-SDR (https://deims.org/),
@@ -77,7 +77,7 @@
     <a href="https://ropensci.org" class="external-link"><img src="https://ropensci.org/img/icon_short_white.svg" id="hexlogo" alt="rOpenSci"></a>
     <a class="navbar-brand me-2" href="index.html">ReLTER</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.0.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -92,9 +92,10 @@
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="articles/occurrences_into_site.html">How to retrieve occurrence records by exploiting the {`ReLTER`} get_site_speciesOccurrences() function</a>
     <a class="dropdown-item" href="articles/resources_delivered_eu_networks.html">Related resources delivered by EU eLTER sites</a>
     <a class="dropdown-item" href="articles/rocker_ReLTER.html">Run ReLTER in a Docker container</a>
-    <a class="dropdown-item" href="articles/site_information.html">How to get the info of a (one) LTER Site by knowing the DEIMS ID</a>
+    <a class="dropdown-item" href="articles/site_information.html">How to get the info of a (one) LTER Site by knowing the DEIMS.ID</a>
     <a class="dropdown-item" href="articles/sites_contacts.html">How to get the list of contacts from list of DEIMS ID within csv file</a>
     <a class="dropdown-item" href="articles/sites_information.html">How to get the info of many than one LTER Sites</a>
   </div>
@@ -126,30 +127,35 @@
 <img src="logo.png" class="logo" alt=""><h1 id="relter">ReLTER<a class="anchor" aria-label="anchor" href="#relter"></a>
 </h1>
 </div>
-<!-- README.md is generated from README.Rmd. Please edit that file --><!-- badges: start --><!-- other badges https://github.com/GuangchuangYu/badger --><!-- DOI badge -->
-<p><a href="https://github.com/oggioniale/ReLTER" class="external-link">ReLTER</a> is an R package that provides access to <a href="https://deims.org/" class="external-link">DEIMS-SDR</a>, allowing to interact with software implemented by eLTER Research Infrastructure (RI) and improving the data/information shared among the Long Term Ecological Research (LTER) network. This package was conceived within eLTER H2020 project and will help advance the development of European Long-Term Ecosystem Research Infrastructures (<a href="https://elter-ri.eu" class="external-link">eLTER RI</a>).</p>
-<p>The <a href="https://github.com/oggioniale/ReLTER" class="external-link">ReLTER</a> package functions in particular allows to:</p>
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+<!-- badges: start -->
+<!-- other badges https://github.com/GuangchuangYu/badger -->
+<!-- DOI badge -->
+
+<p><a href="https://docs.ropensci.org/ReLTER">ReLTER</a> is an R package that provides access to <a href="https://deims.org/" class="external-link">DEIMS-SDR</a>, allowing to interact with software implemented by eLTER Research Infrastructure (RI) and improving the data/information shared among the Long Term Ecological Research (LTER) network. This package was conceived within eLTER H2020 project and will help advance the development of European Long-Term Ecosystem Research Infrastructures (<a href="https://elter-ri.eu" class="external-link">eLTER RI</a>).</p>
+<p>The <a href="https://docs.ropensci.org/ReLTER">ReLTER</a> package functions in particular allows to:</p>
 <ul>
 <li><p>retrieve the information about entities (e.g. sites, datasets, and activities) shared by <a href="https://deims.org/" class="external-link">DEIMS-SDR</a> (see e.g. <a href="https://docs.ropensci.org/ReLTER/reference/get_site_info.html">get_site_info function</a>);</p></li>
-<li><p>elaborate the information of single site or merge info from national network sites or entire International LTER (ILTER) in order to provide maps, figures, graphs etc (see e.g. <a href="https://docs.ropensci.org/ReLTER/reference/get_network_sites.html">get_network_sites</a>, <a href="https://docs.ropensci.org/ReLTER/reference/produce_site_map.html">produce_site_map</a> or <a href="https://docs.ropensci.org/ReLTER/reference/produce_site_parameters_pie.html">produce_site_parameters_pie</a> functions);</p></li>
+<li><p>elaborate the information of single site or merge info from national network sites or entire International LTER (ILTER) in order to provide maps, figures, graphs etc (see e.g. <a href="https://docs.ropensci.org/ReLTER/reference/get_network_sites.html">get_network_sites</a>, <a href="https://docs.ropensci.org/ReLTER/reference/produce_site_map.html">produce_site_map</a> or <a href="https://docs.ropensci.org/ReLTER/reference/produce_site_observedProperties_pie.html">produce_site_observedProperties_pie</a> functions);</p></li>
 <li><p>interact with the <a href="maps.opendatascience.eu">ODSEurope</a> managed by members of the <a href="https://opendatascience.eu/geoharmonizer-project/" class="external-link">Geo-harmonizer</a> project starting with the dataset shared by <a href="https://deims.org/" class="external-link">DEIMS-SDR</a> (see e.g. <a href="https://docs.ropensci.org/ReLTER/reference/get_site_ODS.html">get_site_ODS</a> function);</p></li>
 <li><p>improve the quality of the dataset (see e.g. <a href="https://docs.ropensci.org/ReLTER/reference/get_id_worms.html">get_id_worms</a>).</p></li>
 </ul>
 <p>Functions currently implemented are derived from the discussion of the needs declared by eLTER users community.</p>
-<p>The <a href="https://github.com/oggioniale/ReLTER" class="external-link">ReLTER</a> package will follow the progress of eLTER-RI infrastructure and evolve with improvements and development of new tools.</p>
-<!-- about the icons https://github.com/ikatyang/emoji-cheat-sheet --><div class="section level2">
+<p>The <a href="https://docs.ropensci.org/ReLTER">ReLTER</a> package will follow the progress of eLTER-RI infrastructure and evolve with improvements and development of new tools.</p>
+<!-- about the icons https://github.com/ikatyang/emoji-cheat-sheet -->
+<div class="section level2">
 <h2 id="notebook_with_decorative_cover-citation">
 <span class="emoji" data-emoji="notebook_with_decorative_cover">📔</span> Citation<a class="anchor" aria-label="anchor" href="#notebook_with_decorative_cover-citation"></a>
 </h2>
-<p>To cite <a href="https://github.com/oggioniale/ReLTER" class="external-link">ReLTER</a> please use: Alessandro Oggioni, Micha Silver, Luigi Ranghetti &amp; Paolo Tagliolato. (2022). ropensci/ReLTER: ReLTER v1.1.0 (1.1.0). Zenodo. <a href="https://doi.org/10.5281/zenodo.5576813" class="external-link uri">https://doi.org/10.5281/zenodo.5576813</a></p>
+<p>To cite <a href="https://docs.ropensci.org/ReLTER">ReLTER</a> please use: Alessandro Oggioni, Micha Silver, Luigi Ranghetti &amp; Paolo Tagliolato. (2022). ropensci/ReLTER: ReLTER v2.0.0 (2.0.0). Zenodo. <a href="https://doi.org/10.5281/zenodo.5576813" class="external-link uri">https://doi.org/10.5281/zenodo.5576813</a></p>
 <p>or:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bibtex"><code class="sourceCode bibtex"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">@software{alessandro_oggioni_2021_5576813,</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">  author       = {Alessandro Oggioni and Micha Silver and Luigi Ranghetti and Paolo Tagliolato},</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">  title        = {ropensci/ReLTER: ReLTER v1.1.0},</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">  title        = {ropensci/ReLTER: ReLTER v2.0.0},</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">  month        = nov,</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">  year         = 2022,</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">  publisher    = {Zenodo},</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">  version      = {1.1.0},</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">  version      = {2.0.0},</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">  doi          = {10.5281/zenodo.5576813},</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">  url          = {https://doi.org/10.5281/zenodo.5576813}</span></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">}</span></span></code></pre></div>
@@ -158,283 +164,23 @@
 <h2 id="book-documentation">
 <span class="emoji" data-emoji="book">📖</span> Documentation<a class="anchor" aria-label="anchor" href="#book-documentation"></a>
 </h2>
-<p>Visit the <a href="https://github.com/oggioniale/ReLTER" class="external-link">ReLTER</a> website at <a href="https://docs.ropensci.org/ReLTER/">docs.ropensci.org/ReLTER/</a> for further documentation, examples, and installation of the package.</p>
-<p>The manual of <a href="https://github.com/oggioniale/ReLTER" class="external-link">ReLTER</a> package could be found <a href="https://ropensci.r-universe.dev/manual/ReLTER.pdf" class="external-link">here</a>.</p>
+<p>Visit the <a href="https://docs.ropensci.org/ReLTER">ReLTER</a> website at <a href="https://docs.ropensci.org/ReLTER/">docs.ropensci.org/ReLTER/</a> for further documentation, examples, and installation of the package.</p>
+<p>The manual of <a href="https://docs.ropensci.org/ReLTER">ReLTER</a> package could be found <a href="https://ropensci.r-universe.dev/manual/ReLTER.pdf" class="external-link">here</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="arrow_double_down-installation">
 <span class="emoji" data-emoji="arrow_double_down">⏬</span> Installation<a class="anchor" aria-label="anchor" href="#arrow_double_down-installation"></a>
 </h2>
-<p>You can install the main version of <a href="https://github.com/oggioniale/ReLTER" class="external-link">ReLTER</a> from <a href="https://github.com/ropensci/ReLTER" class="external-link">GitHub</a> with:</p>
+<p>You can install the main version of <a href="https://docs.ropensci.org/ReLTER">ReLTER</a> from <a href="https://github.com/ropensci/ReLTER" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"devtools"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"ropensci/ReLTER"</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ReLTER)</span></code></pre></div>
 <p>If you want to install different package branch (e.g. ‘dev’) can you use this command:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">'https://github.com/ropensci/ReLTER'</span>, <span class="at">ref =</span> <span class="st">'dev'</span>)</span></code></pre></div>
-<p>The <a href="https://github.com/oggioniale/ReLTER" class="external-link">ReLTER</a> package is part of the <a href="https://r-universe.dev/" class="external-link">R-universe</a> community and it can be installed also use this command:</p>
+<p>The <a href="https://docs.ropensci.org/ReLTER">ReLTER</a> package is part of the <a href="https://r-universe.dev/" class="external-link">R-universe</a> community and it can be installed also use this command:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>utils<span class="sc">::</span><span class="fu">install.packages</span>(<span class="st">"ReLTER"</span>, <span class="at">repos =</span> <span class="st">"https://ropensci.r-universe.dev"</span>)</span></code></pre></div>
 <p>Alternatively {<code>ReLTER</code>} can be used <a href="./articles/rocker_ReLTER.html">in a Docker container</a>.</p>
 <p>If you wish to help develop this package, please follow the <a href="CONTRIBUTING.html">contributing guidelines</a>.</p>
-</div>
-<div class="section level2">
-<h2 id="memo-examples">
-<span class="emoji" data-emoji="memo">📝</span> Examples<a class="anchor" aria-label="anchor" href="#memo-examples"></a>
-</h2>
-<p>Some examples of the possible capabilities of this library appear below. These examples demonstrate interaction with the DEIMS-SDR <a href="https://deims.org/api" class="external-link">API</a>.</p>
-<div class="section level4">
-<h4 id="get_ilter_generalinfo">
-<em>get_ilter_generalinfo()</em><a class="anchor" aria-label="anchor" href="#get_ilter_generalinfo"></a>
-</h4>
-<p>In this initial example, the <em>get_ilter_generalinfo</em> function is called to find the DEIMS ID for a specific eLTER site. The function takes parameters “country_name” and “site_name”, and returns the site URL (the DEIMS ID) in the DEIMS SDR infrastructure.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Obtain DEIMS ID for the Eisenwurzen site in Austria</span>
-<span class="va">eisenwurzen</span> <span class="op">&lt;-</span> <span class="fu">ReLTER</span><span class="fu">::</span><span class="fu"><a href="reference/get_ilter_generalinfo.html">get_ilter_generalinfo</a></span><span class="op">(</span>country_name <span class="op">=</span> <span class="st">"Austri"</span>,
-                                     site_name <span class="op">=</span> <span class="st">"Eisen"</span><span class="op">)</span>
-<span class="co"># extract DEIMS ID</span>
-<span class="op">(</span><span class="va">eisenwurzen_deimsid</span> <span class="op">&lt;-</span> <span class="va">eisenwurzen</span><span class="op">$</span><span class="va">uri</span><span class="op">)</span>
-<span class="co">#&gt; [1] "https://deims.org/d0a8da18-0881-4ebe-bccf-bc4cb4e25701"</span></code></pre></div>
-<p>In some countries, many sites have similar names. Here is a method to find the DEIMS ID of the specific site of interest.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Obtain DEIMS ID for sites in Germany, with names like "TERENO"</span>
-<span class="va">sites_germany</span> <span class="op">&lt;-</span> <span class="fu">ReLTER</span><span class="fu">::</span><span class="fu"><a href="reference/get_ilter_generalinfo.html">get_ilter_generalinfo</a></span><span class="op">(</span>country_name <span class="op">=</span> <span class="st">"Germ"</span>,
-                                     site_name <span class="op">=</span> <span class="st">"TERENO"</span><span class="op">)</span>
-<span class="co"># List full names of these sites</span>
-<span class="va">sites_germany</span><span class="op">$</span><span class="va">title</span>
-<span class="co">#&gt;  [1] "TERENO Harz/Central German Lowland LTER - Germany"          </span>
-<span class="co">#&gt;  [2] "TERENO - Bad Lauchstaedt - Germany"                         </span>
-<span class="co">#&gt;  [3] "TERENO - Bode catchment - Germany"                          </span>
-<span class="co">#&gt;  [4] "TERENO - Friedeburg - Germany"                              </span>
-<span class="co">#&gt;  [5] "TERENO - Gimritz - Germany"                                 </span>
-<span class="co">#&gt;  [6] "TERENO - Greifenhagen - Germany"                            </span>
-<span class="co">#&gt;  [7] "TERENO - Schafstaedt - Germany"                             </span>
-<span class="co">#&gt;  [8] "TERENO - Siptenfelde - Germany"                             </span>
-<span class="co">#&gt;  [9] "TERENO - Wanzleben - Germany"                               </span>
-<span class="co">#&gt; [10] "TERENO - Wüstebach - Germany"                               </span>
-<span class="co">#&gt; [11] "TERENO - Harsleben - Germany"                               </span>
-<span class="co">#&gt; [12] "TERENO Harz - central german lowland - Hohes Holz - Germany"</span>
-<span class="co">#&gt; [13] "TERENO - Rollesbroich - Germany"                            </span>
-<span class="co">#&gt; [14] "TERENO - Selhausen - Germany"                               </span>
-<span class="co">#&gt; [15] "TERENO Eifel Lower Rhine Valley - Germany"</span>
-<span class="co"># Get the DEIMS ID of the site of interest by partial string match on the title</span>
-<span class="va">idx</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/which.html" class="external-link">which</a></span><span class="op">(</span><span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html" class="external-link">str_detect</a></span><span class="op">(</span><span class="va">sites_germany</span><span class="op">$</span><span class="va">title</span>,
-                                 <span class="st">"Friedeburg"</span><span class="op">)</span><span class="op">)</span>
-<span class="op">(</span><span class="va">friedeburg_deims_id</span> <span class="op">&lt;-</span> <span class="va">sites_germany</span><span class="op">$</span><span class="va">uri</span><span class="op">[</span><span class="va">idx</span><span class="op">]</span><span class="op">)</span>
-<span class="co">#&gt; [1] "https://deims.org/a4dc71c4-de05-4883-ae53-7f57d51555fc"</span></code></pre></div>
-</div>
-<div class="section level4">
-<h4 id="get_site_infocategory--boundaries">
-<em>get_site_info(category = “Boundaries”)</em><a class="anchor" aria-label="anchor" href="#get_site_infocategory--boundaries"></a>
-</h4>
-<p>Next, the <em>get_site_info</em> function, using category “Boundaries”, returns an <code>sf</code> object. Furthermore, a map overlayed with the boundaries of the site is displayed, using the site geographical boundaries provided by <a href="https://deims.org/" class="external-link">DEIMS-SDR</a>.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
-<span class="va">siteBoundaries</span> <span class="op">&lt;-</span> <span class="fu">ReLTER</span><span class="fu">::</span><span class="fu"><a href="reference/get_site_info.html">get_site_info</a></span><span class="op">(</span>
-  deimsid <span class="op">=</span> <span class="st">'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe'</span>,
-  category <span class="op">=</span> <span class="st">"Boundaries"</span>
-<span class="op">)</span>
-
-<span class="fu">tmap</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tmap_mode.html" class="external-link">tmap_mode</a></span><span class="op">(</span><span class="st">"plot"</span><span class="op">)</span>
-<span class="va">r</span> <span class="op">&lt;-</span> <span class="fu">tmaptools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tmaptools/man/read_osm.html" class="external-link">read_osm</a></span><span class="op">(</span><span class="va">siteBoundaries</span><span class="op">)</span>
-<span class="fu">tmap</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_shape.html" class="external-link">tm_shape</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">tmap</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_raster.html" class="external-link">tm_rgb</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">tmap</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_shape.html" class="external-link">tm_shape</a></span><span class="op">(</span><span class="va">siteBoundaries</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">tmap</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_polygons.html" class="external-link">tm_fill</a></span><span class="op">(</span>col<span class="op">=</span><span class="st">"blue"</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">tmap</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_polygons.html" class="external-link">tm_borders</a></span><span class="op">(</span>col <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span></code></pre></div>
-<p><img src="reference/figures/README-exampleSiteBoundaries-1.png" width="100%"></p>
-<hr>
-</div>
-<div class="section level4">
-<h4 id="get_network_parameters">
-<em>get_network_parameters()</em><a class="anchor" aria-label="anchor" href="#get_network_parameters"></a>
-</h4>
-<p>The <em>get_network_parameters</em> function retrieves a list of parameters collected by sites that are part of a given network (e.g. LTER-Italy). Information is gathered from those sites that are part of the specified network id, on <a href="https://deims.org/" class="external-link">DEIMS-SDR</a>. The function returns a <code>tibble</code>.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/invisible.html" class="external-link">invisible</a></span><span class="op">(</span>
-  <span class="fu">utils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/utils/capture.output.html" class="external-link">capture.output</a></span><span class="op">(</span>
-    <span class="va">listParams</span> <span class="op">&lt;-</span> <span class="fu">ReLTER</span><span class="fu">::</span><span class="fu"><a href="reference/get_network_parameters.html">get_network_parameters</a></span><span class="op">(</span>
-      networkDEIMSID <span class="op">=</span> <span class="st">'https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3'</span>
-    <span class="op">)</span>
-  <span class="op">)</span>
-<span class="op">)</span>
-<span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="va">listParams</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="op">]</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rows.html" class="external-link">rows_insert</a></span><span class="op">(</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>parameterLabel <span class="op">=</span> <span class="st">"..."</span>, parameterUri <span class="op">=</span> <span class="st">"..."</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<table class="table">
-<thead><tr class="header">
-<th align="left">parameterLabel</th>
-<th align="left">parameterUri</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="left">chlorophyll content of water</td>
-<td align="left"><a href="http://vocabs.lter-europe.net/EnvThes/10088" class="external-link uri">http://vocabs.lter-europe.net/EnvThes/10088</a></td>
-</tr>
-<tr class="even">
-<td align="left">community composition</td>
-<td align="left"><a href="http://vocabs.lter-europe.net/EnvThes/22086" class="external-link uri">http://vocabs.lter-europe.net/EnvThes/22086</a></td>
-</tr>
-<tr class="odd">
-<td align="left">dissolved nutrient</td>
-<td align="left"><a href="http://vocabs.lter-europe.net/EnvThes/22107" class="external-link uri">http://vocabs.lter-europe.net/EnvThes/22107</a></td>
-</tr>
-<tr class="even">
-<td align="left">diversity index</td>
-<td align="left"><a href="http://vocabs.lter-europe.net/EnvThes/21513" class="external-link uri">http://vocabs.lter-europe.net/EnvThes/21513</a></td>
-</tr>
-<tr class="odd">
-<td align="left">ecosystem parameter</td>
-<td align="left"><a href="http://vocabs.lter-europe.net/EnvThes/20939" class="external-link uri">http://vocabs.lter-europe.net/EnvThes/20939</a></td>
-</tr>
-<tr class="even">
-<td align="left">ecosystem structure</td>
-<td align="left"><a href="http://vocabs.lter-europe.net/EnvThes/21475" class="external-link uri">http://vocabs.lter-europe.net/EnvThes/21475</a></td>
-</tr>
-<tr class="odd">
-<td align="left">faunistic diversity</td>
-<td align="left"><a href="http://vocabs.lter-europe.net/EnvThes/22119" class="external-link uri">http://vocabs.lter-europe.net/EnvThes/22119</a></td>
-</tr>
-<tr class="even">
-<td align="left">floristic diversity</td>
-<td align="left"><a href="http://vocabs.lter-europe.net/EnvThes/22122" class="external-link uri">http://vocabs.lter-europe.net/EnvThes/22122</a></td>
-</tr>
-<tr class="odd">
-<td align="left">inorganic nutrient content</td>
-<td align="left"><a href="http://vocabs.lter-europe.net/EnvThes/22137" class="external-link uri">http://vocabs.lter-europe.net/EnvThes/22137</a></td>
-</tr>
-<tr class="even">
-<td align="left">secchi depth</td>
-<td align="left"><a href="http://vocabs.lter-europe.net/EnvThes/22226" class="external-link uri">http://vocabs.lter-europe.net/EnvThes/22226</a></td>
-</tr>
-<tr class="odd">
-<td align="left">…</td>
-<td align="left">…</td>
-</tr>
-</tbody>
-</table>
-<hr>
-</div>
-<div class="section level4">
-<h4 id="get_dataset_info">
-<em>get_dataset_info()</em><a class="anchor" aria-label="anchor" href="#get_dataset_info"></a>
-</h4>
-<p>The <em>get_dataset_info</em> function retrieves a table with information about specific datasets shared through <a href="https://deims.org/" class="external-link">DEIMS-SDR</a>.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">tDataset</span> <span class="op">&lt;-</span> <span class="fu">ReLTER</span><span class="fu">::</span><span class="fu"><a href="reference/get_dataset_info.html">get_dataset_info</a></span><span class="op">(</span>datasetid <span class="op">=</span> <span class="st">"https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">tDataset</span><span class="op">)</span>
-<span class="co">#&gt; Simple feature collection with 1 feature and 33 fields</span>
-<span class="co">#&gt; Geometry type: POLYGON</span>
-<span class="co">#&gt; Dimension:     XY</span>
-<span class="co">#&gt; Bounding box:  xmin: 11.88721 ymin: 43.20518 xmax: 15.86426 ymax: 45.91294</span>
-<span class="co">#&gt; Geodetic CRS:  WGS 84</span>
-<span class="co">#&gt; # A tibble: 1 × 34</span>
-<span class="co">#&gt;   title    abstract keywords uri   type  dateRange.from dateRange.to relatedSite</span>
-<span class="co">#&gt; * &lt;chr&gt;    &lt;chr&gt;    &lt;list&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;          &lt;lgl&gt;        &lt;list&gt;     </span>
-<span class="co">#&gt; 1 LTER No… The pre… &lt;df&gt;     http… data… 1965-01-01     NA           &lt;df&gt;       </span>
-<span class="co">#&gt; # … with 26 more variables: contacts.corresponding &lt;list&gt;,</span>
-<span class="co">#&gt; #   contacts.creator &lt;list&gt;, contacts.metadataProvider &lt;lgl&gt;,</span>
-<span class="co">#&gt; #   observationParameters &lt;list&gt;, observationSpecies &lt;list&gt;, dataPolicy &lt;list&gt;,</span>
-<span class="co">#&gt; #   doi &lt;chr&gt;, onlineLocation &lt;list&gt;, legal.accessUse &lt;list&gt;,</span>
-<span class="co">#&gt; #   legal.rights &lt;lgl&gt;, legal.legalAct &lt;lgl&gt;, legal.citation &lt;lgl&gt;,</span>
-<span class="co">#&gt; #   method.instrumentation &lt;lgl&gt;, method.qualityAssurance &lt;lgl&gt;,</span>
-<span class="co">#&gt; #   method.methodUrl &lt;list&gt;, method.methodDescription &lt;list&gt;, …</span>
-
-<span class="fu">tmap</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tmap_mode.html" class="external-link">tmap_mode</a></span><span class="op">(</span><span class="st">"plot"</span><span class="op">)</span>
-<span class="va">r</span> <span class="op">&lt;-</span> <span class="fu">tmaptools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tmaptools/man/read_osm.html" class="external-link">read_osm</a></span><span class="op">(</span><span class="va">tDataset</span><span class="op">)</span>
-<span class="fu">tmap</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_shape.html" class="external-link">tm_shape</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">tmap</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_raster.html" class="external-link">tm_rgb</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">tmap</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_shape.html" class="external-link">tm_shape</a></span><span class="op">(</span><span class="va">tDataset</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">tmap</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_polygons.html" class="external-link">tm_fill</a></span><span class="op">(</span>col<span class="op">=</span><span class="st">"blue"</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">tmap</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_polygons.html" class="external-link">tm_borders</a></span><span class="op">(</span>col <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span></code></pre></div>
-<p><img src="reference/figures/README-exampleGetDataset-1.png" width="100%"></p>
-<hr>
-</div>
-<div class="section level4">
-<h4 id="get_site_infocategory--relateres">
-<em>get_site_info(category = “RelateRes”)</em><a class="anchor" aria-label="anchor" href="#get_site_infocategory--relateres"></a>
-</h4>
-<p>The <em>get_site_info</em> function, using category = “RelateRes”, provides a list of related resources associated with a site within <a href="https://deims.org/" class="external-link">DEIMS-SDR</a>.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">tSiteRelatedResources</span> <span class="op">&lt;-</span> <span class="fu">ReLTER</span><span class="fu">::</span><span class="fu"><a href="reference/get_site_info.html">get_site_info</a></span><span class="op">(</span>
-  deimsid <span class="op">=</span> <span class="st">"https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"</span>,
-  category <span class="op">=</span> <span class="st">"RelateRes"</span>
-<span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">tSiteRelatedResources</span><span class="op">$</span><span class="va">relatedResources</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>
-<span class="co">#&gt;                                                                              relatedResourcesTitle</span>
-<span class="co">#&gt; 1 Biovolume of Phytoplankton in Lake Maggiore site code  IT_SI001137_within the period 1981 - 2010</span>
-<span class="co">#&gt; 2                           Atmospheric deposition in Pallanza, Lake Maggiore watershed, 1980-2018</span>
-<span class="co">#&gt; 3                                     Phytoplankton_Biomass_Lake Maggiore_Ghiffa_station-1984-2018</span>
-<span class="co">#&gt; 4                                      Water chemistry of Lake Maggiore, Ghiffa station, 1988-2018</span>
-<span class="co">#&gt; 5                          Transparency (Secchi depth) of Lake Maggiore, Ghiffa station, 1988-2018</span>
-<span class="co">#&gt; 6                                             Chlorophyll a_Lake_Maggiore_Ghiffa_Station-1984-2018</span>
-<span class="co">#&gt; 7                                 Water discharge of River Ticino, Lake Maggiore outlet, 1988-2018</span>
-<span class="co">#&gt;   relatedResourcesChanged</span>
-<span class="co">#&gt; 1     2021-08-25 16:38:00</span>
-<span class="co">#&gt; 2     2020-12-13 20:06:00</span>
-<span class="co">#&gt; 3     2020-12-16 10:46:00</span>
-<span class="co">#&gt; 4     2021-11-03 06:10:00</span>
-<span class="co">#&gt; 5     2022-02-16 11:36:00</span>
-<span class="co">#&gt; 6     2021-01-10 21:48:00</span>
-<span class="co">#&gt; 7     2021-07-21 12:35:00</span>
-<span class="co">#&gt;                                                              uri</span>
-<span class="co">#&gt; 1 https://deims.org/dataset/d9e94776-e7a8-11e2-a655-005056ab003f</span>
-<span class="co">#&gt; 2 https://deims.org/dataset/0ce46362-0aab-482a-b1f0-a444a5dada39</span>
-<span class="co">#&gt; 3 https://deims.org/dataset/0ab8425a-d574-4575-8ba9-5275c607b0c5</span>
-<span class="co">#&gt; 4 https://deims.org/dataset/69564188-89de-4879-ad88-4aa97c1d005d</span>
-<span class="co">#&gt; 5 https://deims.org/dataset/e538c743-2149-49e3-9025-14a04ea7c90d</span>
-<span class="co">#&gt; 6 https://deims.org/dataset/c857c8e2-48aa-4dcd-a7fb-e089bd4c5c4e</span>
-<span class="co">#&gt; 7 https://deims.org/dataset/fb3a8fec-0c1f-4c3a-81d5-364c7e6078c4</span></code></pre></div>
-<hr>
-</div>
-<div class="section level4">
-<h4 id="produce_site_parameters_waffle">
-<em>produce_site_parameters_waffle()</em><a class="anchor" aria-label="anchor" href="#produce_site_parameters_waffle"></a>
-</h4>
-<p>The <em>produce_site_parameters_waffle</em> function provides a grouping of parameters, as measured within a site, in a “waffle chart” representation.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">ReLTER</span><span class="fu">::</span><span class="fu"><a href="reference/produce_site_parameters_waffle.html">produce_site_parameters_waffle</a></span><span class="op">(</span>
-  deimsid <span class="op">=</span> <span class="st">"https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"</span><span class="op">)</span></code></pre></div>
-<p><img src="reference/figures/README-exampleproduce_site_parameters_waffle-1.png" width="100%"></p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 11 × 4</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    parameterGroups               n   freq label</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;                     &lt;int&gt;  &lt;dbl&gt; &lt;chr&gt;</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 agricultural parameters       1 0.0105 1%   </span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 atmospheric parameters       14 0.147  15%  </span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 biological parameters         8 0.0842 8%   </span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 chemical parameters          24 0.253  25%  </span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 ecosystem parameters         23 0.242  24%  </span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 genetic parameters            2 0.0211 2%   </span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 landscape parameters          4 0.0421 4%   </span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 physical parameters           1 0.0105 1%   </span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 remote sensing parameters     1 0.0105 1%   </span></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 soil parameters               1 0.0105 1%   </span></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11 water parameters             16 0.168  17%</span></span></code></pre></div>
-<hr>
-</div>
-<div class="section level4">
-<h4 id="get_site_ods">
-<em>get_site_ODS()</em><a class="anchor" aria-label="anchor" href="#get_site_ods"></a>
-</h4>
-<p>The <em>get_site_ODS</em> function retrieves datasets from <a href="https://maps.opendatascience.eu/" class="external-link">OpenDataScience</a>, and crops to the boundary of the specified eLTER site.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">siteNDVI</span> <span class="op">&lt;-</span> <span class="fu">ReLTER</span><span class="fu">::</span><span class="fu"><a href="reference/get_site_ODS.html">get_site_ODS</a></span><span class="op">(</span>
-   deimsid <span class="op">=</span> <span class="st">"https://deims.org/d0a8da18-0881-4ebe-bccf-bc4cb4e25701"</span>,
-   dataset <span class="op">=</span> <span class="st">"ndvi_summer"</span>
-<span class="op">)</span>
-<span class="va">siteBoundary</span> <span class="op">&lt;-</span> <span class="fu">ReLTER</span><span class="fu">::</span><span class="fu"><a href="reference/get_site_info.html">get_site_info</a></span><span class="op">(</span>
-  deimsid <span class="op">=</span> <span class="st">"https://deims.org/d0a8da18-0881-4ebe-bccf-bc4cb4e25701"</span>,
-  category <span class="op">=</span> <span class="st">"Boundaries"</span>
-<span class="op">)</span>
-
-<span class="fu">tmap</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tmap_mode.html" class="external-link">tmap_mode</a></span><span class="op">(</span><span class="st">"plot"</span><span class="op">)</span>
-<span class="va">pal</span> <span class="op">&lt;-</span> <span class="fu">RColorBrewer</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html" class="external-link">brewer.pal</a></span><span class="op">(</span><span class="st">"RdYlGn"</span>, n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>
-<span class="va">r</span> <span class="op">&lt;-</span> <span class="fu">tmaptools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tmaptools/man/read_osm.html" class="external-link">read_osm</a></span><span class="op">(</span><span class="va">siteBoundary</span><span class="op">)</span>
-<span class="fu">tmap</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_shape.html" class="external-link">tm_shape</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">tmap</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_raster.html" class="external-link">tm_rgb</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">tmap</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_shape.html" class="external-link">tm_shape</a></span><span class="op">(</span><span class="va">siteNDVI</span>, raster.downsample <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">tmap</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_raster.html" class="external-link">tm_raster</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="va">pal</span>, alpha <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu">tmap</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_shape.html" class="external-link">tm_shape</a></span><span class="op">(</span><span class="va">siteBoundary</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">tmap</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_polygons.html" class="external-link">tm_borders</a></span><span class="op">(</span><span class="st">"black"</span><span class="op">)</span></code></pre></div>
-<p><img src="reference/figures/README-example_site_ODS-1.png" width="100%"></p>
-</div>
 </div>
 <div class="section level2">
 <h2 id="woman_technologist-persons-involved-man_technologist">
@@ -445,7 +191,8 @@
 <!-- Add authors, reviewers including those who, within eLTER network, reviewed the package and add acknowledgements 
      in accordance with this https://ropensci.org/blog/2018/03/16/thanking-reviewers-in-metadata/ and this
      https://devguide.ropensci.org/building.html#authorship.
-     Add the same in DESCRIPTION file --><p>Micha Silver <a href="https://orcid.org/0000-0002-1128-1325" class="external-link uri">https://orcid.org/0000-0002-1128-1325</a> (Ben Gurion University - BGU)</p>
+     Add the same in DESCRIPTION file -->
+<p>Micha Silver <a href="https://orcid.org/0000-0002-1128-1325" class="external-link uri">https://orcid.org/0000-0002-1128-1325</a> (Ben Gurion University - BGU)</p>
 <p>Luigi Ranghetti <a href="https:://orcid.org/0000-0001-6207-5188" class="uri">https:://orcid.org/0000-0001-6207-5188</a> (CNR, Institute for Electromagnetic Sensing of the Environment - IREA)</p>
 <p>Paolo Tagliolato <a href="https:://orcid.org/0000-0002-0261-313X" class="uri">https:://orcid.org/0000-0002-0261-313X</a> (CNR, Institute for Electromagnetic Sensing of the Environment - IREA)</p>
 <p>For a exhaustive list of contributors please visit <a href="https://docs.ropensci.org/ReLTER/authors">authors page</a>.</p>
@@ -454,7 +201,7 @@
 <h2 id="office-contributing-organizations">
 <span class="emoji" data-emoji="office">🏢</span> Contributing organizations<a class="anchor" aria-label="anchor" href="#office-contributing-organizations"></a>
 </h2>
-<p><img src="reference/figures/irea_logo.png" height="70" alt="CNR-IREA"><!--a href="http://www.irea.cnr.it/en/"><img src="man/figures/irea_logo.png" height="40" align="left" /></a--></p>
+<p><img src="reference/figures/irea_logo.png" height="72" alt="CNR-IREA"><!--a href="http://www.irea.cnr.it/en/"><img src="man/figures/irea_logo.png" height="40" align="left" /></a--></p>
 <p><img src="reference/figures/bgu_logo.png" height="80" alt="BGU"><!--a href="https://in.bgu.ac.il/en/"><img src="man/figures/bgu_logo.png" height="40" align="left" /></a--></p>
 </div>
 <div class="section level2">
@@ -510,7 +257,7 @@
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://doi.org/10.5281/zenodo.5576813" class="external-link"><img src="https://img.shields.io/badge/doi-10.5281/zenodo.5576813-yellow.svg"></a></li>
-<li><a href="https://github.com/ropensci/ReLTER" class="external-link"><img src="https://img.shields.io/badge/devel%20version-1.1.0-blue.svg"></a></li>
+<li><a href="https://github.com/ropensci/ReLTER" class="external-link"><img src="https://img.shields.io/badge/devel%20version-2.0.0-blue.svg"></a></li>
 <li><a href="https://github.com/ropensci/ReLTER" class="external-link"><img src="https://img.shields.io/github/languages/code-size/ropensci/ReLTER.svg"></a></li>
 <li><a href="https://github.com/ropensci/ReLTER/commits/main" class="external-link"><img src="https://img.shields.io/github/last-commit/ropensci/ReLTER.svg"></a></li>
 <li><a href="https://cran.r-project.org/web/licenses/GPL-3" class="external-link"><img src="https://img.shields.io/badge/license-GPL--3-blue.svg" alt="License: GPL-3"></a></li>

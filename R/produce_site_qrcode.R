@@ -1,5 +1,6 @@
 #' Obtain the QRCode of any DEIMS-SDR entities.
-#' @description Return a QR code image of any provided DEIMS ID (e.g. dataset,
+#' @description `r lifecycle::badge("stable")`
+#' Return a QR code image of any provided DEIMS ID (e.g. dataset,
 #' site, activity).
 #' @param deimsid A `character`. The DEIMS ID of entities from
 #' DEIMS-SDR website. DEIMS ID information
@@ -8,6 +9,9 @@
 #' @return The QR code as a logical matrix with "qr_code" class.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom qrcode qr_code
+#' @importFrom Rdpack reprompt
+#' @references
+#'   \insertRef{qrcodeR}{ReLTER}
 #' @export
 #' @examples
 #' qrcode <- produce_site_qrcode(

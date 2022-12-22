@@ -29,9 +29,12 @@ output of the function is a \code{tibble} with the refinement of the
 input, else the function simply returns the unchanged input.
 }
 \description{
-This function provides a refining of the output of
+This internal function provides a refining of the output of
 function taxon_id_worms. It prints a list of possible matches
 and possibly enables the user to interactively make his choice.
+}
+\references{
+\insertRef{dplyrR}{ReLTER}
 }
 \author{
 Alessandro Oggioni, phD (2021) \email{oggioni.a@irea.cnr.it}
