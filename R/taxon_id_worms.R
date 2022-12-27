@@ -64,6 +64,13 @@ taxon_id_worms <- function(
     "valid_AphiaID", # ok
     "status", # ok
     "synonyms", # ok yes or no
+    "rank",
+    "kingdom",
+    "phylum",
+    "class",
+    "order",
+    "family",
+    "genus",
     "LSID", # ok
     "url", # ok
     "matchType",
@@ -86,6 +93,13 @@ taxon_id_worms <- function(
       input$valid_AphiaID[[i]] <- NA
       input$status[[i]] <- NA
       input$synonyms[[i]] <- NA
+      input$rank[[i]] <- NA
+      input$kingdom[[i]] <- NA
+      input$phylum[[i]] <- NA
+      input$class[[i]] <- NA
+      input$order[[i]] <- NA
+      input$family[[i]] <- NA
+      input$genus[[i]] <- NA
       input$LSID[[i]] <- NA
       input$url[[i]] <- NA
       input$matchType[[i]] <- NA
@@ -101,6 +115,13 @@ taxon_id_worms <- function(
       input$valid_AphiaID[[i]] <- a[[i]][[1]]$valid_AphiaID
       input$status[[i]] <- a[[i]][[1]]$status
       input$synonyms[[i]] <- a[[i]][[1]]$unacceptreason
+      input$rank[[i]] <- a[[i]][[1]]$rank
+      input$kingdom[[i]] <- a[[i]][[1]]$kingdom
+      input$phylum[[i]] <- a[[i]][[1]]$phylum
+      input$class[[i]] <- a[[i]][[1]]$class
+      input$order[[i]] <- a[[i]][[1]]$order
+      input$family[[i]] <- a[[i]][[1]]$family
+      input$genus[[i]] <- a[[i]][[1]]$genus
       input$LSID[[i]] <- a[[i]][[1]]$lsid
       input$url[[i]] <- a[[i]][[1]]$url
       input$matchType[[i]] <- a[[i]][[1]]$match_type

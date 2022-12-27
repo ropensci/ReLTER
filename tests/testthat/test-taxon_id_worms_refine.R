@@ -30,7 +30,9 @@ with choiceNumber NULL", {
   expect_true(all(names(result_refine) == c(
     names(input_table), "valid_name",
     "valid_authority", "valid_AphiaID",
-    "status", "synonyms", "LSID", "url",
+    "status", "synonyms", "rank",
+    "kingdom", "phylum", "class",
+    "order", "family", "genus", "LSID", "url",
     "matchType", "nOfWormsResults", "wormsRecords"
   )))
 })
@@ -63,7 +65,9 @@ and choiceNumber is a number", {
   expect_true(all(names(result_refine) == c(
     names(input_table), "valid_name",
     "valid_authority", "valid_AphiaID",
-    "status", "synonyms", "LSID", "url",
+    "status", "synonyms", "rank",
+    "kingdom", "phylum", "class",
+    "order", "family", "genus", "LSID", "url",
     "matchType", "nOfWormsResults", "wormsRecords"
   )))
   expect_lte(max(result_refine$nOfWormsResults), 1)
