@@ -74,6 +74,7 @@ Imports:
     jqr,
     jsonlite,
     magrittr,
+    MODIStsp,
     qrcode,
     raster (>= 3.3-13),
     rgeos,

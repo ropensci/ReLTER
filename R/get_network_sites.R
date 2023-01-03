@@ -158,9 +158,8 @@ get_network_sites <- function(networkDEIMSID) {
         )
       print(map)
       message("\n----\nThe number of the sites on the map can be more than
-presents in the network, because some theme are represented in DEIMS-SDR
-with multiple points (e.g.
-https://deims.org/18998d9a-7ff5-4e9d-a971-9694e0a4914d).\n----\n")
+in the network, since some are represented in DEIMS-SDR by multiple points.
+(e.g. https://deims.org/18998d9a-7ff5-4e9d-a971-9694e0a4914d).\n----\n")
       return(lterSitesNetworkPointDEIMS)
     } else {
       message("\n----\nThe maps cannot be created because the coordinates,

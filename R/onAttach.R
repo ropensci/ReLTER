@@ -12,7 +12,7 @@
     "Type 'citation(package = 'ReLTER')' on how to cite R packages in
     publications.\n\n",
     "Currently the DEIMS-SDR base URL is set as: ", deimsbaseurl,
-    ".\nFor change it please use set_deims_base_url()."
+    ".\nTo change the URL please use set_deims_base_url()."
   )
   packageStartupMessage(startMessage)
 }
