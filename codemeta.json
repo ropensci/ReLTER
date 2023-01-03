@@ -694,7 +694,7 @@
       "@type": "SoftwareApplication",
       "identifier": "leaflet",
       "name": "leaflet",
-      "version": ">= 2.1.1",
+      "version": "> 2.1.1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -705,7 +705,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "110442.113KB",
+  "fileSize": "96375.57KB",
   "citation": [
     {
       "@type": "CreativeWork",
