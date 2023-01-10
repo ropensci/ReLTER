@@ -64,93 +64,104 @@
 ### function get_ilter_generalinfo
 get_ilter_generalinfo <- function(country_name = NA, site_name = NA,
                                   show_map = FALSE) {
+  # if(all(is.na(c(country_name, site_name)))){
+  #   warning("At least one of country_name or site_name must be specified.")
+  #   return(NULL)
+  # }
+  country_code = NA
+  
+  if(!is.na(country_name)){
+    if(nchar(country_name)>2) {
+      country_code <- suppressWarnings(
+         countrycode::countrycode(country_name, origin = "country.name", destination = "iso2c")
+      )
+    } else country_code <- country_name
+  }
+  
+  if(all(is.na(c(country_code, site_name)))){
+    warning("At least one valid country_name or site_name must be specified.")
+    return(NULL)
+  }
+  
   # Get full set of sites
   deimsbaseurl <- get_deims_base_url()
   lterILTERSites <- as.data.frame(
     jsonlite::fromJSON(
       paste0(
         deimsbaseurl,
-        "api/sites"
+        "api/sites?country=", country_code, "&name=", site_name
       )
     )
   )
-  # First filter by country_name
-  # (Getting site affiliations for all 1200 sites takes too long...)
-  valid_cntry <- (!is.na(country_name) & typeof(country_name) == "character")
-  if (valid_cntry) {
-    idx <- grep(x = lterILTERSites$title,
-                pattern = country_name,
-                ignore.case = TRUE)
-    if (length(idx) == 0) {
-      warning(
-        "\n",
-        paste0(
-          "You have provided a country name (\'",
-          country_name,
-          "\') that is not among the countries stored in the DEIMS-SDR.",
-          " Please review what you entered in \'country_name\'.\n"
-        ),
-        "\n"
-      )
-      filteredILTERSites <- NULL
-    } else {
-      filteredILTERSites <- lterILTERSites[idx, ]
-    }
-  } else {
-    # No country filtering
-    filteredILTERSites <- lterILTERSites
+  
+  if(nrow(lterILTERSites)==0){
+    warning("Country and site name matched no ILTER site, please check your request")
+    return(NULL)
   }
-  # Now get affiliations, general info
-  filteredSitesGeneralInfo <- lapply(
-    as.list(
-      paste0(
-        filteredILTERSites$id$prefix,
-        filteredILTERSites$id$suffix
-      )
-    ),
-    ReLTER::get_site_info,
-    category = "Affiliations"
-  )
-  uniteSitesGeneralInfo <- do.call(rbind, filteredSitesGeneralInfo)
+  # Sites filtered by rest API
+  filteredILTERSites <- lterILTERSites
+  
+  uniteSitesGeneralInfo <- filteredILTERSites %>% dplyr::mutate(geoCoord=coordinates, .keep="unused") %>% as_tibble()
+  
+  # # The following makes too many requests. The code could be enabled only if sites are less then a threshold.
+  # # This is for maintaining some compatibility (and for tests) but should be discarded.
+  threshold_max_num_sites=3
+  if(nrow(filteredILTERSites) < threshold_max_num_sites) {
+    # Now get affiliations, general info
+    filteredSitesGeneralInfo <- lapply(
+      as.list(
+        paste0(
+          filteredILTERSites$id$prefix,
+          filteredILTERSites$id$suffix
+        )
+      ),
+      ReLTER::get_site_info,
+      category = "Affiliations"
+    )
+
+    uniteSitesGeneralInfo <- do.call(rbind, filteredSitesGeneralInfo)
+  }
+  
+  # # The following is unnecessary, I put in comment. Should be deleted
   # Now filter by site name
-  valid_site <- (!is.na(site_name) & typeof(site_name) == "character")
-  if (valid_site) {
-    idx <- grep(pattern = site_name,
-                x = uniteSitesGeneralInfo$title,
-                ignore.case = TRUE)
-    if (length(idx) == 0) {
-      warning(
-        "\n",
-        paste0(
-          "You have provided a site name (\'",
-          site_name,
-          "\') that's not among the sites stored in the DEIMS-SDR.\n",
-          "The result of this function will be
-          all sites in the requested country (\'", country_name,
-          "\') not a specific site.\n",
-          "Please review what you entered in \'site_name\'."
-        ),
-        "\n"
-      )
-      uniteSitesGeneralInfo <- uniteSitesGeneralInfo
-    } else {
-      uniteSitesGeneralInfo <- uniteSitesGeneralInfo[idx, ]
-    }
-  }
+  # valid_site <- (!is.na(site_name) & typeof(site_name) == "character")
+  # if (valid_site) {
+  #   idx <- grep(pattern = site_name,
+  #               x = uniteSitesGeneralInfo$title,
+  #               ignore.case = TRUE)
+  #   if (length(idx) == 0) {
+  #     warning(
+  #       "\n",
+  #       paste0(
+  #         "You have provided a site name (\'",
+  #         site_name,
+  #         "\') that's not among the sites stored in the DEIMS-SDR.\n",
+  #         "The result of this function will be
+  #         all sites in the requested country (\'", country_name,
+  #         "\') not a specific site.\n",
+  #         "Please review what you entered in \'site_name\'."
+  #       ),
+  #       "\n"
+  #     )
+  #     uniteSitesGeneralInfo <- uniteSitesGeneralInfo
+  #   } else {
+  #     uniteSitesGeneralInfo <- uniteSitesGeneralInfo[idx, ]
+  #   }
+  # }
   # Make sure we have some rows
   if (is.null(uniteSitesGeneralInfo)) {
     return(NULL)
   } else if (length(uniteSitesGeneralInfo) == 0 |
-          # No rows after country filter
-          length(uniteSitesGeneralInfo$title) == 0) {
+             # No rows after country filter
+             length(uniteSitesGeneralInfo$title) == 0) {
     # No rows left after site filter
     uniteSitesGeneralInfoGeo <- NULL
     warning("\n", paste("No matches found for country name:",
                         country_name,
                         "and site name:",
                         site_name
-          ),
-          "\n"
+    ),
+    "\n"
     )
     return(NULL)
   } else {
@@ -162,16 +173,16 @@ get_ilter_generalinfo <- function(country_name = NA, site_name = NA,
       if (show_map == TRUE) {
         map <- leaflet::leaflet(uniteSitesGeneralInfoGeo) %>%
           leaflet::addTiles() %>%
-          leaflet::addMarkers()
+          leaflet::addMarkers(popup=uniteSitesGeneralInfoGeo$title)
         print(map)
       } else {
         return(uniteSitesGeneralInfoGeo)
       }
     } else {
       message("\n----\nThe map cannot be created because one or more site",
-             " locations provided in DEIMS-SDR, has an invalid geometry.\n",
-             "Please check the content and refer this error",
-             " to DEIMS-SDR support.\n----\n")
+              " locations provided in DEIMS-SDR, has an invalid geometry.\n",
+              "Please check the content and refer this error",
+              " to DEIMS-SDR support.\n----\n")
       return(uniteSitesGeneralInfo)
     }
   }
