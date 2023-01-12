@@ -1,13 +1,10 @@
 #' Download information of all ILTER sites or a subset of ILTER sites.
 #' @description `r lifecycle::badge("questioning")`
 #' This function downloads generic information
-#' of all sites, or a subset of
+#' of sites of
 #' \href{https://www.ilter.network/network/global-coverage}{ILTER sites
 #' (more than 1200 around the world)},
-#' through the DEIMS-SDR API. If no `country_name` or `site_name` are
-#' specified, the whole list of sites is returned. If either or both of the
-#' filtering strings is specified, then a filtered subset of the sites is
-#' acquired.
+#' through the DEIMS-SDR API. 
 #'
 #' Return a `tibble` object.
 #' @param country_name A `character`. Country name (complete name in English, 
@@ -21,6 +18,7 @@
 #' containing the name, DEIMS ID, longitude, latitude, average altitude,
 #' and affiliation of the filtered ILTER sites.
 #' If no bounding box is available,the centroid is returned.
+#' @note at least one of `country_name` or `site_name` must be specified
 #' @author Alessandro Oggioni, phD (2021) \email{oggioni.a@@irea.cnr.it}
 #' @author  Micha Silver, phD (2021) \email{silverm@@post.bgu.ac.il}
 #' @author  Paolo Tagliolato, phD (2023) \email{tagliolato.p@@irea.cnr.it}
