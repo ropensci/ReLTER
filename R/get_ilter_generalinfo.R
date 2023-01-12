@@ -23,10 +23,10 @@
 #' If no bounding box is available,the centroid is returned.
 #' @author Alessandro Oggioni, phD (2021) \email{oggioni.a@@irea.cnr.it}
 #' @author  Micha Silver, phD (2021) \email{silverm@@post.bgu.ac.il}
+#' @author  Paolo Tagliolato, phD (2023) \email{tagliolato.p@@irea.cnr.it}
 #' @importFrom jsonlite fromJSON
 #' @importFrom sf st_as_sf st_is_valid
 #' @importFrom leaflet leaflet addTiles addMarkers
-#' @importFrom Rdpack reprompt
 #' @references
 #'   \insertRef{jsonliteR}{ReLTER}
 #'
@@ -74,16 +74,24 @@ get_ilter_generalinfo <- function(country_name = NA, site_name = NA,
   if(!is.na(country_name)){
     if(nchar(country_name)>2) {
       country_code <- suppressWarnings({
-        res<-countrycode::countrycode(country_name, origin = "country.name", destination = "iso2c")
-        res<-if(is.na(res)) countrycode::countrycode(country_name, origin = "country.name.de", destination = "iso2c") else res
-        res<-if(is.na(res)) countrycode::countrycode(country_name, origin = "country.name.it", destination = "iso2c") else res
-        res<-if(is.na(res)) countrycode::countrycode(country_name, origin = "country.name.fr", destination = "iso2c") else res
+        res<-countrycode::countrycode(country_name, origin = "country.name", 
+                                      destination = "iso2c")
+        res<-if(is.na(res)) 
+          countrycode::countrycode(country_name, origin = "country.name.de", 
+                                   destination = "iso2c") else res
+        res<-if(is.na(res)) 
+          countrycode::countrycode(country_name, origin = "country.name.it", 
+                                   destination = "iso2c") else res
+        res<-if(is.na(res)) 
+          countrycode::countrycode(country_name, origin = "country.name.fr", 
+                                   destination = "iso2c") else res
       })
     } else country_code <- country_name
   }
   
   if(all(is.na(c(country_code, site_name)))){
-    warning("At least one valid country_name (complete name or 2 digits ISO code) or site_name must be specified.")
+    warning("At least one valid country_name (complete name or 2 digits ISO 
+            code) or site_name must be specified.")
     return(NULL)
   }
   
@@ -97,18 +105,24 @@ get_ilter_generalinfo <- function(country_name = NA, site_name = NA,
   lterILTERSites <- as.data.frame(jsonlite::fromJSON(url))
   
   if(nrow(lterILTERSites)==0){
-    warning("Country and site name matched no ILTER site, please check your request (country name must be complete or a valid 2 digits ISO code")
+    warning("Country and site name matched no ILTER site, 
+            please check your request (country name must be complete or a 
+            valid 2 digits ISO code")
     return(NULL)
   }
   # Sites filtered by rest API
   filteredILTERSites <- lterILTERSites
   
   uniteSitesGeneralInfo <- filteredILTERSites %>% tibble::as_tibble() %>% 
-    dplyr::mutate(uri = paste0(id$prefix, id$suffix), geoCoord=coordinates, .keep="unused", .before=changed)
+    dplyr::mutate(uri = paste0(id$prefix, id$suffix), geoCoord=coordinates, 
+                  .keep="unused", .before=changed)
     
   
-  # # The following makes too many requests. The code could be enabled only if sites are less then a threshold.
-  # # This is for maintaining some compatibility (and for tests) but should be discarded.
+  # # The following makes too many requests. 
+  # # The code could be enabled only if sites are 
+  # # less then a threshold.
+  # # This is for maintaining some compatibility 
+  # # (and for tests) but should be discarded.
   threshold_max_num_sites=3
   if(nrow(filteredILTERSites) < threshold_max_num_sites) {
     # Now get affiliations, general info
