@@ -10,8 +10,9 @@
 #' acquired.
 #'
 #' Return a `tibble` object.
-#' @param country_name A `character`. This character string filters
-#' the full set of DEIMS sites by country name. Partial matching is supported.
+#' @param country_name A `character`. Country name (complete name in English, 
+#' French, Italian, German, OR 2 digits ISO code) of DEIMS sites
+#' to retrieve. Partial matching of country names is NOT supported.
 #' @param site_name A `character`. This character string filters by site name
 #' where, again, partial matching is supported
 #' @param show_map A `boolean`. If TRUE a Leaflet map of site locations
@@ -72,36 +73,39 @@ get_ilter_generalinfo <- function(country_name = NA, site_name = NA,
   
   if(!is.na(country_name)){
     if(nchar(country_name)>2) {
-      country_code <- suppressWarnings(
-         countrycode::countrycode(country_name, origin = "country.name", destination = "iso2c")
-      )
+      country_code <- suppressWarnings({
+        res<-countrycode::countrycode(country_name, origin = "country.name", destination = "iso2c")
+        res<-if(is.na(res)) countrycode::countrycode(country_name, origin = "country.name.de", destination = "iso2c") else res
+        res<-if(is.na(res)) countrycode::countrycode(country_name, origin = "country.name.it", destination = "iso2c") else res
+        res<-if(is.na(res)) countrycode::countrycode(country_name, origin = "country.name.fr", destination = "iso2c") else res
+      })
     } else country_code <- country_name
   }
   
   if(all(is.na(c(country_code, site_name)))){
-    warning("At least one valid country_name or site_name must be specified.")
+    warning("At least one valid country_name (complete name or 2 digits ISO code) or site_name must be specified.")
     return(NULL)
   }
   
   # Get full set of sites
   deimsbaseurl <- get_deims_base_url()
-  lterILTERSites <- as.data.frame(
-    jsonlite::fromJSON(
-      paste0(
-        deimsbaseurl,
-        "api/sites?country=", country_code, "&name=", site_name
-      )
-    )
-  )
+  url<-URLencode(paste0(
+    deimsbaseurl,
+    "api/sites?country=", country_code, "&name=", site_name
+  ))
+  
+  lterILTERSites <- as.data.frame(jsonlite::fromJSON(url))
   
   if(nrow(lterILTERSites)==0){
-    warning("Country and site name matched no ILTER site, please check your request")
+    warning("Country and site name matched no ILTER site, please check your request (country name must be complete or a valid 2 digits ISO code")
     return(NULL)
   }
   # Sites filtered by rest API
   filteredILTERSites <- lterILTERSites
   
-  uniteSitesGeneralInfo <- filteredILTERSites %>% dplyr::mutate(geoCoord=coordinates, .keep="unused") %>% as_tibble()
+  uniteSitesGeneralInfo <- filteredILTERSites %>% tibble::as_tibble() %>% 
+    dplyr::mutate(uri = paste0(id$prefix, id$suffix), geoCoord=coordinates, .keep="unused", .before=changed)
+    
   
   # # The following makes too many requests. The code could be enabled only if sites are less then a threshold.
   # # This is for maintaining some compatibility (and for tests) but should be discarded.
