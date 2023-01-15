@@ -23,7 +23,9 @@ test_that("Output of taxon worms function constructs 'tibble' as expected", {
   expect_true(all(names(result) == c(
     names(input_table), "valid_name",
     "valid_authority", "valid_AphiaID",
-    "status", "synonyms", "LSID", "url",
+    "status", "synonyms", "rank",
+    "kingdom", "phylum", "class",
+    "order", "family", "genus", "LSID", "url",
     "matchType", "nOfWormsResults", "wormsRecords"
   )))
 })
