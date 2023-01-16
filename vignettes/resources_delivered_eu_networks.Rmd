@@ -30,7 +30,8 @@ related_resources <- purrr::map_dfr(
     eLTER_eu_networks$DEIMS.iD
   ),
   function (x) {
-    ReLTER::get_network_related_resources(x) %>%
+    part <- ReLTER::get_network_related_resources(x) 
+    if(!is.null(part)) part %>%
       dplyr::filter(!is.na(uri)) %>%
       dplyr::mutate(
         networkID = x,

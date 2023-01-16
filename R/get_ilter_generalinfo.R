@@ -5,7 +5,6 @@
 #' \href{https://www.ilter.network/network/global-coverage}{ILTER sites
 #' (more than 1200 around the world)},
 #' through the DEIMS-SDR API. 
-#'
 #' Return a `tibble` object.
 #' @param country_name A `character`. Country name (complete name in English, 
 #' French, Italian, German, OR 2 digits ISO code) of DEIMS sites
