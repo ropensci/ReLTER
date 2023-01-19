@@ -53,18 +53,23 @@ get_network_related_resources <- function(networkDEIMSID) {
     get_site_info,
     category = "RelateRes"
   )
+  
   if (length(allSiteRelatedResources) != 0) {
     uniteSiteRelatedResources <- dplyr::bind_rows(allSiteRelatedResources)
-    relatedResourcesNetworkList <- uniteSiteRelatedResources$relatedResources
-    relatedResourcesNetworkDF <- dplyr::bind_rows(relatedResourcesNetworkList)
-    relatedResourcesNetworkDF <- relatedResourcesNetworkDF %>%
-      dplyr::select("relatedResourcesTitle", "uri", "relatedResourcesChanged")
-    uniqueSiteRelatedResources <- dplyr::as_tibble(
-      dplyr::distinct(
-        relatedResourcesNetworkDF
+    #relatedResourcesNetworkList <- uniteSiteRelatedResources$relatedResources
+    #relatedResourcesNetworkDF <- dplyr::bind_rows(relatedResourcesNetworkList)
+    relatedResourcesNetworkDF <- 
+      dplyr::bind_rows(uniteSiteRelatedResources$relatedResources)
+    if("uri" %in% colnames(relatedResourcesNetworkDF)){
+      relatedResourcesNetworkDF <- relatedResourcesNetworkDF %>%
+        dplyr::select("relatedResourcesTitle", "uri", "relatedResourcesChanged")
+      uniqueSiteRelatedResources <- dplyr::as_tibble(
+        dplyr::distinct(
+          relatedResourcesNetworkDF
+        )
       )
-    )
-    uniqueSiteRelatedResources
+      return(uniqueSiteRelatedResources)
+    }
   } else {
     message("\n----\nThe requested page could not be found.
 Please check again the Network.iD\n----\n")
