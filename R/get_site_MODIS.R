@@ -275,14 +275,15 @@ get_site_MODIS <- function(deimsid, product = "VI",
   cfg <- system.file("extdata/modistsp_options.json",
                      package="ReLTER")
   # Which downloader
-  if (Sys.info()["sysname"] == "windows") {
-    dldr <- "html"
-  } else {
-    dldr <- system("which aria2c", intern = TRUE)
-    if (is.null(dldr) | dldr=="") {
-      dldr <- "html"
-    } else {dldr <- "aria2"}
-  }
+  dldr <- "html"
+  # if (Sys.info()["sysname"] == "windows") {
+  #   dldr <- "html"
+  # } else {
+  #   dldr <- system("which aria2c", intern = TRUE)
+  #   if (is.null(dldr) | dldr=="") {
+  #     dldr <- "html"
+  #   } else {dldr <- "aria2"}
+  # }
   
   # All set, get the requested rasters
   t0 <- Sys.time()
