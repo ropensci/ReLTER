@@ -7,10 +7,11 @@
 #' through the DEIMS-SDR API. 
 #' Return a `tibble` object.
 #' @param country_name A `character`. Country name (complete name in English, 
-#' French, Italian, German, OR 2 digits ISO code) of DEIMS sites
+#' French, Italian, German, OR 2 character ISO code) of DEIMS sites
 #' to retrieve. Partial matching of country names is NOT supported.
 #' @param site_name A `character`. This character string filters by site name
-#' where, again, partial matching is supported
+#' where partial matching is supported.
+#' At least one of country_name or site_name must be specified
 #' @param show_map A `boolean`. If TRUE a Leaflet map of site locations
 #' is shown. Default FALSE
 #' @return An `sf` object of the bounding boxes of sites in the filtered list,
@@ -87,7 +88,7 @@ get_ilter_generalinfo <- function(country_name = NA, site_name = NA,
   }
   
   if(all(is.na(c(country_code, site_name)))){
-    warning("At least one valid country_name (complete name or 2 digits ISO 
+    warning("At least one valid country_name (complete name or 2 character ISO 
             code) or site_name must be specified.")
     return(NULL)
   }
@@ -104,7 +105,7 @@ get_ilter_generalinfo <- function(country_name = NA, site_name = NA,
   if(nrow(lterILTERSites)==0){
     warning("Country and site name matched no ILTER site, 
             please check your request (country name must be complete or a 
-            valid 2 digits ISO code")
+            valid 2 character ISO code")
     return(NULL)
   }
   # Sites filtered by rest API
