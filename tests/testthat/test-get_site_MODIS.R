@@ -1,18 +1,20 @@
 message("\n---- Test get_site_MODIS() ----")
 library(testthat)
-# skip_on_cran()
 
+skip_on_cran()
 
 test_that("Expect error if internet connection is down", {
    Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
    testthat::expect_error(
      httptest::without_internet(
-       result <- ReLTER::get_ilter_generalinfo()
+       result <- ReLTER::get_ilter_generalinfo("Italy", "Venezia")
      ),
      "GET"
    )
    Sys.setenv("LOCAL_DEIMS" = test_mode) # restore test mode
  })
+
+skip_if(skip_in_test_mode)
 
 # Checks for legitimate parameters
 test_that("product is not supported",

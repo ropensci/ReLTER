@@ -67,6 +67,7 @@ Imports:
     dtplyr,
     ggforce,
     ggplot2,
+    geodata,
     grDevices,
     grid,
     httr,

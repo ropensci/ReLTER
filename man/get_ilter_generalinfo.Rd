@@ -8,11 +8,12 @@ get_ilter_generalinfo(country_name = NA, site_name = NA, show_map = FALSE)
 }
 \arguments{
 \item{country_name}{A \code{character}. Country name (complete name in English,
-French, Italian, German, OR 2 digits ISO code) of DEIMS sites
+French, Italian, German, OR 2 character ISO code) of DEIMS sites
 to retrieve. Partial matching of country names is NOT supported.}
 
 \item{site_name}{A \code{character}. This character string filters by site name
-where, again, partial matching is supported}
+where partial matching is supported.
+At least one of country_name or site_name must be specified}
 
 \item{show_map}{A \code{boolean}. If TRUE a Leaflet map of site locations
 is shown. Default FALSE}

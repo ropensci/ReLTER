@@ -22,7 +22,6 @@
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom jsonlite fromJSON
 #' @importFrom sf as_Spatial st_as_sf st_crs st_is_valid
-#' @importFrom raster getData
 #' @importFrom tmap tm_shape tm_borders tm_dots
 #' @importFrom dplyr select
 #' @importFrom tibble as_tibble
@@ -32,8 +31,6 @@
 #'   \insertRef{jsonliteR}{ReLTER}
 #'
 #'   \insertRef{sfR}{ReLTER}
-#'
-#'   \insertRef{rasterR}{ReLTER}
 #'
 #'   \insertRef{tmapR}{ReLTER}
 #'
@@ -99,10 +96,8 @@ produce_network_points_map <- function(networkDEIMSID, countryCode) {
       if (any(networkSitesGeo_valid)) {
         if (countryCode %in% isoCodes$Alpha_3 == TRUE) {
           try({
-            country <- raster::getData(country = countryCode, level = 0) %>%
-              rgeos::gSimplify(
-                tol = 0.01,
-                topologyPreserve = TRUE
+            country <- geodata::gadm(country = countryCode, level = 0) %>%
+              terra::simplifyGeom(tol = 0.01, topologyPreserve = TRUE
               )
           })
           mapOfSites <- if (exists("country")) {
