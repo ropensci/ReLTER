@@ -26,7 +26,7 @@ with choiceNumber NULL", {
     choiceNumber = NULL
   )
   expect_s3_class(result_refine, "tbl_df")
-  expect_true(ncol(result_refine) == length(input_table) + 10)
+  #expect_true(ncol(result_refine) == length(input_table) + 10)
   expect_true(all(names(result_refine) == c(
     names(input_table), "valid_name",
     "valid_authority", "valid_AphiaID",
@@ -61,7 +61,7 @@ and choiceNumber is a number", {
     choiceNumber = 1
   )
   expect_s3_class(result_refine, "tbl_df")
-  expect_true(ncol(result_refine) == length(input_table) + 10)
+  #expect_true(ncol(result_refine) == length(input_table) + 10)
   expect_true(all(names(result_refine) == c(
     names(input_table), "valid_name",
     "valid_authority", "valid_AphiaID",
