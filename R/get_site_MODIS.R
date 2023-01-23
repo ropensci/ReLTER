@@ -577,9 +577,11 @@ plot_agg_map = function(product, output_dir,
     tif_name <- paste(site_name, prod, "aggregated.tif", sep="_")
     tif_path <- file.path(output_dir, out_subdir, tif_name)
     terra::writeRaster(r_agg, tif_path, overwrite=TRUE)
-    print(terra::plet(r_agg,
-                      main=paste0(site_name, ": ", prod),
-                      tiles="Streets"))
+    if (packageVersion("leaflet") > "2.1.1") {
+      print(terra::plet(r_agg,
+                        main = paste0(site_name, ": ", prod),
+                        tiles = "Streets"))
+    }
     return(tif_path)
   })
   message("Paths to aggregated maps:")
