@@ -1,4 +1,13 @@
-# ReLTER 2.0.0 Release Notes
+# ReLTER 2.1.0 Release Notes
+
+v2.1.0 was released on 23/01/2023
+
+## Changes
+
+* inserted new functions for acquire either Land Surface Temperature (LST)
+  or Vegetation Index (NDVI) both cropped to an eLTER site boundary.
+
+________________________________________________________________________________
 
 v2.0.0 was released on 30/09/2022
 
