@@ -1,11 +1,11 @@
 #' Enrich and certify a list of species names by
-#' comparing with \href{https://www.marinespecies.org}{Worms}.
+#' comparing with \href{https://www.marinespecies.org}{WoRMS}.
 #' @description `r lifecycle::badge("stable")`
-#' This function tibble object with all the columns of input table
+#' This function provide tibble object with all the columns of input table
 #' of taxa plus new columns such as valid_name, valid_authority, valid_AphiaID,
 #' status, synonyms, LSID, url, matchType, nOfWormsRecords, wormsRecords
-#' obtained from:
-#' \href{http://www.marinespecies.org/rest/}{Worms rest API}.
+#' obtained from Word Register of Marine Species
+#' \href{http://www.marinespecies.org/rest/}{WoRMS rest API}.
 #' @param input A `tibble`. The table that contain the species
 #' names list to be checked.
 #' @param taxaColumn A `numeric`. The cardinal number of the column where
@@ -23,6 +23,13 @@
 #' \href{http://www.marinespecies.org/rest/}{Worms rest API}.
 #' The function also return, if verbose is TRUE, the list of records that don't
 #' match with Worms name species.
+#' 
+#' Most of the labels of the columns are the terms of
+#' \href{https://dwc.tdwg.org/terms/#record-level}{Darwin Core terms}.
+#' The columns labels are annotate with the link (URI) of the
+#' \href{https://dwc.tdwg.org/terms/#record-level}{Darwin Core terms}
+#' as attributes of the `tibble`.
+#' 
 #' @author Alessandro Oggioni, phD (2021) \email{oggioni.a@@irea.cnr.it}
 #' @author Paolo Tagliolato, phD (2021) \email{tagliolato.p@@irea.cnr.it}
 #' @importFrom worrms wm_records_names
@@ -51,6 +58,9 @@
 #' )
 #' table
 #'
+#' # The annotated URIs of columns label are achieved by:
+#' attributes(table)$uri
+#'
 ### function taxon_id_worms
 taxon_id_worms <- function(
   input,
@@ -58,6 +68,27 @@ taxon_id_worms <- function(
   verbose = TRUE,
   refine = FALSE
 ) {
+  n_cols_input <- length(input)
+  cols_without_uri <- rep("", (n_cols_input - 1))
+  URIs <- c(
+    cols_without_uri,
+    "http://rs.tdwg.org/dwc/terms/originalNameUsage",
+    "http://rs.tdwg.org/dwc/terms/scientificName",
+    "http://rs.tdwg.org/dwc/terms/scientificNameAuthorship",
+    "http://rs.tdwg.org/dwc/terms/taxonID",
+    "http://rs.tdwg.org/dwc/terms/taxonomicStatus",
+    "",
+    "http://rs.tdwg.org/dwc/terms/taxonRank",
+    "http://rs.tdwg.org/dwc/terms/kingdom",
+    "http://rs.tdwg.org/dwc/terms/phylum",
+    "http://rs.tdwg.org/dwc/terms/class",
+    "http://rs.tdwg.org/dwc/terms/order",
+    "http://rs.tdwg.org/dwc/terms/family",
+    "http://rs.tdwg.org/dwc/terms/genus",
+    "http://rs.tdwg.org/dwc/terms/scientificNameID",
+    "",
+    ""
+  )
   input[, c(
     "valid_name", # ok
     "valid_authority", # ok
@@ -160,9 +191,37 @@ is the exact corrispondence with your given species name.\n"
         taxaColumn = taxaColumn,
         interaction = TRUE
       )
-      refinedTable
+      colnames(refinedTable)[taxaColumn] <- "originalNameUsage"
+      refinedTable <- refinedTable %>%
+        dplyr::rename(
+          scientificName = valid_name,
+          scientificNameAuthorship = valid_authority,
+          taxonID = valid_AphiaID,
+          taxonomicStatus = status,
+          taxonRank = rank,
+          scientificNameID = LSID
+        ) %>%
+        dplyr::select(
+          -c(url, matchType)
+        )
+      attr(x = refinedTable, which = "uri") <- URIs
+      return(refinedTable)
     } else {
-      newTable
+      colnames(newTable)[taxaColumn] <- "originalNameUsage"
+      newTable <- newTable %>%
+        dplyr::rename(
+          scientificName = valid_name,
+          scientificNameAuthorship = valid_authority,
+          taxonID = valid_AphiaID,
+          taxonomicStatus = status,
+          taxonRank = rank,
+          scientificNameID = LSID
+        ) %>%
+        dplyr::select(
+          -c(url, matchType)
+        )
+      attr(x = newTable, which = "uri") <- URIs
+      return(newTable)
     }
   } else {
     if (refine == TRUE) {
@@ -171,9 +230,37 @@ is the exact corrispondence with your given species name.\n"
         taxaColumn = taxaColumn,
         interaction = TRUE
       )
-      refinedTable
+      colnames(refinedTable)[taxaColumn] <- "originalNameUsage"
+      refinedTable <- refinedTable %>%
+        dplyr::rename(
+          scientificName = valid_name,
+          scientificNameAuthorship = valid_authority,
+          taxonID = valid_AphiaID,
+          taxonomicStatus = status,
+          taxonRank = rank,
+          scientificNameID = LSID
+        ) %>%
+        dplyr::select(
+          -c(url, matchType)
+        )
+      attr(x = refinedTable, which = "uri") <- URIs
+      return(refinedTable)
     } else {
-      newTable
+      colnames(newTable)[taxaColumn] <- "originalNameUsage"
+      newTable <- newTable %>%
+        dplyr::rename(
+          scientificName = valid_name,
+          scientificNameAuthorship = valid_authority,
+          taxonID = valid_AphiaID,
+          taxonomicStatus = status,
+          taxonRank = rank,
+          scientificNameID = LSID
+        ) %>%
+        dplyr::select(
+          -c(url, matchType)
+        )
+      attr(x = newTable, which = "uri") <- URIs
+      return(newTable)
     }
   }
 }

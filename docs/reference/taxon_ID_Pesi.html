@@ -29,7 +29,7 @@ PESI RestAPI."><meta property="og:image" content="https://docs.ropensci.org/ReLT
     <a href="https://ropensci.org" class="external-link"><img src="https://ropensci.org/img/icon_short_white.svg" id="hexlogo" alt="rOpenSci"></a>
     <a class="navbar-brand me-2" href="../index.html">ReLTER</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.0.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.1.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -158,7 +158,7 @@ R package version 1.0.9, <a href="https://CRAN.R-project.org/package=dplyr" clas
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="va">table</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
+<span class="r-in"><span class="va">insects</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
 <span class="r-in">   taxonID <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">6</span><span class="op">)</span>,</span>
 <span class="r-in">   family <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
 <span class="r-in">     <span class="st">"Alexiidae"</span>, <span class="st">"Anthicidae"</span>,</span>
@@ -172,12 +172,14 @@ R package version 1.0.9, <a href="https://CRAN.R-project.org/package=dplyr" clas
 <span class="r-in">   <span class="op">)</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-in"></span>
-<span class="r-in"><span class="co"># We perform a query from the `table` in order to associate the taxon</span></span>
-<span class="r-in"><span class="co"># identifier (LSID) to the list of species present in the thirty column.</span></span>
-<span class="r-in"><span class="fu">taxon_id_pesi</span><span class="op">(</span></span>
-<span class="r-in">  table <span class="op">=</span> <span class="va">table</span>,</span>
+<span class="r-in"><span class="va">output</span> <span class="op">&lt;-</span> <span class="fu">taxon_id_pesi</span><span class="op">(</span></span>
+<span class="r-in">  table <span class="op">=</span> <span class="va">insects</span>,</span>
 <span class="r-in">  taxaColumn <span class="op">=</span> <span class="fl">3</span></span>
 <span class="r-in"><span class="op">)</span></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co"># The annotated URIs of columns label are achieved by:</span></span>
+<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/attributes.html" class="external-link">attributes</a></span><span class="op">(</span><span class="va">output</span><span class="op">)</span><span class="op">$</span><span class="va">uri</span></span>
+<span class="r-in"></span>
 <span class="r-in"><span class="op">}</span></span>
 <span class="r-in"></span>
 </code></pre></div>
