@@ -1,127 +1,115 @@
-Package: ReLTER
 Type: Package
+Package: ReLTER
 Title: An Interface for the 'eLTER' Community
-Version: 2.0.0
+Version: 2.1.0
 Authors@R: c(
-        person("Alessandro", "Oggioni", email = "alessandro.oggioni@cnr.it", 
-          role = c("aut", "cre", "fnd"),
-          comment = c(ORCID = "0000-0002-7997-219X")
-        ),
-        person("Micha", "Silver", email = "silverm@post.bgu.ac.il",
-          role = c("aut", "ctb"),
-          comment = c(ORCID = "0000-0002-1128-1325")
-        ),
-        person("Paolo", "Tagliolato", email = "tagliolato.a@irea.cnr.it",
-          role = c("aut", "ctb"),
-          comment = c(ORCID = "0000-0002-0261-313X")
-        ),
-        person("Luigi", "Ranghetti", email = "luigi@ranghetti.info",
-          role = c("aut", "ctb"),
-          comment = c(ORCID = "0000-0001-6207-5188")
-        ),
-        person("Allison", "Horst", 
-          role = "rev",
-          comment = "Allison reviewed the package (v. 1.0.0) for rOpenSci, see https://github.com/ropensci/software-review/issues/485"
-        ),
-        person("Will", "Bolton", 
-          role = "rev",
-          comment = "Will reviewed the package (v. 1.0.0) for rOpenSci, see https://github.com/ropensci/software-review/issues/485"
-        ),
-        person("Mauro", "Lepore",
-        role = "edt",
-        comment = "Mauro was editor for rOpenSci, see https://github.com/ropensci/software-review/issues/485")
-      )
-Maintainer: Alessandro Oggioni
-    <alessandro.oggioni@cnr.it>
-Description: ReLTER provides access to DEIMS-SDR (https://deims.org/),
-    and allows interaction with data and software implemented by eLTER
-    Research Infrastructure (RI) thus improving data sharing among European 
-    LTER projects.
-    ReLTER uses the R language to access and interact with the DEIMS-SDR
-    archive of information shared by the Long Term Ecological Research (LTER)
-    network. This package grew within eLTER H2020 as a major project that will
-    help advance the development of European Long-Term Ecosystem Research
-    Infrastructures (eLTER RI - https://elter-ri.eu).
-    The ReLTER package functions in particular allow to:
-    - retrieve the information about entities (e.g. sites, datasets, and
-    activities) shared by DEIMS-SDR (see e.g. get_site_info function);
-    - interact with the [ODSEurope](maps.opendatascience.eu)
+    person("Alessandro", "Oggioni", , "alessandro.oggioni@cnr.it", role = c("aut", "cre", "fnd"),
+           comment = c(ORCID = "0000-0002-7997-219X")),
+    person("Micha", "Silver", , "silverm@post.bgu.ac.il", role = c("aut", "ctb"),
+           comment = c(ORCID = "0000-0002-1128-1325")),
+    person("Paolo", "Tagliolato", , "tagliolato.a@irea.cnr.it", role = c("aut", "ctb"),
+           comment = c(ORCID = "0000-0002-0261-313X")),
+    person("Luigi", "Ranghetti", , "luigi@ranghetti.info", role = c("aut", "ctb"),
+           comment = c(ORCID = "0000-0001-6207-5188")),
+    person("Allison", "Horst", role = "rev",
+           comment = "Allison reviewed the package (v. 1.0.0) for rOpenSci, see https://github.com/ropensci/software-review/issues/485"),
+    person("Will", "Bolton", role = "rev",
+           comment = "Will reviewed the package (v. 1.0.0) for rOpenSci, see https://github.com/ropensci/software-review/issues/485"),
+    person("Mauro", "Lepore", role = "edt",
+           comment = "Mauro was editor for rOpenSci, see https://github.com/ropensci/software-review/issues/485")
+  )
+Maintainer: Alessandro Oggioni <alessandro.oggioni@cnr.it>
+Description: ReLTER provides access to DEIMS-SDR (https://deims.org/), and
+    allows interaction with data and software implemented by eLTER
+    Research Infrastructure (RI) thus improving data sharing among
+    European LTER projects.  ReLTER uses the R language to access and
+    interact with the DEIMS-SDR archive of information shared by the Long
+    Term Ecological Research (LTER) network. This package grew within
+    eLTER H2020 as a major project that will help advance the development
+    of European Long-Term Ecosystem Research Infrastructures (eLTER RI -
+    https://elter-ri.eu).  The ReLTER package functions in particular
+    allow to: - retrieve the information about entities (e.g. sites,
+    datasets, and activities) shared by DEIMS-SDR (see e.g. get_site_info
+    function); - interact with the [ODSEurope](maps.opendatascience.eu)
     starting with the dataset shared by [DEIMS-SDR](https://deims.org/)
-    (see e.g. [get_site_ODS](https://docs.ropensci.org/ReLTER/reference/get_site_ODS.html)
-    function);
-    - use the eLTER site informations to download and crop geospatial data
-    from other platforms (see e.g. get_site_ODS function);
+    (see e.g.
+    [get_site_ODS](https://docs.ropensci.org/ReLTER/reference/get_site_ODS.html)
+    function); - use the eLTER site informations to download and crop
+    geospatial data from other platforms (see e.g. get_site_ODS function);
     - improve the quality of the dataset (see e.g. get_id_worms).
     Functions currently implemented are derived from discussions of the
-    needs among the eLTER users community.
-    The ReLTER package will continue to follow the progress of eLTER-RI
-    and evolve, adding new tools and improvements as required.
+    needs among the eLTER users community.  The ReLTER package will
+    continue to follow the progress of eLTER-RI and evolve, adding new
+    tools and improvements as required.
 License: GPL (>= 3)
-Encoding: UTF-8
-LazyData: true
+URL: https://github.com/ropensci/ReLTER
+BugReports: https://github.com/ropensci/ReLTER/issues
 Depends: 
-    R (>= 3.5.0),
+    R (>= 3.5.0)
 Imports: 
-    RColorBrewer,
+    countrycode,
     dplyr,
     dtplyr,
+    geodata,
     ggforce,
     ggplot2,
-    geodata,
     grDevices,
     grid,
+    gridExtra,
     httr,
     httr2,
     jqr,
     jsonlite,
+    leaflet (>= 2.1.1),
+    lifecycle,
+    lubridate,
     magrittr,
     MODIStsp,
+    purrr,
     qrcode,
     raster (>= 3.3-13),
+    RColorBrewer,
+    RCurl,
+    Rdpack,
+    readr,
     rgeos,
+    rnaturalearth,
     rosm,
+    rworldmap,
+    rgbif,
     sf (>= 0.9-5),
+    spocc,
+    stringi,
+    stringr,
     taxize (>= 0.9.97),
     terra,
     tibble,
+    tidyr,
     tmap (>= 3.1),
+    units,
     utils,
     waffle,
+    webshot,
     worrms,
+    XML,
     xml2,
     xslt,
-    purrr,
-    readr,
-    stringr,
-    tidyr,
-    rworldmap,
-    rnaturalearth,
-    gridExtra,
-    webshot,
-    XML,
-    lifecycle,
-    RCurl,
-    Rdpack,
-    zen4R,
-    lubridate,
-    units,
-    stringi,
-    spocc,
-    countrycode,
-    leaflet (>= 2.1.1)
-RdMacros: Rdpack
+    zen4R
 Suggests: 
+    covr,
     httptest,
+    ISOcodes,
     knitr,
     rmarkdown,
-    ISOcodes,
-    testthat (>= 3.0.0),
     rnaturalearthdata,
-    covr
-VignetteBuilder: knitr
-URL: https://github.com/ropensci/ReLTER
-BugReports: https://github.com/ropensci/ReLTER/issues
+    testthat (>= 3.0.0)
+VignetteBuilder: 
+    knitr
+RdMacros: 
+    Rdpack
 Config/testthat/edition: 3
-RoxygenNote: 7.2.3
+Encoding: UTF-8
 Language: en-GB
+LazyData: true
 Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3

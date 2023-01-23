@@ -39,7 +39,7 @@ test_that("map_occ2 returns list with appropriate names", {
     x <- tibble::as_tibble(gres_obis$obis)
     res3 <- map_occ_obis2elter(x, deimsid = govid)
     expect_named(res3, expected = c(
-      "deimsid", 
+      "deimsid",
       "source",
       "data_mapping",
       "reference_TAXA",

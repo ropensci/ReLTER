@@ -24,8 +24,8 @@ test_that("product is not supported",
 
 test_that("missing login creds for EarthData website",
           {# Unset earthdata_user env variable and test
-            Sys.setenv(earthdata_user="")
-            
+            Sys.setenv(earthdata_user = "")
+   
             expect_error(suppressWarnings(ReLTER::get_site_MODIS(
               deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
               product = "VI",
@@ -60,17 +60,17 @@ test_that("site with no boundary polygon",
  
 test_that("successful acquisition",
    # This test takes ~10 mins.
-   { Sys.setenv("earthdata_user" = "mstp_test")
+   {Sys.setenv("earthdata_user" = "mstp_test")
      Sys.setenv("earthdata_pass" = "MSTP_test_01")
      expect_type(result <- ReLTER::get_site_MODIS(
            deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
            product = "VI",
            from_date = "2018.03.04", to_date = "2018.03.20",
            output_dir = tempdir(), output_proj = "3035",
-           plot_ts=FALSE, show_map=FALSE),
+           plot_ts = FALSE, show_map = FALSE),
            "character")
-         
+
      expect_length(result, 4)
-     Sys.setenv(earthdata_user="")
-     Sys.setenv(earthdata_pass="")
+     Sys.setenv(earthdata_user = "")
+     Sys.setenv(earthdata_pass = "")
    })
