@@ -50,6 +50,7 @@ January and February are acquired, over the 10 year time span. (See example)}
 
 \item{show_map}{\code{character}: Whether to create, save and display an
 aggregated map from the time series of acquired MODIS products.
+See note below.
 This string must be one of:
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{FALSE (the default): no map is shown or created. 
@@ -106,6 +107,7 @@ a time series of average pixel values over the site.
 \item Use the \code{show_map} parameter to create and show a time series
 aggregation map of the product over the site.
 \item Evapotranspiration products are available only up to 2018
+\item Plotting with show_map requires: packageVersion("leaflet")>"2.1.1"
 }
 }
 \examples{

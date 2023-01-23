@@ -45,7 +45,8 @@
 #' and the ending date is "2020.02.28" then only images for
 #' January and February are acquired, over the 10 year time span. (See example)
 #' @param show_map `character`: Whether to create, save and display an
-#' aggregated map from the time series of acquired MODIS products.
+#' aggregated map from the time series of acquired MODIS products. 
+#' See note below.
 #' This string must be one of:
 #' 
 #'     FALSE (the default): no map is shown or created. 
@@ -83,6 +84,8 @@
 #' aggregation map of the product over the site.
 #' 
 #' * Evapotranspiration products are available only up to 2018
+#' 
+#' * Plotting with show_map requires: packageVersion("leaflet")>"2.1.1"
 #' 
 #' @return Full path of all downloaded and cropped Geotiff files
 #' 
@@ -513,7 +516,8 @@ plot_timeseries = function(deimsid, product,
 #' Map of aggregated time series of MODIS images
 #' 
 #' @description Prepare, show and save an aggregated map
-#' of acquired MODIS products
+#' of acquired MODIS products. For plotting, the function requires
+#' packageVersion("leaflet") > 2.1.1
 #' 
 #' @param product `character` one of "LST" or "VI"
 #' @param output_dir `character`, where MODIS images were saved

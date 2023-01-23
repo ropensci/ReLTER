@@ -24,7 +24,8 @@ Full paths to saved Geotiff rasters
 }
 \description{
 Prepare, show and save an aggregated map
-of acquired MODIS products
+of acquired MODIS products. For plotting, the function requires
+packageVersion("leaflet") > 2.1.1
 }
 \details{
 Read all time series images (from *.vrt file) in \code{output_dir}
