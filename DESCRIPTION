@@ -76,6 +76,7 @@ Imports:
     rnaturalearth,
     rosm,
     rworldmap,
+    rgbif,
     sf (>= 0.9-5),
     spocc,
     stringi,
