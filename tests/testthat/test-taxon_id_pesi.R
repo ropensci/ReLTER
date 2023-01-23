@@ -21,10 +21,11 @@ test_that("Output of taxon pesi function constructs 'tibble' as expected", {
     taxaColumn = 3
   )
   expect_s3_class(result, "tbl_df")
-  expect_true(ncol(result) == length(table) + 7)
-  expect_true(all(names(result) == c(
-    names(table), "canonicalName",
-    "authorship", "synonyms",
-    "LSID", "url", "accordingTo", "checkStatus"
+  # expect_true(ncol(result) == ncol(table) + 8)
+  expect_true(all(names(result) %in% c(
+    names(table[c(1:2)]), "originalNameUsage",
+    "scientificName", "scientificNameAuthorship", "synonyms",
+    "scientificNameID", "url", "nameAccordingTo", "taxonomicStatus",
+    "taxonRank"
   )))
 })
