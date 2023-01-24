@@ -36,6 +36,7 @@
 #'   \insertRef{tibbleR}{ReLTER}
 #' @export
 #' @examples
+#' \dontrun{
 #' macrophytes <- tibble::tibble(
 #'   ID = c(1:18),
 #'   species = c("Ceratophyllum demersum",
@@ -66,6 +67,8 @@
 #'
 #' # The annotated URIs of columns label are achieved by:
 #' attributes(table)$uri
+#' 
+#' }
 #'
 ### function taxon_id_gbif
 taxon_id_gbif <- function(
