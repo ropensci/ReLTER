@@ -7,7 +7,7 @@ ReLTER
 <!-- DOI badge -->
 
 [![](https://img.shields.io/badge/doi-10.5281/zenodo.5576813-yellow.svg)](https://doi.org/10.5281/zenodo.5576813)
-[![](https://img.shields.io/badge/devel%20version-2.0.0-blue.svg)](https://github.com/ropensci/ReLTER)
+[![](https://img.shields.io/badge/devel%20version-2.0.1-blue.svg)](https://github.com/ropensci/ReLTER)
 [![](https://img.shields.io/github/languages/code-size/ropensci/ReLTER.svg)](https://github.com/ropensci/ReLTER)
 [![](https://img.shields.io/github/last-commit/ropensci/ReLTER.svg)](https://github.com/ropensci/ReLTER/commits/main)
 [![License:
@@ -37,30 +37,30 @@ Infrastructures ([eLTER RI](https://elter-ri.eu)).
 
 The `{ReLTER}` package functions in particular allows to:
 
--   retrieve the information about entities (e.g. sites, datasets, and
-    activities) shared by [DEIMS-SDR](https://deims.org/) (see e.g.
-    [get_site_info
-    function](https://docs.ropensci.org/ReLTER/reference/get_site_info.html));
+- retrieve the information about entities (e.g. sites, datasets, and
+  activities) shared by [DEIMS-SDR](https://deims.org/) (see e.g.
+  [get_site_info
+  function](https://docs.ropensci.org/ReLTER/reference/get_site_info.html));
 
--   elaborate the information of single site or merge info from national
-    network sites or entire International LTER (ILTER) in order to
-    provide maps, figures, graphs etc (see e.g.
-    [get_network_sites](https://docs.ropensci.org/ReLTER/reference/get_network_sites.html),
-    [produce_site_map](https://docs.ropensci.org/ReLTER/reference/produce_site_map.html)
-    or
-    [produce_site_observedProperties_pie](https://docs.ropensci.org/ReLTER/reference/produce_site_observedProperties_pie.html)
-    functions);
+- elaborate the information of single site or merge info from national
+  network sites or entire International LTER (ILTER) in order to provide
+  maps, figures, graphs etc (see e.g.
+  [get_network_sites](https://docs.ropensci.org/ReLTER/reference/get_network_sites.html),
+  [produce_site_map](https://docs.ropensci.org/ReLTER/reference/produce_site_map.html)
+  or
+  [produce_site_observedProperties_pie](https://docs.ropensci.org/ReLTER/reference/produce_site_observedProperties_pie.html)
+  functions);
 
--   interact with the [ODSEurope](maps.opendatascience.eu) managed by
-    members of the
-    [Geo-harmonizer](https://opendatascience.eu/geoharmonizer-project/)
-    project starting with the dataset shared by
-    [DEIMS-SDR](https://deims.org/) (see e.g.
-    [get_site_ODS](https://docs.ropensci.org/ReLTER/reference/get_site_ODS.html)
-    function);
+- interact with the [ODSEurope](maps.opendatascience.eu) managed by
+  members of the
+  [Geo-harmonizer](https://opendatascience.eu/geoharmonizer-project/)
+  project starting with the dataset shared by
+  [DEIMS-SDR](https://deims.org/) (see e.g.
+  [get_site_ODS](https://docs.ropensci.org/ReLTER/reference/get_site_ODS.html)
+  function);
 
--   improve the quality of the dataset (see e.g.
-    [get_id_worms](https://docs.ropensci.org/ReLTER/reference/get_id_worms.html)).
+- improve the quality of the dataset (see e.g.
+  [get_id_worms](https://docs.ropensci.org/ReLTER/reference/get_id_worms.html)).
 
 Functions currently implemented are derived from the discussion of the
 needs declared by eLTER users community.
@@ -74,19 +74,20 @@ tools.
 ## :notebook_with_decorative_cover: Citation
 
 To cite `{ReLTER}` please use: Alessandro Oggioni, Micha Silver, Luigi
-Ranghetti & Paolo Tagliolato. (2022). ropensci/ReLTER: ReLTER v2.0.0
-(2.0.0). Zenodo. <https://doi.org/10.5281/zenodo.5576813>
+Ranghetti & Paolo Tagliolato. (2023). ReLTER: An Interface for the
+‘eLTER’ Community (v2.0). Zenodo.
+<https://doi.org/10.5281/zenodo.5576813>
 
 or:
 
 ``` bibtex
 @software{alessandro_oggioni_2021_5576813,
   author       = {Alessandro Oggioni and Micha Silver and Luigi Ranghetti and Paolo Tagliolato},
-  title        = {ropensci/ReLTER: ReLTER v2.0.0},
+  title        = {ReLTER: An Interface for the 'eLTER' Community},
   month        = nov,
-  year         = 2022,
+  year         = 2023,
   publisher    = {Zenodo},
-  version      = {2.0.0},
+  version      = {v2.0},
   doi          = {10.5281/zenodo.5576813},
   url          = {https://doi.org/10.5281/zenodo.5576813}
 }

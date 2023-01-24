@@ -91,19 +91,19 @@ tools.
 ## :notebook_with_decorative_cover: Citation
 
 To cite `{ReLTER}` please use: Alessandro Oggioni, Micha Silver, Luigi Ranghetti
-& Paolo Tagliolato. (2022). ropensci/ReLTER: ReLTER v2.0.0
-(2.0.0). Zenodo. <https://doi.org/10.5281/zenodo.5576813>
+& Paolo Tagliolato. (2023). ReLTER: An Interface for the 'eLTER' Community
+(v2.0). Zenodo. <https://doi.org/10.5281/zenodo.5576813>
 
 or:
 
 ``` bibtex
 @software{alessandro_oggioni_2021_5576813,
   author       = {Alessandro Oggioni and Micha Silver and Luigi Ranghetti and Paolo Tagliolato},
-  title        = {ropensci/ReLTER: ReLTER v2.0.0},
+  title        = {ReLTER: An Interface for the 'eLTER' Community},
   month        = nov,
-  year         = 2022,
+  year         = 2023,
   publisher    = {Zenodo},
-  version      = {2.0.0},
+  version      = {v2.0},
   doi          = {10.5281/zenodo.5576813},
   url          = {https://doi.org/10.5281/zenodo.5576813}
 }

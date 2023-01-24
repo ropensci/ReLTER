@@ -11,7 +11,7 @@
     <a href="https://ropensci.org" class="external-link"><img src="https://ropensci.org/img/icon_short_white.svg" id="hexlogo" alt="rOpenSci"></a>
     <a class="navbar-brand me-2" href="index.html">ReLTER</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.0.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.0.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -127,7 +127,22 @@
 </ul></li>
 <li>Commit and push your changes.</li>
 <li>Submit a <a href="https://guides.github.com/activities/forking/#making-a-pull-request" class="external-link">pull request</a>.</li>
-</ol></div>
+</ol><div class="section level3">
+<h3 id="note-for-test-developers---caching-deims-resources">Note for test developers - caching DEIMS resources<a class="anchor" aria-label="anchor" href="#note-for-test-developers---caching-deims-resources"></a></h3>
+<p>ReLTER repository makes use of github actions for checking committed code. When you execute tests locally, you could have different results than the github action. To execute tests like the github actions will do, just set your environment variable</p>
+<pre><code><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span><span class="st">"LOCAL_DEIMS"</span><span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></code></pre>
+<p>This activates a caching mechanism implemented in ReLTER to avoid timeouts with github actions making requests to deims.org.</p>
+<p>DEIMS resources can be cached for development purposes in the inst/deimsid subfolder-structure.</p>
+<p>If in your tests you use resources that are not already cached, you can add them manually to the cache folder by executing the (internal) function:</p>
+<pre><code>ReLTER:::.save_id(resource, deimsid, development=TRUE, ...).</code></pre>
+<p>Alternatively, set your current directory in the root of ReLTER project (the directory of this file) and set two environment variables as follows:</p>
+<pre><code><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span><span class="st">"DEV_MODE"</span><span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span><span class="st">"RELTER_DEV_INST_PATH"</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"inst"</span><span class="op">)</span><span class="op">)</span></code></pre>
+<p>When these variables are set, missing files are automatically cached (e.g. within tests)</p>
+<p>If you need to recreate all the cache (for example after a change of the deims api), execute:</p>
+<pre><code><span class="fu">ReLTER</span><span class="fu">:::</span><span class="fu">.recreate_deims_cache</span><span class="op">(</span>development<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></code></pre>
+</div>
+</div>
 </div>
 
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

@@ -1,4 +1,18 @@
-# ReLTER 2.0.0 Release Notes
+# ReLTER 2.0.1 Release Notes
+
+
+v2.0.1 was released on 24/01/2023
+
+## Changes
+
+* Fix vignette issues
+* Fix ilter generalinfo
+* Fix documentation
+* Fix missing urlencode and change documentation. Add support for multilingual country search
+* Fix too many http requests
+
+________________________________________________________________________________
+
 
 v2.0.0 was released on 30/09/2022
 

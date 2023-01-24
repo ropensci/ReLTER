@@ -17,7 +17,7 @@ through the DEIMS-SDR API."><meta property="og:image" content="https://docs.rope
     <a href="https://ropensci.org" class="external-link"><img src="https://ropensci.org/img/icon_short_white.svg" id="hexlogo" alt="rOpenSci"></a>
     <a class="navbar-brand me-2" href="../index.html">ReLTER</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.0.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.0.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -125,35 +125,25 @@ R package version 2.1.1, <a href="https://CRAN.R-project.org/package=leaflet" cl
 <span class="r-in">  deimsid <span class="op">=</span> <span class="st">"https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"</span>,</span>
 <span class="r-in">  category <span class="op">=</span> <span class="st">"Boundaries"</span></span>
 <span class="r-in"><span class="op">)</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Error in curl::curl_fetch_memory(url, handle = handle): Could not resolve host: deims.org</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Request failed [ERROR]. Retrying in 2 seconds...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Error in curl::curl_fetch_memory(url, handle = handle): Could not resolve host: deims.org</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Request failed [ERROR]. Retrying in 1.2 seconds...</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in curl::curl_fetch_memory(url, handle = handle):</span> Could not resolve host: deims.org</span>
 <span class="r-in"><span class="va">site</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Simple feature collection with 1 feature and 8 fields</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Geometry type: MULTIPOLYGON</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Dimension:     XY</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Bounding box:  xmin: 8.47803 ymin: 45.72556 xmax: 8.860755 ymax: 46.18081</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Geodetic CRS:  WGS 84</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 9</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   title  uri                  boundaries geoCo…¹ country geoEl…² geoEl…³ geoEl…⁴</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;MULTIPOLYGON [°]&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Lago … http… (((8.615976 45.72628, 8.… POINT … &lt;chr&gt;      194.     186    <span style="text-decoration: underline;">4</span>633</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 1 more variable: geoElev.unit &lt;chr&gt;, and abbreviated variable names</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ¹​geoCoord, ²​geoElev.avg, ³​geoElev.min, ⁴​geoElev.max</span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'site' not found</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="va">siteInfo</span> <span class="op">&lt;-</span> <span class="fu">get_site_info</span><span class="op">(</span></span>
 <span class="r-in">  deimsid <span class="op">=</span> <span class="st">"https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"</span>,</span>
 <span class="r-in">  category <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"EnvCharacts"</span>, <span class="st">"Affiliations"</span><span class="op">)</span></span>
 <span class="r-in"><span class="op">)</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Error in curl::curl_fetch_memory(url, handle = handle): Could not resolve host: deims.org</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Request failed [ERROR]. Retrying in 1 seconds...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Error in curl::curl_fetch_memory(url, handle = handle): Could not resolve host: deims.org</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Request failed [ERROR]. Retrying in 3.5 seconds...</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in curl::curl_fetch_memory(url, handle = handle):</span> Could not resolve host: deims.org</span>
 <span class="r-in"><span class="va">siteInfo</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 28</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   title    uri   geoCo…¹ country geoEl…² geoEl…³ geoEl…⁴ geoEl…⁵ affil…⁶ affil…⁷</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Lago Ma… http… POINT … &lt;chr&gt;      194.     186    <span style="text-decoration: underline;">4</span>633 msl     &lt;df&gt;    &lt;df&gt;   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 18 more variables:</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   envCharacteristics.airTemperature.yearlyAverage &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   envCharacteristics.airTemperature.monthlyAverage &lt;lgl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   envCharacteristics.airTemperature.unit &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   envCharacteristics.airTemperature.referencePeriod &lt;lgl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   envCharacteristics.precipitation.yearlyAverage &lt;int&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   envCharacteristics.precipitation.monthlyAverage &lt;lgl&gt;, …</span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'siteInfo' not found</span>
 <span class="r-in"></span>
 </code></pre></div>
     </div>

@@ -7,7 +7,7 @@
   "codeRepository": "https://github.com/ropensci/ReLTER",
   "issueTracker": "https://github.com/ropensci/ReLTER/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -705,11 +705,11 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "110442.113KB",
+  "fileSize": "110232.544KB",
   "citation": [
     {
       "@type": "CreativeWork",
-      "datePublished": "2022",
+      "datePublished": "2023",
       "author": [
         {
           "@type": "Person",
