@@ -61,7 +61,7 @@
 #' table <- taxon_id_gbif(
 #'   input = macrophytes,
 #'   taxaColumn = 2,
-#'   refine = TRUE
+#'   refine = FALSE
 #' )
 #' table
 #'
