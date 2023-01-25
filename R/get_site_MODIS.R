@@ -46,6 +46,7 @@
 #' January and February are acquired, over the 10 year time span. (See example)
 #' @param show_map `character`: Whether to create, save and display an
 #' aggregated map from the time series of acquired MODIS products.
+#' See note below.
 #' This string must be one of:
 #' 
 #'     FALSE (the default): no map is shown or created. 
@@ -54,20 +55,20 @@
 #' @details
 #' Certain layers from each of the supported MODIS products are acquired.
 #' 
-#' * from: "LST_3band_emissivity_8day_1km (M*D21A2)" two "Land surface temperature" bands are acquired:
+#' * from: "LST_3band_emissivity_8day_1km (M\*D21A2)" two "Land surface temperature" bands are acquired:
 #' 
 #'     "LST_Day_1KM", "LST_Night_1KM"
 #' 
-#' * from: "Vegetation Indexes_16Days_250m (M*D13Q1)" two Vegetation Indicies
+#' * from: "Vegetation Indexes_16Days_250m (M\*D13Q1)" two Vegetation Indicies
 #' are acquired:
 #' 
 #'     "NDVI" and "EVI"
 #'  
-#' * from: "LAI_8Days_500m (M*D15A2H)" two indicies are acquired:
+#' * from: "LAI_8Days_500m (M\*D15A2H)" two indicies are acquired:
 #' 
 #'     "Fpar" and "Lai" 
 #' 
-#' * from: "Net_ET_8Day_500m (M*D16A2)" one Evapotranspiration band:
+#' * from: "Net_ET_8Day_500m (M\*D16A2)" one Evapotranspiration band:
 #' 
 #'     "PET" (Potential EvapoTranspiration)
 #'     
@@ -84,12 +85,16 @@
 #' 
 #' * Evapotranspiration products are available only up to 2018
 #' 
+#' * Plotting with show_map requires: packageVersion("leaflet")>"2.1.1"
+#' 
 #' @return Full path of all downloaded and cropped Geotiff files
 #' 
 #' @importFrom stats complete.cases
 #' @author Micha Silver, phD (2020) \email{silverm@@post.bgu.ac.il}
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @references
+#'   \insertRef{MODIStsp}{ReLTER}
+#'
 #'   \insertRef{sfR}{ReLTER}
 #'
 #'   \insertRef{terraR}{ReLTER}
@@ -114,11 +119,11 @@
 #' output_dir <- tempdir()
 #' output_proj <- "3035"
 #' download_list <- ReLTER::get_site_MODIS(deimsid,
-#'     product=product,
-#'     from_date=from_date, to_date=to_date,
-#'     output_dir=output_dir,
-#'     plot_ts=TRUE,
-#'     output_proj=output_proj)
+#'     product = product,
+#'     from_date = from_date, to_date = to_date,
+#'     output_dir = output_dir,
+#'     plot_ts = TRUE,
+#'     output_proj = output_proj)
 #' 
 #' # Northern Negev LTER - Israel, NDVI over 4 winter months,
 #' # projected to Israeli 05/12 CRS
@@ -126,15 +131,15 @@
 #' deimsid <- "https://deims.org/871a90b2-e372-456a-93e3-518ad1e11239"
 #' from_date <- "2018.01.01"
 #' to_date <- "2018.04.30"
-#' product="VI"
+#' product = "VI"
 #' output_dir <- tempdir()
 #' output_proj <- "6991"
 #' download_list <- ReLTER::get_site_MODIS(deimsid,
-#'     product=product,
-#'     from_date=from_date, to_date=to_date,
-#'     output_dir=output_dir,
-#'     plot_ts=TRUE,
-#'     output_proj=output_proj)
+#'     product = product,
+#'     from_date = from_date, to_date=to_date,
+#'     output_dir = output_dir,
+#'     plot_ts = TRUE,
+#'     output_proj = output_proj)
 #'
 #'  
 #' # Nationalpark Mols Bjerge - Denmark, 10 year only for July 
@@ -148,13 +153,13 @@
 #' output_proj <- "25832"
 #' product <- "VI"
 #' download_list <- ReLTER::get_site_MODIS(deimsid,
-#'     product=product,
-#'     from_date=from_date, to_date=to_date,
-#'     output_dir=output_dir,
-#'     output_proj=output_proj,
-#'     download_range="Seasonal",
-#'     plot_ts=FALSE,
-#'     show_map="mean")
+#'     product = product,
+#'     from_date = from_date, to_date = to_date,
+#'     output_dir = output_dir,
+#'     output_proj = output_proj,
+#'     download_range = "Seasonal",
+#'     plot_ts = FALSE,
+#'     show_map = "mean")
 #' 
 #'
 #' # Braila Islands - Romania, 2 year time series of evapotranspiration
@@ -167,13 +172,13 @@
 #' output_proj <- "3839"
 #' product <- "ET"
 #' download_list <- ReLTER::get_site_MODIS(deimsid,
-#'     product=product,
-#'     from_date=from_date, to_date=to_date,
-#'     output_dir=output_dir,
-#'     output_proj=output_proj,
-#'     download_range="Full",
-#'     plot_ts=TRUE,
-#'     show_map=FALSE)
+#'     product = product,
+#'     from_date = from_date, to_date = to_date,
+#'     output_dir = output_dir,
+#'     output_proj = output_proj,
+#'     download_range = "Full",
+#'     plot_ts = TRUE,
+#'     show_map = FALSE)
 #'     
 #'     
 #' # Gran Paradiso National Park - Italy, 1 year time series of LAI and aggregated map
@@ -186,32 +191,32 @@
 #' output_proj <- "3035"
 #' product <- "LAI"
 #' download_list <- ReLTER::get_site_MODIS(deimsid,
-#'     product=product,
-#'     from_date=from_date, to_date=to_date,
-#'     output_dir=output_dir,
-#'     output_proj=output_proj,
-#'     download_range="Full",
-#'     plot_ts=TRUE,
-#'     show_map="mean")
+#'     product = product,
+#'     from_date = from_date, to_date = to_date,
+#'     output_dir = output_dir,
+#'     output_proj = output_proj,
+#'     download_range = "Full",
+#'     plot_ts = TRUE,
+#'     show_map = "mean")
 #'
 #' }
 #'
 #'
 ### function get_site_MODIS
 get_site_MODIS <- function(deimsid, product = "VI",
-                         from_date='2010.01.01', to_date='2020.31.12',
-                         output_dir=NULL,
-                         plot_ts=TRUE,
+                         from_date = '2010.01.01', to_date = '2020.31.12',
+                         output_dir = NULL,
+                         plot_ts = TRUE,
                          output_proj = "3035",
-                         download_range="Full",
-                         show_map=FALSE) {
+                         download_range = "Full",
+                         show_map = FALSE) {
 
   # Make sure the requested product is among those supported
   if (! product %in% c("VI", "LST", "ET", "LAI")) {
     stop(paste(product, "not supported"))
   }
   # Setup category and product for the chosen product
-  prod_version="061"
+  prod_version = "061"
   if (product == "VI") {
     prod <- 'Vegetation Indexes_16Days_250m (M*D13Q1)'
     categ <- "Ecosystem Variables - Vegetation Indices"
@@ -254,12 +259,13 @@ get_site_MODIS <- function(deimsid, product = "VI",
   user <- Sys.getenv("earthdata_user")
   pass <- Sys.getenv("earthdata_pass")
   if (user == "" | is.null(user) | pass == "" | is.null(pass)) {
-    warning("Please register at: https://urs.earthdata.nasa.gov/home",
-    "then set `earthdata_user` and `earhtdata_pass`  environment variables.",
+    warning("No login credentials for EarthData.",
+    "Please register at: https://urs.earthdata.nasa.gov/home",
+    "then set `earthdata_user` and `earthdata_pass`  environment variables.",
     "i.e. Sys.setenv(...)")
-    stop("No login credentials for EarthData.")
+    return()
   }
-  if (is.null(output_dir) | output_dir==""){
+  if (is.null(output_dir) | output_dir == ""){
     # All download rasters will be saved to tempdir()
     # and they will be removed when R exits!
     warning("No `output_dir` specified. Downloaded rasters will be saved
@@ -267,20 +273,20 @@ get_site_MODIS <- function(deimsid, product = "VI",
     output_dir <- tempdir()
   }
   if (!dir.exists(output_dir)) {
-    tryCatch(dir.create(output_dir, recursive=TRUE),
-            error=function(e) {stop("Cannot create: ", output_dir, e)})
+    tryCatch(dir.create(output_dir, recursive = TRUE),
+            error = function(e) {stop("Cannot create: ", output_dir, e)})
   }
   # Read in a standard json config file for MODIStsp
   # TODO: remove "inst"
   cfg <- system.file("extdata/modistsp_options.json",
-                     package="ReLTER")
+                     package = "ReLTER")
   # Which downloader
   dldr <- "html"
   # if (Sys.info()["sysname"] == "windows") {
   #   dldr <- "html"
   # } else {
   #   dldr <- system("which aria2c", intern = TRUE)
-  #   if (is.null(dldr) | dldr=="") {
+  #   if (is.null(dldr) | dldr == "") {
   #     dldr <- "html"
   #   } else {dldr <- "aria2"}
   # }
@@ -327,7 +333,7 @@ get_site_MODIS <- function(deimsid, product = "VI",
     plot_timeseries(deimsid,
                             product = product,
                             output_dir = output_dir,
-                            output_proj=output_proj)
+                            output_proj = output_proj)
   }
   
   # Aggregated raster of all images in time series
@@ -337,10 +343,12 @@ get_site_MODIS <- function(deimsid, product = "VI",
     site_name <- str_replace_all(boundary$title, "[^[:alnum:]]", "_")
     site_name <- str_replace_all(site_name, "_+", "_")
       
-    plot_agg_map(product=product,
-                          output_dir=output_dir,
-                          site_name=site_name,
-                          agg_function=show_map)
+    plot_agg_map(
+      product = product,
+      output_dir = output_dir,
+      site_name = site_name,
+      agg_function = show_map
+    )
     }
   }
   return(dl_list)
@@ -382,14 +390,14 @@ get_site_MODIS <- function(deimsid, product = "VI",
 #'  # Example in Northern Negev LTER
 #' deimsid <- "https://deims.org/871a90b2-e372-456a-93e3-518ad1e11239"
 #' output_dir <- tempdir()
-#' png_files <- ReLTER::plot_timeseries(deimsid, product="VI",
-#'     output_dir=output_dir, output_proj="6991")
+#' png_files <- ReLTER::plot_timeseries(deimsid, product = "VI",
+#'     output_dir = output_dir, output_proj = "6991")
 #' message("Output plots: ", png_files)
 #' }
 #' @keywords Internal
 #' 
 plot_timeseries = function(deimsid, product,
-                           output_dir, output_proj="3035") {
+                           output_dir, output_proj = "3035") {
   boundary <- ReLTER::get_site_info(
     deimsid,
     category = "Boundaries"
@@ -407,21 +415,21 @@ plot_timeseries = function(deimsid, product,
   # Get subdirs for each product
   # First load the full set of product options from MODIStsp
   opts_file <- system.file("ExtData/MODIStsp_ProdOpts.RData",
-                           package="MODIStsp")
+                           package = "MODIStsp")
   load(opts_file)  # Now we have the list 'prod_opt_list'
   
   if (product == "VI") {
     prod <- 'Vegetation Indexes_16Days_250m (M*D13Q1)'
-    vers='061'
+    vers = '061'
   } else if (product == "LST") {
     prod <- "LST_3band_emissivity_8day_1km (M*D21A2)"
-    vers='061'
+    vers = '061'
   } else if (product == "LAI") {
     prod <- "LAI_8Days_500m (M*D15A2H)"
-    vers='061'
+    vers = '061'
   } else {  # "ET"
     prod <- "Net_ET_8Day_500m (M*D16A2)"
-    vers='006'
+    vers = '006'
   }
   out_subdir <- prod_opt_list[[prod]][[vers]]$main_out_folder
   # Get directory of time series VRT files
@@ -429,7 +437,7 @@ plot_timeseries = function(deimsid, product,
   # and list of subdirs of each band
   dir_list <- list.dirs(prod_dir,
                         full.names = TRUE,
-                        recursive=FALSE) # avoid the subdirs
+                        recursive = FALSE) # avoid the subdirs
   # Ignore the Time_Series subdir
   dir_list <- dir_list[! grepl("Time_Series", dir_list)]
   # Now we are left with only the band subdirs
@@ -447,26 +455,26 @@ plot_timeseries = function(deimsid, product,
       stop("No timeseries files in: ", band_dir)
     } else {
       stk <- terra::rast(tif_list)
-      # The MODIStsp rasters are set with PROJCRS='unknown', so set CRS
+      # The MODIStsp rasters are set with PROJCRS = 'unknown', so set CRS
       terra::crs(stk) <- paste0("EPSG:", output_proj)
       # Get dates from file names
       date_list <- lapply(tif_list, function(f){
         # Underscore is MODIStsp default separator
-        dte = gsub(pattern=".tif", replacement="", x=basename(f))
+        dte = gsub(pattern = ".tif", replacement = "", x = basename(f))
         parts <- unlist(strsplit(dte, split = "_")) 
         # Get real date
         dte <- as.Date(paste(parts[length(parts)-1],
-                             parts[length(parts)]), format="%Y %j")
+                             parts[length(parts)]), format = "%Y %j")
         # Convert back to string
         dte <- data.frame("Date" = dte)
         return(dte)
       })
       dates_df = do.call(rbind, date_list)
       
-      # Extract mean of all raster bands. Use na.rm=TRUE to drop NA pixels
-      site_vals <- terra::extract(stk, bndry, fun=mean,
-                                  ID=FALSE, exact=TRUE, bind=FALSE,
-                                  raw=FALSE, na.rm=TRUE)
+      # Extract mean of all raster bands. Use na.rm = TRUE to drop NA pixels
+      site_vals <- terra::extract(stk, bndry, fun = mean,
+                                  ID = FALSE, exact = TRUE, bind = FALSE,
+                                  raw = FALSE, na.rm = TRUE)
       # Transform layers to columns
       site_vals <- t(site_vals)
       # Join dates
@@ -479,28 +487,28 @@ plot_timeseries = function(deimsid, product,
       # Now plot
       ttl <- paste0(site_name, ": ", basename(band_dir))
       pl <- ggplot2::ggplot(data = site_df) +
-        ggplot2::geom_line(aes(x=Date, y=Value, group = 1),
-                           color="blue", size = 0.8, alpha=0.7 ) + 
-        ggplot2::geom_point(aes(x=Date, y=Value),
-                            color="blue", size = 2.0, alpha=0.3 ) + 
+        ggplot2::geom_line(aes(x = Date, y = Value, group = 1),
+                           color = "blue", size = 0.8, alpha = 0.7 ) + 
+        ggplot2::geom_point(aes(x = Date, y = Value),
+                            color = "blue", size = 2.0, alpha = 0.3 ) + 
         #scale_color_manual(values = clrs) +
         ggplot2::ggtitle(ttl) +
-        ggplot2::theme(axis.text = element_text(size=10),
-              axis.title = element_text(size=10),
-              axis.text.x = element_text(angle = 30, size=8,
-                                         hjust=1, vjust=1),
-              title = element_text(size=12, face="bold"))
+        ggplot2::theme(axis.text = element_text(size = 10),
+              axis.title = element_text(size = 10),
+              axis.text.x = element_text(angle = 30, size = 8,
+                                         hjust = 1, vjust = 1),
+              title = element_text(size = 12, face = "bold"))
       
       print(pl)
       # and save plot to png
       png_file = paste(site_name, basename(band_dir),
-                       "timeseries.png", sep="_")
+                       "timeseries.png", sep = "_")
       png_path = file.path(prod_dir, png_file)
-      png(png_path, width=800)
+      png(png_path, width = 800)
       print(pl)
       dev.off()
       #ggplot2::ggsave(filename = png_path,plot = pl,
-      #               width=8, height=5)
+      #               width = 8, height = 5)
       return(png_path)
     } # end if(length(tif_list...))
   }) # end lapply
@@ -513,7 +521,8 @@ plot_timeseries = function(deimsid, product,
 #' Map of aggregated time series of MODIS images
 #' 
 #' @description Prepare, show and save an aggregated map
-#' of acquired MODIS products
+#' of acquired MODIS products. For plotting, the function requires
+#' packageVersion("leaflet") > 2.1.1
 #' 
 #' @param product `character` one of "LST" or "VI"
 #' @param output_dir `character`, where MODIS images were saved
@@ -540,12 +549,12 @@ plot_timeseries = function(deimsid, product,
 #' @keywords Internal
 
 plot_agg_map = function(product, output_dir,
-                        site_name, agg_function="mean") {
+                        site_name, agg_function = "mean") {
   # Use parameters to find full path to output subdir
   opts_file <- system.file("ExtData/MODIStsp_ProdOpts.RData",
-                           package="MODIStsp")
+                           package = "MODIStsp")
   load(opts_file)  # Now we have the list 'prod_opt_list'
-  vers='061'
+  vers = '061'
   if (product == "VI") {
     prod <- 'Vegetation Indexes_16Days_250m (M*D13Q1)'
   } else if (product == "LST") { # LST
@@ -561,9 +570,9 @@ plot_agg_map = function(product, output_dir,
   prod_dir <- file.path(output_dir, out_subdir)
   vrt_subdir <- file.path(prod_dir,
                           "Time_Series", "GDAL", "Mixed")
-  vrt_list <- list.files(vrt_subdir, pattern=".vrt$",
+  vrt_list <- list.files(vrt_subdir, pattern = ".vrt$",
                         full.names = TRUE, recursive = TRUE)
-  if (length(vrt_list)==0) {
+  if (length(vrt_list) == 0) {
     # Something is wrong with time series
     stop("No time series data were found.")
     return(NULL)
@@ -574,12 +583,14 @@ plot_agg_map = function(product, output_dir,
     prod <- pth_parts[length(pth_parts)-1]
     r <- terra::rast(v)
     r_agg <- terra::app(r, agg_function)
-    tif_name <- paste(site_name, prod, "aggregated.tif", sep="_")
+    tif_name <- paste(site_name, prod, "aggregated.tif", sep = "_")
     tif_path <- file.path(output_dir, out_subdir, tif_name)
-    terra::writeRaster(r_agg, tif_path, overwrite=TRUE)
-    print(terra::plet(r_agg,
-                      main=paste0(site_name, ": ", prod),
-                      tiles="Streets"))
+    terra::writeRaster(r_agg, tif_path, overwrite = TRUE)
+    if (packageVersion("leaflet") > "2.1.1") {
+      print(terra::plet(r_agg,
+                        main = paste0(site_name, ": ", prod),
+                        tiles = "Streets"))
+    }
     return(tif_path)
   })
   message("Paths to aggregated maps:")
