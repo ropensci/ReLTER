@@ -19,13 +19,12 @@ test_that("Output of taxon worms function constructs 'tibble' as expected", {
     refine = FALSE
   )
   expect_s3_class(result, "tbl_df")
-  expect_true(ncol(result) == ncol(input_table) + 17)
-  # expect_true(all(names(result) == c(
-  #   names(input_table), "valid_name",
-  #   "valid_authority", "valid_AphiaID",
-  #   "status", "synonyms", "rank",
-  #   "kingdom", "phylum", "class",
-  #   "order", "family", "genus", "LSID", "url",
-  #   "matchType", "nOfWormsResults", "wormsRecords"
-  # )))
+  #expect_true(ncol(result) == ncol(input_table) + 17)
+  expect_true(all(names(result) == c(
+    names(input_table[1]), "originalNameUsage",
+    "scientificName", "scientificNameAuthorship", "taxonID",
+    "taxonomicStatus", "synonyms", "taxonRank", "kingdom", "phylum",
+    "class", "order", "family", "genus", "scientificNameID",
+    "nOfWormsResults",  "wormsRecords"
+  )))
 })
