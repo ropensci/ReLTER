@@ -39,8 +39,8 @@ This function is not exported. It is called by \code{get_site_MODIS()}
  # Example in Northern Negev LTER
 deimsid <- "https://deims.org/871a90b2-e372-456a-93e3-518ad1e11239"
 output_dir <- tempdir()
-png_files <- ReLTER::plot_timeseries(deimsid, product="VI",
-    output_dir=output_dir, output_proj="6991")
+png_files <- ReLTER::plot_timeseries(deimsid, product = "VI",
+    output_dir = output_dir, output_proj = "6991")
 message("Output plots: ", png_files)
 }
 }

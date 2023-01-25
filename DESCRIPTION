@@ -1,6 +1,6 @@
 Type: Package
 Package: ReLTER
-Title: An Interface for the 'eLTER' Community
+Title: An Interface for the eLTER Community
 Version: 2.1.0
 Authors@R: c(
     person("Alessandro", "Oggioni", , "alessandro.oggioni@cnr.it", role = c("aut", "cre", "fnd"),
@@ -76,7 +76,6 @@ Imports:
     rnaturalearth,
     rosm,
     rworldmap,
-    rgbif,
     sf (>= 0.9-5),
     spocc,
     stringi,
