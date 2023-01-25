@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">ReLTER</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.0.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.1.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,7 +25,6 @@
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="../articles/occurrences_into_site.html">How to retrieve occurrence records by exploiting the {`ReLTER`} get_site_speciesOccurrences() function</a>
-    <a class="dropdown-item" href="../articles/resources_delivered_eu_networks.html">Related resources delivered by EU eLTER sites</a>
     <a class="dropdown-item" href="../articles/rocker_ReLTER.html">Run ReLTER in a Docker container</a>
     <a class="dropdown-item" href="../articles/site_information.html">How to get the info of a (one) LTER Site by knowing the DEIMS.ID</a>
     <a class="dropdown-item" href="../articles/sites_contacts.html">How to get the list of contacts from list of DEIMS ID within csv file</a>
@@ -56,10 +55,16 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="2.0.1" id="relter-201-release-notes">ReLTER 2.0.1 Release Notes<a class="anchor" aria-label="anchor" href="#relter-201-release-notes"></a></h2>
-<p>v2.0.1 was released on 24/01/2023</p>
+<h2 class="pkg-version" data-toc-text="2.1.0" id="relter-210-release-notes">ReLTER 2.1.0 Release Notes<a class="anchor" aria-label="anchor" href="#relter-210-release-notes"></a></h2>
+<p>v2.1.0 was released on 25/01/2023</p>
 <div class="section level3">
-<h3 id="changes-2-0-1">Changes<a class="anchor" aria-label="anchor" href="#changes-2-0-1"></a></h3>
+<h3 id="changes-2-1-0">Changes<a class="anchor" aria-label="anchor" href="#changes-2-1-0"></a></h3>
+<ul><li>inserted new function for acquire either Land Surface Temperature (LST) or Vegetation Index (NDVI) both cropped to an eLTER site boundary; # * inserted new function for enrich and certify a list of species names by # comparing with ;</li>
+<li>outputs enrichment of certain functions with unit of measurement (UOM) and labeling with semantic terms (e.g.  in the taxon_id_<em>.R or  in the get_sos_</em>.R functions).</li>
+</ul><hr><p>v2.0.1 was released on 24/01/2023</p>
+</div>
+<div class="section level3">
+<h3 id="changes-2-1-0-1">Changes<a class="anchor" aria-label="anchor" href="#changes-2-1-0-1"></a></h3>
 <ul><li>Fix vignette issues</li>
 <li>Fix ilter generalinfo</li>
 <li>Fix documentation</li>
@@ -68,7 +73,7 @@
 </ul><hr><p>v2.0.0 was released on 30/09/2022</p>
 </div>
 <div class="section level3">
-<h3 id="changes-2-0-1-1">Changes<a class="anchor" aria-label="anchor" href="#changes-2-0-1-1"></a></h3>
+<h3 id="changes-2-1-0-2">Changes<a class="anchor" aria-label="anchor" href="#changes-2-1-0-2"></a></h3>
 <ul><li>inserted new functions for set an environment for variables of the package, for setting and for get the DEIMS-SDR base URL;</li>
 <li>inserted a new function for get version of DEIMS-SDR API based on the DEIMS-SDR base URL;</li>
 <li>added an object (queries_jq) containing all the JQ queries (as a list);</li>

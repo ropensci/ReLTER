@@ -40,8 +40,6 @@
 #' @importFrom sf as_Spatial st_as_sfc st_bbox st_crs st_simplify
 #' @importFrom jsonlite fromJSON
 #' @importFrom tibble tribble
-#' @importFrom raster getData reclassify
-#' @importFrom rgeos gSimplify
 #' @importFrom rosm osm.raster
 #' @importFrom tmap tm_shape tm_rgb tm_dots tm_compass tm_scale_bar tm_layout
 #' @importFrom tmap tm_credits tm_basemap tm_borders tm_fill tm_lines
@@ -194,21 +192,18 @@ produce_site_map <-
       )$attributes$geographic$boundaries
     if (countryCode %in% isoCodes$Alpha_3 == TRUE) {
       try({
-        country <- raster::getData(
+        country <- geodata::gadm(
           country = countryCode,
           level = 0
         ) %>%
-          rgeos::gSimplify(tol = 0.01, topologyPreserve = TRUE)
+          terra::simplifyGeom(tolerance = 0.01,
+                              preserveTopology = TRUE)
       }, silent = TRUE)
       if (is.null(geoBoundaries)) {
         lterCoords <- siteSelected
-        lterSitesFeaturePointDEIMS <-
-          sf::as_Spatial(
-            sf::st_as_sfc(
-              lterCoords,
-              crs = 4326
-            ),
-          )
+        lterSitesFeaturePointDEIMS <- sf::st_as_sfc(
+              lterCoords, crs = 4326
+              )
         baseMap <-
           rosm::osm.raster(lterSitesFeaturePointDEIMS, zoomin = -8)
         newBaseMap <- raster::reclassify(baseMap, cbind(NA, 255))

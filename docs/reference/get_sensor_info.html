@@ -19,7 +19,7 @@ provided in DEIMS-SDR catalogue."><meta property="og:image" content="https://doc
     <a href="https://ropensci.org" class="external-link"><img src="https://ropensci.org/img/icon_short_white.svg" id="hexlogo" alt="rOpenSci"></a>
     <a class="navbar-brand me-2" href="../index.html">ReLTER</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.0.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.1.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,7 +34,6 @@ provided in DEIMS-SDR catalogue."><meta property="og:image" content="https://doc
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="../articles/occurrences_into_site.html">How to retrieve occurrence records by exploiting the {`ReLTER`} get_site_speciesOccurrences() function</a>
-    <a class="dropdown-item" href="../articles/resources_delivered_eu_networks.html">Related resources delivered by EU eLTER sites</a>
     <a class="dropdown-item" href="../articles/rocker_ReLTER.html">Run ReLTER in a Docker container</a>
     <a class="dropdown-item" href="../articles/site_information.html">How to get the info of a (one) LTER Site by knowing the DEIMS.ID</a>
     <a class="dropdown-item" href="../articles/sites_contacts.html">How to get the list of contacts from list of DEIMS ID within csv file</a>
@@ -119,7 +118,19 @@ the activities in a site, and a <code>leaflet</code> map plot.</p>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Request failed [ERROR]. Retrying in 2.4 seconds...</span>
 <span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in curl::curl_fetch_memory(url, handle = handle):</span> Could not resolve host: deims.org</span>
 <span class="r-in"><span class="va">sensor_B3</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'sensor_B3' not found</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Simple feature collection with 1 feature and 13 fields</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Geometry type: POINT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dimension:     XY</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Bounding box:  xmin: 10.59189 ymin: 46.69173 xmax: 10.59189 ymax: 46.69173</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Geodetic CRS:  WGS 84</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 14</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   title              abstract        uri   type  created changed relat…¹ conta…²</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">*</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Climate Station B3 <span style="color: #949494;">"</span>Near-real tim… http… sens… 2020-0… 2022-1… &lt;df&gt;    &lt;df&gt;   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 6 more variables: geography &lt;POINT [°]&gt;, elevation &lt;int&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   sensorType.label &lt;chr&gt;, sensorType.uri &lt;lgl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   resultAcquisitionSource &lt;chr&gt;, observedProperty &lt;list&gt;, and abbreviated</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   variable names ¹​relatedSite, ²​contacts</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># print the map of the sensor</span></span>
 <span class="r-in"><span class="va">Licor</span> <span class="op">&lt;-</span> <span class="fu">get_sensor_info</span><span class="op">(</span></span>
