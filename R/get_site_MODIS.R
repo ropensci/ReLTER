@@ -582,6 +582,7 @@ plot_agg_map = function(product, output_dir,
     tif_path <- file.path(output_dir, out_subdir, tif_name)
     terra::writeRaster(r_agg, tif_path, overwrite=TRUE)
     if (packageVersion("leaflet") > "2.1.1") {
+      # Minimum requirement to plot rasters with leaflet is version > 2.1.1 
       print(terra::plet(r_agg,
                         main = paste0(site_name, ": ", prod),
                         tiles = "Streets"))
