@@ -12,7 +12,6 @@ reference:
   - title: All functions
     contents:
     - get_site_info
-    - get_sensor_observed_properties
     - get_sensor_info
     - get_activity_info
     - get_dataset_info
@@ -32,6 +31,7 @@ reference:
     - get_sos_obs
     - get_sos_procedure_info
     - get_sos_procedurelist
+    - get_sensor_observed_properties
     - get_zenodo_data
     - get_deims_API_version
     - get_deims_base_url
@@ -45,7 +45,6 @@ reference:
     - produce_zenodo_record
     - produce_zenodo_record_from_elter_reporting
     - elter_write_rdata
-    - taxon_id_gbif
     - taxon_id_pesi
     - taxon_id_worms
     - map_occ_gbif2elter
