@@ -1,26 +1,24 @@
 #' Acquire a time series of MODIS satellite products
-#' 
-
+#'
 #' @description `r lifecycle::badge("stable")`
 #' Acquire either Land Surface Temperature (LST) or Vegetation Index (NDVI)
 #' both cropped to an eLTER site boundary. Download a timeseries of MODIS images containing the requested
 #' product and optionally:
-#' 
+#'
 #' Plot a time series graph of the average values over the site.
-#' 
+#'
 #' Create and show an aggregated map of the acquired product
-#' 
+#'
 #' Use of this function requires registering on the EarthData website:
-#' 
+#'
 #'    https://urs.earthdata.nasa.gov/home
 #
 #' In order to guard your user credentials, please save
 #' your username and password to environment variables. i.e.
-#' 
+#'
 #'  Sys.setenv("earthdata_user"="homer_simpson")
-#'  
 #'  Sys.setenv("earthdata_pass"="bart&lucy")
-#' 
+#'
 #' @param deimsid  `character`. The DEIMS ID of the site from
 #' DEIMS-SDR website. DEIMS ID information
 #' \href{https://deims.org/docs/deimsid.html}{here}.
