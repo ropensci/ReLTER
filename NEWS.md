@@ -1,11 +1,29 @@
 # ReLTER 2.1.0 Release Notes
 
-v2.1.0 was released on 23/01/2023
+v2.1.0 was released on 25/01/2023
 
 ## Changes
 
-* inserted new functions for acquire either Land Surface Temperature (LST)
-  or Vegetation Index (NDVI) both cropped to an eLTER site boundary.
+* inserted new function for acquire either Land Surface Temperature (LST)
+  or Vegetation Index (NDVI) both cropped to an eLTER site boundary;
+# * inserted new function for enrich and certify a list of species names by
+#   comparing with \href{https://www.gbif.org}{GBIF};
+* outputs enrichment of certain functions with unit of measurement (UOM)
+  and labeling with semantic terms (e.g.
+  \href{https://dwc.tdwg.org/terms/}{Darwin Core} in the taxon_id_*.R
+  or \href{http://vocab.nerc.ac.uk}{NERC} in the get_sos_*.R functions).
+
+________________________________________________________________________________
+
+v2.0.1 was released on 24/01/2023
+
+## Changes
+
+* Fix vignette issues
+* Fix ilter generalinfo
+* Fix documentation
+* Fix missing urlencode and change documentation. Add support for multilingual country search
+* Fix too many http requests
 
 ________________________________________________________________________________
 

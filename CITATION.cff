@@ -7,10 +7,10 @@ cff-version: 1.2.0
 message: 'To cite package "ReLTER" in publications use:'
 type: software
 license: GPL-3.0-or-later
-title: 'ReLTER: An Interface for the ''eLTER'' Community'
+title: 'ReLTER: An Interface for the eLTER Community (v2.1)'
 version: 2.1.0
 doi: 10.5281/zenodo.5576813
-date-released: 2023-01-23
+date-released: 2023-01-25
 abstract: 'ReLTER provides access to DEIMS-SDR (https://deims.org/), and allows interaction
   with data and software implemented by eLTER Research Infrastructure (RI) thus improving
   data sharing among European LTER projects. ReLTER uses the R language to access
@@ -47,7 +47,7 @@ authors:
   orcid: https://orcid.org/0000-0001-6207-5188
 preferred-citation:
   type: generic
-  title: 'ropensci/ReLTER: ReLTER v2.0.0'
+  title: 'ReLTER: An Interface for the eLTER Community (v2.1)'
   authors:
   - family-names: Oggioni
     given-names: Alessandro
@@ -66,7 +66,7 @@ preferred-citation:
     email: tagliolato.a@irea.cnr.it
     orcid: https://orcid.org/0000-0002-0261-313X
   year: '2023'
-  notes: R package version v1.2.0
+  notes: R package version v2.1.0
 repository-code: https://github.com/ropensci/ReLTER
 url: https://github.com/ropensci/ReLTER
 contact:
@@ -89,21 +89,22 @@ references:
   - name: R Core Team
   location:
     name: Vienna, Austria
-  year: '2022'
+  year: '2023'
   url: https://www.R-project.org/
   institution:
     name: R Foundation for Statistical Computing
   version: '>= 3.5.0'
 - type: software
-  title: RColorBrewer
-  abstract: 'RColorBrewer: ColorBrewer Palettes'
+  title: countrycode
+  abstract: 'countrycode: Convert Country Names and Country Codes'
   notes: Imports
   authors:
-  - family-names: Neuwirth
-    given-names: Erich
-    email: erich.neuwirth@univie.ac.at
-  year: '2022'
-  url: https://CRAN.R-project.org/package=RColorBrewer
+  - family-names: Arel-Bundock
+    given-names: Vincent
+    email: vincent.arel-bundock@umontreal.ca
+    orcid: https://orcid.org/0000-0003-2042-7063
+  year: '2023'
+  url: https://vincentarelbundock.github.io/countrycode/
 - type: software
   title: dplyr
   abstract: 'dplyr: A Grammar of Data Manipulation'
@@ -121,7 +122,7 @@ references:
   - family-names: Müller
     given-names: Kirill
     orcid: https://orcid.org/0000-0002-1416-3412
-  year: '2022'
+  year: '2023'
   url: https://CRAN.R-project.org/package=dplyr
 - type: software
   title: dtplyr
@@ -137,8 +138,20 @@ references:
     given-names: Mark
   - family-names: Dickerson
     given-names: Ryan
-  year: '2022'
+  year: '2023'
   url: https://CRAN.R-project.org/package=dtplyr
+- type: software
+  title: geodata
+  abstract: 'geodata: Download Geographic Data'
+  notes: Imports
+  authors:
+  - family-names: Hijmans
+    given-names: Robert J.
+  - family-names: Ghosh
+    given-names: Aniruddha
+  - family-names: Mandel
+    given-names: Alex
+  year: '2023'
 - type: software
   title: ggforce
   abstract: 'ggforce: Accelerating ''ggplot2'''
@@ -148,7 +161,7 @@ references:
     given-names: Thomas Lin
     email: thomasp85@gmail.com
     orcid: https://orcid.org/0000-0002-5147-4711
-  year: '2022'
+  year: '2023'
   url: https://CRAN.R-project.org/package=ggforce
 - type: software
   title: ggplot2
@@ -182,7 +195,7 @@ references:
   - family-names: Dunnington
     given-names: Dewey
     orcid: https://orcid.org/0000-0002-9415-4582
-  year: '2022'
+  year: '2023'
   url: https://CRAN.R-project.org/package=ggplot2
 - type: software
   title: grDevices
@@ -192,7 +205,7 @@ references:
   - name: R Core Team
   location:
     name: Vienna, Austria
-  year: '2022'
+  year: '2023'
   url: https://www.R-project.org/
   institution:
     name: R Foundation for Statistical Computing
@@ -204,10 +217,20 @@ references:
   - name: R Core Team
   location:
     name: Vienna, Austria
-  year: '2022'
+  year: '2023'
   url: https://www.R-project.org/
   institution:
     name: R Foundation for Statistical Computing
+- type: software
+  title: gridExtra
+  abstract: 'gridExtra: Miscellaneous Functions for "Grid" Graphics'
+  notes: Imports
+  authors:
+  - family-names: Auguie
+    given-names: Baptiste
+    email: baptiste.auguie@gmail.com
+  year: '2023'
+  url: https://CRAN.R-project.org/package=gridExtra
 - type: software
   title: httr
   abstract: 'httr: Tools for Working with URLs and HTTP'
@@ -216,8 +239,18 @@ references:
   - family-names: Wickham
     given-names: Hadley
     email: hadley@rstudio.com
-  year: '2022'
+  year: '2023'
   url: https://CRAN.R-project.org/package=httr
+- type: software
+  title: httr2
+  abstract: 'httr2: Perform HTTP Requests and Process the Responses'
+  notes: Imports
+  authors:
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+  year: '2023'
+  url: https://CRAN.R-project.org/package=httr2
 - type: software
   title: jqr
   abstract: 'jqr: Client for ''jq'', a ''JSON'' Processor'
@@ -234,7 +267,7 @@ references:
     email: myrmecocystus@gmail.com
   - name: Stefan Milton Bache
     email: stefan@stefanbache.dk
-  year: '2022'
+  year: '2023'
   url: https://CRAN.R-project.org/package=jqr
 - type: software
   title: jsonlite
@@ -245,7 +278,7 @@ references:
     given-names: Jeroen
     email: jeroen@berkeley.edu
     orcid: https://orcid.org/0000-0002-4035-0289
-  year: '2022'
+  year: '2023'
   url: https://CRAN.R-project.org/package=jsonlite
 - type: software
   title: leaflet
@@ -260,9 +293,37 @@ references:
     given-names: Bhaskar
   - family-names: Xie
     given-names: Yihui
-  year: '2022'
+  year: '2023'
   url: https://CRAN.R-project.org/package=leaflet
   version: '>= 2.1.1'
+- type: software
+  title: lifecycle
+  abstract: 'lifecycle: Manage the Life Cycle of your Package Functions'
+  notes: Imports
+  authors:
+  - family-names: Henry
+    given-names: Lionel
+    email: lionel@rstudio.com
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+    orcid: https://orcid.org/0000-0003-4757-117X
+  year: '2023'
+  url: https://CRAN.R-project.org/package=lifecycle
+- type: software
+  title: lubridate
+  abstract: 'lubridate: Make Dealing with Dates a Little Easier'
+  notes: Imports
+  authors:
+  - family-names: Spinu
+    given-names: Vitalie
+    email: spinuvit@gmail.com
+  - family-names: Grolemund
+    given-names: Garrett
+  - family-names: Wickham
+    given-names: Hadley
+  year: '2023'
+  url: https://CRAN.R-project.org/package=lubridate
 - type: software
   title: magrittr
   abstract: 'magrittr: A Forward-Pipe Operator for R'
@@ -274,8 +335,35 @@ references:
   - family-names: Wickham
     given-names: Hadley
     email: hadley@rstudio.com
-  year: '2022'
+  year: '2023'
   url: https://CRAN.R-project.org/package=magrittr
+- type: software
+  title: MODIStsp
+  abstract: 'MODIStsp: Find, Download and Process MODIS Land Products Data'
+  notes: Imports
+  authors:
+  - family-names: Busetto
+    given-names: Lorenzo
+    orcid: https://orcid.org/0000-0001-9634-6038
+  - family-names: Ranghetti
+    given-names: Luigi
+    email: luigi@ranghetti.info
+    orcid: https://orcid.org/0000-0001-6207-5188
+  year: '2023'
+  url: https://CRAN.R-project.org/package=MODIStsp
+- type: software
+  title: purrr
+  abstract: 'purrr: Functional Programming Tools'
+  notes: Imports
+  authors:
+  - family-names: Henry
+    given-names: Lionel
+    email: lionel@rstudio.com
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+  year: '2023'
+  url: https://CRAN.R-project.org/package=purrr
 - type: software
   title: qrcode
   abstract: 'qrcode: Generate QRcodes with R'
@@ -288,7 +376,7 @@ references:
     given-names: Thierry
     email: thierry.onkelinx@inbo.be
     orcid: https://orcid.org/0000-0001-8804-4216
-  year: '2022'
+  year: '2023'
   url: https://CRAN.R-project.org/package=qrcode
 - type: software
   title: raster
@@ -299,9 +387,56 @@ references:
     given-names: Robert J.
     email: r.hijmans@gmail.com
     orcid: https://orcid.org/0000-0001-5872-2872
-  year: '2022'
+  year: '2023'
   url: https://CRAN.R-project.org/package=raster
   version: '>= 3.3-13'
+- type: software
+  title: RColorBrewer
+  abstract: 'RColorBrewer: ColorBrewer Palettes'
+  notes: Imports
+  authors:
+  - family-names: Neuwirth
+    given-names: Erich
+    email: erich.neuwirth@univie.ac.at
+  year: '2023'
+  url: https://CRAN.R-project.org/package=RColorBrewer
+- type: software
+  title: RCurl
+  abstract: 'RCurl: General Network (HTTP/FTP/...) Client Interface for R'
+  notes: Imports
+  authors:
+  - family-names: Temple Lang
+    given-names: Duncan
+    email: duncan@r-project.org
+    orcid: https://orcid.org/0000-0003-0159-1546
+  year: '2023'
+  url: https://CRAN.R-project.org/package=RCurl
+- type: software
+  title: Rdpack
+  abstract: 'Rdpack: Update and Manipulate Rd Documentation Objects'
+  notes: Imports
+  authors:
+  - family-names: Boshnakov
+    given-names: Georgi N.
+    email: georgi.boshnakov@manchester.ac.uk
+  year: '2023'
+  url: https://CRAN.R-project.org/package=Rdpack
+- type: software
+  title: readr
+  abstract: 'readr: Read Rectangular Text Data'
+  notes: Imports
+  authors:
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+  - family-names: Hester
+    given-names: Jim
+  - family-names: Bryan
+    given-names: Jennifer
+    email: jenny@rstudio.com
+    orcid: https://orcid.org/0000-0002-6983-2759
+  year: '2023'
+  url: https://CRAN.R-project.org/package=readr
 - type: software
   title: rgeos
   abstract: 'rgeos: Interface to Geometry Engine - Open Source (''GEOS'')'
@@ -313,8 +448,18 @@ references:
     orcid: https://orcid.org/0000-0003-2392-6140
   - family-names: Rundel
     given-names: Colin
-  year: '2022'
+  year: '2023'
   url: https://CRAN.R-project.org/package=rgeos
+- type: software
+  title: rnaturalearth
+  abstract: 'rnaturalearth: World Map Data from Natural Earth'
+  notes: Imports
+  authors:
+  - family-names: South
+    given-names: Andy
+    email: southandy@gmail.com
+  year: '2023'
+  url: https://CRAN.R-project.org/package=rnaturalearth
 - type: software
   title: rosm
   abstract: 'rosm: Plot Raster Map Tiles from Open Street Map and Other Sources'
@@ -324,8 +469,17 @@ references:
     given-names: Dewey
     email: dewey@fishandwhistle.net
     orcid: https://orcid.org/0000-0002-9415-4582
-  year: '2022'
+  year: '2023'
   url: https://CRAN.R-project.org/package=rosm
+- type: software
+  title: rworldmap
+  abstract: 'rworldmap: Mapping Global Data'
+  notes: Imports
+  authors:
+  - family-names: South
+    given-names: Andy
+  year: '2023'
+  url: https://CRAN.R-project.org/package=rworldmap
 - type: software
   title: sf
   abstract: 'sf: Simple Features for R'
@@ -335,9 +489,50 @@ references:
     given-names: Edzer
     email: edzer.pebesma@uni-muenster.de
     orcid: https://orcid.org/0000-0001-8049-7069
-  year: '2022'
+  year: '2023'
   url: https://CRAN.R-project.org/package=sf
   version: '>= 0.9-5'
+- type: software
+  title: spocc
+  abstract: 'spocc: Interface to Species Occurrence Data Sources'
+  notes: Imports
+  authors:
+  - family-names: Owens
+    given-names: Hannah
+    email: hannah.owens@gmail.com
+    orcid: https://orcid.org/0000-0003-0071-1745
+  - family-names: Barve
+    given-names: Vijay
+    orcid: https://orcid.org/0000-0002-4852-2567
+  - family-names: Chamberlain
+    given-names: Scott
+    orcid: https://orcid.org/0000-0003-1444-9135
+  year: '2023'
+- type: software
+  title: stringi
+  abstract: 'stringi: Fast and Portable Character String Processing Facilities'
+  notes: Imports
+  authors:
+  - family-names: Gagolewski
+    given-names: Marek
+  - family-names: Tartanus
+    given-names: Bartek
+  - family-names: Unicode
+    given-names: others;
+  - name: Inc.
+  - name: others
+  year: '2023'
+  url: https://CRAN.R-project.org/package=stringi
+- type: software
+  title: stringr
+  abstract: 'stringr: Simple, Consistent Wrappers for Common String Operations'
+  notes: Imports
+  authors:
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+  year: '2023'
+  url: https://CRAN.R-project.org/package=stringr
 - type: software
   title: taxize
   abstract: 'taxize: Taxonomic Information from Around the Web'
@@ -354,7 +549,7 @@ references:
     email: zacharyfoster1989@gmail.com
   - family-names: Arendsee
     given-names: Zebulun
-  year: '2022'
+  year: '2023'
   url: https://CRAN.R-project.org/package=taxize
   version: '>= 0.9.97'
 - type: software
@@ -366,7 +561,7 @@ references:
     given-names: Robert J.
     email: r.hijmans@gmail.com
     orcid: https://orcid.org/0000-0001-5872-2872
-  year: '2022'
+  year: '2023'
   url: https://CRAN.R-project.org/package=terra
 - type: software
   title: tibble
@@ -379,118 +574,8 @@ references:
   - family-names: Wickham
     given-names: Hadley
     email: hadley@rstudio.com
-  year: '2022'
+  year: '2023'
   url: https://CRAN.R-project.org/package=tibble
-- type: software
-  title: tmap
-  abstract: 'tmap: Thematic Maps'
-  notes: Imports
-  authors:
-  - family-names: Tennekes
-    given-names: Martijn
-    email: mtennekes@gmail.com
-  year: '2022'
-  url: https://CRAN.R-project.org/package=tmap
-  version: '>= 3.1'
-- type: software
-  title: utils
-  abstract: 'R: A Language and Environment for Statistical Computing'
-  notes: Imports
-  authors:
-  - name: R Core Team
-  location:
-    name: Vienna, Austria
-  year: '2022'
-  url: https://www.R-project.org/
-  institution:
-    name: R Foundation for Statistical Computing
-- type: software
-  title: waffle
-  abstract: 'waffle: Create Waffle Chart Visualizations in R'
-  notes: Imports
-  authors:
-  - family-names: Rudis
-    given-names: Bob
-    email: bob@rud.is
-  - family-names: Gandy
-    given-names: Dave
-  year: '2022'
-  url: https://CRAN.R-project.org/package=waffle
-- type: software
-  title: worrms
-  abstract: 'worrms: World Register of Marine Species (WoRMS) Client'
-  notes: Imports
-  authors:
-  - family-names: Chamberlain
-    given-names: Scott
-    email: myrmecocystus@gmail.com
-    orcid: https://orcid.org/0000-0003-1444-9135
-  year: '2022'
-  url: https://CRAN.R-project.org/package=worrms
-- type: software
-  title: xml2
-  abstract: 'xml2: Parse XML'
-  notes: Imports
-  authors:
-  - family-names: Wickham
-    given-names: Hadley
-    email: hadley@rstudio.com
-  - family-names: Hester
-    given-names: Jim
-  - family-names: Ooms
-    given-names: Jeroen
-  year: '2022'
-  url: https://CRAN.R-project.org/package=xml2
-- type: software
-  title: xslt
-  abstract: 'xslt: Extensible Style-Sheet Language Transformations'
-  notes: Imports
-  authors:
-  - family-names: Ooms
-    given-names: Jeroen
-    email: jeroen@berkeley.edu
-    orcid: https://orcid.org/0000-0002-4035-0289
-  year: '2022'
-  url: https://CRAN.R-project.org/package=xslt
-- type: software
-  title: purrr
-  abstract: 'purrr: Functional Programming Tools'
-  notes: Imports
-  authors:
-  - family-names: Henry
-    given-names: Lionel
-    email: lionel@rstudio.com
-  - family-names: Wickham
-    given-names: Hadley
-    email: hadley@rstudio.com
-  year: '2022'
-  url: https://CRAN.R-project.org/package=purrr
-- type: software
-  title: readr
-  abstract: 'readr: Read Rectangular Text Data'
-  notes: Imports
-  authors:
-  - family-names: Wickham
-    given-names: Hadley
-    email: hadley@rstudio.com
-  - family-names: Hester
-    given-names: Jim
-  - family-names: Bryan
-    given-names: Jennifer
-    email: jenny@rstudio.com
-    orcid: https://orcid.org/0000-0002-6983-2759
-  year: '2022'
-  url: https://CRAN.R-project.org/package=readr
-- type: software
-  title: stringr
-  abstract: 'stringr: Simple, Consistent Wrappers for Common String Operations'
-  notes: Imports
-  authors:
-  - family-names: Wickham
-    given-names: Hadley
-    email: hadley@rstudio.com
-  year: '2022'
-  url: https://CRAN.R-project.org/package=stringr
 - type: software
   title: tidyr
   abstract: 'tidyr: Tidy Messy Data'
@@ -501,140 +586,19 @@ references:
     email: hadley@rstudio.com
   - family-names: Girlich
     given-names: Maximilian
-  year: '2022'
+  year: '2023'
   url: https://CRAN.R-project.org/package=tidyr
 - type: software
-  title: rworldmap
-  abstract: 'rworldmap: Mapping Global Data'
+  title: tmap
+  abstract: 'tmap: Thematic Maps'
   notes: Imports
   authors:
-  - family-names: South
-    given-names: Andy
-  year: '2022'
-  url: https://CRAN.R-project.org/package=rworldmap
-- type: software
-  title: rnaturalearth
-  abstract: 'rnaturalearth: World Map Data from Natural Earth'
-  notes: Imports
-  authors:
-  - family-names: South
-    given-names: Andy
-    email: southandy@gmail.com
-  year: '2022'
-  url: https://CRAN.R-project.org/package=rnaturalearth
-- type: software
-  title: gridExtra
-  abstract: 'gridExtra: Miscellaneous Functions for "Grid" Graphics'
-  notes: Imports
-  authors:
-  - family-names: Auguie
-    given-names: Baptiste
-    email: baptiste.auguie@gmail.com
-  year: '2022'
-  url: https://CRAN.R-project.org/package=gridExtra
-- type: software
-  title: webshot
-  abstract: 'webshot: Take Screenshots of Web Pages'
-  notes: Imports
-  authors:
-  - family-names: Chang
-    given-names: Winston
-    email: winston@rstudio.com
-  year: '2022'
-  url: https://CRAN.R-project.org/package=webshot
-- type: software
-  title: XML
-  abstract: 'XML: Tools for Parsing and Generating XML Within R and S-Plus'
-  notes: Imports
-  authors:
-  - family-names: Temple Lang
-    given-names: Duncan
-    email: duncan@r-project.org
-    orcid: https://orcid.org/0000-0003-0159-1546
-  year: '2022'
-  url: https://CRAN.R-project.org/package=XML
-- type: software
-  title: lifecycle
-  abstract: 'lifecycle: Manage the Life Cycle of your Package Functions'
-  notes: Imports
-  authors:
-  - family-names: Henry
-    given-names: Lionel
-    email: lionel@rstudio.com
-  - family-names: Wickham
-    given-names: Hadley
-    email: hadley@rstudio.com
-    orcid: https://orcid.org/0000-0003-4757-117X
-  year: '2022'
-  url: https://CRAN.R-project.org/package=lifecycle
-- type: software
-  title: RCurl
-  abstract: 'RCurl: General Network (HTTP/FTP/...) Client Interface for R'
-  notes: Imports
-  authors:
-  - family-names: Temple Lang
-    given-names: Duncan
-    email: duncan@r-project.org
-    orcid: https://orcid.org/0000-0003-0159-1546
-  year: '2022'
-  url: https://CRAN.R-project.org/package=RCurl
-- type: software
-  title: Rdpack
-  abstract: 'Rdpack: Update and Manipulate Rd Documentation Objects'
-  notes: Imports
-  authors:
-  - family-names: Boshnakov
-    given-names: Georgi N.
-    email: georgi.boshnakov@manchester.ac.uk
-  year: '2022'
-  url: https://CRAN.R-project.org/package=Rdpack
-- type: software
-  title: zen4R
-  abstract: 'zen4R: Interface to ''Zenodo'' REST API'
-  notes: Imports
-  authors:
-  - family-names: Blondel
-    given-names: Emmanuel
-    email: emmanuel.blondel1@gmail.com
-    orcid: https://orcid.org/0000-0002-5870-5762
-  year: '2022'
-  url: https://github.com/eblondel/zen4R
-- type: software
-  title: SPARQL
-  abstract: 'SPARQL: SPARQL client'
-  notes: Imports
-  authors:
-  - family-names: van Hage
-    given-names: Willem Robert
-    email: willem.van.hage@synerscope.com
-  - family-names: Kauppinen
-    given-names: 'with contributions from: Tomi'
-  - family-names: Graeler
-    given-names: Benedikt
-  - family-names: Davis
-    given-names: Christopher
-  - family-names: Hoeksema
-    given-names: Jesper
-  - family-names: Ruttenberg
-    given-names: Alan
-  - family-names: Bahls.
-    given-names: Daniel
-  year: '2022'
-  url: https://CRAN.R-project.org/package=SPARQL
-- type: software
-  title: lubridate
-  abstract: 'lubridate: Make Dealing with Dates a Little Easier'
-  notes: Imports
-  authors:
-  - family-names: Spinu
-    given-names: Vitalie
-    email: spinuvit@gmail.com
-  - family-names: Grolemund
-    given-names: Garrett
-  - family-names: Wickham
-    given-names: Hadley
-  year: '2022'
-  url: https://CRAN.R-project.org/package=lubridate
+  - family-names: Tennekes
+    given-names: Martijn
+    email: mtennekes@gmail.com
+  year: '2023'
+  url: https://CRAN.R-project.org/package=tmap
+  version: '>= 3.1'
 - type: software
   title: units
   abstract: 'units: Measurement Units for R Vectors'
@@ -653,50 +617,110 @@ references:
     given-names: Iñaki
     email: iucar@fedoraproject.org
     orcid: https://orcid.org/0000-0001-6403-5550
-  year: '2022'
+  year: '2023'
   url: https://CRAN.R-project.org/package=units
 - type: software
-  title: stringi
-  abstract: 'stringi: Fast and Portable Character String Processing Facilities'
+  title: utils
+  abstract: 'R: A Language and Environment for Statistical Computing'
   notes: Imports
   authors:
-  - family-names: Gagolewski
-    given-names: Marek
-  - family-names: Tartanus
-    given-names: Bartek
-  - family-names: Unicode
-    given-names: others;
-  - name: Inc.
-  - name: others
-  year: '2022'
-  url: https://CRAN.R-project.org/package=stringi
+  - name: R Core Team
+  location:
+    name: Vienna, Austria
+  year: '2023'
+  url: https://www.R-project.org/
+  institution:
+    name: R Foundation for Statistical Computing
 - type: software
-  title: spocc
-  abstract: 'spocc: Interface to Species Occurrence Data Sources'
+  title: waffle
+  abstract: 'waffle: Create Waffle Chart Visualizations in R'
   notes: Imports
   authors:
-  - family-names: Owens
-    given-names: Hannah
-    email: hannah.owens@gmail.com
-    orcid: https://orcid.org/0000-0003-0071-1745
-  - family-names: Barve
-    given-names: Vijay
-    orcid: https://orcid.org/0000-0002-4852-2567
+  - family-names: Rudis
+    given-names: Bob
+    email: bob@rud.is
+  - family-names: Gandy
+    given-names: Dave
+  year: '2023'
+  url: https://CRAN.R-project.org/package=waffle
+- type: software
+  title: webshot
+  abstract: 'webshot: Take Screenshots of Web Pages'
+  notes: Imports
+  authors:
+  - family-names: Chang
+    given-names: Winston
+    email: winston@rstudio.com
+  year: '2023'
+  url: https://CRAN.R-project.org/package=webshot
+- type: software
+  title: worrms
+  abstract: 'worrms: World Register of Marine Species (WoRMS) Client'
+  notes: Imports
+  authors:
   - family-names: Chamberlain
     given-names: Scott
+    email: myrmecocystus@gmail.com
     orcid: https://orcid.org/0000-0003-1444-9135
-  year: '2022'
+  year: '2023'
+  url: https://CRAN.R-project.org/package=worrms
 - type: software
-  title: countrycode
-  abstract: 'countrycode: Convert Country Names and Country Codes'
+  title: XML
+  abstract: 'XML: Tools for Parsing and Generating XML Within R and S-Plus'
   notes: Imports
   authors:
-  - family-names: Arel-Bundock
-    given-names: Vincent
-    email: vincent.arel-bundock@umontreal.ca
-    orcid: https://orcid.org/0000-0003-2042-7063
-  year: '2022'
-  url: https://vincentarelbundock.github.io/countrycode/
+  - family-names: Temple Lang
+    given-names: Duncan
+    email: duncan@r-project.org
+    orcid: https://orcid.org/0000-0003-0159-1546
+  year: '2023'
+  url: https://CRAN.R-project.org/package=XML
+- type: software
+  title: xml2
+  abstract: 'xml2: Parse XML'
+  notes: Imports
+  authors:
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+  - family-names: Hester
+    given-names: Jim
+  - family-names: Ooms
+    given-names: Jeroen
+  year: '2023'
+  url: https://CRAN.R-project.org/package=xml2
+- type: software
+  title: xslt
+  abstract: 'xslt: Extensible Style-Sheet Language Transformations'
+  notes: Imports
+  authors:
+  - family-names: Ooms
+    given-names: Jeroen
+    email: jeroen@berkeley.edu
+    orcid: https://orcid.org/0000-0002-4035-0289
+  year: '2023'
+  url: https://CRAN.R-project.org/package=xslt
+- type: software
+  title: zen4R
+  abstract: 'zen4R: Interface to ''Zenodo'' REST API'
+  notes: Imports
+  authors:
+  - family-names: Blondel
+    given-names: Emmanuel
+    email: emmanuel.blondel1@gmail.com
+    orcid: https://orcid.org/0000-0002-5870-5762
+  year: '2023'
+  url: https://CRAN.R-project.org/package=zen4R
+- type: software
+  title: covr
+  abstract: 'covr: Test Coverage for Packages'
+  notes: Suggests
+  authors:
+  - family-names: Hester
+    given-names: Jim
+    email: james.f.hester@gmail.com
+  year: '2023'
+  url: https://CRAN.R-project.org/package=covr
 - type: software
   title: httptest
   abstract: 'httptest: A Test Environment for HTTP Requests'
@@ -705,8 +729,21 @@ references:
   - family-names: Richardson
     given-names: Neal
     email: neal.p.richardson@gmail.com
-  year: '2022'
+  year: '2023'
   url: https://CRAN.R-project.org/package=httptest
+- type: software
+  title: ISOcodes
+  abstract: 'ISOcodes: Selected ISO Codes'
+  notes: Suggests
+  authors:
+  - family-names: Buchta
+    given-names: Christian
+  - family-names: Hornik
+    given-names: Kurt
+    email: Kurt.Hornik@R-project.org
+    orcid: https://orcid.org/0000-0003-4198-9911
+  year: '2023'
+  url: https://CRAN.R-project.org/package=ISOcodes
 - type: software
   title: knitr
   abstract: 'knitr: A General-Purpose Package for Dynamic Report Generation in R'
@@ -716,7 +753,7 @@ references:
     given-names: Yihui
     email: xie@yihui.name
     orcid: https://orcid.org/0000-0003-0645-5666
-  year: '2022'
+  year: '2023'
   url: https://CRAN.R-project.org/package=knitr
 - type: software
   title: rmarkdown
@@ -755,32 +792,8 @@ references:
     given-names: Richard
     email: rich@rstudio.com
     orcid: https://orcid.org/0000-0003-3925-190X
-  year: '2022'
+  year: '2023'
   url: https://CRAN.R-project.org/package=rmarkdown
-- type: software
-  title: ISOcodes
-  abstract: 'ISOcodes: Selected ISO Codes'
-  notes: Suggests
-  authors:
-  - family-names: Buchta
-    given-names: Christian
-  - family-names: Hornik
-    given-names: Kurt
-    email: Kurt.Hornik@R-project.org
-    orcid: https://orcid.org/0000-0003-4198-9911
-  year: '2022'
-  url: https://CRAN.R-project.org/package=ISOcodes
-- type: software
-  title: testthat
-  abstract: 'testthat: Unit Testing for R'
-  notes: Suggests
-  authors:
-  - family-names: Wickham
-    given-names: Hadley
-    email: hadley@rstudio.com
-  year: '2022'
-  url: https://CRAN.R-project.org/package=testthat
-  version: '>= 3.0.0'
 - type: software
   title: rnaturalearthdata
   abstract: 'rnaturalearthdata: World Vector Map Data from Natural Earth Used in ''rnaturalearth'''
@@ -789,15 +802,16 @@ references:
   - family-names: South
     given-names: Andy
     email: southandy@gmail.com
-  year: '2022'
+  year: '2023'
   url: https://CRAN.R-project.org/package=rnaturalearthdata
 - type: software
-  title: covr
-  abstract: 'covr: Test Coverage for Packages'
+  title: testthat
+  abstract: 'testthat: Unit Testing for R'
   notes: Suggests
   authors:
-  - family-names: Hester
-    given-names: Jim
-    email: james.f.hester@gmail.com
-  year: '2022'
-  url: https://CRAN.R-project.org/package=covr
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+  year: '2023'
+  url: https://CRAN.R-project.org/package=testthat
+  version: '>= 3.0.0'

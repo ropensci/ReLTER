@@ -20,6 +20,7 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 status](https://github.com/rossellhayes/ipa/workflows/R-CMD-check/badge.svg)](https://github.com/rossellhayes/ipa/actions)
 [![r-universe](https://ropensci.r-universe.dev/badges/ReLTER)](https://ropengov.r-universe.dev/)
 [![codecov](https://codecov.io/gh/ropensci/ReLTER/branch/dev/graph/badge.svg)](https://codecov.io/gh/ropensci/ReLTER)
+[![](https://badges.ropensci.org/485_status.svg)](https://github.com/ropensci/software-review/issues/485)
 <!-- CRAN badges -->
 <!-- [![](https://www.r-pkg.org/badges/version/ropensci/ReLTER?color=orange)](https://cran.r-project.org/package=ropensci/ReLTER) -->
 <!-- [![CRAN checks](https://cranchecks.info/badges/summary/ReLTER)](https://cran.r-project.org/web/checks/check_results_ReLTER.html) -->
@@ -74,20 +75,19 @@ tools.
 ## :notebook_with_decorative_cover: Citation
 
 To cite `{ReLTER}` please use: Alessandro Oggioni, Micha Silver, Luigi
-Ranghetti & Paolo Tagliolato. (2022). ReLTER: An Interface for the
-‘eLTER’ Community (2.1.0). Zenodo.
-<https://doi.org/10.5281/zenodo.5576813>
+Ranghetti & Paolo Tagliolato. (2023). ReLTER: An Interface for the eLTER
+Community (v2.1). Zenodo. <https://doi.org/10.5281/zenodo.5576813>
 
 or:
 
 ``` bibtex
 @software{alessandro_oggioni_2021_5576813,
   author       = {Alessandro Oggioni and Micha Silver and Luigi Ranghetti and Paolo Tagliolato},
-  title        = {ReLTER: An Interface for the 'eLTER' Community},
+  title        = {ReLTER: An Interface for the eLTER Community},
   month        = jan,
   year         = 2023,
   publisher    = {Zenodo},
-  version      = {2.1.0},
+  version      = {v2.1},
   doi          = {10.5281/zenodo.5576813},
   url          = {https://doi.org/10.5281/zenodo.5576813}
 }

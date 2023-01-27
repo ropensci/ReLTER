@@ -83,17 +83,17 @@ Sys.setenv("earthdata_pass"="bart&lucy")
 \details{
 Certain layers from each of the supported MODIS products are acquired.
 \itemize{
-\item from: "LST_3band_emissivity_8day_1km (M*D21A2)" two "Land surface temperature" bands are acquired:
+\item from: "LST_3band_emissivity_8day_1km (M\*D21A2)" two "Land surface temperature" bands are acquired:
 
 "LST_Day_1KM", "LST_Night_1KM"
-\item from: "Vegetation Indexes_16Days_250m (M*D13Q1)" two Vegetation Indicies
+\item from: "Vegetation Indexes_16Days_250m (M\*D13Q1)" two Vegetation Indicies
 are acquired:
 
 "NDVI" and "EVI"
-\item from: "LAI_8Days_500m (M*D15A2H)" two indicies are acquired:
+\item from: "LAI_8Days_500m (M\*D15A2H)" two indicies are acquired:
 
 "Fpar" and "Lai"
-\item from: "Net_ET_8Day_500m (M*D16A2)" one Evapotranspiration band:
+\item from: "Net_ET_8Day_500m (M\*D16A2)" one Evapotranspiration band:
 
 "PET" (Potential EvapoTranspiration)
 }
@@ -122,11 +122,11 @@ to_date <- "2018.08.30"
 output_dir <- tempdir()
 output_proj <- "3035"
 download_list <- ReLTER::get_site_MODIS(deimsid,
-    product=product,
-    from_date=from_date, to_date=to_date,
-    output_dir=output_dir,
-    plot_ts=TRUE,
-    output_proj=output_proj)
+    product = product,
+    from_date = from_date, to_date = to_date,
+    output_dir = output_dir,
+    plot_ts = TRUE,
+    output_proj = output_proj)
 
 # Northern Negev LTER - Israel, NDVI over 4 winter months,
 # projected to Israeli 05/12 CRS
@@ -134,15 +134,15 @@ download_list <- ReLTER::get_site_MODIS(deimsid,
 deimsid <- "https://deims.org/871a90b2-e372-456a-93e3-518ad1e11239"
 from_date <- "2018.01.01"
 to_date <- "2018.04.30"
-product="VI"
+product = "VI"
 output_dir <- tempdir()
 output_proj <- "6991"
 download_list <- ReLTER::get_site_MODIS(deimsid,
-    product=product,
-    from_date=from_date, to_date=to_date,
-    output_dir=output_dir,
-    plot_ts=TRUE,
-    output_proj=output_proj)
+    product = product,
+    from_date = from_date, to_date=to_date,
+    output_dir = output_dir,
+    plot_ts = TRUE,
+    output_proj = output_proj)
 
  
 # Nationalpark Mols Bjerge - Denmark, 10 year only for July 
@@ -156,13 +156,13 @@ output_dir <- tempdir()
 output_proj <- "25832"
 product <- "VI"
 download_list <- ReLTER::get_site_MODIS(deimsid,
-    product=product,
-    from_date=from_date, to_date=to_date,
-    output_dir=output_dir,
-    output_proj=output_proj,
-    download_range="Seasonal",
-    plot_ts=FALSE,
-    show_map="mean")
+    product = product,
+    from_date = from_date, to_date = to_date,
+    output_dir = output_dir,
+    output_proj = output_proj,
+    download_range = "Seasonal",
+    plot_ts = FALSE,
+    show_map = "mean")
 
 
 # Braila Islands - Romania, 2 year time series of evapotranspiration
@@ -175,13 +175,13 @@ output_dir <- tempdir()
 output_proj <- "3839"
 product <- "ET"
 download_list <- ReLTER::get_site_MODIS(deimsid,
-    product=product,
-    from_date=from_date, to_date=to_date,
-    output_dir=output_dir,
-    output_proj=output_proj,
-    download_range="Full",
-    plot_ts=TRUE,
-    show_map=FALSE)
+    product = product,
+    from_date = from_date, to_date = to_date,
+    output_dir = output_dir,
+    output_proj = output_proj,
+    download_range = "Full",
+    plot_ts = TRUE,
+    show_map = FALSE)
     
     
 # Gran Paradiso National Park - Italy, 1 year time series of LAI and aggregated map
@@ -194,19 +194,21 @@ output_dir <- tempdir()
 output_proj <- "3035"
 product <- "LAI"
 download_list <- ReLTER::get_site_MODIS(deimsid,
-    product=product,
-    from_date=from_date, to_date=to_date,
-    output_dir=output_dir,
-    output_proj=output_proj,
-    download_range="Full",
-    plot_ts=TRUE,
-    show_map="mean")
+    product = product,
+    from_date = from_date, to_date = to_date,
+    output_dir = output_dir,
+    output_proj = output_proj,
+    download_range = "Full",
+    plot_ts = TRUE,
+    show_map = "mean")
 
 }
 
 
 }
 \references{
+\insertRef{MODIStsp}{ReLTER}
+
 \insertRef{sfR}{ReLTER}
 
 \insertRef{terraR}{ReLTER}

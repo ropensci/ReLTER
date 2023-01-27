@@ -38,7 +38,6 @@ WoRMS rest API."><meta property="og:image" content="https://docs.ropensci.org/Re
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="../articles/occurrences_into_site.html">How to retrieve occurrence records by exploiting the {`ReLTER`} get_site_speciesOccurrences() function</a>
-    <a class="dropdown-item" href="../articles/resources_delivered_eu_networks.html">Related resources delivered by EU eLTER sites</a>
     <a class="dropdown-item" href="../articles/rocker_ReLTER.html">Run ReLTER in a Docker container</a>
     <a class="dropdown-item" href="../articles/site_information.html">How to get the info of a (one) LTER Site by knowing the DEIMS.ID</a>
     <a class="dropdown-item" href="../articles/sites_contacts.html">How to get the list of contacts from list of DEIMS ID within csv file</a>
@@ -197,24 +196,40 @@ R package version 1.0.9, <a href="https://CRAN.R-project.org/package=dplyr" clas
 <span class="r-out co"><span class="r-pr">#&gt;</span> most similar to the taxa name that you have provided.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Insert the number of record:</span>
 <span class="r-in"><span class="va">table</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 7 × 19</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      ID species      valid…¹ valid…² valid…³ status synon…⁴ rank  kingdom phylum</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>     1 Asterionell… Asteri… Hassal…  <span style="text-decoration: underline;">148</span>954 accep… <span style="color: #BB0000;">NA</span>      Spec… Chromi… Ochro…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>     2 Chrysococcu… <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>     3 Cryptomonas… <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>     4 Dinobryon d… Dinobr… O.E.Im…  <span style="text-decoration: underline;">157</span>248 accep… <span style="color: #BB0000;">NA</span>      Spec… Chromi… Ochro…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>     5 Mallomonas … Mallom… Ruttne…  <span style="text-decoration: underline;">249</span>722 accep… <span style="color: #BB0000;">NA</span>      Spec… Chromi… Ochro…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span>     6 Melosira va… Melosi… C.Agar…  <span style="text-decoration: underline;">149</span>043 accep… <span style="color: #BB0000;">NA</span>      Spec… Chromi… Ochro…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span>     7 Cryptomonas… <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 9 more variables: class &lt;chr&gt;, order &lt;chr&gt;, family &lt;chr&gt;, genus &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   LSID &lt;chr&gt;, url &lt;chr&gt;, matchType &lt;chr&gt;, nOfWormsResults &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   wormsRecords &lt;list&gt;, and abbreviated variable names ¹​valid_name,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ²​valid_authority, ³​valid_AphiaID, ⁴​synonyms</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 7 × 17</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      ID origina…¹ scien…² scien…³ taxonID taxon…⁴ synon…⁵ taxon…⁶ kingdom phylum</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>     1 Asterion… Asteri… Hassal…  <span style="text-decoration: underline;">148</span>954 accept… <span style="color: #BB0000;">NA</span>      Species Chromi… Ochro…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>     2 Chrysoco… <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>     3 Cryptomo… <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>     4 Dinobryo… Dinobr… O.E.Im…  <span style="text-decoration: underline;">157</span>248 accept… <span style="color: #BB0000;">NA</span>      Species Chromi… Ochro…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>     5 Mallomon… Mallom… Ruttne…  <span style="text-decoration: underline;">249</span>722 accept… <span style="color: #BB0000;">NA</span>      Species Chromi… Ochro…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span>     6 Melosira… Melosi… C.Agar…  <span style="text-decoration: underline;">149</span>043 accept… <span style="color: #BB0000;">NA</span>      Species Chromi… Ochro…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span>     7 Cryptomo… <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 7 more variables: class &lt;chr&gt;, order &lt;chr&gt;, family &lt;chr&gt;, genus &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   scientificNameID &lt;chr&gt;, nOfWormsResults &lt;dbl&gt;, wormsRecords &lt;list&gt;, and</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   abbreviated variable names ¹​originalNameUsage, ²​scientificName,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ³​scientificNameAuthorship, ⁴​taxonomicStatus, ⁵​synonyms, ⁶​taxonRank</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># The annotated URIs of columns label are achieved by:</span></span>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/attributes.html" class="external-link">attributes</a></span><span class="op">(</span><span class="va">table</span><span class="op">)</span><span class="op">$</span><span class="va">uri</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] ""                                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [2] "http://rs.tdwg.org/dwc/terms/originalNameUsage"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "http://rs.tdwg.org/dwc/terms/scientificName"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "http://rs.tdwg.org/dwc/terms/scientificNameAuthorship"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "http://rs.tdwg.org/dwc/terms/taxonID"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] "http://rs.tdwg.org/dwc/terms/taxonomicStatus"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] ""                                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] "http://rs.tdwg.org/dwc/terms/taxonRank"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "http://rs.tdwg.org/dwc/terms/kingdom"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [10] "http://rs.tdwg.org/dwc/terms/phylum"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "http://rs.tdwg.org/dwc/terms/class"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [12] "http://rs.tdwg.org/dwc/terms/order"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "http://rs.tdwg.org/dwc/terms/family"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [14] "http://rs.tdwg.org/dwc/terms/genus"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [15] "http://rs.tdwg.org/dwc/terms/scientificNameID"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [16] ""                                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [17] ""                                                     </span>
 <span class="r-in"></span>
 </code></pre></div>
     </div>

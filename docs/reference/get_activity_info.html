@@ -34,7 +34,6 @@ provided in DEIMS-SDR catalogue."><meta property="og:image" content="https://doc
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="../articles/occurrences_into_site.html">How to retrieve occurrence records by exploiting the {`ReLTER`} get_site_speciesOccurrences() function</a>
-    <a class="dropdown-item" href="../articles/resources_delivered_eu_networks.html">Related resources delivered by EU eLTER sites</a>
     <a class="dropdown-item" href="../articles/rocker_ReLTER.html">Run ReLTER in a Docker container</a>
     <a class="dropdown-item" href="../articles/site_information.html">How to get the info of a (one) LTER Site by knowing the DEIMS.ID</a>
     <a class="dropdown-item" href="../articles/sites_contacts.html">How to get the list of contacts from list of DEIMS ID within csv file</a>
@@ -131,20 +130,13 @@ R package version 2.1.1, <a href="https://CRAN.R-project.org/package=leaflet" cl
 <span class="r-in">  <span class="st">"https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845"</span>,</span>
 <span class="r-in">  show_map <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span class="r-in"><span class="op">)</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Error in curl::curl_fetch_memory(url, handle = handle): Could not resolve host: deims.org</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Request failed [ERROR]. Retrying in 1 seconds...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Error in curl::curl_fetch_memory(url, handle = handle): Could not resolve host: deims.org</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Request failed [ERROR]. Retrying in 1.8 seconds...</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in curl::curl_fetch_memory(url, handle = handle):</span> Could not resolve host: deims.org</span>
 <span class="r-in"><span class="va">activities</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Simple feature collection with 1 feature and 12 fields</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Geometry type: POLYGON</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Dimension:     XY</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Bounding box:  xmin: 17.22656 ymin: 40.46438 xmax: 17.33162 ymax: 40.50408</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Geodetic CRS:  WGS 84</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 13</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   title      abstr…¹ keywo…² uri   type  created changed relat…³ conta…⁴ conta…⁵</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">*</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Study of … <span style="color: #949494;">"</span>The i… &lt;df&gt;    http… acti… 2021-0… 2021-0… &lt;df&gt;    &lt;df&gt;    &lt;df&gt;   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 3 more variables: boundaries &lt;POLYGON [°]&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   observationParameters &lt;lgl&gt;, relatedResources &lt;list&gt;, and abbreviated</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   variable names ¹​abstract, ²​keywords, ³​relatedSite, ⁴​contacts.corresponding,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ⁵​contacts.metadataProvider</span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'activities' not found</span>
 <span class="r-in"></span>
 </code></pre></div>
     </div>
