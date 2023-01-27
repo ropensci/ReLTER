@@ -7,7 +7,7 @@ ReLTER
 <!-- DOI badge -->
 
 [![](https://img.shields.io/badge/doi-10.5281/zenodo.5576813-yellow.svg)](https://doi.org/10.5281/zenodo.5576813)
-[![](https://img.shields.io/badge/devel%20version-2.1.0-blue.svg)](https://github.com/ropensci/ReLTER)
+[![](https://img.shields.io/badge/devel%20version-2.1.1-blue.svg)](https://github.com/ropensci/ReLTER)
 [![](https://img.shields.io/github/languages/code-size/ropensci/ReLTER.svg)](https://github.com/ropensci/ReLTER)
 [![](https://img.shields.io/github/last-commit/ropensci/ReLTER.svg)](https://github.com/ropensci/ReLTER/commits/main)
 [![License:
