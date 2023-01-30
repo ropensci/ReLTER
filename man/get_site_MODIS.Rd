@@ -21,7 +21,8 @@ get_site_MODIS(
 DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here}.}
 
-\item{product}{\code{character}. The requested product. One of: "LST", "VI", "ET", "LAI".
+\item{product}{\code{character}. The requested product.
+One of: "LST", "VI", "ET", "LAI".
 "LST" for Land Surface Temperature, night and day,
 8 day intervals at 1000m resolution
 "VI" for Vegetation Indices, NDVI and EVI
@@ -34,7 +35,8 @@ Default is "VI".}
 
 \item{to_date}{\code{character}: the end date formatted as YYYY.MM.DD}
 
-\item{output_dir}{\code{character}: where to save downloaded rasters (Default is \code{tempdir()})}
+\item{output_dir}{\code{character}: where to save downloaded rasters
+(Default is \code{tempdir()})}
 
 \item{plot_ts}{\code{boolean}: whether to plot the time series,
 Default TRUE.}
@@ -53,7 +55,7 @@ aggregated map from the time series of acquired MODIS products.
 See note below.
 This string must be one of:
 
-\if{html}{\out{<div class="sourceCode">}}\preformatted{FALSE (the default): no map is shown or created. 
+\if{html}{\out{<div class="sourceCode">}}\preformatted{FALSE (the default): no map is shown or created.
 Otherwise: an aggregation function such as "mean", "max", or "min.
 }\if{html}{\out{</div>}}}
 }
@@ -63,7 +65,8 @@ Full path of all downloaded and cropped Geotiff files
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 Acquire either Land Surface Temperature (LST) or Vegetation Index (NDVI)
-both cropped to an eLTER site boundary. Download a timeseries of MODIS images containing the requested
+both cropped to an eLTER site boundary.
+Download a timeseries of MODIS images containing the requested
 product and optionally:
 
 Plot a time series graph of the average values over the site.
@@ -77,13 +80,13 @@ In order to guard your user credentials, please save
 your username and password to environment variables. i.e.
 
 Sys.setenv("earthdata_user"="homer_simpson")
-
 Sys.setenv("earthdata_pass"="bart&lucy")
 }
 \details{
 Certain layers from each of the supported MODIS products are acquired.
 \itemize{
-\item from: "LST_3band_emissivity_8day_1km (M\*D21A2)" two "Land surface temperature" bands are acquired:
+\item from: "LST_3band_emissivity_8day_1km (M\*D21A2)"
+two "Land surface temperature" bands are acquired:
 
 "LST_Day_1KM", "LST_Night_1KM"
 \item from: "Vegetation Indexes_16Days_250m (M\*D13Q1)" two Vegetation Indicies
@@ -100,7 +103,8 @@ are acquired:
 
 NOTES:
 \itemize{
-\item The default \code{output_dir} is tempdir(), so the downloaded MODIS files will be deleted when exiting R.
+\item The default \code{output_dir} is tempdir(),
+so the downloaded MODIS files will be deleted when exiting R.
 Enter a permanent path for \code{output_dir} to save the files.
 \item Use the \code{plot_ts} parameter to create and save line plots of
 a time series of average pixel values over the site.
@@ -144,8 +148,7 @@ download_list <- ReLTER::get_site_MODIS(deimsid,
     plot_ts = TRUE,
     output_proj = output_proj)
 
- 
-# Nationalpark Mols Bjerge - Denmark, 10 year only for July 
+# Nationalpark Mols Bjerge - Denmark, 10 year only for July
 # Show aggregated mean NDVI and EVI, (No time series plot)
 # projected to EPSG:25832 (UTM zone 32, ETRS89)
 # Takes about 3/4 hour to run...
@@ -182,9 +185,10 @@ download_list <- ReLTER::get_site_MODIS(deimsid,
     download_range = "Full",
     plot_ts = TRUE,
     show_map = FALSE)
-    
-    
-# Gran Paradiso National Park - Italy, 1 year time series of LAI and aggregated map
+
+
+# Gran Paradiso National Park - Italy,
+1 year time series of LAI and aggregated map
 # projected to ETRS89 LAEA, EPSG:3035
 # Takes about 3/4 hour to run
 deimsid <- "https://deims.org/e33c983a-19ad-4f40-a6fd-1210ee0b3a4b"
