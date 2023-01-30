@@ -21,23 +21,20 @@ knitr::opts_chunk$set(
 ```
 
 <!-- badges: start -->
-
 <!-- other badges https://github.com/GuangchuangYu/badger -->
-
-<!-- DOI badge -->
-
+[![](https://badges.ropensci.org/485_status.svg)](https://github.com/ropensci/software-review/issues/485)
 `r badger::badge_doi("10.5281/zenodo.5576813", "yellow")`
-`r badger::badge_devel("ropensci/ReLTER", "blue")`
+[![r-universe](https://ropensci.r-universe.dev/badges/ReLTER)](https://ropengov.r-universe.dev/)
+`r badger::badge_license("GPL-3")` 
 `r badger::badge_code_size("ropensci/ReLTER")`
 `r badger::badge_last_commit("ropensci/ReLTER")`
-`r badger::badge_license("GPL-3")` [![Project Status: Active – The
+[![Project Status: Active – The
 project has reached a stable, usable state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![Lifecycle](https://lifecycle.r-lib.org/articles/figures/lifecycle-stable.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 `r badger::badge_github_actions("rossellhayes/ipa")`
-[![r-universe](https://ropensci.r-universe.dev/badges/ReLTER)](https://ropengov.r-universe.dev/)
+`r badger::badge_devel("ropensci/ReLTER", "blue")`
 [![codecov](https://codecov.io/gh/ropensci/ReLTER/branch/dev/graph/badge.svg)](https://codecov.io/gh/ropensci/ReLTER)
-[![](https://badges.ropensci.org/485_status.svg)](https://github.com/ropensci/software-review/issues/485)
 <!-- CRAN badges -->
 <!-- `r badger::badge_cran_release("ropensci/ReLTER", "orange")` -->
 <!-- `r badger::badge_cran_checks("ReLTER")` -->
