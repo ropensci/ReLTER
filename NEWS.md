@@ -1,11 +1,10 @@
 # ReLTER 2.1.2 Release Notes
 
-v2.1.2 was released on xx/xx/2023
+v2.1.2 was released on 30/01/2023
 
-## xxx
+## Changes
 
-* insert new function for enrich and certify a list of species names by
-  comparing with \href{https://www.gbif.org}{GBIF};
+* xxx
 
 ________________________________________________________________________________
 
