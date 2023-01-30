@@ -39,7 +39,8 @@ get_site_boundaries <- function(deimsid, show_map = FALSE) {
     #     "\n----\n"
     #   )
     # } else {
-    geoBoundaries<-geojsonsf::geojson_sf(url.geoserver)
+    geoBoundaries<-geojsonsf::geojson_sf(url.geoserver) %>% dplyr::mutate(title=name, uri=deimsid, .keep="unused")
+    
       if (show_map == TRUE) {
         map <- leaflet::leaflet(geoBoundaries) %>%
           leaflet::addTiles() %>%
