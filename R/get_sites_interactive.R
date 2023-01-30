@@ -11,7 +11,8 @@
 #' @return `tibble` with selected sites or 
 #' a `list` with selected bounding box (with slots `bbx` and `elevation_range`).
 #' @author Paolo Tagliolato
-get_site_interactive <- function(){
+#' @export
+get_sites_interactive <- function(){
   gui = TRUE
   if (gui) {
     #nocov start

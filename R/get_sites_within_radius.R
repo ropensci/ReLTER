@@ -8,6 +8,7 @@
 #' @param elevation_range min and max elevation in meters
 #' @param show_map `logical` print a map with retrieved sites (default is TRUE)
 #' @return list of deims_id, distance from given coordinates
+#' @export
 #' 
 get_sites_within_radius <- function(lat=39.1386, lon=-8.33305, 
                                     distance_in_meters=1000, 
@@ -67,6 +68,12 @@ get_sites_within_radius <- function(lat=39.1386, lon=-8.33305,
   }
 }
 
+#' select sites within a 3d bounding box
+#' @description select sites within a 3d bounding box
+#' @param bbox bounding box
+#' @param elevation_range elevation range
+#' @param show_map show the map
+#' @export
 get_sites_within_3d_bounding_box<-function(bbox, elevation_range=NULL, show_map=TRUE){
   
   if(class(bbox)=="list" && "bbx" %in% names(bbox)){
