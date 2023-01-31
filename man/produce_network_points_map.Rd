@@ -65,8 +65,6 @@ map_LTERGermanSites +
 
 \insertRef{sfR}{ReLTER}
 
-\insertRef{rasterR}{ReLTER}
-
 \insertRef{tmapR}{ReLTER}
 
 \insertRef{dplyrR}{ReLTER}

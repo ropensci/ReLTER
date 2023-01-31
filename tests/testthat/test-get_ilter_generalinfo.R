@@ -84,7 +84,7 @@ test_that("Wrong input (not a character) of 'site_name' generates warning", {
 #     "geoElev.max", "geoElev.unit",
 #     "affiliation.networks", "affiliation.projects"
 #   )))
-# 
+#
 #   expect_type(result$title, "character")
 #   expect_type(result$uri, "character")
 #   expect_type(result$geoCoord, "list")

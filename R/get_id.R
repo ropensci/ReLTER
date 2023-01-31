@@ -40,7 +40,7 @@ get_id <- function(deimsid, resource = "sites", test, ...) {
       "\\.rds$"
     ))
     if (!deimsid %in% valid_ids) {
-      if(Sys.getenv("DEV_MODE")!="" && Sys.getenv("DEV_MODE")=="TRUE"){
+      if (Sys.getenv("DEV_MODE") != "" && Sys.getenv("DEV_MODE") == "TRUE") {
         .save_id(resource, deimsid, development = TRUE)
       }
       stop(paste0(
@@ -113,8 +113,8 @@ get_id <- function(deimsid, resource = "sites", test, ...) {
 #' @noRd
 .save_id <- function(resource, deimsid, development=FALSE, ...) {
   message("This function is intended for development purposes only.")
-  if(!development) warning("Caching a deims entity in the package internal folder")
-  
+  if (!development) warning("Caching a deims entity in the package internal folder")
+
   # code to store locally
   if (resource == "networks") {
     # for Network
@@ -127,40 +127,49 @@ get_id <- function(deimsid, resource = "sites", test, ...) {
   jj <- suppressMessages(httr::content(
           export, "text", encoding = "UTF-8")
         )
-  
-  path <- 
-    if(development) file.path("inst","deimsid", resource) else file.path(
+
+  path <-
+    if (development) file.path("inst", "deimsid", resource) else file.path(
     system.file(file.path("deimsid", resource), package = "ReLTER"))
-  
-  if(Sys.getenv("DEV_MODE")!="" && Sys.getenv("DEV_MODE")=="TRUE" && dir.exists(Sys.getenv("RELTER_DEV_INST_PATH"))){
+
+  if (Sys.getenv("DEV_MODE") != "" && Sys.getenv("DEV_MODE") == "TRUE" && dir.exists(Sys.getenv("RELTER_DEV_INST_PATH"))) {
     path <- file.path(Sys.getenv("RELTER_DEV_INST_PATH"), "deimsid", resource)
-    if(!dir.exists(path)) dir.create(path)
+    if (!dir.exists(path)) dir.create(path)
   }
-  
-  if(!dir.exists(path)) 
+
+  if (!dir.exists(path))
       stop("you are trying to save in a folder that does not exist on your computer: ", path)
-  
+
   saveRDS(jj, file.path(path, paste0(deimsid, ".rds")))
 }
 
-.recreate_deims_cache<-function(development=TRUE){
+.recreate_deims_cache <- function(development = TRUE) {
   message("This function is intended for development purposes only.")
-  if(!development) warning("Recreating all the DEIMS object cache in the package internal folder.")
-  
-  path <- 
-    if(development) file.path("inst","deimsid") else file.path(
+  if (!development) warning("Recreating all the DEIMS object cache in the package internal folder.")
+
+  path <-
+    if (development) file.path("inst", "deimsid") else file.path(
       system.file(file.path("deimsid"), package = "ReLTER"))
-  
-  if(!dir.exists(path)) 
-    stop("you are trying to save in a folder that does not exist on your computer: ", path)
-  
+
+  if (!dir.exists(path))
+    stop(
+      "you are trying to save in a folder that does not exist on your computer: ",
+      path
+    )
+
   allfilenames <- dir(path = path, recursive = T)
-  myfun<-function(resource, deimsid, ...){
-    message("executing .save_id(", resource,",", deimsid,")")
+  myfun <- function(resource, deimsid, ...) {
+    message("executing .save_id(", resource, ",", deimsid, ")")
     .save_id(resource, deimsid, development, ...)
   }
-  objs<-strcapture("(?<resource>.*)/(?<deimsid>.*)\\.rds", allfilenames, proto = data.frame(resource=character(), deimsid=character()), perl=T) %>% 
+  objs <- strcapture(
+    "(?<resource>.*)/(?<deimsid>.*)\\.rds",
+    allfilenames,
+    proto = data.frame(
+      resource = character(),
+      deimsid = character()
+    ), perl = T) %>%
     dplyr::as_tibble()
   objs %>% purrr::pmap(myfun)
-  
+
 }

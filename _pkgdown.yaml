@@ -12,12 +12,12 @@ reference:
   - title: All functions
     contents:
     - get_site_info
-    - get_sensor_observed_properties
     - get_sensor_info
     - get_activity_info
     - get_dataset_info
     - get_site_ODS
     - get_site_speciesOccurrences
+    - get_site_MODIS
     - get_network_envcharacts
     - get_network_observedProperties
     - get_network_research_topics
@@ -31,6 +31,7 @@ reference:
     - get_sos_obs
     - get_sos_procedure_info
     - get_sos_procedurelist
+    - get_sensor_observed_properties
     - get_zenodo_data
     - get_deims_API_version
     - get_deims_base_url

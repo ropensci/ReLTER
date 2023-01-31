@@ -3,7 +3,7 @@
 \name{taxon_id_worms}
 \alias{taxon_id_worms}
 \title{Enrich and certify a list of species names by
-comparing with \href{https://www.marinespecies.org}{Worms}.}
+comparing with \href{https://www.marinespecies.org}{WoRMS}.}
 \usage{
 taxon_id_worms(input, taxaColumn = 1, verbose = TRUE, refine = FALSE)
 }
@@ -30,14 +30,20 @@ synonyms, LSID, url, matchType, nOfWormsRecords, wormsRecords obtained by
 \href{http://www.marinespecies.org/rest/}{Worms rest API}.
 The function also return, if verbose is TRUE, the list of records that don't
 match with Worms name species.
+
+Most of the labels of the columns are the terms of
+\href{https://dwc.tdwg.org/terms/#record-level}{Darwin Core terms}.
+The columns labels are annotate with the link (URI) of the
+\href{https://dwc.tdwg.org/terms/#record-level}{Darwin Core terms}
+as attributes of the \code{tibble}.
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
-This function tibble object with all the columns of input table
+This function provide tibble object with all the columns of input table
 of taxa plus new columns such as valid_name, valid_authority, valid_AphiaID,
 status, synonyms, LSID, url, matchType, nOfWormsRecords, wormsRecords
-obtained from:
-\href{http://www.marinespecies.org/rest/}{Worms rest API}.
+obtained from Word Register of Marine Species
+\href{http://www.marinespecies.org/rest/}{WoRMS rest API}.
 }
 \examples{
 phytoplankton <- tibble::tibble(
@@ -56,6 +62,9 @@ table <- taxon_id_worms(
   refine = TRUE
 )
 table
+
+# The annotated URIs of columns label are achieved by:
+attributes(table)$uri
 
 }
 \references{

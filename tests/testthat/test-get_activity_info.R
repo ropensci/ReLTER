@@ -83,7 +83,7 @@ test_that("The activity don't have geo information", {
   expect_s3_class(result, "tbl_df")
   expect_true(ncol(result) == 13)
   expect_true(all(names(result) == c(
-    "title", "abstract", "keywords", "uri", "type", "created",     
+    "title", "abstract", "keywords", "uri", "type", "created",   
     "changed", "relatedSite", "contacts.corresponding",
     "contacts.metadataProvider",
     "boundaries", "observationParameters", "relatedResources"

@@ -75,7 +75,7 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' table <- data.frame(
+#' insects <- data.frame(
 #'    taxonID = c(1, 2, 3, 4, 5, 6),
 #'    family = c(
 #'      "Alexiidae", "Anthicidae",
@@ -89,16 +89,33 @@
 #'    )
 #' )
 #'
-#' # We perform a query from the `table` in order to associate the taxon
-#' # identifier (LSID) to the list of species present in the thirty column.
-#' taxon_id_pesi(
-#'   table = table,
+#' output <- taxon_id_pesi(
+#'   table = insects,
 #'   taxaColumn = 3
 #' )
+#'
+#' # The annotated URIs of columns label are achieved by:
+#' attributes(output)$uri
+#'
 #' }
 #'
 ### function taxon_id_pesi
 taxon_id_pesi <- function(table, taxaColumn) {
+  n_cols_input <- length(table)
+  colnames(table)[taxaColumn] <- "originalNameUsage"
+  cols_without_uri <- rep("", (n_cols_input - 1))
+  URIs <- c(
+    cols_without_uri,
+    "http://rs.tdwg.org/dwc/terms/originalNameUsage",
+    "http://rs.tdwg.org/dwc/terms/scientificName",
+    "http://rs.tdwg.org/dwc/terms/scientificNameAuthorship",
+    "",
+    "http://rs.tdwg.org/dwc/terms/scientificNameID",
+    "",
+    "http://rs.tdwg.org/dwc/terms/nameAccordingTo",
+    "http://rs.tdwg.org/dwc/terms/taxonomicStatus",
+    "http://rs.tdwg.org/dwc/terms/taxonRank"
+  )
   table[, c(
     "canonicalName",
     "authorship",
@@ -106,13 +123,14 @@ taxon_id_pesi <- function(table, taxaColumn) {
     "LSID",
     "url",
     "accordingTo",
-    "checkStatus"
+    "checkStatus",
+    "rank"
   )] <- NA
   table <- as.list(table)
   i <- 1
   while (i <= length(table[[taxaColumn]])) {
     a <- taxize::eubon_search(
-      query = table[[taxaColumn]][i],
+      query = table[[taxaColumn]][1],
       providers = "pesi"
     )
     if (length(a) == 0) {
@@ -124,6 +142,7 @@ taxon_id_pesi <- function(table, taxaColumn) {
         a$taxon.taxonName.authorship
       table$LSID[[i]] <- a$taxon.identifier
       table$url[[i]] <- a$taxon.url
+      table$rank[[i]] <- a$taxon.taxonName.rank
       if (is.null(a$taxon.accordingTo)) {
         table$accordingTo[[i]] <- NA
       } else {
@@ -158,6 +177,15 @@ taxon_id_pesi <- function(table, taxaColumn) {
       }
     }
   }
-  datasetMerged <- dplyr::bind_rows(table)
+  datasetMerged <- dplyr::bind_rows(table) %>%
+    dplyr::rename(
+      scientificName = canonicalName,
+      scientificNameAuthorship = authorship,
+      scientificNameID = LSID,
+      nameAccordingTo = accordingTo,
+      taxonomicStatus = checkStatus,
+      taxonRank = rank
+    )
+  attr(x = datasetMerged, which = "uri") <- URIs
   return(datasetMerged)
 }

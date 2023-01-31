@@ -76,13 +76,34 @@
     <loc>https://docs.ropensci.org/ReLTER/reference/getDeimsBaseUrl.html</loc>
   </url>
   <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/get_Site_Affiliations.html</loc>
+  </url>
+  <url>
     <loc>https://docs.ropensci.org/ReLTER/reference/get_Site_Boundaries.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/get_Site_Contact.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/get_Site_EnvCharacts.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/get_Site_General.html</loc>
   </url>
   <url>
     <loc>https://docs.ropensci.org/ReLTER/reference/get_Site_Info.html</loc>
   </url>
   <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/get_Site_Infrastructure.html</loc>
+  </url>
+  <url>
     <loc>https://docs.ropensci.org/ReLTER/reference/get_Site_Parameters.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/get_Site_Related_Resources.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/get_Site_Research_Topics.html</loc>
   </url>
   <url>
     <loc>https://docs.ropensci.org/ReLTER/reference/get_activity_info.html</loc>
@@ -145,28 +166,7 @@
     <loc>https://docs.ropensci.org/ReLTER/reference/get_site_ODS.html</loc>
   </url>
   <url>
-    <loc>https://docs.ropensci.org/ReLTER/reference/get_site_affiliations.html</loc>
-  </url>
-  <url>
-    <loc>https://docs.ropensci.org/ReLTER/reference/get_site_contact.html</loc>
-  </url>
-  <url>
-    <loc>https://docs.ropensci.org/ReLTER/reference/get_site_envcharacts.html</loc>
-  </url>
-  <url>
-    <loc>https://docs.ropensci.org/ReLTER/reference/get_site_general.html</loc>
-  </url>
-  <url>
-    <loc>https://docs.ropensci.org/ReLTER/reference/get_site_infrastructure.html</loc>
-  </url>
-  <url>
     <loc>https://docs.ropensci.org/ReLTER/reference/get_site_observedProperties.html</loc>
-  </url>
-  <url>
-    <loc>https://docs.ropensci.org/ReLTER/reference/get_site_related_resources.html</loc>
-  </url>
-  <url>
-    <loc>https://docs.ropensci.org/ReLTER/reference/get_site_research_topics.html</loc>
   </url>
   <url>
     <loc>https://docs.ropensci.org/ReLTER/reference/get_site_speciesOcc.html</loc>
@@ -206,6 +206,12 @@
   </url>
   <url>
     <loc>https://docs.ropensci.org/ReLTER/reference/pipe.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/plot_agg_map.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/plot_timeseries.html</loc>
   </url>
   <url>
     <loc>https://docs.ropensci.org/ReLTER/reference/produce_network_points_map.html</loc>
@@ -260,5 +266,8 @@
   </url>
   <url>
     <loc>https://docs.ropensci.org/ReLTER/reference/taxon_ID_Worms_refine.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/taxon_id_gbif.html</loc>
   </url>
 </urlset>

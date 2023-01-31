@@ -74,6 +74,20 @@ Insert the number of record:")
           input$wormsRecords[[i]][as.integer(my.selection), ]$status
         input$synonyms[[i]] <-
           input$wormsRecords[[i]][as.integer(my.selection), ]$unacceptreason
+        input$synonyms[[i]] <-
+          input$wormsRecords[[i]][as.integer(my.selection), ]$rank
+        input$synonyms[[i]] <-
+          input$wormsRecords[[i]][as.integer(my.selection), ]$kingdom
+        input$synonyms[[i]] <-
+          input$wormsRecords[[i]][as.integer(my.selection), ]$phylum
+        input$synonyms[[i]] <-
+          input$wormsRecords[[i]][as.integer(my.selection), ]$class
+        input$synonyms[[i]] <-
+          input$wormsRecords[[i]][as.integer(my.selection), ]$order
+        input$synonyms[[i]] <-
+          input$wormsRecords[[i]][as.integer(my.selection), ]$family
+        input$synonyms[[i]] <-
+          input$wormsRecords[[i]][as.integer(my.selection), ]$genus
         input$LSID[[i]] <-
           input$wormsRecords[[i]][as.integer(my.selection), ]$lsid
         input$url[[i]] <-

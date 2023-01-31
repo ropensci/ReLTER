@@ -4,7 +4,7 @@
 \name{ReLTER-package}
 \alias{ReLTER}
 \alias{ReLTER-package}
-\title{ReLTER: An Interface for the 'eLTER' Community}
+\title{ReLTER: An Interface for the eLTER Community}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 

@@ -10,7 +10,8 @@ utils::globalVariables(
     "vjust",
     "end",
     "start",
-    "perc"
+    "perc",
+    "prod_opt_list"
   )
 )
 
@@ -37,7 +38,9 @@ set_deims_base_url <- function(url = "https://deims.org/", force = FALSE) {
     if (force) {
       warning("The URL ", url, " is not reachable, I set it because
               force TRUE is specified")
-    } else stop("The URL ", url, " is not reachable")
+    } else  {
+      stop("The URL ", url, " is not reachable")
+    }
   }
   message("Changing DEIMS-SDR base URL to: ", url)
   assign("deimsBaseUrl", url, envir = package_settings)

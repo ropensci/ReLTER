@@ -71,7 +71,7 @@ function takes advantage of taxize's \code{eubon_search} function
 }
 \examples{
 \dontrun{
-table <- data.frame(
+insects <- data.frame(
    taxonID = c(1, 2, 3, 4, 5, 6),
    family = c(
      "Alexiidae", "Anthicidae",
@@ -85,12 +85,14 @@ table <- data.frame(
    )
 )
 
-# We perform a query from the `table` in order to associate the taxon
-# identifier (LSID) to the list of species present in the thirty column.
-taxon_id_pesi(
-  table = table,
+output <- taxon_id_pesi(
+  table = insects,
   taxaColumn = 3
 )
+
+# The annotated URIs of columns label are achieved by:
+attributes(output)$uri
+
 }
 
 }
