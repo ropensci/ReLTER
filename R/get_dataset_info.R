@@ -49,6 +49,10 @@ get_dataset_info <- function(datasetid, show_map = FALSE) {
         dataset <- dplyr::as_tibble(do_Q(qo$query, jj))
       )
     )
+    # harmonization of date and time
+    dataset$dateRange.from <- lubridate::as_date(dataset$dateRange.from)
+    dataset$dateRange.to <- lubridate::as_date(dataset$dateRange.to)
+    dataset$relatedSite[[1]]$changed <- lubridate::as_datetime(dataset$relatedSite[[1]]$changed)
     # fix the observationParameters columns name
     if (!is.na(dataset$observationParameters)) {
       colnames(dataset$observationParameters[[1]]) <- c(

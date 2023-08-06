@@ -113,6 +113,8 @@ get_site_info <- function(deimsid, category = NA) {
             "geoElev.unit" = "geoElev.unit"
           )
         )
+        # set country field as vector
+        envCharacteristics$country <- unlist(envCharacteristics$country)
       } else {
         siteInfo <- siteInfo
       }
