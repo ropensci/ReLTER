@@ -50,7 +50,7 @@ get_network_related_resources <- function(networkDEIMSID) {
         lterNetworkSites$id$suffix
       )
     ),
-    get_site_info,
+    ReLTER::get_site_info,
     category = "RelateRes"
   )
   

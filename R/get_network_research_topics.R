@@ -29,7 +29,7 @@
 #' \dontrun{
 #' listResearchTopics <- get_network_research_topics(
 #'   networkDEIMSID =
-#'   "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
+#'     "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 #' )
 #' listResearchTopics[1:10, ] %>%
 #'   dplyr::rows_insert(

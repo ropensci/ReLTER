@@ -10,6 +10,7 @@
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom utils capture.output
 #' @importFrom dplyr as_tibble
+#' @importFrom units set_units
 #' @keywords internal
 #'
 ### function get_site_observedProperties
@@ -37,6 +38,21 @@ get_site_observedProperties <- function(deimsid) {
         )
       )
     }
+    # set country field as vector
+    observedProperties$country <- unlist(observedProperties$country)
+    # set the UOM of geoElev.avg, geoElev.min, and geoElev.max
+    observedProperties$geoElev.avg <- units::set_units(
+      x = observedProperties$geoElev.avg,
+      value = 'm'
+    )
+    observedProperties$geoElev.min <- units::set_units(
+      x = observedProperties$geoElev.min,
+      value = 'm'
+    )
+    observedProperties$geoElev.max <- units::set_units(
+      x = observedProperties$geoElev.max,
+      value = 'm'
+    )
   } else {
     message("\n----\nThe requested page could not be found.
 Please check again the DEIMS ID\n----\n")

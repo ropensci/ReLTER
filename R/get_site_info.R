@@ -21,6 +21,7 @@
 #' @importFrom utils capture.output
 #' @importFrom leaflet leaflet addTiles addPolygons
 #' @importFrom Rdpack reprompt
+#' @importFrom units set_units
 #' @references
 #'   \insertRef{dplyrR}{ReLTER}
 #'
@@ -42,6 +43,10 @@
 #'   category = c("EnvCharacts", "Affiliations")
 #' )
 #' siteInfo
+#' site <- get_site_info(
+#'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
+#'   category = "RelateRes"
+#' )
 #'
 ### function get_site_info
 get_site_info <- function(deimsid, category = NA) {
@@ -52,6 +57,21 @@ get_site_info <- function(deimsid, category = NA) {
       utils::capture.output(
         siteInfo <- dplyr::as_tibble(do_Q(qo$query, jj))
       )
+    )
+    # set country field as vector
+    siteInfo$country <- unlist(siteInfo$country)
+    # add UOM to geoElev.avg, geoElev.min, and geoElev.max
+    siteInfo$geoElev.avg <- units::set_units(
+      x = siteInfo$geoElev.avg,
+      value = 'm'
+    )
+    siteInfo$geoElev.min <- units::set_units(
+      x = siteInfo$geoElev.min,
+      value = 'm'
+    )
+    siteInfo$geoElev.max <- units::set_units(
+      x = siteInfo$geoElev.max,
+      value = 'm'
     )
     if (any(is.na(category))) {
       siteInfo <- siteInfo
@@ -113,6 +133,8 @@ get_site_info <- function(deimsid, category = NA) {
             "geoElev.unit" = "geoElev.unit"
           )
         )
+        # set country field as vector
+        envCharacteristics$country <- unlist(envCharacteristics$country)
       } else {
         siteInfo <- siteInfo
       }

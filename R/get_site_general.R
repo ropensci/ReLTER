@@ -12,6 +12,8 @@
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom utils capture.output
 #' @importFrom dplyr as_tibble
+#' @importFrom lubridate as_datetime
+#' @importFrom units set_units
 #' @keywords internal
 #'
 ### function get_site_general
@@ -23,6 +25,33 @@ get_site_general <- function(deimsid) {
       utils::capture.output(
         general <- dplyr::as_tibble(do_Q(qo$query, jj))
       )
+    )
+    # set country field as vector
+    general$country <- unlist(general$country)
+    # set the UOM of geoElev.avg, geoElev.min, and geoElev.max
+    general$geoElev.avg <- units::set_units(
+      x = general$geoElev.avg,
+      value = 'm'
+    )
+    general$geoElev.min <- units::set_units(
+      x = general$geoElev.min,
+      value = 'm'
+    )
+    general$geoElev.max <- units::set_units(
+      x = general$geoElev.max,
+      value = 'm'
+    )
+    # harmonization of date and time
+    general$generalInfo.hierarchy.parent[[1]]$changed <- lubridate::as_datetime(
+      general$generalInfo.hierarchy.parent[[1]]$changed
+    )
+    if (!is.na(general$generalInfo.hierarchy.children[[1]])) {
+      general$generalInfo.hierarchy.children[[1]]$changed <- lubridate::as_datetime(
+        general$generalInfo.hierarchy.children[[1]]$changed
+      )
+    }
+    general$generalInfo.relatedSites[[1]]$listOfSites[[1]]$changed <- lubridate::as_datetime(
+      general$generalInfo.relatedSites[[1]]$listOfSites[[1]]$changed
     )
   } else {
     message("\n----\nThe requested page could not be found.

@@ -17,6 +17,7 @@
 #' @importFrom utils capture.output
 #' @importFrom sf st_as_sf st_is_valid
 #' @importFrom leaflet leaflet addTiles addMarkers
+#' @importFrom lubridate as_datetime
 #' @export
 #' @examples
 #' # only table of sensor information
@@ -55,6 +56,9 @@ get_sensor_info <- function(sensorid, show_map = FALSE) {
         sensor <- dplyr::as_tibble(do_Q(qo$query, jj))
       )
     )
+    # harmonization of date and time
+    sensor$created <- lubridate::as_datetime(sensor$created)
+    sensor$changed <- lubridate::as_datetime(sensor$changed)
     if (!is.null(sensor)) {
       if (is.na(sensor$geography)) {
         message("\n---- This sensor don't contains geo info. ----\n") # nocov

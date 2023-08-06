@@ -11,6 +11,7 @@
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom utils capture.output
 #' @importFrom dplyr as_tibble
+#' @importFrom units set_units
 #' @keywords internal
 #'
 ### function get_site_contact
@@ -22,6 +23,21 @@ get_site_contact <- function(deimsid) {
       utils::capture.output(
         contact <- dplyr::as_tibble(do_Q(qo$query, jj))
       )
+    )
+    # set country field as vector
+    contact$country <- unlist(contact$country)
+    # set the UOM of geoElev.avg, geoElev.min, and geoElev.max
+    contact$geoElev.avg <- units::set_units(
+      x = contact$geoElev.avg,
+      value = 'm'
+    )
+    contact$geoElev.min <- units::set_units(
+      x = contact$geoElev.min,
+      value = 'm'
+    )
+    contact$geoElev.max <- units::set_units(
+      x = contact$geoElev.max,
+      value = 'm'
     )
   } else {
     message("\n----\nThe requested page could not be found.

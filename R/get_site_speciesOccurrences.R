@@ -34,6 +34,7 @@
 #' @importFrom dplyr select mutate filter
 #' @importFrom spocc occ2df obis_search occ
 #' @importFrom sf st_as_text st_as_sfc st_bbox st_as_sf
+#' @importFrom lubridate as_datetime as_date
 #' @export
 #' @examples
 #' \dontrun{
@@ -130,6 +131,19 @@ get_site_speciesOccurrences <- function(
   }
   list_DS <- list_DS[!(list_DS %in% list_DS_exclude)]
 
+  # harmonization of date and time GBIF
+  site_occ_spocc$gbif$data[[1]]$lastCrawled <- lubridate::as_datetime(site_occ_spocc$gbif$data[[1]]$lastCrawled)
+  site_occ_spocc$gbif$data[[1]]$lastParsed <- lubridate::as_datetime(site_occ_spocc$gbif$data[[1]]$lastParsed)
+  site_occ_spocc$gbif$data[[1]]$dateIdentified <- lubridate::as_datetime(site_occ_spocc$gbif$data[[1]]$dateIdentified)
+  site_occ_spocc$gbif$data[[1]]$eventDate <- lubridate::as_date(site_occ_spocc$gbif$data[[1]]$eventDate)
+  site_occ_spocc$gbif$data[[1]]$modified <- lubridate::as_datetime(site_occ_spocc$gbif$data[[1]]$modified)
+  # harmonization of date and time iNat
+  site_occ_spocc$inat$data[[1]]$time_observed_at <- lubridate::as_datetime(site_occ_spocc$inat$data[[1]]$time_observed_at)
+  site_occ_spocc$inat$data[[1]]$created_at <- lubridate::as_datetime(site_occ_spocc$inat$data[[1]]$created_at)
+  site_occ_spocc$inat$data[[1]]$updated_at <- lubridate::as_datetime(site_occ_spocc$inat$data[[1]]$updated_at)
+  # harmonization of date and time OBIS
+  site_occ_spocc_obis$results$modified <- lubridate::as_datetime(site_occ_spocc_obis$results$modified)
+  
   # combine results from occ calls to a single data.frame ----
   occ_df <- NULL
   if ("gbif" %in% list_DS) {

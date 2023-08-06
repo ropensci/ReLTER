@@ -13,6 +13,7 @@
 #' @importFrom jsonlite stream_in
 #' @importFrom dplyr as_tibble
 #' @importFrom utils capture.output
+#' @importFrom units set_units
 #' @keywords internal
 #'
 ### function get_site_affiliations
@@ -24,6 +25,21 @@ get_site_affiliations <- function(deimsid) {
       utils::capture.output(
         affiliations <- dplyr::as_tibble(do_Q(qo$query, jj))
       )
+    )
+    # set country field as vector
+    affiliations$country <- unlist(affiliations$country)
+    # set the UOM of geoElev.avg, geoElev.min, and geoElev.max
+    affiliations$geoElev.avg <- units::set_units(
+      x = affiliations$geoElev.avg,
+      value = 'm'
+    )
+    affiliations$geoElev.min <- units::set_units(
+      x = affiliations$geoElev.min,
+      value = 'm'
+    )
+    affiliations$geoElev.max <- units::set_units(
+      x = affiliations$geoElev.max,
+      value = 'm'
     )
   } else {
     message("\n----\nThe requested page could not be found.

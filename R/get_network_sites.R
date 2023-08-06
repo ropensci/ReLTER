@@ -20,6 +20,7 @@
 #' @importFrom leaflet leaflet addTiles addMarkers
 #' @importFrom httr RETRY content
 #' @importFrom Rdpack reprompt
+#' @importFrom lubridate as_datetime
 #' @references
 #'   \insertRef{httrR}{ReLTER}
 #'
@@ -36,14 +37,14 @@
 #' # The sites of LTER-Italy network
 #' listSites <- get_network_sites(
 #'   networkDEIMSID =
-#'   "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
+#'     "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 #' )
 #' listSites
 #'
 #' # The sites of LTER Europe network
 #' euSites <- get_network_sites(
 #'   networkDEIMSID =
-#'   "https://deims.org/networks/4742ffca-65ac-4aae-815f-83738500a1fc"
+#'     "https://deims.org/networks/4742ffca-65ac-4aae-815f-83738500a1fc"
 #' )
 #' euSites
 #' }
@@ -57,7 +58,6 @@ get_network_sites <- function(networkDEIMSID) {
   export <- httr::RETRY("GET", url = url, times = 5)
   lterNetworkSitesCoords <- jsonlite::fromJSON(
     httr::content(export, as = "text", encoding = "UTF-8"))
-
   lterNetworkSitesCoords <- dplyr::as_tibble(lterNetworkSitesCoords)
   if (length(lterNetworkSitesCoords) != 0) {
     # check if some site has MULTIPOINTS instead POINT and convert it
@@ -113,7 +113,10 @@ get_network_sites <- function(networkDEIMSID) {
     lSNPD_valid <- sf::st_is_valid(
       lterSitesNetworkPointDEIMS
     )
-
+    # harmonization of date and time
+    lterSitesNetworkPointDEIMS$changed <- lubridate::as_datetime(
+      lterSitesNetworkPointDEIMS$changed
+    )
     # checking MULTIPOINT geometry
     lSNPD_type <- sf::st_geometry_type(
       x = lterSitesNetworkPointDEIMS,

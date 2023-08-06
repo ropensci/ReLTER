@@ -18,6 +18,7 @@
 #' @importFrom sf st_as_sf st_is_valid
 #' @importFrom leaflet leaflet addTiles addPolygons
 #' @importFrom Rdpack reprompt
+#' @importFrom lubridate as_datetime
 #' @references
 #'   \insertRef{dplyrR}{ReLTER}
 #'
@@ -49,6 +50,11 @@ get_activity_info <- function(activityid, show_map = FALSE) {
         activity <- dplyr::as_tibble(do_Q(qo$query, jj))
       )
     )
+    # harmonization of date and time
+    activity$created <- lubridate::as_datetime(activity$created)
+    activity$changed <- lubridate::as_datetime(activity$changed)
+    activity$relatedSite[[1]]$changed <- lubridate::as_datetime(activity$relatedSite[[1]]$changed)
+    activity$relatedResources[[1]]$changed <- lubridate::as_datetime(activity$relatedResources[[1]]$changed)
     if (!is.null(activity)) {
       if (is.na(activity$boundaries)) {
         message("\n---- This activity don't contains geo info. ----\n") # nocov
