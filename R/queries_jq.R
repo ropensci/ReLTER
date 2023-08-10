@@ -213,7 +213,9 @@ queries_jq <- list(
        geoCoord: .attributes.geographic.coordinates,
        country: .attributes.geographic.country,
        geoElev: .attributes.geographic.elevation,
-       affiliation: .attributes.affiliation
+       # affiliation: .attributes.affiliation,
+       networks: .attributes.affiliation.networks,
+       projects: .attributes.affiliation.projects
       }'
     ),
     site_boundaries = list(
@@ -232,7 +234,12 @@ queries_jq <- list(
        geoCoord: .attributes.geographic.coordinates,
        country: .attributes.geographic.country,
        geoElev: .attributes.geographic.elevation,
-       generalInfo: .attributes.contact
+       # generalInfo: .attributes.contact,
+       siteManager: .attributes.contact.siteManager,
+       operatingOrganisation: .attributes.contact.operatingOrganisation,
+       metadataProvider: .attributes.contact.metadataProvider,
+       fundingAgency: .attributes.contact.fundingAgency,
+       siteUrl: .attributes.contact.siteUrl
       }'
     ),
     site_envCharacts = list(
@@ -243,7 +250,18 @@ queries_jq <- list(
        geoCoord: .attributes.geographic.coordinates,
        country: .attributes.geographic.country,
        geoElev: .attributes.geographic.elevation,
-       envCharacteristics: .attributes.environmentalCharacteristics
+       airTemperature: .attributes.environmentalCharacteristics.airTemperature,
+       precipitation: .attributes.environmentalCharacteristics.precipitation,
+       biogeographicalRegion: .attributes.environmentalCharacteristics.biogeographicalRegion,
+       biome: .attributes.environmentalCharacteristics.biome,
+       ecosystemType: .attributes.environmentalCharacteristics.ecosystemType,
+       eunisHabitat: .attributes.environmentalCharacteristics.eunisHabitat,
+       landforms: .attributes.environmentalCharacteristics.landforms,
+       geoBonBiome: .attributes.environmentalCharacteristics.geoBonBiome,
+       geology: .attributes.environmentalCharacteristics.geology,
+       hydrology: .attributes.environmentalCharacteristics.hydrology,
+       soils: .attributes.environmentalCharacteristics.soils,
+       vegetation: .attributes.environmentalCharacteristics.vegetation
       }'
     ),
     site_general = list(
@@ -254,7 +272,21 @@ queries_jq <- list(
        geoCoord: .attributes.geographic.coordinates,
        country: .attributes.geographic.country,
        geoElev: .attributes.geographic.elevation,
-       generalInfo: .attributes.general
+       abstract: .attributes.general.abstract,
+       status: .attributes.general.status,
+       yearEstablished: .attributes.general.yearEstablished,
+       yearClosed: .attributes.general.yearClosed,
+       # parentSites: .attributes.general.hierarchy.parent,
+       # childrenSites: .attributes.general.hierarchy.children,
+       belongsTo: .attributes.general.relatedSites[] | select(.typeOfRelationship.label == "belongs to") | .listOfSites,
+       # contains: .attributes.general.relatedSites[] | if .typeOfRelationship.label != "contains" then "" elif .typeOfRelationship.label == "contains" then .listOfSites else "" end, #this work with https://jqplay.org/ but here an error return
+       # contains: .attributes.general.relatedSites[*].[?(@.typeOfRelationship.label == "contents")].listOfSites[*], an error return if it is used this query tested here https://sumiya.page/jpath.html
+       # contains: .attributes.general.relatedSites[] | select(.typeOfRelationship.label == "contains") | .listOfSites,
+       # formsAClusterWith: .attributes.general.relatedSites[] | select(.typeOfRelationship.label == "forms a cluster with") | .listOfSites[],
+       siteType: .attributes.general.siteType,
+       protectionLevel: .attributes.general.protectionLevel,
+       landUse: .attributes.general.landUse,
+       images: .attributes.general.images
       }'
     ),
     site_info = list(
@@ -262,9 +294,12 @@ queries_jq <- list(
       query = '{
        title: .title,
        uri: "\\(.id.prefix)\\(.id.suffix)",
+       created: .created,
+       changed: .changed,
        geoCoord: .attributes.geographic.coordinates,
        country: .attributes.geographic.country,
-       geoElev: .attributes.geographic.elevation
+       geoElev: .attributes.geographic.elevation,
+       lterSiteClassification: .projectRelated.lter.lterSiteClassification
       }'
     ),
     site_infrastructure = list(
@@ -275,7 +310,15 @@ queries_jq <- list(
        geoCoord: .attributes.geographic.coordinates,
        country: .attributes.geographic.country,
        geoElev: .attributes.geographic.elevation,
-       generalInfo: .attributes.infrastructure
+       accessibleAllYear: .attributes.infrastructure.accessibleAllYear,
+       accessType: .attributes.infrastructure.accessType,
+       allPartsAccessible: .attributes.infrastructure.allPartsAccessible,
+       maintenanceInterval: .attributes.infrastructure.maintenanceInterval,
+       permanentPowerSupply: .attributes.infrastructure.permanentPowerSupply,
+       operation: .attributes.infrastructure.operation,
+       notes: .attributes.infrastructure.notes,
+       collection: .attributes.infrastructure.collection,
+       data: .attributes.infrastructure.data
       }'
     ),
     site_observedProperties = list(
