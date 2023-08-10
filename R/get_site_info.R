@@ -43,10 +43,12 @@
 #'   category = c("EnvCharacts", "Affiliations")
 #' )
 #' siteInfo
+#' 
 #' site <- get_site_info(
 #'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
 #'   category = "RelateRes"
 #' )
+#' site
 #'
 ### function get_site_info
 get_site_info <- function(deimsid, category = NA) {
@@ -72,6 +74,13 @@ get_site_info <- function(deimsid, category = NA) {
     siteInfo$geoElev.max <- units::set_units(
       x = siteInfo$geoElev.max,
       value = 'm'
+    )
+    # set created and changed fields as data and time
+    siteInfo$created <-  lubridate::as_datetime(
+      siteInfo$created
+    )
+    siteInfo$changed <-  lubridate::as_datetime(
+      siteInfo$changed
     )
     if (any(is.na(category))) {
       siteInfo <- siteInfo
@@ -133,8 +142,6 @@ get_site_info <- function(deimsid, category = NA) {
             "geoElev.unit" = "geoElev.unit"
           )
         )
-        # set country field as vector
-        envCharacteristics$country <- unlist(envCharacteristics$country)
       } else {
         siteInfo <- siteInfo
       }

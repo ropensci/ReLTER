@@ -24,7 +24,7 @@ get_site_infrastructure <- function(deimsid) {
         infrastructure <- dplyr::as_tibble(do_Q(qo$query, jj))
       )
     )
-    colnames(infrastructure$generalInfo.collection[[1]]) <- c(
+    colnames(infrastructure$collection[[1]]) <- c(
       "collectionLabel",
       "collectionURI"
     )

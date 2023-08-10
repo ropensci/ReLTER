@@ -14,6 +14,7 @@
 #' @importFrom dplyr as_tibble
 #' @importFrom utils capture.output
 #' @importFrom units set_units
+#' @importFrom dplyr mutate
 #' @keywords internal
 #'
 ### function get_site_affiliations
@@ -41,6 +42,15 @@ get_site_affiliations <- function(deimsid) {
       x = affiliations$geoElev.max,
       value = 'm'
     )
+    # merge network.id.prefix with network.id.suffix
+    affiliations$networks[[1]] <- affiliations$networks[[1]] %>%
+      dplyr::mutate(
+        name = network$name,
+        uri = paste0(network$id$prefix,
+                     network$id$suffix),
+        .keep = "unused",
+        .after = 1
+      )
   } else {
     message("\n----\nThe requested page could not be found.
 Please check again the DEIMS ID\n----\n")

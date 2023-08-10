@@ -42,17 +42,17 @@ get_site_general <- function(deimsid) {
       value = 'm'
     )
     # harmonization of date and time
-    general$generalInfo.hierarchy.parent[[1]]$changed <- lubridate::as_datetime(
-      general$generalInfo.hierarchy.parent[[1]]$changed
-    )
-    if (!is.na(general$generalInfo.hierarchy.children[[1]])) {
-      general$generalInfo.hierarchy.children[[1]]$changed <- lubridate::as_datetime(
-        general$generalInfo.hierarchy.children[[1]]$changed
-      )
-    }
-    general$generalInfo.relatedSites[[1]]$listOfSites[[1]]$changed <- lubridate::as_datetime(
-      general$generalInfo.relatedSites[[1]]$listOfSites[[1]]$changed
-    )
+    # general$generalInfo.hierarchy.parent[[1]]$changed <- lubridate::as_datetime(
+    #   general$generalInfo.hierarchy.parent[[1]]$changed
+    # )
+    # if (!is.na(general$generalInfo.hierarchy.children[[1]])) {
+    #   general$generalInfo.hierarchy.children[[1]]$changed <- lubridate::as_datetime(
+    #     general$generalInfo.hierarchy.children[[1]]$changed
+    #   )
+    # }
+    # general$generalInfo.relatedSites[[1]]$listOfSites[[1]]$changed <- lubridate::as_datetime(
+    #   general$generalInfo.relatedSites[[1]]$listOfSites[[1]]$changed
+    # )
   } else {
     message("\n----\nThe requested page could not be found.
 Please check again the DEIMS ID\n----\n")

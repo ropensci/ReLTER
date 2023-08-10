@@ -18,3 +18,10 @@ do_Q <- function(q, jj) {
     jsonlite::stream_in(simplifyDataFrame = TRUE, verbose = FALSE) %>%
     dtplyr::lazy_dt()
 }
+
+source("~/Sites/GitHub/ReLTER/R/queries_jq.R")
+qo <- queries_jq[[get_deims_API_version()]]$site_infrastructure
+q=qo$query
+jj=jj
+jj %>%
+  jqr::jq(as.character(q))

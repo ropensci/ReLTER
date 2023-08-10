@@ -42,34 +42,36 @@ get_site_envcharacts <- function(deimsid) {
       value = 'm'
     )
     # set the UOM of airTemperature info
-    envCharacteristics$envCharacteristics.airTemperature.yearlyAverage <- units::set_units(
-      x = envCharacteristics$envCharacteristics.airTemperature.yearlyAverage,
+    envCharacteristics$airTemperature.yearlyAverage <- units::set_units(
+      x = envCharacteristics$airTemperature.yearlyAverage,
       value = '°C'
     )
-    envCharacteristics$envCharacteristics.airTemperature.monthlyAverage <- units::set_units(
-      x = envCharacteristics$envCharacteristics.airTemperature.monthlyAverage,
-      value = '°C'
-    )
-    if (is.null(envCharacteristics$envCharacteristics.airTemperature.referencePeriod)) {
-      envCharacteristics$envCharacteristics.airTemperature.referencePeriod <- NA
-      envCharacteristics$envCharacteristics.airTemperature.referencePeriod <- units::set_units(
-        x = envCharacteristics$envCharacteristics.airTemperature.referencePeriod,
+    # envCharacteristics$airTemperature.monthlyAverage <- units::set_units(
+    #   x = envCharacteristics$airTemperature.monthlyAverage[1],
+    #   value = '°C'
+    # )
+    # TODO find the solution to assign a units to the nested list column
+    if (is.null(envCharacteristics$airTemperature.referencePeriod)) {
+      envCharacteristics$airTemperature.referencePeriod <- NA
+      envCharacteristics$airTemperature.referencePeriod <- units::set_units(
+        x = envCharacteristics$airTemperature.referencePeriod,
         value = '°C'
       )
     }
     # set the UOM of precipitation info
-    envCharacteristics$envCharacteristics.precipitation.yearlyAverage <- units::set_units(
-      x = envCharacteristics$envCharacteristics.precipitation.yearlyAverage,
+    envCharacteristics$precipitation.yearlyAverage <- units::set_units(
+      x = envCharacteristics$precipitation.yearlyAverage,
       value = 'mm'
     )
-    envCharacteristics$envCharacteristics.precipitation.monthlyAverage <- units::set_units(
-      x = envCharacteristics$envCharacteristics.precipitation.monthlyAverage,
-      value = 'mm'
-    )
-    if (!is.null(envCharacteristics$envCharacteristics.precipitation.referencePeriod)) {
-      envCharacteristics$envCharacteristics.precipitation.referencePeriod <- NA
-      envCharacteristics$envCharacteristics.precipitation.referencePeriod <- units::set_units(
-        x = envCharacteristics$envCharacteristics.precipitation.referencePeriod,
+    # envCharacteristics$precipitation.monthlyAverage <- units::set_units(
+    #   x = envCharacteristics$precipitation.monthlyAverage,
+    #   value = 'mm'
+    # )
+    # TODO find the solution to assign a units to the nested list column
+    if (!is.null(envCharacteristics$precipitation.referencePeriod)) {
+      envCharacteristics$precipitation.referencePeriod <- NA
+      envCharacteristics$precipitation.referencePeriod <- units::set_units(
+        x = envCharacteristics$precipitation.referencePeriod,
         value = 'mm'
       )
     }
