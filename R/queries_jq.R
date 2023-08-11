@@ -205,6 +205,63 @@ queries_jq <- list(
        boundariesDescription: .attributes.geographic[].abstract
       }'
     ),
+    location_info_type = list(
+      path = "locations",
+      query = '{
+        geometryType: .geometry.type
+      }'
+    ),
+    location_info_point = list(
+      path = "locations",
+      query = '{
+        title: .properties.title,
+        abstract: .properties.abstract,
+        uri: "\\(.properties.id.prefix)\\(.properties.id.suffix)",
+        locationType: .properties.locationType,
+        type: .type,
+        created: .properties.created,
+        changed: .properties.changed,
+        relatedSite: .properties.relatedSite,
+        geometryType: .geometry.type,
+        coordinates: .geometry.coordinates,
+        elevation: .properties.elevation,
+        images: .properties.images
+      }'
+    ),
+    location_info_polygon = list(
+      path = "locations",
+      query = '{
+        title: .properties.title,
+        abstract: .properties.abstract,
+        uri: "\\(.properties.id.prefix)\\(.properties.id.suffix)",
+        locationType: .properties.locationType,
+        type: .type,
+        created: .properties.created,
+        changed: .properties.changed,
+        relatedSite: .properties.relatedSite,
+        geometryType: .geometry.type,
+        coordinates: .geometry.coordinates[],
+        elevation: .properties.elevation,
+        images: .properties.images
+      }'
+    ),
+    location_info_multiPolygon = list(
+      path = "locations",
+      query = '{
+        title: .properties.title,
+        abstract: .properties.abstract,
+        uri: "\\(.properties.id.prefix)\\(.properties.id.suffix)",
+        locationType: .properties.locationType,
+        type: .type,
+        created: .properties.created,
+        changed: .properties.changed,
+        relatedSite: .properties.relatedSite,
+        geometryType: .geometry.type,
+        coordinates: .geometry.coordinates[][],
+        elevation: .properties.elevation,
+        images: .properties.images
+      }'
+    ),
     site_affiliations = list(
       path = "sites",
       query = '{
@@ -276,9 +333,8 @@ queries_jq <- list(
        status: .attributes.general.status,
        yearEstablished: .attributes.general.yearEstablished,
        yearClosed: .attributes.general.yearClosed,
-       # parentSites: .attributes.general.hierarchy.parent,
-       # childrenSites: .attributes.general.hierarchy.children,
        belongsTo: .attributes.general.relatedSites[] | select(.typeOfRelationship.label == "belongs to") | .listOfSites,
+       # contains: .typeOfRelationship.label.["contains"] | select(. != null) | .listOfSites[],
        # contains: .attributes.general.relatedSites[] | if .typeOfRelationship.label != "contains" then "" elif .typeOfRelationship.label == "contains" then .listOfSites else "" end, #this work with https://jqplay.org/ but here an error return
        # contains: .attributes.general.relatedSites[*].[?(@.typeOfRelationship.label == "contents")].listOfSites[*], an error return if it is used this query tested here https://sumiya.page/jpath.html
        # contains: .attributes.general.relatedSites[] | select(.typeOfRelationship.label == "contains") | .listOfSites,
