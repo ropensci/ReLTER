@@ -55,6 +55,8 @@ get_activity_info <- function(activityid, show_map = FALSE) {
     activity$changed <- lubridate::as_datetime(activity$changed)
     activity$relatedSite[[1]]$changed <- lubridate::as_datetime(activity$relatedSite[[1]]$changed)
     activity$relatedResources[[1]]$changed <- lubridate::as_datetime(activity$relatedResources[[1]]$changed)
+    activity$dateRange.from <- lubridate::as_date(activity$dateRange.from)
+    activity$dateRange.to <- lubridate::as_date(activity$dateRange.to)
     if (!is.null(activity)) {
       if (is.na(activity$boundaries)) {
         message("\n---- This activity don't contains geo info. ----\n") # nocov
