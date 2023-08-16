@@ -2,7 +2,7 @@
 #' @description `r lifecycle::badge("stable")`
 #' This function obtains the information about of an eLTER
 #' dataset (e.g.
-#' \url{https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845})
+#' \url{https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef})
 #' provided in \href{https://deims.org/}{DEIMS-SDR catalogue}.
 #' @param datasetid A `character`. It is the DEIMS ID of dataset make from
 #' DEIMS-SDR website. DEIMS ID information
@@ -19,6 +19,7 @@
 #' @importFrom leaflet leaflet addTiles addPolygons
 #' @importFrom Rdpack reprompt
 #' @importFrom lubridate as_date as_datetime
+#' @importFrom units set_units
 #' @references
 #'   \insertRef{dplyrR}{ReLTER}
 #'
@@ -53,7 +54,11 @@ get_dataset_info <- function(datasetid, show_map = FALSE) {
     # harmonization of date and time
     dataset$dateRange.from <- lubridate::as_date(dataset$dateRange.from)
     dataset$dateRange.to <- lubridate::as_date(dataset$dateRange.to)
-    dataset$relatedSite[[1]]$changed <- lubridate::as_datetime(dataset$relatedSite[[1]]$changed)
+    dataset$created <- lubridate::as_datetime(dataset$created)
+    dataset$changed <- lubridate::as_datetime(dataset$changed)
+    # elevation using units
+    dataset$elevation.min <- units::set_units(as.double(dataset$elevation.min), "m")
+    dataset$elevation.max <- units::set_units(as.double(dataset$elevation.max), "m")
     # fix the observationParameters columns name
     if (!is.na(dataset$observationParameters)) {
       colnames(dataset$observationParameters[[1]]) <- c(

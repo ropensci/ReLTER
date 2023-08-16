@@ -195,6 +195,8 @@ queries_jq <- list(
        keywords: .attributes.general.keywords,
        uri: "\\(.id.prefix)\\(.id.suffix)",
        type: .type,
+       created: .created,
+       changed: .changed,
        dateRange: .attributes.general.dateRange,
        relatedSite: .attributes.general.relatedSite,
        contacts: .attributes.contact,
@@ -202,11 +204,12 @@ queries_jq <- list(
        observationSpecies: .attributes.observations.speciesGroups,
        dataPolicy: .attributes.onlineDistribution.dataPolicyUrl,
        doi: .attributes.onlineDistribution.doi,
-       onlineLocation: .attributes.onlineDistribution.onlineLocation,
+       onlineDistribution: .attributes.onlineDistribution,
        legal: .attributes.legal,
        method: .attributes.method,
        boundaries: .attributes.geographic[].boundaries,
-       boundariesDescription: .attributes.geographic[].abstract
+       boundariesDescription: .attributes.geographic[].abstract,
+       elevation: .attributes.geographic[].elevation
       }'
     ),
     location_info_type = list(
