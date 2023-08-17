@@ -215,7 +215,8 @@ queries_jq <- list(
     location_info_type = list(
       path = "locations",
       query = '{
-        geometryType: .geometry.type
+        geometryType: .geometry.type,
+        locationType: .properties.locationType
       }'
     ),
     location_info_point = list(
@@ -287,7 +288,8 @@ queries_jq <- list(
       query = '{
        title: .title,
        uri: "\\(.id.prefix)\\(.id.suffix)",
-       boundaries: .attributes.geographic.boundaries
+       boundaries: .attributes.geographic.boundaries,
+       relatedLocations: .attributes.geographic.relatedLocations
       }'
     ),
     site_contact = list(

@@ -64,6 +64,14 @@
 #'   show_map = TRUE
 #' )
 #' location
+#' 
+#' # Sampling location point with location type null
+#' location <- get_location_info(
+#'   locationid =
+#'   "https://deims.org/location/c3db70c3-5d2c-4905-801c-7b7a5c4d00d9",
+#'   show_map = TRUE
+#' )
+#' location
 #'
 #' @section The function output:
 #' \figure{get_location_info_fig.png}{Map of "LTER Zöbelboden, Austria, 
@@ -76,21 +84,73 @@ get_location_info <- function(locationid, show_map = FALSE) {
   if (is.na(attr(jj, "status"))) {
     invisible(
       utils::capture.output(
-        location_type <- dplyr::as_tibble(do_Q(qo$query, jj))
+        types <- dplyr::as_tibble(do_Q(qo$query, jj))
       )
     )
-    if (location_type$geometryType == "Point") {
-      qo <- queries_jq[[get_deims_API_version()]]$location_info_point
-      jj <- get_id(locationid, qo$path)
-      location <- dplyr::as_tibble(do_Q(qo$query, jj))
-    } else if (location_type$geometryType == "Polygon") {
-      qo <- queries_jq[[get_deims_API_version()]]$location_info_polygon
-      jj <- get_id(locationid, qo$path)
-      location <- dplyr::as_tibble(do_Q(qo$query, jj))
-    } else if (location_type$geometryType == "MultiPolygon") {
-      qo <- queries_jq[[get_deims_API_version()]]$location_info_multiPolygon
-      jj <- get_id(locationid, qo$path)
-      location <- dplyr::as_tibble(do_Q(qo$query, jj))
+    geometryType <- types$geometryType
+    if (length(types) == 2) {
+      types <- types %>%
+        dplyr::mutate(
+          locationType.label = "not declared",
+          locationType.uri = NA,
+          .before = locationType
+        ) %>%
+        dplyr::select(-c(
+          "locationType"
+        ))
+      locationType <- types$locationType.label
+      if (geometryType == "Point") {
+        qo <- queries_jq[[get_deims_API_version()]]$location_info_point
+        jj <- get_id(locationid, qo$path)
+        location <- dplyr::as_tibble(do_Q(qo$query, jj)) %>%
+          dplyr::mutate(
+            locationType.label = "not declared",
+            locationType.uri = NA,
+            .before = locationType
+          ) %>%
+          dplyr::select(-c(
+            "locationType"
+          ))
+      } else if (geometryType == "Polygon") {
+        qo <- queries_jq[[get_deims_API_version()]]$location_info_polygon
+        jj <- get_id(locationid, qo$path)
+        location <- dplyr::as_tibble(do_Q(qo$query, jj)) %>%
+          dplyr::mutate(
+            locationType.label = "not declared",
+            locationType.uri = NA,
+            .before = locationType
+          ) %>%
+          dplyr::select(-c(
+            "locationType"
+          ))
+      } else if (geometryType == "MultiPolygon") {
+        qo <- queries_jq[[get_deims_API_version()]]$location_info_multiPolygon
+        jj <- get_id(locationid, qo$path)
+        location <- dplyr::as_tibble(do_Q(qo$query, jj)) %>%
+          dplyr::mutate(
+            locationType.label = "not declared",
+            locationType.uri = NA,
+            .before = locationType
+          ) %>%
+          dplyr::select(-c(
+            "locationType"
+          ))
+      }
+    } else {
+      locationType <- types$locationType.label
+      if (geometryType == "Point") {
+        qo <- queries_jq[[get_deims_API_version()]]$location_info_point
+        jj <- get_id(locationid, qo$path)
+        location <- dplyr::as_tibble(do_Q(qo$query, jj))
+      } else if (geometryType == "Polygon") {
+        qo <- queries_jq[[get_deims_API_version()]]$location_info_polygon
+        jj <- get_id(locationid, qo$path)
+        location <- dplyr::as_tibble(do_Q(qo$query, jj))
+      } else if (geometryType == "MultiPolygon") {
+        qo <- queries_jq[[get_deims_API_version()]]$location_info_multiPolygon
+        jj <- get_id(locationid, qo$path)
+        location <- dplyr::as_tibble(do_Q(qo$query, jj))
+      }
     }
     # harmonization of date and time
     location$created <- lubridate::as_datetime(location$created)
@@ -158,7 +218,7 @@ get_location_info <- function(locationid, show_map = FALSE) {
         map <- leaflet::leaflet(geoLocation) %>%
           leaflet::addTiles()
         if (sf::st_geometry_type(geoLocation) == "POINT") {
-          if (geoLocation$locationType.label == "Sampling Location") {
+          if (types$locationType.label == "not declared") {
             map <- map %>%
               leaflet::addCircleMarkers(
                 data = geoLocation,
@@ -167,7 +227,7 @@ get_location_info <- function(locationid, show_map = FALSE) {
                 weight = 3,
                 opacity = 1,
                 fill = TRUE,
-                fillColor = "#336600",
+                fillColor = "red",
                 fillOpacity = 0.6,
                 popup = paste0(
                   "<b>Location title: </b>",
@@ -188,39 +248,69 @@ get_location_info <- function(locationid, show_map = FALSE) {
                   "</a>"
                 )
               )
-          } else if (geoLocation$locationType.label == "Equipment Location") {
-            map <- map %>%
-              leaflet::addCircleMarkers(
-                data = geoLocation,
-                radius = 8,
-                color = "white",
-                weight = 3,
-                opacity = 1,
-                fill = TRUE,
-                fillColor = "#1A1AFF",
-                fillOpacity = 0.6,
-                popup = paste0(
-                  "<b>Location title: </b>",
-                  "<br>",
-                  geoLocation$title,
-                  "<br>",
-                  "<b>Location type: </b>",
-                  "<br>",
-                  geoLocation$locationType.label,
-                  "<br>",
-                  "<b>Related ",
-                  geoLocation$relatedSite.type,
-                  ": </b><br>",
-                  "<a href='",
-                  geoLocation$relatedSite.uri,
-                  "' target='_blank'>",
-                  geoLocation$relatedSite.title,
-                  "</a>"
+          } else if (types$locationType.label == "Sampling Location") {
+              map <- map %>%
+                leaflet::addCircleMarkers(
+                  data = geoLocation,
+                  radius = 8,
+                  color = "white",
+                  weight = 3,
+                  opacity = 1,
+                  fill = TRUE,
+                  fillColor = "#336600",
+                  fillOpacity = 0.6,
+                  popup = paste0(
+                    "<b>Location title: </b>",
+                    "<br>",
+                    geoLocation$title,
+                    "<br>",
+                    "<b>Location type: </b>",
+                    "<br>",
+                    geoLocation$locationType.label,
+                    "<br>",
+                    "<b>Related ",
+                    geoLocation$relatedSite.type,
+                    ": </b><br>",
+                    "<a href='",
+                    geoLocation$relatedSite.uri,
+                    "' target='_blank'>",
+                    geoLocation$relatedSite.title,
+                    "</a>"
+                  )
                 )
-              )
-          }
+            } else if (types$locationType.label == "Equipment Location") {
+              map <- map %>%
+                leaflet::addCircleMarkers(
+                  data = geoLocation,
+                  radius = 8,
+                  color = "white",
+                  weight = 3,
+                  opacity = 1,
+                  fill = TRUE,
+                  fillColor = "#1A1AFF",
+                  fillOpacity = 0.6,
+                  popup = paste0(
+                    "<b>Location title: </b>",
+                    "<br>",
+                    geoLocation$title,
+                    "<br>",
+                    "<b>Location type: </b>",
+                    "<br>",
+                    geoLocation$locationType.label,
+                    "<br>",
+                    "<b>Related ",
+                    geoLocation$relatedSite.type,
+                    ": </b><br>",
+                    "<a href='",
+                    geoLocation$relatedSite.uri,
+                    "' target='_blank'>",
+                    geoLocation$relatedSite.title,
+                    "</a>"
+                  )
+                )
+            }
         } else if (sf::st_geometry_type(geoLocation) == "POLYGON") {
-          if (geoLocation$locationType.label == "Sampling Location") {
+          if (types$locationType.label == "not declared") {
             map <- map %>%
               leaflet::addPolygons(
                 data = geoLocation,
@@ -228,7 +318,7 @@ get_location_info <- function(locationid, show_map = FALSE) {
                 weight = 3,
                 opacity = 1,
                 fill = TRUE,
-                fillColor = "#336600",
+                fillColor = "red",
                 fillOpacity = 0.6,
                 popup = paste0(
                   "<b>Location title: </b>",
@@ -249,38 +339,67 @@ get_location_info <- function(locationid, show_map = FALSE) {
                   "</a>"
                 )
               )
-          } else if (geoLocation$locationType.label == "Equipment Location") {
-            map <- map %>%
-              leaflet::addPolygons(
-                data = geoLocation,
-                color = "white",
-                weight = 3,
-                opacity = 1,
-                fill = TRUE,
-                fillColor = "#1A1AFF",
-                fillOpacity = 0.6,
-                popup = paste0(
-                  "<b>Location title: </b>",
-                  "<br>",
-                  geoLocation$title,
-                  "<br>",
-                  "<b>Location type: </b>",
-                  "<br>",
-                  geoLocation$locationType.label,
-                  "<br>",
-                  "<b>Related ",
-                  geoLocation$relatedSite.type,
-                  ": </b><br>",
-                  "<a href='",
-                  geoLocation$relatedSite.uri,
-                  "' target='_blank'>",
-                  geoLocation$relatedSite.title,
-                  "</a>"
+          } else if (types$locationType.label == "Sampling Location") {
+              map <- map %>%
+                leaflet::addPolygons(
+                  data = geoLocation,
+                  color = "white",
+                  weight = 3,
+                  opacity = 1,
+                  fill = TRUE,
+                  fillColor = "#336600",
+                  fillOpacity = 0.6,
+                  popup = paste0(
+                    "<b>Location title: </b>",
+                    "<br>",
+                    geoLocation$title,
+                    "<br>",
+                    "<b>Location type: </b>",
+                    "<br>",
+                    geoLocation$locationType.label,
+                    "<br>",
+                    "<b>Related ",
+                    geoLocation$relatedSite.type,
+                    ": </b><br>",
+                    "<a href='",
+                    geoLocation$relatedSite.uri,
+                    "' target='_blank'>",
+                    geoLocation$relatedSite.title,
+                    "</a>"
+                  )
                 )
-              )
-          }
+            } else if (types$locationType.label == "Equipment Location") {
+              map <- map %>%
+                leaflet::addPolygons(
+                  data = geoLocation,
+                  color = "white",
+                  weight = 3,
+                  opacity = 1,
+                  fill = TRUE,
+                  fillColor = "#1A1AFF",
+                  fillOpacity = 0.6,
+                  popup = paste0(
+                    "<b>Location title: </b>",
+                    "<br>",
+                    geoLocation$title,
+                    "<br>",
+                    "<b>Location type: </b>",
+                    "<br>",
+                    geoLocation$locationType.label,
+                    "<br>",
+                    "<b>Related ",
+                    geoLocation$relatedSite.type,
+                    ": </b><br>",
+                    "<a href='",
+                    geoLocation$relatedSite.uri,
+                    "' target='_blank'>",
+                    geoLocation$relatedSite.title,
+                    "</a>"
+                  )
+                )
+            }
         } else if (sf::st_geometry_type(geoLocation) == "MULTIPOLYGON") {
-          if (geoLocation$locationType.label == "Sampling Location") {
+          if (types$locationType.label == "not declared") {
             map <- map %>%
               leaflet::addPolygons(
                 data = geoLocation,
@@ -288,7 +407,7 @@ get_location_info <- function(locationid, show_map = FALSE) {
                 weight = 3,
                 opacity = 1,
                 fill = TRUE,
-                fillColor = "#336600",
+                fillColor = "red",
                 fillOpacity = 0.6,
                 popup = paste0(
                   "<b>Location title: </b>",
@@ -309,36 +428,65 @@ get_location_info <- function(locationid, show_map = FALSE) {
                   "</a>"
                 )
               )
-          } else if (geoLocation$locationType.label == "Equipment Location") {
-            map <- map %>%
-              leaflet::addPolygons(
-                data = geoLocation,
-                color = "white",
-                weight = 3,
-                opacity = 1,
-                fill = TRUE,
-                fillColor = "#1A1AFF",
-                fillOpacity = 0.6,
-                popup = paste0(
-                  "<b>Location title: </b>",
-                  "<br>",
-                  geoLocation$title,
-                  "<br>",
-                  "<b>Location type: </b>",
-                  "<br>",
-                  geoLocation$locationType.label,
-                  "<br>",
-                  "<b>Related ",
-                  geoLocation$relatedSite.type,
-                  ": </b><br>",
-                  "<a href='",
-                  geoLocation$relatedSite.uri,
-                  "' target='_blank'>",
-                  geoLocation$relatedSite.title,
-                  "</a>"
+          } else if (types$locationType.label == "Sampling Location") {
+              map <- map %>%
+                leaflet::addPolygons(
+                  data = geoLocation,
+                  color = "white",
+                  weight = 3,
+                  opacity = 1,
+                  fill = TRUE,
+                  fillColor = "#336600",
+                  fillOpacity = 0.6,
+                  popup = paste0(
+                    "<b>Location title: </b>",
+                    "<br>",
+                    geoLocation$title,
+                    "<br>",
+                    "<b>Location type: </b>",
+                    "<br>",
+                    geoLocation$locationType.label,
+                    "<br>",
+                    "<b>Related ",
+                    geoLocation$relatedSite.type,
+                    ": </b><br>",
+                    "<a href='",
+                    geoLocation$relatedSite.uri,
+                    "' target='_blank'>",
+                    geoLocation$relatedSite.title,
+                    "</a>"
+                  )
                 )
-              )
-          }
+            } else if (types$locationType.label == "Equipment Location") {
+              map <- map %>%
+                leaflet::addPolygons(
+                  data = geoLocation,
+                  color = "white",
+                  weight = 3,
+                  opacity = 1,
+                  fill = TRUE,
+                  fillColor = "#1A1AFF",
+                  fillOpacity = 0.6,
+                  popup = paste0(
+                    "<b>Location title: </b>",
+                    "<br>",
+                    geoLocation$title,
+                    "<br>",
+                    "<b>Location type: </b>",
+                    "<br>",
+                    geoLocation$locationType.label,
+                    "<br>",
+                    "<b>Related ",
+                    geoLocation$relatedSite.type,
+                    ": </b><br>",
+                    "<a href='",
+                    geoLocation$relatedSite.uri,
+                    "' target='_blank'>",
+                    geoLocation$relatedSite.title,
+                    "</a>"
+                  )
+                )
+            }
         }
       }
     } else {

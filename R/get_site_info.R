@@ -251,13 +251,22 @@ get_site_info <- function(deimsid, category = NA) {
       # }
       # add 'Boundaries' info
       if (any(grepl("Boundaries", category))) {
-        siteBound <- get_site_boundaries(deimsid = deimsid)
+        siteBound <- get_site_boundaries(
+          deimsid = deimsid
+        )
         if (!is.null(siteBound)) {
           siteInfo <- dplyr::left_join(
             siteBound,
             siteInfo,
-            by = c("title" = "title", "uri" = "uri")
-          )
+            by = c("uri" = "uri")
+          ) %>%
+            dplyr::mutate(
+              title = title.y,
+              .before = uri
+            ) %>%
+            dplyr::select(
+              -c("title.x", "title.y")
+            )
         } else {
           siteInfo <- siteInfo
         }
