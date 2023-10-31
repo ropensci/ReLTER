@@ -28,13 +28,13 @@ get_zenodo_data <- function(doi, rdata_exist = TRUE) {
   # read record by DOI ----
   if (grepl("zenodo" , doi)) {
     rec <- zenodo$getRecordByDOI(doi)
-    record_type <- rec$metadata$upload_type
+    record_type <- rec$metadata$resource_type$type
     if (record_type != "dataset") {
       results <- NULL
       message("\n----\nThe record refered to the DOI is not a dataset.
               Please provide a DOI of Zenodo dataset.\n----\n")
     } else {
-      record_id <- stringr::str_replace_all(rec$record_id, "[./]", "_")
+      record_id <- stringr::str_replace_all(rec$id, "[./]", "_")
       files <- rec$listFiles(pretty = TRUE)
       # create a folder where to download the files ----
       dir_name <- paste0("download_files_of_", record_id)
@@ -43,8 +43,8 @@ get_zenodo_data <- function(doi, rdata_exist = TRUE) {
       }
       rec$downloadFiles(path = dir_name)
       # download bib reference of record ----
-      bib_name <- paste0(dir_name, "/", record_id)
-      rec$exportAsBibTeX(filename = bib_name)
+      # bib_name <- paste0(dir_name, "/", record_id)
+      # rec$exportAs("BibTeX", filename = bib_name)
       # return dataset from RData downloaded ----
       row_rdataPath <- which(grepl("RData", files$filename))
       if (isTRUE(rdata_exist) || length(row_rdataPath) > 0) {
