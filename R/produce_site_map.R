@@ -54,8 +54,6 @@
 #'
 #'   \insertRef{rasterR}{ReLTER}
 #'
-#'   \insertRef{rgeosR}{ReLTER}
-#'
 #'   \insertRef{rosmR}{ReLTER}
 #'
 #'   \insertRef{tmapR}{ReLTER}
