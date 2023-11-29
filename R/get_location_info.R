@@ -34,41 +34,41 @@
 #' @export
 #' @examples
 #' # Sampling location multipolygon
-#' location <- get_location_info(
+#' location <- ReLTER::get_location_info(
 #'   locationid =
-#'   "https://deims.org/location/85dc6019-9654-4ba0-8338-08c4ffe8fe47",
+#'     "https://deims.org/location/85dc6019-9654-4ba0-8338-08c4ffe8fe47",
 #'   show_map = TRUE
 #' )
 #' location
 #' 
 #' # Sampling location polygon
-#' location <- get_location_info(
+#' location <- ReLTER::get_location_info(
 #'   locationid =
-#'   "https://deims.org/location/12b38f3f-7e72-425a-80c7-7cad35ce4c7b",
+#'     "https://deims.org/location/12b38f3f-7e72-425a-80c7-7cad35ce4c7b",
 #'   show_map = TRUE
 #' )
 #' location
 #' 
 #' # Equipment location polygon
-#' location <- get_location_info(
+#' location <- ReLTER::get_location_info(
 #'   locationid =
-#'   "https://deims.org/locations/04de8301-b481-4ed2-89ff-2f48562e2514",
+#'     "https://deims.org/locations/04de8301-b481-4ed2-89ff-2f48562e2514",
 #'   show_map = TRUE
 #' )
 #' location
 #' 
 #' # Sampling location point
-#' location <- get_location_info(
+#' location <- ReLTER::get_location_info(
 #'   locationid =
-#'   "https://deims.org/location/ec1a58f7-1aee-4e3f-bec3-4eb1516ee905",
+#'     "https://deims.org/location/ec1a58f7-1aee-4e3f-bec3-4eb1516ee905",
 #'   show_map = TRUE
 #' )
 #' location
 #' 
 #' # Sampling location point with location type null
-#' location <- get_location_info(
+#' location <- ReLTER::get_location_info(
 #'   locationid =
-#'   "https://deims.org/location/c3db70c3-5d2c-4905-801c-7b7a5c4d00d9",
+#'     "https://deims.org/location/c3db70c3-5d2c-4905-801c-7b7a5c4d00d9",
 #'   show_map = TRUE
 #' )
 #' location
