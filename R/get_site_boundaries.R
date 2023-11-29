@@ -49,7 +49,7 @@ get_site_boundaries <- function(
   ) {
     url.geoserver <- paste0("https://deims.org/geoserver/deims/ows?",
       "service=WFS&version=2.0.0&request=GetFeature&TypeName=deims:deims_sites_boundaries&",
-      "outputFormat=application%2Fjson&CQL_FILTER=deimsid=%27", URLencode(deimsid), "%27"
+      "outputFormat=application%2Fjson&CQL_FILTER=deimsid='", URLencode(deimsid), "'"
     )
     if (with_locations == FALSE) {
       geoBoundaries <- geojsonsf::geojson_sf(url.geoserver)
@@ -89,10 +89,10 @@ get_site_boundaries <- function(
           crs = 4326
         )
       )
-      boundaries$site <- get_site_info(
-        deimsid = deimsid,
-        category = "Boundaries"
-      )
+      geoBoundaries <- geojsonsf::geojson_sf(url.geoserver)
+      boundaries$site <- geoBoundaries %>%
+        dplyr::mutate(title = name, uri = deimsid, .before = geometry) %>%
+        dplyr::select(-c("name", "deimsid", "field_elevation_avg_value"))
       qo <- queries_jq_deims[[get_deims_API_version()]]$site_boundaries 
       jj <- get_id(deimsid, qo$path)
       if (is.na(attr(jj, "status"))) {
