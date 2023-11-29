@@ -438,19 +438,6 @@ references:
   year: '2023'
   url: https://CRAN.R-project.org/package=readr
 - type: software
-  title: rgeos
-  abstract: 'rgeos: Interface to Geometry Engine - Open Source (''GEOS'')'
-  notes: Imports
-  authors:
-  - family-names: Bivand
-    given-names: Roger
-    email: Roger.Bivand@nhh.no
-    orcid: https://orcid.org/0000-0003-2392-6140
-  - family-names: Rundel
-    given-names: Colin
-  year: '2023'
-  url: https://CRAN.R-project.org/package=rgeos
-- type: software
   title: rnaturalearth
   abstract: 'rnaturalearth: World Map Data from Natural Earth'
   notes: Imports
