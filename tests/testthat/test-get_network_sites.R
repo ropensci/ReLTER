@@ -31,7 +31,7 @@ test_that("Output of network sites information function constructs 'sf' and
     "title", "changed", "uri", "coordinates"
   )))
   expect_type(result$title, "character")
-  expect_type(result$changed, "character")
+  expect_type(result$changed, "double")
   expect_type(result$uri, "character")
   expect_type(result$coordinates, "list")
 })

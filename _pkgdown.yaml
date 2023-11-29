@@ -15,9 +15,14 @@ reference:
     - get_sensor_info
     - get_activity_info
     - get_dataset_info
+    - get_location_info
     - get_site_ODS
     - get_site_speciesOccurrences
     - get_site_MODIS
+    - get_site_boundaries
+    - get_sites_interactive
+    - get_sites_within_3d_bounding_box
+    - get_sites_within_radius
     - get_network_envcharacts
     - get_network_observedProperties
     - get_network_research_topics
@@ -30,7 +35,7 @@ reference:
     - get_sos_foi
     - get_sos_obs
     - get_sos_procedure_info
-    - get_sos_procedurelist
+    # - get_sos_procedurelist
     - get_sensor_observed_properties
     - get_zenodo_data
     - get_deims_API_version
@@ -44,6 +49,8 @@ reference:
     - produce_site_observedProperties_waffle
     - produce_zenodo_record
     - produce_zenodo_record_from_elter_reporting
+    - plot_agg_map
+    - plot_timeseries
     - elter_write_rdata
     - taxon_id_pesi
     - taxon_id_worms

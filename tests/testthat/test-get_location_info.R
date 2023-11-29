@@ -28,12 +28,15 @@ test_that("Output of location information function constructs 'sf' and
   )
   expect_s3_class(result, "sf")
   expect_s3_class(result, "tbl_df")
-  expect_true(ncol(result) == 18)
+  expect_true(ncol(result) == 17)
   expect_true(all(names(result) == c(
-    "title", "abstract", "keywords", "uri", "type", "created",
-    "changed", "relatedSite",
-    "contacts.corresponding", "contacts.metadataProvider", "boundaries",
-    "observationParameters", "relatedResources"
+    "title", "abstract", "uri",
+    "locationType.label", "locationType.uri",
+    "type", "created",
+    "changed", "relatedSite.type", "relatedSite.title",
+    "relatedSite.uri", "relatedSite.changed",
+    "elevation.min", "elevation.max",
+    "elevation.unit", "images", "boundaries"
   )))
   expect_type(result$title, "character")
   expect_type(result$boundaries, "list")
@@ -72,22 +75,4 @@ test_that("Output of get location information function constructs 'sf' with
   )
   result_valid <- sf::st_is_valid(result)
   expect_true(any(result_valid))
-})
-
-test_that("The location don't have geo information", {
-  result <- ReLTER::get_location_info(
-    locationid =
-      "https://deims.org/location/22983172-c53c-4ae9-9623-66f92cb222e3",
-    show_map = FALSE
-  )
-  expect_s3_class(result, "tbl_df")
-  expect_true(ncol(result) == 13)
-  expect_true(all(names(result) == c(
-    "title", "abstract", "keywords", "uri", "type", "created",   
-    "changed", "relatedSite", "contacts.corresponding",
-    "contacts.metadataProvider",
-    "boundaries", "observationParameters", "relatedResources"
-  )))
-  expect_type(result$title, "character")
-  expect_equal(result$boundaries, NA)
 })

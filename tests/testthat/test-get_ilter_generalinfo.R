@@ -8,7 +8,10 @@ test_that("Expect error if internet connection is down", {
   Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
   testthat::expect_error(
     httptest::without_internet(
-      result <- ReLTER::get_ilter_generalinfo("Italy", "Venezia")
+      result <- ReLTER::get_ilter_generalinfo(
+        country_name = "Italy",
+        site_name = "Venezia"
+      )
     ),
     "GET"
   )
@@ -29,23 +32,25 @@ test_that("Output of ILTER general info function constructs 'tibble' as
     site_name = NA
   )
   expect_s3_class(result, "tbl_df")
-  expect_true(ncol(result) == 10)
+  expect_true(ncol(result) == 13)
   expect_true(all(names(result) == c(
-    "title", "uri", "geoCoord", "country",
+    "title", "uri", "created", "changed",
+    "geoCoord", "country",
     "geoElev.avg", "geoElev.min",
     "geoElev.max", "geoElev.unit",
-    "affiliation.networks", "affiliation.projects"
+    "lterSiteClassification",
+    "networks", "projects"
   )))
 
   expect_type(result$title, "character")
   expect_type(result$uri, "character")
   expect_type(result$geoCoord, "list")
-  expect_type(result$country, "list")
-  expect_type(result$geoElev.avg, "integer")
-  expect_type(result$geoElev.min, "integer")
-  expect_type(result$geoElev.max, "integer")
+  expect_type(result$country, "character")
+  expect_type(result$geoElev.avg, "double")
+  expect_type(result$geoElev.min, "double")
+  expect_type(result$geoElev.max, "double")
   expect_type(result$geoElev.unit, "character")
-  expect_type(result$affiliation.networks, "list")
+  expect_type(result$networks, "list")
   #expect_type(result$affiliation.projects, "list") # must be checked when value is NA
 })
 

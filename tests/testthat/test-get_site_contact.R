@@ -26,16 +26,16 @@ test_that("Output of site contact function constructs 'tibble' as expected", {
   expect_true(all(names(result) == c(
     "title", "uri", "geoCoord", "country",
     "geoElev.avg", "geoElev.min",
-    "geoElev.max", "geoElev.unit", "generalInfo.siteManager",
-    "generalInfo.operatingOrganisation",
-    "generalInfo.metadataProvider", "generalInfo.fundingAgency",
-    "generalInfo.siteUrl"
+    "geoElev.max", "geoElev.unit", "siteManager",
+    "operatingOrganisation",
+    "metadataProvider", "fundingAgency",
+    "siteUrl"
   )))
 
   expect_type(result$title, "character")
   expect_type(result$uri, "character")
   expect_type(result$geoCoord, "character")
-  expect_type(result$country, "list")
+  expect_type(result$country, "character")
 })
 
 test_that("Wrong input (but URL) constructs a tibble with empty data", {

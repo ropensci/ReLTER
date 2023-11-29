@@ -25,17 +25,21 @@ test_that("Output of site observed properties function constructs ‘tibble’ a
     category = "observedProperties"
   )
   expect_s3_class(result, "tbl_df")
-  expect_true(ncol(result) == 9)
+  expect_true(ncol(result) == 12)
   expect_true(all(names(result) == c(
-    "title", "uri", "geoCoord", "country",
-    "geoElev.avg", "geoElev.min", "geoElev.max", "geoElev.unit",
+    "title", "uri",
+    "created", "changed",
+    "geoCoord", "country",
+    "geoElev.avg", "geoElev.min",
+    "geoElev.max", "geoElev.unit",
+    "lterSiteClassification",
     "observedProperties"
   )))
 
   expect_type(result$title, "character")
   expect_type(result$uri, "character")
   expect_type(result$geoCoord, "character")
-  expect_type(result$country, "list")
+  expect_type(result$country, "character")
 })
 
 test_that("Wrong input (but URL) constructs a tibble with empty data", {

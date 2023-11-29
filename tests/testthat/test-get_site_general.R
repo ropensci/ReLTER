@@ -23,22 +23,21 @@ test_that("Output of site general info function constructs 'tibble' as
     deimsid = TESTURLSite
   )
   expect_s3_class(result, "tbl_df")
-  expect_true(ncol(result) == 21)
+  expect_true(ncol(result) == 18)
   expect_true(all(names(result) == c(
     "title", "uri", "geoCoord", "country", "geoElev.avg",
-    "geoElev.min", "geoElev.max", "geoElev.unit", "generalInfo.abstract",
-    "generalInfo.status.label", "generalInfo.status.uri",
-    "generalInfo.yearEstablished", "generalInfo.yearClosed",
-    "generalInfo.hierarchy.parent", "generalInfo.hierarchy.children",
-    "generalInfo.siteName", "generalInfo.shortName", "generalInfo.siteType",
-    "generalInfo.protectionLevel", "generalInfo.landUse",
-    "generalInfo.images"
+    "geoElev.min", "geoElev.max", "geoElev.unit", "abstract",
+    "status.label", "status.uri",
+    "yearEstablished", "yearClosed",
+    "belongsTo", "siteType",
+    "protectionLevel", "landUse",
+    "images"
   )))
 
   expect_type(result$title, "character")
   expect_type(result$uri, "character")
   expect_type(result$geoCoord, "character")
-  expect_type(result$country, "list")
+  expect_type(result$country, "character")
 })
 
 test_that("Wrong input (but URL) constructs a tibble with empty data", {

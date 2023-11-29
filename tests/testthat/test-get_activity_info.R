@@ -28,11 +28,13 @@ test_that("Output of activities information function constructs 'sf' and
   )
   expect_s3_class(result, "sf")
   expect_s3_class(result, "tbl_df")
-  expect_true(ncol(result) == 13)
+  expect_true(ncol(result) == 20)
   expect_true(all(names(result) == c(
-    "title", "abstract", "keywords", "uri", "type", "created",
-    "changed", "relatedSite",
+    "title", "abstract", "keywords", "uri", "type",
+    "created", "changed", "relatedSite", "dateRange.from", "dateRange.to",
     "contacts.corresponding", "contacts.metadataProvider", "boundaries",
+    "availability.digitally", "availability.forEcopotential",
+    "availability.openData", "availability.notes", "availability.source",
     "observationParameters", "relatedResources"
   )))
   expect_type(result$title, "character")
@@ -75,18 +77,20 @@ test_that("Output of get activities information function constructs 'sf' with
 })
 
 test_that("The activity don't have geo information", {
-  result <- ReLTER::get_activity_info(
+  result <- get_activity_info(
     activityid =
       "https://deims.org/activity/22983172-c53c-4ae9-9623-66f92cb222e3",
     show_map = FALSE
   )
   expect_s3_class(result, "tbl_df")
-  expect_true(ncol(result) == 13)
+  expect_true(ncol(result) == 20)
   expect_true(all(names(result) == c(
-    "title", "abstract", "keywords", "uri", "type", "created",   
-    "changed", "relatedSite", "contacts.corresponding",
-    "contacts.metadataProvider",
-    "boundaries", "observationParameters", "relatedResources"
+    "title", "abstract", "keywords", "uri", "type",
+    "created", "changed", "relatedSite", "dateRange.from", "dateRange.to",
+    "contacts.corresponding", "contacts.metadataProvider", "boundaries",
+    "availability.digitally", "availability.forEcopotential",
+    "availability.openData", "availability.notes", "availability.source",
+    "observationParameters", "relatedResources"
   )))
   expect_type(result$title, "character")
   expect_equal(result$boundaries, NA)

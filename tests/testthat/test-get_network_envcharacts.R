@@ -26,38 +26,26 @@ test_that("Output of network environmental characteristics function constructs
     networkDEIMSID = TESTURLNetwork
   )
   expect_s3_class(result, "tbl_df")
-  expect_true(ncol(result) == 30)
+  expect_true(ncol(result) == 33)
   expect_true(all(names(result) == c(
-    "title", "uri", "geoCoord", "country",
-    "geoElev.avg", "geoElev.min", "geoElev.max", "geoElev.unit",
-    "envCharacteristics.airTemperature.yearlyAverage",
-    "envCharacteristics.airTemperature.monthlyAverage",
-    "envCharacteristics.airTemperature.unit",
-    "envCharacteristics.airTemperature.referencePeriod",
-    "envCharacteristics.precipitation.yearlyAverage",
-    "envCharacteristics.precipitation.monthlyAverage",
-    "envCharacteristics.precipitation.unit",
-    "envCharacteristics.precipitation.referencePeriod",
-    "envCharacteristics.biogeographicalRegion",
-    "envCharacteristics.biome",
-    "envCharacteristics.ecosystemType",
-    "envCharacteristics.eunisHabitat",
-    "envCharacteristics.landforms",
-    "envCharacteristics.geoBonBiome",
-    "envCharacteristics.geology",
-    "envCharacteristics.hydrology",
-    "envCharacteristics.soils",
-    "envCharacteristics.vegetation",
-    "envCharacteristics.airTemperature.referencePeriod.label",
-    "envCharacteristics.airTemperature.referencePeriod.uri",
-    "envCharacteristics.precipitation.referencePeriod.label",
-    "envCharacteristics.precipitation.referencePeriod.uri"
+    "title", "uri", "created", "changed",
+    "geoCoord", "country", "geoElev.avg", "geoElev.min",
+    "geoElev.max", "geoElev.unit", "lterSiteClassification", "airTemperature.yearlyAverage",
+    "airTemperature.monthlyAverage", "airTemperature.unit", "airTemperature.referencePeriod",
+    "precipitation.yearlyAverage",
+    "precipitation.monthlyAverage", "precipitation.unit", "precipitation.referencePeriod",
+    "biogeographicalRegion",
+    "biome", "ecosystemType", "eunisHabitat", "landforms",
+    "geoBonBiome", "geology", "hydrology", "soils",
+    "vegetation", "airTemperature.referencePeriod.label",
+    "airTemperature.referencePeriod.uri", "precipitation.referencePeriod.label",
+    "precipitation.referencePeriod.uri"
   )))
 
   expect_type(result$title, "character")
   expect_type(result$uri, "character")
   expect_type(result$geoCoord, "character")
-  expect_type(result$country, "list")
+  expect_type(result$country, "character")
 })
 
 test_that("Wrong input (but URL) constructs a NULL object", {

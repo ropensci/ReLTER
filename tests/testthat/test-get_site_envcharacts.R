@@ -25,32 +25,22 @@ test_that("Output of site environmental characteristics function constructs
   expect_s3_class(result, "tbl_df")
   expect_true(ncol(result) == 26)
   expect_true(all(names(result) == c(
-    "title", "uri", "geoCoord", "country",
-    "geoElev.avg", "geoElev.min", "geoElev.max", "geoElev.unit",
-    "envCharacteristics.airTemperature.yearlyAverage",
-    "envCharacteristics.airTemperature.monthlyAverage",
-    "envCharacteristics.airTemperature.unit",
-    "envCharacteristics.airTemperature.referencePeriod",
-    "envCharacteristics.precipitation.yearlyAverage",
-    "envCharacteristics.precipitation.monthlyAverage",
-    "envCharacteristics.precipitation.unit",
-    "envCharacteristics.precipitation.referencePeriod",
-    "envCharacteristics.biogeographicalRegion",
-    "envCharacteristics.biome",
-    "envCharacteristics.ecosystemType",
-    "envCharacteristics.eunisHabitat",
-    "envCharacteristics.landforms",
-    "envCharacteristics.geoBonBiome",
-    "envCharacteristics.geology",
-    "envCharacteristics.hydrology",
-    "envCharacteristics.soils",
-    "envCharacteristics.vegetation"
+    "title", "uri",
+    "geoCoord", "country", "geoElev.avg", "geoElev.min",
+    "geoElev.max", "geoElev.unit", "airTemperature.yearlyAverage",
+    "airTemperature.monthlyAverage", "airTemperature.unit", "airTemperature.referencePeriod",
+    "precipitation.yearlyAverage",
+    "precipitation.monthlyAverage", "precipitation.unit", "precipitation.referencePeriod",
+    "biogeographicalRegion",
+    "biome", "ecosystemType", "eunisHabitat", "landforms",
+    "geoBonBiome", "geology", "hydrology", "soils",
+    "vegetation"
   )))
 
   expect_type(result$title, "character")
   expect_type(result$uri, "character")
   expect_type(result$geoCoord, "character")
-  expect_type(result$country, "list")
+  expect_type(result$country, "character")
 })
 
 test_that("Wrong input (but URL) constructs a tibble with empty data", {

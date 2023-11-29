@@ -26,31 +26,26 @@ test_that("Output of dataset function constructs ‘tibble’ as expected", {
   )
   expect_s3_class(result, "sf")
   expect_s3_class(result, "tbl_df")
-  expect_true(ncol(result) == 34)
+  expect_true(ncol(result) == 41)
   expect_true(all(names(result) == c(
-    "title", "abstract", "keywords", "uri", "type",
-    "dateRange.from", "dateRange.to", "relatedSite", "contacts.corresponding",
-    "contacts.creator", "contacts.metadataProvider", "observationParameters",
-    "observationSpecies", "dataPolicy", "doi", "onlineLocation",
-    "legal.accessUse", "legal.rights", "legal.legalAct", "legal.citation",
-    "method.instrumentation", "method.qualityAssurance", "method.methodUrl",
-    "method.methodDescription", "method.samplingTimeUnit.label",
-    "method.samplingTimeUnit.uri", "method.spatialDesign.label",
-    "method.spatialDesign.uri", "method.spatialScale.label",
-    "method.spatialScale.uri", "method.temporalResolution.label",
-    "method.temporalResolution.uri", "boundaries", "boundariesDescription"
+    "title", "abstract", "keywords", "uri",
+    "type", "created", "changed", "dateRange.from",
+    "dateRange.to", "relatedSite", "contacts.corresponding", "contacts.creator",
+    "contacts.metadataProvider", "observationParameters", "observationSpecies", "dataPolicy",
+    "doi", "onlineDistribution.dataPolicyUrl", "onlineDistribution.doi",
+    "onlineDistribution.onlineLocation", "legal.accessUse", "legal.rights", "legal.legalAct",
+    "legal.citation", "method.instrumentation", "method.qualityAssurance", "method.methodUrl",
+    "method.methodDescription", "method.samplingTimeUnit.label", "method.samplingTimeUnit.uri",
+    "method.spatialDesign.label", "method.spatialDesign.uri", "method.spatialScale.label",
+    "method.spatialScale.uri", "method.temporalResolution.label", "method.temporalResolution.uri",
+    "boundaries", "boundariesDescription", "elevation.min", "elevation.max",
+    "elevation.unit"
   )))
-
   expect_type(result$title, "character")
   expect_type(result$abstract, "character")
   expect_type(result$keywords, "list")
   expect_type(result$uri, "character")
   expect_type(result$type, "character")
-  expect_type(result$dateRange.from, "character")
-  expect_type(
-    result$dateRange.to,
-    "logical"
-  ) # se fosse valorizzato sarebbe "character"
   expect_type(result$relatedSite, "list")
   expect_type(result$contacts.corresponding, "list")
   expect_type(result$contacts.creator, "list")
@@ -62,7 +57,7 @@ test_that("Output of dataset function constructs ‘tibble’ as expected", {
   expect_type(result$observationSpecies, "list")
   expect_type(result$dataPolicy, "list")
   expect_type(result$doi, "character")
-  expect_type(result$onlineLocation, "list")
+  expect_type(result$onlineDistribution.onlineLocation, "list")
   expect_type(result$legal.accessUse, "list")
   expect_type(
     result$legal.rights,

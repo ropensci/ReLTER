@@ -27,19 +27,19 @@ test_that("Output of site infrastructure function constructs ‘tibble’ as
   expect_true(all(names(result) == c(
     "title", "uri", "geoCoord", "country",
     "geoElev.avg", "geoElev.min", "geoElev.max", "geoElev.unit",
-    "generalInfo.accessibleAllYear", "generalInfo.accessType",
-    "generalInfo.allPartsAccessible", "generalInfo.maintenanceInterval",
-    "generalInfo.permanentPowerSupply", "generalInfo.operation.permanent",
-    "generalInfo.operation.notes", "generalInfo.operation.siteVisitInterval",
-    "generalInfo.notes", "generalInfo.collection",
-    "generalInfo.data.policy.url", "generalInfo.data.policy.rights",
-    "generalInfo.data.policy.notes"
+    "accessibleAllYear", "accessType",
+    "allPartsAccessible", "maintenanceInterval",
+    "permanentPowerSupply", "operation.permanent",
+    "operation.notes", "operation.siteVisitInterval",
+    "notes", "collection",
+    "data.policy.url", "data.policy.rights",
+    "data.policy.notes"
   )))
 
   expect_type(result$title, "character")
   expect_type(result$uri, "character")
   expect_type(result$geoCoord, "character")
-  expect_type(result$country, "list")
+  expect_type(result$country, "character")
 })
 
 test_that("Wrong input (but URL) constructs a tibble with empty data", {
