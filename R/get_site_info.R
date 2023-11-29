@@ -53,7 +53,7 @@
 #'
 ### function get_site_info
 get_site_info <- function(deimsid, category = NA) {
-  qo <- queries_jq[[get_deims_API_version()]]$site_info
+  qo <- queries_jq_deims[[get_deims_API_version()]]$site_info
   jj <- get_id(deimsid, qo$path)
   if (is.na(attr(jj, "status"))) {
     invisible(

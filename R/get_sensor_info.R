@@ -48,7 +48,7 @@
 #'
 ### function get_sensor_info
 get_sensor_info <- function(sensorid, show_map = FALSE) {
-  qo <- queries_jq[[get_deims_API_version()]]$sensor_info
+  qo <- queries_jq_deims[[get_deims_API_version()]]$sensor_info
   jj <- get_id(sensorid, qo$path)
   if (is.na(attr(jj, "status"))) {
     invisible(

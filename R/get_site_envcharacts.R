@@ -18,7 +18,7 @@
 #'
 ### function get_site_envcharacts
 get_site_envcharacts <- function(deimsid) {
-  qo <- queries_jq[[get_deims_API_version()]]$site_envCharacts
+  qo <- queries_jq_deims[[get_deims_API_version()]]$site_envCharacts
   jj <- get_id(deimsid, qo$path)
   if (is.na(attr(jj, "status"))) {
     invisible(

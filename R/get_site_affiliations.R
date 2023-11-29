@@ -19,7 +19,7 @@
 #'
 ### function get_site_affiliations
 get_site_affiliations <- function(deimsid) {
-  qo <- queries_jq[[get_deims_API_version()]]$site_affiliations
+  qo <- queries_jq_deims[[get_deims_API_version()]]$site_affiliations
   jj <- get_id(deimsid, qo$path)
   if (is.na(attr(jj, "status"))) {
     invisible(

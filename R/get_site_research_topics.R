@@ -21,7 +21,7 @@
 get_site_research_topics <- function(deimsid) {
   lifecycle::deprecate_warn("1.2.0", "get_site_research_topics()")
   get_site_info(deimsid = deimsid)
-#   qo <- queries_jq[[get_deims_API_version()]]$site_researchTopics
+#   qo <- queries_jq_deims[[get_deims_API_version()]]$site_researchTopics
 #   jj <- get_id(deimsid, qo$path)
 #   if (is.na(attr(jj, "status"))) {
 #     invisible(

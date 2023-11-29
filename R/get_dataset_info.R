@@ -43,7 +43,7 @@
 #'
 ### function get_dataset_info
 get_dataset_info <- function(datasetid, show_map = FALSE) {
-  qo <- queries_jq[[get_deims_API_version()]]$dataset_info
+  qo <- queries_jq_deims[[get_deims_API_version()]]$dataset_info
   jj <- get_id(datasetid, qo$path)
   if (is.na(attr(jj, "status"))) {
     invisible(

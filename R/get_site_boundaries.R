@@ -93,7 +93,7 @@ get_site_boundaries <- function(
         deimsid = deimsid,
         category = "Boundaries"
       )
-      qo <- queries_jq[[get_deims_API_version()]]$site_boundaries 
+      qo <- queries_jq_deims[[get_deims_API_version()]]$site_boundaries 
       jj <- get_id(deimsid, qo$path)
       if (is.na(attr(jj, "status"))) {
         invisible(

@@ -42,7 +42,7 @@
 #'
 ### function get_activity_info
 get_activity_info <- function(activityid, show_map = FALSE) {
-  qo <- queries_jq[[get_deims_API_version()]]$activity_info
+  qo <- queries_jq_deims[[get_deims_API_version()]]$activity_info
   jj <- get_id(activityid, qo$path)
   if (is.na(attr(jj, "status"))) {
     invisible(

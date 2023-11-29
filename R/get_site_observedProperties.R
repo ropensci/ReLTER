@@ -15,7 +15,7 @@
 #'
 ### function get_site_observedProperties
 get_site_observedProperties <- function(deimsid) {
-  qo <- queries_jq[[get_deims_API_version()]]$site_observedProperties
+  qo <- queries_jq_deims[[get_deims_API_version()]]$site_observedProperties
   jj <- get_id(deimsid, qo$path)
   if (is.na(attr(jj, "status"))) {
     invisible(

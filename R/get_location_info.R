@@ -79,7 +79,7 @@
 #'
 ### function get_location_info
 get_location_info <- function(locationid, show_map = FALSE) {
-  qo <- queries_jq[[get_deims_API_version()]]$location_info_type
+  qo <- queries_jq_deims[[get_deims_API_version()]]$location_info_type
   jj <- get_id(locationid, qo$path)
   if (is.na(attr(jj, "status"))) {
     invisible(
@@ -100,7 +100,7 @@ get_location_info <- function(locationid, show_map = FALSE) {
         ))
       locationType <- types$locationType.label
       if (geometryType == "Point") {
-        qo <- queries_jq[[get_deims_API_version()]]$location_info_point
+        qo <- queries_jq_deims[[get_deims_API_version()]]$location_info_point
         jj <- get_id(locationid, qo$path)
         location <- dplyr::as_tibble(do_Q(qo$query, jj)) %>%
           dplyr::mutate(
@@ -112,7 +112,7 @@ get_location_info <- function(locationid, show_map = FALSE) {
             "locationType"
           ))
       } else if (geometryType == "Polygon") {
-        qo <- queries_jq[[get_deims_API_version()]]$location_info_polygon
+        qo <- queries_jq_deims[[get_deims_API_version()]]$location_info_polygon
         jj <- get_id(locationid, qo$path)
         location <- dplyr::as_tibble(do_Q(qo$query, jj)) %>%
           dplyr::mutate(
@@ -124,7 +124,7 @@ get_location_info <- function(locationid, show_map = FALSE) {
             "locationType"
           ))
       } else if (geometryType == "MultiPolygon") {
-        qo <- queries_jq[[get_deims_API_version()]]$location_info_multiPolygon
+        qo <- queries_jq_deims[[get_deims_API_version()]]$location_info_multiPolygon
         jj <- get_id(locationid, qo$path)
         location <- dplyr::as_tibble(do_Q(qo$query, jj)) %>%
           dplyr::mutate(
@@ -139,15 +139,15 @@ get_location_info <- function(locationid, show_map = FALSE) {
     } else {
       locationType <- types$locationType.label
       if (geometryType == "Point") {
-        qo <- queries_jq[[get_deims_API_version()]]$location_info_point
+        qo <- queries_jq_deims[[get_deims_API_version()]]$location_info_point
         jj <- get_id(locationid, qo$path)
         location <- dplyr::as_tibble(do_Q(qo$query, jj))
       } else if (geometryType == "Polygon") {
-        qo <- queries_jq[[get_deims_API_version()]]$location_info_polygon
+        qo <- queries_jq_deims[[get_deims_API_version()]]$location_info_polygon
         jj <- get_id(locationid, qo$path)
         location <- dplyr::as_tibble(do_Q(qo$query, jj))
       } else if (geometryType == "MultiPolygon") {
-        qo <- queries_jq[[get_deims_API_version()]]$location_info_multiPolygon
+        qo <- queries_jq_deims[[get_deims_API_version()]]$location_info_multiPolygon
         jj <- get_id(locationid, qo$path)
         location <- dplyr::as_tibble(do_Q(qo$query, jj))
       }

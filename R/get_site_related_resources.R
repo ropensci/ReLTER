@@ -15,7 +15,7 @@
 #'
 ### function get_site_related_resources
 get_site_related_resources <- function(deimsid) {
-  qo <- queries_jq[[get_deims_API_version()]]$site_relatedResources
+  qo <- queries_jq_deims[[get_deims_API_version()]]$site_relatedResources
   jj <- get_id(deimsid, qo$path)
   if (is.na(attr(jj, "status"))) {
     invisible(

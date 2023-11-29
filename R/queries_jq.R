@@ -1,4 +1,5 @@
-queries_jq <- list(
+# JQ queries for DEIMS-SDR ----
+queries_jq_deims <- list(
   "1.0" = list(
     activity_info = list(
       path = "activities",
@@ -426,5 +427,38 @@ queries_jq <- list(
         observedProperty: .attributes.observation.observedProperty
       }'
     )
+  )
+)
+
+# JQ queries for B2share ----
+queries_jq_b2s <- list(
+  b2share_community_records = list(
+    path = "https://b2share.eudat.eu/api/records/?q=community:",
+    query = '{
+     title: .hits.hits[].metadata.titles[].title,
+     created: .hits.hits[].created
+    }'
+  ),
+  b2share_record = list(
+    path = "https://b2share.eudat.eu/api/records/",
+    query = '{
+      title: .metadata.titles[].title,
+      created: .created,
+      updated: .updated,
+      doi: .metadata.DOI,
+      community: .metadata | [if (has("community")) then .community else "no_community_declared" end][],
+      creators: .metadata | [if (has("creators")) then .creators[].creator_name else "no_creators_declared" end][],
+      contact_email: .metadata | [if (has("contact_email")) then .contact_email else "no_contact_email_declared" end][],
+      description: .metadata.descriptions[].description,
+      ePIC_PID: .metadata.ePIC_PID,
+      keywords: .metadata.keywords[],
+      open_access: .metadata.open_access,
+      license: .metadata | [if (has("open_access")) then .open_access else "no_open_access_declared" end][],
+      owners: .metadata.owners[],
+      publication_date: .metadata.publication_date,
+      publication_state: .metadata.publication_state,
+      type: .metadata | [if (has("resource_types")) then .resource_types[].resource_type_general else "no_resource_types_declared" end][],
+      files: .files
+    }'
   )
 )
