@@ -25,7 +25,8 @@
 #' @importFrom tmap tm_shape tm_borders tm_dots
 #' @importFrom dplyr select
 #' @importFrom tibble as_tibble
-#' @importFrom httr RETRY content
+#' @importFrom httr2 request req_headers req_retry
+#' @importFrom httr2 req_perform resp_check_status resp_body_string
 #' @importFrom Rdpack reprompt
 #' @references
 #'   \insertRef{jsonliteR}{ReLTER}
@@ -38,12 +39,12 @@
 #'
 #'   \insertRef{tibbleR}{ReLTER}
 #'
-#'   \insertRef{httrR}{ReLTER}
+#'   \insertRef{httr2}{ReLTER}
 #' @export
 #' @examples
 #' \dontrun{
 #' # Italian sites
-#' map <- produce_network_points_map(
+#' map <- ReLTER::produce_network_points_map(
 #'   networkDEIMSID =
 #'   "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3",
 #'   countryCode = "ITA"
@@ -73,10 +74,17 @@ produce_network_points_map <- function(networkDEIMSID, countryCode) {
       "api/sites?network=",
       sub("^.+/", "", networkDEIMSID)
     )
-    export <- httr::RETRY("GET", url = url, times = 5)
+    
+    export <- httr2::request(base_url = url) %>%
+      httr2::req_method("GET") %>%
+      httr2::req_headers(Accept = "application/json") %>%
+      httr2::req_retry(max_tries = 3, max_seconds = 120) %>%
+      httr2::req_perform()
+    httr2::resp_check_status(export)
     lterNetworkSitesCoords <- jsonlite::fromJSON(
-      httr::content(export, as = "text", encoding = "UTF-8")
+      httr2::resp_body_string(export) # already UTF-8 encoded
     )
+    
     if (length(lterNetworkSitesCoords) != 0) {
       lterNetworkSitesCoords$uri <- paste0(
         lterNetworkSitesCoords$id$prefix,
@@ -97,7 +105,7 @@ produce_network_points_map <- function(networkDEIMSID, countryCode) {
         if (countryCode %in% isoCodes$Alpha_3 == TRUE) {
           try({
             country <- geodata::gadm(country = countryCode, level = 0) %>%
-              terra::simplifyGeom(tol = 0.01, topologyPreserve = TRUE
+              terra::simplifyGeom(tollerance = 0.01, topologyPreserve = TRUE
               )
           })
           mapOfSites <- if (exists("country")) {

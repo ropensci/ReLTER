@@ -14,7 +14,8 @@
 #' @return A character containing the json content, and an attribute `status`.
 #' @importFrom dtplyr lazy_dt
 #' @importFrom dplyr as_tibble
-#' @importFrom httr content RETRY
+#' @importFrom httr2 request req_headers req_retry
+#' @importFrom httr2 req_perform resp_check_status resp_body_string
 #' @importFrom jqr jq
 #' @importFrom jsonlite stream_in
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
@@ -80,8 +81,13 @@ get_id <- function(deimsid, resource = "sites", test, ...) {
     }
 
     # Normal mode
-    export <- httr::RETRY("GET", url = url, ...)
-    jj <- suppressMessages(httr::content(export, "text", encoding = "UTF-8"))
+    export <- httr2::request(base_url = url, ...) %>%
+      httr2::req_method("GET") %>%
+      httr2::req_headers(Accept = "application/json") %>%
+      httr2::req_retry(max_tries = 3, max_seconds = 120) %>%
+      httr2::req_perform()
+    httr2::resp_check_status(export)
+    jj <- httr2::resp_body_string(export) # already UTF-8 encoded
 
   }
 
@@ -123,10 +129,13 @@ get_id <- function(deimsid, resource = "sites", test, ...) {
     # for other entities
     url <- file.path("https://deims.org/api", resource, deimsid)
   }
-  export <- httr::RETRY("GET", url = url, ...)
-  jj <- suppressMessages(httr::content(
-          export, "text", encoding = "UTF-8")
-        )
+  export <- httr2::request(base_url = url, ...) %>%
+    httr2::req_method("GET") %>%
+    httr2::req_headers(Accept = "application/json") %>%
+    httr2::req_retry(max_tries = 3, max_seconds = 120) %>%
+    httr2::req_perform()
+  httr2::resp_check_status(export)
+  jj <- httr2::resp_body_string(export) # already UTF-8 encoded
 
   path <-
     if (development) file.path("inst", "deimsid", resource) else file.path(

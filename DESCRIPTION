@@ -1,7 +1,7 @@
 Type: Package
 Package: ReLTER
 Title: An Interface for the eLTER Community
-Version: 2.1.2
+Version: 2.2.0
 Authors@R: c(
     person("Alessandro", "Oggioni", , "alessandro.oggioni@cnr.it", role = c("aut", "cre", "fnd"),
            comment = c(ORCID = "0000-0002-7997-219X")),
@@ -52,11 +52,11 @@ Imports:
     dtplyr,
     geodata,
     ggforce,
+    geojsonsf,
     ggplot2,
     grDevices,
     grid,
     gridExtra,
-    httr,
     httr2,
     jqr,
     jsonlite,
@@ -64,7 +64,7 @@ Imports:
     lifecycle,
     lubridate,
     magrittr,
-    MODIStsp,
+    MODIStsp (>= 2.1.0),
     purrr,
     qrcode,
     raster (>= 3.3-13),

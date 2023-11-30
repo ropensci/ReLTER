@@ -18,11 +18,12 @@
 #' @importFrom sf st_as_sf st_is_valid st_cast
 #' @importFrom dplyr select mutate as_tibble add_row
 #' @importFrom leaflet leaflet addTiles addMarkers
-#' @importFrom httr RETRY content
+#' @importFrom httr2 request req_headers req_retry
+#' @importFrom httr2 req_perform resp_check_status resp_body_string
 #' @importFrom Rdpack reprompt
 #' @importFrom lubridate as_datetime
 #' @references
-#'   \insertRef{httrR}{ReLTER}
+#'   \insertRef{httr2}{ReLTER}
 #'
 #'   \insertRef{dplyrR}{ReLTER}
 #'
@@ -55,9 +56,17 @@ get_network_sites <- function(networkDEIMSID) {
   url <- paste0(deimsbaseurl,
                 "api/sites?network=",
                 sub("^.+/", "", networkDEIMSID))
-  export <- httr::RETRY("GET", url = url, times = 5)
+  
+  export <- httr2::request(base_url = url) %>%
+    httr2::req_method("GET") %>%
+    httr2::req_headers(Accept = "application/json") %>%
+    httr2::req_retry(max_tries = 3, max_seconds = 120) %>%
+    httr2::req_perform()
+  httr2::resp_check_status(export)
   lterNetworkSitesCoords <- jsonlite::fromJSON(
-    httr::content(export, as = "text", encoding = "UTF-8"))
+    httr2::resp_body_string(export) # already UTF-8 encoded
+  )
+  
   lterNetworkSitesCoords <- dplyr::as_tibble(lterNetworkSitesCoords)
   if (length(lterNetworkSitesCoords) != 0) {
     # check if some site has MULTIPOINTS instead POINT and convert it
