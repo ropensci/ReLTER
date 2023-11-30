@@ -52,7 +52,6 @@
 #' @importFrom leaflet leaflet addTiles addMarkers
 #' @importFrom units set_units
 #' @importFrom purrr map_dfr
-#' @import RCurl
 #' @import XML
 #' @export
 #' @examples
