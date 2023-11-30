@@ -18,7 +18,6 @@ Authors@R: c(
     person("Mauro", "Lepore", role = "edt",
            comment = "Mauro was editor for rOpenSci, see https://github.com/ropensci/software-review/issues/485")
   )
-Maintainer: Alessandro Oggioni <alessandro.oggioni@cnr.it>
 Description: ReLTER provides access to DEIMS-SDR (https://deims.org/), and
     allows interaction with data and software implemented by eLTER
     Research Infrastructure (RI) thus improving data sharing among
@@ -30,13 +29,12 @@ Description: ReLTER provides access to DEIMS-SDR (https://deims.org/), and
     https://elter-ri.eu).  The ReLTER package functions in particular
     allow to: - retrieve the information about entities (e.g. sites,
     datasets, and activities) shared by DEIMS-SDR (see e.g. get_site_info
-    function); - interact with the [ODSEurope](maps.opendatascience.eu)
-    starting with the dataset shared by [DEIMS-SDR](https://deims.org/)
-    (see e.g.
-    [get_site_ODS](https://docs.ropensci.org/ReLTER/reference/get_site_ODS.html)
+    function); - interact with the ODSEurope (maps.opendatascience.eu)
+    starting with the dataset shared by DEIMS-SDR (https://deims.org/)
+    (see e.g. the get_site_ODS()
     function); - use the eLTER site informations to download and crop
-    geospatial data from other platforms (see e.g. get_site_ODS function);
-    - improve the quality of the dataset (see e.g. get_id_worms).
+    geospatial data from other platforms (see e.g. get_site_ODS function());
+    - improve the quality of the dataset (see e.g. get_id_worms()).
     Functions currently implemented are derived from discussions of the
     needs among the eLTER users community.  The ReLTER package will
     continue to follow the progress of eLTER-RI and evolve, adding new
