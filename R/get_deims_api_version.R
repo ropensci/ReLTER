@@ -9,6 +9,9 @@
 #' @importFrom dplyr as_tibble pull
 #' @export
 get_deims_API_version <- function(deims_url = get_deims_base_url()) {
+  if (!endsWith(deims_url, "/")) {
+    deims_url <- paste0(deims_url, "/")
+  }
   api_url <- paste0(deims_url, "api")
   q <- "{version: .info.version}"
   export <- httr2::request(api_url) %>%
