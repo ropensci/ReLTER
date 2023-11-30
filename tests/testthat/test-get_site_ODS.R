@@ -1,6 +1,5 @@
 message("\n---- Test get_site_ODS() ----")
 
-library(testthat)
 skip_if_offline(host = "s3.eu-central-1.wasabisys.com")
 
 test_that("Expect error if internet connection is down", {

@@ -1,7 +1,5 @@
 message("\n---- Test globals functions ----")
 
-library(testthat)
-
 test_that("Changing deims_base_url with reachable url works", {
   cur <- get_deims_base_url()
   newurl <- "http://www.get-it.it/"

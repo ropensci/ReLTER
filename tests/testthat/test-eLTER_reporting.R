@@ -1,7 +1,5 @@
 message("\n---- Test some eLTER_reporting functions ----")
 
-library(testthat)
-
 test_that("map_occ2 returns list with appropriate names", {
   id <- "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6" #zobelboden
   gres <- get_site_speciesOccurrences(

@@ -1,7 +1,5 @@
 message("\n---- Test produce_site_observedProperties_waffle() ----")
 
-library(testthat)
-
 test_that("Expect error if internet connection is down", {
   Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
   testthat::expect_error(

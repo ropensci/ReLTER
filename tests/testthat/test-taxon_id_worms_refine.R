@@ -1,7 +1,5 @@
 message("\n---- Test taxon_id_worms_refine() ----")
 
-library(testthat)
-
 test_that("Output of taxon worms function constructs 'tibble' as expected
 with choiceNumber NULL", {
   # input_table <- tibble::tibble(

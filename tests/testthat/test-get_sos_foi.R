@@ -1,7 +1,5 @@
 message("\n---- Test get_sos_foi() ----")
 
-library(testthat)
-
 skip_if_offline(host = "getit.lteritalia.it")
 
 test_that("Output of function constructs 'sf' and 'tibble' as expected in

@@ -1,7 +1,5 @@
 message("\n---- Test get_network_sites() ----")
 
-library(testthat)
-
 skip_on_cran()
 
 test_that("Expect error if internet connection is down", {
