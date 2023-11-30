@@ -35,12 +35,12 @@ siteAffiliations <- ReLTER::get_site_info(
 )
 # network(s) where the site is involved in
 knitr::kable(
-  siteAffiliations$affiliation.networks[[1]]$network,
+  siteAffiliations$networks[[1]],
   caption = "The list of the network(s) in which the site is listed"
 )
 # project(s) where the site is involved in
 knitr::kable(
-  siteAffiliations$affiliation.projects[[1]],
+  siteAffiliations$projects[[1]],
   caption = "The list of the project(s) in which the site is listed"
 )
 ```
@@ -73,22 +73,22 @@ siteContact <- ReLTER::get_site_info(
 )
 # site manager(s)
 knitr::kable(
-  siteContact$generalInfo.siteManager[[1]],
+  siteContact$siteManager[[1]],
   caption = "The list of the manager(s) of site"
 )
 # operating organisation of site
 knitr::kable(
-  siteContact$generalInfo.operatingOrganisation[[1]],
+  siteContact$operatingOrganisation[[1]],
   caption = "The list of the operating organization of the site"
 )
 # metadata provider(s) of site
 knitr::kable(
-  siteContact$generalInfo.metadataProvider[[1]],
+  siteContact$metadataProvider[[1]],
   caption = "The list of the metadata provider(s) of site"
 )
 # funding agency(ies) of site
 knitr::kable(
-  siteContact$generalInfo.fundingAgency[[1]],
+  siteContact$fundingAgency[[1]],
   caption = "The list of the funding agency(ies) of site"
 )
 ```
@@ -105,7 +105,7 @@ siteInfrastructure <- ReLTER::get_site_info(
   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
   category = "Infrastructure"
 )
-siteInfrastructure$generalInfo.collection
+siteInfrastructure$collection[[1]]
 siteEnvCharacts <- ReLTER::get_site_info(
   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
   category = "EnvCharacts"

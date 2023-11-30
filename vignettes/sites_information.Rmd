@@ -141,9 +141,9 @@ for (i in seq_len(length(allSiteContact))) {
   contacts <- contacts %>% 
     tibble::add_row(
       siteName = allSiteContact[[i]]$title,
-      managerName = allSiteContact[[i]]$generalInfo.siteManager[[1]]$name,
-      managerEmail = allSiteContact[[i]]$generalInfo.siteManager[[1]]$email,
-      managerORCID = allSiteContact[[i]]$generalInfo.siteManager[[1]]$orcid
+      managerName = allSiteContact[[i]]$siteManager[[1]]$name,
+      managerEmail = allSiteContact[[i]]$siteManager[[1]]$email,
+      managerORCID = allSiteContact[[i]]$siteManager[[1]]$orcid
     )
 }
 # Contacts table

@@ -14,18 +14,20 @@ This documentation, starting from this file csv, shows how to:
 
 ## List of the contacts
 
-1. obtain the list of contacts for each site
+1. obtain the list of contacts for each site (limited for 7 sites)
 
 ```{r listContacts, warning=FALSE, message=FALSE}
 library(dplyr)
 site_results <- read.csv("./data/site_contacts_data.csv", sep = ";") %>%
   dplyr::as_tibble() %>% 
-  dplyr::mutate(url = paste0("https://deims.org/", DEIMS.ID))
+  dplyr::mutate(url = paste0("https://deims.org/", DEIMS.ID)) %>%
+  dplyr::top_n(10) %>%
+  unique()
 
 contacts <- site_results$url %>%
   purrr::map_dfr(.f = function(x) {
     x %>% ReLTER::get_site_info(category = "Contacts") %>%
-      dplyr::select(title, uri, generalInfo.siteManager, geoCoord) %>%
+      dplyr::select(title, uri, siteManager, geoCoord) %>%
       tidyr::unnest()
   }) %>%
   dplyr::mutate(
@@ -54,10 +56,7 @@ site_results_geo <- sf::st_as_sf(
     )
 
 listItaSitesMap <- leaflet::leaflet(site_results_geo) %>%
-  leaflet::addProviderTiles(provider = "CartoDB.PositronNoLabels",
-                            group = "Basemap",
-                            layerId = 123) %>%
-  leaflet::addTiles("http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png") %>%
+  leaflet::addTiles() %>%
   leaflet::addCircleMarkers(
     data = site_results_geo,
     radius = 3,
