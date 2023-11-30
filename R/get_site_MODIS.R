@@ -184,7 +184,7 @@
 #'
 #'
 #' # Gran Paradiso National Park - Italy,
-#' 1 year time series of LAI and aggregated map
+#' # 1 year time series of LAI and aggregated map
 #' # projected to ETRS89 LAEA, EPSG:3035
 #' # Takes about 3/4 hour to run
 #' deimsid <- "https://deims.org/e33c983a-19ad-4f40-a6fd-1210ee0b3a4b"
