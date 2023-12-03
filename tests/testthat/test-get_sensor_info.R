@@ -1,7 +1,7 @@
 message("\n---- Test get_sensor_info() ----")
 
 test_that("Expect error if internet connection is down", {
-  Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
+  withr::local_envvar("LOCAL_DEIMS" = FALSE)
   testthat::expect_error(
     httptest::without_internet(
       result <- ReLTER::get_sensor_info(
@@ -12,7 +12,6 @@ test_that("Expect error if internet connection is down", {
     ),
     "GET"
   )
-  Sys.setenv("LOCAL_DEIMS" = test_mode) # restore test mode
 })
 
 skip_if_offline(host = "deims.org")
@@ -38,7 +37,7 @@ test_that("Output of sensor information function constructs 'sf' and
           })
 
 test_that("Wrong input (but URL) constructs a NULL object", {
-  Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
+  withr::local_envvar("LOCAL_DEIMS" = FALSE)
   expect_error(
     object <- ReLTER::get_sensor_info(
       sensorid = "https://deims.org/activity/ljhnhbkihubib",
@@ -46,11 +45,10 @@ test_that("Wrong input (but URL) constructs a NULL object", {
     ),
     regexp = "Page Not Found"
   )
-  Sys.setenv("LOCAL_DEIMS" = test_mode) # restore test mode
 })
 
 test_that("Wrong input (not URL) constructs an empty tibble", {
-  Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
+  withr::local_envvar("LOCAL_DEIMS" = FALSE)
   expect_error(
     object = ReLTER::get_sensor_info(
       sensorid = "ljhnhbkihubib",
@@ -58,7 +56,6 @@ test_that("Wrong input (not URL) constructs an empty tibble", {
     ),
     regexp = "Page Not Found"
   )
-  Sys.setenv("LOCAL_DEIMS" = test_mode) # restore test mode
 })
 
 test_that("Output of get sensor information function constructs 'sf' with

@@ -1,7 +1,7 @@
 message("\n---- Test get_site_speciesOccurrences() ----")
 
 test_that("Expect error if internet connection is down", {
-  Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
+  withr::local_envvar("LOCAL_DEIMS" = FALSE)
   testthat::expect_error(
     httptest::without_internet(
       result <- ReLTER::get_site_speciesOccurrences(
@@ -13,13 +13,12 @@ test_that("Expect error if internet connection is down", {
     ),
     "GET"
   )
-  Sys.setenv("LOCAL_DEIMS" = test_mode) # restore test mode
 })
 
 skip_if_offline(host = "deims.org")
 
 test_that("Output of function constructs 'sf' and list as expected", {
-  Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
+  withr::local_envvar("LOCAL_DEIMS" = FALSE)
   list_DS <- c("inat", "gbif")
   limit <- 10
   result <- ReLTER::get_site_speciesOccurrences(
@@ -34,11 +33,10 @@ test_that("Output of function constructs 'sf' and list as expected", {
   for (i in list_DS) {
     expect_s3_class(result[[i]], "sf")
   }
-  Sys.setenv("LOCAL_DEIMS" = test_mode) # restore test mode
 })
 
 test_that("Wrong input (but URL) constructs a tibble with empty data", {
-  Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
+  withr::local_envvar("LOCAL_DEIMS" = FALSE)
   result <- ReLTER::get_site_speciesOccurrences(
     deimsid = "https://deims.org/ljhnhbkihubib",
     list_DS = list_DS,
@@ -46,11 +44,10 @@ test_that("Wrong input (but URL) constructs a tibble with empty data", {
     limit = limit
   )
   expect_type(result, "NULL")
-  Sys.setenv("LOCAL_DEIMS" = test_mode) # restore test mode
 })
 
 test_that("Wrong input (not URL) constructs an empty tibble", {
-  Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
+  withr::local_envvar("LOCAL_DEIMS" = FALSE)
   result <- ReLTER::get_site_speciesOccurrences(
     deimsid = "ljhnhbkihubib",
     list_DS = list_DS,
@@ -58,5 +55,4 @@ test_that("Wrong input (not URL) constructs an empty tibble", {
     limit = limit
   )
   expect_type(result, "NULL")
-  Sys.setenv("LOCAL_DEIMS" = test_mode) # restore test mode
 })

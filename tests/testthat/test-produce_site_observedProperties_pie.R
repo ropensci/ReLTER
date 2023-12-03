@@ -1,7 +1,7 @@
 message("\n---- Test produce_site_observedProperties_pie() ----")
 
 test_that("Expect error if internet connection is down", {
-  Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
+  withr::local_envvar("LOCAL_DEIMS" = FALSE)
   testthat::expect_error(
     httptest::without_internet(
       result <- ReLTER::produce_site_observedProperties_pie(
@@ -10,7 +10,6 @@ test_that("Expect error if internet connection is down", {
     ),
     "GET"
   )
-  Sys.setenv("LOCAL_DEIMS" = test_mode) # restore test mode
 })
 
 skip_if_offline(host = "deims.org")
@@ -43,19 +42,17 @@ and 'tibble' as expected", {
 })
 
 test_that("Wrong input (but URL) constructs a NULL object", {
-  Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
+  withr::local_envvar("LOCAL_DEIMS" = FALSE)
   result <- ReLTER::produce_site_observedProperties_pie(
     deimsid = "https://deims.org/ljhnhbkihubib"
   )
   expect_type(result, "NULL")
-  Sys.setenv("LOCAL_DEIMS" = test_mode) # restore test mode
 })
 
 test_that("Wrong input (not URL) constructs an empty tibble", {
-  Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
+  withr::local_envvar("LOCAL_DEIMS" = FALSE)
   result <- ReLTER::produce_site_observedProperties_pie(
     deimsid = "ljhnhbkihubib"
   )
   expect_type(result, "NULL")
-  Sys.setenv("LOCAL_DEIMS" = test_mode) # restore test mode
 })

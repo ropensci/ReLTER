@@ -3,7 +3,7 @@ message("\n---- Test get_ilter_generalinfo() ----")
 skip_on_cran()
 
 test_that("Expect error if internet connection is down", {
-  Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
+  withr::local_envvar("LOCAL_DEIMS" = FALSE)
   testthat::expect_error(
     httptest::without_internet(
       result <- ReLTER::get_ilter_generalinfo(
@@ -13,7 +13,6 @@ test_that("Expect error if internet connection is down", {
     ),
     "GET"
   )
-  Sys.setenv("LOCAL_DEIMS" = test_mode) # restore test mode
 })
 
 skip_if_offline(host = "deims.org")

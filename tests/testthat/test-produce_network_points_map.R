@@ -1,7 +1,7 @@
 message("\n---- Test produce_network_points_map() ----")
 
 test_that("Expect error if internet connection is down", {
-  Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
+  withr::local_envvar("LOCAL_DEIMS" = FALSE)
   testthat::expect_error(
     httptest::without_internet(
       result <- ReLTER::produce_network_points_map(
@@ -12,7 +12,6 @@ test_that("Expect error if internet connection is down", {
     ),
     "GET"
   )
-  Sys.setenv("LOCAL_DEIMS" = test_mode) # restore test mode
 })
 
 skip_if_offline(host = "deims.org")
@@ -27,23 +26,21 @@ test_that("Output of network point function constructs ‘tibble’ as expected"
 })
 
 test_that("Wrong networkDEIMSID (but URL) constructs a NULL object", {
-  Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
+  withr::local_envvar("LOCAL_DEIMS" = FALSE)
   result <- ReLTER::produce_network_points_map(
     networkDEIMSID = "https://deims.org/networks/ljhnhbkihubib",
     countryCode = "DEU"
   )
   expect_type(result, "NULL")
-  Sys.setenv("LOCAL_DEIMS" = test_mode) # restore test mode
 })
 
 test_that("Wrong networkDEIMSID (not URL) constructs an empty tibble", {
-  Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
+  withr::local_envvar("LOCAL_DEIMS" = FALSE)
   result <- ReLTER::produce_network_points_map(
     networkDEIMSID = "ljhnhbkihubib",
     countryCode = "DEU"
   )
   expect_type(result, "NULL")
-  Sys.setenv("LOCAL_DEIMS" = test_mode) # restore test mode
 })
 
 test_that("Wrong countryCode constructs a NULL object", {
@@ -67,24 +64,22 @@ test_that("Wrong countryCode constructs a NULL object", {
 
 test_that("Wrong both networkDEIMSID (but URL) and countryCode constructs
           a NULL object", {
-  Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
+            withr::local_envvar("LOCAL_DEIMS" = FALSE)
   result <- ReLTER::produce_network_points_map(
     networkDEIMSID = "https://deims.org/networks/ljhnhbkihubib",
     countryCode = "EEA"
   )
   expect_type(result, "NULL")
-  Sys.setenv("LOCAL_DEIMS" = test_mode) # restore test mode
 })
 
 test_that("Wrong both networkDEIMSID (not URL) and countryCode constructs
           a NULL object", {
-  Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
+            withr::local_envvar("LOCAL_DEIMS" = FALSE)
   result <- ReLTER::produce_network_points_map(
     networkDEIMSID = "ljhnhbkihubib",
     countryCode = "EEA"
   )
   expect_type(result, "NULL")
-  Sys.setenv("LOCAL_DEIMS" = test_mode) # restore test mode
 })
 
 test_that("Output of site affiliation information function constructs ‘sf' with

@@ -3,7 +3,7 @@ message("\n---- Test get_site_ODS() ----")
 skip_if_offline(host = "s3.eu-central-1.wasabisys.com")
 
 test_that("Expect error if internet connection is down", {
-  Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
+  withr::local_envvar("LOCAL_DEIMS" = FALSE)
   testthat::expect_error(
     httptest::without_internet(
       result <- ReLTER::get_site_info(
@@ -13,7 +13,6 @@ test_that("Expect error if internet connection is down", {
     ),
     "GET"
   )
-  Sys.setenv("LOCAL_DEIMS" = test_mode) # restore test mode
 })
 
 skip_if_offline(host = "deims.org")
@@ -64,11 +63,10 @@ test_that("full_url with 'unavailable' value", {
 })
 
 test_that("Wrong URL", {
-  Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
+  withr::local_envvar("LOCAL_DEIMS" = FALSE)
   result <- ReLTER::get_site_ODS(
     deimsid = "https://wrong.url",
     dataset = "osm_buildings"
   )
   expect_null(result)
-  Sys.setenv("LOCAL_DEIMS" = test_mode) # restore test mode
 })
