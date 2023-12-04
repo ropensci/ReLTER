@@ -30,19 +30,28 @@ package_settings <- (function() {
 #' @param force A `boolean`. Default FALSE.
 #' @export
 #' @importFrom httr2 request req_method req_headers
-#' @importFrom httr2 req_retry req_perform resp_check_status
+#' @importFrom httr2 req_retry req_perform
 set_deims_base_url <- function(url = "https://deims.org/", force = FALSE) {
   if (!endsWith(url, "/")) {
     url <- paste0(url, "/")
   }
-  export <- httr2::request(url) %>%
-    httr2::req_method("GET") %>%
-    httr2::req_headers(Accept = "application/html") %>%
-    httr2::req_retry(max_tries = 3, max_seconds = 120) %>%
-    httr2::req_perform()
-  httr2::resp_check_status(export)
+  
+  check <- tryCatch(
+    {
+      export <- httr2::request(url) %>%
+        httr2::req_method("GET") %>%
+        httr2::req_headers(Accept = "application/html") %>%
+        httr2::req_retry(max_tries = 3, max_seconds = 120)
+      export <- httr2::req_method(export, "HEAD")
+      httr2::req_perform(export)
+      TRUE
+    },
+    error = function(e) {
+      FALSE
+    }
+  )
 
-  if (!export$status_code == 200) {
+  if (check == FALSE) {
     if (force) {
       warning("The URL ", url, " is not reachable, I set it because
               force TRUE is specified")
