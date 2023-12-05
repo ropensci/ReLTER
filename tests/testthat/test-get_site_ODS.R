@@ -1,10 +1,8 @@
 message("\n---- Test get_site_ODS() ----")
 
-skip_if_offline(host = "s3.eu-central-1.wasabisys.com")
-
 test_that("Expect error if internet connection is down", {
   withr::local_envvar("LOCAL_DEIMS" = FALSE)
-  testthat::expect_error(
+  expect_error(
     httptest::without_internet(
       result <- ReLTER::get_site_info(
         deimsid = TESTURLSite,
@@ -14,6 +12,8 @@ test_that("Expect error if internet connection is down", {
     "GET"
   )
 })
+
+skip_if_offline(host = "s3.eu-central-1.wasabisys.com")
 
 skip_if_offline(host = "deims.org")
 

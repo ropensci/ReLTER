@@ -4,7 +4,7 @@ skip_on_cran()
 
 test_that("Expect error if internet connection is down", {
   withr::local_envvar("LOCAL_DEIMS" = FALSE)
-  testthat::expect_error(
+  expect_error(
     httptest::without_internet(
       result <- ReLTER::get_ilter_generalinfo(
         country_name = "Italy",
@@ -15,8 +15,9 @@ test_that("Expect error if internet connection is down", {
   )
 })
 
-skip_if_offline(host = "deims.org")
 skip_if(skip_in_test_mode)
+
+skip_if_offline(host = "deims.org")
 
 test_that("At least one of country or site name must be provided", {
   expect_warning(get_ilter_generalinfo())
