@@ -92,7 +92,7 @@ Imports:
     zen4R
 Suggests: 
     covr,
-    httptest,
+    httptest2,
     ISOcodes,
     knitr,
     rmarkdown,

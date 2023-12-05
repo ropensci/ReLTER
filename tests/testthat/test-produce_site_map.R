@@ -12,7 +12,7 @@ sf::st_crs(sitesNetwork) <- 4326
 test_that("Expect error if internet connection is down", {
   withr::local_envvar("LOCAL_DEIMS" = FALSE)
   expect_error(
-    httptest::without_internet(
+    httptest2::without_internet(
       result <- ReLTER::produce_site_map(
         deimsid = TESTURLSite,
         countryCode = "ITA",

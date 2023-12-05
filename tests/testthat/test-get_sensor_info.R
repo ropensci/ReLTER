@@ -3,7 +3,7 @@ message("\n---- Test get_sensor_info() ----")
 test_that("Expect error if internet connection is down", {
   withr::local_envvar("LOCAL_DEIMS" = FALSE)
   expect_error(
-    httptest::without_internet(
+    httptest2::without_internet(
       result <- ReLTER::get_sensor_info(
         sensorid =
           "https://deims.org/sensors/3845475c-4aec-4dd7-83b4-0ab6ba95db35",

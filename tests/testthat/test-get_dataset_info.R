@@ -3,7 +3,7 @@ message("\n---- Test get_dataset_info() ----")
 test_that("Expect error if internet connection is down", {
   withr::local_envvar("LOCAL_DEIMS" = FALSE)
   expect_error(
-    httptest::without_internet(
+    httptest2::without_internet(
       result <- ReLTER::get_dataset_info(
         datasetid =
           "https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef"

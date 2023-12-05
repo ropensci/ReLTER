@@ -7,7 +7,7 @@ skip_if_offline(host = "deims.org")
 test_that("Expect error if internet connection is down", {
   withr::local_envvar("LOCAL_DEIMS" = FALSE)
   expect_error(
-    httptest::without_internet(
+    httptest2::without_internet(
       result <- ReLTER::get_network_observedProperties(
         networkDEIMSID = TESTURLNetwork
       )

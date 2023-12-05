@@ -5,7 +5,7 @@ skip_if_offline(host = "deims.org")
 test_that("Expect error if internet connection is down", {
   withr::local_envvar("LOCAL_DEIMS" = FALSE)
   expect_error(
-    httptest::without_internet(
+    httptest2::without_internet(
       result <- ReLTER::get_activity_info(
         activityid =
           "https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845",

@@ -3,7 +3,7 @@ message("\n---- Test get_location_info() ----")
 test_that("Expect error if internet connection is down", {
   withr::local_envvar("LOCAL_DEIMS" = FALSE)
   expect_error(
-    httptest::without_internet(
+    httptest2::without_internet(
       result <- ReLTER::get_location_info(
         locationid =
           "https://deims.org/location/12b38f3f-7e72-425a-80c7-7cad35ce4c7b",
