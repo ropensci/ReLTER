@@ -1,18 +1,18 @@
 message("\n---- Test get_site_boundaries() ----")
 
-# test_that("Expect error if internet connection is down", {
-#   withr::local_envvar("LOCAL_DEIMS" = FALSE)
-#   testthat::expect_error(
-#     httptest::without_internet(
-#       result <- ReLTER:::get_site_boundaries(
-#         deimsid = TESTURLSite
-#       )
-#     ),
-#     "GET"
-#   )
-# })
-
 skip_if_offline(host = "deims.org")
+
+test_that("Expect error if internet connection is down", {
+  withr::local_envvar("LOCAL_DEIMS" = FALSE)
+  expect_error(
+    httptest::without_internet(
+      result <- ReLTER::get_site_boundaries(
+        deimsid = TESTURLSite
+      )
+    ),
+    "GET"
+  )
+})
 
 # test_that("Output of site boundaries function constructs 'sf' and 'tibble' as
 #           expected", {
@@ -34,16 +34,17 @@ skip_if_offline(host = "deims.org")
 #   }
 # })
 # 
-# test_that("Wrong input (but URL) constructs a NULL object", {
-#   withr::local_envvar("LOCAL_DEIMS" = FALSE)
-#   result <- ReLTER:::get_site_boundaries(
-#     deimsid = "https://deims.org/ljhnhbkihubib"
-#   )
-#   expect_type(result, "NULL")
-# })
-# 
-# test_that("Wrong input (not URL) constructs an empty tibble", {
-#   withr::local_envvar("LOCAL_DEIMS" = FALSE)
-#   result <- ReLTER:::get_site_boundaries(deimsid = "ljhnhbkihubib")
-#   expect_type(result, "NULL")
-# })
+
+test_that("Wrong input (but URL) constructs a NULL object", {
+  withr::local_envvar("LOCAL_DEIMS" = FALSE)
+  result <- ReLTER::get_site_boundaries(
+    deimsid = "https://deims.org/ljhnhbkihubib"
+  )
+  expect_type(result, "NULL")
+})
+
+test_that("Wrong input (not URL) constructs an empty tibble", {
+  withr::local_envvar("LOCAL_DEIMS" = FALSE)
+  result <- ReLTER::get_site_boundaries(deimsid = "ljhnhbkihubib")
+  expect_type(result, "NULL")
+})

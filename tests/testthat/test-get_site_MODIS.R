@@ -1,7 +1,8 @@
 message("\n---- Test get_site_MODIS() ----")
-library(testthat)
 
 skip_if(skip_in_test_mode)
+
+skip_if_offline(host = "deims.org")
 
 # Checks for legitimate parameters
 test_that("product is not supported",
@@ -36,12 +37,16 @@ test_that("non-existant site",
    })
  
 test_that("site with no boundary polygon",
-   {expect_error(ReLTER::get_site_MODIS(
-            deimsid = "https://deims.org/52d25867-33e7-4f27-8e0c-4f8a74bf22e0",
-            product = "VI",
-            from_date = "2018.03.01", to_date = "2018.08.30",
-            output_dir = tempdir(), output_proj = "3035"),
-    "No boundary for requested DEIMS site.")
+   {testthat::expect_error(
+      ReLTER::get_site_MODIS(
+         deimsid = "https://deims.org/52d25867-33e7-4f27-8e0c-4f8a74bf22e0",
+         deimsid = "https://deims.org/52d25867-33e7-4f27-8e0c-4f8a74bf22e0",
+         product = "VI",
+         from_date = "2018.03.01",
+         to_date = "2018.08.30",
+         output_dir = tempdir(),
+         output_proj = "3035"
+      ))
    })
 
  

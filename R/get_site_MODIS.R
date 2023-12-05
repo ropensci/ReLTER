@@ -206,13 +206,15 @@
 #'
 #'
 ### function get_site_MODIS
-get_site_MODIS <- function(deimsid, product = "VI",
-                         from_date = "2010.01.01", to_date = "2020.31.12",
-                         output_dir = NULL,
-                         plot_ts = TRUE,
-                         output_proj = "3035",
-                         download_range = "Full",
-                         show_map = FALSE) {
+get_site_MODIS <- function(deimsid,
+                           product = "VI",
+                           from_date = "2010.01.01",
+                           to_date = "2020.31.12",
+                           output_dir = NULL,
+                           plot_ts = TRUE,
+                           output_proj = "3035",
+                           download_range = "Full",
+                           show_map = FALSE) {
 
   # Make sure the requested product is among those supported
   if (! product %in% c("VI", "LST", "ET", "LAI")) {
@@ -248,7 +250,7 @@ get_site_MODIS <- function(deimsid, product = "VI",
   }
   message("Acquiring: ", prod)
   # check that site has a boundary
-  boundary <- ReLTER::get_site_info(
+  boundary <- get_site_info(
     deimsid,
     category = "Boundaries"
   )

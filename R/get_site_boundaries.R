@@ -51,8 +51,10 @@ get_site_boundaries <- function(
       "service=WFS&version=2.0.0&request=GetFeature&TypeName=deims:deims_sites_boundaries&",
       "outputFormat=application%2Fjson&CQL_FILTER=deimsid='", URLencode(deimsid), "'"
     )
-    if (with_locations == FALSE) {
-      geoBoundaries <- geojsonsf::geojson_sf(url.geoserver)
+    geoBoundaries <- geojsonsf::geojson_sf(url.geoserver)
+    siteInfo <- get_site_info(deimsid = deimsid)
+    if (length(geoBoundaries$geometry) != 0) {
+      if (with_locations == FALSE) {
       geoBoundaries <- geoBoundaries %>%
         dplyr::mutate(title = name, uri = deimsid, .before = geometry) %>%
         dplyr::select(-c("name", "deimsid", "field_elevation_avg_value"))
@@ -409,5 +411,12 @@ get_site_boundaries <- function(
         print(map)
       }
       boundaries
+    }
+    } else if (!is.null(siteInfo)) {
+      message("\n---- This site don't contains geo info. ----\n") # nocov
+      geoBoundaries <- siteInfo %>%
+        dplyr::select("title", "uri")
+    } else {
+      geoBoundaries <- NULL
     }
 }
