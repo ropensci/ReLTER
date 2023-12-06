@@ -16,12 +16,17 @@ The DEIMS.iD of activity is the URL for the location page.}
 is shown. Default FALSE.}
 }
 \value{
+<<<<<<< HEAD
 The output of the function is a \code{list} with two elements:
 \itemize{
 \item \code{map} A Leaflet map with the location, if requested with
 \code{show_map}.
 \item \code{data} A \code{data.frame} with the information about the location.
 }
+=======
+The output of the function is a \code{tibble} with main features of
+the location in a site, and a \code{leaflet} map plot.
+>>>>>>> 2ba747f (Fixes sites_contacts.RMD vignette)
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
@@ -38,7 +43,11 @@ Project area" location}
 
 \examples{
 # Sampling location multipolygon
+<<<<<<< HEAD
 location <- get_location_info(
+=======
+location <- ReLTER::get_location_info(
+>>>>>>> 2ba747f (Fixes sites_contacts.RMD vignette)
   locationid =
     "https://deims.org/location/85dc6019-9654-4ba0-8338-08c4ffe8fe47",
   show_map = TRUE
@@ -46,7 +55,11 @@ location <- get_location_info(
 location
 
 # Sampling location polygon
+<<<<<<< HEAD
 location <- get_location_info(
+=======
+location <- ReLTER::get_location_info(
+>>>>>>> 2ba747f (Fixes sites_contacts.RMD vignette)
   locationid =
     "https://deims.org/location/12b38f3f-7e72-425a-80c7-7cad35ce4c7b",
   show_map = TRUE
@@ -54,7 +67,11 @@ location <- get_location_info(
 location
 
 # Equipment location polygon
+<<<<<<< HEAD
 location <- get_location_info(
+=======
+location <- ReLTER::get_location_info(
+>>>>>>> 2ba747f (Fixes sites_contacts.RMD vignette)
   locationid =
     "https://deims.org/locations/04de8301-b481-4ed2-89ff-2f48562e2514",
   show_map = TRUE
@@ -62,7 +79,11 @@ location <- get_location_info(
 location
 
 # Sampling location point
+<<<<<<< HEAD
 location <- get_location_info(
+=======
+location <- ReLTER::get_location_info(
+>>>>>>> 2ba747f (Fixes sites_contacts.RMD vignette)
   locationid =
     "https://deims.org/location/ec1a58f7-1aee-4e3f-bec3-4eb1516ee905",
   show_map = TRUE
@@ -70,7 +91,11 @@ location <- get_location_info(
 location
 
 # Sampling location point with location type null
+<<<<<<< HEAD
 location <- get_location_info(
+=======
+location <- ReLTER::get_location_info(
+>>>>>>> 2ba747f (Fixes sites_contacts.RMD vignette)
   locationid =
     "https://deims.org/location/c3db70c3-5d2c-4905-801c-7b7a5c4d00d9",
   show_map = TRUE
@@ -79,6 +104,7 @@ location
 
 }
 \references{
+<<<<<<< HEAD
 \insertRef{utilsR}{ReLTER}
 
 \insertRef{dplyrR}{ReLTER}
@@ -86,6 +112,15 @@ location
 \insertRef{lubridateR}{ReLTER}
 
 \insertRef{unitsR}{ReLTER}
+=======
+\insertRef{dplyrR}{ReLTER}
+
+\insertRef{utilsR}{ReLTER}
+
+\insertRef{sfR}{ReLTER}
+
+\insertRef{leafletR}{ReLTER}
+>>>>>>> 2ba747f (Fixes sites_contacts.RMD vignette)
 }
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
