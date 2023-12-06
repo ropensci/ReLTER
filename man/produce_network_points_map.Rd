@@ -41,7 +41,7 @@ Italy network}), as a stored into \href{https://deims.org}{DEIMS-SDR}.
 \examples{
 \dontrun{
 # Italian sites
-map <- produce_network_points_map(
+map <- ReLTER::produce_network_points_map(
   networkDEIMSID =
     "https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3",
   countryCode = "ITA"
@@ -91,6 +91,7 @@ map_LTERGermanSites <- map_LTERGermanSites +
 
 \insertRef{tibbleR}{ReLTER}
 
+<<<<<<< HEAD
 \insertRef{stringrR}{ReLTER}
 
 \insertRef{ggplot2R}{ReLTER}
@@ -99,6 +100,9 @@ map_LTERGermanSites <- map_LTERGermanSites +
 }
 \seealso{
 \code{\link[geodata:gadm]{geodata::gadm()}}
+=======
+\insertRef{httr2}{ReLTER}
+>>>>>>> a394002 (Changes to httptest2 in tests/setup.R)
 }
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}

@@ -40,7 +40,11 @@ species in the Mar Piccolo of Taranto" activity}
 activities <- get_activity_info(
   activityid =
     "https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845",
+<<<<<<< HEAD
   show_map = TRUE
+=======
+  show_map = FALSE
+>>>>>>> a394002 (Changes to httptest2 in tests/setup.R)
 )
 activities
 
