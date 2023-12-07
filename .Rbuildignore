@@ -15,3 +15,5 @@
 ^miscellaneus$
 ^.*\.zenodo.json$
 ^CITATION\.cff$
+^doc$
+^Meta$

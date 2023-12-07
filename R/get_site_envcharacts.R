@@ -10,7 +10,7 @@
 #' such as: air temperature, precipitation, biogeographical region, biome,
 #' ecosystem land use, EUNIS habitat, geoBon biome, geology, hydrology, soils
 #' and vegetation.
-#' @author Alessandro Oggioni, phD (2021) \email{oggioni.a@@irea.cnr.it}
+#' @author Alessandro Oggioni, phD (2021) \email{oggioni.a@irea.cnr.it}
 #' @importFrom utils capture.output
 #' @importFrom dplyr as_tibble
 #' @importFrom units set_units
@@ -44,14 +44,22 @@ get_site_envcharacts <- function(deimsid) {
     # set the UOM of airTemperature info
     envCharacteristics$airTemperature.yearlyAverage <- units::set_units(
       x = envCharacteristics$airTemperature.yearlyAverage,
+<<<<<<< HEAD
       value = 'degree_Celsius'
+=======
+      value = paste0('\u00b0', 'C')
+>>>>>>> 19e5367 (Implements precompile of vignettes)
     )
     # TODO find the solution to assign a units to the nested list column
     if (is.null(envCharacteristics$airTemperature.referencePeriod)) {
       envCharacteristics$airTemperature.referencePeriod <- NA
       envCharacteristics$airTemperature.referencePeriod <- units::set_units(
         x = envCharacteristics$airTemperature.referencePeriod,
+<<<<<<< HEAD
         value = 'degree_Celsius'
+=======
+        value = paste0('\u00b0', 'C')
+>>>>>>> 19e5367 (Implements precompile of vignettes)
       )
     }
     # set the UOM of precipitation info
