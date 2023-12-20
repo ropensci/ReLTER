@@ -29,13 +29,24 @@ map_occ_gbif2elter <- function(x, deimsid) {
 
   # compose output for eLTER reporting format
   # (intermediate step: info both for data and for reference)
+  if ("eventTime" %in% names(x)) {
+    x <- x %>%
+      dplyr::mutate(
+        time = paste0(eventDate, "T", eventTime)
+      )
+  } else {
+    x <- x %>%
+      dplyr::mutate(
+        time = eventDate
+      )
+  }
   lter_temp <- x %>%
     .add_site_code(deimsid) %>%
     # add new (computed) columns
     dplyr::mutate(
       VARIABLE = "occurrence",
       VALUE = TRUE,
-      TIME = paste0(eventDate, "T", eventTime),
+      TIME = time,
       ref_CODE_URL = paste0(
         "https://www.gbif.org/species/",
         taxonKey

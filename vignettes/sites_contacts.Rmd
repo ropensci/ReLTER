@@ -1,5 +1,5 @@
 ---
-title: "How to get the list of contacts from list of DEIMS ID within csv file"
+title: "Obtain list of contacts from several DEIMS ID's (in csv file)"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{How to get the list of contacts from list of DEIMS ID within csv file}
@@ -8,37 +8,53 @@ vignette: >
 author: "Alessandro Oggioni, Paolo Tagliolato"
 ---
 
-Starting from the [DEIMS-SDR "Advanced Search - Sites" interface](https://deims.org/search/sites), an user can download a csv file of the sites. Some filters can be used for selecting sites based on countries, projects, Biome, etc. The list of sites selected can be downloaded in csv format file.
+Starting from the [DEIMS-SDR "Advanced Search - Sites" interface](https://deims.org/search/sites), users can download a csv file of the sites. Some filters can be used for selecting sites based on countries, projects, Biome, etc. The list of selected sites can be downloaded in csv format.
 
-This documentation, starting from this file csv, shows how to:
+This vignette begins with such a csv file, and shows how to:
+
+1. Obtain contacts details, and spatial info for all sites (limited to 7 sites)
+2. Display in a table
+3. Prepare of map of those sites
 
 ## List of the contacts
 
-1. obtain the list of contacts for each site (limited for 7 sites)
-
 ```{r listContacts, warning=FALSE, message=FALSE}
+library(ReLTER)
 library(dplyr)
+library(sf)
+library(leaflet)
 site_results <- read.csv("./data/site_contacts_data.csv", sep = ";") %>%
-  dplyr::as_tibble() %>% 
-  dplyr::mutate(url = paste0("https://deims.org/", DEIMS.ID)) %>%
-  dplyr::top_n(10) %>%
+  as_tibble() %>% 
+  mutate(url = paste0("https://deims.org/", DEIMS.ID)) %>%
+  top_n(10) %>%
   unique()
 
-contacts <- site_results$url %>%
-  purrr::map_dfr(.f = function(x) {
-    x %>% ReLTER::get_site_info(category = "Contacts") %>%
-      dplyr::select(title, uri, siteManager, geoCoord) %>%
-      tidyr::unnest()
-  }) %>%
-  dplyr::mutate(
-    site = paste0("[", title, "](", uri, ")"),
-    contact = paste0("[", name, "](mailto:", email, ")")
-  ) %>%
-  unique()
+# contacts <- site_results$url %>%
+#   purrr::map_dfr(.f = function(x) {
+#     x %>% ReLTER::get_site_info(category = "Contacts") %>%
+#       dplyr::select(title, uri, siteManager, geoCoord) %>%
+#       tidyr::unnest()
+#   }) %>%
+#   dplyr::mutate(
+#     site = paste0("[", title, "](", uri, ")"),
+#     contact = paste0("[", name, "](mailto:", email, ")")
+#   ) %>%
+#   unique()
+#})
+
+contacts <- lapply(site_results$url, function(u) {
+  contact_info <- ReLTER::get_site_info(u, c("Contacts", "Boundary"))
+  sm <- as.data.frame(contact_info$siteManager)
+  cntt <- data.frame(site = paste0("[", contact_info$title, "](", contact_info$uri, ")"),
+                  contact = paste0("[", sm$name, "](mailto:", sm$email, ")"),
+                  geoCoord = contact_info$geoCoord)
+  return(cntt)
+  })
+contacts <- do.call(rbind, contacts)
 
 # Contacts table
-knitr::kable(
-  (contacts %>% dplyr::select(site, contact)),
+knitr::kable(contacts[, c("site", "contact")],
+  #(contacts %>% dplyr::select(site, contact)),
   caption = "List of the contacts",
   booktabs = TRUE, longtable = TRUE
 )
@@ -46,18 +62,15 @@ knitr::kable(
 
 ## Map of the sites
 
-2. how to map the sites selected
-
 ```{r geoSites, warning=FALSE, message=FALSE}
-library(dplyr)
-site_results_geo <- sf::st_as_sf(
+site_results_geo <- st_as_sf(
       contacts,
       wkt = "geoCoord"
     )
 
-listItaSitesMap <- leaflet::leaflet(site_results_geo) %>%
-  leaflet::addTiles() %>%
-  leaflet::addCircleMarkers(
+listItaSitesMap <- leaflet(site_results_geo) %>%
+  addTiles() %>%
+  addCircleMarkers(
     data = site_results_geo,
     radius = 3,
     weight = 2,

@@ -1,8 +1,8 @@
 ---
-title: "How to retrieve occurrence records by exploiting the {`ReLTER`} get_site_speciesOccurrences() function"
+title: "How to retrieve occurrence records by exploiting the `ReLTER` get_site_speciesOccurrences() function"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{How to retrieve occurrence records by exploiting the {`ReLTER`} get_site_speciesOccurrences() function}
+  %\VignetteIndexEntry{How to retrieve occurrence records by exploiting the `ReLTER` get_site_speciesOccurrences() function}
   %\VignetteEngine{knitr::knitr}
   %\usepackage[UTF-8]{inputenc}
 bibliography: ./references/occurrences_into_site_refs.bib
@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(dplyr)
 ```
 
-__ *get_site_speciesOccurrences()*, *map_occ_gbif2elter* and *save_occ_eLTER_reporting_Archive()* are delivered only with dev__withImprovements branch __
+IMPORTANT!! At this version (v2.2) of `ReLTER` package *get_site_speciesOccurrences()*, *map_occ_gbif2elter* and *save_occ_eLTER_reporting_Archive()* are delivered only with dev__withImprovements branch.
 
 Starting from the eLTER site id (DEIMS.iD), by ReLTER get_site_speciesOccurrences function, anyone can retrieve occurrence records from [GBIF](https://www.gbif.org) (via [`rgbif` R package](https://docs.ropensci.org/rgbif/)), [iNaturalist](https://www.inaturalist.org/) and [OBIS](https://obis.org/) carried out within the boundaries of the site.
 
@@ -72,23 +72,25 @@ Below an example for the eLTER [Saldur River Catchment site](https://deims.org/9
 
 
 ```{r export, warning=FALSE}
-saldurid <- "https://deims.org/97ff6180-e5d1-45f2-a559-8a7872eb26b1"
+saldurid <- "https://deims.org/0ba2af64-d550-4cad-b778-a207e1b81776"
 
 resSaldur <- ReLTER::get_site_speciesOccurrences(
   deimsid = saldurid,
   list_DS = c("gbif", "inat"),
   show_map = FALSE,
-  limit = 20,
+  limit = 50,
   exclude_inat_from_gbif = TRUE
 )
 
 # GBIF
 tblSaldur_gbif <- tibble::as_tibble(resSaldur$gbif)
+
 if (nrow(tblSaldur_gbif) > 0) {
   outGbif <- tblSaldur_gbif %>%
     ReLTER::map_occ_gbif2elter(deimsid = saldurid)
   ReLTER::save_occ_eLTER_reporting_Archive(outGbif)
 }
+
 # iNaturalist
 tblSaldur_inat <- tibble::as_tibble(resSaldur$inat)
 outInat <- tblSaldur_inat %>%
