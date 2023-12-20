@@ -18,13 +18,12 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 [![Lifecycle](https://lifecycle.r-lib.org/articles/figures/lifecycle-stable.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![R build
 status](https://github.com/rossellhayes/ipa/workflows/R-CMD-check/badge.svg)](https://github.com/rossellhayes/ipa/actions)
-[![](https://img.shields.io/badge/devel%20version-2.1.1-blue.svg)](https://github.com/ropensci/ReLTER)
+[![](https://img.shields.io/badge/devel%20version-2.2.0-blue.svg)](https://github.com/ropensci/ReLTER)
 [![codecov](https://codecov.io/gh/ropensci/ReLTER/branch/dev/graph/badge.svg)](https://codecov.io/gh/ropensci/ReLTER)
 <!-- CRAN badges -->
 <!-- [![](https://www.r-pkg.org/badges/version/ropensci/ReLTER?color=orange)](https://cran.r-project.org/package=ropensci/ReLTER) -->
-<!-- [![CRAN checks](https://cranchecks.info/badges/summary/ReLTER)](https://cran.r-project.org/web/checks/check_results_ReLTER.html) -->
+<!-- [![CRAN checks](https://badges.cranchecks.info/summary/ReLTER.svg)](https://cran.r-project.org/web/checks/check_results_ReLTER.html) -->
 <!-- [![](http://cranlogs.r-pkg.org/badges/last-month/badger?color=green)](https://cran.r-project.org/package=badger) -->
-<!-- [![Rdoc](https://www.rdocumentation.org/badges/version/ReLTER)](https://www.rdocumentation.org/packages/ReLTER) -->
 <!-- badges: end -->
 
 `{ReLTER}` is an R package that provides access to
@@ -75,7 +74,7 @@ tools.
 
 To cite `{ReLTER}` please use: Alessandro Oggioni, Micha Silver, Luigi
 Ranghetti & Paolo Tagliolato. (2023). ReLTER: An Interface for the eLTER
-Community (v2.1). Zenodo. <https://doi.org/10.5281/zenodo.5576813>
+Community (v2.2). Zenodo. <https://doi.org/10.5281/zenodo.5576813>
 
 or:
 
@@ -86,7 +85,7 @@ or:
   month        = jan,
   year         = 2023,
   publisher    = {Zenodo},
-  version      = {v2.1},
+  version      = {v2.2},
   doi          = {10.5281/zenodo.5576813},
   url          = {https://doi.org/10.5281/zenodo.5576813}
 }

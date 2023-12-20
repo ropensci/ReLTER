@@ -5,7 +5,7 @@ Zenodo repository.
 The function use the functions implemented by zen4r package.
 Blondel, Emmanuel, &amp;amp; Barde, Julien. (2021).
 zen4R: R Interface to Zenodo REST API (0.5-2). Zenodo.
-https://doi.org/10.5281/zenodo.5741143."><title>Create a record in Zenodo — produce_zenodo_record • ReLTER</title><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/apple-touch-icon.png"><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Create a record in Zenodo — produce_zenodo_record"><meta property="og:description" content="
+https://doi.org/10.5281/zenodo.5741143."><title>Create a record in Zenodo — produce_zenodo_record • ReLTER</title><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/apple-touch-icon.png"><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Create a record in Zenodo — produce_zenodo_record"><meta property="og:description" content="
 This function allows to deposit a record to
 Zenodo repository.
 The function use the functions implemented by zen4r package.
@@ -23,7 +23,7 @@ https://doi.org/10.5281/zenodo.5741143."><meta property="og:image" content="http
     <a href="https://ropensci.org" class="external-link"><img src="https://ropensci.org/img/icon_short_white.svg" id="hexlogo" alt="rOpenSci"></a>
     <a class="navbar-brand me-2" href="../index.html">ReLTER</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.1.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.2.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,10 +37,10 @@ https://doi.org/10.5281/zenodo.5741143."><meta property="og:image" content="http
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/occurrences_into_site.html">How to retrieve occurrence records by exploiting the {`ReLTER`} get_site_speciesOccurrences() function</a>
+    <a class="dropdown-item" href="../articles/occurrences_into_site.html">How to retrieve occurrence records by exploiting the `ReLTER` get_site_speciesOccurrences() function</a>
     <a class="dropdown-item" href="../articles/rocker_ReLTER.html">Run ReLTER in a Docker container</a>
     <a class="dropdown-item" href="../articles/site_information.html">How to get the info of a (one) LTER Site by knowing the DEIMS.ID</a>
-    <a class="dropdown-item" href="../articles/sites_contacts.html">How to get the list of contacts from list of DEIMS ID within csv file</a>
+    <a class="dropdown-item" href="../articles/sites_contacts.html">Obtain list of contacts from several DEIMS ID's (in csv file)</a>
     <a class="dropdown-item" href="../articles/sites_information.html">How to get the info of many than one LTER Sites</a>
   </div>
 </li>
@@ -80,25 +80,25 @@ zen4R: R Interface to Zenodo REST API (0.5-2). Zenodo.
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">produce_zenodo_record</span><span class="op">(</span>
-  <span class="va">mytoken</span>,
-  <span class="va">myfiles</span>,
-  <span class="va">delim</span>,
-  upload_rdata <span class="op">=</span> <span class="cn">FALSE</span>,
-  record_type <span class="op">=</span> <span class="st">"dataset"</span>,
-  <span class="va">record_title</span>,
-  <span class="va">record_description</span>,
-  <span class="va">record_authors</span>,
-  record_license <span class="op">=</span> <span class="st">"CC-BY-SA-4.0"</span>,
-  record_accessRight <span class="op">=</span> <span class="st">"open"</span>,
-  record_version <span class="op">=</span> <span class="st">"1.0"</span>,
-  record_language <span class="op">=</span> <span class="st">"eng"</span>,
-  <span class="va">record_keywords</span>,
-  <span class="va">record_relatedIdentifier</span>,
-  record_communities <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"lter-italy"</span>, <span class="st">"elter"</span><span class="op">)</span>,
-  <span class="va">record_grants</span>,
-  record_publish <span class="op">=</span> <span class="cn">FALSE</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">produce_zenodo_record</span><span class="op">(</span></span>
+<span>  <span class="va">mytoken</span>,</span>
+<span>  <span class="va">myfiles</span>,</span>
+<span>  <span class="va">delim</span>,</span>
+<span>  upload_rdata <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  record_type <span class="op">=</span> <span class="st">"dataset"</span>,</span>
+<span>  <span class="va">record_title</span>,</span>
+<span>  <span class="va">record_description</span>,</span>
+<span>  <span class="va">record_authors</span>,</span>
+<span>  record_license <span class="op">=</span> <span class="st">"CC-BY-SA-4.0"</span>,</span>
+<span>  record_accessRight <span class="op">=</span> <span class="st">"open"</span>,</span>
+<span>  record_version <span class="op">=</span> <span class="st">"1.0"</span>,</span>
+<span>  record_language <span class="op">=</span> <span class="st">"eng"</span>,</span>
+<span>  <span class="va">record_keywords</span>,</span>
+<span>  <span class="va">record_relatedIdentifier</span>,</span>
+<span>  record_communities <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"lter-italy"</span>, <span class="st">"elter"</span><span class="op">)</span>,</span>
+<span>  <span class="va">record_grants</span>,</span>
+<span>  record_publish <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -109,49 +109,75 @@ access token. A personal access token works just like a normal OAuth access
 token for authentication against the API. This token can be created at
 application
 <a href="https://zenodo.org/account/settings/applications/tokens/new/" class="external-link">page</a>.</p></dd>
+
+
 <dt>myfiles</dt>
 <dd><p>A <code>character</code>. The list of the file(s) to deposit in Zenodo.</p></dd>
+
+
 <dt>delim</dt>
 <dd><p>A <code>character</code>. Provide the character used to separate fields
 within a record. Only if you want to upload to Zenodo a dataset (see param
 record_type below) with extension 'csv', 'tsv' or 'txt' and if you want
 to upload also a copy of your dataset in Rdata format (see param
 upload_rdata below).</p></dd>
+
+
 <dt>upload_rdata</dt>
 <dd><p>A <code>logical</code>. Do you  want also upload a version of
 the dataset in RData format onto this record?
 Default FALSE.</p></dd>
+
+
 <dt>record_type</dt>
 <dd><p>A <code>character</code>. A type of record among the following
 values: 'publication', 'poster', 'presentation', 'dataset', 'image',
 'video', 'software', 'lesson', 'physicalobject', 'other'.
 Default 'dataset'.</p></dd>
+
+
 <dt>record_title</dt>
 <dd><p>A <code>character</code>. The title of the record.</p></dd>
+
+
 <dt>record_description</dt>
 <dd><p>A <code>character</code>. The description of the record.</p></dd>
+
+
 <dt>record_authors</dt>
 <dd><p>A <code>tibble</code>. It is a list of creator(s) of the
 record. The approach is to use the firstname, lastname, affiliation,
 orcid of the authors of the record. Please follow the example.</p></dd>
+
+
 <dt>record_license</dt>
 <dd><p>A <code>character</code>. It is the license with which the
 record is released. The license should be set with the Zenodo id of the
 license. Default "CC-BY-SA-4.0".
 The supported licenses values are from <a href="https://opendefinition.org" class="external-link">https://opendefinition.org</a>
 and <a href="https://spdx.org" class="external-link">https://spdx.org</a>.</p></dd>
+
+
 <dt>record_accessRight</dt>
 <dd><p>A <code>character</code>. Default "open". Other options are:
 'embargoed', 'restricted' and 'closed'.</p></dd>
+
+
 <dt>record_version</dt>
 <dd><p>A <code>character</code>. It is a version of the record.
 Default "1.0".</p></dd>
+
+
 <dt>record_language</dt>
 <dd><p>A <code>character</code>. It is the language of the record.
 Only one value is possible. Default "eng".</p></dd>
+
+
 <dt>record_keywords</dt>
 <dd><p>A <code>character</code>. A multiple values are possible. The
 keyword to the record of record.</p></dd>
+
+
 <dt>record_relatedIdentifier</dt>
 <dd><p>A <code>tibble</code>. It is the related entities
 (e.g. scientific paper, data paper, etc.) with the detaset. The tibble is
@@ -161,22 +187,31 @@ among following values: "isCitedBy", "cites", "isSupplementTo",
 "isPartOf", "hasPart", "compiles", "isCompiledBy", "isIdenticalTo",
 "isAlternateIdentifier". While identifier is any type of identifier
 (e.g. DOI).</p></dd>
+
+
 <dt>record_communities</dt>
 <dd><p>A <code>character</code>. It is a name of communities as
 created in Zenodo. A multiple values are possible. Default "lter-italy"
 and "elter".</p></dd>
+
+
 <dt>record_grants</dt>
 <dd><p>A <code>character</code>. A multiple values are possible. Put a
 list of project identifier as well as showed by the European Commission via
 <a href="http://www.openaire.eu/" class="external-link">OpenAIRE</a>.</p></dd>
+
+
 <dt>record_publish</dt>
 <dd><p>A <code>logical</code>. State whether the Zenodo record is to
 be published. The parameter publish can be set to TRUE (to use CAUTIOUSLY,
 only if you want to publish your record). Default FALSE.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A link (URL) of the deposited record in Zenodo. The user must then:</p><ol><li><p>visit the webpage of record, 2. check the information provided, 3.
+    
+
+<p>A link (URL) of the deposited record in Zenodo. The user must then:</p><ol><li><p>visit the webpage of record, 2. check the information provided, 3.
 'save' and 'publish' the record on Zenodo repository, 4. use the DOI to
 cite the record.</p></li>
 </ol></div>
@@ -191,39 +226,39 @@ cite the record.</p></li>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="co">## Not run:</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">authors</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span>
-<span class="r-in">  name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Luke"</span>, <span class="st">"Leia"</span><span class="op">)</span>,</span>
-<span class="r-in">  surname <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Skywalker"</span>, <span class="st">"Organa"</span><span class="op">)</span>,</span>
-<span class="r-in">  affiliation <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Tatooine"</span>, <span class="st">"Alderaan"</span><span class="op">)</span>,</span>
-<span class="r-in">  orcid <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"0000-0002-7997-219X"</span>, <span class="st">"0000-0002-7997-219X"</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="va">keywords</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Star Wars"</span>, <span class="st">"species"</span>, <span class="st">"films"</span>, <span class="st">"planets"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">relatedIdentifiers</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span>
-<span class="r-in">  relation <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"isSupplementTo"</span>, <span class="st">"isPartOf"</span><span class="op">)</span>,</span>
-<span class="r-in">  identifier <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"10.1038/s4150-01-0032"</span>, <span class="st">"10.1016/j.2051.06.026"</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="va">grants</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"871128"</span>, <span class="st">"654359"</span>, <span class="st">"871126"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">produce_zenodo_record</span><span class="op">(</span></span>
-<span class="r-in">  mytoken <span class="op">=</span> <span class="va">mytoken</span>, <span class="co"># generate your Zenodo token</span></span>
-<span class="r-in">  myfiles <span class="op">=</span> <span class="va">myfile</span>, <span class="co"># provide your file(s)</span></span>
-<span class="r-in">  delim <span class="op">=</span> <span class="st">";"</span>,</span>
-<span class="r-in">  upload_rdata <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span class="r-in">  record_title <span class="op">=</span> <span class="st">"The title"</span>,</span>
-<span class="r-in">  record_description <span class="op">=</span> <span class="st">"This is the description of the record."</span>,</span>
-<span class="r-in">  record_authors <span class="op">=</span> <span class="va">authors</span>,</span>
-<span class="r-in">  record_keywords <span class="op">=</span> <span class="va">keywords</span>,</span>
-<span class="r-in">  record_relatedIdentifier <span class="op">=</span> <span class="va">relatedIdentifiers</span>,</span>
-<span class="r-in">  record_communities <span class="op">=</span> <span class="st">"lter-italy"</span>,</span>
-<span class="r-in">  record_grants <span class="op">=</span> <span class="va">grants</span>,</span>
-<span class="r-in">  record_publish <span class="op">=</span> <span class="cn">FALSE</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## End (Not run)</span></span>
-<span class="r-in"></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="co">## Not run:</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">authors</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Luke"</span>, <span class="st">"Leia"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  surname <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Skywalker"</span>, <span class="st">"Organa"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  affiliation <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Tatooine"</span>, <span class="st">"Alderaan"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  orcid <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"0000-0002-7997-219X"</span>, <span class="st">"0000-0002-7997-219X"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">keywords</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Star Wars"</span>, <span class="st">"species"</span>, <span class="st">"films"</span>, <span class="st">"planets"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">relatedIdentifiers</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  relation <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"isSupplementTo"</span>, <span class="st">"isPartOf"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  identifier <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"10.1038/s4150-01-0032"</span>, <span class="st">"10.1016/j.2051.06.026"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">grants</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"871128"</span>, <span class="st">"654359"</span>, <span class="st">"871126"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">produce_zenodo_record</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  mytoken <span class="op">=</span> <span class="va">mytoken</span>, <span class="co"># generate your Zenodo token</span></span></span>
+<span class="r-in"><span>  myfiles <span class="op">=</span> <span class="va">myfile</span>, <span class="co"># provide your file(s)</span></span></span>
+<span class="r-in"><span>  delim <span class="op">=</span> <span class="st">";"</span>,</span></span>
+<span class="r-in"><span>  upload_rdata <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>  record_title <span class="op">=</span> <span class="st">"The title"</span>,</span></span>
+<span class="r-in"><span>  record_description <span class="op">=</span> <span class="st">"This is the description of the record."</span>,</span></span>
+<span class="r-in"><span>  record_authors <span class="op">=</span> <span class="va">authors</span>,</span></span>
+<span class="r-in"><span>  record_keywords <span class="op">=</span> <span class="va">keywords</span>,</span></span>
+<span class="r-in"><span>  record_relatedIdentifier <span class="op">=</span> <span class="va">relatedIdentifiers</span>,</span></span>
+<span class="r-in"><span>  record_communities <span class="op">=</span> <span class="st">"lter-italy"</span>,</span></span>
+<span class="r-in"><span>  record_grants <span class="op">=</span> <span class="va">grants</span>,</span></span>
+<span class="r-in"><span>  record_publish <span class="op">=</span> <span class="cn">FALSE</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## End (Not run)</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
@@ -239,7 +274,7 @@ cite the record.</p></li>
                     <div class="col-md-4 col-xs-6">
                         <a href="https://github.com/ropensci" target="_blank" class="external-link"><div class="icon fab fa-github"></div></a>
                         <a href="https://github.com/ropenscilabs" target="_blank" class="external-link"><div class="icon fa fa-flask"></div></a>
-                        <a href="https://twitter.com/ropensci" target="_blank" class="external-link"><div class="icon fab fa-twitter"></div></a>
+                        <a href="https://hachyderm.io/@ropensci" target="_blank" class="external-link"><div class="icon fab fa-mastodon"></div></a>
                         <a href="https://vimeo.com/ropensci" target="_blank" class="external-link"><div class="icon fab fa-vimeo"></div></a>
                     </div>
                 </div>

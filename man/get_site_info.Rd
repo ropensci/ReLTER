@@ -43,6 +43,12 @@ siteInfo <- get_site_info(
 )
 siteInfo
 
+site <- get_site_info(
+  deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
+  category = "RelateRes"
+)
+site
+
 }
 \references{
 \insertRef{dplyrR}{ReLTER}

@@ -1,3 +1,17 @@
+# ReLTER 2.2.0 Release Notes
+
+v2.2.0 was released on 29/11/2023
+
+## Changes
+
+* new function get_location_info, get_site_boundaries, get_sites_interactive,
+  get_sites_within_3d_bounding_box, get_sites_within_radius, plot_agg_map, and 
+  plot_timeseries
+* replaced httr package with httr2
+* replaced RCurl package with httr2
+* removed rgeos dependancies
+
+________________________________________________________________________________
 # ReLTER 2.1.2 Release Notes
 
 v2.1.2 was released on 30/01/2023

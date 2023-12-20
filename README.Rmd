@@ -39,7 +39,6 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 <!-- `r badger::badge_cran_release("ropensci/ReLTER", "orange")` -->
 <!-- `r badger::badge_cran_checks("ReLTER")` -->
 <!-- `r badger::badge_cran_download("badger", "last-month", "green")` -->
-<!-- `r badgecreatr::badge_rdocumentation("ReLTER")` -->
 <!-- badges: end -->
 
 `{ReLTER}` is an R package that provides access to
@@ -90,7 +89,7 @@ tools.
 
 To cite `{ReLTER}` please use: Alessandro Oggioni, Micha Silver, Luigi Ranghetti
 & Paolo Tagliolato. (2023). ReLTER: An Interface for the eLTER Community
-(v2.1). Zenodo. <https://doi.org/10.5281/zenodo.5576813>
+(v2.2). Zenodo. <https://doi.org/10.5281/zenodo.5576813>
 
 or:
 
@@ -101,7 +100,7 @@ or:
   month        = jan,
   year         = 2023,
   publisher    = {Zenodo},
-  version      = {v2.1},
+  version      = {v2.2},
   doi          = {10.5281/zenodo.5576813},
   url          = {https://doi.org/10.5281/zenodo.5576813}
 }

@@ -1,5 +1,5 @@
-pandoc: 2.19.2
-pkgdown: 2.0.3
+pandoc: 3.1.1
+pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
   occurrences_into_site: occurrences_into_site.html
@@ -7,7 +7,7 @@ articles:
   site_information: site_information.html
   sites_contacts: sites_contacts.html
   sites_information: sites_information.html
-last_built: 2023-01-27T14:31Z
+last_built: 2023-12-20T18:22Z
 urls:
   reference: https://docs.ropensci.org/ReLTER/reference
   article: https://docs.ropensci.org/ReLTER/articles

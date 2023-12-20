@@ -11,7 +11,7 @@ https://urs.earthdata.nasa.gov/home
 In order to guard your user credentials, please save
 your username and password to environment variables. i.e.
 Sys.setenv("earthdata_user"="homer_simpson")
-Sys.setenv("earthdata_pass"="bart&amp;amp;lucy")'><title>Acquire a time series of MODIS satellite products — get_site_MODIS • ReLTER</title><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/apple-touch-icon.png"><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Acquire a time series of MODIS satellite products — get_site_MODIS"><meta property="og:description" content='
+Sys.setenv("earthdata_pass"="bart&amp;amp;lucy")'><title>Acquire a time series of MODIS satellite products — get_site_MODIS • ReLTER</title><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/apple-touch-icon.png"><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Acquire a time series of MODIS satellite products — get_site_MODIS"><meta property="og:description" content='
 Acquire either Land Surface Temperature (LST) or Vegetation Index (NDVI)
 both cropped to an eLTER site boundary.
 Download a timeseries of MODIS images containing the requested
@@ -35,7 +35,7 @@ Sys.setenv("earthdata_pass"="bart&amp;amp;lucy")'><meta property="og:image" cont
     <a href="https://ropensci.org" class="external-link"><img src="https://ropensci.org/img/icon_short_white.svg" id="hexlogo" alt="rOpenSci"></a>
     <a class="navbar-brand me-2" href="../index.html">ReLTER</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.1.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.2.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,10 +49,10 @@ Sys.setenv("earthdata_pass"="bart&amp;amp;lucy")'><meta property="og:image" cont
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/occurrences_into_site.html">How to retrieve occurrence records by exploiting the {`ReLTER`} get_site_speciesOccurrences() function</a>
+    <a class="dropdown-item" href="../articles/occurrences_into_site.html">How to retrieve occurrence records by exploiting the `ReLTER` get_site_speciesOccurrences() function</a>
     <a class="dropdown-item" href="../articles/rocker_ReLTER.html">Run ReLTER in a Docker container</a>
     <a class="dropdown-item" href="../articles/site_information.html">How to get the info of a (one) LTER Site by knowing the DEIMS.ID</a>
-    <a class="dropdown-item" href="../articles/sites_contacts.html">How to get the list of contacts from list of DEIMS ID within csv file</a>
+    <a class="dropdown-item" href="../articles/sites_contacts.html">Obtain list of contacts from several DEIMS ID's (in csv file)</a>
     <a class="dropdown-item" href="../articles/sites_information.html">How to get the info of many than one LTER Sites</a>
   </div>
 </li>
@@ -98,17 +98,17 @@ Sys.setenv("earthdata_pass"="bart&amp;lucy")</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">get_site_MODIS</span><span class="op">(</span>
-  <span class="va">deimsid</span>,
-  product <span class="op">=</span> <span class="st">"VI"</span>,
-  from_date <span class="op">=</span> <span class="st">"2010.01.01"</span>,
-  to_date <span class="op">=</span> <span class="st">"2020.31.12"</span>,
-  output_dir <span class="op">=</span> <span class="cn">NULL</span>,
-  plot_ts <span class="op">=</span> <span class="cn">TRUE</span>,
-  output_proj <span class="op">=</span> <span class="st">"3035"</span>,
-  download_range <span class="op">=</span> <span class="st">"Full"</span>,
-  show_map <span class="op">=</span> <span class="cn">FALSE</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">get_site_MODIS</span><span class="op">(</span></span>
+<span>  <span class="va">deimsid</span>,</span>
+<span>  product <span class="op">=</span> <span class="st">"VI"</span>,</span>
+<span>  from_date <span class="op">=</span> <span class="st">"2010.01.01"</span>,</span>
+<span>  to_date <span class="op">=</span> <span class="st">"2020.31.12"</span>,</span>
+<span>  output_dir <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  plot_ts <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  output_proj <span class="op">=</span> <span class="st">"3035"</span>,</span>
+<span>  download_range <span class="op">=</span> <span class="st">"Full"</span>,</span>
+<span>  show_map <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -117,6 +117,8 @@ Sys.setenv("earthdata_pass"="bart&amp;lucy")</p>
 <dd><p><code>character</code>. The DEIMS ID of the site from
 DEIMS-SDR website. DEIMS ID information
 <a href="https://deims.org/docs/deimsid.html" class="external-link">here</a>.</p></dd>
+
+
 <dt>product</dt>
 <dd><p><code>character</code>. The requested product.
 One of: "LST", "VI", "ET", "LAI".
@@ -127,35 +129,53 @@ One of: "LST", "VI", "ET", "LAI".
 "LAI" for Leaf area index and FPAR at 500m resolution
 "ET" for Evapotranspiration, 8 day interval at 500m resolution
 Default is "VI".</p></dd>
+
+
 <dt>from_date</dt>
 <dd><p><code>character</code>: the start date formatted as YYYY.MM.DD</p></dd>
+
+
 <dt>to_date</dt>
 <dd><p><code>character</code>: the end date formatted as YYYY.MM.DD</p></dd>
+
+
 <dt>output_dir</dt>
 <dd><p><code>character</code>: where to save downloaded rasters
 (Default is <code><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir()</a></code>)</p></dd>
+
+
 <dt>plot_ts</dt>
 <dd><p><code>boolean</code>: whether to plot the time series,
 Default TRUE.</p></dd>
+
+
 <dt>output_proj</dt>
 <dd><p><code>character</code>: the EPSG code of desired output projection.
 Default is "3035", the European LAEA coordinate reference system.</p></dd>
+
+
 <dt>download_range</dt>
 <dd><p><code>character</code>: one of "Full" or "Seasonal".
 Specifies whether to acquire all images between start and end dates, or
 only for a specific season. e.g. if the starting date is "2010.01.01"
 and the ending date is "2020.02.28" then only images for
 January and February are acquired, over the 10 year time span. (See example)</p></dd>
+
+
 <dt>show_map</dt>
 <dd><p><code>character</code>: Whether to create, save and display an
 aggregated map from the time series of acquired MODIS products.
 See note below.
 This string must be one of:</p>
-<p></p><div class="sourceCode"><pre><code></code></pre><p></p></div></dd>
+<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="cn">FALSE</span> (the default)<span class="sc">:</span> no map is shown or created.</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>Otherwise<span class="sc">:</span> an aggregation <span class="cf">function</span> such as <span class="st">"mean"</span>, <span class="st">"max"</span>, or <span class="st">"min.</span></span></code></pre><p></p></div></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>Full path of all downloaded and cropped Geotiff files</p>
+    
+
+<p>Full path of all downloaded and cropped Geotiff files</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -184,12 +204,12 @@ aggregation map of the product over the site.</p></li>
     <p>Busetto L, Ranghetti L (2016).
 “MODIStsp: an R package for preprocessing of MODIS Land Products time series.”
 <em>Computers &amp; Geosciences</em>, <b>97</b>, 40-48.
-ISSN 0098-3004, doi: <a href="https://doi.org/10.1016/j.cageo.2016.08.020" class="external-link">10.1016/j.cageo.2016.08.020</a>
+ISSN 0098-3004, <a href="https://doi.org/10.1016/j.cageo.2016.08.020" class="external-link">doi:10.1016/j.cageo.2016.08.020</a>
 , <a href="https://github.com/ropensci/MODIStsp" class="external-link">https://github.com/ropensci/MODIStsp</a>.</p>
 <p>Pebesma E (2018).
 “Simple Features for R: Standardized Support for Spatial Vector Data.”
 <em>The R Journal</em>, <b>10</b>(1), 439--446.
-doi: <a href="https://doi.org/10.32614/RJ-2018-009" class="external-link">10.32614/RJ-2018-009</a>
+<a href="https://doi.org/10.32614/RJ-2018-009" class="external-link">doi:10.32614/RJ-2018-009</a>
 .</p>
 <p>Hijmans RJ (2022).
 <em>terra: Spatial Data Analysis</em>.
@@ -209,7 +229,101 @@ https://lpdaac.usgs.gov/resources/data-action/aster-ultimate-2018-winter-olympic
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span> <span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="co"># Lago Maggiore - Italy, LST over an 6 month time span</span></span></span>
+<span class="r-in"><span><span class="co"># Saved in LAEA ETRS89 coordinate reference system</span></span></span>
+<span class="r-in"><span><span class="co"># This example completes in about 10 mins</span></span></span>
+<span class="r-in"><span><span class="va">deimsid</span> <span class="op">=</span> <span class="st">"https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"</span></span></span>
+<span class="r-in"><span><span class="va">product</span> <span class="op">&lt;-</span> <span class="st">"LST"</span></span></span>
+<span class="r-in"><span><span class="va">from_date</span> <span class="op">&lt;-</span> <span class="st">"2018.03.01"</span></span></span>
+<span class="r-in"><span><span class="va">to_date</span> <span class="op">&lt;-</span> <span class="st">"2018.08.30"</span></span></span>
+<span class="r-in"><span><span class="va">output_dir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">output_proj</span> <span class="op">&lt;-</span> <span class="st">"3035"</span></span></span>
+<span class="r-in"><span><span class="va">download_list</span> <span class="op">&lt;-</span> <span class="fu">ReLTER</span><span class="fu">::</span><span class="fu">get_site_MODIS</span><span class="op">(</span><span class="va">deimsid</span>,</span></span>
+<span class="r-in"><span>    product <span class="op">=</span> <span class="va">product</span>,</span></span>
+<span class="r-in"><span>    from_date <span class="op">=</span> <span class="va">from_date</span>, to_date <span class="op">=</span> <span class="va">to_date</span>,</span></span>
+<span class="r-in"><span>    output_dir <span class="op">=</span> <span class="va">output_dir</span>,</span></span>
+<span class="r-in"><span>    plot_ts <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>    output_proj <span class="op">=</span> <span class="va">output_proj</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Northern Negev LTER - Israel, NDVI over 4 winter months,</span></span></span>
+<span class="r-in"><span><span class="co"># projected to Israeli 05/12 CRS</span></span></span>
+<span class="r-in"><span><span class="co"># This example completes in about 30 mins</span></span></span>
+<span class="r-in"><span><span class="va">deimsid</span> <span class="op">&lt;-</span> <span class="st">"https://deims.org/871a90b2-e372-456a-93e3-518ad1e11239"</span></span></span>
+<span class="r-in"><span><span class="va">from_date</span> <span class="op">&lt;-</span> <span class="st">"2018.01.01"</span></span></span>
+<span class="r-in"><span><span class="va">to_date</span> <span class="op">&lt;-</span> <span class="st">"2018.04.30"</span></span></span>
+<span class="r-in"><span><span class="va">product</span> <span class="op">=</span> <span class="st">"VI"</span></span></span>
+<span class="r-in"><span><span class="va">output_dir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">output_proj</span> <span class="op">&lt;-</span> <span class="st">"6991"</span></span></span>
+<span class="r-in"><span><span class="va">download_list</span> <span class="op">&lt;-</span> <span class="fu">ReLTER</span><span class="fu">::</span><span class="fu">get_site_MODIS</span><span class="op">(</span><span class="va">deimsid</span>,</span></span>
+<span class="r-in"><span>    product <span class="op">=</span> <span class="va">product</span>,</span></span>
+<span class="r-in"><span>    from_date <span class="op">=</span> <span class="va">from_date</span>, to_date<span class="op">=</span><span class="va">to_date</span>,</span></span>
+<span class="r-in"><span>    output_dir <span class="op">=</span> <span class="va">output_dir</span>,</span></span>
+<span class="r-in"><span>    plot_ts <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>    output_proj <span class="op">=</span> <span class="va">output_proj</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Nationalpark Mols Bjerge - Denmark, 10 year only for July</span></span></span>
+<span class="r-in"><span><span class="co"># Show aggregated mean NDVI and EVI, (No time series plot)</span></span></span>
+<span class="r-in"><span><span class="co"># projected to EPSG:25832 (UTM zone 32, ETRS89)</span></span></span>
+<span class="r-in"><span><span class="co"># Takes about 3/4 hour to run...</span></span></span>
+<span class="r-in"><span><span class="va">deimsid</span> <span class="op">&lt;-</span> <span class="st">"https://deims.org/8407da23-d75d-4a02-a5a5-7b9701a86743"</span></span></span>
+<span class="r-in"><span><span class="va">from_date</span> <span class="op">&lt;-</span> <span class="st">"2005.07.01"</span></span></span>
+<span class="r-in"><span><span class="va">to_date</span> <span class="op">&lt;-</span> <span class="st">"2015.08.01"</span></span></span>
+<span class="r-in"><span><span class="va">output_dir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">output_proj</span> <span class="op">&lt;-</span> <span class="st">"25832"</span></span></span>
+<span class="r-in"><span><span class="va">product</span> <span class="op">&lt;-</span> <span class="st">"VI"</span></span></span>
+<span class="r-in"><span><span class="va">download_list</span> <span class="op">&lt;-</span> <span class="fu">ReLTER</span><span class="fu">::</span><span class="fu">get_site_MODIS</span><span class="op">(</span><span class="va">deimsid</span>,</span></span>
+<span class="r-in"><span>    product <span class="op">=</span> <span class="va">product</span>,</span></span>
+<span class="r-in"><span>    from_date <span class="op">=</span> <span class="va">from_date</span>, to_date <span class="op">=</span> <span class="va">to_date</span>,</span></span>
+<span class="r-in"><span>    output_dir <span class="op">=</span> <span class="va">output_dir</span>,</span></span>
+<span class="r-in"><span>    output_proj <span class="op">=</span> <span class="va">output_proj</span>,</span></span>
+<span class="r-in"><span>    download_range <span class="op">=</span> <span class="st">"Seasonal"</span>,</span></span>
+<span class="r-in"><span>    plot_ts <span class="op">=</span> <span class="cn">FALSE</span>,</span></span>
+<span class="r-in"><span>    show_map <span class="op">=</span> <span class="st">"mean"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Braila Islands - Romania, 2 year time series of evapotranspiration</span></span></span>
+<span class="r-in"><span><span class="co"># projected to Pulkova 1942(59) Zone 9 CRS, EPSG:3839</span></span></span>
+<span class="r-in"><span><span class="co"># Takes almost 1.5 hours to run (requires 2 MODIS tiles)</span></span></span>
+<span class="r-in"><span><span class="va">deimsid</span> <span class="op">&lt;-</span> <span class="st">"https://deims.org/d4854af8-9d9f-42a2-af96-f1ed9cb25712"</span></span></span>
+<span class="r-in"><span><span class="va">from_date</span> <span class="op">&lt;-</span> <span class="st">"2015.01.01"</span></span></span>
+<span class="r-in"><span><span class="va">to_date</span> <span class="op">&lt;-</span> <span class="st">"2016.12.31"</span></span></span>
+<span class="r-in"><span><span class="va">output_dir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">output_proj</span> <span class="op">&lt;-</span> <span class="st">"3839"</span></span></span>
+<span class="r-in"><span><span class="va">product</span> <span class="op">&lt;-</span> <span class="st">"ET"</span></span></span>
+<span class="r-in"><span><span class="va">download_list</span> <span class="op">&lt;-</span> <span class="fu">ReLTER</span><span class="fu">::</span><span class="fu">get_site_MODIS</span><span class="op">(</span><span class="va">deimsid</span>,</span></span>
+<span class="r-in"><span>    product <span class="op">=</span> <span class="va">product</span>,</span></span>
+<span class="r-in"><span>    from_date <span class="op">=</span> <span class="va">from_date</span>, to_date <span class="op">=</span> <span class="va">to_date</span>,</span></span>
+<span class="r-in"><span>    output_dir <span class="op">=</span> <span class="va">output_dir</span>,</span></span>
+<span class="r-in"><span>    output_proj <span class="op">=</span> <span class="va">output_proj</span>,</span></span>
+<span class="r-in"><span>    download_range <span class="op">=</span> <span class="st">"Full"</span>,</span></span>
+<span class="r-in"><span>    plot_ts <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>    show_map <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Gran Paradiso National Park - Italy,</span></span></span>
+<span class="r-in"><span><span class="co"># 1 year time series of LAI and aggregated map</span></span></span>
+<span class="r-in"><span><span class="co"># projected to ETRS89 LAEA, EPSG:3035</span></span></span>
+<span class="r-in"><span><span class="co"># Takes about 3/4 hour to run</span></span></span>
+<span class="r-in"><span><span class="va">deimsid</span> <span class="op">&lt;-</span> <span class="st">"https://deims.org/e33c983a-19ad-4f40-a6fd-1210ee0b3a4b"</span></span></span>
+<span class="r-in"><span><span class="va">from_date</span> <span class="op">&lt;-</span> <span class="st">"2020.01.01"</span></span></span>
+<span class="r-in"><span><span class="va">to_date</span> <span class="op">&lt;-</span> <span class="st">"2020.12.31"</span></span></span>
+<span class="r-in"><span><span class="va">output_dir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">output_proj</span> <span class="op">&lt;-</span> <span class="st">"3035"</span></span></span>
+<span class="r-in"><span><span class="va">product</span> <span class="op">&lt;-</span> <span class="st">"LAI"</span></span></span>
+<span class="r-in"><span><span class="va">download_list</span> <span class="op">&lt;-</span> <span class="fu">ReLTER</span><span class="fu">::</span><span class="fu">get_site_MODIS</span><span class="op">(</span><span class="va">deimsid</span>,</span></span>
+<span class="r-in"><span>    product <span class="op">=</span> <span class="va">product</span>,</span></span>
+<span class="r-in"><span>    from_date <span class="op">=</span> <span class="va">from_date</span>, to_date <span class="op">=</span> <span class="va">to_date</span>,</span></span>
+<span class="r-in"><span>    output_dir <span class="op">=</span> <span class="va">output_dir</span>,</span></span>
+<span class="r-in"><span>    output_proj <span class="op">=</span> <span class="va">output_proj</span>,</span></span>
+<span class="r-in"><span>    download_range <span class="op">=</span> <span class="st">"Full"</span>,</span></span>
+<span class="r-in"><span>    plot_ts <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>    show_map <span class="op">=</span> <span class="st">"mean"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+</code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
@@ -224,7 +338,7 @@ https://lpdaac.usgs.gov/resources/data-action/aster-ultimate-2018-winter-olympic
                     <div class="col-md-4 col-xs-6">
                         <a href="https://github.com/ropensci" target="_blank" class="external-link"><div class="icon fab fa-github"></div></a>
                         <a href="https://github.com/ropenscilabs" target="_blank" class="external-link"><div class="icon fa fa-flask"></div></a>
-                        <a href="https://twitter.com/ropensci" target="_blank" class="external-link"><div class="icon fab fa-twitter"></div></a>
+                        <a href="https://hachyderm.io/@ropensci" target="_blank" class="external-link"><div class="icon fab fa-mastodon"></div></a>
                         <a href="https://vimeo.com/ropensci" target="_blank" class="external-link"><div class="icon fab fa-vimeo"></div></a>
                     </div>
                 </div>

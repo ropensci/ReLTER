@@ -31,21 +31,21 @@ Italy network}).
 # The sites of LTER-Italy network
 listSites <- get_network_sites(
   networkDEIMSID =
-  "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
+    "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 )
 listSites
 
 # The sites of LTER Europe network
 euSites <- get_network_sites(
   networkDEIMSID =
-  "https://deims.org/networks/4742ffca-65ac-4aae-815f-83738500a1fc"
+    "https://deims.org/networks/4742ffca-65ac-4aae-815f-83738500a1fc"
 )
 euSites
 }
 
 }
 \references{
-\insertRef{httrR}{ReLTER}
+\insertRef{httr2}{ReLTER}
 
 \insertRef{dplyrR}{ReLTER}
 

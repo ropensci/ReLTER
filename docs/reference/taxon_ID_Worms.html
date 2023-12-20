@@ -5,7 +5,7 @@ of taxa plus new columns such as valid_name, valid_authority, valid_AphiaID,
 status, synonyms, LSID, url, matchType, nOfWormsRecords, wormsRecords
 obtained from Word Register of Marine Species
 WoRMS rest API."><title>Enrich and certify a list of species names by
-comparing with WoRMS. — taxon_id_worms • ReLTER</title><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/apple-touch-icon.png"><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Enrich and certify a list of species names by
+comparing with WoRMS. — taxon_id_worms • ReLTER</title><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/apple-touch-icon.png"><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Enrich and certify a list of species names by
 comparing with WoRMS. — taxon_id_worms"><meta property="og:description" content="
 This function provide tibble object with all the columns of input table
 of taxa plus new columns such as valid_name, valid_authority, valid_AphiaID,
@@ -23,7 +23,7 @@ WoRMS rest API."><meta property="og:image" content="https://docs.ropensci.org/Re
     <a href="https://ropensci.org" class="external-link"><img src="https://ropensci.org/img/icon_short_white.svg" id="hexlogo" alt="rOpenSci"></a>
     <a class="navbar-brand me-2" href="../index.html">ReLTER</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.1.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.2.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,10 +37,10 @@ WoRMS rest API."><meta property="og:image" content="https://docs.ropensci.org/Re
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/occurrences_into_site.html">How to retrieve occurrence records by exploiting the {`ReLTER`} get_site_speciesOccurrences() function</a>
+    <a class="dropdown-item" href="../articles/occurrences_into_site.html">How to retrieve occurrence records by exploiting the `ReLTER` get_site_speciesOccurrences() function</a>
     <a class="dropdown-item" href="../articles/rocker_ReLTER.html">Run ReLTER in a Docker container</a>
     <a class="dropdown-item" href="../articles/site_information.html">How to get the info of a (one) LTER Site by knowing the DEIMS.ID</a>
-    <a class="dropdown-item" href="../articles/sites_contacts.html">How to get the list of contacts from list of DEIMS ID within csv file</a>
+    <a class="dropdown-item" href="../articles/sites_contacts.html">Obtain list of contacts from several DEIMS ID's (in csv file)</a>
     <a class="dropdown-item" href="../articles/sites_information.html">How to get the info of many than one LTER Sites</a>
   </div>
 </li>
@@ -80,7 +80,7 @@ obtained from Word Register of Marine Species
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">taxon_id_worms</span><span class="op">(</span><span class="va">input</span>, taxaColumn <span class="op">=</span> <span class="fl">1</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span>, refine <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">taxon_id_worms</span><span class="op">(</span><span class="va">input</span>, taxaColumn <span class="op">=</span> <span class="fl">1</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span>, refine <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -88,31 +88,45 @@ obtained from Word Register of Marine Species
     <dl><dt>input</dt>
 <dd><p>A <code>tibble</code>. The table that contain the species
 names list to be checked.</p></dd>
+
+
 <dt>taxaColumn</dt>
 <dd><p>A <code>numeric</code>. The cardinal number of the column where
 species list is. Default is <code>1</code>.</p></dd>
+
+
 <dt>verbose</dt>
 <dd><p>A <code>logical</code>. Whit this selection, the function returns a
 message with number of record(s) that don't match with any Worms names and
 the number of record(s) that match with more that one Worms name. Default
 is <code>TRUE</code>.</p></dd>
+
+
 <dt>refine</dt>
 <dd><p>A <code>logical</code>. With this selection, the function allows to
 refine the result(s) that match with more Worms records. By a interactive
 use of the terminal, the user can chose the result. Default is <code>FALSE</code>.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>The output of the function is a <code>tibble</code> with the columns provided
+    
+
+<p>The output of the function is a <code>tibble</code> with the columns provided
 and new columns such as: valid_name, valid_authority, valid_AphiaID, status,
 synonyms, LSID, url, matchType, nOfWormsRecords, wormsRecords obtained by
 <a href="http://www.marinespecies.org/rest/" class="external-link">Worms rest API</a>.
 The function also return, if verbose is TRUE, the list of records that don't
-match with Worms name species.
-Most of the labels of the columns are the terms of
+match with Worms name species.</p>
+
+
+<p>Most of the labels of the columns are the terms of
 <a href="https://dwc.tdwg.org/terms/#record-level" class="external-link">Darwin Core terms</a>.
 The columns labels are annotate with the link (URI) of the
-<a href="https://dwc.tdwg.org/terms/#record-level" class="external-link">Darwin Core terms</a>as attributes of the <code>tibble</code>.</p>
+<a href="https://dwc.tdwg.org/terms/#record-level" class="external-link">Darwin Core terms</a></p>
+
+
+<p>as attributes of the <code>tibble</code>.</p>
     </div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
@@ -131,21 +145,21 @@ R package version 1.0.9, <a href="https://CRAN.R-project.org/package=dplyr" clas
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">phytoplankton</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span>
-<span class="r-in">   ID <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">6</span>, <span class="fl">7</span><span class="op">)</span>,</span>
-<span class="r-in">   species <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
-<span class="r-in">   <span class="st">"Asterionella formosa"</span>, <span class="st">"Chrysococcus sp."</span>,</span>
-<span class="r-in">   <span class="st">"Cryptomonas rostrata"</span>, <span class="st">"Dinobryon divergens"</span>,</span>
-<span class="r-in">   <span class="st">"Mallomonas akrokomos"</span>, <span class="st">"Melosira varians"</span>,</span>
-<span class="r-in">   <span class="st">"Cryptomonas rostrata"</span></span>
-<span class="r-in"> <span class="op">)</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="va">table</span> <span class="op">&lt;-</span> <span class="fu">taxon_id_worms</span><span class="op">(</span></span>
-<span class="r-in">  input <span class="op">=</span> <span class="va">phytoplankton</span>,</span>
-<span class="r-in">  taxaColumn <span class="op">=</span> <span class="fl">2</span>,</span>
-<span class="r-in">  verbose <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span class="r-in">  refine <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span class="r-in"><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">phytoplankton</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>   ID <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">6</span>, <span class="fl">7</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>   species <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>   <span class="st">"Asterionella formosa"</span>, <span class="st">"Chrysococcus sp."</span>,</span></span>
+<span class="r-in"><span>   <span class="st">"Cryptomonas rostrata"</span>, <span class="st">"Dinobryon divergens"</span>,</span></span>
+<span class="r-in"><span>   <span class="st">"Mallomonas akrokomos"</span>, <span class="st">"Melosira varians"</span>,</span></span>
+<span class="r-in"><span>   <span class="st">"Cryptomonas rostrata"</span></span></span>
+<span class="r-in"><span> <span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">table</span> <span class="op">&lt;-</span> <span class="fu">taxon_id_worms</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  input <span class="op">=</span> <span class="va">phytoplankton</span>,</span></span>
+<span class="r-in"><span>  taxaColumn <span class="op">=</span> <span class="fl">2</span>,</span></span>
+<span class="r-in"><span>  verbose <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>  refine <span class="op">=</span> <span class="cn">TRUE</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> After the finding operation the number of record(s) that don't match</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> with any Worms names are:</span>
@@ -195,24 +209,25 @@ R package version 1.0.9, <a href="https://CRAN.R-project.org/package=dplyr" clas
 <span class="r-out co"><span class="r-pr">#&gt;</span> Please select the record that you think</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> most similar to the taxa name that you have provided.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Insert the number of record:</span>
-<span class="r-in"><span class="va">table</span></span>
+<span class="r-in"><span><span class="va">table</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 7 × 17</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      ID origina…¹ scien…² scien…³ taxonID taxon…⁴ synon…⁵ taxon…⁶ kingdom phylum</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>     1 Asterion… Asteri… Hassal…  <span style="text-decoration: underline;">148</span>954 accept… <span style="color: #BB0000;">NA</span>      Species Chromi… Ochro…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>     2 Chrysoco… <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>     3 Cryptomo… <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>     4 Dinobryo… Dinobr… O.E.Im…  <span style="text-decoration: underline;">157</span>248 accept… <span style="color: #BB0000;">NA</span>      Species Chromi… Ochro…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>     5 Mallomon… Mallom… Ruttne…  <span style="text-decoration: underline;">249</span>722 accept… <span style="color: #BB0000;">NA</span>      Species Chromi… Ochro…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span>     6 Melosira… Melosi… C.Agar…  <span style="text-decoration: underline;">149</span>043 accept… <span style="color: #BB0000;">NA</span>      Species Chromi… Ochro…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span>     7 Cryptomo… <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 7 more variables: class &lt;chr&gt;, order &lt;chr&gt;, family &lt;chr&gt;, genus &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   scientificNameID &lt;chr&gt;, nOfWormsResults &lt;dbl&gt;, wormsRecords &lt;list&gt;, and</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   abbreviated variable names ¹​originalNameUsage, ²​scientificName,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ³​scientificNameAuthorship, ⁴​taxonomicStatus, ⁵​synonyms, ⁶​taxonRank</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># The annotated URIs of columns label are achieved by:</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/attributes.html" class="external-link">attributes</a></span><span class="op">(</span><span class="va">table</span><span class="op">)</span><span class="op">$</span><span class="va">uri</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      ID originalNameUsage    scientificName       scientificNameAuthor…¹ taxonID</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>     1 Asterionella formosa Asterionella formosa Hassall, 1850           <span style="text-decoration: underline;">148</span>954</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>     2 Chrysococcus sp.     <span style="color: #BB0000;">NA</span>                   <span style="color: #BB0000;">NA</span>                          <span style="color: #BB0000;">NA</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>     3 Cryptomonas rostrata <span style="color: #BB0000;">NA</span>                   <span style="color: #BB0000;">NA</span>                          <span style="color: #BB0000;">NA</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>     4 Dinobryon divergens  Dinobryon divergens  O.E.Imhof, 1887         <span style="text-decoration: underline;">157</span>248</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>     5 Mallomonas akrokomos Mallomonas akrokomos Ruttner, 1913           <span style="text-decoration: underline;">249</span>722</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span>     6 Melosira varians     Melosira varians     C.Agardh, 1827          <span style="text-decoration: underline;">149</span>043</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span>     7 Cryptomonas rostrata <span style="color: #BB0000;">NA</span>                   <span style="color: #BB0000;">NA</span>                          <span style="color: #BB0000;">NA</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ abbreviated name: ¹​scientificNameAuthorship</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 12 more variables: taxonomicStatus &lt;chr&gt;, synonyms &lt;chr&gt;, taxonRank &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   kingdom &lt;chr&gt;, phylum &lt;chr&gt;, class &lt;chr&gt;, order &lt;chr&gt;, family &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   genus &lt;chr&gt;, scientificNameID &lt;chr&gt;, nOfWormsResults &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   wormsRecords &lt;list&gt;</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># The annotated URIs of columns label are achieved by:</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/attributes.html" class="external-link">attributes</a></span><span class="op">(</span><span class="va">table</span><span class="op">)</span><span class="op">$</span><span class="va">uri</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] ""                                                     </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [2] "http://rs.tdwg.org/dwc/terms/originalNameUsage"       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "http://rs.tdwg.org/dwc/terms/scientificName"          </span>
@@ -230,7 +245,7 @@ R package version 1.0.9, <a href="https://CRAN.R-project.org/package=dplyr" clas
 <span class="r-out co"><span class="r-pr">#&gt;</span> [15] "http://rs.tdwg.org/dwc/terms/scientificNameID"        </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [16] ""                                                     </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [17] ""                                                     </span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
@@ -246,7 +261,7 @@ R package version 1.0.9, <a href="https://CRAN.R-project.org/package=dplyr" clas
                     <div class="col-md-4 col-xs-6">
                         <a href="https://github.com/ropensci" target="_blank" class="external-link"><div class="icon fab fa-github"></div></a>
                         <a href="https://github.com/ropenscilabs" target="_blank" class="external-link"><div class="icon fa fa-flask"></div></a>
-                        <a href="https://twitter.com/ropensci" target="_blank" class="external-link"><div class="icon fab fa-twitter"></div></a>
+                        <a href="https://hachyderm.io/@ropensci" target="_blank" class="external-link"><div class="icon fab fa-mastodon"></div></a>
                         <a href="https://vimeo.com/ropensci" target="_blank" class="external-link"><div class="icon fab fa-vimeo"></div></a>
                     </div>
                 </div>

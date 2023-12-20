@@ -23,7 +23,7 @@ of the site and the related resources collected by site.
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 This function obtains the information about of an eLTER
 dataset (e.g.
-\url{https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845})
+\url{https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef})
 provided in \href{https://deims.org/}{DEIMS-SDR catalogue}.
 }
 \section{The function output}{

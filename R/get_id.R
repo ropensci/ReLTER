@@ -23,7 +23,7 @@
 #' @author Paolo Tagliolato, PhD (2021) \email{tagliolato.p@@irea.cnr.it}
 #' @keywords internal
 #'
-get_id <- function(deimsid, resource = "sites", test, ...) {
+get_id <- function(deimsid, resource = "sites", test = NULL, ...) {
 
   # Check test mode
   if (missing(test)) {

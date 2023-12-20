@@ -7,8 +7,8 @@ cff-version: 1.2.0
 message: 'To cite package "ReLTER" in publications use:'
 type: software
 license: GPL-3.0-or-later
-title: 'ReLTER: An Interface for the eLTER Community (v2.1)'
-version: 2.1.2
+title: 'ReLTER: An Interface for the eLTER Community (v2.2)'
+version: 2.2.0
 doi: 10.5281/zenodo.5576813
 date-released: 2023-01-30
 abstract: 'ReLTER provides access to DEIMS-SDR (https://deims.org/), and allows interaction
@@ -47,7 +47,7 @@ authors:
   orcid: https://orcid.org/0000-0001-6207-5188
 preferred-citation:
   type: generic
-  title: 'ReLTER: An Interface for the eLTER Community (v2.1)'
+  title: 'ReLTER: An Interface for the eLTER Community (v2.2)'
   authors:
   - family-names: Oggioni
     given-names: Alessandro
@@ -66,7 +66,7 @@ preferred-citation:
     email: tagliolato.a@irea.cnr.it
     orcid: https://orcid.org/0000-0002-0261-313X
   year: '2023'
-  notes: R package version v2.1.2
+  notes: R package version v2.2.0
 repository-code: https://github.com/ropensci/ReLTER
 url: https://github.com/ropensci/ReLTER
 contact:
@@ -232,16 +232,6 @@ references:
   year: '2023'
   url: https://CRAN.R-project.org/package=gridExtra
 - type: software
-  title: httr
-  abstract: 'httr: Tools for Working with URLs and HTTP'
-  notes: Imports
-  authors:
-  - family-names: Wickham
-    given-names: Hadley
-    email: hadley@rstudio.com
-  year: '2023'
-  url: https://CRAN.R-project.org/package=httr
-- type: software
   title: httr2
   abstract: 'httr2: Perform HTTP Requests and Process the Responses'
   notes: Imports
@@ -400,17 +390,6 @@ references:
     email: erich.neuwirth@univie.ac.at
   year: '2023'
   url: https://CRAN.R-project.org/package=RColorBrewer
-- type: software
-  title: RCurl
-  abstract: 'RCurl: General Network (HTTP/FTP/...) Client Interface for R'
-  notes: Imports
-  authors:
-  - family-names: Temple Lang
-    given-names: Duncan
-    email: duncan@r-project.org
-    orcid: https://orcid.org/0000-0003-0159-1546
-  year: '2023'
-  url: https://CRAN.R-project.org/package=RCurl
 - type: software
   title: Rdpack
   abstract: 'Rdpack: Update and Manipulate Rd Documentation Objects'

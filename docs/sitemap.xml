@@ -13,9 +13,6 @@
     <loc>https://docs.ropensci.org/ReLTER/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://docs.ropensci.org/ReLTER/Untitled.utf8.html</loc>
-  </url>
-  <url>
     <loc>https://docs.ropensci.org/ReLTER/articles/ReLTER.html</loc>
   </url>
   <url>
@@ -32,6 +29,9 @@
   </url>
   <url>
     <loc>https://docs.ropensci.org/ReLTER/articles/occurrences_into_site.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/ReLTER/articles/other/occurrences_into_site_map.html</loc>
   </url>
   <url>
     <loc>https://docs.ropensci.org/ReLTER/articles/qrcode.html</loc>
@@ -136,6 +136,9 @@
     <loc>https://docs.ropensci.org/ReLTER/reference/get_ilter_research_topics.html</loc>
   </url>
   <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/get_location_info.html</loc>
+  </url>
+  <url>
     <loc>https://docs.ropensci.org/ReLTER/reference/get_network_envcharacts.html</loc>
   </url>
   <url>
@@ -173,6 +176,15 @@
   </url>
   <url>
     <loc>https://docs.ropensci.org/ReLTER/reference/get_site_speciesOccurrences.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/get_sites_interactive.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/get_sites_within_3d_bounding_box.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/ReLTER/reference/get_sites_within_radius.html</loc>
   </url>
   <url>
     <loc>https://docs.ropensci.org/ReLTER/reference/get_sos_foi.html</loc>
