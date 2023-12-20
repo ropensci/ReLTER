@@ -12,11 +12,15 @@ jobs:
       USGS_PASSWORD: ${{ secrets.USGS_PASSWORD }}
       LOCAL_DEIMS: false
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      - uses: r-lib/actions/setup-r@v1
-
-      - uses: r-lib/actions/setup-pandoc@v1
+      - uses: ./setup-r
+        with:
+          r-version: ${{ matrix.config.r }}
+          http-user-agent: ${{ matrix.config.http-user-agent }}
+          use-public-rspm: true
+          
+      - uses: ./setup-pandoc
 
       - name: Query dependencies
         run: |
