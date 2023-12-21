@@ -43,6 +43,12 @@ jobs:
 
       - name: Install dependencies
         uses: r-lib/actions/setup-r-dependencies@v2
+        run: |
+          if (Sys.info()["sysname"]=="Darwin") {options("pkgType" = "binary")}
+          remotes::install_deps(dependencies = TRUE)
+          remotes::install_cran("rcmdcheck")
+          install.packages("markdown")
+        shell: Rscript {0}
 
       - name: Query dependencies
         run: |
@@ -69,13 +75,6 @@ jobs:
             eval sudo $cmd
           done < <(Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "20.04"))')
           
-      - name: Install dependencies
-        run: |
-          if (Sys.info()["sysname"]=="Darwin") {options("pkgType" = "binary")}
-          remotes::install_deps(dependencies = TRUE)
-          remotes::install_cran("rcmdcheck")
-        shell: Rscript {0}
-
       - name: download system packages
         if: runner.os == 'Linux'
         run: |
