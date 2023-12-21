@@ -44,18 +44,18 @@ get_site_envcharacts <- function(deimsid) {
     # set the UOM of airTemperature info
     envCharacteristics$airTemperature.yearlyAverage <- units::set_units(
       x = envCharacteristics$airTemperature.yearlyAverage,
-      value = '°C'
+      value = 'degree_Celsius'
     )
     # envCharacteristics$airTemperature.monthlyAverage <- units::set_units(
     #   x = envCharacteristics$airTemperature.monthlyAverage[1],
-    #   value = '°C'
+    #   value = 'degree_Celsius'
     # )
     # TODO find the solution to assign a units to the nested list column
     if (is.null(envCharacteristics$airTemperature.referencePeriod)) {
       envCharacteristics$airTemperature.referencePeriod <- NA
       envCharacteristics$airTemperature.referencePeriod <- units::set_units(
         x = envCharacteristics$airTemperature.referencePeriod,
-        value = '°C'
+        value = 'degree_Celsius'
       )
     }
     # set the UOM of precipitation info
