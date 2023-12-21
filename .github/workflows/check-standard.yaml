@@ -55,7 +55,6 @@ jobs:
           if (Sys.info()["sysname"]=="Darwin") {options("pkgType" = "binary")}
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("rcmdcheck")
-          remotes::install_cran("markdown")
         shell: Rscript {0}
 
       - name: "Cache R packages"

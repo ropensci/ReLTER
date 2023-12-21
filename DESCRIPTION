@@ -89,7 +89,9 @@ Suggests:
     httptest2,
     ISOcodes,
     knitr,
+    leaflet.extras,
     rmarkdown,
+    shiny,
     testthat (>= 3.0.0),
     withr
 VignetteBuilder: 
