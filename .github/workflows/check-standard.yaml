@@ -48,7 +48,6 @@ jobs:
           install.packages("remotes")
           install.packages("rnaturalearthdata")
           install.packages("webshot")
-          install.packages("markdown")
           webshot::install_phantomjs()
           saveRDS(remotes::dev_package_deps(dependencies = TRUE), "depends.Rds", version = 2)
         shell: Rscript {0}
@@ -58,6 +57,7 @@ jobs:
           if (Sys.info()["sysname"]=="Darwin") {options("pkgType" = "binary")}
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("rcmdcheck")
+          remotes::install_cran("markdown")
         shell: Rscript {0}
 
       - name: "Cache R packages"
