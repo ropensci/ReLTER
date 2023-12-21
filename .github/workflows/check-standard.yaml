@@ -41,22 +41,23 @@ jobs:
           http-user-agent: ${{ matrix.config.http-user-agent }}
           use-public-rspm: true
 
-      - name: Install dependencies
-        uses: r-lib/actions/setup-r-dependencies@v2
-        run: |
-          if (Sys.info()["sysname"]=="Darwin") {options("pkgType" = "binary")}
-          remotes::install_deps(dependencies = TRUE)
-          remotes::install_cran("rcmdcheck")
-          install.packages("markdown")
-        shell: Rscript {0}
+      - uses: r-lib/actions/setup-r-dependencies@v2
 
       - name: Query dependencies
         run: |
           install.packages("remotes")
           install.packages("rnaturalearthdata")
           install.packages("webshot")
+          install.packages("markdown")
           webshot::install_phantomjs()
           saveRDS(remotes::dev_package_deps(dependencies = TRUE), "depends.Rds", version = 2)
+        shell: Rscript {0}
+        
+      - name: Install dependencies
+        run: |
+          if (Sys.info()["sysname"]=="Darwin") {options("pkgType" = "binary")}
+          remotes::install_deps(dependencies = TRUE)
+          remotes::install_cran("rcmdcheck")
         shell: Rscript {0}
 
       - name: "Cache R packages"
