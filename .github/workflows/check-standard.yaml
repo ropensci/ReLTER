@@ -71,6 +71,7 @@ jobs:
           if (Sys.info()["sysname"]=="Darwin") {options("pkgType" = "binary")}
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("rcmdcheck")
+          Rscript -e "install.packages('rmarkdown')"
         shell: Rscript {0}
 
       - name: download system packages
