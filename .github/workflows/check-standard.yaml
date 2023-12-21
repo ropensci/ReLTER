@@ -46,13 +46,11 @@ jobs:
       - name: Query dependencies
         run: |
           install.packages("remotes")
-          install.packages("rnaturalearthdata")
-          install.packages("webshot")
           webshot::install_phantomjs()
           saveRDS(remotes::dev_package_deps(dependencies = TRUE), "depends.Rds", version = 2)
         shell: Rscript {0}
         
-      - name: Install dependencies
+      - name: Install other dependencies
         run: |
           if (Sys.info()["sysname"]=="Darwin") {options("pkgType" = "binary")}
           remotes::install_deps(dependencies = TRUE)

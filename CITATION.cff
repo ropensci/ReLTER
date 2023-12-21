@@ -222,16 +222,6 @@ references:
   institution:
     name: R Foundation for Statistical Computing
 - type: software
-  title: gridExtra
-  abstract: 'gridExtra: Miscellaneous Functions for "Grid" Graphics'
-  notes: Imports
-  authors:
-  - family-names: Auguie
-    given-names: Baptiste
-    email: baptiste.auguie@gmail.com
-  year: '2023'
-  url: https://CRAN.R-project.org/package=gridExtra
-- type: software
   title: httr2
   abstract: 'httr2: Perform HTTP Requests and Process the Responses'
   notes: Imports
@@ -417,16 +407,6 @@ references:
   year: '2023'
   url: https://CRAN.R-project.org/package=readr
 - type: software
-  title: rnaturalearth
-  abstract: 'rnaturalearth: World Map Data from Natural Earth'
-  notes: Imports
-  authors:
-  - family-names: South
-    given-names: Andy
-    email: southandy@gmail.com
-  year: '2023'
-  url: https://CRAN.R-project.org/package=rnaturalearth
-- type: software
   title: rosm
   abstract: 'rosm: Plot Raster Map Tiles from Open Street Map and Other Sources'
   notes: Imports
@@ -437,15 +417,6 @@ references:
     orcid: https://orcid.org/0000-0002-9415-4582
   year: '2023'
   url: https://CRAN.R-project.org/package=rosm
-- type: software
-  title: rworldmap
-  abstract: 'rworldmap: Mapping Global Data'
-  notes: Imports
-  authors:
-  - family-names: South
-    given-names: Andy
-  year: '2023'
-  url: https://CRAN.R-project.org/package=rworldmap
 - type: software
   title: sf
   abstract: 'sf: Simple Features for R'
@@ -610,16 +581,6 @@ references:
   year: '2023'
   url: https://CRAN.R-project.org/package=waffle
 - type: software
-  title: webshot
-  abstract: 'webshot: Take Screenshots of Web Pages'
-  notes: Imports
-  authors:
-  - family-names: Chang
-    given-names: Winston
-    email: winston@rstudio.com
-  year: '2023'
-  url: https://CRAN.R-project.org/package=webshot
-- type: software
   title: worrms
   abstract: 'worrms: World Register of Marine Species (WoRMS) Client'
   notes: Imports
@@ -655,17 +616,6 @@ references:
     given-names: Jeroen
   year: '2023'
   url: https://CRAN.R-project.org/package=xml2
-- type: software
-  title: xslt
-  abstract: 'xslt: Extensible Style-Sheet Language Transformations'
-  notes: Imports
-  authors:
-  - family-names: Ooms
-    given-names: Jeroen
-    email: jeroen@berkeley.edu
-    orcid: https://orcid.org/0000-0002-4035-0289
-  year: '2023'
-  url: https://CRAN.R-project.org/package=xslt
 - type: software
   title: zen4R
   abstract: 'zen4R: Interface to ''Zenodo'' REST API'
@@ -760,16 +710,6 @@ references:
     orcid: https://orcid.org/0000-0003-3925-190X
   year: '2023'
   url: https://CRAN.R-project.org/package=rmarkdown
-- type: software
-  title: rnaturalearthdata
-  abstract: 'rnaturalearthdata: World Vector Map Data from Natural Earth Used in ''rnaturalearth'''
-  notes: Suggests
-  authors:
-  - family-names: South
-    given-names: Andy
-    email: southandy@gmail.com
-  year: '2023'
-  url: https://CRAN.R-project.org/package=rnaturalearthdata
 - type: software
   title: testthat
   abstract: 'testthat: Unit Testing for R'

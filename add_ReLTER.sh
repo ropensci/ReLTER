@@ -18,7 +18,6 @@ install2.r --error --skipinstalled -n $NCPUS \
 	taxize \
 	waffle \
 	worrms \
-	xslt \
 	spocc \
 	ggforce \
 	rosm \
