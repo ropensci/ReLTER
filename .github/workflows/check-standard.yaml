@@ -41,6 +41,9 @@ jobs:
           http-user-agent: ${{ matrix.config.http-user-agent }}
           use-public-rspm: true
 
+      - name: Install dependencies
+        uses: r-lib/actions/setup-r-dependencies@v2
+
       - name: Query dependencies
         run: |
           install.packages("remotes")
@@ -71,7 +74,6 @@ jobs:
           if (Sys.info()["sysname"]=="Darwin") {options("pkgType" = "binary")}
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("rcmdcheck")
-          Rscript -e "install.packages('rmarkdown')"
         shell: Rscript {0}
 
       - name: download system packages
