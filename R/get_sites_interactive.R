@@ -189,7 +189,7 @@ plotInBbxSelector<-function(features,proxy){
     leaflet::clearImages() %>%
     #addRasterImage(raster2plot, opacity=0.7, group="inputDEM")  %>%
     leaflet::addCircles(data=features,
-                        popup = paste0("<a href='",features$deimsid,"'>",features$name,">")
+                        popup = paste0("<a href='",features$deimsid,"'>",features$name,"</a>")
                         ) %>% 
     leaflet::addLayersControl(baseGroups=c("OpenStreeMap","CartoDB"),
                      overlayGroups="sites")
