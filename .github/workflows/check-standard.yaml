@@ -42,6 +42,13 @@ jobs:
           use-public-rspm: true
 
       - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: any::rcmdcheck
+          needs: check
+      
+      - name: Install remotes
+        run: |
+          Rscript -e "install.packages('remotes', repos='https://ftp.belnet.be/mirror/CRAN')"
 
       - name: Install MODIStsp
         run: |
