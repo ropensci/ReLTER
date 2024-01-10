@@ -95,7 +95,7 @@ Suggests:
     testthat (>= 3.0.0),
     withr
 Remotes:
-    MODIStsp (>= 2.1.0)
+    ropensci/MODIStsp@v2.1.0
 VignetteBuilder: 
     knitr
 RdMacros: 
