@@ -65,7 +65,6 @@ Imports:
     lifecycle,
     lubridate,
     magrittr,
-    MODIStsp (>= 2.1.0),
     qrcode,
     raster (>= 3.3-13),
     RColorBrewer,
@@ -95,6 +94,8 @@ Suggests:
     shiny,
     testthat (>= 3.0.0),
     withr
+Remotes:
+    MODIStsp (>= 2.1.0)
 VignetteBuilder: 
     knitr
 RdMacros: 
