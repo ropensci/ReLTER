@@ -4,7 +4,7 @@
 #' location (e.g.
 #' \url{https://deims.org/location/12b38f3f-7e72-425a-80c7-7cad35ce4c7b})
 #' provided in \href{https://deims.org/}{DEIMS-SDR catalogue}.
-#' @param locationid A `character`. It is the DEIMS ID of location make from
+#' @param location_id A `character`. It is the DEIMS ID of location make from
 #' DEIMS-SDR website. DEIMS ID information
 #' \href{https://deims.org/docs/deimsid.html}{here}.
 #' The DEIMS.iD of activity is the URL for the location page.
@@ -35,7 +35,7 @@
 #' @examples
 #' # Sampling location multipolygon
 #' location <- ReLTER::get_location_info(
-#'   locationid =
+#'   location_id =
 #'     "https://deims.org/location/85dc6019-9654-4ba0-8338-08c4ffe8fe47",
 #'   show_map = TRUE
 #' )
@@ -43,7 +43,7 @@
 #' 
 #' # Sampling location polygon
 #' location <- ReLTER::get_location_info(
-#'   locationid =
+#'   location_id =
 #'     "https://deims.org/location/12b38f3f-7e72-425a-80c7-7cad35ce4c7b",
 #'   show_map = TRUE
 #' )
@@ -51,7 +51,7 @@
 #' 
 #' # Equipment location polygon
 #' location <- ReLTER::get_location_info(
-#'   locationid =
+#'   location_id =
 #'     "https://deims.org/locations/04de8301-b481-4ed2-89ff-2f48562e2514",
 #'   show_map = TRUE
 #' )
@@ -59,7 +59,7 @@
 #' 
 #' # Sampling location point
 #' location <- ReLTER::get_location_info(
-#'   locationid =
+#'   location_id =
 #'     "https://deims.org/location/ec1a58f7-1aee-4e3f-bec3-4eb1516ee905",
 #'   show_map = TRUE
 #' )
@@ -67,7 +67,7 @@
 #' 
 #' # Sampling location point with location type null
 #' location <- ReLTER::get_location_info(
-#'   locationid =
+#'   location_id =
 #'     "https://deims.org/location/c3db70c3-5d2c-4905-801c-7b7a5c4d00d9",
 #'   show_map = TRUE
 #' )
@@ -78,9 +78,9 @@
 #' Project area" location}
 #'
 ### function get_location_info
-get_location_info <- function(locationid, show_map = FALSE) {
+get_location_info <- function(location_id, show_map = FALSE) {
   qo <- queries_jq_deims[[get_deims_API_version()]]$location_info_type
-  jj <- get_id(locationid, qo$path)
+  jj <- get_id(location_id, qo$path)
   if (is.na(attr(jj, "status"))) {
     invisible(
       utils::capture.output(
@@ -101,7 +101,7 @@ get_location_info <- function(locationid, show_map = FALSE) {
       locationType <- types$locationType.label
       if (geometryType == "Point") {
         qo <- queries_jq_deims[[get_deims_API_version()]]$location_info_point
-        jj <- get_id(locationid, qo$path)
+        jj <- get_id(location_id, qo$path)
         location <- dplyr::as_tibble(do_Q(qo$query, jj)) %>%
           dplyr::mutate(
             locationType.label = "not declared",
@@ -113,7 +113,7 @@ get_location_info <- function(locationid, show_map = FALSE) {
           ))
       } else if (geometryType == "Polygon") {
         qo <- queries_jq_deims[[get_deims_API_version()]]$location_info_polygon
-        jj <- get_id(locationid, qo$path)
+        jj <- get_id(location_id, qo$path)
         location <- dplyr::as_tibble(do_Q(qo$query, jj)) %>%
           dplyr::mutate(
             locationType.label = "not declared",
@@ -125,7 +125,7 @@ get_location_info <- function(locationid, show_map = FALSE) {
           ))
       } else if (geometryType == "MultiPolygon") {
         qo <- queries_jq_deims[[get_deims_API_version()]]$location_info_multiPolygon
-        jj <- get_id(locationid, qo$path)
+        jj <- get_id(location_id, qo$path)
         location <- dplyr::as_tibble(do_Q(qo$query, jj)) %>%
           dplyr::mutate(
             locationType.label = "not declared",
@@ -140,15 +140,15 @@ get_location_info <- function(locationid, show_map = FALSE) {
       locationType <- types$locationType.label
       if (geometryType == "Point") {
         qo <- queries_jq_deims[[get_deims_API_version()]]$location_info_point
-        jj <- get_id(locationid, qo$path)
+        jj <- get_id(location_id, qo$path)
         location <- dplyr::as_tibble(do_Q(qo$query, jj))
       } else if (geometryType == "Polygon") {
         qo <- queries_jq_deims[[get_deims_API_version()]]$location_info_polygon
-        jj <- get_id(locationid, qo$path)
+        jj <- get_id(location_id, qo$path)
         location <- dplyr::as_tibble(do_Q(qo$query, jj))
       } else if (geometryType == "MultiPolygon") {
         qo <- queries_jq_deims[[get_deims_API_version()]]$location_info_multiPolygon
-        jj <- get_id(locationid, qo$path)
+        jj <- get_id(location_id, qo$path)
         location <- dplyr::as_tibble(do_Q(qo$query, jj))
       }
     }
