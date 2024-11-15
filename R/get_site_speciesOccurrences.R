@@ -91,13 +91,7 @@ get_site_speciesOccurrences <- function(
     print("No boundary for requested DEIMS site.")
     return(NULL)
   } else {
-    bbox_wkt <- sf::st_as_text(
-      sf::st_as_sfc(
-        sf::st_bbox(
-          boundary
-        )
-      )
-    )
+    site_geom <- boundary$geometry
   }
 
   # download occurrence by SPOCC by provide data sources ----
@@ -106,7 +100,7 @@ get_site_speciesOccurrences <- function(
   if (any(c("gbif", "inat") %in% list_DS)) {
     site_occ_spocc <- spocc::occ(
       from = list_DS,
-      geometry = bbox_wkt,
+      geometry = site_geom,
       limit = limit,
       has_coords = TRUE
     )
@@ -126,40 +120,50 @@ get_site_speciesOccurrences <- function(
   if (!is.null(site_occ_spocc) && is.null(site_occ_spocc$inat$meta$returned)) {
     list_DS_exclude <- c(list_DS_exclude, "inat")
   }
-  if (is.null(site_occ_spocc_obis) && is.null(site_occ_spocc_obis$results)) {
+  if (is.null(site_occ_spocc_obis) &&
+      is.null(site_occ_spocc_obis$results)) {
+    list_DS_exclude <- c(list_DS_exclude, "obis")
+  }
+  if (length(site_occ_spocc_obis$results) == 0) {
     list_DS_exclude <- c(list_DS_exclude, "obis")
   }
   list_DS <- list_DS[!(list_DS %in% list_DS_exclude)]
 
   # harmonization of date and time GBIF
-  if (!is.null(site_occ_spocc$gbif$data[[1]]$lastCrawled)) {
-    site_occ_spocc$gbif$data[[1]]$lastCrawled <- lubridate::as_datetime(site_occ_spocc$gbif$data[[1]]$lastCrawled)
-  }
-  if (!is.null(site_occ_spocc$gbif$data[[1]]$lastParsed)) {
+  if ("gbif" %in% list_DS) {
+    if (!is.null(site_occ_spocc$gbif$data[[1]]$lastCrawled)) {
+      site_occ_spocc$gbif$data[[1]]$lastCrawled <- lubridate::as_datetime(site_occ_spocc$gbif$data[[1]]$lastCrawled)
+    }
+    if (!is.null(site_occ_spocc$gbif$data[[1]]$lastParsed)) {
       site_occ_spocc$gbif$data[[1]]$lastParsed <- lubridate::as_datetime(site_occ_spocc$gbif$data[[1]]$lastParsed)
-  }
-  if (!is.null(site_occ_spocc$gbif$data[[1]]$dateIdentified)) {
-    site_occ_spocc$gbif$data[[1]]$dateIdentified <- lubridate::as_datetime(site_occ_spocc$gbif$data[[1]]$dateIdentified)
-  }
-  if (!is.null(site_occ_spocc$gbif$data[[1]]$eventDate)) {
-    site_occ_spocc$gbif$data[[1]]$eventDate <- lubridate::as_date(site_occ_spocc$gbif$data[[1]]$eventDate)
-  }
-  if (!is.null(site_occ_spocc$gbif$data[[1]]$modified)) {
-    site_occ_spocc$gbif$data[[1]]$modified <- lubridate::as_datetime(site_occ_spocc$gbif$data[[1]]$modified)
+    }
+    if (!is.null(site_occ_spocc$gbif$data[[1]]$dateIdentified)) {
+      site_occ_spocc$gbif$data[[1]]$dateIdentified <- lubridate::as_datetime(site_occ_spocc$gbif$data[[1]]$dateIdentified)
+    }
+    if (!is.null(site_occ_spocc$gbif$data[[1]]$eventDate)) {
+      site_occ_spocc$gbif$data[[1]]$eventDate <- lubridate::as_date(site_occ_spocc$gbif$data[[1]]$eventDate)
+    }
+    if (!is.null(site_occ_spocc$gbif$data[[1]]$modified)) {
+      site_occ_spocc$gbif$data[[1]]$modified <- lubridate::as_datetime(site_occ_spocc$gbif$data[[1]]$modified)
+    }
   }
   # harmonization of date and time iNat
-  if (!is.null(site_occ_spocc$inat$data[[1]]$time_observed_at)) {
-    site_occ_spocc$inat$data[[1]]$time_observed_at <- lubridate::as_datetime(site_occ_spocc$inat$data[[1]]$time_observed_at)
-  }
-  if (!is.null(site_occ_spocc$inat$data[[1]]$created_at)) {
-    site_occ_spocc$inat$data[[1]]$created_at <- lubridate::as_datetime(site_occ_spocc$inat$data[[1]]$created_at)
-  }
-  if (!is.null(site_occ_spocc$inat$data[[1]]$updated_at)) {
-    site_occ_spocc$inat$data[[1]]$updated_at <- lubridate::as_datetime(site_occ_spocc$inat$data[[1]]$updated_at)
+  if ("inat" %in% list_DS) {
+    if (!is.null(site_occ_spocc$inat$data[[1]]$time_observed_at)) {
+      site_occ_spocc$inat$data[[1]]$time_observed_at <- lubridate::as_datetime(site_occ_spocc$inat$data[[1]]$time_observed_at)
+    }
+    if (!is.null(site_occ_spocc$inat$data[[1]]$created_at)) {
+      site_occ_spocc$inat$data[[1]]$created_at <- lubridate::as_datetime(site_occ_spocc$inat$data[[1]]$created_at)
+    }
+    if (!is.null(site_occ_spocc$inat$data[[1]]$updated_at)) {
+      site_occ_spocc$inat$data[[1]]$updated_at <- lubridate::as_datetime(site_occ_spocc$inat$data[[1]]$updated_at)
+    }
   }
   # harmonization of date and time OBIS
-  if (!is.null(site_occ_spocc_obis$results$modified)) {
-    site_occ_spocc_obis$results$modified <- lubridate::as_datetime(site_occ_spocc_obis$results$modified)
+  if ("obis" %in% list_DS) {
+    if (!is.null(site_occ_spocc_obis$results$modified)) {
+      site_occ_spocc_obis$results$modified <- lubridate::as_datetime(site_occ_spocc_obis$results$modified)
+    }
   }
   # combine results from occ calls to a single data.frame ----
   occ_df <- NULL
@@ -187,9 +191,7 @@ get_site_speciesOccurrences <- function(
   
     if (nrow(occ_df_gbif) > 0) {
       occ_df <- rbind(occ_df, occ_df_gbif)
-    } #else {
-      # list_DS <- list_DS[!(list_DS == "gbif")]
-    # }
+    }
   }
 
   if ("inat" %in% list_DS) {
@@ -202,11 +204,14 @@ get_site_speciesOccurrences <- function(
         prov,
         date = observed_on,
         key = id
+      ) %>%
+      dplyr::mutate(
+        date = as.character(date)
       )
     occ_df <- rbind(occ_df, occ_df_inat)
   }
 
-  if ("obis" %in% list_DS && !length(site_occ_spocc_obis$results)==0) {
+  if ("obis" %in% list_DS && !length(site_occ_spocc_obis$results) == 0) {
     occ_df_obis <- site_occ_spocc_obis$results %>%
       dplyr::mutate(
         prov = rep("obis", nrow(site_occ_spocc_obis$results))
