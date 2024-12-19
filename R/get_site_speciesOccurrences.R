@@ -91,6 +91,13 @@ get_site_speciesOccurrences <- function(
     print("No boundary for requested DEIMS site.")
     return(NULL)
   } else {
+    bbox_wkt <- sf::st_as_text(
+      sf::st_as_sfc(
+        sf::st_bbox(
+          boundary
+        )
+      )
+    )
     site_geom <- boundary$geometry
   }
 
@@ -100,7 +107,7 @@ get_site_speciesOccurrences <- function(
   if (any(c("gbif", "inat") %in% list_DS)) {
     site_occ_spocc <- spocc::occ(
       from = list_DS,
-      geometry = site_geom,
+      geometry = bbox_wkt,
       limit = limit,
       has_coords = TRUE
     )
