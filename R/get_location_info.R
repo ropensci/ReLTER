@@ -20,7 +20,6 @@
 #' @importFrom sf st_geometry_type
 #' @importFrom leaflet leaflet addTiles addPolygons
 #' @importFrom leaflet addCircleMarkers
-#' @importFrom Rdpack reprompt
 #' @importFrom lubridate as_datetime
 #' @importFrom units set_units
 #' @references
@@ -79,15 +78,16 @@
 #'
 ### function get_location_info
 get_location_info <- function(location_id, show_map = FALSE) {
-  qo <- queries_jq_deims[[get_deims_API_version()]]$location_info_type
-  jj <- get_id(location_id, qo$path)
+  qo <- ReLTER:::queries_jq_deims[[get_deims_API_version()]]$location_info_type
+  jj <- ReLTER:::get_id(location_id, qo$path)
   if (is.na(attr(jj, "status"))) {
     invisible(
       utils::capture.output(
-        types <- dplyr::as_tibble(do_Q(qo$query, jj))
+        types <- dplyr::as_tibble(ReLTER:::do_Q(qo$query, jj))
       )
     )
     geometryType <- types$geometryType
+    
     if (length(types) == 2) {
       types <- types %>%
         dplyr::mutate(
@@ -100,9 +100,9 @@ get_location_info <- function(location_id, show_map = FALSE) {
         ))
       locationType <- types$locationType.label
       if (geometryType == "Point") {
-        qo <- queries_jq_deims[[get_deims_API_version()]]$location_info_point
-        jj <- get_id(location_id, qo$path)
-        location <- dplyr::as_tibble(do_Q(qo$query, jj)) %>%
+        qo <- ReLTER:::queries_jq_deims[[get_deims_API_version()]]$location_info_point
+        jj <- ReLTER:::get_id(location_id, qo$path)
+        location <- dplyr::as_tibble(ReLTER:::do_Q(qo$query, jj)) %>%
           dplyr::mutate(
             locationType.label = "not declared",
             locationType.uri = NA,
@@ -112,9 +112,9 @@ get_location_info <- function(location_id, show_map = FALSE) {
             "locationType"
           ))
       } else if (geometryType == "Polygon") {
-        qo <- queries_jq_deims[[get_deims_API_version()]]$location_info_polygon
-        jj <- get_id(location_id, qo$path)
-        location <- dplyr::as_tibble(do_Q(qo$query, jj)) %>%
+        qo <- ReLTER:::queries_jq_deims[[get_deims_API_version()]]$location_info_polygon
+        jj <- ReLTER:::get_id(location_id, qo$path)
+        location <- dplyr::as_tibble(ReLTER:::do_Q(qo$query, jj)) %>%
           dplyr::mutate(
             locationType.label = "not declared",
             locationType.uri = NA,
@@ -124,9 +124,9 @@ get_location_info <- function(location_id, show_map = FALSE) {
             "locationType"
           ))
       } else if (geometryType == "MultiPolygon") {
-        qo <- queries_jq_deims[[get_deims_API_version()]]$location_info_multiPolygon
-        jj <- get_id(location_id, qo$path)
-        location <- dplyr::as_tibble(do_Q(qo$query, jj)) %>%
+        qo <- ReLTER:::queries_jq_deims[[get_deims_API_version()]]$location_info_multiPolygon
+        jj <- ReLTER:::get_id(location_id, qo$path)
+        location <- dplyr::as_tibble(ReLTER:::do_Q(qo$query, jj)) %>%
           dplyr::mutate(
             locationType.label = "not declared",
             locationType.uri = NA,
@@ -139,18 +139,18 @@ get_location_info <- function(location_id, show_map = FALSE) {
     } else {
       locationType <- types$locationType.label
       if (geometryType == "Point") {
-        qo <- queries_jq_deims[[get_deims_API_version()]]$location_info_point
-        jj <- get_id(location_id, qo$path)
-        location <- dplyr::as_tibble(do_Q(qo$query, jj))
+        qo <- ReLTER:::queries_jq_deims[[get_deims_API_version()]]$location_info_point
+        jj <- ReLTER:::get_id(location_id, qo$path)
+        location <- dplyr::as_tibble(ReLTER:::do_Q(qo$query, jj))
       } else if (geometryType == "Polygon") {
-        qo <- queries_jq_deims[[get_deims_API_version()]]$location_info_polygon
-        jj <- get_id(location_id, qo$path)
-        location <- dplyr::as_tibble(do_Q(qo$query, jj))
+        qo <- ReLTER:::queries_jq_deims[[get_deims_API_version()]]$location_info_polygon
+        jj <- ReLTER:::get_id(location_id, qo$path)
+        location <- dplyr::as_tibble(ReLTER:::do_Q(qo$query, jj))
       } else if (geometryType == "MultiPolygon") {
-        qo <- queries_jq_deims[[get_deims_API_version()]]$location_info_multiPolygon
-        jj <- get_id(location_id, qo$path)
-        location <- dplyr::as_tibble(do_Q(qo$query, jj))
-      }
+        qo <- ReLTER:::queries_jq_deims[[get_deims_API_version()]]$location_info_multiPolygon
+        jj <- ReLTER:::get_id(location_id, qo$path)
+        location <- dplyr::as_tibble(ReLTER:::do_Q(qo$query, jj))
+      } 
     }
     # harmonization of date and time
     location$created <- lubridate::as_datetime(location$created)
@@ -218,7 +218,7 @@ get_location_info <- function(location_id, show_map = FALSE) {
         map <- leaflet::leaflet(geoLocation) %>%
           leaflet::addTiles()
         if (sf::st_geometry_type(geoLocation) == "POINT") {
-          if (types$locationType.label == "not declared") {
+          if (types$locationType.label == "not declared" | is.null(types$locationType.label)) {
             map <- map %>%
               leaflet::addCircleMarkers(
                 data = geoLocation,
@@ -310,7 +310,7 @@ get_location_info <- function(location_id, show_map = FALSE) {
                 )
             }
         } else if (sf::st_geometry_type(geoLocation) == "POLYGON") {
-          if (types$locationType.label == "not declared") {
+          if (types$locationType.label == "not declared" | is.null(types$locationType.label)) {
             map <- map %>%
               leaflet::addPolygons(
                 data = geoLocation,
@@ -399,7 +399,7 @@ get_location_info <- function(location_id, show_map = FALSE) {
                 )
             }
         } else if (sf::st_geometry_type(geoLocation) == "MULTIPOLYGON") {
-          if (types$locationType.label == "not declared") {
+          if (types$locationType.label == "not declared" | is.null(types$locationType.label)) {
             map <- map %>%
               leaflet::addPolygons(
                 data = geoLocation,
