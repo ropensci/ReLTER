@@ -10,8 +10,11 @@
 #' The DEIMS.iD of activity is the URL for the activity page.
 #' @param show_map A `boolean`. If TRUE a Leaflet map with occurrences
 #' is shown. Default FALSE.
-#' @return The output of the function is a `tibble` with main features of
-#' the activities in a site, and a `leaflet` map plot.
+#' @return The output of the function is a `list` with two elements:
+#' \itemize{
+#' \item \code{map} A Leaflet map with the activity location.
+#' \item \code{data} A `data.frame` with the information about the activity.
+#' }
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom dplyr as_tibble
 #' @importFrom utils capture.output
@@ -29,10 +32,10 @@
 #'   \insertRef{leafletR}{ReLTER}
 #' @export
 #' @examples
-#' activities <- get_activity_info(
+#' activities <- ReLTER::get_activity_info(
 #'   activityid =
 #'     "https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845",
-#'   show_map = FALSE
+#'   show_map = TRUE
 #' )
 #' activities
 #'
@@ -101,17 +104,24 @@ contact person of the activity, citing the Activity.iD.\n----\n")
         }
       }
     } else {
-      geoActivity <- NULL
-      map <- NULL
+      return(list(
+        map = NULL,
+        data = NULL
+      ))
     }
   } else {
     stop("\n----\nPage Not Found. The requested page could not be found. Please
 check again the Activity.iD\n----\n")
   }
   if (show_map == TRUE) {
-    print(map)
-    geoActivity
+    return(list(
+      map = map,
+      data = geoActivity
+    ))
   } else {
-    geoActivity
+    return(list(
+      map = NULL,
+      data = geoActivity
+    ))
   }
 }

@@ -10,8 +10,11 @@
 #' The DEIMS ID of dataset is the URL for the dataset page.
 #' @param show_map A `boolean`. If TRUE a Leaflet map with occurrences
 #' is shown. Default FALSE.
-#' @return The output of the function is a `tibble` with main features
-#' of the site and the related resources collected by site.
+#' @return The output of the function is a `list` with two elements:
+#' \itemize{
+#' \item \code{map} A Leaflet map with the dataset location.
+#' \item \code{data} A `data.frame` with the information about the dataset.
+#' }
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom dplyr as_tibble
 #' @importFrom utils capture.output
@@ -30,7 +33,7 @@
 #'   \insertRef{leafletR}{ReLTER}
 #' @export
 #' @examples
-#' tDataset <- get_dataset_info(
+#' tDataset <- ReLTER::get_dataset_info(
 #'   datasetid =
 #'   "https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef",
 #'   show_map = TRUE
@@ -117,24 +120,35 @@ get_dataset_info <- function(datasetid, show_map = FALSE) {
 dataset, provided in DEIMS-SDR, has an invalid geometry.
 Please check the content and refer this error to DEIMS-SDR support for this
 dataset, citing the Dataset.iD.\n----\n")
-          print(map)
-          geoDataset
+          return(list(
+            map = map,
+            data = geoDataset
+          ))
         }
       }
     } else {
-      geoDataset <- NULL
-      map <- NULL
+      return(list(
+        map = NULL,
+        data = NULL
+      ))
     }
   } else {
     message("\n----\nThe requested page could not be found.
 Please check again the Dataset.iD\n----\n")
-    geoDataset <- NULL
-    map <- NULL
+    return(list(
+      map = NULL,
+      data = NULL
+    ))
   }
   if (show_map == TRUE) {
-    print(map)
-    geoDataset
+    return(list(
+      map = map,
+      data = geoDataset
+    ))
   } else {
-    geoDataset
+    return(list(
+      map = NULL,
+      data = geoDataset
+    ))
   }
 }
