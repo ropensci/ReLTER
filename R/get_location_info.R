@@ -1,3 +1,291 @@
+#' Create location map
+#' @description This is an internal function for create only the map of
+#' location.
+#' @param location_data A `sf` object. It is the location geodata.
+#' @param map A `leaflet` object. It is an empty map.
+#' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
+#' @author Paolo Tagliolato, phD (2020) \email{tagliolato.p@@irea.cnr.it}
+#' @importFrom ...
+#' @keywords internal
+### map_add_location
+map_add_location <- function(location_data, map = NULL) {
+  if(is.null(map)) {
+    map <- leaflet::leaflet() %>%
+      leaflet::addTiles()
+  }
+  if (sf::st_geometry_type(location_data) == "POINT") {
+    if (types$locationType.label == "not declared" | is.null(types$locationType.label)) {
+      map <- map %>%
+        leaflet::addCircleMarkers(
+          data = location_data,
+          radius = 8,
+          color = "white",
+          weight = 3,
+          opacity = 1,
+          fill = TRUE,
+          fillColor = "red",
+          fillOpacity = 0.6,
+          popup = paste0(
+            "<b>Location title: </b>",
+            "<br>",
+            location_data$title,
+            "<br>",
+            "<b>Location type: </b>",
+            "<br>",
+            location_data$locationType.label,
+            "<br>",
+            "<b>Related ",
+            location_data$relatedSite.type,
+            ": </b><br>",
+            "<a href='",
+            location_data$relatedSite.uri,
+            "' target='_blank'>",
+            location_data$relatedSite.title,
+            "</a>"
+          )
+        )
+    } else if (types$locationType.label == "Sampling Location") {
+      map <- map %>%
+        leaflet::addCircleMarkers(
+          data = location_data,
+          radius = 8,
+          color = "white",
+          weight = 3,
+          opacity = 1,
+          fill = TRUE,
+          fillColor = "#336600",
+          fillOpacity = 0.6,
+          popup = paste0(
+            "<b>Location title: </b>",
+            "<br>",
+            location_data$title,
+            "<br>",
+            "<b>Location type: </b>",
+            "<br>",
+            location_data$locationType.label,
+            "<br>",
+            "<b>Related ",
+            location_data$relatedSite.type,
+            ": </b><br>",
+            "<a href='",
+            location_data$relatedSite.uri,
+            "' target='_blank'>",
+            location_data$relatedSite.title,
+            "</a>"
+          )
+        )
+    } else if (types$locationType.label == "Equipment Location") {
+      map <- map %>%
+        leaflet::addCircleMarkers(
+          data = location_data,
+          radius = 8,
+          color = "white",
+          weight = 3,
+          opacity = 1,
+          fill = TRUE,
+          fillColor = "#1A1AFF",
+          fillOpacity = 0.6,
+          popup = paste0(
+            "<b>Location title: </b>",
+            "<br>",
+            location_data$title,
+            "<br>",
+            "<b>Location type: </b>",
+            "<br>",
+            location_data$locationType.label,
+            "<br>",
+            "<b>Related ",
+            location_data$relatedSite.type,
+            ": </b><br>",
+            "<a href='",
+            location_data$relatedSite.uri,
+            "' target='_blank'>",
+            location_data$relatedSite.title,
+            "</a>"
+          )
+        )
+    }
+  } else if (sf::st_geometry_type(location_data) == "POLYGON") {
+    if (types$locationType.label == "not declared" | is.null(types$locationType.label)) {
+      map <- map %>%
+        leaflet::addPolygons(
+          data = location_data,
+          color = "white",
+          weight = 3,
+          opacity = 1,
+          fill = TRUE,
+          fillColor = "red",
+          fillOpacity = 0.6,
+          popup = paste0(
+            "<b>Location title: </b>",
+            "<br>",
+            location_data$title,
+            "<br>",
+            "<b>Location type: </b>",
+            "<br>",
+            location_data$locationType.label,
+            "<br>",
+            "<b>Related ",
+            location_data$relatedSite.type,
+            ": </b><br>",
+            "<a href='",
+            location_data$relatedSite.uri,
+            "' target='_blank'>",
+            location_data$relatedSite.title,
+            "</a>"
+          )
+        )
+    } else if (types$locationType.label == "Sampling Location") {
+      map <- map %>%
+        leaflet::addPolygons(
+          data = location_data,
+          color = "white",
+          weight = 3,
+          opacity = 1,
+          fill = TRUE,
+          fillColor = "#336600",
+          fillOpacity = 0.6,
+          popup = paste0(
+            "<b>Location title: </b>",
+            "<br>",
+            location_data$title,
+            "<br>",
+            "<b>Location type: </b>",
+            "<br>",
+            location_data$locationType.label,
+            "<br>",
+            "<b>Related ",
+            location_data$relatedSite.type,
+            ": </b><br>",
+            "<a href='",
+            location_data$relatedSite.uri,
+            "' target='_blank'>",
+            location_data$relatedSite.title,
+            "</a>"
+          )
+        )
+    } else if (types$locationType.label == "Equipment Location") {
+      map <- map %>%
+        leaflet::addPolygons(
+          data = location_data,
+          color = "white",
+          weight = 3,
+          opacity = 1,
+          fill = TRUE,
+          fillColor = "#1A1AFF",
+          fillOpacity = 0.6,
+          popup = paste0(
+            "<b>Location title: </b>",
+            "<br>",
+            location_data$title,
+            "<br>",
+            "<b>Location type: </b>",
+            "<br>",
+            location_data$locationType.label,
+            "<br>",
+            "<b>Related ",
+            location_data$relatedSite.type,
+            ": </b><br>",
+            "<a href='",
+            location_data$relatedSite.uri,
+            "' target='_blank'>",
+            location_data$relatedSite.title,
+            "</a>"
+          )
+        )
+    }
+  } else if (sf::st_geometry_type(location_data) == "MULTIPOLYGON") {
+    if (types$locationType.label == "not declared" | is.null(types$locationType.label)) {
+      map <- map %>%
+        leaflet::addPolygons(
+          data = location_data,
+          color = "white",
+          weight = 3,
+          opacity = 1,
+          fill = TRUE,
+          fillColor = "red",
+          fillOpacity = 0.6,
+          popup = paste0(
+            "<b>Location title: </b>",
+            "<br>",
+            location_data$title,
+            "<br>",
+            "<b>Location type: </b>",
+            "<br>",
+            location_data$locationType.label,
+            "<br>",
+            "<b>Related ",
+            location_data$relatedSite.type,
+            ": </b><br>",
+            "<a href='",
+            location_data$relatedSite.uri,
+            "' target='_blank'>",
+            location_data$relatedSite.title,
+            "</a>"
+          )
+        )
+    } else if (types$locationType.label == "Sampling Location") {
+      map <- map %>%
+        leaflet::addPolygons(
+          data = location_data,
+          color = "white",
+          weight = 3,
+          opacity = 1,
+          fill = TRUE,
+          fillColor = "#336600",
+          fillOpacity = 0.6,
+          popup = paste0(
+            "<b>Location title: </b>",
+            "<br>",
+            location_data$title,
+            "<br>",
+            "<b>Location type: </b>",
+            "<br>",
+            location_data$locationType.label,
+            "<br>",
+            "<b>Related ",
+            location_data$relatedSite.type,
+            ": </b><br>",
+            "<a href='",
+            location_data$relatedSite.uri,
+            "' target='_blank'>",
+            location_data$relatedSite.title,
+            "</a>"
+          )
+        )
+    } else if (types$locationType.label == "Equipment Location") {
+      map <- map %>%
+        leaflet::addPolygons(
+          data = location_data,
+          color = "white",
+          weight = 3,
+          opacity = 1,
+          fill = TRUE,
+          fillColor = "#1A1AFF",
+          fillOpacity = 0.6,
+          popup = paste0(
+            "<b>Location title: </b>",
+            "<br>",
+            location_data$title,
+            "<br>",
+            "<b>Location type: </b>",
+            "<br>",
+            location_data$locationType.label,
+            "<br>",
+            "<b>Related ",
+            location_data$relatedSite.type,
+            ": </b><br>",
+            "<a href='",
+            location_data$relatedSite.uri,
+            "' target='_blank'>",
+            location_data$relatedSite.title,
+            "</a>"
+          )
+        )
+    }
+  }
+}
+
 #' Obtain the information about of an eLTER location.
 #' @description `r lifecycle::badge("stable")`
 #' This function obtains the information about of an eLTER
