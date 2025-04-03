@@ -27,7 +27,7 @@
 #' @importFrom leaflet addCircleMarkers
 #' @importFrom sf st_sf st_sfc st_geometry_type
 #' @importFrom utils capture.output
-#' @export
+#' @keywords internal
 #' @examples
 #' # LTER Zöbelboden
 #' boundaries <- get_site_boundaries(
@@ -47,40 +47,24 @@ get_site_boundaries <- function(
     show_map = FALSE,
     with_locations = FALSE
 ) {
-  res<-list(
-    data=NULL,
-    map=NULL,
-    locations=NULL
+  res <- list(
+    data = NULL,
+    map = NULL,
+    locations = NULL
   )
   url.geoserver <- paste0("https://deims.org/geoserver/deims/ows?",
                           "service=WFS&version=2.0.0&request=GetFeature&TypeName=deims:deims_sites_boundaries&",
                           "outputFormat=application%2Fjson&CQL_FILTER=deimsid='", URLencode(deimsid), "'"
   )
   geoBoundaries <- geojsonsf::geojson_sf(url.geoserver)
-  siteInfo <- get_site_info(deimsid = deimsid)
-  
-  # programma di refactoring:
-  # calcolo in ogni caso site boundaries e lo metto in res$data
-  # calcolo se richieste tutte le locations e le metto in res$locations
-  # calcolo se richiesta la mappa. La base di partenza è map=mappa del sito
-  #  a questa se le location non sono vuote le aggiungo.
-  #
-  # mi servono funzioni per calcolare le mappe:
-  #  1. funzione per creare leaflet (di base) con sito
-  #  2. funzione per AGGIUNGER leaflet di una location (da usare incrementalmente)
-  # domanda: è possibile usare la funzione get_location_info(...,show_map=TRUE)? il valore restituito è
-  # una lista list(data=location, map=mappa)
-  # Sarebbe interessante fare tutto con quella funzione ma per non modificare la firma si potrebbe:
-  # creare fx in file get_location_info in cui spostare il codice che da una location crea il suo leaflet.
-  # questa fx avrebbe un ulteriore argomento "map": se non è nullo usa quella come mappa di base (map<-map %>% leaflet::addTile(...))
-  # QUI allora userei get_location_info(show_map=FALSE) in modo da ottenere SOLO le location da slot "data".
-  #     poi userei la funzione che crea il leflet passando via via la mappa che cresce.
-  
-  if(length(geoBoundaries$geometry) == 0 && !is.null(siteInfo)){
-    geoBoundaries <- siteInfo %>% dplyr::select("title", "uri")
-    message("\n---- This site doesn't contain geo info. ----\n")
-    res$data = geoBoundaries
-    return(res)
+  if (length(geoBoundaries$geometry) == 0) {
+    siteInfo <- get_site_info(deimsid = deimsid)
+    if (!is.null(siteInfo)) {
+      geoBoundaries <- siteInfo %>% dplyr::select("title", "uri")
+      message("\n---- This site doesn't contain geo info. ----\n")
+      res$data = geoBoundaries
+      return(res)
+    }
   }
   
   geoBoundaries <- geoBoundaries %>%
@@ -95,20 +79,11 @@ get_site_boundaries <- function(
   }
   
   if(with_locations){
-    # TODO: remove this list, use only locations variable
-    # boundaries <- list(
-    #   site = "",
-    #   locations = sf::st_sf(
-    #     sf::st_sfc(),
-    #     crs = 4326
-    #   )
-    # )
     locations = sf::st_sf(
       sf::st_sfc(),
       crs = 4326
     )
 
-    #boundaries$site <- geoBoundaries 
     qo <- queries_jq_deims[[get_deims_API_version()]]$site_boundaries 
     jj <- get_id(deimsid, qo$path)
     if (is.na(attr(jj, "status"))) {
@@ -134,15 +109,13 @@ get_site_boundaries <- function(
         map<-map_add_location(location$data, map)
       }
       
-      # boundaries$locations <- boundaries$locations %>% rbind(location$data)
       locations <- locations %>% rbind(location$data)
     }
     
-    # res$locations<-boundaries$locations
     res$locations<-locations
   }
   if (show_map == TRUE) {
-    res$map<-map
+    res$map <- map
     print(map)
   }
   
@@ -160,8 +133,7 @@ get_site_boundaries <- function(
 #' @importFrom leaflet leaflet addTiles addPolygons
 #' @keywords internal
 #' @noRd
-map_add_site <- function(geoBoundaries, map=NULL){
-  #map <- leaflet::leaflet(geoBoundaries) %>%
+map_add_site <- function(geoBoundaries, map = NULL) {
   if(is.null(map)){
     map<-leaflet::leaflet() %>%
       leaflet::addTiles()
