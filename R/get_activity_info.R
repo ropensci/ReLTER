@@ -32,7 +32,7 @@
 #'   \insertRef{leafletR}{ReLTER}
 #' @export
 #' @examples
-#' activities <- ReLTER::get_activity_info(
+#' activities <- get_activity_info(
 #'   activityid =
 #'     "https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845",
 #'   show_map = TRUE

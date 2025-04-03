@@ -32,7 +32,7 @@
 #' sensor_B3
 #' 
 #' # only table of sensor information
-#' Licor <- ReLTER::get_sensor_info(
+#' Licor <- get_sensor_info(
 #'   sensorid =
 #'     "https://deims.org/sensors/4a7ad644-f2e7-4224-965b-ec5ef5365655",
 #'   show_map = FALSE
