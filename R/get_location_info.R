@@ -12,7 +12,8 @@
 #' is shown. Default FALSE.
 #' @return The output of the function is a `list` with two elements:
 #' \itemize{
-#' \item \code{map} A Leaflet map with the location.
+#' \item \code{map} A Leaflet map with the location, if requested with
+#' `show_map`.
 #' \item \code{data} A `data.frame` with the information about the location.
 #' }
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
