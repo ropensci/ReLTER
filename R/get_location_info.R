@@ -235,7 +235,7 @@ check again the location.iD\n----\n")
   #Output
   return(list(
     map = map,
-    data = location
+    data = geoLocation
   ))
 }
 
