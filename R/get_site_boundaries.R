@@ -95,15 +95,20 @@ get_site_boundaries <- function(
   }
   
   if(with_locations){
-    boundaries <- list(
-      site = "",
-      locations = sf::st_sf(
-        sf::st_sfc(),
-        crs = 4326
-      )
+    # TODO: remove this list, use only locations variable
+    # boundaries <- list(
+    #   site = "",
+    #   locations = sf::st_sf(
+    #     sf::st_sfc(),
+    #     crs = 4326
+    #   )
+    # )
+    locations = sf::st_sf(
+      sf::st_sfc(),
+      crs = 4326
     )
 
-    boundaries$site <- geoBoundaries 
+    #boundaries$site <- geoBoundaries 
     qo <- queries_jq_deims[[get_deims_API_version()]]$site_boundaries 
     jj <- get_id(deimsid, qo$path)
     if (is.na(attr(jj, "status"))) {
@@ -126,13 +131,15 @@ get_site_boundaries <- function(
         locationid = relatedLocations$uri[i], show_map = FALSE
       )
       if(show_map == TRUE){
-        map<-map_add_location(location, map)
+        map<-map_add_location(location$data, map)
       }
       
-      boundaries$locations <- boundaries$locations %>% rbind(location)
+      # boundaries$locations <- boundaries$locations %>% rbind(location$data)
+      locations <- locations %>% rbind(location$data)
     }
     
-    res$locations<-boundaries$locations
+    # res$locations<-boundaries$locations
+    res$locations<-locations
   }
   if (show_map == TRUE) {
     res$map<-map
