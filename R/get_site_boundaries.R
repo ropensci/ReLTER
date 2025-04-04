@@ -7,17 +7,22 @@
 #' @param deimsid A `character`. The DEIMS ID of the site from
 #' DEIMS-SDR website. DEIMS ID information
 #' \href{https://deims.org/docs/deimsid.html}{here}.
-#' @param show_map A `boolean`. When TRUE the boundary will be plotted on a
-#' Leaflet map. Default FALSE.
+#' @param show_map A `boolean`. When TRUE a `leflet` object (a map) is
+#' returned and plotted. Default FALSE.
 #' @param with_locations A `boolean`. When TRUE all site boundaries and
 #' related locations are returned (Sampling Location or Equipment Location).
 #' Default FALSE.
-#' @return The output of the function is an `sf` object, the boundary of the
-#' site or NA if the boundary is missing from DEIMS-SDR. In addition, as
-#' `html map` with boundaries of the site is plotted.
-#' If the parameter `with_locations` is TRUE return a list woth the boundary
-#' and all related locations declared in DEIMS-SDR. A map with these is printed
-#' if `show_map` is TRUE.
+#' @return The output of the function is a `list` with slots:
+#' \itemize{
+#' \item \code{data} An `sf` object with the the boundary of the
+#' site. if the boundary is missing from DEIMS-SDR, a `tibble` 
+#' with the name and uri of the site.
+#' \item \code{map} A Leaflet map of the site, if requested with
+#' `show_map`, otherwise NULL. If `with_locations` is TRUE also the boundaries of the 
+#' locations related to the site are plotted.
+#' \item \code{locations} A `tibble` with the locations' details 
+#' if `with_locations` is TRUE, otherwise NULL.
+#' } 
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @author  Micha Silver, phD (2021) \email{silverm@@post.bgu.ac.il}
 #' @author Paolo Tagliolato, phD \email{tagliolato.p@@irea.cnr.it}
