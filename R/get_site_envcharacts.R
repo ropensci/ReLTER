@@ -46,10 +46,6 @@ get_site_envcharacts <- function(deimsid) {
       x = envCharacteristics$airTemperature.yearlyAverage,
       value = 'degree_Celsius'
     )
-    # envCharacteristics$airTemperature.monthlyAverage <- units::set_units(
-    #   x = envCharacteristics$airTemperature.monthlyAverage[1],
-    #   value = 'degree_Celsius'
-    # )
     # TODO find the solution to assign a units to the nested list column
     if (is.null(envCharacteristics$airTemperature.referencePeriod)) {
       envCharacteristics$airTemperature.referencePeriod <- NA
