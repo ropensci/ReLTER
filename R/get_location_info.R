@@ -17,15 +17,11 @@
 #' \item \code{data} A `data.frame` with the information about the location.
 #' }
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @importFrom dplyr as_tibble select mutate
 #' @importFrom utils capture.output
-#' @importFrom sf st_as_sf st_is_valid st_as_text
-#' @importFrom sf st_multipolygon st_polygon st_point
-#' @importFrom sf st_geometry_type
-#' @importFrom leaflet leaflet addTiles addPolygons
-#' @importFrom leaflet addCircleMarkers
+#' @importFrom dplyr as_tibble mutate select slice
 #' @importFrom lubridate as_datetime
 #' @importFrom units set_units
+#' @importFrom sf st_as_text st_point st_polygon st_multipolygon st_as_sf
 #' @references
 #'   \insertRef{dplyrR}{ReLTER}
 #'
@@ -248,7 +244,8 @@ check again the location.iD\n----\n")
 #' @param map A `leaflet` object. It is an empty map by default.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @author Paolo Tagliolato, phD (2020) \email{tagliolato.p@@irea.cnr.it}
-#' @importFrom ...
+#' @importFrom leaflet leaflet addTiles addCircleMarkers addPolygons
+#' @importFrom sf st_geometry_type
 #' @keywords internal
 #' @examples
 #' \dontrun{
@@ -538,6 +535,6 @@ map_add_location <- function(location_data, map = NULL) {
         )
     }
   }
-  #output
+  # output
   return(map)
 }

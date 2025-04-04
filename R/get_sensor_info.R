@@ -18,14 +18,14 @@
 #' }
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom dplyr as_tibble
-#' @importFrom utils capture.output
+#' @importFrom lubridate as_datetime
 #' @importFrom sf st_as_sf st_is_valid
 #' @importFrom leaflet leaflet addTiles addMarkers
-#' @importFrom lubridate as_datetime
+#' @importFrom utils capture.output
 #' @export
 #' @examples
 #' # print the map of the sensor
-#' sensor_B3 <- ReLTER::get_sensor_info(
+#' sensor_B3 <- get_sensor_info(
 #'   sensorid =
 #'     "https://deims.org/sensors/3845475c-4aec-4dd7-83b4-0ab6ba95db35",
 #'   show_map = TRUE
@@ -41,7 +41,7 @@
 #' Licor
 #' 
 #' # Moldaenke FluoroProbe sensor
-#' sensor_FP <- ReLTER::get_sensor_info(
+#' sensor_FP <- get_sensor_info(
 #'   sensorid = "https://deims.org/sensors/82635223-a4f4-498c-b283-9c95999d9d2f",
 #'   show_map = FALSE
 #' )

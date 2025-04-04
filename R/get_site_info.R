@@ -22,11 +22,10 @@
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @author Paolo Tagliolato, phD \email{tagliolato.p@@irea.cnr.it}
 #' @importFrom dplyr as_tibble left_join
-#' @importFrom utils capture.output
-#' @importFrom leaflet leaflet addTiles addPolygons
-#' @importFrom Rdpack reprompt
-#' @importFrom units set_units
 #' @importFrom lubridate as_datetime
+#' @importFrom units set_units
+#' @importFrom utils capture.output
+#' @importFrom sf st_as_sf
 #' @references
 #'   \insertRef{dplyrR}{ReLTER}
 #'

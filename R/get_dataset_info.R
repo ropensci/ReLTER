@@ -18,12 +18,11 @@
 #' }
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom dplyr as_tibble
-#' @importFrom utils capture.output
-#' @importFrom sf st_as_sf st_is_valid
-#' @importFrom leaflet leaflet addTiles addPolygons
-#' @importFrom Rdpack reprompt
-#' @importFrom lubridate as_date as_datetime
+#' @importFrom lubridate as_datetime as_date
+#' @importFrom sf st_as_sf st_is_valid st_geometry_type
+#' @importFrom leaflet leaflet addTiles addMarkers addPolygons
 #' @importFrom units set_units
+#' @importFrom utils capture.output
 #' @references
 #'   \insertRef{dplyrR}{ReLTER}
 #'
