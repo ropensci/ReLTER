@@ -64,11 +64,15 @@ get_site_boundaries <- function(
   geoBoundaries <- geojsonsf::geojson_sf(url.geoserver)
   if (length(geoBoundaries$geometry) == 0) {
     siteInfo <- get_site_info(deimsid = deimsid)
-    if (!is.null(siteInfo)) {
-      geoBoundaries <- siteInfo %>% dplyr::select("title", "uri")
+    if (!is.null(siteInfo$data)) { # in the last version siteInfo is a list. Here I'm checking that list element "$data" is not null (it is expected to be a tibble)
+      geoBoundaries <- siteInfo$data %>% dplyr::select("title", "uri")
       message("\n---- This site doesn't contain geo info. ----\n")
       res$data = geoBoundaries
       return(res)
+    }
+    else{
+      warning("Please check the deimsid: there seems to be no information for the deimsid: ", deimsid)
+      return(NULL)
     }
   }
   

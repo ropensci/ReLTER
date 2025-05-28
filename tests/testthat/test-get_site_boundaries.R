@@ -48,3 +48,26 @@ test_that("Wrong input (not URL) constructs an empty tibble", {
   result <- ReLTER::get_site_boundaries(deimsid = "ljhnhbkihubib")
   expect_type(result, "NULL")
 })
+
+test_that("get_site_boundaries with locations=TRUE and correct deimsid return list with names data, map, locations", {
+  withr::local_envvar("LOCAL_DEIMS" = FALSE)
+  result <- get_site_boundaries(
+      deimsid = "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6",
+     show_map = FALSE,
+     with_locations = TRUE
+    )
+  expect_true(length(names(result)) > 0)
+  expect_true(all(c("data", "map", "locations") %in% names(result)))
+})
+
+test_that("get_site_boundaries with locations=FALSE and correct deimsid return list with names data, map, locations", {
+  withr::local_envvar("LOCAL_DEIMS" = FALSE)
+  result <- get_site_boundaries(
+    deimsid = "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6",
+    show_map = FALSE,
+    with_locations = FALSE
+  )
+  expect_true(length(names(result)) > 0)
+  expect_true(all(c("data", "map", "locations") %in% names(result)))
+})
+  
