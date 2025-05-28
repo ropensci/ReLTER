@@ -1,5 +1,6 @@
 #' Get all sites within a given distance of a point location
-#' @description retrieve all sites within a given distance (in meters) from 
+#' @description `r lifecycle::badge("experimental")`
+#' retrieve all sites within a given distance (in meters) from 
 #' the center point (in coordinates lat, lon), and in 
 #' the (optionally) specified elevation range.
 #' @param lat latitude of radius center
@@ -69,7 +70,8 @@ get_sites_within_radius <- function(lat=39.1386, lon=-8.33305,
 }
 
 #' select sites within a 3d bounding box
-#' @description select sites within a 3d bounding box
+#' @description `r lifecycle::badge("experimental")`
+#' select sites within a 3d bounding box
 #' @param bbox bounding box
 #' @param elevation_range elevation range
 #' @param show_map show the map

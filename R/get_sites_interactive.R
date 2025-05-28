@@ -1,5 +1,6 @@
 #' Select sites by choosing a 3d bounding box through an interactive GUI.
-#' @description Open a GUI (a shiny widget) to interact with the user for the 
+#' @description `r lifecycle::badge("experimental")`
+#' Open a GUI (a shiny widget) to interact with the user for the 
 #' selection of a 3D bounding box. The user can visualise the sites within the selected
 #' bounding box and ask for returning the contained sites or simply the bounding box.
 #' @return `tibble` with selected sites or 
