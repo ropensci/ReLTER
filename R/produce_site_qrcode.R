@@ -9,7 +9,6 @@
 #' @return The QR code as a logical matrix with "qr_code" class.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom qrcode qr_code
-#' @importFrom Rdpack reprompt
 #' @references
 #'   \insertRef{qrcodeR}{ReLTER}
 #' @export
@@ -17,7 +16,6 @@
 #' qrcode <- produce_site_qrcode(
 #'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
 #' )
-#' plot(qrcode)
 #'
 #' a <- produce_site_qrcode(
 #'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
@@ -29,11 +27,19 @@
 #'
 ### function produce_site_qrcode
 produce_site_qrcode <- function(deimsid, do_plot = FALSE) {
-  res <- qrcode::qr_code(deimsid, ecl = "L")
+  # Check if required packages are installed
+  if (!requireNamespace("qrcode", quietly = TRUE)) {
+    stop(
+      "\n----\nThe function 'produce_site_qrcode()' requires the optional package 'qrcode'.\n",
+      "Please install it with: install.packages(\"qrcode\")\n----\n"
+    )
+  }
+  gqr_code_fx <- getExportedValue("qrcode", "qr_code")
+  res <- gqr_code_fx(deimsid, ecl = "L")
   if (do_plot) {
     a <- res %>%
       plot(col = c("White", "#1479BC"))
     a
   }
-  return(res)
+  plot(res)
 }

@@ -17,29 +17,27 @@
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom tibble as_tibble
 #' @importFrom dplyr group_by tally mutate filter lag
-#' @importFrom RColorBrewer brewer.pal
 #' @importFrom ggplot2 theme_minimal theme element_blank element_text ggplot
 #' @importFrom ggplot2 geom_text aes coord_fixed scale_x_continuous
 #' @importFrom ggplot2 scale_y_continuous scale_color_manual labs
-#' @importFrom ggforce geom_arc_bar
-#' @importFrom Rdpack reprompt
+#' @seealso [ggforce::geom_arc_bar()]
+#' @seealso [RColorBrewer::brewer.pal()]
 #' @references
 #'   \insertRef{tibbleR}{ReLTER}
 #'
 #'   \insertRef{dplyrR}{ReLTER}
-#'
-#'   \insertRef{RColorBrewerR}{ReLTER}
-#'
+#'   
 #'   \insertRef{ggplot2R}{ReLTER}
 #'
 #'   \insertRef{ggforceR}{ReLTER}
+#'
+#'   \insertRef{RColorBrewerR}{ReLTER}
 #' @export
 #' @examples
 #' \dontrun{
 #' pie <- produce_site_observedProperties_pie(
 #'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
 #' )
-#' pie
 #' }
 #'
 #' @section The function output:
@@ -47,12 +45,24 @@
 #'
 ### function produce_site_observedProperties_pie
 produce_site_observedProperties_pie <- function(deimsid) {
-  # TODO add this by SPARQL query
-  site <- ReLTER::get_site_info(
+  # Check if required packages are installed
+  if (!requireNamespace("ggforce", quietly = TRUE)) {
+    stop(
+      "\n----\nThe function 'produce_site_observedProperties_pie()' requires the optional package 'ggforce'.\n",
+      "Please install it with: install.packages(\"ggforce\")\n----\n"
+    )
+  }
+  if (!requireNamespace("RColorBrewer", quietly = TRUE)) {
+    stop(
+      "\n----\nThe function 'get_site_speciesOccurrences()' requires the optional package 'RColorBrewer'.\n",
+      "Please install it with: install.packages(\"RColorBrewer\")\n----\n"
+    )
+  }
+  site <- get_site_info(
     deimsid = deimsid,
-    category = "observedProperties"
+    categories = "observedProperties"
   )
-  paramsDeims <- tibble::as_tibble(site$observedProperties[[1]])
+  paramsDeims <- tibble::as_tibble(site$data$observedProperties[[1]])
   if (length(paramsDeims) != 0) {
     params <- tibble::as_tibble(paramsDeims)
     params$parameterGroups <- paste0(
@@ -87,24 +97,29 @@ produce_site_observedProperties_pie <- function(deimsid) {
         axis.ticks = ggplot2::element_blank(),
         plot.title = ggplot2::element_text(
           size = 14, face = "bold"
+        ),
+        legend.text = ggplot2::element_text(
+          size = 10
         )
       )
+    brewer.pal_fx <- getExportedValue("RColorBrewer", "brewer.pal")
     mycolors <- c(
-      RColorBrewer::brewer.pal(
+      brewer.pal_fx(
         name = "Set1",
         n = 9
       ),
-      RColorBrewer::brewer.pal(
+      brewer.pal_fx(
         name = "Set2",
         n = 8
       ),
-      RColorBrewer::brewer.pal(
+      brewer.pal_fx(
         name = "Set3",
         n = 12
       )
     )
+    geom_arc_bar_fx <- getExportedValue("ggforce", "geom_arc_bar")
     pie <- ggplot2::ggplot(params) +
-      ggforce::geom_arc_bar(
+      geom_arc_bar_fx(
         ggplot2::aes(
           x0 = 0,
           y0 = 0,
@@ -118,8 +133,9 @@ produce_site_observedProperties_pie <- function(deimsid) {
       ggplot2::labs(
         title =
           paste0(
-            "Percentage of observed properties type measured in the ",
-            site$title
+            "Percentage of observed properties groups measured in the ",
+            site$data$title, "\n(",
+            site$data$uri, ")"
           )
       ) +
       ggplot2::geom_text(
