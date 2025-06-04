@@ -28,8 +28,7 @@
 #' @author Paolo Tagliolato, phD \email{tagliolato.p@@irea.cnr.it}
 #' @importFrom dplyr mutate select as_tibble
 #' @importFrom geojsonsf geojson_sf
-#' @importFrom leaflet leaflet addTiles addPolygons
-#' @importFrom leaflet addCircleMarkers
+#' @importFrom leaflet leaflet addTiles addPolygons addCircleMarkers
 #' @importFrom sf st_sf st_sfc st_geometry_type
 #' @importFrom utils capture.output
 #' @keywords internal
@@ -80,9 +79,9 @@ get_site_boundaries <- function(
     dplyr::mutate(title = name, uri = deimsid, .before = geometry) %>%
     dplyr::select(-c("name", "deimsid", "field_elevation_avg_value"))
   
-  res$data=geoBoundaries
+  res$data = geoBoundaries
   
-  map<-NULL
+  map <- NULL
   if(show_map){
     map <- map_add_site(geoBoundaries)
   }
@@ -115,7 +114,7 @@ get_site_boundaries <- function(
         locationid = relatedLocations$uri[i], show_map = FALSE
       )
       if(show_map == TRUE){
-        map<-map_add_location(location$data, map)
+        map <- map_add_location(location$data, map)
       }
       
       locations <- locations %>% rbind(location$data)
@@ -127,7 +126,6 @@ get_site_boundaries <- function(
     res$map <- map
     print(map)
   }
-  
   return(res)
 }
 
@@ -144,10 +142,10 @@ get_site_boundaries <- function(
 #' @noRd
 map_add_site <- function(geoBoundaries, map = NULL) {
   if(is.null(map)){
-    map<-leaflet::leaflet() %>%
+    map <- leaflet::leaflet() %>%
       leaflet::addTiles()
   }
-  map <-  map %>%
+  map <- map %>%
     leaflet::addPolygons(
       data = geoBoundaries,
       color = "white",
@@ -167,4 +165,3 @@ map_add_site <- function(geoBoundaries, map = NULL) {
     )
   return(map)
 }
-
