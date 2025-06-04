@@ -6,7 +6,7 @@ test_that("Expect error if internet connection is down", {
     httptest2::without_internet(
       result <- ReLTER:::get_site_info(
         deimsid = TESTURLSite,
-        category = "observedProperties"
+        categories = "observedProperties"
       )
     ),
     "GET"
@@ -19,7 +19,7 @@ test_that("Output of site observed properties function constructs ‘tibble’ a
           expected", {
   result <- ReLTER:::get_site_info(
     deimsid = TESTURLSite,
-    category = "observedProperties"
+    categories = "observedProperties"
   )
   expect_s3_class(result, "tbl_df")
   expect_true(ncol(result) == 12)
