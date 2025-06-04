@@ -25,12 +25,16 @@
 #' @importFrom utils capture.output
 #' @references
 #'   \insertRef{dplyrR}{ReLTER}
-#'
-#'   \insertRef{utilsR}{ReLTER}
+#'   
+#'   \insertRef{lubridateR}{ReLTER}
 #'
 #'   \insertRef{sfR}{ReLTER}
 #'
 #'   \insertRef{leafletR}{ReLTER}
+#'   
+#'   \insertRef{utilsR}{ReLTER}
+#'
+#'   \insertRef{unitsR}{ReLTER}
 #' @export
 #' @examples
 #' tDataset <- get_dataset_info(
