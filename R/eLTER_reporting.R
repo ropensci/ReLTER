@@ -251,8 +251,11 @@ eLTER_data_reporting_format <- list(
 #' Defaults to current system date.
 #' @return filename (without extension) following naming convention
 #' @importFrom stringr str_replace_all
-#' @importFrom countrycode countrycode
 #' @importFrom dplyr pull
+#' @references
+#'   \insertRef{stringrR}{ReLTER}
+#' 
+#'   \insertRef{dplyrR}{ReLTER}
 #' @seealso Peterseil, Geiger et al. (2020)
 #' Field Specification for data reporting. Technical Document.
 #' TechDoc.01. EU Horizon 2020 eLTER PLUS Project, Grant agreement No. 871128
@@ -292,11 +295,7 @@ reporting_compose_file_name <- function(
 
   if (!is.null(deimsid)) {
     info <- get_site_info(deimsid)
-    country_code <- info$data %>%
-      dplyr::pull(country) %>%
-      unlist() %>%
-      .[1] %>%
-      countrycode::countrycode(origin = "country.name", destination = "iso2c")
+    country_code <- isoCodes$Alpha_3[isoCodes$Name == info$data$country]
     site_name <- stringr::str_replace_all(info$data$title, " ", replacement = "-")
   } else if(is.null(country_code) || is.null(site_name)) 
     stop("if deimsid is not specified, both country_code and site_name are required")
@@ -442,8 +441,6 @@ reporting_produce_data_object_v2.0 <- function(
 #' @author Paolo Tagliolato, phD \email{tagliolato.p@@irea.cnr.it}
 #' @author Alessandro Oggioni, phD \email{oggioni.a@@irea.cnr.it}
 #' @importFrom utils zip write.csv2
-#' @importFrom stringi stri_rand_strings
-#' @importFrom purrr map_lgl
 #' @note This method must be intended as a signpost for future implementation
 #' @seealso Peterseil, Geiger et al. (2020)
 #' Field Specification for data reporting. Technical Document.
@@ -473,7 +470,7 @@ reporting_save_archive <- function(
   sr <- x$filename
   deimsid <- x$deimsid
   dirsr <- paste0(filepath, "/", sr)
-  lx <- purrr::map_lgl(x, function(y) {"tbl_df" %in% class(y)})
+  lx <- sapply(x, function(y) "tbl_df" %in% class(y))
   slotstosave <- names(lx)[lx]
   filenames <- paste0(dirsr, "/", slotstosave, ".csv")
   # clean up existing previous work

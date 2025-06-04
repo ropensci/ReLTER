@@ -21,6 +21,10 @@
 #' @author Alessandro Oggioni, phD \email{oggioni.a@@irea.cnr.it}
 #' @importFrom tibble as_tibble
 #' @importFrom dplyr select mutate filter
+#' @references
+#'   \insertRef{tibbleR}{ReLTER}
+#'   
+#'   \insertRef{dtplyrR}{ReLTER}
 #' @export
 map_occ_gbif2elter <- function(x, deimsid, version = '1.3') {
   # "variables" (in this case they could be defined "custom fields",
@@ -261,6 +265,9 @@ map_occ_obis2elter <- function(x, deimsid, version = "1.3") {
 #' @return the path to the created file
 #' @author Paolo Tagliolato, phD \email{tagliolato.p@@irea.cnr.it}
 #' @importFrom utils zip write.csv2
+#' @references
+#'   \insertRef{utilsR}{ReLTER}
+#'   
 #' @export
 save_occ_eLTER_reporting_Archive <- function(lterReportOut, path = tempdir()) {
   if(!endsWith(path,"/"))
