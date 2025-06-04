@@ -3,7 +3,7 @@
 #' This function obtains information of a single eLTER site,
 #' as a stored in \href{https://deims.org/}{DEIMS-SDR catalogue},
 #' through the DEIMS-SDR API.
-#' @param category A `category`. This parameter selects which category
+#' @param categories A `categories`. This parameter selects which categories
 #' or categories are retrieved and returned in the result.
 #' Possible value are:
 #' 'Affiliations', 'Contacts', 'EnvCharacts', 'General',
@@ -28,17 +28,19 @@
 #' @importFrom sf st_as_sf
 #' @references
 #'   \insertRef{dplyrR}{ReLTER}
+#'   
+#'   \insertRef{lubridateR}{ReLTER}
+#'
+#'   \insertRef{unitsR}{ReLTER}
 #'
 #'   \insertRef{utilsR}{ReLTER}
 #'
 #'   \insertRef{sfR}{ReLTER}
-#'
-#'   \insertRef{leafletR}{ReLTER}
 #' @export
 #' @examples
 #' site <- get_site_info(
 #'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
-#'   category = c("EnvCharacts", "Affiliations"),
+#'   categories = c("EnvCharacts", "Affiliations"),
 #'   show_map = TRUE,
 #'   with_locations = TRUE
 #' )
@@ -47,7 +49,7 @@
 ### function get_site_info
 get_site_info <- function(
     deimsid,
-    category = NA,
+    categories = NA,
     show_map = FALSE,
     with_locations = FALSE
   ) {
@@ -86,9 +88,9 @@ get_site_info <- function(
     siteInfo$changed <- lubridate::as_datetime(
       siteInfo$changed
     )
-    if (any(!is.na(category))) {
+    if (any(!is.na(categories))) {
       # add 'Affiliations' info
-      if (any(grepl("Affiliations", category))) {
+      if (any(grepl("Affiliations", categories))) {
         siteAffil <- get_site_affiliations(deimsid = deimsid)
         siteInfo <- dplyr::left_join(
           siteInfo,
@@ -106,7 +108,7 @@ get_site_info <- function(
         )
       }
       # add 'Contacts' info
-      if (any(grepl("Contacts", category))) {
+      if (any(grepl("Contacts", categories))) {
         siteConta <- get_site_contact(deimsid = deimsid)
         siteInfo <- dplyr::left_join(
           siteInfo,
@@ -124,7 +126,7 @@ get_site_info <- function(
         )
       }
       # add 'EnvCharacts' info
-      if (any(grepl("EnvCharacts", category))) {
+      if (any(grepl("EnvCharacts", categories))) {
         siteEnvCh <- get_site_envcharacts(deimsid = deimsid)
         siteInfo <- dplyr::left_join(
           siteInfo,
@@ -142,7 +144,7 @@ get_site_info <- function(
         )
       }
       # add 'General' info
-      if (any(grepl("General", category))) {
+      if (any(grepl("General", categories))) {
         siteGener <- get_site_general(deimsid = deimsid)
         siteInfo <- dplyr::left_join(
           siteInfo,
@@ -160,7 +162,7 @@ get_site_info <- function(
         )
       }
       # add 'Infrastructure' info
-      if (any(grepl("Infrastructure", category))) {
+      if (any(grepl("Infrastructure", categories))) {
         siteInfra <- get_site_infrastructure(deimsid = deimsid)
         siteInfo <- dplyr::left_join(
           siteInfo,
@@ -178,7 +180,7 @@ get_site_info <- function(
         )
       }
       # add 'Observed properties' info
-      if (any(grepl("observedProperties", category))) {
+      if (any(grepl("observedProperties", categories))) {
         siteParam <- get_site_observedProperties(deimsid = deimsid)
         siteInfo <- dplyr::left_join(
           siteInfo,
@@ -196,7 +198,7 @@ get_site_info <- function(
         )
       }
       # add 'RelateRes' info
-      if (any(grepl("RelateRes", category))) {
+      if (any(grepl("RelateRes", categories))) {
         siteRelat <- get_site_related_resources(deimsid = deimsid)
         siteInfo <- dplyr::left_join(
           siteInfo,
