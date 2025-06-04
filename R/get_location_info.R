@@ -23,13 +23,13 @@
 #' @importFrom units set_units
 #' @importFrom sf st_as_text st_point st_polygon st_multipolygon st_as_sf
 #' @references
-#'   \insertRef{dplyrR}{ReLTER}
-#'
 #'   \insertRef{utilsR}{ReLTER}
+#'   
+#'   \insertRef{dplyrR}{ReLTER}
+#'   
+#'   \insertRef{lubridateR}{ReLTER}
 #'
-#'   \insertRef{sfR}{ReLTER}
-#'
-#'   \insertRef{leafletR}{ReLTER}
+#'   \insertRef{unitsR}{ReLTER}
 #' @export
 #' @examples
 #' # Sampling location multipolygon
