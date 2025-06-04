@@ -405,7 +405,7 @@ get_site_MODIS <- function(deimsid,
 #'
 plot_timeseries  <- function(deimsid, product,
                            output_dir, output_proj = "3035") {
-  boundary <- ReLTER::get_site_info(
+  boundary <- get_site_info(
     deimsid,
     category = "Boundaries"
   )
