@@ -22,6 +22,16 @@
 #' @importFrom sf st_as_sf st_is_valid
 #' @importFrom leaflet leaflet addTiles addMarkers
 #' @importFrom utils capture.output
+#' @references
+#'   \insertRef{dplyrR}{ReLTER}
+#'
+#'   \insertRef{lubridateR}{ReLTER}
+#'   
+#'   \insertRef{sfR}{ReLTER}
+#'
+#'   \insertRef{leafletR}{ReLTER}
+#'   
+#'   \insertRef{utilsR}{ReLTER}
 #' @export
 #' @examples
 #' # print the map of the sensor
