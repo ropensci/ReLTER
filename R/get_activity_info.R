@@ -23,8 +23,8 @@
 #' @importFrom leaflet leaflet addTiles addMarkers addPolygons
 #' @references
 #'   \insertRef{dplyrR}{ReLTER}
-#'
-#'   \insertRef{utilsR}{ReLTER}
+#'   
+#'   \insertRef{lubridateR}{ReLTER}
 #'
 #'   \insertRef{sfR}{ReLTER}
 #'
