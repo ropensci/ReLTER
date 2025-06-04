@@ -41,37 +41,64 @@ Italy network}), as a stored into \href{https://deims.org}{DEIMS-SDR}.
 \examples{
 \dontrun{
 # Italian sites
-map <- ReLTER::produce_network_points_map(
+map <- produce_network_points_map(
   networkDEIMSID =
-  "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3",
+    "https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3",
   countryCode = "ITA"
 )
-map
 
 # German sites
 map_LTERGermanSites <- produce_network_points_map(
   networkDEIMSID =
-  "https://deims.org/networks/e904354a-f3a0-40ce-a9b5-61741f66c824",
+    "https://deims.org/networks/e904354a-f3a0-40ce-a9b5-61741f66c824",
   countryCode = "DEU"
 )
-map_LTERGermanSites +
-  tmap::tm_compass(type = "8star", position = c("right", "bottom")) +
-  tmap::tm_scale_bar(position = c("right", "bottom"))
+
+# Remove scale bar and a north arrow
+map_LTERGermanSites <- map_LTERGermanSites +
+  ggplot2::theme(
+    panel.grid = ggplot2::element_blank(),
+    axis.text = ggplot2::element_blank(),
+    axis.ticks = ggplot2::element_blank(),
+    axis.title = ggplot2::element_blank()
+  )
+ map_LTERGermanSites
+ 
+ # Add annotation scale and North arrow
+ map_LTERGermanSites <- map_LTERGermanSites +
+   ggspatial::annotation_scale(
+     location = "br", # bottom right
+     width_hint = 0.2) +
+   ggspatial::annotation_north_arrow(
+     location = "bl", # bottom right
+     which_north = "true",
+     style = north_arrow_fancy_orienteering(),
+     height = ggplot2::unit(1, "cm"),
+     width = ggplot2::unit(1, "cm")
+   )
+ map_LTERGermanSites
 }
 
 }
 \references{
+\insertRef{httr2}{ReLTER}
+
 \insertRef{jsonliteR}{ReLTER}
-
-\insertRef{sfR}{ReLTER}
-
-\insertRef{tmapR}{ReLTER}
 
 \insertRef{dplyrR}{ReLTER}
 
+\insertRef{sfR}{ReLTER}
+
 \insertRef{tibbleR}{ReLTER}
 
-\insertRef{httr2}{ReLTER}
+\insertRef{stringrR}{ReLTER}
+
+\insertRef{ggplot2R}{ReLTER}
+
+\insertRef{geodataR}{ReLTER}
+}
+\seealso{
+\code{\link[geodata:gadm]{geodata::gadm()}}
 }
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}

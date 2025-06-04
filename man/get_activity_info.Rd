@@ -16,8 +16,12 @@ The DEIMS.iD of activity is the URL for the activity page.}
 is shown. Default FALSE.}
 }
 \value{
-The output of the function is a \code{tibble} with main features of
-the activities in a site, and a \code{leaflet} map plot.
+The output of the function is a \code{list} with two elements:
+\itemize{
+\item \code{map} A Leaflet map with the activity location, if requested with
+\code{show_map}.
+\item \code{data} A \code{data.frame} with the information about the activity.
+}
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
@@ -36,7 +40,7 @@ species in the Mar Piccolo of Taranto" activity}
 activities <- get_activity_info(
   activityid =
     "https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845",
-  show_map = FALSE
+  show_map = TRUE
 )
 activities
 
@@ -44,7 +48,7 @@ activities
 \references{
 \insertRef{dplyrR}{ReLTER}
 
-\insertRef{utilsR}{ReLTER}
+\insertRef{lubridateR}{ReLTER}
 
 \insertRef{sfR}{ReLTER}
 

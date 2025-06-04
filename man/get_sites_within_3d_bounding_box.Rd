@@ -14,5 +14,6 @@ get_sites_within_3d_bounding_box(bbox, elevation_range = NULL, show_map = TRUE)
 \item{show_map}{show the map}
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 select sites within a 3d bounding box
 }

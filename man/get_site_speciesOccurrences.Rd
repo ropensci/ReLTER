@@ -87,6 +87,28 @@ occ_GoV_all
 }
 
 }
+\references{
+\insertRef{leafletR}{ReLTER}
+
+\insertRef{tibbleR}{ReLTER}
+
+\insertRef{dplyrR}{ReLTER}
+
+\insertRef{sfR}{ReLTER}
+
+\insertRef{lubridateR}{ReLTER}
+
+\insertRef{spoccR}{ReLTER}
+
+\insertRef{RColorBrewerR}{ReLTER}
+}
+\seealso{
+\code{\link[spocc:obis_search]{spocc::obis_search()}}
+
+\code{\link[spocc:occ]{spocc::occ()}}
+
+\code{\link[RColorBrewer:ColorBrewer]{RColorBrewer::brewer.pal()}}
+}
 \author{
 Alessandro Oggioni, PhD (2020) \email{oggioni.a@irea.cnr.it}
 

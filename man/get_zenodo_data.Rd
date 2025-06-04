@@ -35,6 +35,28 @@ record
 }
 
 }
+\references{
+\insertRef{tibbleR}{ReLTER}
+
+\insertRef{stringrR}{ReLTER}
+
+\insertRef{lubridateR}{ReLTER}
+
+\insertRef{dplyrR}{ReLTER}
+
+\insertRef{unitsR}{ReLTER}
+
+\insertRef{zen4R}{ReLTER}
+
+\insertRef{tidyr}{ReLTER}
+}
+\seealso{
+\code{\link[zen4R:ZenodoManager]{zen4R::ZenodoManager()}}
+
+\code{\link[tidyr:unnest]{tidyr::unnest()}}
+
+\code{\link[tidyr:nest]{tidyr::nest()}}
+}
 \author{
 Alessandro Oggioni, phD \email{oggioni.a@irea.cnr.it}
 }

@@ -4,21 +4,11 @@
 \alias{reporting_save_archive}
 \title{Creates an archive with files following the eLTER reportingFormat}
 \usage{
-reporting_save_archive(
-  x,
-  filename = NULL,
-  filepath = tempdir(),
-  saveRDS = FALSE
-)
+reporting_save_archive(x, filepath = tempdir(), saveRDS = FALSE)
 }
 \arguments{
 \item{x}{A \code{list} like the one created by function
-\code{reporting_produce_data_object_v1.3}}
-
-\item{filename}{A \code{character}. Optional filename associated with the object,
-of the form provided as output by the function
-\code{reporting_compose_file_name}.
-Defaults to random string}
+\code{reporting_produce_data_object_v2.0}}
 
 \item{filepath}{A \code{character} file path. Defaults to temporary directory}
 
@@ -27,7 +17,8 @@ Defaults to FALSE}
 }
 \value{
 named A \code{list} containing paths to saved files filepaths.
-Slots are named "zip" and possibly "RDS".
+Slots are named "zip" and possibly "RDS". A path to the zip file, or rds
+file, can be defined by the parameter \code{filepath}.
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
@@ -40,49 +31,9 @@ This method must be intended as a signpost for future implementation
 \dontrun{
 ## Not run:
 
-deimsid <- "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6"
-time_span <- 2015 # e.g. whole year
-# time_span <- "20150302-20180415" # e.g. span between two dates
-data_topic <- "VEG" # data provider defined abbreviation of "vegetation"
-variable_group <- "SPECCOVER" # data provider defined abbreviation
-version <- "V20220907"
-
-filename <- reporting_compose_file_name(
-  deimsid = deimsid,
-  data_topic = data_topic,
-  variable_group = variable_group,
-  time_span = time_span,
-  version = version
-)
-
-data <- dplyr::tribble(
-  ~id, ~value,
-  1, 7.5,
-  2, 4.2
-)
-station <- dplyr::tribble(
-  ~SITE_CODE, ~STATION_CODE, ~STYPE, ~LAT,      ~LON,       ~ALTITUDE,
-  deimsid,    "IP2",         "AREA",  45.340805, 7.88887495, 265
-)
-
-method <- dplyr::tribble(
-  ~VARIABLE, ~METH_DESCR,
-  "COVE_F",  "Analysis of ammonium..." 
-)
-
-research_object <- reporting_produce_data_object_v1.3(
- filename = filename,
- deimsid = deimsid,
- data = data,
- station = station,
- method = method
-)
-
 archive <- reporting_save_archive(
   x = research_object,
-  # obtained from the function `reporting_produce_data_object_v1.3()`
-  filename = filename,
-  # obtained from the function `reporting_compose_file_name()`
+  # obtained from the function `reporting_produce_data_object_v2.0()`
   filepath = ".",
   saveRDS = TRUE
 )

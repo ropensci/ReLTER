@@ -11,6 +11,7 @@ get_sites_interactive()
 a \code{list} with selected bounding box (with slots \code{bbx} and \code{elevation_range}).
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 Open a GUI (a shiny widget) to interact with the user for the
 selection of a 3D bounding box. The user can visualise the sites within the selected
 bounding box and ask for returning the contained sites or simply the bounding box.
