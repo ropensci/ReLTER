@@ -6,17 +6,9 @@
 \usage{
 produce_site_map(
   deimsid,
-  countryCode,
-  listOfSites,
-  gridNx,
-  gridNy,
-  width = 0.25,
-  height = 0.25,
-  bboxXMin = 0,
-  bboxXMax = 0,
-  bboxYMin = 0,
-  bboxYMax = 0,
-  show_map = FALSE
+  scale_location = "bl",
+  arrow_location = "tl",
+  inset_position = "br"
 )
 }
 \arguments{
@@ -24,44 +16,17 @@ produce_site_map(
 DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here}.}
 
-\item{countryCode}{A \code{character} following the SO 3166-1 alpha-3 codes.
-This ISO convention consists of three-letter country codes
-as defined in ISO 3166-1, part of the ISO 3166 standard published by the
-International Organization for Standardization (ISO), to represent countries,
-dependent territories, and special areas of geographical interest.
-The map produced by this function will be limited to the country
-indicated in this parameter; if the network has a extraterritorial sites
-those will not represented.}
+\item{scale_location}{A \code{character}. Position of the map scale (e.g. "bl", "br").
+Options: \code{"tl"} = top-left, \code{"tr"} = top-right, \code{"bl"} = bottom-left, \code{"br"} = bottom-right.
+Default is \code{"bl"}.}
 
-\item{listOfSites}{A \code{sf}. List of sites of specific network. This list
-is needed for showing another points on the map.}
+\item{arrow_location}{A \code{character}. Position of the north arrow (e.g. "tl", "tr").
+Options: \code{"tl"} = top-left, \code{"tr"} = top-right, \code{"bl"} = bottom-left, \code{"br"} = bottom-right.
+Default is \code{"tl"}.}
 
-\item{gridNx}{A \code{double}. A numeric vector or unit object specifying
-x-location of viewports about country provided by countryCode parameter.}
-
-\item{gridNy}{A \code{double}. A numeric vector or unit object specifying
-y-location of viewports about country provided by countryCode parameter.}
-
-\item{width}{A \code{double}. A numeric vector or unit object specifying width
-of viewports about country provided by countryCode parameter. Default 0.25.}
-
-\item{height}{A \code{double}. A numeric vector or unit object specifying height
-of viewports about country provided by countryCode parameter. Default 0.25.}
-
-\item{bboxXMin}{A \code{double}. A numeric for add some unit of a bbox provided
-by centroid of the site. Default 0.}
-
-\item{bboxXMax}{A \code{double}. A numeric for add some unit of a bbox provided
-by centroid of the site. Default 0.}
-
-\item{bboxYMin}{A \code{double}. A numeric for add some unit of a bbox provided
-by centroid of the site. Default 0.}
-
-\item{bboxYMax}{A \code{double}. A numeric for add some unit of a bbox provided
-by centroid of the site. Default 0.}
-
-\item{show_map}{A \code{boolean}. When TRUE the immage of map will be plotted.
-Default FALSE.}
+\item{inset_position}{A \code{character}. Position of the country overview inset map.
+Options: \code{"tl"} = top-left, \code{"tr"} = top-right, \code{"bl"} = bottom-left, \code{"br"} = bottom-right.
+Default is \code{"br"}.}
 }
 \value{
 The output of the function is an \code{image} of the boundary of the
@@ -81,76 +46,51 @@ a given country and network.
 \examples{
 \dontrun{
 # Example of Lange Bramke site
-sitesNetwork <- get_network_sites(
-  networkDEIMSID =
-  "https://deims.org/networks/e904354a-f3a0-40ce-a9b5-61741f66c824"
-)
-map <- produce_site_map(
-  deimsid = "https://deims.org/8e24d4f8-d6f6-4463-83e9-73cac2fd3f38",
-  countryCode = "DEU",
-  listOfSites = sitesNetwork,
-  gridNx = 0.2,
-  gridNy = 0.7
+siteMap <- produce_site_map(
+  deimsid = "https://deims.org/8e24d4f8-d6f6-4463-83e9-73cac2fd3f38"
 )
 
 # Example of Eisenwurzen site
-sitesNetwork <- get_network_sites(
-  networkDEIMSID =
-  "https://deims.org/networks/d45c2690-dbef-4dbc-a742-26ea846edf28"
-)
-map <- produce_site_map(
+siteMap <- produce_site_map(
   deimsid = "https://deims.org/d0a8da18-0881-4ebe-bccf-bc4cb4e25701",
-  countryCode = "AUT",
-  listOfSites = sitesNetwork,
-  gridNx = 0.2,
-  gridNy = 0.7
+  inset_position = "bl"
 )
 
 # Example of Lake Maggiore site
-sitesNetwork <- get_network_sites(
-  networkDEIMSID =
-  "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
-)
-# In the case of Italian sites are selected only true sites and excluded the
-# macrosites.
-sitesNetwork <- (sitesNetwork[!grepl('^IT', sitesNetwork$title),])
-sf::st_crs(sitesNetwork) = 4326
 siteMap <- produce_site_map(
   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
-  countryCode = "ITA",
-  listOfSites = sitesNetwork,
-  gridNx = 0.7,
-  gridNy = 0.35,
-  show_map = TRUE
+  scale_location = "bl",
+  arrow_location = "tl",
+  inset_position = "br"
 )
-siteMap
-
-# with show_map = FALSE
-siteMap <- produce_site_map(
-  deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
-  countryCode = "ITA",
-  listOfSites = sitesNetwork,
-  gridNx = 0.7,
-  gridNy = 0.35
-)
-siteMap
 }
 
 }
 \references{
 \insertRef{sfR}{ReLTER}
 
-\insertRef{jsonliteR}{ReLTER}
-
 \insertRef{tibbleR}{ReLTER}
 
-\insertRef{rasterR}{ReLTER}
+\insertRef{ggplot2R}{ReLTER}
 
-\insertRef{rosmR}{ReLTER}
+\insertRef{ggspatialR}{ReLTER}
 
-\insertRef{tmapR}{ReLTER}
+\insertRef{cowplotR}{ReLTER}
 
-\insertRef{gridR}{ReLTER}
+\insertRef{geodataR}{ReLTER}
+}
+\seealso{
+\code{\link[ggspatial:annotation_map_tile]{ggspatial::annotation_map_tile()}}
+
+\code{\link[ggspatial:annotation_scale]{ggspatial::annotation_scale()}}
+
+\code{\link[ggspatial:annotation_north_arrow]{ggspatial::annotation_north_arrow()}}
+
+\code{\link[cowplot:ggdraw]{cowplot::ggdraw()}}
+
+\code{\link[cowplot:draw_plot]{cowplot::draw_plot()}}
+
+\code{\link[geodata:gadm]{geodata::gadm()}}
 }
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}

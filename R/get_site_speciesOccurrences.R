@@ -29,12 +29,27 @@
 #' @importFrom leaflet layersControlOptions addLayersControl addLegend
 #' @importFrom leaflet addCircleMarkers addTiles addProviderTiles leaflet
 #' @importFrom leaflet colorFactor
-#' @importFrom RColorBrewer brewer.pal
 #' @importFrom tibble as_tibble
 #' @importFrom dplyr select mutate filter
-#' @importFrom spocc occ2df obis_search occ
 #' @importFrom sf st_as_text st_as_sfc st_bbox st_as_sf
 #' @importFrom lubridate as_datetime as_date
+#' @seealso [spocc::obis_search()]
+#' @seealso [spocc::occ()]
+#' @seealso [RColorBrewer::brewer.pal()]
+#' @references
+#'   \insertRef{leafletR}{ReLTER}
+#'   
+#'   \insertRef{tibbleR}{ReLTER}
+#'   
+#'   \insertRef{dplyrR}{ReLTER}
+#'   
+#'   \insertRef{sfR}{ReLTER}
+#'   
+#'   \insertRef{lubridateR}{ReLTER}
+#'   
+#'   \insertRef{spoccR}{ReLTER}
+#'   
+#'   \insertRef{RColorBrewerR}{ReLTER}
 #' @export
 #' @examples
 #' \dontrun{
@@ -82,38 +97,53 @@ get_site_speciesOccurrences <- function(
   limit = 500,
   exclude_inat_from_gbif = TRUE
 ) {
+  # Check if required packages are installed
+  if (!requireNamespace("spocc", quietly = TRUE)) {
+    stop(
+      "\n----\nThe function 'get_site_speciesOccurrences()' requires the optional package 'spocc'.\n",
+      "Please install it with: install.packages(\"spocc\")\n----\n"
+    )
+  }
+  if (!requireNamespace("RColorBrewer", quietly = TRUE)) {
+    stop(
+      "\n----\nThe function 'get_site_speciesOccurrences()' requires the optional package 'RColorBrewer'.\n",
+      "Please install it with: install.packages(\"RColorBrewer\")\n----\n"
+    )
+  }
   # First check that site has a boundary ----
-  boundary <- ReLTER::get_site_info(
+  boundary <- get_site_info(
     deimsid,
-    category = "Boundaries"
+    show_map = TRUE
   )
-  if (is.null(boundary) || !inherits(boundary, "sf")) {
+  if (is.null(boundary$data) || !inherits(boundary$data, "sf")) {
     print("No boundary for requested DEIMS site.")
     return(NULL)
   } else {
     bbox_wkt <- sf::st_as_text(
       sf::st_as_sfc(
         sf::st_bbox(
-          boundary
+          boundary$data
         )
       )
     )
-    site_geom <- boundary$geometry
+    site_geom <- boundary$data$geometry
   }
 
   # download occurrence by SPOCC by provide data sources ----
   site_occ_spocc <- NULL
   site_occ_spocc_obis <- NULL
+  occ_fx <- getExportedValue("spocc", "occ")
   if (any(c("gbif", "inat") %in% list_DS)) {
-    site_occ_spocc <- spocc::occ(
+    site_occ_spocc <- occ_fx(
       from = list_DS,
       geometry = bbox_wkt,
       limit = limit,
       has_coords = TRUE
     )
   }
+  obis_search_fx <- getExportedValue("spocc", "obis_search")
   if ("obis" %in% list_DS) {
-    site_occ_spocc_obis <- spocc::obis_search(
+    site_occ_spocc_obis <- obis_search_fx(
       size = limit,
       geometry = bbox_wkt
     )
@@ -240,14 +270,15 @@ get_site_speciesOccurrences <- function(
   }
 
   # print map ----
+  brewer.pal_fx <- getExportedValue("RColorBrewer", "brewer.pal")
   if (length(list_DS) < 3) {
-    my_palette <- RColorBrewer::brewer.pal(
+    my_palette <- brewer.pal_fx(
       3,
       "Set1"
     )
     my_palette <- my_palette[seq(from = 1, to = length(list_DS))]
   } else {
-    my_palette <- RColorBrewer::brewer.pal(
+    my_palette <- brewer.pal_fx(
       length(list_DS),
       "Set1"
     )

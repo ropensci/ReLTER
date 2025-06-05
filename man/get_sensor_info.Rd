@@ -16,8 +16,12 @@ The DEIMS.iD of sensor is the URL for the sensor page.}
 is shown. Default FALSE.}
 }
 \value{
-The output of the function is a \code{tibble} with main features of
-the activities in a site, and a \code{leaflet} map plot.
+The output of the function is a \code{list} with two elements:
+\itemize{
+\item \code{map} A Leaflet map with the sensor location, if requested with
+\code{show_map}.
+\item \code{data} A \code{data.frame} with the information about the sensor.
+}
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
@@ -32,7 +36,7 @@ provided in \href{https://deims.org/}{DEIMS-SDR catalogue}.
 }
 
 \examples{
-# only table of sensor information
+# print the map of the sensor
 sensor_B3 <- get_sensor_info(
   sensorid =
     "https://deims.org/sensors/3845475c-4aec-4dd7-83b4-0ab6ba95db35",
@@ -40,7 +44,7 @@ sensor_B3 <- get_sensor_info(
 )
 sensor_B3
 
-# print the map of the sensor
+# only table of sensor information
 Licor <- get_sensor_info(
   sensorid =
     "https://deims.org/sensors/4a7ad644-f2e7-4224-965b-ec5ef5365655",
@@ -55,6 +59,17 @@ sensor_FP <- get_sensor_info(
 )
 sensor_FP
 
+}
+\references{
+\insertRef{dplyrR}{ReLTER}
+
+\insertRef{lubridateR}{ReLTER}
+
+\insertRef{sfR}{ReLTER}
+
+\insertRef{leafletR}{ReLTER}
+
+\insertRef{utilsR}{ReLTER}
 }
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}

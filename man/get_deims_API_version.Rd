@@ -17,3 +17,8 @@ version number.
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 This function obtains the version of the DEIMS-SDR API.
 }
+\references{
+\insertRef{httr2R}{ReLTER}
+
+\insertRef{dplyrR}{ReLTER}
+}

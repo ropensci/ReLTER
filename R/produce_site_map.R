@@ -6,396 +6,200 @@
 #' @param deimsid A `character`. The DEIMS ID of network from
 #' DEIMS-SDR website. DEIMS ID information
 #' \href{https://deims.org/docs/deimsid.html}{here}.
-#' @param countryCode A `character` following the SO 3166-1 alpha-3 codes.
-#' This ISO convention consists of three-letter country codes
-#' as defined in ISO 3166-1, part of the ISO 3166 standard published by the
-#' International Organization for Standardization (ISO), to represent countries,
-#' dependent territories, and special areas of geographical interest.
-#' The map produced by this function will be limited to the country
-#' indicated in this parameter; if the network has a extraterritorial sites
-#' those will not represented.
-#' @param listOfSites A `sf`. List of sites of specific network. This list
-#' is needed for showing another points on the map.
-#' @param gridNx A `double`. A numeric vector or unit object specifying
-#' x-location of viewports about country provided by countryCode parameter.
-#' @param gridNy A `double`. A numeric vector or unit object specifying
-#' y-location of viewports about country provided by countryCode parameter.
-#' @param width A `double`. A numeric vector or unit object specifying width
-#' of viewports about country provided by countryCode parameter. Default 0.25.
-#' @param height A `double`. A numeric vector or unit object specifying height
-#' of viewports about country provided by countryCode parameter. Default 0.25.
-#' @param bboxXMin A `double`. A numeric for add some unit of a bbox provided
-#' by centroid of the site. Default 0.
-#' @param bboxYMin A `double`. A numeric for add some unit of a bbox provided
-#' by centroid of the site. Default 0.
-#' @param bboxXMax A `double`. A numeric for add some unit of a bbox provided
-#' by centroid of the site. Default 0.
-#' @param bboxYMax A `double`. A numeric for add some unit of a bbox provided
-#' by centroid of the site. Default 0.
-#' @param show_map A `boolean`. When TRUE the immage of map will be plotted.
-#' Default FALSE.
+#' @param scale_location A `character`. Position of the map scale (e.g. "bl", "br").
+#' Options: `"tl"` = top-left, `"tr"` = top-right, `"bl"` = bottom-left, `"br"` = bottom-right.
+#' Default is `"bl"`.
+#' @param arrow_location A `character`. Position of the north arrow (e.g. "tl", "tr").
+#' Options: `"tl"` = top-left, `"tr"` = top-right, `"bl"` = bottom-left, `"br"` = bottom-right.
+#' Default is `"tl"`.
+#' @param inset_position A `character`. Position of the country overview inset map.
+#' Options: `"tl"` = top-left, `"tr"` = top-right, `"bl"` = bottom-left, `"br"` = bottom-right.
+#' Default is `"br"`.
 #' @return The output of the function is an `image` of the boundary of the
 #' site, OSM as base map and all country sites map.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @importFrom sf as_Spatial st_as_sfc st_bbox st_crs st_simplify
-#' @importFrom jsonlite fromJSON
+#' @importFrom sf st_transform st_as_sfc st_sf st_bbox st_simplify
 #' @importFrom tibble tribble
-#' @importFrom rosm osm.raster
-#' @importFrom tmap tm_shape tm_rgb tm_dots tm_compass tm_scale_bar tm_layout
-#' @importFrom tmap tm_credits tm_basemap tm_borders tm_fill tm_lines
-#' @importFrom grid viewport
-#' @importFrom Rdpack reprompt
+#' @importFrom ggplot2 ggplot geom_sf theme element_blank labs 
+#' @importFrom ggplot2 theme_minimal element_text coord_sf element_rect
+#' @seealso [ggspatial::annotation_map_tile()]
+#' @seealso [ggspatial::annotation_scale()]
+#' @seealso [ggspatial::annotation_north_arrow()]
+#' @seealso [cowplot::ggdraw()]
+#' @seealso [cowplot::draw_plot()]
+#' @seealso [geodata::gadm()]
 #' @references
 #'   \insertRef{sfR}{ReLTER}
 #'
-#'   \insertRef{jsonliteR}{ReLTER}
-#'
 #'   \insertRef{tibbleR}{ReLTER}
-#'
-#'   \insertRef{rasterR}{ReLTER}
-#'
-#'   \insertRef{rosmR}{ReLTER}
-#'
-#'   \insertRef{tmapR}{ReLTER}
-#'
-#'   \insertRef{gridR}{ReLTER}
+#'   
+#'   \insertRef{ggplot2R}{ReLTER}
+#'   
+#'   \insertRef{ggspatialR}{ReLTER}
+#'   
+#'   \insertRef{cowplotR}{ReLTER}
+#'   
+#'   \insertRef{geodataR}{ReLTER}
 #' @export
 #' @examples
 #' \dontrun{
 #' # Example of Lange Bramke site
-#' sitesNetwork <- get_network_sites(
-#'   networkDEIMSID =
-#'   "https://deims.org/networks/e904354a-f3a0-40ce-a9b5-61741f66c824"
+#' siteMap <- produce_site_map(
+#'   deimsid = "https://deims.org/8e24d4f8-d6f6-4463-83e9-73cac2fd3f38"
 #' )
-#' map <- produce_site_map(
-#'   deimsid = "https://deims.org/8e24d4f8-d6f6-4463-83e9-73cac2fd3f38",
-#'   countryCode = "DEU",
-#'   listOfSites = sitesNetwork,
-#'   gridNx = 0.2,
-#'   gridNy = 0.7
-#' )
-#'
+#' 
 #' # Example of Eisenwurzen site
-#' sitesNetwork <- get_network_sites(
-#'   networkDEIMSID =
-#'   "https://deims.org/networks/d45c2690-dbef-4dbc-a742-26ea846edf28"
-#' )
-#' map <- produce_site_map(
+#' siteMap <- produce_site_map(
 #'   deimsid = "https://deims.org/d0a8da18-0881-4ebe-bccf-bc4cb4e25701",
-#'   countryCode = "AUT",
-#'   listOfSites = sitesNetwork,
-#'   gridNx = 0.2,
-#'   gridNy = 0.7
+#'   inset_position = "bl"
 #' )
-#'
+#' 
 #' # Example of Lake Maggiore site
-#' sitesNetwork <- get_network_sites(
-#'   networkDEIMSID =
-#'   "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
-#' )
-#' # In the case of Italian sites are selected only true sites and excluded the
-#' # macrosites.
-#' sitesNetwork <- (sitesNetwork[!grepl('^IT', sitesNetwork$title),])
-#' sf::st_crs(sitesNetwork) = 4326
 #' siteMap <- produce_site_map(
 #'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
-#'   countryCode = "ITA",
-#'   listOfSites = sitesNetwork,
-#'   gridNx = 0.7,
-#'   gridNy = 0.35,
-#'   show_map = TRUE
+#'   scale_location = "bl",
+#'   arrow_location = "tl",
+#'   inset_position = "br"
 #' )
-#' siteMap
-#'
-#' # with show_map = FALSE
-#' siteMap <- produce_site_map(
-#'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
-#'   countryCode = "ITA",
-#'   listOfSites = sitesNetwork,
-#'   gridNx = 0.7,
-#'   gridNy = 0.35
-#' )
-#' siteMap
 #' }
 #'
 #' @section The function output:
 #' \figure{produce_site_map_fig.png}{Lake Maggiore site map}
 #'
 ### function produce_site_map
-produce_site_map <-
-  function(deimsid,
-           countryCode,
-           listOfSites,
-           gridNx,
-           gridNy,
-           width = 0.25,
-           height = 0.25,
-           bboxXMin = 0,
-           bboxXMax = 0,
-           bboxYMin = 0,
-           bboxYMax = 0,
-           show_map = FALSE) {
-    deimsbaseurl <- get_deims_base_url()
-    deimsidExa <- sub("^.+/", "", deimsid)
-    q <- '{title: .title,
-        uri: "\\(.id.prefix)\\(.id.suffix)",
-        boundaries: .attributes.geographic.coordinates
-       }'
-    jj <- get_id(deimsid, "sites")
-    if (is.na(attr(jj, "status"))) {
-      invisible(
-        utils::capture.output(
-          coordinates <- dplyr::as_tibble(do_Q(q, jj))
-        )
-      )
-      siteSelected <- sf::as_Spatial(
-        sf::st_as_sfc(
-          coordinates$boundaries,
-          crs = 4326
-        )
-      )
-    }
-    biomeColor <- tibble::tribble(
-      ~ geoBonBiome,
-      ~ fill,
-      ~ border,
-      "Marine",
-      "#055ca8",
-      "#057ae1",
-      "Coastal",
-      "#43903f",
-      "#5ecc58",
-      "Fresh water lakes",
-      "#03a3b8",
-      "#04d0eb",
-      "Fresh water rivers",
-      "#03a3b8",
-      "#04d0eb",
-      "Terrestrial",
-      "#b07c03",
-      "#e8a303"
+produce_site_map <- function(deimsid, scale_location = "bl", arrow_location = "tl", inset_position = "br") {
+  # Check if required packages are installed
+  if (!requireNamespace("ggspatial", quietly = TRUE)) {
+    stop(
+      "\n----\nThe function 'produce_site_map()' requires the optional package 'ggspatial'.\n",
+      "Please install it with: install.packages(\"ggspatial\")\n----\n"
     )
-    geoBonBiome <- jsonlite::fromJSON(
-      paste0(deimsbaseurl,
-             "api/sites/",
-             deimsidExa)
-      )$attributes$environmentalCharacteristics$geoBonBiome
-    color <- biomeColor$fill[biomeColor$geoBonBiome == geoBonBiome[[1]]]
-    colorBorder <-
-      biomeColor$border[biomeColor$geoBonBiome == geoBonBiome[[1]]]
-    geoBoundaries <- jsonlite::fromJSON(
-      paste0(deimsbaseurl,
-             "api/sites/",
-             deimsidExa)
-      )$attributes$geographic$boundaries
-    if (countryCode %in% isoCodes$Alpha_3 == TRUE) {
-      try({
-        country <- geodata::gadm(
-          country = countryCode,
-          level = 0
-        ) %>%
-          terra::simplifyGeom(tolerance = 0.01,
-                              preserveTopology = TRUE)
-      }, silent = TRUE)
-      if (is.null(geoBoundaries)) {
-        lterCoords <- siteSelected
-        lterSitesFeaturePointDEIMS <- sf::st_as_sfc(
-              lterCoords, crs = 4326
-              )
-        baseMap <-
-          rosm::osm.raster(lterSitesFeaturePointDEIMS, zoomin = -8)
-        newBaseMap <- raster::reclassify(baseMap, cbind(NA, 255))
-        mapOfSite <-
-          tmap::tm_shape(
-            newBaseMap,
-            raster.downsample = TRUE
-          ) +
-          tmap::tm_rgb() +
-          tmap::tm_shape(lterSitesFeaturePointDEIMS) +
-          tmap::tm_dots(
-            size = 1,
-            shape = 16,
-            col = color,
-            title = NA,
-            legend.show = TRUE
-          ) +
-          tmap::tm_compass(type = "8star",
-                           position = c("right", "bottom")) +
-          tmap::tm_scale_bar(position = c("right", "bottom")) +
-          tmap::tm_layout(
-            main.title = paste0(jsonlite::fromJSON(
-              paste0(deimsbaseurl,
-                     "api/sites/",
-                     deimsidExa)
-            )$title,
-            "\n",
-            deimsid),
-            main.title.position = "center",
-            main.title.color = "black",
-            main.title.fontfamily = "sans",
-            main.title.size = 0.6,
-            legend.bg.color = "white",
-            legend.position = c(0.75, 0.9),
-            legend.width = -0.24
-          ) +
-          tmap::tm_credits(
-            "Leaflet | &copy; OpenStreetMap contributors -
-                       https://www.openstreetmap.org/",
-            size = 0.3,
-            fontfamily = "sans",
-            position = c("left", "bottom")
-          ) +
-          tmap::tm_basemap(leaflet::providers$Stamen.Watercolor)
-        if (exists("country")) {
-          mapOfCentroids <- tmap::tm_shape(country) +
-          tmap::tm_borders("grey75", lwd = 1) +
-          tmap::tm_shape(listOfSites) +
-          tmap::tm_dots(
-            col = NA,
-            size = 0.01,
-            shape = 16,
-            title = NA,
-            legend.show = FALSE
-          ) +
-          tmap::tm_shape(siteSelected) +
-          tmap::tm_dots(
-            col = color,
-            size = 0.1,
-            shape = 16,
-            title = NA,
-            legend.show = FALSE
-          )
-        }
-        # based on the value of show_map param
-        if (show_map == TRUE) {
-          if (exists("mapOfCentroids")) {
-            print(mapOfSite)
-            print(mapOfCentroids,
-                  vp = grid::viewport(gridNx,
-                                      gridNy,
-                                      width = width,
-                                      height = height))
-          } else {
-            print(mapOfSite)
-          }
-        } else {
-          return(mapOfSite)
-          return(mapOfCentroids,
-                 vp = grid::viewport(gridNx,
-                                     gridNy,
-                                     width = width,
-                                     height = height))
-        }
-      } else {
-        geoBoundaries_sf <- sf::st_as_sfc(geoBoundaries)
-        sf::st_crs(geoBoundaries_sf) <- sf::st_crs(4326)
-        lterSitesFeatureDEIMS <-
-          sf::as_Spatial(geoBoundaries_sf, )
-        bboxlterItalySitesFeature <- sf::st_bbox(lterSitesFeatureDEIMS)
-        bboxlterItalySitesFeature[1] <-
-          sf::st_bbox(lterSitesFeatureDEIMS)[1] +
-          bboxXMin
-        bboxlterItalySitesFeature[3] <-
-          sf::st_bbox(lterSitesFeatureDEIMS)[3] +
-          bboxXMax
-        bboxlterItalySitesFeature[2] <-
-          sf::st_bbox(lterSitesFeatureDEIMS)[2] +
-          bboxYMin
-        bboxlterItalySitesFeature[4] <-
-          sf::st_bbox(lterSitesFeatureDEIMS)[4] +
-          bboxYMax
-        baseMap <- rosm::osm.raster(bboxlterItalySitesFeature)
-        newBaseMap <- raster::reclassify(baseMap, cbind(NA, 255))
-        mapOfSite <-
-          tmap::tm_shape(newBaseMap) +
-          tmap::tm_rgb() +
-          tmap::tm_shape(lterSitesFeatureDEIMS) +
-          if (class(lterSitesFeatureDEIMS)[1] == "SpatialLines") {
-            tmap::tm_lines(col = color)
-          } else {
-            tmap::tm_borders(col = colorBorder) +
-              tmap::tm_fill(col = color, alpha = 0.5)
-          } +
-          tmap::tm_compass(type = "8star",
-                           position = c("right", "bottom")) +
-          tmap::tm_scale_bar(position = c("right", "bottom")) +
-          tmap::tm_layout(
-            main.title = paste0(
-              jsonlite::fromJSON(paste0(
-                deimsbaseurl,
-                "api/sites/",
-                substring(deimsid,
-                          19)
-              ))$title,
-              "\nDEIMS ID ",
-              deimsid
-            ),
-            main.title.position = "center",
-            main.title.color = "black",
-            main.title.fontfamily = "sans",
-            main.title.size = 0.7,
-            legend.bg.color = "white",
-            legend.position = c(0.75, 0.9),
-            legend.width = -0.24
-          ) +
-          tmap::tm_credits(
-            "Leaflet | &copy; OpenStreetMap contributors -
-                       https://www.openstreetmap.org/",
-            size = 0.5,
-            fontfamily = "sans",
-            position = c("left", "bottom")
-          ) +
-          tmap::tm_basemap(leaflet::providers$Stamen.Watercolor)
-        if (exists("country")) {
-          mapOfCentroids <- tmap::tm_shape(country) +
-            tmap::tm_borders("grey75", lwd = 1) +
-            tmap::tm_shape(listOfSites) +
-            tmap::tm_dots(
-              col = NA,
-              size = 0.01,
-              shape = 16,
-              title = NA,
-              legend.show = FALSE
-            ) +
-            tmap::tm_shape(siteSelected) +
-            tmap::tm_dots(
-              col = color,
-              size = 0.1,
-              shape = 16,
-              title = NA,
-              legend.show = FALSE
-            )
-        }
-        if (show_map == TRUE) {
-          if (exists("mapOfCentroids")) {
-            print(mapOfSite)
-            print(mapOfCentroids,
-                  vp = grid::viewport(
-                    gridNx,
-                    gridNy,
-                    width = width,
-                    height = height
-                  )
-            )
-          } else {
-            print(mapOfSite)
-          }
-        } else {
-          return(mapOfSite)
-          return(mapOfCentroids,
-                 vp = grid::viewport(gridNx,
-                                     gridNy,
-                                     width = width,
-                                     height = height))
-        }
-      }
-    } else {
-      message(
-        "\n----\nThe map of site cannot be made properly.
-Please check again the Country code.
-Compare the code provided with the list of code in Wikipage
-https://en.wikipedia.org/wiki/ISO_3166\n----\n"
-      )
-      mapOfCentroids <- NULL
-    }
   }
+  if (!requireNamespace("cowplot", quietly = TRUE)) {
+    stop(
+      "\n----\nThe function 'produce_site_map()' requires the optional package 'cowplot'.\n",
+      "Please install it with: install.packages(\"cowplot\")\n----\n"
+    )
+  }
+  if (!requireNamespace("geodata", quietly = TRUE)) {
+    stop(
+      "\n----\nThe function 'produce_site_map()' requires the optional package 'geodata'.\n",
+      "Please install it with: install.packages(\"geodata\")\n----\n"
+    )
+  }
+  # Load required packages
+  siteInfo <- get_site_info(
+    deimsid = deimsid,
+    categories = c("EnvCharacts", "Affiliations"),
+    show_map = TRUE,
+    with_locations = FALSE
+  )
+  # Load Biome information
+  biomeColor <- tibble::tribble(
+    ~ geoBonBiome, ~ fill, ~ border,
+    "Marine", "#055ca8", "#057ae1",
+    "Coastal", "#43903f", "#5ecc58",
+    "Fresh water lakes", "#03a3b8", "#04d0eb",
+    "Fresh water rivers", "#03a3b8", "#04d0eb",
+    "Terrestrial", "#b07c03", "#e8a303"
+  )
+  geoBonBiome <- siteInfo$data$geoBonBiome[[1]]
+  if (length(geoBonBiome) > 1) {
+    geoBonBiome = "Terrestrial"
+  } else {
+    geoBonBiome <- geoBonBiome
+  }
+  color <- biomeColor$fill[biomeColor$geoBonBiome == geoBonBiome]
+  borderColor <-
+    biomeColor$border[biomeColor$geoBonBiome == geoBonBiome]
+  # Set the color and border color
+  networkID <- tail(siteInfo$data$networks[[1]]$uri, 1)
+  countryCode <- isoCodes$Alpha_3[isoCodes$Name == siteInfo$data$country]
+  countryPlot <- produce_network_points_map(
+    networkDEIMSID = networkID,
+    countryCode = countryCode
+  ) +
+    ggplot2::theme(
+      panel.grid = ggplot2::element_blank(),
+      axis.text = ggplot2::element_blank(),
+      axis.ticks = ggplot2::element_blank(),
+      axis.title = ggplot2::element_blank()
+    ) +
+    ggplot2::labs(title = NULL, subtitle = NULL) +
+    ggplot2::theme(
+      panel.background = ggplot2::element_rect(fill = "white", color = "black", size = 1)
+    )
+  # Add the point of the site
+  gadm_fx <- getExportedValue("geodata", "gadm")
+  point_sf <- sf::st_as_sfc(siteInfo$data$geoCoord, crs = 4326) 
+  point_sf <- sf::st_sf(geometry = point_sf)
+  country <- gadm_fx(country = countryCode, level = 0, path = tempdir())
+  countryMap <- sf::st_as_sf(country) %>%
+    sf::st_simplify(dTolerance = 1000)
+  countryBbox <- sf::st_bbox(countryMap)
+  countryPlot_withSite <- countryPlot +
+    ggplot2::geom_sf(data = point_sf, fill = color, color = borderColor, size = 1) +
+    ggplot2::coord_sf(
+      xlim = c(countryBbox["xmin"], countryBbox["xmax"]),
+      ylim = c(countryBbox["ymin"], countryBbox["ymax"]),
+      expand = FALSE
+    )
+  
+  # Create the site map with expanded bounding box
+  siteInfo_3857 <- sf::st_transform(siteInfo$data, crs = 3857)
+  bbox <- sf::st_bbox(siteInfo_3857)
+  xrange <- bbox["xmax"] - bbox["xmin"]
+  yrange <- bbox["ymax"] - bbox["ymin"]
+  bbox_expanded <- bbox
+  bbox_expanded["xmin"] <- bbox["xmin"] - 0.05 * xrange
+  bbox_expanded["xmax"] <- bbox["xmax"] + 0.05 * xrange
+  bbox_expanded["ymin"] <- bbox["ymin"] - 0.05 * yrange
+  bbox_expanded["ymax"] <- bbox["ymax"] + 0.05 * yrange
+  # Load required functions from packages
+  annotation_map_tile_fx <- getExportedValue("ggspatial", "annotation_map_tile")
+  annotation_scale_fx <- getExportedValue("ggspatial", "annotation_scale")
+  annotation_north_arrow_fx <- getExportedValue("ggspatial", "annotation_north_arrow")
+  sitePlot <- ggplot2::ggplot() +
+    annotation_map_tile_fx(zoomin = 0) +
+    ggplot2::geom_sf(data = siteInfo_3857, fill = color, color = borderColor) +
+    annotation_scale_fx(location = scale_location) +
+    annotation_north_arrow_fx(location = arrow_location) +
+    ggplot2::coord_sf(
+      xlim = c(bbox_expanded["xmin"], bbox_expanded["xmax"]),
+      ylim = c(bbox_expanded["ymin"], bbox_expanded["ymax"]),
+      expand = FALSE
+    ) +
+    ggplot2::theme_minimal() +
+    ggplot2::labs(
+      title = siteInfo$data$title.x,
+      subtitle = siteInfo$data$uri
+    ) +
+    ggplot2::theme(
+      plot.title = ggplot2::element_text(hjust = 0.5),
+      plot.subtitle = ggplot2::element_text(hjust = 0.5)
+    )
+  # Define inset position
+  inset_coords <- switch(
+    inset_position,
+    "tl" = list(x = 0.05, y = 0.65),
+    "tr" = list(x = 0.65, y = 0.65),
+    "bl" = list(x = 0.05, y = 0.05),
+    "br" = list(x = 0.65, y = 0.05),
+    list(x = 0.65, y = 0.05)  # default to "br"
+  )
+  
+  # Combine the two maps using cowplot
+  ggdraw_fx <- getExportedValue("cowplot", "ggdraw")
+  draw_plot_fx <- getExportedValue("cowplot", "draw_plot")
+  combinedPlot <- ggdraw_fx() +
+    draw_plot_fx(
+      sitePlot
+    ) +
+    draw_plot_fx(
+      countryPlot_withSite,
+      x = inset_coords$x, y = inset_coords$y,
+      width = 0.3, height = 0.3
+    )
+  # Output
+  print(combinedPlot)
+}

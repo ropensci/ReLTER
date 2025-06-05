@@ -31,16 +31,16 @@ If the aim is to obtain the info about in which networks/RIs the site is listed,
 ```{r aff, warning=FALSE}
 siteAffiliations <- ReLTER::get_site_info(
   deimsid = 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe',
-  category = 'Affiliations'
+  categories = 'Affiliations'
 )
 # network(s) where the site is involved in
 knitr::kable(
-  siteAffiliations$networks[[1]],
+  siteAffiliations$data$networks[[1]],
   caption = "The list of the network(s) in which the site is listed"
 )
 # project(s) where the site is involved in
 knitr::kable(
-  siteAffiliations$projects[[1]],
+  siteAffiliations$data$projects[[1]],
   caption = "The list of the project(s) in which the site is listed"
 )
 ```
@@ -50,16 +50,10 @@ knitr::kable(
 If the aim is to obtain the info about the geographic extent covering the area of all measurements, you can: 
 
 ```{r bound, warning=FALSE}
-siteBoundaries <- ReLTER::get_site_info(
+siteInfo <- ReLTER::get_site_info(
   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
-  category = "Boundaries"
+  show_map = TRUE
 )
-
-tmap::tmap_mode("view")
-
-tmap::tm_basemap("OpenStreetMap") +
-  tmap::tm_shape(siteBoundaries) +
-  tmap::tm_polygons(col = "skyblue", alpha = 0.25, border.col = "blue")
 ```
 
 ## Get Contacts info of the LTER site:
@@ -69,26 +63,26 @@ If the aim is to obtain the info about the reference to the contact person respo
 ```{r contacts, warning=FALSE}
 siteContact <- ReLTER::get_site_info(
   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
-  category = "Contacts"
+  categories = "Contacts"
 )
 # site manager(s)
 knitr::kable(
-  siteContact$siteManager[[1]],
+  siteContact$data$siteManager[[1]],
   caption = "The list of the manager(s) of site"
 )
 # operating organisation of site
 knitr::kable(
-  siteContact$operatingOrganisation[[1]],
+  siteContact$data$operatingOrganisation[[1]],
   caption = "The list of the operating organization of the site"
 )
 # metadata provider(s) of site
 knitr::kable(
-  siteContact$metadataProvider[[1]],
+  siteContact$data$metadataProvider[[1]],
   caption = "The list of the metadata provider(s) of site"
 )
 # funding agency(ies) of site
 knitr::kable(
-  siteContact$fundingAgency[[1]],
+  siteContact$data$fundingAgency[[1]],
   caption = "The list of the funding agency(ies) of site"
 )
 ```
@@ -98,19 +92,19 @@ The same approach could be used for other category information.
 ```{r otherInfo}
 siteGeneral <- ReLTER::get_site_info(
   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
-  category = "General"
+  categories = "General"
 )
-siteGeneral
+siteGeneral$data
 siteInfrastructure <- ReLTER::get_site_info(
   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
-  category = "Infrastructure"
+  categories = "Infrastructure"
 )
-siteInfrastructure$collection[[1]]
+siteInfrastructure$data$collection[[1]]
 siteEnvCharacts <- ReLTER::get_site_info(
   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
-  category = "EnvCharacts"
+  categories = "EnvCharacts"
 )
-siteEnvCharacts
+siteEnvCharacts$data
 ```
 
 By selecting the category Infrastructure you can obtain info as:
@@ -137,21 +131,21 @@ By selecting the category Infrastructure you can obtain info as:
 ```{r listInfo}
 siteObsProp <- ReLTER::get_site_info(
   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
-  category = "observedProperties"
+  categories = "observedProperties"
 )
 # parameter(s) collected in the site
 knitr::kable(
-  siteObsProp$observedProperties[[1]],
+  siteObsProp$data$observedProperties[[1]],
   caption = "The list of the funding agency(ies) of site"
 )
 
 siteRelateRes <- ReLTER::get_site_info(
   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
-  category = "RelateRes"
+  categories = "RelateRes"
 )
 # resource(s) related to the site (e.g. datasets, activities)
 knitr::kable(
-  siteRelateRes$relatedResources[[1]],
+  siteRelateRes$data$relatedResources[[1]],
   caption = "The list of the funding agency(ies) of site"
 )
 ```

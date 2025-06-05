@@ -9,12 +9,9 @@
 #' site and the affiliations information, such as: networks and projects in
 #' which the site is involved.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @importFrom jqr jq
-#' @importFrom jsonlite stream_in
-#' @importFrom dplyr as_tibble
-#' @importFrom utils capture.output
+#' @importFrom dplyr as_tibble mutate
 #' @importFrom units set_units
-#' @importFrom dplyr mutate
+#' @importFrom utils capture.output
 #' @keywords internal
 #'
 ### function get_site_affiliations

@@ -10,24 +10,31 @@
 #' The DEIMS ID of dataset is the URL for the dataset page.
 #' @param show_map A `boolean`. If TRUE a Leaflet map with occurrences
 #' is shown. Default FALSE.
-#' @return The output of the function is a `tibble` with main features
-#' of the site and the related resources collected by site.
+#' @return The output of the function is a `list` with two elements:
+#' \itemize{
+#' \item \code{map} A Leaflet map with the dataset location, if requested with
+#' `show_map`.
+#' \item \code{data} A `data.frame` with the information about the dataset.
+#' }
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom dplyr as_tibble
-#' @importFrom utils capture.output
-#' @importFrom sf st_as_sf st_is_valid
-#' @importFrom leaflet leaflet addTiles addPolygons
-#' @importFrom Rdpack reprompt
-#' @importFrom lubridate as_date as_datetime
+#' @importFrom lubridate as_datetime as_date
+#' @importFrom sf st_as_sf st_is_valid st_geometry_type
+#' @importFrom leaflet leaflet addTiles addMarkers addPolygons
 #' @importFrom units set_units
+#' @importFrom utils capture.output
 #' @references
 #'   \insertRef{dplyrR}{ReLTER}
-#'
-#'   \insertRef{utilsR}{ReLTER}
+#'   
+#'   \insertRef{lubridateR}{ReLTER}
 #'
 #'   \insertRef{sfR}{ReLTER}
 #'
 #'   \insertRef{leafletR}{ReLTER}
+#'   
+#'   \insertRef{utilsR}{ReLTER}
+#'
+#'   \insertRef{unitsR}{ReLTER}
 #' @export
 #' @examples
 #' tDataset <- get_dataset_info(
@@ -117,24 +124,35 @@ get_dataset_info <- function(datasetid, show_map = FALSE) {
 dataset, provided in DEIMS-SDR, has an invalid geometry.
 Please check the content and refer this error to DEIMS-SDR support for this
 dataset, citing the Dataset.iD.\n----\n")
-          print(map)
-          geoDataset
+          return(list(
+            map = map,
+            data = geoDataset
+          ))
         }
       }
     } else {
-      geoDataset <- NULL
-      map <- NULL
+      return(list(
+        map = NULL,
+        data = NULL
+      ))
     }
   } else {
     message("\n----\nThe requested page could not be found.
 Please check again the Dataset.iD\n----\n")
-    geoDataset <- NULL
-    map <- NULL
+    return(list(
+      map = NULL,
+      data = NULL
+    ))
   }
   if (show_map == TRUE) {
-    print(map)
-    geoDataset
+    return(list(
+      map = map,
+      data = geoDataset
+    ))
   } else {
-    geoDataset
+    return(list(
+      map = NULL,
+      data = geoDataset
+    ))
   }
 }

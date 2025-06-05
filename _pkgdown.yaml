@@ -12,31 +12,31 @@ reference:
   - title: All functions
     contents:
     - get_site_info
-    - get_sensor_info
+    # - get_sensor_info
     - get_activity_info
     - get_dataset_info
     - get_location_info
     - get_site_ODS
     - get_site_speciesOccurrences
     - get_site_MODIS
-    - get_site_boundaries
+    # - get_site_boundaries
     - get_sites_interactive
     - get_sites_within_3d_bounding_box
     - get_sites_within_radius
-    - get_network_envcharacts
-    - get_network_observedProperties
-    - get_network_research_topics
-    - get_network_related_resources
+    # - get_network_envcharacts
+    # - get_network_observedProperties
+    # - get_network_research_topics
+    # - get_network_related_resources
     - get_network_sites
-    - get_ilter_envcharacts
-    - get_ilter_generalinfo
-    - get_ilter_observedProperties
-    - get_ilter_research_topics
-    - get_sos_foi
-    - get_sos_obs
-    - get_sos_procedure_info
+    # - get_ilter_envcharacts
+    # - get_ilter_generalinfo
+    # - get_ilter_observedProperties
+    # - get_ilter_research_topics
+    # - get_sos_foi
+    # - get_sos_obs
+    # - get_sos_procedure_info
     # - get_sos_procedurelist
-    - get_sensor_observed_properties
+    # - get_sensor_observed_properties
     - get_zenodo_data
     - get_deims_API_version
     - get_deims_base_url
@@ -47,19 +47,19 @@ reference:
     - produce_site_qrcode
     - produce_site_observedProperties_pie
     - produce_site_observedProperties_waffle
-    - produce_zenodo_record
-    - produce_zenodo_record_from_elter_reporting
+    # - produce_zenodo_record
+    # - produce_zenodo_record_from_elter_reporting
     - plot_agg_map
     - plot_timeseries
-    - elter_write_rdata
+    # - elter_write_rdata
     - taxon_id_pesi
     - taxon_id_worms
     - map_occ_gbif2elter
     - map_occ_inat2elter
     - map_occ_obis2elter
     - save_occ_eLTER_reporting_Archive
-    - reporting_compose_file_name
-    - reporting_produce_data_object_v1.3
+    # - reporting_compose_file_name
+    - reporting_produce_data_object_v2.0
     - reporting_save_archive
 navbar:
   structure:

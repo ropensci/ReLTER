@@ -27,6 +27,7 @@ get_sites_within_radius(
 list of deims_id, distance from given coordinates
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 retrieve all sites within a given distance (in meters) from
 the center point (in coordinates lat, lon), and in
 the (optionally) specified elevation range.

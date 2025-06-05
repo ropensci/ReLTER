@@ -29,16 +29,14 @@
 #' The columns labels are annotate with the link (URI) of the
 #' \href{https://dwc.tdwg.org/terms/#record-level}{Darwin Core terms}
 #' as attributes of the `tibble`.
-#' 
 #' @author Alessandro Oggioni, phD (2021) \email{oggioni.a@@irea.cnr.it}
 #' @author Paolo Tagliolato, phD (2021) \email{tagliolato.p@@irea.cnr.it}
-#' @importFrom worrms wm_records_names
 #' @importFrom dplyr filter
-#' @importFrom Rdpack reprompt
+#' @seealso [worrms::wm_records_names()]
 #' @references
-#'   \insertRef{worrmsR}{ReLTER}
-#'
 #'   \insertRef{dplyrR}{ReLTER}
+#'   
+#'   \insertRef{worrmsR}{ReLTER}
 #' @export
 #' @examples
 #' phytoplankton <- tibble::tibble(
@@ -62,12 +60,15 @@
 #' attributes(table)$uri
 #'
 ### function taxon_id_worms
-taxon_id_worms <- function(
-  input,
-  taxaColumn = 1,
-  verbose = TRUE,
-  refine = FALSE
+taxon_id_worms <- function(input, taxaColumn = 1, verbose = TRUE, refine = FALSE
 ) {
+  # Check if required packages are installed
+  if (!requireNamespace("worrms", quietly = TRUE)) {
+    stop(
+      "\n----\nThe function 'taxon_id_worms()' requires the optional package 'worrms'.\n",
+      "Please install it with: install.packages(\"worrms\")\n----\n"
+    )
+  }
   n_cols_input <- length(input)
   cols_without_uri <- rep("", (n_cols_input - 1))
   URIs <- c(
@@ -109,9 +110,10 @@ taxon_id_worms <- function(
     "wormsRecords"
   )] <- NA
   a <- list()
+  wm_records_names <- getExportedValue("worrms", "wm_records_names")
   for (m in seq_len(length(input[[taxaColumn]]))) {
     new_element <- tryCatch(
-      worrms::wm_records_names(
+      wm_records_names(
       name = input[[taxaColumn]][m],
       marine_only = FALSE
     ), error=function(err) NA)

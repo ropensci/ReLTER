@@ -3,58 +3,63 @@
 #' This function obtains information of a single eLTER site,
 #' as a stored in \href{https://deims.org/}{DEIMS-SDR catalogue},
 #' through the DEIMS-SDR API.
-#' @param deimsid A character. The DEIMS ID of the site from
-#' DEIMS-SDR website. DEIMS ID information
-#' \href{https://deims.org/docs/deimsid.html}{here}.
-#' @param category A `category`. This parameter selects which category
+#' @param categories A `categories`. This parameter selects which categories
 #' or categories are retrieved and returned in the result.
 #' Possible value are:
-#' 'Affiliations', 'Boundaries', 'Contacts', 'EnvCharacts', 'General',
+#' 'Affiliations', 'Contacts', 'EnvCharacts', 'General',
 #' 'Infrastructure', 'observedProperties', 'RelateRes'.
 #' Multiple values can be indicated.
-#' @return The output of the function is a `tibble` with main features of the
-#' site and the selected information, such as: networks and projects in
-#' which the site is involved.
-#' If category 'Boundaries' is indicated an `sf` object is returned
+#' A site's boundary is always returned.
+#' @inheritParams get_site_boundaries
+#' @return The output of the function is a `list` with two elements:
+#' \itemize{
+#' \item \code{map} A Leaflet map with the location if requested with
+#' `show_map`.
+#' \item \code{data} A `data.frame` with the information about the location.
+#' \item \code{locations} A `data.frame` with the information about the
+#' locations, if requested with `with_locations`.
+#' }
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
+#' @author Paolo Tagliolato, phD \email{tagliolato.p@@irea.cnr.it}
 #' @importFrom dplyr as_tibble left_join
-#' @importFrom utils capture.output
-#' @importFrom leaflet leaflet addTiles addPolygons
-#' @importFrom Rdpack reprompt
-#' @importFrom units set_units
 #' @importFrom lubridate as_datetime
+#' @importFrom units set_units
+#' @importFrom utils capture.output
+#' @importFrom sf st_as_sf
 #' @references
 #'   \insertRef{dplyrR}{ReLTER}
+#'   
+#'   \insertRef{lubridateR}{ReLTER}
+#'
+#'   \insertRef{unitsR}{ReLTER}
 #'
 #'   \insertRef{utilsR}{ReLTER}
 #'
 #'   \insertRef{sfR}{ReLTER}
-#'
-#'   \insertRef{leafletR}{ReLTER}
 #' @export
 #' @examples
 #' site <- get_site_info(
 #'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
-#'   category = "Boundaries"
+#'   categories = c("EnvCharacts", "Affiliations"),
+#'   show_map = TRUE,
+#'   with_locations = TRUE
 #' )
 #' site
-#'
-#' siteInfo <- get_site_info(
-#'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
-#'   category = c("EnvCharacts", "Affiliations")
-#' )
-#' siteInfo
 #' 
-#' site <- get_site_info(
-#'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
-#'   category = "RelateRes"
-#' )
-#' site
-#'
 ### function get_site_info
-get_site_info <- function(deimsid, category = NA) {
+get_site_info <- function(
+    deimsid,
+    categories = NA,
+    show_map = FALSE,
+    with_locations = FALSE
+  ) {
   qo <- queries_jq_deims[[get_deims_API_version()]]$site_info
   jj <- get_id(deimsid, qo$path)
+  res <- list(
+    map = NULL,
+    data = NULL,
+    locations = NULL
+  )
   if (is.na(attr(jj, "status"))) {
     invisible(
       utils::capture.output(
@@ -83,11 +88,9 @@ get_site_info <- function(deimsid, category = NA) {
     siteInfo$changed <- lubridate::as_datetime(
       siteInfo$changed
     )
-    if (any(is.na(category))) {
-      siteInfo <- siteInfo
-    } else {
+    if (any(!is.na(categories))) {
       # add 'Affiliations' info
-      if (any(grepl("Affiliations", category))) {
+      if (any(grepl("Affiliations", categories))) {
         siteAffil <- get_site_affiliations(deimsid = deimsid)
         siteInfo <- dplyr::left_join(
           siteInfo,
@@ -103,11 +106,9 @@ get_site_info <- function(deimsid, category = NA) {
             "geoElev.unit" = "geoElev.unit"
           )
         )
-      } else {
-        siteInfo <- siteInfo
       }
       # add 'Contacts' info
-      if (any(grepl("Contacts", category))) {
+      if (any(grepl("Contacts", categories))) {
         siteConta <- get_site_contact(deimsid = deimsid)
         siteInfo <- dplyr::left_join(
           siteInfo,
@@ -123,11 +124,9 @@ get_site_info <- function(deimsid, category = NA) {
             "geoElev.unit" = "geoElev.unit"
           )
         )
-      } else {
-        siteInfo <- siteInfo
       }
       # add 'EnvCharacts' info
-      if (any(grepl("EnvCharacts", category))) {
+      if (any(grepl("EnvCharacts", categories))) {
         siteEnvCh <- get_site_envcharacts(deimsid = deimsid)
         siteInfo <- dplyr::left_join(
           siteInfo,
@@ -143,11 +142,9 @@ get_site_info <- function(deimsid, category = NA) {
             "geoElev.unit" = "geoElev.unit"
           )
         )
-      } else {
-        siteInfo <- siteInfo
       }
       # add 'General' info
-      if (any(grepl("General", category))) {
+      if (any(grepl("General", categories))) {
         siteGener <- get_site_general(deimsid = deimsid)
         siteInfo <- dplyr::left_join(
           siteInfo,
@@ -163,11 +160,9 @@ get_site_info <- function(deimsid, category = NA) {
             "geoElev.unit" = "geoElev.unit"
           )
         )
-      } else {
-        siteInfo <- siteInfo
       }
       # add 'Infrastructure' info
-      if (any(grepl("Infrastructure", category))) {
+      if (any(grepl("Infrastructure", categories))) {
         siteInfra <- get_site_infrastructure(deimsid = deimsid)
         siteInfo <- dplyr::left_join(
           siteInfo,
@@ -183,11 +178,9 @@ get_site_info <- function(deimsid, category = NA) {
             "geoElev.unit" = "geoElev.unit"
           )
         )
-      } else {
-        siteInfo <- siteInfo
       }
       # add 'Observed properties' info
-      if (any(grepl("observedProperties", category))) {
+      if (any(grepl("observedProperties", categories))) {
         siteParam <- get_site_observedProperties(deimsid = deimsid)
         siteInfo <- dplyr::left_join(
           siteInfo,
@@ -203,11 +196,9 @@ get_site_info <- function(deimsid, category = NA) {
             "geoElev.unit" = "geoElev.unit"
           )
         )
-      } else {
-        siteInfo <- siteInfo
       }
       # add 'RelateRes' info
-      if (any(grepl("RelateRes", category))) {
+      if (any(grepl("RelateRes", categories))) {
         siteRelat <- get_site_related_resources(deimsid = deimsid)
         siteInfo <- dplyr::left_join(
           siteInfo,
@@ -223,62 +214,28 @@ get_site_info <- function(deimsid, category = NA) {
             "geoElev.unit" = "geoElev.unit"
           )
         )
-      } else {
-        siteInfo <- siteInfo
-      }
-      # add 'ResearchTop' info
-      # the section about research topics of the site in DEIMS-SDR API version
-      # 1.1 has been removed
-      #
-      # if (any(grepl("ResearchTop", category))) {
-      #   siteResea <- get_site_research_topics(deimsid = deimsid)
-      #   siteInfo <- dplyr::left_join(
-      #     siteInfo,
-      #     siteResea,
-      #     by = c(
-      #       "title" = "title",
-      #       "uri" = "uri",
-      #       "geoCoord" = "geoCoord",
-      #       "country" = "country",
-      #       "geoElev.avg" = "geoElev.avg",
-      #       "geoElev.min" = "geoElev.min",
-      #       "geoElev.max" = "geoElev.max",
-      #       "geoElev.unit" = "geoElev.unit"
-      #     )
-      #   )
-      # } else {
-      #   siteInfo <- siteInfo
-      # }
-      # add 'Boundaries' info
-      if (any(grepl("Boundaries", category))) {
-        siteBound <- get_site_boundaries(
-          deimsid = deimsid
-        )
-        if (!is.null(siteBound)) {
-          siteInfo <- dplyr::left_join(
-            siteBound,
-            siteInfo,
-            by = c("uri" = "uri")
-          ) %>%
-            dplyr::mutate(
-              title = title.y,
-              .before = uri
-            ) %>%
-            dplyr::select(
-              -c("title.x", "title.y")
-            )
-        } else {
-          siteInfo <- siteInfo
-        }
-      } else {
-        siteInfo <- siteInfo
       }
     }
+    if (show_map) {
+      bound <- get_site_boundaries(
+        deimsid = deimsid,
+        show_map = TRUE,
+        with_locations = with_locations
+      )
+      siteInfo <- siteInfo %>%
+        dplyr::left_join(
+          bound$data,
+          by = c("uri" = "uri")
+        ) %>%
+         sf::st_as_sf(sf_column_name = "geometry")
+      res$map <- bound$map
+      res$locations <- bound$locations
+    }
+    res$data <- siteInfo
   } else {
-    message("\n---- The requested page could not be found.
-            Please check the DEIMS ID ----\n")
-    siteInfo <- NULL
+    message("\n----\nThe requested page could not be found.
+            Please check the DEIMS ID\n----\n")
   }
   # Final result
-  siteInfo
+  return(res)
 }

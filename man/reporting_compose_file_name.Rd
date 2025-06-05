@@ -6,8 +6,6 @@
 \usage{
 reporting_compose_file_name(
   deimsid = NULL,
-  country_code = NULL,
-  site_name = NULL,
   data_topic,
   variable_group = "",
   time_span,
@@ -19,16 +17,6 @@ reporting_compose_file_name(
 DEIMS-SDR website. More information about DEIMS ID in this pages:
 \href{https://deims.org/docs/deimsid.html}{page}.}
 
-\item{country_code}{A \code{character} automatically evaluated if
-DEIMS ID is provided.
-Otherwise reference to the country of the site as two-digit country
-code according to ISO 3166-1 alpha-2.}
-
-\item{site_name}{A \code{character} Automatically evaluated if DEIMS ID is
-provided.
-Otherwise the name of the site according to DEIMS-SDR, if the name is
-too long the site name can be shortened.}
-
 \item{data_topic}{A \code{character}. Max 5-digit code for data topic or
 observation programme, e.g. METEO (Meteorology), BIODIV (Biodiversity),
 DEPO (deposition), GHG (Green House gas), SW (Soil water), VEG (Vegetation).
@@ -39,11 +27,12 @@ variable groups contained in the data. The abbreviation is defined by the
 data provider depending on the data.}
 
 \item{time_span}{A \code{numeric} or a \code{character}. Time span covered in the
-data.}
+data. E.g. 2015, 20150302-20180415. The time span is defined by the data
+provider.}
 
 \item{version}{version in format "VYYYYMMDD". Data version in the format
 “V”YYYYMMDD.
-Defaults to current date.}
+Defaults to current system date.}
 }
 \value{
 filename (without extension) following naming convention
@@ -78,6 +67,11 @@ filename <- reporting_compose_file_name(
 }
 
 }
+\references{
+\insertRef{stringrR}{ReLTER}
+
+\insertRef{dplyrR}{ReLTER}
+}
 \seealso{
 Peterseil, Geiger et al. (2020)
 Field Specification for data reporting. Technical Document.
@@ -89,3 +83,4 @@ Paolo Tagliolato, phD \email{tagliolato.p@irea.cnr.it}
 
 Alessandro Oggioni, phD \email{oggioni.a@irea.cnr.it}
 }
+\keyword{internal}

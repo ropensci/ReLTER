@@ -63,15 +63,14 @@
 #' 10. Excel should now show you the CSV file and display the characters
 #'     correctly.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @importFrom taxize eubon_search
 #' @importFrom dplyr bind_rows
-#' @importFrom Rdpack reprompt
+#' @seealso [taxize::eubon_search()]
 #' @references
+#'   \insertRef{dplyrR}{ReLTER}
+#'   
 #'   \insertRef{taxizeR1}{ReLTER}
 #'
 #'   \insertRef{taxizeR2}{ReLTER}
-#'
-#'   \insertRef{dplyrR}{ReLTER}
 #' @export
 #' @examples
 #' \dontrun{
@@ -101,6 +100,13 @@
 #'
 ### function taxon_id_pesi
 taxon_id_pesi <- function(table, taxaColumn) {
+  # Check if required packages are installed
+  if (!requireNamespace("taxize", quietly = TRUE)) {
+    stop(
+      "\n----\nThe function 'taxon_id_pesi()' requires the optional package 'taxize'.\n",
+      "Please install it with: install.packages(\"taxize\")\n----\n"
+    )
+  }
   n_cols_input <- length(table)
   colnames(table)[taxaColumn] <- "originalNameUsage"
   cols_without_uri <- rep("", (n_cols_input - 1))
@@ -129,7 +135,8 @@ taxon_id_pesi <- function(table, taxaColumn) {
   table <- as.list(table)
   i <- 1
   while (i <= length(table[[taxaColumn]])) {
-    a <- taxize::eubon_search(
+    eubon_search_fx <- getExportedValue("taxize", "eubon_search")
+    a <- eubon_search_fx(
       query = table[[taxaColumn]][1],
       providers = "pesi"
     )

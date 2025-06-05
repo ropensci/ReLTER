@@ -97,11 +97,14 @@ attributes(output)$uri
 
 }
 \references{
+\insertRef{dplyrR}{ReLTER}
+
 \insertRef{taxizeR1}{ReLTER}
 
 \insertRef{taxizeR2}{ReLTER}
-
-\insertRef{dplyrR}{ReLTER}
+}
+\seealso{
+\code{\link[taxize:eubon_search]{taxize::eubon_search()}}
 }
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
