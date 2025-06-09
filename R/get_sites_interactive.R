@@ -5,13 +5,18 @@
 #' bounding box and ask for returning the contained sites or simply the bounding box.
 #' @return `tibble` with selected sites or 
 #' a `list` with selected bounding box (with slots `bbx` and `elevation_range`).
+#' @importFrom leaflet leaflet leafletOutput addCircles 
+#' addLayersControl clearImages clearShapes setView providers addProviderTiles addTiles 
 #' @author Paolo Tagliolato
+#' @examples
+#' sites_tbl_sf <- get_sites_interactive()
+#' 
 #' @export
 get_sites_interactive <- function(){
   gui = TRUE
   if (gui) {
     #nocov start
-    gui_deps <- c("leaflet", "shiny",
+    gui_deps <- c("shiny",
                   "leaflet.extras",
                   "magrittr")
     gui_deps_missing <- !sapply(gui_deps, requireNamespace, quietly = TRUE)
@@ -19,9 +24,8 @@ get_sites_interactive <- function(){
     if (sum(gui_deps_missing) > 0) {
       stop("You need to install the following Suggested packages to use this function.
            Please install them with:
-           install.packages(c(\"leaflet\", \"shiny\",\"leaflet.extras\", \"magrittr\"))")
+           install.packages(c(\"shiny\",\"leaflet.extras\", \"magrittr\"))")
     } else {
-      requireNamespace("leaflet")
       requireNamespace("shiny")
       requireNamespace("leaflet.extras")
       requireNamespace("magrittr")
@@ -190,7 +194,7 @@ plotInBbxSelector<-function(features,proxy){
     leaflet::clearImages() %>%
     #addRasterImage(raster2plot, opacity=0.7, group="inputDEM")  %>%
     leaflet::addCircles(data=features,
-                        popup = paste0("<a href='",features$deimsid,"'>",features$name,"</a>")
+                        popup = paste0("<a href='",features$deimsid,"'>",features$deimsid,"</a>")
                         ) %>% 
     leaflet::addLayersControl(baseGroups=c("OpenStreeMap","CartoDB"),
                      overlayGroups="sites")
@@ -239,9 +243,3 @@ define_bbx <- function(){
 }
   define_bbx()
 }
-
-#get_site_interactive()
-#bbx3d<-define_bbx()
-
-#get_sites_within_3d_bounding_box(define_bbx(), elevation_range = c(4000, 8000))
-
