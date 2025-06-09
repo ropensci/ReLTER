@@ -10,6 +10,7 @@
 #' @param show_map `logical` print a map with retrieved sites (default is TRUE)
 #' @return list of deims_id, distance from given coordinates
 #' @importFrom leaflet leaflet addCircles addTiles
+#' @seealso [geojsonsf::geojson_sf()]
 #' @examples
 #' # example code
 #' get_sites_within_radius(lat=39.1386, lon=-8.33305, distance=900)
@@ -95,6 +96,7 @@ get_sites_within_radius <- function(lat=39.1386, lon=-8.33305,
 #' @param elevation_range elevation range
 #' @param show_map show the map
 #' @importFrom leaflet leaflet addCircles addTiles
+#' @seealso [geojsonsf::geojson_sf()]
 #' @examples
 #' bbx3d<-list(bbx=data.frame(x=c(6.718290, 9.805761), 
 #'                 y=c(44.79938, 47.11089)), 
