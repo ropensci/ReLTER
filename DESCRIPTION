@@ -81,7 +81,8 @@ Suggests:
     httptest2,
     ISOcodes,
     testthat (>= 3.0.0),
-    withr
+    withr,
+    geojsonsf
 Remotes:
     ropensci/MODIStsp@v2.1.0
 VignetteBuilder: 
