@@ -102,6 +102,11 @@ further documentation, examples, and installation of the package.
 The manual of `{ReLTER}` package could be found
 [here](https://ropensci.r-universe.dev/manual/ReLTER.pdf).
 
+## :notebook_with_decorative_cover: Cheatsheet
+
+<a href="https://raw.githubusercontent.com/ropensci/ReLTER/8f0dace67f286c91bd551e987aa349df40bd58ba/man/cheatsheets/ReLTER_cheatSheet.pdf"><img src="https://raw.githubusercontent.com/ropensci/ReLTER/8f0dace67f286c91bd551e987aa349df40bd58ba/man/figures/ReLTER_cheatSheet_front.png" width="630" height="487" alt="ReLTER Cheatsheet" /></a>
+<a href="https://raw.githubusercontent.com/ropensci/ReLTER/8f0dace67f286c91bd551e987aa349df40bd58ba/man/cheatsheets/ReLTER_cheatSheet.pdf"><img src="https://raw.githubusercontent.com/ropensci/ReLTER/8f0dace67f286c91bd551e987aa349df40bd58ba/man/figures/ReLTER_cheatSheet_back.png" width="630" height="487" alt="ReLTER Cheatsheet" /></a>
+
 ## :arrow_double_down: Installation
 
 You can install the main version of `{ReLTER}` from
