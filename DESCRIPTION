@@ -48,6 +48,7 @@ Imports:
     dtplyr,
     geodata,
     ggforce,
+    ggspatial,
     geojsonsf,
     ggplot2,
     grDevices,
@@ -89,8 +90,6 @@ Suggests:
     geodata,
     spocc,
     tidyr,
-    ggspatial,
-    ggforce,
     qrcode,
     taxize (>= 0.9.97),
     worrms,
@@ -113,11 +112,6 @@ Remotes:
     XML,
     xml2,
     zen4R
-Suggests: 
-    covr,
-    httptest2,
-    ISOcodes,
-    
 VignetteBuilder: 
     knitr
 RdMacros: 

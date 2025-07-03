@@ -11,20 +11,14 @@ get_site_boundaries(deimsid, show_map = FALSE, with_locations = FALSE)
 DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here}.}
 
-<<<<<<< HEAD
 \item{show_map}{A \code{boolean}. When TRUE a \code{leflet} object (a map) is
 returned and plotted. Default FALSE.}
-=======
-\item{show_map}{A \code{boolean}. When TRUE the boundary will be plotted on a
-Leaflet map. Default FALSE.}
->>>>>>> a394002 (Changes to httptest2 in tests/setup.R)
 
 \item{with_locations}{A \code{boolean}. When TRUE all site boundaries and
 related locations are returned (Sampling Location or Equipment Location).
 Default FALSE.}
 }
 \value{
-<<<<<<< HEAD
 The output of the function is a \code{list} with slots:
 \itemize{
 \item \code{data} An \code{sf} object with the the boundary of the
@@ -36,14 +30,6 @@ locations related to the site are plotted.
 \item \code{locations} A \code{tibble} with the locations' details
 if \code{with_locations} is TRUE, otherwise NULL.
 }
-=======
-The output of the function is an \code{sf} object, the boundary of the
-site or NA if the boundary is missing from DEIMS-SDR. In addition, as
-\verb{html map} with boundaries of the site is plotted.
-If the parameter \code{with_locations} is TRUE return a list woth the boundary
-and all related locations declared in DEIMS-SDR. A map with these is printed
-if \code{show_map} is TRUE.
->>>>>>> a394002 (Changes to httptest2 in tests/setup.R)
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
@@ -75,3 +61,4 @@ Micha Silver, phD (2021) \email{silverm@post.bgu.ac.il}
 
 Paolo Tagliolato, phD \email{tagliolato.p@irea.cnr.it}
 }
+\keyword{internal}

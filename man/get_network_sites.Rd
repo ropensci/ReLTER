@@ -45,13 +45,6 @@ euSites
 
 }
 \references{
-<<<<<<< HEAD
-=======
-\insertRef{httr2}{ReLTER}
-
-\insertRef{dplyrR}{ReLTER}
-
->>>>>>> a394002 (Changes to httptest2 in tests/setup.R)
 \insertRef{jsonliteR}{ReLTER}
 
 \insertRef{sfR}{ReLTER}

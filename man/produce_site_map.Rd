@@ -73,13 +73,9 @@ siteMap <- produce_site_map(
 
 \insertRef{ggplot2R}{ReLTER}
 
-<<<<<<< HEAD
 \insertRef{ggspatialR}{ReLTER}
 
 \insertRef{cowplotR}{ReLTER}
-=======
-\insertRef{rosmR}{ReLTER}
->>>>>>> a394002 (Changes to httptest2 in tests/setup.R)
 
 \insertRef{geodataR}{ReLTER}
 }
