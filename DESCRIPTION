@@ -85,14 +85,11 @@ Imports:
     lifecycle,
     Rdpack
 Suggests:
-    RColorBrewer,
+    cowplot,
     geodata,
-    zen4R,
     spocc,
     tidyr,
     ggspatial,
-    cowplot,
-    waffle,
     ggforce,
     qrcode,
     taxize (>= 0.9.97),
@@ -102,9 +99,14 @@ Suggests:
     covr,
     httptest2,
     ISOcodes,
-    testthat (>= 3.0.0),
     withr,
-    geojsonsf
+    geojsonsf,
+    knitr,
+    rmarkdown,
+    rnaturalearthdata,
+    RColorBrewer,
+    testthat (>= 3.0.0),
+    waffle,
 Remotes:
     ropensci/MODIStsp@v2.1.0
     worrms,
@@ -115,11 +117,7 @@ Suggests:
     covr,
     httptest2,
     ISOcodes,
-    knitr,
-    rmarkdown,
-    rnaturalearthdata,
-    testthat (>= 3.0.0),
-    withr
+    
 VignetteBuilder: 
     knitr
 RdMacros: 
