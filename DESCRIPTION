@@ -45,8 +45,6 @@ Depends:
     R (>= 3.5.0)
 Imports:
     dplyr,
-<<<<<<< HEAD
-=======
     dtplyr,
     geodata,
     ggforce,
@@ -69,7 +67,6 @@ Imports:
     Rdpack,
     readr,
     rosm,
->>>>>>> f4723dc (Replace °C with degree_Celsius)
     sf (>= 0.9-5),
     utils,
     leaflet (>= 2.1.1),
@@ -96,7 +93,6 @@ Suggests:
     ggspatial,
     cowplot,
     waffle,
-<<<<<<< HEAD
     ggforce,
     qrcode,
     taxize (>= 0.9.97),
@@ -111,7 +107,6 @@ Suggests:
     geojsonsf
 Remotes:
     ropensci/MODIStsp@v2.1.0
-=======
     worrms,
     XML,
     xml2,
@@ -125,7 +120,6 @@ Suggests:
     rnaturalearthdata,
     testthat (>= 3.0.0),
     withr
->>>>>>> f4723dc (Replace °C with degree_Celsius)
 VignetteBuilder: 
     knitr
 RdMacros: 

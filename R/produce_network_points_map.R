@@ -16,7 +16,7 @@
 #' this function will be limited only to the country indicated in this
 #' parameter, if the network has a extraterritorial sites those will not
 #' represented.
-#' @return The output of the function is a `tmap` plot containing an image of
+#' @return The output of the function is a `ggplot2` plot containing an image of
 #' geographic distribution of the network of sites present in the chosen
 #' country.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
