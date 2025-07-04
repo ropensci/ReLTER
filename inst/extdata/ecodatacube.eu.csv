@@ -1,10 +1,13 @@
-name,url,temporal_extent,resolution
-EUCROPMAP Pan-EU year 2022,https://s3.ecodatacube.eu/arco/crop.type_eucropmap.v1_c_10m_s_20220101_20221231_eu_epsg.3035_v20250416.tif,2022-01-01 00:00:00 UTC – 2022-12-31 00:00:00 UTC,10
-Corine Landcover (CLC+) 2017-2019,https://s3.ecodatacube.eu/arco/landcover_clc.plus_f_30m_0..0cm_20170101_20191231_eu_epsg.3035_v20250327.tif,2017-01-01 00:00:00 UTC – 2022-12-31 00:00:00 UTC,10
-Corine Landcover (CLC+) 2020-2022,https://s3.ecodatacube.eu/arco/landcover_clc.plus_f_30m_0..0cm_20200101_20221231_eu_epsg.3035_v20250327.tif,2017-01-01 00:00:00 UTC – 2022-12-31 00:00:00 UTC,10
-CHELSA Monthly accumulated precipitation,https://s3.ecodatacube.eu/arco/accum.precipitation_chelsa.montlhy_m_1km_s_20190601_20190630_eu_epsg.3035_v20240531.tif,2000-01-01 00:00:00 UTC – 2019-06-30 00:00:00 UTC,1000
-Cloud free reconstructed yearly Landsat NDVI,https://s3.ecodatacube.eu/arco/ndvi_glad.landsat.ard2.seasconv.m.yearly_p50_30m_s_20010101_20011231_eu_epsg.3035_v20231127.tif,2000-01-01 00:00:00 UTC – 2022-12-31 00:00:00 UTC,30
-Cloud free reconstructed bi-monthly NDWI (GAO),https://s3.ecodatacube.eu/arco/ndwi.gao_glad.landsat.ard2.seasconv_m_30m_s_20000101_20000228_eu_epsg.3035_v20231218.tif,2000-01-01 00:00:00 UTC – 2022-12-31 00:00:00 UTC,30
-OpenLandMap Ensemble Digital Terrain Model (GEDTM30),https://s3.ecodatacube.eu/arco/gedtm_rf_m_30m_s_20060101_20151231_eu_epsg.3035_v20250318.tif,2006-01-01 00:00:00 UTC – 2015-12-31 00:00:00 UTC,30
-MOD11A2 monthly land surface temperature (day-time),https://s3.ecodatacube.eu/arco/lst_mod11a2.daytime_p50_1km_s_20000101_20000131_eu_epsg.3035_v20240531.tif,2000-01-01 00:00:00 UTC – 2021-12-31 00:00:00 UTC,1000
-MOD11A2 monthly land surface temperature (night-time),https://s3.ecodatacube.eu/arco/lst_mod11a2.nighttime_p50_1km_s_20000101_20000131_eu_epsg.3035_v20240531.tif,2000-01-01 00:00:00 UTC – 2021-12-31 00:00:00 UTC,1000
+short_name,name,url,temporal_extent,resolution,date_required.sld_url
+crop_map,EUCROPMAP Pan-EU year 2022,crop.type_eucropmap.v1_c_10m_s_20220101_20221231_eu_epsg.3035_v20250416.tif,2022-01-01 00:00:00 UTC – 2022-12-31 00:00:00 UTC,10,FALSE,crop.type_eucropmap.sld
+clc_2017,Corine Landcover (CLC+) 2017-2019,landcover_clc.plus_f_30m_0..0cm_20170101_20191231_eu_epsg.3035_v20250327.tif,2017-01-01 00:00:00 UTC – 2022-12-31 00:00:00 UTC,10,FALSE,landcover_clc.plus_f_30m_0..0cm_eu_epsg.3035_v20250327.sld
+clc_2020,Corine Landcover (CLC+) 2020-2022,landcover_clc.plus_f_30m_0..0cm_20200101_20221231_eu_epsg.3035_v20250327.tif,2017-01-01 00:00:00 UTC – 2022-12-31 00:00:00 UTC,10,FALSE,https://s3.ecodatacube.eu/arco/landcover_clc.plus_f_30m_0..0cm_eu_epsg.3035_v20250327.sld
+CHELSA_precip,CHELSA Monthly accumulated precipitation,accum.precipitation_chelsa.montlhy_m_1km_s_{from}_{to}_eu_epsg.3035_v20240531.tif,2000-01-01 00:00:00 UTC – 2019-06-30 00:00:00 UTC,1000,TRUE,accum.precipitation_chelsa.annual.sld
+NDVI_yearly,Cloud free reconstructed yearly Landsat NDVI,ndvi_glad.landsat.ard2.seasconv.m.yearly_p50_30m_s_{from}_{to}_eu_epsg.3035_v20231127.tif,2000-01-01 00:00:00 UTC – 2022-12-31 00:00:00 UTC,30,TRUE,ndvi_glad.landsat.ard2.seasconv.sld
+NDVI_bimonthly,Cloud-free reconstructed Landsat bimonthly NDVI,ndvi_glad.landsat.ard2.seasconv_m_30m_s_{from}_{to}_eu_epsg.3035_v20231127.tif,2000-01-01 00:00:00 UTC – 2022-12-31 00:00:00 UTC,30,TRUE,ndvi_glad.landsat.ard2.seasconv.sld
+NDWI_monthly,Cloud free reconstructed bi-monthly NDWI (Gao),ndwi.gao_glad.landsat.ard2.seasconv_m_30m_s_{from}_{to}_eu_epsg.3035_v20231218.tif,2000-01-01 00:00:00 UTC – 2022-12-31 00:00:00 UTC,30,TRUE,ndwi.gao_glad.landsat.ard2.seasconv.sld
+DTM_30m,OpenLandMap Ensemble Digital Terrain Model (GEDTM30),gedtm_rf_m_30m_s_20060101_20151231_eu_epsg.3035_v20250318.tif,2006-01-01 00:00:00 UTC – 2015-12-31 00:00:00 UTC,30,FALSE,edtm.sld
+MODIS_LST_day,MOD11A2 monthly land surface temperature (day-time),lst_mod11a2.daytime_p50_1km_s_{from}_{to}_eu_epsg.3035_v20240531.tif,2000-01-01 00:00:00 UTC – 2021-12-31 00:00:00 UTC,1000,TRUE,lst_mod11a2_m.sld
+MODIS_LST_night,MOD11A2 monthly land surface temperature (night-time),lst_mod11a2.nighttime_p50_1km_s_{from}_{to}_eu_epsg.3035_v20240531.tif,2000-01-01 00:00:00 UTC – 2021-12-31 00:00:00 UTC,1000,TRUE,lst_mod11a2_m.sld
+soil_type,AI4SoilHealth: Soil type dominant class,soil.types_ensemble_c_30m_epsg.3035_v20250310.tif,2000-01-01 00:00:00 UTC – 2022-12-31 00:00:00 UTC,30,FALSE,soil.types_ensemble_hardclass.sld
+
