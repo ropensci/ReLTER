@@ -117,6 +117,7 @@ get_site_EcoDataCube <- function(deimsid, dataset = "",
 }
 
 apply_color_table <- function(sld_url, r) {
+  #' Apply color table, and categories to raster from SLD file
   #' @description Download SLD style file and apply color table to raster
   #' @param sld_url Character full path to SLD file from EcoDataCube 
   #' @param r terra::rast The raster to apply color table

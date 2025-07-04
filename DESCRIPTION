@@ -107,7 +107,7 @@ Suggests:
     testthat (>= 3.0.0),
     waffle,
 Remotes:
-    ropensci/MODIStsp@v2.1.0
+    ropensci/MODIStsp@v2.1.0,
     worrms,
     XML,
     xml2,

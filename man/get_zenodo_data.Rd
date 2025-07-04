@@ -46,9 +46,9 @@ record
 
 \insertRef{unitsR}{ReLTER}
 
-\insertRef{zen4R}{ReLTER}
+\insertRef{blondel_2025}{ReLTER}
 
-\insertRef{tidyr}{ReLTER}
+\insertRef{tidyrR}{ReLTER}
 }
 \seealso{
 \code{\link[zen4R:ZenodoManager]{zen4R::ZenodoManager()}}

@@ -6,7 +6,13 @@
 \href{https://ecodatacube.eu/}{EcoDataCube EU}
 and crop to an eLTER site boundary.}
 \usage{
-get_site_EcoDataCube(deimsid, dataset = "", year = NA, month = NA)
+get_site_EcoDataCube(
+  deimsid,
+  dataset = "",
+  year = NA,
+  month = NA,
+  show_map = TRUE
+)
 }
 \arguments{
 \item{deimsid}{A \code{character}. The DEIMS ID of the site from
@@ -21,6 +27,8 @@ Default is "".}
 \item{year}{A \code{character} indicating which year to choose (for multi-year datasets)}
 
 \item{month}{A \code{character} indicating which month (for multi-month datasets)}
+
+\item{show_map}{Bool whether to show plot of downloaded raster}
 }
 \value{
 The function returns a SpatRaster object (from the \code{terra} package)

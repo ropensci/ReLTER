@@ -81,7 +81,7 @@ map_LTERGermanSites <- map_LTERGermanSites +
 
 }
 \references{
-\insertRef{httr2}{ReLTER}
+\insertRef{httr2R}{ReLTER}
 
 \insertRef{jsonliteR}{ReLTER}
 
