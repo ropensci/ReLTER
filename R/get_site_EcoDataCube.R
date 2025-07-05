@@ -8,7 +8,7 @@
 #' @param deimsid  A `character`. The DEIMS ID of the site from
 #' DEIMS-SDR website. DEIMS ID information
 #' \href{https://deims.org/docs/deimsid.html}{here}.
-#' @param dataset A `character`. The requested dataset. One of:
+#' @param dataset `string` The requested dataset. One of:
 #' "CHELSA_precip", "clc_2017", "clc_2020", "crop_map", "DTM_30m",
 #' "MODIS_LST_day", "MODIS_LST_night", "NDVI_bimonthly", "NDVI_yearly",
 #' "NDWI_monthly", "soil_type"
@@ -16,24 +16,26 @@
 #' a list of the available EcoDataCube layers is printed.
 #' Default is "".
 #' (See Details for explanation of each dataset)
-#' @param year A `character` indicating which year to choose (for multi-year datasets)
-#' @param month A `character` indicating which month (for multi-month datasets)
+#' @param year `string` indicating which year to choose (for multi-year datasets)
+#' @param month `string` indicating which month (for multi-month datasets)
 #' @param show_map Bool whether to show plot of downloaded raster
 #' @details Supported datasets from the EcoDataCube repository include:
-#' | short_name  | full name | temporal extent | resolution |temporal_extent | resolution
-#' |================|===============================================|==================|==========:|
-#' |CHELSA_precip   |CHELSA Monthly accumulated precipitation       |2000-01-01 00:00:00 UTC – 2019-06-30 00:00:00 UTC|1000
-#' |clc_2017        |Corine Landcover (CLC+) 2017-2019              |2017-01-01 00:00:00 UTC – 2022-12-31 00:00:00 UTC|10
-#' |clc_2020        |Corine Landcover (CLC+) 2020-2022              |2017-01-01 00:00:00 UTC – 2022-12-31 00:00:00 UTC|10
-#' |crop_map        |EUCROPMAP Pan-EU year 2022                     |2022-01-01 00:00:00 UTC – 2022-12-31 00:00:00 UTC|10
-#' |DTM_30m         |OpenLandMap Ensemble Digital Terrain Model (GEDTM30) |2006-01-01 00:00:00 UTC – 2015-12-31 00:00:00 UTC|30
-#' |MODIS_LST_day   |MOD11A2 monthly land surface temperature (day)  |2000-01-01 00:00:00 UTC – 2021-12-31 00:00:00 UTC|1000
-#' |MODIS_LST_night |MOD11A2 monthly land surface temperature (night)|2000-01-01 00:00:00 UTC – 2021-12-31 00:00:00 UTC|1000
-#' |NDVI_bimonthly  |Cloud-free reconstructed Landsat bimonthly NDVI|2000-01-01 00:00:00 UTC – 2022-12-31 00:00:00 UTC|30
-#' |NDVI_yearly     |Cloud free reconstructed yearly Landsat NDVI   |2000-01-01 00:00:00 UTC – 2022-12-31 00:00:00 UTC|30
-#' |NDWI_monthly    |Cloud free reconstructed bi-monthly NDWI (Gao) |2000-01-01 00:00:00 UTC – 2022-12-31 00:00:00 UTC|30
-#' |soil_type       |AI4SoilHealth: Soil type dominant class        |2000-01-01 00:00:00 UTC – 2022-12-31 00:00:00 UTC|30
-#' 
+#' \tabular{llcr}{
+#'  short_name    \tab full name                                      \tab temporal extent             \tab  res. \cr
+#'  --------------\tab ---------------------------------------------- \tab --------------------------- \tab ----- \cr
+#'  CHELSA_precip \tab CHELSA Monthly accumulated precipitation       \tab 2000-01-01 00:00:00 UTC–2019-06-30 00:00:00 UTC \tab 1000 \cr
+#'  clc_2017      \tab Corine Landcover (CLC+) 2017-2019              \tab 2017-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC \tab 10   \cr
+#'  clc_2020      \tab Corine Landcover (CLC+) 2020-2022              \tab 2017-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC \tab 10   \cr
+#'  crop_map      \tab EUCROPMAP Pan-EU year 2022                     \tab 2022-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC \tab 10   \cr
+#'  DTM_30m       \tab OpenLandMap Ensemble Digital Terrain ModelM30) \tab 2006-01-01 00:00:00 UTC–2015-12-31 00:00:00 UTC \tab 30   \cr
+#'  MODIS_LST_day \tab MOD11A2 monthly land surface temp. (day)       \tab 2000-01-01 00:00:00 UTC–2021-12-31 00:00:00 UTC \tab 1000 \cr
+#'  MODIS_LST_night\tab MOD11A2 monthly land surface temp. (night)     \tab 2000-01-01 00:00:00 UTC–2021-12-31 00:00:00 UTC \tab 1000 \cr
+#'  NDVI_bimonthly \tab Cloud-free reconstructed Landsat bimonthly NDVI\tab 2000-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC \tab 30   \cr
+#'  NDVI_yearly   \tab Cloud free reconstructed yearly Landsat NDVI   \tab 2000-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC \tab 30    \cr
+#'  NDWI_monthly  \tab Cloud free reconstructed bi-monthly NDWI (Gao) \tab 2000-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC \tab 30    \cr
+#'  soil_type     \tab AI4SoilHealth: Soil type dominant class        \tab 2000-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC \tab 30    \cr
+#'  }
+
 #' All datasets are georeferenced to the
 #' EPSG:3035 coordinate reference system.
 #' 
@@ -41,7 +43,10 @@
 #' of the requested dataset, cropped to the site boundaries.
 #' If the SpatRaster is categorical, it will contain a colortable (from EcoDataCube).
 #' The user should save the raster to disk, if necessary.
-#' i.e. writeRaster(ds_site, "site_dataset.tif")
+#' i.e.
+#' 
+#' `writeRaster(ds_site, "site_dataset.tif")`
+#' 
 #' @author Micha Silver, phD (2020) \email{silverm@@post.bgu.ac.il}
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom dplyr case_when
@@ -55,7 +60,7 @@
 #' @examples
 #'  \dontrun{
 #' }
-#'
+#' @md
 
 ### function get_site_EcoDataCube()
 get_site_EcoDataCube <- function(deimsid, dataset = "",
@@ -64,7 +69,7 @@ get_site_EcoDataCube <- function(deimsid, dataset = "",
   edc_df <- read.csv(system.file("extdata/ecodatacube.csv",
                                      package = "ReLTER"))
   url_prefix <- "https://s3.ecodatacube.eu/arco/"
-  if (is.na(dataset) | dataset == "") {
+  if (is.na(dataset) | dataset -- "") {
     knitr::kable(select(edc_layers, !url))
     return(NULL)
   }
