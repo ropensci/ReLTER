@@ -9,23 +9,37 @@
 #' DEIMS-SDR website. DEIMS ID information
 #' \href{https://deims.org/docs/deimsid.html}{here}.
 #' @param dataset A `character`. The requested dataset. One of:
-#' "crop_map","clc_2017", "clc_2020","chelsa_precipitation","NDVI_yearly",
-#' "NDWI monthly", "DTM_30m", "MOD11A2_day", "MOD11A2_night"
+#' "CHELSA_precip", "clc_2017", "clc_2020", "crop_map", "DTM_30m",
+#' "MODIS_LST_day", "MODIS_LST_night", "NDVI_bimonthly", "NDVI_yearly",
+#' "NDWI_monthly", "soil_type"
+#' If dataset is NA or an empty string, then 
+#' a list of the available EcoDataCube layers is printed.
 #' Default is "".
+#' (See Details for explanation of each dataset)
 #' @param year A `character` indicating which year to choose (for multi-year datasets)
 #' @param month A `character` indicating which month (for multi-month datasets)
 #' @param show_map Bool whether to show plot of downloaded raster
 #' @details Supported datasets from the EcoDataCube repository include:
-
+#' | short_name  | full name | temporal extent | resolution |temporal_extent | resolution
+#' |================|===============================================|==================|==========:|
+#' |CHELSA_precip   |CHELSA Monthly accumulated precipitation       |2000-01-01 00:00:00 UTC – 2019-06-30 00:00:00 UTC|1000
+#' |clc_2017        |Corine Landcover (CLC+) 2017-2019              |2017-01-01 00:00:00 UTC – 2022-12-31 00:00:00 UTC|10
+#' |clc_2020        |Corine Landcover (CLC+) 2020-2022              |2017-01-01 00:00:00 UTC – 2022-12-31 00:00:00 UTC|10
+#' |crop_map        |EUCROPMAP Pan-EU year 2022                     |2022-01-01 00:00:00 UTC – 2022-12-31 00:00:00 UTC|10
+#' |DTM_30m         |OpenLandMap Ensemble Digital Terrain Model (GEDTM30) |2006-01-01 00:00:00 UTC – 2015-12-31 00:00:00 UTC|30
+#' |MODIS_LST_day   |MOD11A2 monthly land surface temperature (day)  |2000-01-01 00:00:00 UTC – 2021-12-31 00:00:00 UTC|1000
+#' |MODIS_LST_night |MOD11A2 monthly land surface temperature (night)|2000-01-01 00:00:00 UTC – 2021-12-31 00:00:00 UTC|1000
+#' |NDVI_bimonthly  |Cloud-free reconstructed Landsat bimonthly NDVI|2000-01-01 00:00:00 UTC – 2022-12-31 00:00:00 UTC|30
+#' |NDVI_yearly     |Cloud free reconstructed yearly Landsat NDVI   |2000-01-01 00:00:00 UTC – 2022-12-31 00:00:00 UTC|30
+#' |NDWI_monthly    |Cloud free reconstructed bi-monthly NDWI (Gao) |2000-01-01 00:00:00 UTC – 2022-12-31 00:00:00 UTC|30
+#' |soil_type       |AI4SoilHealth: Soil type dominant class        |2000-01-01 00:00:00 UTC – 2022-12-31 00:00:00 UTC|30
+#' 
 #' All datasets are georeferenced to the
 #' EPSG:3035 coordinate reference system.
-#' and all except clc2018 have 30 meters resolution
-#' 
-#' If dataset is NA or an empty string, then 
-#' a list of the available EcoDataCube layers is printed.
 #' 
 #' @return The function returns a SpatRaster object (from the `terra` package)
-#' of the requested dataset, cropped to the site boundaries
+#' of the requested dataset, cropped to the site boundaries.
+#' If the SpatRaster is categorical, it will contain a colortable (from EcoDataCube).
 #' The user should save the raster to disk, if necessary.
 #' i.e. writeRaster(ds_site, "site_dataset.tif")
 #' @author Micha Silver, phD (2020) \email{silverm@@post.bgu.ac.il}
@@ -40,31 +54,14 @@
 #' @export
 #' @examples
 #'  \dontrun{
-#' # Landcover for Angelo Mosso
-#' siteLandcover <- get_site_ODS(
-#'   deimsid = "https://deims.org/17210eba-d832-4759-89fa-9ff127cbdf6e",
-#'   dataset = "landcover"
-#' )
-#' siteLandcover
-#' terra::plot(siteLandcover)
-#'
-#' # NDVI for Eisenwurzen
-#' siteNDVI <- get_site_ODS(
-#'   deimsid = "https://deims.org/d0a8da18-0881-4ebe-bccf-bc4cb4e25701",
-#'   dataset = "ndvi_summer"
-#' )
-#' siteNDVI
-#' terra::plot(siteNDVI)
 #' }
 #'
-#' @section The function output:
-#' \figure{get_site_ods_fig.png}{NDVI for Eisenwurzen}
-#'
+
 ### function get_site_EcoDataCube()
 get_site_EcoDataCube <- function(deimsid, dataset = "",
                                  year = NA, month = NA,
                                  show_map = TRUE) {
-  edc_layers <- read.csv(system.file("extdata/ecodatacube.eu.csv",
+  edc_df <- read.csv(system.file("extdata/ecodatacube.csv",
                                      package = "ReLTER"))
   url_prefix <- "https://s3.ecodatacube.eu/arco/"
   if (is.na(dataset) | dataset == "") {
@@ -80,11 +77,9 @@ get_site_EcoDataCube <- function(deimsid, dataset = "",
     print("No boundary for requested DEIMS site.")
     return(NULL)
   }
-  
+  edc_row <- edc_df[edc_df$short_name == dataset,]
   # Construct full URL
-  # Replace {from} and {to} with dates, when needed...
-  full_url <- paste0("/vsicurl/", url_prefix, dataset)
-  
+  full_url <- EDC_construct_full_url(edc_row)
   
   # terra::rast can address a virtual dataset *without* downloading
   ds <- terra::rast(full_url)
@@ -101,7 +96,7 @@ get_site_EcoDataCube <- function(deimsid, dataset = "",
   
   # Apply color table and labels if needed...
   sld_url <- paste0(url_prefix, edc_layers$sld_url)
-  ds_colored <- apply_color_table(sld_url, ds_site)
+  ds_colored <- EDC_apply_color_table(sld_url, ds_site)
   
   if (show_map) {
     leaflet::leaflet() |>
@@ -116,7 +111,7 @@ get_site_EcoDataCube <- function(deimsid, dataset = "",
   return(ds_colored)
 }
 
-apply_color_table <- function(sld_url, r) {
+EDC_apply_color_table <- function(sld_url, r) {
   #' Apply color table, and categories to raster from SLD file
   #' @description Download SLD style file and apply color table to raster
   #' @param sld_url Character full path to SLD file from EcoDataCube 
@@ -124,9 +119,7 @@ apply_color_table <- function(sld_url, r) {
   #' @author Micha Silver, phD (2020) \email{silverm@@post.bgu.ac.il}
   #' 
   styles.sld <- file.path(tempdir(), "styles.sld")
-  download.file(
-    "https://s3.ecodatacube.eu/arco/soil.types_ensemble_hardclass.sld",
-    destfile = styles.sld)
+  download.file(sld_url, destfile = styles.sld)
   
   sld <- xml2::read_xml(styles.sld)
   entries <- xml2::xml_find_all(sld, "//sld:ColorMapEntry")
@@ -145,4 +138,24 @@ apply_color_table <- function(sld_url, r) {
   terra::coltab(r) <- clrs_df
   terra::levels(r) <- lvls_df
   return(r)
+}
+
+EDC_construct_full_url <- function(edc_row, from_yr, from_mon) {
+  #' Construct full url for download
+  #' @description Construct full URL, including replaceing year and month where required.
+  #' @param edc_row Vector, one row for chosen dataset from edc_df.
+  #' @param from_yr Character Chosen year 
+  #' @param from_mon Character Chosen month
+  #' @author Micha Silver, phD (2020) \email{silverm@@post.bgu.ac.il}
+  #' 
+  # Replace {from} and {to} with dates, when needed...
+  if (edc_row$date_required) {
+    fr <- paste0(from_yr, from_mon, "01")
+    url <- gsub(pattern = "{from}", replacement = fr, x = edc_row$url)
+  } else {
+    url <- edc_row$url
+  }
+  full_url <- paste0("/vsicurl/", edc_row$url)
+  
+  return(url)
 }

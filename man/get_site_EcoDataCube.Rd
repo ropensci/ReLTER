@@ -20,9 +20,13 @@ DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here}.}
 
 \item{dataset}{A \code{character}. The requested dataset. One of:
-"crop_map","clc_2017", "clc_2020","chelsa_precipitation","NDVI_yearly",
-"NDWI monthly", "DTM_30m", "MOD11A2_day", "MOD11A2_night"
-Default is "".}
+"CHELSA_precip", "clc_2017", "clc_2020", "crop_map", "DTM_30m",
+"MODIS_LST_day", "MODIS_LST_night", "NDVI_bimonthly", "NDVI_yearly",
+"NDWI_monthly", "soil_type"
+If dataset is NA or an empty string, then
+a list of the available EcoDataCube layers is printed.
+Default is "".
+(See Details for explanation of each dataset)}
 
 \item{year}{A \code{character} indicating which year to choose (for multi-year datasets)}
 
@@ -32,7 +36,8 @@ Default is "".}
 }
 \value{
 The function returns a SpatRaster object (from the \code{terra} package)
-of the requested dataset, cropped to the site boundaries
+of the requested dataset, cropped to the site boundaries.
+If the SpatRaster is categorical, it will contain a colortable (from EcoDataCube).
 The user should save the raster to disk, if necessary.
 i.e. writeRaster(ds_site, "site_dataset.tif")
 }
@@ -44,35 +49,25 @@ cropped to an eLTER site boundary, which is obtained from the DEIMS-SDR API.
 }
 \details{
 Supported datasets from the EcoDataCube repository include:
+| short_name  | full name | temporal extent | resolution |temporal_extent | resolution
+|================|===============================================|==================|==========:|
+|CHELSA_precip   |CHELSA Monthly accumulated precipitation       |2000-01-01 00:00:00 UTC – 2019-06-30 00:00:00 UTC|1000
+|clc_2017        |Corine Landcover (CLC+) 2017-2019              |2017-01-01 00:00:00 UTC – 2022-12-31 00:00:00 UTC|10
+|clc_2020        |Corine Landcover (CLC+) 2020-2022              |2017-01-01 00:00:00 UTC – 2022-12-31 00:00:00 UTC|10
+|crop_map        |EUCROPMAP Pan-EU year 2022                     |2022-01-01 00:00:00 UTC – 2022-12-31 00:00:00 UTC|10
+|DTM_30m         |OpenLandMap Ensemble Digital Terrain Model (GEDTM30) |2006-01-01 00:00:00 UTC – 2015-12-31 00:00:00 UTC|30
+|MODIS_LST_day   |MOD11A2 monthly land surface temperature (day)  |2000-01-01 00:00:00 UTC – 2021-12-31 00:00:00 UTC|1000
+|MODIS_LST_night |MOD11A2 monthly land surface temperature (night)|2000-01-01 00:00:00 UTC – 2021-12-31 00:00:00 UTC|1000
+|NDVI_bimonthly  |Cloud-free reconstructed Landsat bimonthly NDVI|2000-01-01 00:00:00 UTC – 2022-12-31 00:00:00 UTC|30
+|NDVI_yearly     |Cloud free reconstructed yearly Landsat NDVI   |2000-01-01 00:00:00 UTC – 2022-12-31 00:00:00 UTC|30
+|NDWI_monthly    |Cloud free reconstructed bi-monthly NDWI (Gao) |2000-01-01 00:00:00 UTC – 2022-12-31 00:00:00 UTC|30
+|soil_type       |AI4SoilHealth: Soil type dominant class        |2000-01-01 00:00:00 UTC – 2022-12-31 00:00:00 UTC|30
+
 All datasets are georeferenced to the
 EPSG:3035 coordinate reference system.
-and all except clc2018 have 30 meters resolution
-
-If dataset is NA or an empty string, then
-a list of the available EcoDataCube layers is printed.
 }
-\section{The function output}{
-
-\figure{get_site_ods_fig.png}{NDVI for Eisenwurzen}
-}
-
 \examples{
  \dontrun{
-# Landcover for Angelo Mosso
-siteLandcover <- get_site_ODS(
-  deimsid = "https://deims.org/17210eba-d832-4759-89fa-9ff127cbdf6e",
-  dataset = "landcover"
-)
-siteLandcover
-terra::plot(siteLandcover)
-
-# NDVI for Eisenwurzen
-siteNDVI <- get_site_ODS(
-  deimsid = "https://deims.org/d0a8da18-0881-4ebe-bccf-bc4cb4e25701",
-  dataset = "ndvi_summer"
-)
-siteNDVI
-terra::plot(siteNDVI)
 }
 
 }
