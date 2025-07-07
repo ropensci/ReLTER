@@ -4,17 +4,17 @@
 \alias{EDC_construct_full_url}
 \title{Construct full url for download}
 \usage{
-EDC_construct_full_url(edc_row, from_yr, from_mon)
+EDC_construct_full_url(edc_row, dataset_year, dataset_month)
 }
 \arguments{
-\item{edc_row}{Vector, one row for chosen dataset from edc_df.}
+\item{edc_row}{\code{Vector} one row for chosen dataset from edc_df.}
 
-\item{from_yr}{Character Chosen year}
+\item{dataset_year}{\code{Character} Chosen year}
 
-\item{from_mon}{Character Chosen month}
+\item{from_mon}{\code{Character} Chosen month}
 }
 \description{
-Construct full URL, including replaceing year and month where required.
+Construct full URL, including replacing year and month where required.
 }
 \author{
 Micha Silver, phD (2020) \email{silverm@post.bgu.ac.il}

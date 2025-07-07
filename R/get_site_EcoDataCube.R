@@ -5,7 +5,7 @@
 #' Download and return a SpatRaster object containing the requested
 #' dataset from \href{https://ecodatacube.eu/}{EcoDataCube EU},
 #' cropped to an eLTER site boundary, which is obtained from the DEIMS-SDR API.
-#' @param deimsid  A `character`. The DEIMS ID of the site from
+#' @param deimsid  `string`. The DEIMS ID of the site from
 #' DEIMS-SDR website. DEIMS ID information
 #' \href{https://deims.org/docs/deimsid.html}{here}.
 #' @param dataset `string` The requested dataset. One of:
@@ -16,24 +16,27 @@
 #' a list of the available EcoDataCube layers is printed.
 #' Default is "".
 #' (See Details for explanation of each dataset)
-#' @param year `string` indicating which year to choose (for multi-year datasets)
-#' @param month `string` indicating which month (for multi-month datasets)
-#' @param show_map Bool whether to show plot of downloaded raster
+#' @param dataset_year `string` indicating which year to choose (for multi-year datasets)
+#' Entered as four digits (i.e. '2020')
+#' @param dataset_month `string` indicating which month (for multi-month datasets).
+#' Entered as two digits. i.e. '02', '03', or '11' etc.
+#' @param show_map `Bool` whether to show plot of downloaded raster.
+#' Default TRUE
 #' @details Supported datasets from the EcoDataCube repository include:
 #' \tabular{llcr}{
-#'  short_name    \tab full name                                      \tab temporal extent             \tab  res. \cr
-#'  --------------\tab ---------------------------------------------- \tab --------------------------- \tab ----- \cr
-#'  CHELSA_precip \tab CHELSA Monthly accumulated precipitation       \tab 2000-01-01 00:00:00 UTC–2019-06-30 00:00:00 UTC \tab 1000 \cr
-#'  clc_2017      \tab Corine Landcover (CLC+) 2017-2019              \tab 2017-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC \tab 10   \cr
-#'  clc_2020      \tab Corine Landcover (CLC+) 2020-2022              \tab 2017-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC \tab 10   \cr
-#'  crop_map      \tab EUCROPMAP Pan-EU year 2022                     \tab 2022-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC \tab 10   \cr
-#'  DTM_30m       \tab OpenLandMap Ensemble Digital Terrain ModelM30) \tab 2006-01-01 00:00:00 UTC–2015-12-31 00:00:00 UTC \tab 30   \cr
-#'  MODIS_LST_day \tab MOD11A2 monthly land surface temp. (day)       \tab 2000-01-01 00:00:00 UTC–2021-12-31 00:00:00 UTC \tab 1000 \cr
-#'  MODIS_LST_night\tab MOD11A2 monthly land surface temp. (night)     \tab 2000-01-01 00:00:00 UTC–2021-12-31 00:00:00 UTC \tab 1000 \cr
-#'  NDVI_bimonthly \tab Cloud-free reconstructed Landsat bimonthly NDVI\tab 2000-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC \tab 30   \cr
-#'  NDVI_yearly   \tab Cloud free reconstructed yearly Landsat NDVI   \tab 2000-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC \tab 30    \cr
-#'  NDWI_monthly  \tab Cloud free reconstructed bi-monthly NDWI (Gao) \tab 2000-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC \tab 30    \cr
-#'  soil_type     \tab AI4SoilHealth: Soil type dominant class        \tab 2000-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC \tab 30    \cr
+#'  dataset       \tab full name                                \tab date required      \tab temporal extent             \tab  res. \cr
+#'  ------------- \tab ---------------------------------------- \tab ------------- \tab ----- \tab --------------------------- \tab ----- \cr
+#'  CHELSA_precip \tab CHELSA Monthly accumulated precipitation \tab yes      \tab 2000-01-01 00:00:00 UTC–2019-06-30 00:00:00 UTC \tab 1000 \cr
+#'  clc_2017      \tab Corine Landcover (CLC+) 2017-2019        \tab no       \tab 2017-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC \tab 10   \cr
+#'  clc_2020      \tab Corine Landcover (CLC+) 2020-2022        \tab no       \tab 2017-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC \tab 10   \cr
+#'  crop_map      \tab EUCROPMAP Pan-EU year 2022               \tab no       \tab 2022-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC \tab 10   \cr
+#'  DTM_30m       \tab OpenLandMap Ensemble Digital Terrain Model \tab no  \tab 2006-01-01 00:00:00 UTC–2015-12-31 00:00:00 UTC \tab 30   \cr
+#'  MODIS_LST_day \tab MOD11A2 monthly land surface temp. (day)   \tab yes \tab 2000-01-01 00:00:00 UTC–2021-12-31 00:00:00 UTC \tab 1000 \cr
+#'  MODIS_LST_night\tab MOD11A2 monthly land surface temp. (night)\tab yes \tab 2000-01-01 00:00:00 UTC–2021-12-31 00:00:00 UTC \tab 1000 \cr
+#'  NDVI_bimonthly \tab Cloud-free reconstructed Landsat bimonthly NDVI \tab yes \tab 2000-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC \tab 30   \cr
+#'  NDVI_yearly   \tab Cloud free reconstructed yearly Landsat NDVI     \tab yes \tab 2000-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC \tab 30    \cr
+#'  NDWI_monthly  \tab Cloud free reconstructed bi-monthly NDWI (Gao)   \tab yes \tab 2000-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC \tab 30    \cr
+#'  soil_type     \tab AI4SoilHealth: Soil type dominant class          \tab no  \tab 2000-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC \tab 30    \cr
 #'  }
 
 #' All datasets are georeferenced to the
@@ -64,11 +67,12 @@
 
 ### function get_site_EcoDataCube()
 get_site_EcoDataCube <- function(deimsid, dataset = "",
-                                 year = NA, month = NA,
+                                 dataset_year = NA,
+                                 dataset_month = NA,
                                  show_map = TRUE) {
   edc_df <- read.csv(system.file("extdata/ecodatacube.csv",
                                      package = "ReLTER"))
-  url_prefix <- "https://s3.ecodatacube.eu/arco/"
+
   if (is.na(dataset) | dataset -- "") {
     knitr::kable(select(edc_layers, !url))
     return(NULL)
@@ -82,9 +86,28 @@ get_site_EcoDataCube <- function(deimsid, dataset = "",
     print("No boundary for requested DEIMS site.")
     return(NULL)
   }
-  edc_row <- edc_df[edc_df$short_name == dataset,]
+
+  edc_row <- edc_df[edc_df$dataset == dataset,]
+  
+  # Validate date inputs
+  if (edc_row$date_required) {
+    # Make sure from_yr and from_mon are correctly entered
+    extent_from <- lubridate::as_date(edc_row$temporal_extent_from)
+    extent_to <- lubridate::as_date(edc_row$temporal_extent_to)
+    if (as.numeric(dataset_year) < lubridate::year(extent_from) | 
+        as.numeric(dataset_year) > lubridate::year(extent_to)) {
+      message("Year parameter is beyond the temporal extent of the dataset.\n",
+              "Please check parameters. Exiting...")
+      return(NULL)
+    }
+    if (as.numeric(dataset_month) < 1 | as.numeric(dataset_month) > 12) {
+      message("Month parameter is beyond the range '1' to '12'.\n",
+              "Please check parameters. Exiting...")
+      return(NULL)
+    }
+  }
   # Construct full URL
-  full_url <- EDC_construct_full_url(edc_row)
+  full_url <- EDC_construct_full_url(edc_row, dataset_year, dataset_month)
   
   # terra::rast can address a virtual dataset *without* downloading
   ds <- terra::rast(full_url)
@@ -97,11 +120,11 @@ get_site_EcoDataCube <- function(deimsid, dataset = "",
   # to the European CRS (EPSG:3035) used by ODS
   boundary <- sf::st_transform(boundary, terra::crs(ds))
   bound_v <- terra::vect(boundary)
+  # Now vrt dataset is actually downloaded
   ds_site <- terra::mask(terra::crop(ds, bound_v), bound_v)
   
-  # Apply color table and labels if needed...
-  sld_url <- paste0(url_prefix, edc_layers$sld_url)
-  ds_colored <- EDC_apply_color_table(sld_url, ds_site)
+  # Apply color table and labels.
+  ds_colored <- EDC_apply_color_table(edc_layers$sld_url, ds_site)
   
   if (show_map) {
     leaflet::leaflet() |>
@@ -124,7 +147,8 @@ EDC_apply_color_table <- function(sld_url, r) {
   #' @author Micha Silver, phD (2020) \email{silverm@@post.bgu.ac.il}
   #' 
   styles.sld <- file.path(tempdir(), "styles.sld")
-  download.file(sld_url, destfile = styles.sld)
+  url_prefix <- "https://s3.ecodatacube.eu/arco/"
+  download.file(paste0(url_prefix, sld_url), destfile = styles.sld)
   
   sld <- xml2::read_xml(styles.sld)
   entries <- xml2::xml_find_all(sld, "//sld:ColorMapEntry")
@@ -145,22 +169,47 @@ EDC_apply_color_table <- function(sld_url, r) {
   return(r)
 }
 
-EDC_construct_full_url <- function(edc_row, from_yr, from_mon) {
+EDC_construct_full_url <- function(edc_row, dataset_year, dataset_month) {
   #' Construct full url for download
-  #' @description Construct full URL, including replaceing year and month where required.
-  #' @param edc_row Vector, one row for chosen dataset from edc_df.
-  #' @param from_yr Character Chosen year 
-  #' @param from_mon Character Chosen month
+  #' @description Construct full URL, including replacing year and month where required.
+  #' @param edc_row `Vector` one row for chosen dataset from edc_df.
+  #' @param dataset_year `Character` Chosen year 
+  #' @param from_mon `Character` Chosen month
   #' @author Micha Silver, phD (2020) \email{silverm@@post.bgu.ac.il}
   #' 
   # Replace {from} and {to} with dates, when needed...
   if (edc_row$date_required) {
-    fr <- paste0(from_yr, from_mon, "01")
-    url <- gsub(pattern = "{from}", replacement = fr, x = edc_row$url)
+    # Make sure month is two characters
+    fr_mon <- stringr::str_pad(dataset_month, 2, pad = 0)
+    fr_yr <- as.character(dataset_year)
+    switch(edc_row$period,
+           monthly = {
+             from_date = lubridate::as_date(paste(
+               fr_yr, fr_mon, "01", sep="-"))
+             to_date = lubridate::ceiling_date(from_date, 'month') - days(1)
+             },
+           bimonthly = {
+              from_date = lubridate::as_date(paste(
+                fr_yr, fr_mon, "01", sep="-"))
+              to_date = lubridate::ceiling_date(from_date, "bimonth") - days(1)
+             },
+           yearly = {
+             from_date = lubridate::as_data(paste(fr_yr,"-01-01"))
+             to_date  = lubridate::ceiling_date(from_date, "year") - days(1)
+           }
+    )
+    from_date_str <- strftime(from_date, "%Y%m%d")
+    to_date_str <- strftime(to_date, "%Y%m%d")
+    url <- gsub(pattern = "{from}",
+                replacement = from_date_str, x = edc_row$url)
+    url <- gsub(pattern = "{to}", 
+                replacement = to_date_str, x = url)
+
   } else {
     url <- edc_row$url
   }
-  full_url <- paste0("/vsicurl/", edc_row$url)
+  url_prefix <- "https://s3.ecodatacube.eu/arco/"
+  full_url <- paste0("/vsicurl/", url_prefix, url)
   
-  return(url)
+  return(full_url)
 }
