@@ -14,7 +14,8 @@ EDC_construct_full_url(edc_row, dataset_year, dataset_month)
 \item{from_mon}{\code{Character} Chosen month}
 }
 \description{
-Construct full URL, including replacing year and month where required.
+Construct full URL,
+including replacing year and month where required.
 }
 \author{
 Micha Silver, phD (2020) \email{silverm@post.bgu.ac.il}

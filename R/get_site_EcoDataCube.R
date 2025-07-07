@@ -71,10 +71,10 @@ get_site_EcoDataCube <- function(deimsid, dataset = "",
                                  dataset_month = NA,
                                  show_map = TRUE) {
   edc_df <- read.csv(system.file("extdata/ecodatacube.csv",
-                                     package = "ReLTER"))
+                                 package = "ReLTER"))
 
-  if (is.na(dataset) | dataset -- "") {
-    knitr::kable(select(edc_layers, !url))
+  if (is.na(dataset) | dataset == "") {
+    knitr::kable(select(edc_df, c(1,2,4,5,6,7)))
     return(NULL)
   }
   # First check that site has a boundary
@@ -142,21 +142,21 @@ get_site_EcoDataCube <- function(deimsid, dataset = "",
 EDC_apply_color_table <- function(sld_url, r) {
   #' Apply color table, and categories to raster from SLD file
   #' @description Download SLD style file and apply color table to raster
-  #' @param sld_url Character full path to SLD file from EcoDataCube 
+  #' @param sld_url Character full path to SLD file from EcoDataCube
   #' @param r terra::rast The raster to apply color table
   #' @author Micha Silver, phD (2020) \email{silverm@@post.bgu.ac.il}
-  #' 
-  styles.sld <- file.path(tempdir(), "styles.sld")
+  #'
+  styles_sld <- file.path(tempdir(), "styles.sld")
   url_prefix <- "https://s3.ecodatacube.eu/arco/"
   download.file(paste0(url_prefix, sld_url), destfile = styles.sld)
-  
-  sld <- xml2::read_xml(styles.sld)
+
+  sld <- xml2::read_xml(styles_sld)
   entries <- xml2::xml_find_all(sld, "//sld:ColorMapEntry")
-  entry_list <- lapply(1:length(entries), function(e){
+  entry_list <- lapply(seq_along(entries), function(e) {
     ent <- entries[[e]]
-    quan <- xml2::xml_attr(ent, 'quantity')
-    lbl <- xml2::xml_attr(ent, 'label')
-    clr <- xml2::xml_attr(ent, 'color')
+    quan <- xml2::xml_attr(ent, "quantity")
+    lbl <- xml2::xml_attr(ent, "label")
+    clr <- xml2::xml_attr(ent, "color")
     e_df <- data.frame(Quantity = as.numeric(quan),
                        Label = lbl, Color = clr)
     return(e_df)
@@ -171,12 +171,13 @@ EDC_apply_color_table <- function(sld_url, r) {
 
 EDC_construct_full_url <- function(edc_row, dataset_year, dataset_month) {
   #' Construct full url for download
-  #' @description Construct full URL, including replacing year and month where required.
+  #' @description Construct full URL,
+  #' including replacing year and month where required.
   #' @param edc_row `Vector` one row for chosen dataset from edc_df.
-  #' @param dataset_year `Character` Chosen year 
+  #' @param dataset_year `Character` Chosen year
   #' @param from_mon `Character` Chosen month
   #' @author Micha Silver, phD (2020) \email{silverm@@post.bgu.ac.il}
-  #' 
+  #'
   # Replace {from} and {to} with dates, when needed...
   if (edc_row$date_required) {
     # Make sure month is two characters
@@ -186,24 +187,26 @@ EDC_construct_full_url <- function(edc_row, dataset_year, dataset_month) {
            monthly = {
              from_date = lubridate::as_date(paste(
                fr_yr, fr_mon, "01", sep="-"))
-             to_date = lubridate::ceiling_date(from_date, 'month') - days(1)
+             to_date = lubridate::ceiling_date(from_date, 'month') - lubridate::days(1)
              },
            bimonthly = {
               from_date = lubridate::as_date(paste(
                 fr_yr, fr_mon, "01", sep="-"))
-              to_date = lubridate::ceiling_date(from_date, "bimonth") - days(1)
+              to_date = from_date + months(2) - lubridate::days(1)
              },
            yearly = {
-             from_date = lubridate::as_data(paste(fr_yr,"-01-01"))
-             to_date  = lubridate::ceiling_date(from_date, "year") - days(1)
+             from_date = lubridate::as_date(paste(fr_yr,"-01-01"))
+             to_date  = lubridate::ceiling_date(from_date, "year") - lubridate::days(1)
            }
     )
     from_date_str <- strftime(from_date, "%Y%m%d")
     to_date_str <- strftime(to_date, "%Y%m%d")
     url <- gsub(pattern = "{from}",
-                replacement = from_date_str, x = edc_row$url)
+                replacement = from_date_str,
+                x = edc_row$url, fixed = TRUE)
     url <- gsub(pattern = "{to}", 
-                replacement = to_date_str, x = url)
+                replacement = to_date_str,
+                x = url, fixed = TRUE)
 
   } else {
     url <- edc_row$url
