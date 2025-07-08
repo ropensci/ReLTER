@@ -73,6 +73,18 @@ All datasets are georeferenced to the
 EPSG:3035 coordinate reference system.
 }
 \examples{
+# Example of TERENO Harsleben
+deimsid = "https://deims.org/c945abe4-3d40-46d1-b5d0-33127c35c6ab"
+harsleben_ndvi <- get_site_EcoDataCube(
+  deimsid = deimsid,
+  dataset = "NDVI_bimonthly",
+  dataset_year = "2021",
+  dataset+month = "06"
+)
+harsleben_dtm <- get_site_EcoDataCube(
+  deimsid = deimsid,
+  dataset = "DTM_30m",
+)
  \dontrun{
 }
 }

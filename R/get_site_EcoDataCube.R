@@ -90,7 +90,7 @@ get_site_EcoDataCube <- function(deimsid, dataset = "",
     return(NULL)
   }
   # First check that site has a boundary
-  boundary <- ReLTER::get_site_info(
+  boundary <- get_site_boundaries(
     deimsid = deimsid,
     with_locations = TRUE,
     show_map = FALSE
