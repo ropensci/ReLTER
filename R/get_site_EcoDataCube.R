@@ -137,7 +137,7 @@ get_site_EcoDataCube <- function(deimsid, dataset = "",
   ds_site <- terra::mask(terra::crop(ds, bound_v), bound_v)
   
   # Apply color table and labels.
-  ds_colored <- EDC_apply_color_table(edc_layers$sld_url, ds_site)
+  #ds_colored <- EDC_apply_color_table(edc_row$sld_url, ds_site)
   
   if (show_map) {
     leaflet::leaflet() |>
@@ -147,7 +147,7 @@ get_site_EcoDataCube <- function(deimsid, dataset = "",
                            weight = 3,
                            opacity = 1,
                            fill = FALSE) |>
-      leaflet::addRasterImage(ds_colored)
+      leaflet::addRasterImage(ds_site)
   }
   return(ds_colored)
 }
@@ -161,7 +161,7 @@ EDC_apply_color_table <- function(sld_url, r) {
   #'
   styles_sld <- file.path(tempdir(), "styles.sld")
   url_prefix <- "https://s3.ecodatacube.eu/arco/"
-  download.file(paste0(url_prefix, sld_url), destfile = styles.sld)
+  download.file(paste0(url_prefix, sld_url), destfile = styles_sld)
 
   sld <- xml2::read_xml(styles_sld)
   entries <- xml2::xml_find_all(sld, "//sld:ColorMapEntry")
