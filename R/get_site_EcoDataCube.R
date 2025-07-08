@@ -61,6 +61,18 @@
 #'   \insertRef{terraR}{ReLTER}
 #' @export
 #' @examples
+#' # Example of TERENO Harsleben
+#' deimsid = "https://deims.org/c945abe4-3d40-46d1-b5d0-33127c35c6ab"
+#' harsleben_ndvi <- get_site_EcoDataCube(
+#'   deimsid = deimsid,
+#'   dataset = "NDVI_bimonthly",
+#'   dataset_year = "2021",
+#'   dataset+month = "06"
+#' )
+#' harsleben_dtm <- get_site_EcoDataCube(
+#'   deimsid = deimsid,
+#'   dataset = "DTM_30m",
+#' )
 #'  \dontrun{
 #' }
 #' @md
@@ -79,9 +91,10 @@ get_site_EcoDataCube <- function(deimsid, dataset = "",
   }
   # First check that site has a boundary
   boundary <- ReLTER::get_site_info(
-    deimsid,
-    category = "Boundaries"
-  )
+    deimsid = deimsid,
+    with_locations = TRUE,
+    show_map = FALSE
+  )$data
   if (is.null(boundary) || !inherits(boundary, "sf")) {
     print("No boundary for requested DEIMS site.")
     return(NULL)
