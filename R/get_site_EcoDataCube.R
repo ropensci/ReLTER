@@ -117,7 +117,7 @@ get_site_EcoDataCube <- function(deimsid, dataset = "",
   }
   # Crop and mask the raster dataset to the boundary polygon
   # The boundary must be transformed first
-  # to the European CRS (EPSG:3035) used by ODS
+  # to the European CRS (EPSG:3035) used by EcoDataCube
   boundary <- sf::st_transform(boundary, terra::crs(ds))
   bound_v <- terra::vect(boundary)
   # Now vrt dataset is actually downloaded
