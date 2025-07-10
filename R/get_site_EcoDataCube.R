@@ -22,6 +22,10 @@
 #' Entered as two digits. i.e. '02', '03', or '11' etc.
 #' @param show_map `Bool` whether to show plot of downloaded raster.
 #' Default TRUE
+#' @param output_dir `string` where to save the EcoDataCube dataset and style file.
+#' The *.tif and *.sld files will be saved to the specified directory, 
+#' with filename as <chosen_dataset>.tif and <chosen_dataset>.sld 
+#' Default tempdir()
 #' @details Supported datasets from the EcoDataCube repository include:
 #' \tabular{llcr}{
 #'  dataset       \tab full name                                \tab date required      \tab temporal extent             \tab  res. \cr
@@ -81,7 +85,9 @@
 get_site_EcoDataCube <- function(deimsid, dataset = "",
                                  dataset_year = NA,
                                  dataset_month = NA,
-                                 show_map = TRUE) {
+                                 show_map = TRUE,
+                                 output_dir = tempdir()) {
+  
   edc_df <- read.csv(system.file("extdata/ecodatacube.csv",
                                  package = "ReLTER"))
 
@@ -131,13 +137,17 @@ get_site_EcoDataCube <- function(deimsid, dataset = "",
   # Crop and mask the raster dataset to the boundary polygon
   # The boundary must be transformed first
   # to the European CRS (EPSG:3035) used by EcoDataCube
-  boundary <- sf::st_transform(boundary, terra::crs(ds))
-  bound_v <- terra::vect(boundary)
+  bound_v <- terra::vect(sf::st_transform(boundary, terra::crs(ds)))
   # Now vrt dataset is actually downloaded
   ds_site <- terra::mask(terra::crop(ds, bound_v), bound_v)
-  
-  # Apply color table and labels.
-  #ds_colored <- EDC_apply_color_table(edc_row$sld_url, ds_site)
+  tif_file <- paste0(stringr::str_to_lower(dataset), ".tif")
+  terra::writeRaster(ds_site, filename = file.path(output_dir, tif_file))
+ 
+  sld_filename <- paste0(stringr::str_to_lower(edc_row$dataset), ".sld")
+  sld_path <- file.path(output_dir, style_filename)
+  url_prefix <- "https://s3.ecodatacube.eu/arco/"
+  sld_url <- paste0(url_prefix, edc_row$sld_url)
+  download.file(sld_url, destfile = sld_path)
   
   if (show_map) {
     leaflet::leaflet() |>
@@ -149,37 +159,7 @@ get_site_EcoDataCube <- function(deimsid, dataset = "",
                            fill = FALSE) |>
       leaflet::addRasterImage(ds_site)
   }
-  return(ds_colored)
-}
-
-EDC_apply_color_table <- function(sld_url, r) {
-  #' Apply color table, and categories to raster from SLD file
-  #' @description Download SLD style file and apply color table to raster
-  #' @param sld_url Character full path to SLD file from EcoDataCube
-  #' @param r terra::rast The raster to apply color table
-  #' @author Micha Silver, phD (2020) \email{silverm@@post.bgu.ac.il}
-  #'
-  styles_sld <- file.path(tempdir(), "styles.sld")
-  url_prefix <- "https://s3.ecodatacube.eu/arco/"
-  download.file(paste0(url_prefix, sld_url), destfile = styles_sld)
-
-  sld <- xml2::read_xml(styles_sld)
-  entries <- xml2::xml_find_all(sld, "//sld:ColorMapEntry")
-  entry_list <- lapply(seq_along(entries), function(e) {
-    ent <- entries[[e]]
-    quan <- xml2::xml_attr(ent, "quantity")
-    lbl <- xml2::xml_attr(ent, "label")
-    clr <- xml2::xml_attr(ent, "color")
-    e_df <- data.frame(Quantity = as.numeric(quan),
-                       Label = lbl, Color = clr)
-    return(e_df)
-  })
-  entries_df <- do.call(rbind, entry_list)
-  clrs_df <- dplyr::select(entries_df, c("Quantity", "Color"))
-  lvls_df <- dplyr::select(entries_df, c("Quantity", "Label"))
-  terra::coltab(r) <- clrs_df
-  terra::levels(r) <- lvls_df
-  return(r)
+  return(ds_site)
 }
 
 EDC_construct_full_url <- function(edc_row, dataset_year, dataset_month) {
@@ -203,6 +183,14 @@ EDC_construct_full_url <- function(edc_row, dataset_year, dataset_month) {
              to_date = lubridate::ceiling_date(from_date, 'month') - lubridate::days(1)
              },
            bimonthly = {
+             fr_mon <- as.integer(fr_mon)
+             if ((fr_mon %% 2) == 0) {
+               # This is an even month, Bimonthly only for odd numbered months,
+               # so subtract 1
+               fr_mon <- fr_mon - 1
+               fr_mon <- stringr::str_pad(fr_mon, 2, pad = 0)
+             }
+             
               from_date = lubridate::as_date(paste(
                 fr_yr, fr_mon, "01", sep="-"))
               to_date = from_date + months(2) - lubridate::days(1)

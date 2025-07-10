@@ -11,7 +11,8 @@ get_site_EcoDataCube(
   dataset = "",
   dataset_year = NA,
   dataset_month = NA,
-  show_map = TRUE
+  show_map = TRUE,
+  output_dir = tempdir()
 )
 }
 \arguments{
@@ -36,6 +37,11 @@ Entered as two digits. i.e. '02', '03', or '11' etc.}
 
 \item{show_map}{\code{Bool} whether to show plot of downloaded raster.
 Default TRUE}
+
+\item{output_dir}{\code{string} where to save the EcoDataCube dataset and style file.
+The *.tif and *.sld files will be saved to the specified directory,
+with filename as <chosen_dataset>.tif and <chosen_dataset>.sld
+Default tempdir()}
 }
 \value{
 The function returns a SpatRaster object (from the \code{terra} package)
