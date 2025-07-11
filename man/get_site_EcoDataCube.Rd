@@ -35,7 +35,7 @@ Entered as four digits (i.e. '2020')}
 \item{dataset_month}{\code{string} indicating which month (for multi-month datasets).
 Entered as two digits. i.e. '02', '03', or '11' etc.}
 
-\item{show_map}{\code{Bool} whether to show plot of downloaded raster.
+\item{show_map}{\code{Bool} whether to show \code{leaflet} map of downloaded dataset.
 Default TRUE}
 
 \item{output_dir}{\code{string} where to save the EcoDataCube dataset and style file.
@@ -78,28 +78,28 @@ EPSG:3035 coordinate reference system.
 \examples{
 # Example of TERENO Harsleben
 deimsid = "https://deims.org/c945abe4-3d40-46d1-b5d0-33127c35c6ab"
+# NDVI
 harsleben_ndvi <- get_site_EcoDataCube(
   deimsid = deimsid,
   dataset = "NDVI_bimonthly",
   dataset_year = "2021",
   dataset_month = "06"
 )
-harsleben_dtm <- get_site_EcoDataCube(
+# EUCrop map
+harsleben_crop <- get_site_EcoDataCube(
   deimsid = deimsid,
-  dataset = "DTM_30m",
+  dataset = "crop_map",
+)
+# MODIS Land Surface Temperature, 
+# Kalkalpen National Park - Austria
+deimsid = "https://deims.org/49515dda-1198-4013-8f43-c33e107af081"
+kalkalpen_LST_day <- get_site_EcoDataCube(
+  deimsid = deimsid,
+  dataset = "MODIS_LST_day",
+  dataset_year = "2010",
+  dataset_month = "01"
 )
 
-# Example of Obergurgl in Austria
-deimsid = "https://deims.org/3de1057c-a364-44f2-8a2a-350d21b58ea0"
-obergurgl_soil <- geet_site_EcoDataCube(
-  deimsid = deimsid,
-  dataset = soil_type,
-)
-obergurgl_clc_2020 <- get_site_EcoDataCube(
-  deimsid = deimsid,
-  dataset = clc_2020,
-  show_map = FALSE
-)
 }
 \references{
 \insertRef{dplyrR}{ReLTER}

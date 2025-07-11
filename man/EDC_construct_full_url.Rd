@@ -7,11 +7,11 @@
 EDC_construct_full_url(edc_row, dataset_year, dataset_month)
 }
 \arguments{
-\item{edc_row}{\code{Vector} one row for chosen dataset from edc_df.}
+\item{edc_row}{\code{vector} one row for chosen dataset from edc_df.}
 
-\item{dataset_year}{\code{Character} Chosen year}
+\item{dataset_year}{\code{string} Chosen year}
 
-\item{from_mon}{\code{Character} Chosen month}
+\item{dataset_month}{\code{string} Chosen month}
 }
 \description{
 Construct full URL,

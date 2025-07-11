@@ -20,7 +20,7 @@
 #' Entered as four digits (i.e. '2020')
 #' @param dataset_month `string` indicating which month (for multi-month datasets).
 #' Entered as two digits. i.e. '02', '03', or '11' etc.
-#' @param show_map `Bool` whether to show plot of downloaded raster.
+#' @param show_map `Bool` whether to show `leaflet` map of downloaded dataset.
 #' Default TRUE
 #' @param output_dir `string` where to save the EcoDataCube dataset and style file.
 #' The *.tif,  *.sld and *.qml files will be saved to the specified directory, 
@@ -64,28 +64,28 @@
 #' @examples
 #' # Example of TERENO Harsleben
 #' deimsid = "https://deims.org/c945abe4-3d40-46d1-b5d0-33127c35c6ab"
+#' # NDVI
 #' harsleben_ndvi <- get_site_EcoDataCube(
 #'   deimsid = deimsid,
 #'   dataset = "NDVI_bimonthly",
 #'   dataset_year = "2021",
 #'   dataset_month = "06"
 #' )
-#' harsleben_dtm <- get_site_EcoDataCube(
+#' # EUCrop map
+#' harsleben_crop <- get_site_EcoDataCube(
 #'   deimsid = deimsid,
-#'   dataset = "DTM_30m",
+#'   dataset = "crop_map",
+#' )
+#' # MODIS Land Surface Temperature, 
+#' # Kalkalpen National Park - Austria
+#' deimsid = "https://deims.org/49515dda-1198-4013-8f43-c33e107af081"
+#' kalkalpen_LST_day <- get_site_EcoDataCube(
+#'   deimsid = deimsid,
+#'   dataset = "MODIS_LST_day",
+#'   dataset_year = "2010",
+#'   dataset_month = "01"
 #' )
 #' 
-#' # Example of Obergurgl in Austria
-#' deimsid = "https://deims.org/3de1057c-a364-44f2-8a2a-350d21b58ea0"
-#' obergurgl_soil <- geet_site_EcoDataCube(
-#'   deimsid = deimsid,
-#'   dataset = soil_type,
-#' )
-#' obergurgl_clc_2020 <- get_site_EcoDataCube(
-#'   deimsid = deimsid,
-#'   dataset = clc_2020,
-#'   show_map = FALSE
-#' )
 #' @md
 
 ### function get_site_EcoDataCube()
@@ -151,7 +151,8 @@ get_site_EcoDataCube <- function(deimsid, dataset = "",
     stringr::str_to_lower(dataset),
     "_", dataset_year, dataset_month, ".tif")
   terra::writeRaster(ds_site,
-                     filename = file.path(output_dir, tif_file))
+                     filename = file.path(output_dir, tif_file),
+                     overwrite = TRUE)
  
   sld_filename <- paste0(
     stringr::str_to_lower(edc_row$dataset), 
@@ -188,9 +189,9 @@ EDC_construct_full_url <- function(edc_row, dataset_year, dataset_month) {
   #' Construct full url for download
   #' @description Construct full URL,
   #' including replacing year and month where required.
-  #' @param edc_row `Vector` one row for chosen dataset from edc_df.
-  #' @param dataset_year `Character` Chosen year
-  #' @param from_mon `Character` Chosen month
+  #' @param edc_row `vector` one row for chosen dataset from edc_df.
+  #' @param dataset_year `string` Chosen year
+  #' @param dataset_month `string` Chosen month
   #' @author Micha Silver, phD (2020) \email{silverm@@post.bgu.ac.il}
   #'
   # Replace {from} and {to} with dates, when needed...
