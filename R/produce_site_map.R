@@ -88,6 +88,12 @@ produce_site_map <- function(deimsid, scale_location = "bl", arrow_location = "t
       "Please install it with: install.packages(\"geodata\")\n----\n"
     )
   }
+  if (!requireNamespace("prettymapr", quietly = TRUE)) {
+    stop(
+      "\n----\nThe function 'produce_site_map()' requires the optional package 'prettymapr'.\n",
+      "Please install it with: install.packages(\"prettymapr\")\n----\n"
+    )
+  }
   # Load required packages
   siteInfo <- get_site_info(
     deimsid = deimsid,

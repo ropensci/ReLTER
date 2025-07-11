@@ -69,27 +69,28 @@ Imports:
 Suggests:
     cowplot,
     geodata,
-    spocc,
-    tidyr,
-    taxize (>= 0.9.97),
-    worrms,
-    shiny,
-    leaflet.extras,
     covr,
     httptest2,
     ISOcodes,
-    withr,
     knitr,
+    leaflet.extras,
+    prettymapr,
     rmarkdown,
     rnaturalearthdata,
     RColorBrewer,
+    shiny,
+    spocc,
+    tidyr,
+    taxize (>= 0.9.97),
     testthat (>= 3.0.0),
     waffle,
+    withr,
+    worrms,
+    zen4R
 Remotes:
     worrms,
     XML,
     xml2,
-    zen4R
 VignetteBuilder: 
     knitr
 RdMacros: 
