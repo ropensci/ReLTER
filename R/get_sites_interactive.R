@@ -11,8 +11,9 @@
 #' @seealso [shiny::runGadget]
 #' @seealso [leaflet.extras::addDrawToolbar()]
 #' @examples
+#' \donttest{
 #' sites_tbl_sf <- get_sites_interactive()
-#' 
+#' }
 #' @export
 get_sites_interactive <- function(){
   gui = TRUE
