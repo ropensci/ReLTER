@@ -57,6 +57,7 @@
 #' @importFrom sf st_transform
 #' @importFrom terra mask crop vect rast crs plot
 #' @importFrom leaflet addRasterImage
+#' @importFrom utils download.file read.csv
 #' @references
 #'   \insertRef{dplyrR}{ReLTER}
 #'

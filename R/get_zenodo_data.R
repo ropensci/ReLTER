@@ -13,6 +13,7 @@
 #' @importFrom lubridate as_date
 #' @importFrom dplyr mutate
 #' @importFrom units set_units
+#' @importFrom utils ls.str
 #' @seealso [zen4R::ZenodoManager()]
 #' @seealso [tidyr::unnest()]
 #' @seealso [tidyr::nest()]

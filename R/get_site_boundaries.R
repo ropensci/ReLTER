@@ -30,7 +30,7 @@
 #' @importFrom geojsonsf geojson_sf
 #' @importFrom leaflet leaflet addTiles addPolygons addCircleMarkers
 #' @importFrom sf st_sf st_sfc st_geometry_type
-#' @importFrom utils capture.output
+#' @importFrom utils capture.output URLencode
 #' @keywords internal
 #' @examples
 #' \dontrun{
