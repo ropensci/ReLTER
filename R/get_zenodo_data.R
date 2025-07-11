@@ -14,6 +14,8 @@
 #' @importFrom dplyr mutate
 #' @importFrom units set_units
 #' @importFrom utils ls.str
+#' @importFrom graphics title
+#' @importFrom stats time
 #' @seealso [zen4R::ZenodoManager()]
 #' @seealso [tidyr::unnest()]
 #' @seealso [tidyr::nest()]

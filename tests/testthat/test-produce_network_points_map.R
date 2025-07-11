@@ -89,5 +89,5 @@ test_that("Output of site affiliation information function constructs ‘sf' wit
       "https://deims.org/networks/e904354a-f3a0-40ce-a9b5-61741f66c824",
     countryCode = "DEU"
   )
-  expect_s3_class(result, "tmap")
+  expect_s3_class(result, "ggplot")
 })

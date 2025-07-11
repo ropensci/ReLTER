@@ -6,7 +6,8 @@ sitesNetwork <- ReLTER::get_network_sites(
 )
 # In the case of Italian sites are selected only true sites and excluded the
 # macrosites.
-sitesNetwork <- (sitesNetwork[!grepl("^IT", sitesNetwork$title), ])
+sitesNetwork <- (sitesNetwork[
+  !grepl("^IT", sitesNetwork$network_sites$title), ])
 sf::st_crs(sitesNetwork) <- 4326
 
 test_that("Expect error if internet connection is down", {
