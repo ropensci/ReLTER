@@ -39,18 +39,15 @@ Entered as two digits. i.e. '02', '03', or '11' etc.}
 Default TRUE}
 
 \item{output_dir}{\code{string} where to save the EcoDataCube dataset and style file.
-The *.tif and *.sld files will be saved to the specified directory,
-with filename as <chosen_dataset>.tif and <chosen_dataset>.sld
+The *.tif,  *.sld and *.qml files will be saved to the specified directory,
+with filename as <chosen_dataset>_\if{html}{\out{<year>}}\if{html}{\out{<month>}}.tif
 Default tempdir()}
 }
 \value{
 The function returns a SpatRaster object (from the \code{terra} package)
 of the requested dataset, cropped to the site boundaries.
-If the SpatRaster is categorical, it will contain a colortable (from EcoDataCube).
-The user should save the raster to disk, if necessary.
-i.e.
-
-\code{writeRaster(ds_site, "site_dataset.tif")}
+The SpatRaster is also saved as GeoTiff, along with the style files,
+in the chosen \code{output_dir}.
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
@@ -72,7 +69,7 @@ MODIS_LST_day \tab MOD11A2 monthly land surface temp. (day)   \tab yes \tab 2000
 MODIS_LST_night\tab MOD11A2 monthly land surface temp. (night)\tab yes \tab 2000-01-01 00:00:00 UTC–2021-12-31 00:00:00 UTC \tab 1000 \cr
 NDVI_bimonthly \tab Cloud-free reconstructed Landsat bimonthly NDVI \tab yes \tab 2000-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC \tab 30   \cr
 NDVI_yearly   \tab Cloud free reconstructed yearly Landsat NDVI     \tab yes \tab 2000-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC \tab 30    \cr
-NDWI_monthly  \tab Cloud free reconstructed bi-monthly NDWI (Gao)   \tab yes \tab 2000-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC \tab 30    \cr
+NDWI_bimonthly  \tab Cloud free reconstructed bi-monthly NDWI (Gao)   \tab yes \tab 2000-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC \tab 30    \cr
 soil_type     \tab AI4SoilHealth: Soil type dominant class          \tab no  \tab 2000-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC \tab 30    \cr
 }
 All datasets are georeferenced to the
@@ -85,14 +82,24 @@ harsleben_ndvi <- get_site_EcoDataCube(
   deimsid = deimsid,
   dataset = "NDVI_bimonthly",
   dataset_year = "2021",
-  dataset+month = "06"
+  dataset_month = "06"
 )
 harsleben_dtm <- get_site_EcoDataCube(
   deimsid = deimsid,
   dataset = "DTM_30m",
 )
- \dontrun{
-}
+
+# Example of Obergurgl in Austria
+deimsid = "https://deims.org/3de1057c-a364-44f2-8a2a-350d21b58ea0"
+obergurgl_soil <- geet_site_EcoDataCube(
+  deimsid = deimsid,
+  dataset = soil_type,
+)
+obergurgl_clc_2020 <- get_site_EcoDataCube(
+  deimsid = deimsid,
+  dataset = clc_2020,
+  show_map = FALSE
+)
 }
 \references{
 \insertRef{dplyrR}{ReLTER}

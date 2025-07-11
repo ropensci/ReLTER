@@ -23,8 +23,8 @@
 #' @param show_map `Bool` whether to show plot of downloaded raster.
 #' Default TRUE
 #' @param output_dir `string` where to save the EcoDataCube dataset and style file.
-#' The *.tif and *.sld files will be saved to the specified directory, 
-#' with filename as <chosen_dataset>.tif and <chosen_dataset>.sld 
+#' The *.tif,  *.sld and *.qml files will be saved to the specified directory, 
+#' with filename as <chosen_dataset>_<year><month>.tif 
 #' Default tempdir()
 #' @details Supported datasets from the EcoDataCube repository include:
 #' \tabular{llcr}{
@@ -39,7 +39,7 @@
 #'  MODIS_LST_night\tab MOD11A2 monthly land surface temp. (night)\tab yes \tab 2000-01-01 00:00:00 UTC–2021-12-31 00:00:00 UTC \tab 1000 \cr
 #'  NDVI_bimonthly \tab Cloud-free reconstructed Landsat bimonthly NDVI \tab yes \tab 2000-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC \tab 30   \cr
 #'  NDVI_yearly   \tab Cloud free reconstructed yearly Landsat NDVI     \tab yes \tab 2000-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC \tab 30    \cr
-#'  NDWI_monthly  \tab Cloud free reconstructed bi-monthly NDWI (Gao)   \tab yes \tab 2000-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC \tab 30    \cr
+#'  NDWI_bimonthly  \tab Cloud free reconstructed bi-monthly NDWI (Gao)   \tab yes \tab 2000-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC \tab 30    \cr
 #'  soil_type     \tab AI4SoilHealth: Soil type dominant class          \tab no  \tab 2000-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC \tab 30    \cr
 #'  }
 
@@ -47,12 +47,9 @@
 #' EPSG:3035 coordinate reference system.
 #' 
 #' @return The function returns a SpatRaster object (from the `terra` package)
-#' of the requested dataset, cropped to the site boundaries.
-#' If the SpatRaster is categorical, it will contain a colortable (from EcoDataCube).
-#' The user should save the raster to disk, if necessary.
-#' i.e.
-#' 
-#' `writeRaster(ds_site, "site_dataset.tif")`
+#' of the requested dataset, cropped to the site boundaries. 
+#' The SpatRaster is also saved as GeoTiff, along with the style files,
+#' in the chosen `output_dir`.
 #' 
 #' @author Micha Silver, phD (2020) \email{silverm@@post.bgu.ac.il}
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
@@ -71,14 +68,24 @@
 #'   deimsid = deimsid,
 #'   dataset = "NDVI_bimonthly",
 #'   dataset_year = "2021",
-#'   dataset+month = "06"
+#'   dataset_month = "06"
 #' )
 #' harsleben_dtm <- get_site_EcoDataCube(
 #'   deimsid = deimsid,
 #'   dataset = "DTM_30m",
 #' )
-#'  \dontrun{
-#' }
+#' 
+#' # Example of Obergurgl in Austria
+#' deimsid = "https://deims.org/3de1057c-a364-44f2-8a2a-350d21b58ea0"
+#' obergurgl_soil <- geet_site_EcoDataCube(
+#'   deimsid = deimsid,
+#'   dataset = soil_type,
+#' )
+#' obergurgl_clc_2020 <- get_site_EcoDataCube(
+#'   deimsid = deimsid,
+#'   dataset = clc_2020,
+#'   show_map = FALSE
+#' )
 #' @md
 
 ### function get_site_EcoDataCube()
@@ -140,14 +147,29 @@ get_site_EcoDataCube <- function(deimsid, dataset = "",
   bound_v <- terra::vect(sf::st_transform(boundary, terra::crs(ds)))
   # Now vrt dataset is actually downloaded
   ds_site <- terra::mask(terra::crop(ds, bound_v), bound_v)
-  tif_file <- paste0(stringr::str_to_lower(dataset), ".tif")
-  terra::writeRaster(ds_site, filename = file.path(output_dir, tif_file))
+  tif_file <- paste0(
+    stringr::str_to_lower(dataset),
+    "_", dataset_year, dataset_month, ".tif")
+  terra::writeRaster(ds_site,
+                     filename = file.path(output_dir, tif_file))
  
-  sld_filename <- paste0(stringr::str_to_lower(edc_row$dataset), ".sld")
-  sld_path <- file.path(output_dir, style_filename)
+  sld_filename <- paste0(
+    stringr::str_to_lower(edc_row$dataset), 
+    "_", dataset_year, dataset_month, ".sld")
+  sld_path <- file.path(output_dir, sld_filename)
   url_prefix <- "https://s3.ecodatacube.eu/arco/"
   sld_url <- paste0(url_prefix, edc_row$sld_url)
   download.file(sld_url, destfile = sld_path)
+  
+  qml_filename <- paste0(
+    stringr::str_to_lower(edc_row$dataset),
+    "_", dataset_year, dataset_month, ".qml"
+  )
+  qml_path <- file.path(output_dir, qml_filename)
+  qml_url <- gsub(pattern = "sld", replacement = "qml",
+                  x = edc_row$sld_url)
+  qml_url <- paste0(url_prefix, qml_url)
+  download.file(qml_url, destfile = qml_path)
   
   if (show_map) {
     leaflet::leaflet() |>
