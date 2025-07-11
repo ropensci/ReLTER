@@ -20,7 +20,7 @@
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom sf st_transform st_as_sfc st_sf st_bbox st_simplify
 #' @importFrom tibble tribble
-#' @importFrom stats tail
+#' @importFrom utils tail
 #' @importFrom ggplot2 ggplot geom_sf theme element_blank labs 
 #' @importFrom ggplot2 theme_minimal element_text coord_sf element_rect
 #' @seealso [ggspatial::annotation_map_tile()]

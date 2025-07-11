@@ -98,7 +98,7 @@ get_sites_within_radius <- function(lat=39.1386, lon=-8.33305,
 #' @importFrom leaflet leaflet addCircles addTiles
 #' @seealso [geojsonsf::geojson_sf()]
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' bbx3d<-list(bbx=data.frame(x=c(6.718290, 9.805761), 
 #'                 y=c(44.79938, 47.11089)), 
 #'             elevation_range=c(1200, 9000))
