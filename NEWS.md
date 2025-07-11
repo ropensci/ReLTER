@@ -1,9 +1,9 @@
 ---
 output: html_document
 ---
-# ReLTER 2.2.1 Release Notes
+# ReLTER 2.3.0 Release Notes
 
-Version 2.2.1 released on 30/07/2025
+Version 2.3.0 released on 30/07/2025
 
 ## Changes
 
