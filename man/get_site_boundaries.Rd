@@ -45,6 +45,7 @@ with locations}
 }
 
 \examples{
+\donttest{
 # LTER Zöbelboden
 boundaries <- get_site_boundaries(
   deimsid = "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6",
@@ -52,7 +53,7 @@ boundaries <- get_site_boundaries(
   with_locations = TRUE
 )
 boundaries
-
+}
 }
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
