@@ -11,7 +11,7 @@
 #' @seealso [shiny::runGadget]
 #' @seealso [leaflet.extras::addDrawToolbar()]
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' sites_tbl_sf <- get_sites_interactive()
 #' }
 #' @export

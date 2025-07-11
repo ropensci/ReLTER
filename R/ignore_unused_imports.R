@@ -3,4 +3,6 @@ ignore_unused_imports <- function() {
   ggspatial::annotation_scale
   ggspatial::annotation_north_arrow
   Rdpack::reprompt
+  graphics::title
+  stats::time
 }

@@ -17,7 +17,7 @@ selection of a 3D bounding box. The user can visualise the sites within the sele
 bounding box and ask for returning the contained sites or simply the bounding box.
 }
 \examples{
-\donttest{
+\dontrun{
 sites_tbl_sf <- get_sites_interactive()
 }
 }
