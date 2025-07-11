@@ -72,8 +72,8 @@ get_zenodo_data <- function(doi, rdata_exist = TRUE) {
               Please provide a DOI of Zenodo dataset.\n----\n")
     } else {
       record_id <- stringr::str_replace_all(rec$id, "[./]", "_")
-      unest_fx <- getNamespace("tidyr", "unnest")
-      nest_fx <- getNamespace("tidyr", "nest")
+      unest_fx <- getNamespace("tidyr")$unnest
+      nest_fx <- getNamespace("tidyr")$nest
       results <- tibble::tibble(
         id = record_id,
         title = rec$metadata$title,
