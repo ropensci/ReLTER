@@ -176,7 +176,7 @@ produce_network_points_map <- function(networkDEIMSID, countryCode) {
   Please check again the Country code.
   Compare the code provided with the list of code in
   https://en.wikipedia.org/wiki/ISO_3166\n----\n")
-        print(mapOfSites)
+        # print(mapOfSites)
         }
       } else {
         message("\n----\nThe maps cannot be created because coordinates,
