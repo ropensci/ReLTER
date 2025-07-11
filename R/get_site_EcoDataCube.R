@@ -28,19 +28,19 @@
 #' Default tempdir()
 #' @details Supported datasets from the EcoDataCube repository include:
 #' \tabular{llcr}{
-#'  dataset       \tab full name                                \tab date required      \tab temporal extent             \tab  res. \cr
-#'  ------------- \tab ---------------------------------------- \tab ------------- \tab ----- \tab --------------------------- \tab ----- \cr
-#'  CHELSA_precip \tab CHELSA Monthly accumulated precipitation \tab yes      \tab 2000-01-01 00:00:00 UTC–2019-06-30 00:00:00 UTC \tab 1000 \cr
-#'  clc_2017      \tab Corine Landcover (CLC+) 2017-2019        \tab no       \tab 2017-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC \tab 10   \cr
-#'  clc_2020      \tab Corine Landcover (CLC+) 2020-2022        \tab no       \tab 2017-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC \tab 10   \cr
-#'  crop_map      \tab EUCROPMAP Pan-EU year 2022               \tab no       \tab 2022-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC \tab 10   \cr
-#'  DTM_30m       \tab OpenLandMap Ensemble Digital Terrain Model \tab no  \tab 2006-01-01 00:00:00 UTC–2015-12-31 00:00:00 UTC \tab 30   \cr
-#'  MODIS_LST_day \tab MOD11A2 monthly land surface temp. (day)   \tab yes \tab 2000-01-01 00:00:00 UTC–2021-12-31 00:00:00 UTC \tab 1000 \cr
-#'  MODIS_LST_night\tab MOD11A2 monthly land surface temp. (night)\tab yes \tab 2000-01-01 00:00:00 UTC–2021-12-31 00:00:00 UTC \tab 1000 \cr
-#'  NDVI_bimonthly \tab Cloud-free reconstructed Landsat bimonthly NDVI \tab yes \tab 2000-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC \tab 30   \cr
-#'  NDVI_yearly   \tab Cloud free reconstructed yearly Landsat NDVI     \tab yes \tab 2000-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC \tab 30    \cr
-#'  NDWI_bimonthly  \tab Cloud free reconstructed bi-monthly NDWI (Gao)   \tab yes \tab 2000-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC \tab 30    \cr
-#'  soil_type     \tab AI4SoilHealth: Soil type dominant class          \tab no  \tab 2000-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC \tab 30    \cr
+#'  dataset       \tab full name                                \tab date required  \tab temporal extent                  \cr
+#'  ------------- \tab ---------------------------------------- \tab ---------------\tab -------------------------------  \cr
+#'  CHELSA_precip \tab CHELSA Monthly accumulated precipitation \tab yes      \tab 2000-01-01 00:00:00 UTC–2019-06-30 00:00:00 UTC  \cr
+#'  clc_2017      \tab Corine Landcover (CLC+) 2017-2019        \tab no       \tab 2017-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC  \cr
+#'  clc_2020      \tab Corine Landcover (CLC+) 2020-2022        \tab no       \tab 2017-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC  \cr
+#'  crop_map      \tab EUCROPMAP Pan-EU year 2022               \tab no       \tab 2022-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC  \cr
+#'  DTM_30m       \tab OpenLandMap Ensemble Digital Terrain Model \tab no  \tab 2006-01-01 00:00:00 UTC–2015-12-31 00:00:00 UTC     \cr
+#'  MODIS_LST_day \tab MOD11A2 monthly land surface temp. (day)   \tab yes \tab 2000-01-01 00:00:00 UTC–2021-12-31 00:00:00 UTC     \cr
+#'  MODIS_LST_night\tab MOD11A2 monthly land surface temp. (night)\tab yes \tab 2000-01-01 00:00:00 UTC–2021-12-31 00:00:00 UTC     \cr
+#'  NDVI_bimonthly \tab Cloud-free reconstructed Landsat bimonthly NDVI \tab yes \tab 2000-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC \cr
+#'  NDVI_yearly   \tab Cloud free reconstructed yearly Landsat NDVI     \tab yes \tab 2000-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC \cr
+#'  NDWI_bimonthly  \tab Cloud free reconstructed bi-monthly NDWI (Gao)   \tab yes \tab 2000-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC \cr
+#'  soil_type     \tab AI4SoilHealth: Soil type dominant class          \tab no  \tab 2000-01-01 00:00:00 UTC–2022-12-31 00:00:00 UTC \cr
 #'  }
 
 #' All datasets are georeferenced to the
