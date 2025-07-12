@@ -109,19 +109,21 @@ test_that("Output of dataset function constructs ‘tibble’ as expected", {
 
 test_that("Wrong input (but URL) constructs a NULL object", {
   withr::local_envvar("LOCAL_DEIMS" = FALSE)
-  result <- ReLTER::get_dataset_info(
+  result_list <- ReLTER::get_dataset_info(
     datasetid = "https://deims.org/dataset/ljhnhbkihubib",
     show_map = FALSE
   )
+  result <- result_list$data
   expect_type(result, "NULL")
 })
 
 test_that("Wrong input (not URL) constructs an empty tibble", {
   withr::local_envvar("LOCAL_DEIMS" = FALSE)
-  result <- ReLTER::get_dataset_info(
+  result_list <- ReLTER::get_dataset_info(
     datasetid = "ljhnhbkihubib",
     show_map = FALSE
   )
+  result <- result_list$data
   expect_type(result, "NULL")
 })
 
