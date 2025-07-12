@@ -17,10 +17,10 @@ test_that("Expect error if internet connection is down", {
     httptest2::without_internet(
       result <- ReLTER::produce_site_map(
         deimsid = TESTURLSite,
-        countryCode = "ITA",
-        listOfSites = sitesNetwork,
-        gridNx = 0.7,
-        gridNy = 0.35
+        #countryCode = "ITA",
+        #listOfSites = sitesNetwork,
+        #gridNx = 0.7,
+        #gridNy = 0.35
       )
     ),
     "GET"
