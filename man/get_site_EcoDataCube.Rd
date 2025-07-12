@@ -79,14 +79,13 @@ EPSG:3035 coordinate reference system.
 # Example of TERENO Harsleben
 deimsid = "https://deims.org/c945abe4-3d40-46d1-b5d0-33127c35c6ab"
 # NDVI
-\donttest{
 harsleben_ndvi <- get_site_EcoDataCube(
   deimsid = deimsid,
   dataset = "NDVI_bimonthly",
   dataset_year = "2021",
   dataset_month = "06"
 )
-}
+
 # EUCrop map
 harsleben_crop <- get_site_EcoDataCube(
   deimsid = deimsid,
@@ -94,6 +93,7 @@ harsleben_crop <- get_site_EcoDataCube(
 )
 # MODIS Land Surface Temperature, 
 # Kalkalpen National Park - Austria
+\dontrun{
 deimsid = "https://deims.org/49515dda-1198-4013-8f43-c33e107af081"
 kalkalpen_LST_day <- get_site_EcoDataCube(
   deimsid = deimsid,
@@ -101,7 +101,7 @@ kalkalpen_LST_day <- get_site_EcoDataCube(
   dataset_year = "2010",
   dataset_month = "01"
 )
-
+}
 }
 \references{
 \insertRef{dplyrR}{ReLTER}
