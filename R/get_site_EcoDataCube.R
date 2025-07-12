@@ -73,6 +73,7 @@
 #'   dataset_year = "2021",
 #'   dataset_month = "06"
 #' )
+#' 
 #' # EUCrop map
 #' harsleben_crop <- get_site_EcoDataCube(
 #'   deimsid = deimsid,
@@ -80,6 +81,7 @@
 #' )
 #' # MODIS Land Surface Temperature, 
 #' # Kalkalpen National Park - Austria
+#' \dontrun{
 #' deimsid = "https://deims.org/49515dda-1198-4013-8f43-c33e107af081"
 #' kalkalpen_LST_day <- get_site_EcoDataCube(
 #'   deimsid = deimsid,
@@ -87,7 +89,7 @@
 #'   dataset_year = "2010",
 #'   dataset_month = "01"
 #' )
-#' 
+#' }
 #' @md
 
 ### function get_site_EcoDataCube()

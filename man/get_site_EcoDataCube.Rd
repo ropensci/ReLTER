@@ -79,12 +79,14 @@ EPSG:3035 coordinate reference system.
 # Example of TERENO Harsleben
 deimsid = "https://deims.org/c945abe4-3d40-46d1-b5d0-33127c35c6ab"
 # NDVI
+\donttest{
 harsleben_ndvi <- get_site_EcoDataCube(
   deimsid = deimsid,
   dataset = "NDVI_bimonthly",
   dataset_year = "2021",
   dataset_month = "06"
 )
+}
 # EUCrop map
 harsleben_crop <- get_site_EcoDataCube(
   deimsid = deimsid,
