@@ -49,7 +49,7 @@ test_that("Wrong countryCode constructs a NULL object", {
       "https://deims.org/networks/e904354a-f3a0-40ce-a9b5-61741f66c824",
     countryCode = "EEA"
   )
-  expect_s3_class(result, "NULL")
+  expect_type(result, "NULL")
 
   # expect_true(ncol(result$tm_shape$shp) == 4)
   # expect_true(all(names(result$tm_shape$shp) == c(

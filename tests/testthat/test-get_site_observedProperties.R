@@ -21,9 +21,10 @@ test_that("Output of site observed properties function constructs ‘tibble’ a
     deimsid = TESTURLSite,
     categories = "observedProperties"
   )
-  expect_s3_class(result, "tbl_df")
-  expect_true(ncol(result) == 12)
-  expect_true(all(names(result) == c(
+  rd <- result$data
+  expect_s3_class(rd, "tbl_df")
+  expect_true(ncol(rd) == 12)
+  expect_true(all(names(rd) == c(
     "title", "uri",
     "created", "changed",
     "geoCoord", "country",
@@ -33,20 +34,20 @@ test_that("Output of site observed properties function constructs ‘tibble’ a
     "observedProperties"
   )))
 
-  expect_type(result$title, "character")
-  expect_type(result$uri, "character")
-  expect_type(result$geoCoord, "character")
-  expect_type(result$country, "character")
+  expect_type(rd$title, "character")
+  expect_type(rd$uri, "character")
+  expect_type(rd$geoCoord, "character")
+  expect_type(rd$country, "character")
 })
 
 test_that("Wrong input (but URL) constructs a tibble with empty data", {
   withr::local_envvar("LOCAL_DEIMS" = FALSE)
   result <- ReLTER:::get_site_info(deimsid = "https://deims.org/ljhnhbkihubib")
-  expect_type(result, "NULL")
+  expect_type(result$data, "NULL")
 })
 
 test_that("Wrong input (not URL) constructs an empty tibble", {
   withr::local_envvar("LOCAL_DEIMS" = FALSE)
   result <- ReLTER:::get_site_info(deimsid = "ljhnhbkihubib")
-  expect_type(result, "NULL")
+  expect_type(result$data, "NULL")
 })
