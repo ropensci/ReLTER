@@ -41,5 +41,5 @@ produce_site_qrcode <- function(deimsid, do_plot = FALSE) {
       plot(col = c("White", "#1479BC"))
     a
   }
-  plot(res)
+  return(res)
 }

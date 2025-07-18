@@ -22,7 +22,7 @@ parameter, if the network has a extraterritorial sites those will not
 represented.}
 }
 \value{
-The output of the function is a \code{tmap} plot containing an image of
+The output of the function is a \code{ggplot2} plot containing an image of
 geographic distribution of the network of sites present in the chosen
 country.
 }
@@ -81,7 +81,7 @@ map_LTERGermanSites <- map_LTERGermanSites +
 
 }
 \references{
-\insertRef{httr2}{ReLTER}
+\insertRef{httr2R}{ReLTER}
 
 \insertRef{jsonliteR}{ReLTER}
 

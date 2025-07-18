@@ -318,20 +318,6 @@ references:
   year: '2023'
   url: https://CRAN.R-project.org/package=magrittr
 - type: software
-  title: MODIStsp
-  abstract: 'MODIStsp: Find, Download and Process MODIS Land Products Data'
-  notes: Imports
-  authors:
-  - family-names: Busetto
-    given-names: Lorenzo
-    orcid: https://orcid.org/0000-0001-9634-6038
-  - family-names: Ranghetti
-    given-names: Luigi
-    email: luigi@ranghetti.info
-    orcid: https://orcid.org/0000-0001-6207-5188
-  year: '2023'
-  url: https://CRAN.R-project.org/package=MODIStsp
-- type: software
   title: purrr
   abstract: 'purrr: Functional Programming Tools'
   notes: Imports
@@ -359,18 +345,6 @@ references:
   year: '2023'
   url: https://CRAN.R-project.org/package=qrcode
 - type: software
-  title: raster
-  abstract: 'raster: Geographic Data Analysis and Modeling'
-  notes: Imports
-  authors:
-  - family-names: Hijmans
-    given-names: Robert J.
-    email: r.hijmans@gmail.com
-    orcid: https://orcid.org/0000-0001-5872-2872
-  year: '2023'
-  url: https://CRAN.R-project.org/package=raster
-  version: '>= 3.3-13'
-- type: software
   title: RColorBrewer
   abstract: 'RColorBrewer: ColorBrewer Palettes'
   notes: Imports
@@ -390,22 +364,6 @@ references:
     email: georgi.boshnakov@manchester.ac.uk
   year: '2023'
   url: https://CRAN.R-project.org/package=Rdpack
-- type: software
-  title: readr
-  abstract: 'readr: Read Rectangular Text Data'
-  notes: Imports
-  authors:
-  - family-names: Wickham
-    given-names: Hadley
-    email: hadley@rstudio.com
-  - family-names: Hester
-    given-names: Jim
-  - family-names: Bryan
-    given-names: Jennifer
-    email: jenny@rstudio.com
-    orcid: https://orcid.org/0000-0002-6983-2759
-  year: '2023'
-  url: https://CRAN.R-project.org/package=readr
 - type: software
   title: rosm
   abstract: 'rosm: Plot Raster Map Tiles from Open Street Map and Other Sources'

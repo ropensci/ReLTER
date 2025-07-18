@@ -152,7 +152,7 @@ test_that("elter_reporting_produce_data_object
   expect_named(research_object, c("filename", "type", "deimsid",
                                   "DATA", "STATION", "METHOD",
                                   "REFERENCE", "EVENT", "SAMPLE",
-                                  "LICENCE"))
+                                  "LICENSE"))
 })
 
 # NOTE: please refactor this following suggestions from
@@ -197,10 +197,10 @@ test_that("reporting_save_archive write zip file on disk", {
   )
 
   fpath <- tempdir()
-  fname <- "test_archive"
+  #fname <- "test_archive"
   savedFiles <- reporting_save_archive(
     research_object,
-    filename = fname,
+    #filename = fname,
     filepath = fpath,
     saveRDS = TRUE
   )

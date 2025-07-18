@@ -22,7 +22,7 @@ test_that("Output of network point function constructs ‘tibble’ as expected"
       "https://deims.org/networks/e904354a-f3a0-40ce-a9b5-61741f66c824",
     countryCode = "DEU"
   )
-  expect_s3_class(result, "tmap")
+  expect_s3_class(result, "ggplot")
 })
 
 test_that("Wrong networkDEIMSID (but URL) constructs a NULL object", {
@@ -49,17 +49,17 @@ test_that("Wrong countryCode constructs a NULL object", {
       "https://deims.org/networks/e904354a-f3a0-40ce-a9b5-61741f66c824",
     countryCode = "EEA"
   )
-  expect_s3_class(result, "tmap")
+  expect_type(result, "NULL")
 
-  expect_true(ncol(result$tm_shape$shp) == 4)
-  expect_true(all(names(result$tm_shape$shp) == c(
-    "title", "uri", "changed", "coordinates"
-  )))
-
-  expect_type(result$tm_shape$shp$title, "character")
-  expect_type(result$tm_shape$shp$uri, "character")
-  expect_type(result$tm_shape$shp$changed, "character")
-  expect_type(result$tm_shape$shp$coordinates, "list")
+  # expect_true(ncol(result$tm_shape$shp) == 4)
+  # expect_true(all(names(result$tm_shape$shp) == c(
+  #   "title", "uri", "changed", "coordinates"
+  # )))
+  # 
+  # expect_type(result$tm_shape$shp$title, "NULL")
+  # expect_type(result$tm_shape$shp$uri, "NULL")
+  # expect_type(result$tm_shape$shp$changed, "NULL")
+  # expect_type(result$tm_shape$shp$coordinates, "NULL")
 })
 
 test_that("Wrong both networkDEIMSID (but URL) and countryCode constructs
@@ -89,5 +89,5 @@ test_that("Output of site affiliation information function constructs ‘sf' wit
       "https://deims.org/networks/e904354a-f3a0-40ce-a9b5-61741f66c824",
     countryCode = "DEU"
   )
-  expect_s3_class(result, "tmap")
+  expect_s3_class(result, "ggplot")
 })

@@ -20,6 +20,7 @@
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom sf st_transform st_as_sfc st_sf st_bbox st_simplify
 #' @importFrom tibble tribble
+#' @importFrom utils tail
 #' @importFrom ggplot2 ggplot geom_sf theme element_blank labs 
 #' @importFrom ggplot2 theme_minimal element_text coord_sf element_rect
 #' @seealso [ggspatial::annotation_map_tile()]
@@ -85,6 +86,12 @@ produce_site_map <- function(deimsid, scale_location = "bl", arrow_location = "t
     stop(
       "\n----\nThe function 'produce_site_map()' requires the optional package 'geodata'.\n",
       "Please install it with: install.packages(\"geodata\")\n----\n"
+    )
+  }
+  if (!requireNamespace("prettymapr", quietly = TRUE)) {
+    stop(
+      "\n----\nThe function 'produce_site_map()' requires the optional package 'prettymapr'.\n",
+      "Please install it with: install.packages(\"prettymapr\")\n----\n"
     )
   }
   # Load required packages

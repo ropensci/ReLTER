@@ -17,10 +17,11 @@ skip_if_offline(host = "deims.org")
 
 test_that("Output of site observed properties function constructs ‘tibble’ as
           expected", {
-  result <- ReLTER:::get_site_info(
+  result_list <- ReLTER:::get_site_info(
     deimsid = TESTURLSite,
     categories = "observedProperties"
   )
+  result <- result_list$data
   expect_s3_class(result, "tbl_df")
   expect_true(ncol(result) == 12)
   expect_true(all(names(result) == c(
@@ -42,11 +43,11 @@ test_that("Output of site observed properties function constructs ‘tibble’ a
 test_that("Wrong input (but URL) constructs a tibble with empty data", {
   withr::local_envvar("LOCAL_DEIMS" = FALSE)
   result <- ReLTER:::get_site_info(deimsid = "https://deims.org/ljhnhbkihubib")
-  expect_type(result, "NULL")
+  expect_type(result$data, "NULL")
 })
 
 test_that("Wrong input (not URL) constructs an empty tibble", {
   withr::local_envvar("LOCAL_DEIMS" = FALSE)
   result <- ReLTER:::get_site_info(deimsid = "ljhnhbkihubib")
-  expect_type(result, "NULL")
+  expect_type(result$data, "NULL")
 })

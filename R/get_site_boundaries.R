@@ -29,9 +29,10 @@
 #' @importFrom geojsonsf geojson_sf
 #' @importFrom leaflet leaflet addTiles addPolygons addCircleMarkers
 #' @importFrom sf st_sf st_sfc st_geometry_type
-#' @importFrom utils capture.output
+#' @importFrom utils capture.output URLencode
 #' @keywords internal
 #' @examples
+#' \dontrun{
 #' # LTER Zöbelboden
 #' boundaries <- get_site_boundaries(
 #'   deimsid = "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6",
@@ -39,7 +40,7 @@
 #'   with_locations = TRUE
 #' )
 #' boundaries
-#' 
+#' }
 #' @section The function output:
 #' \figure{get_site_boundaries_fig.png}{Map of "LTER Zöbelboden, Austria" 
 #' with locations}

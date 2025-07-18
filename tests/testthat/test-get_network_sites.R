@@ -18,9 +18,10 @@ skip_if_offline(host = "deims.org")
 
 test_that("Output of network sites information function constructs 'sf' and
           'data.frame' as expected", {
-  result <- ReLTER::get_network_sites(
+  result_list <- ReLTER::get_network_sites(
     networkDEIMSID = TESTURLNetwork
   )
+  result <- result_list$network_sites
   expect_s3_class(result, "sf")
   expect_s3_class(result, "tbl_df")
   expect_true(ncol(result) == 4)
@@ -35,24 +36,27 @@ test_that("Output of network sites information function constructs 'sf' and
 
 test_that("Wrong input (but URL) constructs a NULL object", {
   withr::local_envvar("LOCAL_DEIMS" = FALSE)
-  result <- ReLTER::get_network_sites(
+  result_list <- ReLTER::get_network_sites(
     networkDEIMSID = "https://deims.org/network/ljhnhbkihubib"
   )
+  result <- result_list$network_sites
   expect_type(result, "NULL")
 })
 
 test_that("Wrong input (not URL) constructs an empty tibble", {
   withr::local_envvar("LOCAL_DEIMS" = FALSE)
-  result <- ReLTER::get_network_sites(networkDEIMSID = "ljhnhbkihubib")
+  result_list <- ReLTER::get_network_sites(networkDEIMSID = "ljhnhbkihubib")
+  result <- result_list$network_sites
   expect_type(result, "NULL")
 })
 
 test_that("Output of get activities information function constructs 'sf' with
           valid geometries", {
-  result <- ReLTER::get_network_sites(
+  result_list <- ReLTER::get_network_sites(
     networkDEIMSID =
       "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
   )
+  result <- result_list$network_sites
   result_valid <- sf::st_is_valid(result$coordinates)
   expect_true(any(result_valid))
 })
