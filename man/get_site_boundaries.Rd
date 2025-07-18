@@ -11,8 +11,10 @@ get_site_boundaries(deimsid, show_map = FALSE, with_locations = FALSE)
 DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here}.}
 
-\item{show_map}{A \code{boolean}. When TRUE a \code{leflet} object (a map) is
-returned and plotted. Default FALSE.}
+\item{show_map}{A \code{boolean} or the string "return". When TRUE a \code{leflet}
+object (a map) is returned and plotted. Default FALSE.
+When the value is "return", the \code{leaflet} object is returned but not
+plotted.}
 
 \item{with_locations}{A \code{boolean}. When TRUE all site boundaries and
 related locations are returned (Sampling Location or Equipment Location).
@@ -22,11 +24,8 @@ Default FALSE.}
 The output of the function is a \code{list} with slots:
 \itemize{
 \item \code{data} An \code{sf} object with the the boundary of the
-site. if the boundary is missing from DEIMS-SDR, a \code{tibble}
-with the name and uri of the site.
-\item \code{map} A Leaflet map of the site, if requested with
-\code{show_map}, otherwise NULL. If \code{with_locations} is TRUE also the boundaries of the
-locations related to the site are plotted.
+site. If the boundary is missing from DEIMS-SDR, a \code{tibble}
+with the name and URI of the site.
 \item \code{locations} A \code{tibble} with the locations' details
 if \code{with_locations} is TRUE, otherwise NULL.
 }

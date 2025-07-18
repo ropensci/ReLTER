@@ -16,12 +16,8 @@ The DEIMS.iD of activity is the URL for the location page.}
 is shown. Default FALSE.}
 }
 \value{
-The output of the function is a \code{list} with two elements:
-\itemize{
-\item \code{map} A Leaflet map with the location, if requested with
-\code{show_map}.
-\item \code{data} A \code{data.frame} with the information about the location.
-}
+The output of the function is a \code{tibble} with the information
+about the location.
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
@@ -78,15 +74,8 @@ location <- get_location_info(
 location
 
 }
-\references{
-\insertRef{utilsR}{ReLTER}
-
-\insertRef{dplyrR}{ReLTER}
-
-\insertRef{lubridateR}{ReLTER}
-
-\insertRef{unitsR}{ReLTER}
-}
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
+
+Paolo Tagliolato, phD \email{tagliolato.p@irea.cnr.it}
 }

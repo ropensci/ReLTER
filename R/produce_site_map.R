@@ -103,7 +103,7 @@ produce_site_map <- function(deimsid, scale_location = "bl", arrow_location = "t
     "Fresh water rivers", "#03a3b8", "#04d0eb",
     "Terrestrial", "#b07c03", "#e8a303"
   )
-  geoBonBiome <- siteInfo$data$geoBonBiome[[1]]
+  geoBonBiome <- siteInfo$geoBonBiome[[1]]
   if (length(geoBonBiome) > 1) {
     geoBonBiome = "Terrestrial"
   } else {
@@ -113,8 +113,8 @@ produce_site_map <- function(deimsid, scale_location = "bl", arrow_location = "t
   borderColor <-
     biomeColor$border[biomeColor$geoBonBiome == geoBonBiome]
   # Set the color and border color
-  networkID <- tail(siteInfo$data$networks[[1]]$uri, 1)
-  countryCode <- isoCodes$Alpha_3[isoCodes$Name == siteInfo$data$country]
+  networkID <- tail(siteInfo$networks[[1]]$uri, 1)
+  countryCode <- isoCodes$Alpha_3[isoCodes$Name == siteInfo$country]
   countryPlot <- produce_network_points_map(
     networkDEIMSID = networkID,
     countryCode = countryCode
@@ -131,7 +131,7 @@ produce_site_map <- function(deimsid, scale_location = "bl", arrow_location = "t
     )
   # Add the point of the site
   gadm_fx <- getExportedValue("geodata", "gadm")
-  point_sf <- sf::st_as_sfc(siteInfo$data$geoCoord, crs = 4326) 
+  point_sf <- sf::st_as_sfc(siteInfo$geoCoord, crs = 4326) 
   point_sf <- sf::st_sf(geometry = point_sf)
   country <- gadm_fx(country = countryCode, level = 0, path = tempdir())
   countryMap <- sf::st_as_sf(country) %>%
@@ -146,7 +146,7 @@ produce_site_map <- function(deimsid, scale_location = "bl", arrow_location = "t
     )
   
   # Create the site map with expanded bounding box
-  siteInfo_3857 <- sf::st_transform(siteInfo$data, crs = 3857)
+  siteInfo_3857 <- sf::st_transform(siteInfo, crs = 3857)
   bbox <- sf::st_bbox(siteInfo_3857)
   xrange <- bbox["xmax"] - bbox["xmin"]
   yrange <- bbox["ymax"] - bbox["ymin"]
@@ -171,8 +171,8 @@ produce_site_map <- function(deimsid, scale_location = "bl", arrow_location = "t
     ) +
     ggplot2::theme_minimal() +
     ggplot2::labs(
-      title = siteInfo$data$title.x,
-      subtitle = siteInfo$data$uri
+      title = siteInfo$title.x,
+      subtitle = siteInfo$uri
     ) +
     ggplot2::theme(
       plot.title = ggplot2::element_text(hjust = 0.5),

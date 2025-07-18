@@ -10,26 +10,10 @@
 #' The DEIMS.iD of activity is the URL for the location page.
 #' @param show_map A `boolean`. If TRUE a Leaflet map with occurrences
 #' is shown. Default FALSE.
-#' @return The output of the function is a `list` with two elements:
-#' \itemize{
-#' \item \code{map} A Leaflet map with the location, if requested with
-#' `show_map`.
-#' \item \code{data} A `data.frame` with the information about the location.
-#' }
+#' @return The output of the function is a `tibble` with the information
+#' about the location.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @importFrom utils capture.output
-#' @importFrom dplyr as_tibble mutate select slice
-#' @importFrom lubridate as_datetime
-#' @importFrom units set_units
-#' @importFrom sf st_as_text st_point st_polygon st_multipolygon st_as_sf
-#' @references
-#'   \insertRef{utilsR}{ReLTER}
-#'   
-#'   \insertRef{dplyrR}{ReLTER}
-#'   
-#'   \insertRef{lubridateR}{ReLTER}
-#'
-#'   \insertRef{unitsR}{ReLTER}
+#' @author Paolo Tagliolato, phD \email{tagliolato.p@@irea.cnr.it}
 #' @export
 #' @examples
 #' # Sampling location multipolygon
@@ -74,10 +58,57 @@
 #'
 #' @section The function output:
 #' \figure{get_location_info_fig.png}{Map of "LTER Zöbelboden, Austria, 
-#' Project area" location}
+#' Project area" location} 
 #'
 ### function get_location_info
 get_location_info <- function(locationid, show_map = FALSE) {
+  l <- get_location_info_internal(
+    locationid = locationid,
+    show_map = show_map
+  )
+  if (show_map) {
+    print(l$map)
+  }
+  return(l$data)
+}
+
+#' Obtain the information about of an eLTER location.
+#' @description `r lifecycle::badge("stable")`
+#' This function obtains the information about of an eLTER
+#' location (e.g.
+#' \url{https://deims.org/location/12b38f3f-7e72-425a-80c7-7cad35ce4c7b})
+#' provided in \href{https://deims.org/}{DEIMS-SDR catalogue}.
+#' @param locationid A `character`. It is the DEIMS ID of location make from
+#' DEIMS-SDR website. DEIMS ID information
+#' \href{https://deims.org/docs/deimsid.html}{here}.
+#' The DEIMS.iD of activity is the URL for the location page.
+#' @param show_map A `boolean`. If TRUE a Leaflet map with occurrences
+#' is shown. Default FALSE.
+#' @return The output of the function is a `list` with two elements:
+#' \itemize{
+#' \item \code{map} A Leaflet map with the location, if requested with
+#' `show_map`.
+#' \item \code{data} A `data.frame` with the information about the location.
+#' }
+#' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
+#' @author Paolo Tagliolato, phD \email{tagliolato.p@@irea.cnr.it}
+#' @importFrom utils capture.output
+#' @importFrom dplyr as_tibble mutate select slice
+#' @importFrom lubridate as_datetime
+#' @importFrom units set_units
+#' @importFrom sf st_as_text st_point st_polygon st_multipolygon st_as_sf
+#' @references
+#'   \insertRef{utilsR}{ReLTER}
+#'   
+#'   \insertRef{dplyrR}{ReLTER}
+#'   
+#'   \insertRef{lubridateR}{ReLTER}
+#'
+#'   \insertRef{unitsR}{ReLTER}
+#' @keywords internal
+#'
+### function get_location_info_internal
+get_location_info_internal <- function(locationid, show_map = FALSE) {
   qo <- queries_jq_deims[[get_deims_API_version()]]$location_info_type
   jj <- get_id(locationid, qo$path)
   if (is.na(attr(jj, "status"))) {
@@ -229,7 +260,7 @@ get_location_info <- function(locationid, show_map = FALSE) {
     stop("\n----\nPage Not Found. The requested page could not be found. Please
 check again the location.iD\n----\n")
   }
-  #Output
+  # Output
   return(list(
     map = map,
     data = geoLocation

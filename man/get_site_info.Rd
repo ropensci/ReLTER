@@ -24,22 +24,17 @@ Possible value are:
 Multiple values can be indicated.
 A site's boundary is always returned.}
 
-\item{show_map}{A \code{boolean}. When TRUE a \code{leflet} object (a map) is
-returned and plotted. Default FALSE.}
+\item{show_map}{A \code{boolean}. When TRUE a \code{leaflet} map is plotted as side
+effect. Default FALSE.}
 
-\item{with_locations}{A \code{boolean}. When TRUE all site boundaries and
-related locations are returned (Sampling Location or Equipment Location).
+\item{with_locations}{A \code{boolean}. When TRUE, and only \code{show_map} is TRUE,
+all site related locations are showed in the plotted map.
 Default FALSE.}
 }
 \value{
-The output of the function is a \code{list} with two elements:
-\itemize{
-\item \code{map} A Leaflet map with the location if requested with
-\code{show_map}.
-\item \code{data} A \code{data.frame} with the information about the location.
-\item \code{locations} A \code{data.frame} with the information about the
-locations, if requested with \code{with_locations}.
-}
+The output of the function is a \code{sf} with the information about
+the site.
+If the boundary is missing from DEIMS-SDR a \code{tibble} is returned.
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
@@ -52,7 +47,7 @@ site <- get_site_info(
   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
   categories = c("EnvCharacts", "Affiliations"),
   show_map = TRUE,
-  with_locations = TRUE
+  with_locations = FALSE
 )
 site
 

@@ -70,4 +70,11 @@ test_that("get_site_boundaries with locations=FALSE and correct deimsid return l
   expect_true(length(names(result)) > 0)
   expect_true(all(c("data", "map", "locations") %in% names(result)))
 })
-  
+
+# test for the site without boundary
+#' boundariesCina <- get_site_boundaries(
+#'   deimsid = "https://deims.org/b72a0976-15c0-4c8e-9254-b3bcbb42f95f",
+#'   show_map = TRUE,
+#'   with_locations = FALSE
+#' )
+#' boundariesCina
