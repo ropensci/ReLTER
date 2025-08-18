@@ -12,3 +12,5 @@ rosm.cache
 submission_rOpenSci
 _pkgdown.yaml
 *.rds
+/doc/
+/Meta/

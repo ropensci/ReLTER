@@ -1,3 +1,20 @@
+---
+output: html_document
+---
+# ReLTER 2.3.0 Release Notes
+
+Version 2.3.0 released on 30/07/2025
+
+## Changes
+
+* Two functions were deprecated: `get_site_MODIS` and `get_site_ODS`
+* These were replaced by a new function `get_site_EcoDataCube`.
+* Dependency on the older `raster` package was removed, and `terra` used instead.
+* Some improvements to vignettes and documentation.
+* Some rarely used packages removed, to reduce number of dependencies (i.e. `purrr`)
+* All map plots use `leaflet` (requires `leaflet` >= 2.1.1)
+
+
 # ReLTER 2.2.0 Release Notes
 
 v2.2.0 was released on 29/11/2023

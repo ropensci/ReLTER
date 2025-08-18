@@ -18,6 +18,7 @@
 #' @importFrom httr2 req_perform resp_check_status resp_body_string
 #' @importFrom jqr jq
 #' @importFrom jsonlite stream_in
+#' @importFrom utils strcapture
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @author Luigi Ranghetti, phD (2021) \email{luigi@@ranghetti.info}
 #' @author Paolo Tagliolato, PhD (2021) \email{tagliolato.p@@irea.cnr.it}

@@ -1,5 +1,5 @@
 ---
-title: "How to get the info of a (one) LTER Site by knowing the DEIMS.ID"
+title: "Obtain information about one LTER Site using the DEIMS ID"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{How to get the info of a (one) LTER Site by knowing the DEIMS.ID}
@@ -9,7 +9,9 @@ vignette: >
 author: "Alessandro Oggioni, Paolo Tagliolato"
 ---
 
-For each LTER site the information are provided, by site manager, into DEIMS-SDR registry (see <https://deims.org>). The LTER site's information are grouped into main sections, the most important ones are:
+For each LTER site the information is provided by the site manager
+in the DEIMS-SDR registry (see <https://deims.org>). The LTER site information 
+is grouped into main sections, the most important ones are:
 
 * Affiliations,
 * Boundaries,
@@ -29,9 +31,16 @@ The [`get_site_info`](https://docs.ropensci.org/ReLTER/reference/get_site_info.h
 If the aim is to obtain the info about in which networks/RIs the site is listed, you can: 
 
 ```{r aff, warning=FALSE}
+<<<<<<< HEAD:vignettes/site_information.Rmd
 siteAffiliations <- ReLTER::get_site_info(
   deimsid = 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe',
   categories = 'Affiliations'
+=======
+# For this example, the Lago Maggiore in Italy
+deimsid <- 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe'
+siteAffiliations <- ReLTER::get_site_info(deimsid = deimsid,
+  category = 'Affiliations'
+>>>>>>> 19e5367 (Implements precompile of vignettes):vignettes/site_information.Rmd.orig
 )
 # network(s) where the site is involved in
 knitr::kable(
@@ -47,23 +56,42 @@ knitr::kable(
 
 ## Get boundaries info of the LTER site:
 
-If the aim is to obtain the info about the geographic extent covering the area of all measurements, you can: 
+Get information about the geographic extent of the site: 
 
 ```{r bound, warning=FALSE}
+<<<<<<< HEAD:vignettes/site_information.Rmd
 siteInfo <- ReLTER::get_site_info(
   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
   show_map = TRUE
 )
+=======
+library(leaflet)
+siteBoundaries <- ReLTER::get_site_info(deimsid = deimsid,
+  category = "Boundaries"
+)
+
+leaflet(data = sitesBoundaries) %>%
+  addPolygons() %>% 
+  addProviderTiles(provider = "CartoDB.PositronNoLabels",
+                   group = "Basemap", layerId = 123) %>%
+  addTiles("http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png")
+  
+>>>>>>> 19e5367 (Implements precompile of vignettes):vignettes/site_information.Rmd.orig
 ```
 
 ## Get Contacts info of the LTER site:
 
-If the aim is to obtain the info about the reference to the contact person responsible for the site, the organisation operating the site and its monitoring programme(s), the reference to the organisation or the responsible national authority for funding and strategic decisions about the site or the full name of the person(s) or organisation(s) who created the documentation for the site, you can: 
+Get information about the contact person responsible for the site, the organisation operating the site and its monitoring programs, the reference to the organisation or the responsible national authority for funding and strategic decisions about the site , full name of the person(s) or organisation(s) who created the documentation for the site: 
 
 ```{r contacts, warning=FALSE}
+<<<<<<< HEAD:vignettes/site_information.Rmd
 siteContact <- ReLTER::get_site_info(
   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
   categories = "Contacts"
+=======
+siteContact <- ReLTER::get_site_info(deimsid = deimsid,
+  category = "Contacts"
+>>>>>>> 19e5367 (Implements precompile of vignettes):vignettes/site_information.Rmd.orig
 )
 # site manager(s)
 knitr::kable(
@@ -90,6 +118,7 @@ knitr::kable(
 The same approach could be used for other category information.
 
 ```{r otherInfo}
+<<<<<<< HEAD:vignettes/site_information.Rmd
 siteGeneral <- ReLTER::get_site_info(
   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
   categories = "General"
@@ -103,6 +132,18 @@ siteInfrastructure$data$collection[[1]]
 siteEnvCharacts <- ReLTER::get_site_info(
   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
   categories = "EnvCharacts"
+=======
+siteGeneral <- ReLTER::get_site_info(deimsid = deimsid,
+  category = "General"
+)
+siteGeneral
+siteInfrastructure <- ReLTER::get_site_info(deimsid = deimsid, 
+  category = "Infrastructure"
+)
+siteInfrastructure$collection[[1]]
+siteEnvCharacts <- ReLTER::get_site_info(deimsid = deimsid, 
+  category = "EnvCharacts"
+>>>>>>> 19e5367 (Implements precompile of vignettes):vignettes/site_information.Rmd.orig
 )
 siteEnvCharacts$data
 ```
@@ -129,6 +170,7 @@ By selecting the category Infrastructure you can obtain info as:
 ## Get list of parameters or related resources declared to the LTER site:
 
 ```{r listInfo}
+<<<<<<< HEAD:vignettes/site_information.Rmd
 siteObsProp <- ReLTER::get_site_info(
   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
   categories = "observedProperties"
@@ -147,6 +189,24 @@ siteRelateRes <- ReLTER::get_site_info(
 knitr::kable(
   siteRelateRes$data$relatedResources[[1]],
   caption = "The list of the funding agency(ies) of site"
+=======
+siteObsProp <- ReLTER::get_site_info(deimsid = deimsid,
+  category = "observedProperties"
+)
+# parameter(s) collected in the site
+knitr::kable(
+  head(siteObsProp$observedProperties[[1]], 10),
+  caption = "List of Observed Properties of site (partial)"
+)
+
+siteRelateRes <- ReLTER::get_site_info(deimsid = deimsid,
+  category = "RelateRes"
+)
+# resource(s) related to the site (e.g. datasets, activities)
+knitr::kable(
+  siteRelateRes$relatedResources[[1]],
+  caption = "List of funding agencies of site"
+>>>>>>> 19e5367 (Implements precompile of vignettes):vignettes/site_information.Rmd.orig
 )
 ```
 

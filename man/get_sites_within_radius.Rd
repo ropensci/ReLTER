@@ -7,7 +7,7 @@
 get_sites_within_radius(
   lat = 39.1386,
   lon = -8.33305,
-  distance_in_meters = 1000,
+  distance = 1,
   elevation_range = c(NULL, NULL),
   show_map = TRUE
 )
@@ -17,7 +17,7 @@ get_sites_within_radius(
 
 \item{lon}{longitude of radius center}
 
-\item{distance_in_meters}{distance from point in meters}
+\item{distance}{distance from point (actually it is in degrees for a limitation of the endpoint)}
 
 \item{elevation_range}{min and max elevation in meters}
 
@@ -28,7 +28,14 @@ list of deims_id, distance from given coordinates
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
-retrieve all sites within a given distance (in meters) from
+retrieve all sites within a given distance from
 the center point (in coordinates lat, lon), and in
 the (optionally) specified elevation range.
+}
+\examples{
+# example code
+get_sites_within_radius(lat=39.1386, lon=-8.33305, distance=900)
+}
+\seealso{
+\code{\link[geojsonsf:geojson_sf]{geojsonsf::geojson_sf()}}
 }

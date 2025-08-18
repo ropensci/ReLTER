@@ -13,6 +13,9 @@
 #' @importFrom lubridate as_date
 #' @importFrom dplyr mutate
 #' @importFrom units set_units
+#' @importFrom utils ls.str
+#' @importFrom graphics title
+#' @importFrom stats time
 #' @seealso [zen4R::ZenodoManager()]
 #' @seealso [tidyr::unnest()]
 #' @seealso [tidyr::nest()]
@@ -27,9 +30,9 @@
 #'   
 #'   \insertRef{unitsR}{ReLTER}
 #'   
-#'   \insertRef{zen4R}{ReLTER}
+#'   \insertRef{blondel_2025}{ReLTER}
 #'   
-#'   \insertRef{tidyr}{ReLTER}
+#'   \insertRef{tidyrR}{ReLTER}
 #' @export
 #' @examples
 #' \dontrun{
@@ -72,8 +75,8 @@ get_zenodo_data <- function(doi, rdata_exist = TRUE) {
               Please provide a DOI of Zenodo dataset.\n----\n")
     } else {
       record_id <- stringr::str_replace_all(rec$id, "[./]", "_")
-      unest_fx <- getNamespace("tidyr", "unnest")
-      nest_fx <- getNamespace("tidyr", "nest")
+      unest_fx <- getNamespace("tidyr")$unnest
+      nest_fx <- getNamespace("tidyr")$nest
       results <- tibble::tibble(
         id = record_id,
         title = rec$metadata$title,

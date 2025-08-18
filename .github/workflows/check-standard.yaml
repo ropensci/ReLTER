@@ -19,9 +19,9 @@ jobs:
         config:
           - {os: macOS-latest,   r: 'release', usgs_user: 'modistsp_ci_macos_release',   test_mode: 'FALSE'}
           - {os: windows-latest, r: 'release', usgs_user: 'modistsp_ci_windows_release', test_mode: 'FALSE'}
-          - {os: ubuntu-20.04,   r: 'devel',   usgs_user: 'modistsp_ci_ubuntu_release',  test_mode: 'FALSE', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          - {os: ubuntu-20.04,   r: 'release', usgs_user: 'modistsp_ci_ubuntu_devel',    test_mode: 'FALSE', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          - {os: ubuntu-20.04,   r: 'oldrel',  usgs_user: 'modistsp_ci_ubuntu_oldrel',   test_mode: 'FALSE', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-latest,   r: 'devel',   usgs_user: 'modistsp_ci_ubuntu_release',  test_mode: 'FALSE', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-latest,   r: 'release', usgs_user: 'modistsp_ci_ubuntu_devel',    test_mode: 'FALSE', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-latest,   r: 'oldrel',  usgs_user: 'modistsp_ci_ubuntu_oldrel',   test_mode: 'FALSE', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -62,7 +62,7 @@ jobs:
 
       - name: "Cache R packages"
         if: runner.os != 'Windows'
-        uses: actions/cache@v2
+        uses: actions/cache@v4.2.3
         with:
           path: ${{ env.R_LIBS_USER }}
           key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}

@@ -16,11 +16,12 @@ test_that("Expect error if internet connection is down", {
 skip_if_offline(host = "deims.org")
 
 test_that("Output of dataset function constructs ‘tibble’ as expected", {
-  result <- ReLTER::get_dataset_info(
+  result_list <- ReLTER::get_dataset_info(
     datasetid =
       "https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef",
     show_map = FALSE
   )
+  result <- result_list$data
   expect_s3_class(result, "sf")
   expect_s3_class(result, "tbl_df")
   expect_true(ncol(result) == 41)
@@ -108,39 +109,43 @@ test_that("Output of dataset function constructs ‘tibble’ as expected", {
 
 test_that("Wrong input (but URL) constructs a NULL object", {
   withr::local_envvar("LOCAL_DEIMS" = FALSE)
-  result <- ReLTER::get_dataset_info(
+  result_list <- ReLTER::get_dataset_info(
     datasetid = "https://deims.org/dataset/ljhnhbkihubib",
     show_map = FALSE
   )
+  result <- result_list$data
   expect_type(result, "NULL")
 })
 
 test_that("Wrong input (not URL) constructs an empty tibble", {
   withr::local_envvar("LOCAL_DEIMS" = FALSE)
-  result <- ReLTER::get_dataset_info(
+  result_list <- ReLTER::get_dataset_info(
     datasetid = "ljhnhbkihubib",
     show_map = FALSE
   )
+  result <- result_list$data
   expect_type(result, "NULL")
 })
 
 test_that("Output of get dataset information function constructs 'sf' with
           valid geometries", {
-  result <- ReLTER::get_dataset_info(
+  result_list <- ReLTER::get_dataset_info(
     datasetid =
       "https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef",
     show_map = FALSE
   )
+  result <- result_list$data
   result_valid <- sf::st_is_valid(result)
   expect_true(any(result_valid))
 })
 
 test_that("Verify that 'observationParameters' is NULL", {
-  result <- ReLTER::get_dataset_info(
+  result_list <- ReLTER::get_dataset_info(
     datasetid =
       "https://deims.org/dataset/3cd76d66-cadc-4d10-9fa7-75fe8d60663c",
     show_map = FALSE
   )
+  result <- result_list$data
   expect_equal(
     result$observationParameters[[1]]$parametersLabel,
     NA
@@ -152,11 +157,12 @@ test_that("Verify that 'observationParameters' is NULL", {
 })
 
 test_that("Verify that 'observationSpecies' is NULL", {
-  result <- ReLTER::get_dataset_info(
+  result_list <- ReLTER::get_dataset_info(
     datasetid =
       "https://deims.org/dataset/3cd76d66-cadc-4d10-9fa7-75fe8d60663c",
     show_map = FALSE
   )
+  result <- result_list$data
   expect_type(
     result$observationSpecies[[1]]$parametersLabel,
     "NULL"
