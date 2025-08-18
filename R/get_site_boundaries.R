@@ -7,19 +7,18 @@
 #' @param deimsid A `character`. The DEIMS ID of the site from
 #' DEIMS-SDR website. DEIMS ID information
 #' \href{https://deims.org/docs/deimsid.html}{here}.
-#' @param show_map A `boolean`. When TRUE a `leflet` object (a map) is
-#' returned and plotted. Default FALSE.
+#' @param show_map A `boolean` or the string "return". When TRUE a `leflet`
+#' object (a map) is returned and plotted. Default FALSE.
+#' When the value is "return", the `leaflet` object is returned but not
+#' plotted.
 #' @param with_locations A `boolean`. When TRUE all site boundaries and
 #' related locations are returned (Sampling Location or Equipment Location).
 #' Default FALSE.
 #' @return The output of the function is a `list` with slots:
 #' \itemize{
 #' \item \code{data} An `sf` object with the the boundary of the
-#' site. if the boundary is missing from DEIMS-SDR, a `tibble` 
-#' with the name and uri of the site.
-#' \item \code{map} A Leaflet map of the site, if requested with
-#' `show_map`, otherwise NULL. If `with_locations` is TRUE also the boundaries of the 
-#' locations related to the site are plotted.
+#' site. If the boundary is missing from DEIMS-SDR, a `tibble` 
+#' with the name and URI of the site.
 #' \item \code{locations} A `tibble` with the locations' details 
 #' if `with_locations` is TRUE, otherwise NULL.
 #' } 
@@ -54,7 +53,7 @@ get_site_boundaries <- function(
 ) {
   res <- list(
     data = NULL,
-    map = NULL,
+    # map = NULL,
     locations = NULL
   )
   url.geoserver <- paste0("https://deims.org/geoserver/deims/ows?",
@@ -63,9 +62,15 @@ get_site_boundaries <- function(
   )
   geoBoundaries <- geojsonsf::geojson_sf(url.geoserver)
   if (length(geoBoundaries$geometry) == 0) {
-    siteInfo <- get_site_info(deimsid = deimsid)
-    if (!is.null(siteInfo$data)) { # in the last version siteInfo is a list. Here I'm checking that list element "$data" is not null (it is expected to be a tibble)
-      geoBoundaries <- siteInfo$data %>% dplyr::select("title", "uri")
+    
+    qo <- queries_jq_deims[[get_deims_API_version()]]$site_info
+    jj <- get_id(deimsid, qo$path)
+    siteInfo_data <- dplyr::as_tibble(do_Q(qo$query, jj))
+    # geoBoundaries <- siteInfo %>% dplyr::select("title", "uri")
+    
+    # siteInfo <- get_site_info(deimsid = deimsid)
+    if (!is.null(siteInfo_data)) { # in the last version siteInfo is a list. Here I'm checking that list element "$data" is not null (it is expected to be a tibble)
+      geoBoundaries <- siteInfo_data %>% dplyr::select("title", "uri")
       message("\n---- This site doesn't contain geo info. ----\n")
       res$data = geoBoundaries
       return(res)
@@ -83,7 +88,7 @@ get_site_boundaries <- function(
   res$data = geoBoundaries
   
   map <- NULL
-  if(show_map){
+  if(show_map != FALSE){
     map <- map_add_site(geoBoundaries)
   }
   
@@ -111,20 +116,20 @@ get_site_boundaries <- function(
       ))
     
     for (i in seq_len(nrow(relatedLocations))) {
-      location <- get_location_info(
+      location <- get_location_info_internal(
         locationid = relatedLocations$uri[i], show_map = FALSE
       )
-      if(show_map == TRUE){
+      if(show_map != FALSE){
         map <- map_add_location(location$data, map)
       }
       
       locations <- locations %>% rbind(location$data)
     }
     
-    res$locations<-locations
+    res$locations <- locations
   }
   if (show_map == TRUE) {
-    res$map <- map
+    # res$map <- map
     print(map)
   }
   return(res)
