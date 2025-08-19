@@ -1,19 +1,28 @@
 ---
 output: html_document
 ---
-# ReLTER 2.3.0 Release Notes
+# ReLTER 3.0.0 Release Notes
 
-Version 2.3.0 released on 30/07/2025
+Version 3.0.0 released on 20/08/2025
 
 ## Changes
 
-* Two functions were deprecated: `get_site_MODIS` and `get_site_ODS`
-* These were replaced by a new function `get_site_EcoDataCube`.
-* Dependency on the older `raster` package was removed, and `terra` used instead.
-* Some improvements to vignettes and documentation.
-* Some rarely used packages removed, to reduce number of dependencies (i.e. `purrr`)
-* All map plots use `leaflet` (requires `leaflet` >= 2.1.1)
+* Four functions were deprecated: `get_site_MODIS`, `get_site_ODS`, `get_ilter_*`, `get_network_*`, `get_sos_*`, and `produce_zenodo_record`;  
+* These were replaced by a new function `get_site_EcoDataCube`;  
+* Dependency on the older `raster` package was removed, and `terra` was used instead;  
+* Vignettes and documentation were improved;  
+* Rarely used packages were removed to reduce the number of dependencies (e.g., `purrr`);  
+* All map plots were standardized to use `leaflet` (requires `leaflet` >= 2.1.1);  
+* Several functions were revised to make them more readable and concise (e.g., `produce_network_points_map` and `produce_site_map`);  
+* Dependencies were analyzed across all functions, and their number was reduced accordingly. For this purpose, a summary table was created (see Google Spreadsheet *packages_vs_functions*) showing the overall number of packages and their usage by function;  
+* Packages used only a few times (≤ 2) were removed, favoring base functions or functions already widely used in the package;  
+* Installation requirements were revised by evaluating which packages should not be mandatory at install time. This was achieved by:  
+  - `@seealso` tags were used (e.g., `@seealso[tidyr::nest()]`) instead of `@importFrom` to indicate usage without forcing package loading;  
+  - Packages were moved from the *Imports* to the *Suggests* section in the DESCRIPTION file;  
+  - Package availability was checked dynamically with `requireNamespace("<package_name>", quietly = TRUE)`;  
+  - Direct calls were replaced with wrappers to avoid package loading, e.g., `unnest_fx <- getNamespace("tidyr", "unnest")` and then `unnest_fx(cols = c(id))`.  
 
+--------------------------------------------------------------------------------
 
 # ReLTER 2.2.0 Release Notes
 
@@ -29,6 +38,7 @@ v2.2.0 was released on 29/11/2023
 * removed rgeos dependancies
 
 ________________________________________________________________________________
+
 # ReLTER 2.1.2 Release Notes
 
 v2.1.2 was released on 30/01/2023
@@ -49,7 +59,6 @@ v2.1.1 was released on 30/01/2023
 
 ________________________________________________________________________________
 
-
 # ReLTER 2.1.0 Release Notes
 
 v2.1.0 was released on 25/01/2023
@@ -65,7 +74,6 @@ v2.1.0 was released on 25/01/2023
 
 ________________________________________________________________________________
 
-
 # ReLTER 2.0.1 Release Notes
 
 v2.0.1 was released on 24/01/2023
@@ -79,7 +87,6 @@ v2.0.1 was released on 24/01/2023
 * Fix too many http requests
 
 ________________________________________________________________________________
-
 
 # ReLTER 2.0.0 Release Notes
 
@@ -116,7 +123,6 @@ v2.0.0 was released on 30/09/2022
 * substituted the SPARQL package with httr2.
 
 ________________________________________________________________________________
-
 
 # ReLTER 1.1.0 Release Notes
 
