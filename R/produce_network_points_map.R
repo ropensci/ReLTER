@@ -28,37 +28,6 @@
 #' @importFrom tibble as_tibble
 #' @importFrom stringr str_replace
 #' @importFrom ggplot2 ggplot geom_sf coord_sf theme_minimal labs
-#' #' Provide a map (image) of sites in an eLTER Network.
-#' @description `r lifecycle::badge("stable")`
-#' Return a image map object of all of the eLTER sites belonging
-#' to an eLTER Network (e.g.
-#' \href{https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3}{LTER
-#' Italy network}), as a stored into \href{https://deims.org}{DEIMS-SDR}.
-#' @param networkDEIMSID A `character`. The DEIMS ID of the network
-#' from DEIMS-SDR website. DEIMS ID information
-#' \href{https://deims.org/docs/deimsid.html}{here} and Complete list of ILTER
-#' networks \href{https://deims.org/search?f[0]=result_type:network}{here}.
-#' @param countryCode A `character` following the ISO 3166-1 alpha-3 codes.
-#' This ISO convention consists of three-letter country codes as defined in
-#' ISO 3166-1. The ISO 3166 standard published by the International
-#' Organization for Standardization (ISO), to represent countries, dependent
-#' territories, and special areas of geographical interest. The map produced by
-#' this function will be limited only to the country indicated in this
-#' parameter, if the network has a extraterritorial sites those will not
-#' represented.
-#' @return The output of the function is a `tmap` plot containing an image of
-#' geographic distribution of the network of sites present in the chosen
-#' country.
-#' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @importFrom httr2 request req_method req_headers req_retry req_perform
-#' @importFrom httr2 resp_check_status resp_body_string
-#' @importFrom jsonlite fromJSON
-#' @importFrom dplyr select
-#' @importFrom sf st_as_sf st_crs st_is_valid st_simplify st_bbox
-#' @importFrom tibble as_tibble
-#' @importFrom stringr str_replace
-#' @importFrom ggplot2 ggplot geom_sf coord_sf theme_minimal labs
-#' @seealso [geodata::gadm()]
 #' @references
 #'   \insertRef{httr2}{ReLTER}
 #'   
