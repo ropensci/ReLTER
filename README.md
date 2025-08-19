@@ -121,8 +121,8 @@ The manual of `{ReLTER}` package could be found
 
 ## :notebook_with_decorative_cover: Cheatsheet
 
-<a href="https://raw.githubusercontent.com/ropensci/ReLTER/8f0dace67f286c91bd551e987aa349df40bd58ba/man/cheatsheets/ReLTER_cheatSheet.pdf"><img src="https://raw.githubusercontent.com/ropensci/ReLTER/8f0dace67f286c91bd551e987aa349df40bd58ba/man/figures/ReLTER_cheatSheet_front.png" width="630" height="487" alt="ReLTER Cheatsheet" /></a>
-<a href="https://raw.githubusercontent.com/ropensci/ReLTER/8f0dace67f286c91bd551e987aa349df40bd58ba/man/cheatsheets/ReLTER_cheatSheet.pdf"><img src="https://raw.githubusercontent.com/ropensci/ReLTER/8f0dace67f286c91bd551e987aa349df40bd58ba/man/figures/ReLTER_cheatSheet_back.png" width="630" height="487" alt="ReLTER Cheatsheet" /></a>
+<a href="https://raw.githubusercontent.com/ropensci/ReLTER/main/man/cheatsheets/ReLTER_cheatSheet.pdf"><img src="https://raw.githubusercontent.com/ropensci/ReLTER/main/man/figures/ReLTER_cheatSheet_front.png" width="630" height="487" alt="ReLTER Cheatsheet" /></a>
+<a href="https://raw.githubusercontent.com/ropensci/ReLTER/main/man/cheatsheets/ReLTER_cheatSheet.pdf"><img src="https://raw.githubusercontent.com/ropensci/ReLTER/main/man/figures/ReLTER_cheatSheet_back.png" width="630" height="487" alt="ReLTER Cheatsheet" /></a>
 
 ## :arrow_double_down: Installation
 
