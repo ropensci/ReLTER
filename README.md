@@ -72,20 +72,39 @@ tools.
 
 ## :notebook_with_decorative_cover: Citation
 
-To cite `{ReLTER}` please use: Alessandro Oggioni, Micha Silver, Luigi
-Ranghetti & Paolo Tagliolato. (2023). ReLTER: An Interface for the eLTER
-Community (v2.2). Zenodo. <https://doi.org/10.5281/zenodo.5576813>
+To cite `{ReLTER}` please use:
+
+Oggioni, A., Silver, M., Tagliolato, P., & Karnieli, A. (2025).
+ReLTER: An R interface for environmental observation in long term
+ecological research. Ecological Informatics, 85, 102915.
+<https://doi.org/10.1016/j.ecoinf.2024.102915>
+
+``` bibtex
+@article{OGGIONI2025102915,
+title = {ReLTER: An R interface for environmental observation in long term ecological research},
+journal = {Ecological Informatics},
+volume = {85},
+pages = {102915},
+year = {2025},
+issn = {1574-9541},
+doi = {https://doi.org/10.1016/j.ecoinf.2024.102915},
+url = {https://www.sciencedirect.com/science/article/pii/S1574954124004576},
+author = {Alessandro Oggioni and Micha Silver and Paolo Tagliolato and Arnon Karnieli}
+```
 
 or:
 
+Alessandro Oggioni, Micha Silver, Luigi Ranghetti & Paolo Tagliolato.
+(2025). ReLTER: An Interface for the eLTER Community (v3.0). Zenodo.
+<https://doi.org/10.5281/zenodo.5576813>
+
 ``` bibtex
-@software{alessandro_oggioni_2021_5576813,
+@software{alessandro_oggioni_2025_5576813,
   author       = {Alessandro Oggioni and Micha Silver and Luigi Ranghetti and Paolo Tagliolato},
   title        = {ReLTER: An Interface for the eLTER Community},
-  month        = jan,
-  year         = 2023,
+  year         = 2025,
   publisher    = {Zenodo},
-  version      = {v2.2},
+  version      = {v3.0},
   doi          = {10.5281/zenodo.5576813},
   url          = {https://doi.org/10.5281/zenodo.5576813}
 }
@@ -99,6 +118,11 @@ further documentation, examples, and installation of the package.
 
 The manual of `{ReLTER}` package could be found
 [here](https://ropensci.r-universe.dev/manual/ReLTER.pdf).
+
+## :notebook_with_decorative_cover: Cheatsheet
+
+<a href="https://raw.githubusercontent.com/ropensci/ReLTER/8f0dace67f286c91bd551e987aa349df40bd58ba/man/cheatsheets/ReLTER_cheatSheet.pdf"><img src="https://raw.githubusercontent.com/ropensci/ReLTER/8f0dace67f286c91bd551e987aa349df40bd58ba/man/figures/ReLTER_cheatSheet_front.png" width="630" height="487" alt="ReLTER Cheatsheet" /></a>
+<a href="https://raw.githubusercontent.com/ropensci/ReLTER/8f0dace67f286c91bd551e987aa349df40bd58ba/man/cheatsheets/ReLTER_cheatSheet.pdf"><img src="https://raw.githubusercontent.com/ropensci/ReLTER/8f0dace67f286c91bd551e987aa349df40bd58ba/man/figures/ReLTER_cheatSheet_back.png" width="630" height="487" alt="ReLTER Cheatsheet" /></a>
 
 ## :arrow_double_down: Installation
 
