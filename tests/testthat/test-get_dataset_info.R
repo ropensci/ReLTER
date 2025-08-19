@@ -172,3 +172,45 @@ test_that("Verify that 'observationSpecies' is NULL", {
     NA
   )
 })
+
+test_that("Date and datetime fields are coerced correctly", {
+  result_list <- ReLTER::get_dataset_info(
+    datasetid =
+      "https://deims.org/dataset/3cd76d66-cadc-4d10-9fa7-75fe8d60663c",
+    show_map = FALSE
+  )
+  result <- result_list$data
+  
+  expect_true(inherits(result$created, "POSIXct") || all(is.na(result$created)))
+  expect_true(inherits(result$changed, "POSIXct") || all(is.na(result$changed)))
+  expect_true(inherits(result$dateRange.from, "Date") || all(is.na(result$dateRange.from)))
+  expect_true(inherits(result$dateRange.to, "Date") || all(is.na(result$dateRange.to)))
+})
+
+test_that("Elevation is coerced to units of meters", {
+  result_list <- ReLTER::get_dataset_info(
+    datasetid =
+      "https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef",
+    show_map = FALSE
+  )
+  result <- result_list$data
+  
+  expect_s3_class(result$elevation.min, "units")
+  expect_equal(units::deparse_unit(result$elevation.min), "m")
+  expect_s3_class(result$elevation.max, "units")
+  expect_equal(units::deparse_unit(result$elevation.max), "m")
+})
+
+test_that("Elevation is coerced to units of meters", {
+  result_list <- ReLTER::get_dataset_info(
+    datasetid =
+      "https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef",
+    show_map = FALSE
+  )
+  result <- result_list$data
+  
+  expect_s3_class(result$elevation.min, "units")
+  expect_equal(units::deparse_unit(result$elevation.min), "m")
+  expect_s3_class(result$elevation.max, "units")
+  expect_equal(units::deparse_unit(result$elevation.max), "m")
+})

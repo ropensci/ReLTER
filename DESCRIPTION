@@ -65,7 +65,7 @@ Imports:
     units,
     tibble,
     stringr,
-    terra,
+    terra
 Suggests:
     cowplot,
     geodata,
