@@ -69,14 +69,11 @@ Imports:
 Suggests:
     cowplot,
     geodata,
-    covr,
     httptest2,
     ISOcodes,
     knitr,
     leaflet.extras,
     prettymapr,
-    rmarkdown,
-    rnaturalearthdata,
     RColorBrewer,
     shiny,
     spocc,
@@ -86,10 +83,8 @@ Suggests:
     waffle,
     withr,
     worrms,
-    zen4R,
-    Rdpack
+    zen4R
 Remotes:
-    worrms,
     XML
 VignetteBuilder: 
     knitr
