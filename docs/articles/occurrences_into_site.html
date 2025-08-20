@@ -5,75 +5,54 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="ReLTER">
-<title>How to retrieve occurrence records by exploiting the `ReLTER` get_site_speciesOccurrences() function • ReLTER</title>
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<title>How to retrieve occurrence records by exploiting the {`ReLTER`} get_site_speciesOccurrences() function • ReLTER</title>
+<!-- rOpenSci favicons --><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/apple-touch-icon.png">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="How to retrieve occurrence records by exploiting the `ReLTER` get_site_speciesOccurrences() function">
-<meta property="og:description" content="ReLTER">
-<meta property="og:image" content="https://docs.ropensci.org/ReLTER/logo.png">
-<!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]--><!-- Mathjax --><script type="text/javascript" id="MathJax-script" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-mml-chtml.min.js">
-</script><!-- Matomo --><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css">
-<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script><script src="https://ropensci.org/scripts/matomo.js"></script><noscript><p><img src="https://ropensci.matomo.cloud/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt=""></p></noscript>
-<!-- End Matomo Code --><script defer data-domain="docs.ropensci.org/relter" src="https://plausible.io/js/plausible.js"></script>
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="How to retrieve occurrence records by exploiting the {`ReLTER`} get_site_speciesOccurrences() function">
+<script defer data-domain="docs.ropensci.org/relter" src="https://plausible.io/js/plausible.js"></script>
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
-    
 
-    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
+
+    <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="light" aria-label="Site navigation"><div class="container">
     <a href="https://ropensci.org" class="external-link"><img src="https://ropensci.org/img/icon_short_white.svg" id="hexlogo" alt="rOpenSci"></a>
     <a class="navbar-brand me-2" href="../index.html">ReLTER</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.0.0</small>
 
-    
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
-<li class="nav-item">
-  <a class="nav-link" href="../reference/index.html">Reference</a>
-</li>
+<li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="active nav-item dropdown">
-  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
-  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/occurrences_into_site.html">How to retrieve occurrence records by exploiting the `ReLTER` get_site_speciesOccurrences() function</a>
-    <a class="dropdown-item" href="../articles/rocker_ReLTER.html">Run ReLTER in a Docker container</a>
-    <a class="dropdown-item" href="../articles/site_information.html">How to get the info of a (one) LTER Site by knowing the DEIMS.ID</a>
-    <a class="dropdown-item" href="../articles/sites_contacts.html">Obtain list of contacts from several DEIMS ID's (in csv file)</a>
-    <a class="dropdown-item" href="../articles/sites_information.html">How to get the info of many than one LTER Sites</a>
-  </div>
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
+<li><a class="dropdown-item" href="../articles/multi_sites_contacts.html">Obtain list of contacts from several DEIMS ID's (in csv file)</a></li>
+    <li><a class="dropdown-item" href="../articles/multi_sites_information.html">Obtaining information about many LTER Sites</a></li>
+    <li><a class="dropdown-item" href="../articles/occurrences_into_site.html">How to retrieve occurrence records by exploiting the {`ReLTER`} get_site_speciesOccurrences() function</a></li>
+    <li><a class="dropdown-item" href="../articles/rocker_ReLTER.html">Run ReLTER in a Docker container</a></li>
+    <li><a class="dropdown-item" href="../articles/single_site_information.html">Obtain information about one LTER Site using the DEIMS ID</a></li>
+  </ul>
 </li>
-<li class="nav-item">
-  <a class="nav-link" href="../news/index.html">Changelog</a>
-</li>
+<li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul>
-<form class="form-inline my-2 my-lg-0" role="search">
-        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off">
-</form>
-
-      <ul class="navbar-nav">
-<li class="nav-item">
-  <a class="external-link nav-link" href="https://github.com/ropensci/ReLTER/" aria-label="github">
-    <span class="fab fa fab fa-github fa-lg"></span>
-     
-  </a>
-</li>
+<ul class="navbar-nav">
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/ropensci/ReLTER" aria-label="GitHub repository"><span class="fa fa-github"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://doi.org/10.5281/zenodo.5576813">Zenodo</a></li>
       </ul>
 </div>
 
-    
+
   </div>
 </nav><div class="container template-article">
 
@@ -82,7 +61,7 @@
 
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-      <img src="../logo.png" class="logo" alt=""><h1>How to retrieve occurrence records by exploiting the `ReLTER` get_site_speciesOccurrences() function</h1>
+      <img src="../logo.png" class="logo" alt=""><h1>How to retrieve occurrence records by exploiting the {`ReLTER`} get_site_speciesOccurrences() function</h1>
                         <h4 data-toc-skip class="author">Alessandro
 Oggioni, Paolo Tagliolato, Martina Zilioli</h4>
             
@@ -93,10 +72,10 @@ Oggioni, Paolo Tagliolato, Martina Zilioli</h4>
 
     
     
-<p>IMPORTANT!! At this version (v2.2) of <code>ReLTER</code> package
-<em>get_site_speciesOccurrences()</em>, <em>map_occ_gbif2elter</em> and
+<p>__ <em>get_site_speciesOccurrences()</em>,
+<em>map_occ_gbif2elter</em> and
 <em>save_occ_eLTER_reporting_Archive()</em> are delivered only with
-dev__withImprovements branch.</p>
+dev__withImprovements branch __</p>
 <p>Starting from the eLTER site id (DEIMS.iD), by ReLTER
 get_site_speciesOccurrences function, anyone can retrieve occurrence
 records from <a href="https://www.gbif.org" class="external-link">GBIF</a> (via <a href="https://docs.ropensci.org/rgbif/" class="external-link"><code>rgbif</code> R
@@ -136,664 +115,20 @@ service selected.</p>
 <span><span class="op">)</span></span></code></pre></div>
 <iframe src="./other/occurrences_into_site_map.html" height="405" width="720" style="border: 1px solid #464646;">
 </iframe>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># iNat table</span></span>
-<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span></span>
-<span>  <span class="va">resGOV</span><span class="op">$</span><span class="va">inat</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span><span class="op">]</span>,</span>
-<span>  caption <span class="op">=</span> <span class="st">"The first 10 occurrence records of iNaturalist on the selected eLTER site."</span></span>
-<span><span class="op">)</span></span></code></pre></div>
-<table style="width:100%;" class="table">
-<caption>The first 10 occurrence records of iNaturalist on the selected
-eLTER site.</caption>
-<colgroup>
-<col width="0%">
-<col width="0%">
-<col width="0%">
-<col width="96%">
-<col width="0%">
-<col width="0%">
-<col width="0%">
-<col width="0%">
-<col width="0%">
-<col width="0%">
-<col width="0%">
-</colgroup>
-<thead><tr class="header">
-<th align="left">quality_grade</th>
-<th align="left">time_observed_at</th>
-<th align="left">taxon_geoprivacy</th>
-<th align="left">annotations</th>
-<th align="left">uuid</th>
-<th align="right">id</th>
-<th align="right">cached_votes_total</th>
-<th align="left">identifications_most_agree</th>
-<th align="left">species_guess</th>
-<th align="left">identifications_most_disagree</th>
-<th align="left">geometry</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="left">needs_id</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NULL</td>
-<td align="left">690fa1fb-e0d0-42e7-b9c3-47019bca5f48</td>
-<td align="right">194505968</td>
-<td align="right">0</td>
-<td align="left">FALSE</td>
-<td align="left">Anthophila</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.45294 45.45326)</td>
-</tr>
-<tr class="even">
-<td align="left">research</td>
-<td align="left">2023-12-21 12:57:23</td>
-<td align="left">open</td>
-<td align="left">NULL</td>
-<td align="left">063d79af-9785-449b-a16e-bf2801900f47</td>
-<td align="right">194502784</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">Italian Sparrow</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.3383 45.43317)</td>
-</tr>
-<tr class="odd">
-<td align="left">research</td>
-<td align="left">2023-12-21 13:00:22</td>
-<td align="left">open</td>
-<td align="left">NULL</td>
-<td align="left">25cac657-32cf-4f6e-93de-c8421d01ea7a</td>
-<td align="right">194502692</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">Eurasian Blackbird</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.3384 45.43279)</td>
-</tr>
-<tr class="even">
-<td align="left">research</td>
-<td align="left">2007-01-06 09:50:00</td>
-<td align="left">open</td>
-<td align="left">NULL</td>
-<td align="left">7d6d3bd9-aa01-42cd-85a0-e93b9b4ade4b</td>
-<td align="right">194450716</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">chiurlo maggiore</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.98062 45.62975)</td>
-</tr>
-<tr class="odd">
-<td align="left">research</td>
-<td align="left">2018-12-27 11:56:00</td>
-<td align="left">open</td>
-<td align="left">NULL</td>
-<td align="left">e8b965c0-7a81-4444-8450-495db6e1cac3</td>
-<td align="right">194442708</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">Yellow-legged Gull</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.36061 45.45198)</td>
-</tr>
-<tr class="even">
-<td align="left">research</td>
-<td align="left">2018-12-28 13:12:00</td>
-<td align="left">NA</td>
-<td align="left">NULL</td>
-<td align="left">0d0bef69-ecad-4ec1-b739-68ba96ec2299</td>
-<td align="right">194442578</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">Ivy-leaved toadflax</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.36511 45.48462)</td>
-</tr>
-<tr class="odd">
-<td align="left">research</td>
-<td align="left">2018-12-28 13:45:00</td>
-<td align="left">open</td>
-<td align="left">NULL</td>
-<td align="left">65cf64fd-5a80-4fda-9e64-eda3f1bb297f</td>
-<td align="right">194442577</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">Black-headed Gull</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.32078 45.54701)</td>
-</tr>
-<tr class="even">
-<td align="left">research</td>
-<td align="left">2018-12-28 13:42:00</td>
-<td align="left">open</td>
-<td align="left">NULL</td>
-<td align="left">f5333879-4f82-41ff-a3c5-c18b9825c93d</td>
-<td align="right">194442576</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">Great Cormorant</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.39366 45.43574)</td>
-</tr>
-<tr class="odd">
-<td align="left">needs_id</td>
-<td align="left">2023-03-22 15:16:00</td>
-<td align="left">NA</td>
-<td align="left">NULL</td>
-<td align="left">b3694de3-2935-4e4e-b764-fed4ffa74a3c</td>
-<td align="right">194418358</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">Acanthocardia</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.4903 45.45161)</td>
-</tr>
-<tr class="even">
-<td align="left">research</td>
-<td align="left">2023-03-22 15:23:00</td>
-<td align="left">NA</td>
-<td align="left">NULL</td>
-<td align="left">8ac1a8b7-4b61-49c1-852d-403bc553acf4</td>
-<td align="right">194418357</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">Stumpfe Stachelschnecke</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.4895 45.45139)</td>
-</tr>
-<tr class="odd">
-<td align="left">research</td>
-<td align="left">2023-12-09 12:26:30</td>
-<td align="left">open</td>
-<td align="left">NULL</td>
-<td align="left">9f30490c-4380-490a-a9a8-ba7e3e5c0486</td>
-<td align="right">194347553</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">Pettirosso</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.32748 45.16294)</td>
-</tr>
-<tr class="even">
-<td align="left">research</td>
-<td align="left">2023-07-28 06:52:42</td>
-<td align="left">open</td>
-<td align="left">NULL</td>
-<td align="left">feaeaa53-c0ed-4b3e-b8c4-74ca1e3af67b</td>
-<td align="right">194318155</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">Little Egret</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.32697 45.44139)</td>
-</tr>
-<tr class="odd">
-<td align="left">needs_id</td>
-<td align="left">2023-07-14 08:07:35</td>
-<td align="left">NA</td>
-<td align="left">c9f6613b-ce7a-4742-ac92-a469c2eec5f7 ,
-902472e1-9dd0-4d96-aa4b-3af594021c94 ,
-bef64e40-3c9b-430a-9412-302675569144 , 1 , 17 , 22 , 2 , 18 , 24 , 1|2 ,
-17|18 , 22|24 , 0 , 0 , 0 , 2452838 , 2452838 , 2452838 , 2452838 ,
-2452838 , 2452838 , valeriodema , valeriodema , valeriodema , FALSE ,
-FALSE , FALSE , FALSE , FALSE , FALSE , 2019-11-21T08:58:06+00:00 ,
-2019-11-21T08:58:06+00:00 , 2019-11-21T08:58:06+00:00 , valeriodema ,
-valeriodema , valeriodema , valeriodema , valeriodema , valeriodema ,
-Valerio Demattio , Valerio Demattio , Valerio Demattio , Valerio
-Demattio , Valerio Demattio , Valerio Demattio , NA , NA , NA , <a href="https://static.inaturalist.org/attachments/users/icons/2452838/thumb.jpeg?1699014092" class="external-link uri">https://static.inaturalist.org/attachments/users/icons/2452838/thumb.jpeg?1699014092</a>
-, <a href="https://static.inaturalist.org/attachments/users/icons/2452838/thumb.jpeg?1699014092" class="external-link uri">https://static.inaturalist.org/attachments/users/icons/2452838/thumb.jpeg?1699014092</a>
-, <a href="https://static.inaturalist.org/attachments/users/icons/2452838/thumb.jpeg?1699014092" class="external-link uri">https://static.inaturalist.org/attachments/users/icons/2452838/thumb.jpeg?1699014092</a>
-, 367 , 367 , 367 , 2 , 2 , 2 , 0 , 0 , 0 , 369 , 369 , 369 , 247 , 247
-, 247 , 367 , 367 , 367 , NA , NA , NA , <a href="https://static.inaturalist.org/attachments/users/icons/2452838/medium.jpeg?1699014092" class="external-link uri">https://static.inaturalist.org/attachments/users/icons/2452838/medium.jpeg?1699014092</a>,
-<a href="https://static.inaturalist.org/attachments/users/icons/2452838/medium.jpeg?1699014092" class="external-link uri">https://static.inaturalist.org/attachments/users/icons/2452838/medium.jpeg?1699014092</a>,
-<a href="https://static.inaturalist.org/attachments/users/icons/2452838/medium.jpeg?1699014092" class="external-link uri">https://static.inaturalist.org/attachments/users/icons/2452838/medium.jpeg?1699014092</a>
-</td>
-<td align="left">87e785c2-e208-4554-9bf2-19962ee6e9dc</td>
-<td align="right">194291018</td>
-<td align="right">0</td>
-<td align="left">FALSE</td>
-<td align="left">Nematogmus</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.84526 45.58649)</td>
-</tr>
-<tr class="even">
-<td align="left">needs_id</td>
-<td align="left">2014-06-26 12:33:00</td>
-<td align="left">NA</td>
-<td align="left">NULL</td>
-<td align="left">d0646676-f029-4260-9f42-fd128723ab65</td>
-<td align="right">194271736</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">Tropinota squalida</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.31066 45.18278)</td>
-</tr>
-<tr class="odd">
-<td align="left">needs_id</td>
-<td align="left">2014-06-28 12:29:00</td>
-<td align="left">NA</td>
-<td align="left">NULL</td>
-<td align="left">ae469a81-e5fc-4f5a-b62c-17713b927080</td>
-<td align="right">194271735</td>
-<td align="right">0</td>
-<td align="left">FALSE</td>
-<td align="left">Mittlerer Ginsterrindenfalter</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.31063 45.18286)</td>
-</tr>
-<tr class="even">
-<td align="left">research</td>
-<td align="left">2023-12-18 08:27:31</td>
-<td align="left">open</td>
-<td align="left">NULL</td>
-<td align="left">945d4264-f72d-436e-a704-55f7ff744f4e</td>
-<td align="right">194266270</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">Cinciallegra</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.32207 45.56067)</td>
-</tr>
-<tr class="odd">
-<td align="left">research</td>
-<td align="left">NA</td>
-<td align="left">open</td>
-<td align="left">NULL</td>
-<td align="left">e7adb97a-489c-4378-b8e5-f72116f7c6f1</td>
-<td align="right">194230994</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">Barn Swallow</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.41506 45.49544)</td>
-</tr>
-<tr class="even">
-<td align="left">research</td>
-<td align="left">2006-06-17 05:54:00</td>
-<td align="left">NA</td>
-<td align="left">26a92c22-e238-4d49-9af1-a04b7161453f , 12 , 13 , 12|13
-, 0 , 1437774 , 1437774 , valentinabuono , FALSE , FALSE ,
-2019-01-21T06:14:33+00:00 , valentinabuono , valentinabuono , Valentina
-, Valentina , NA , <a href="https://static.inaturalist.org/attachments/users/icons/1437774/thumb.jpg?1575215125" class="external-link uri">https://static.inaturalist.org/attachments/users/icons/1437774/thumb.jpg?1575215125</a>
-, 18145 , 7002 , 0 , 25147 , 2901 , 18145 , 1 , <a href="https://static.inaturalist.org/attachments/users/icons/1437774/medium.jpg?1575215125" class="external-link uri">https://static.inaturalist.org/attachments/users/icons/1437774/medium.jpg?1575215125</a>
-</td>
-<td align="left">1808556a-555a-46f5-96e5-613096d6fb63</td>
-<td align="right">194218697</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">Vilucchio marittimo</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.33268 45.10362)</td>
-</tr>
-<tr class="odd">
-<td align="left">needs_id</td>
-<td align="left">2006-06-17 06:50:00</td>
-<td align="left">NA</td>
-<td align="left">NULL</td>
-<td align="left">c4aa9ae7-7ce7-43a6-b426-ad5d91baaeda</td>
-<td align="right">194218617</td>
-<td align="right">0</td>
-<td align="left">FALSE</td>
-<td align="left">Centauro giallo</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.33457 45.0979)</td>
-</tr>
-<tr class="even">
-<td align="left">needs_id</td>
-<td align="left">2011-06-11 16:47:00</td>
-<td align="left">open</td>
-<td align="left">NULL</td>
-<td align="left">e08d3160-a714-4776-9434-7002b66beaee</td>
-<td align="right">194202143</td>
-<td align="right">0</td>
-<td align="left">FALSE</td>
-<td align="left">Pullokuonodelfiini</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.49528 45.38626)</td>
-</tr>
-</tbody>
-</table>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># OBIS table</span></span>
-<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span></span>
-<span>  <span class="va">resGOV</span><span class="op">$</span><span class="va">obis</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span><span class="op">]</span>,</span>
-<span>  caption <span class="op">=</span> <span class="st">"The first 10 occurrence records of OBIS on the selected eLTER site."</span></span>
-<span><span class="op">)</span></span></code></pre></div>
-<table style="width:100%;" class="table">
-<caption>The first 10 occurrence records of OBIS on the selected eLTER
-site.</caption>
-<colgroup>
-<col width="2%">
-<col width="7%">
-<col width="31%">
-<col width="6%">
-<col width="31%">
-<col width="3%">
-<col width="4%">
-<col width="2%">
-<col width="1%">
-<col width="3%">
-<col width="4%">
-</colgroup>
-<thead><tr class="header">
-<th align="left">basisOfRecord</th>
-<th align="left">catalogNumber</th>
-<th align="left">collectionCode</th>
-<th align="left">datasetID</th>
-<th align="left">datasetName</th>
-<th align="left">eventDate</th>
-<th align="left">eventID</th>
-<th align="left">footprintSRS</th>
-<th align="left">language</th>
-<th align="left">modified</th>
-<th align="left">geometry</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="left">HumanObservation</td>
-<td align="left">CSJELLY_CSJN5969</td>
-<td align="left">Jellyfish sightings along the Italian coastline from
-2009 to 2017</td>
-<td align="left"><a href="https://marineinfo.org/id/dataset/5975" class="external-link uri">https://marineinfo.org/id/dataset/5975</a></td>
-<td align="left">Jellyfish sightings along the Italian coastline from
-2009 to 2017</td>
-<td align="left">2015-06</td>
-<td align="left">CSJN5969</td>
-<td align="left">EPSG:4326</td>
-<td align="left">en</td>
-<td align="left">2019-08-28 14:11:55</td>
-<td align="left">POINT (12.8927 45.60294)</td>
-</tr>
-<tr class="even">
-<td align="left">Occurrence</td>
-<td align="left">Venice_1926_Present_Sea_126279</td>
-<td align="left">Historical landings from the Venice (Italy) fish market
-between 1905 and 1927</td>
-<td align="left"><a href="https://marineinfo.org/id/dataset/5605" class="external-link uri">https://marineinfo.org/id/dataset/5605</a></td>
-<td align="left">Historical landings from the Venice (Italy) fish market
-between 1905 and 1927</td>
-<td align="left">1926</td>
-<td align="left">Venice_1926</td>
-<td align="left">EPSG:4326</td>
-<td align="left">en</td>
-<td align="left">2020-05-05 12:37:31</td>
-<td align="left">POINT (12.9377 45.0629)</td>
-</tr>
-<tr class="odd">
-<td align="left">HumanObservation</td>
-<td align="left">OGS/ISPRA_PIPETA_2_trawl_survey_1988_1991_123</td>
-<td align="left">PIPETA_2_trawl_survey_1988_1991</td>
-<td align="left"><a href="https://marineinfo.org/id/dataset/5435" class="external-link uri">https://marineinfo.org/id/dataset/5435</a></td>
-<td align="left">NA</td>
-<td align="left">1988-01-12/1988-01-12</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">2017-04-13 11:28:27</td>
-<td align="left">POINT (12.6 45.31)</td>
-</tr>
-<tr class="even">
-<td align="left">HumanObservation</td>
-<td align="left">CSJELLY_CSJN2060</td>
-<td align="left">Jellyfish sightings along the Italian coastline from
-2009 to 2017</td>
-<td align="left"><a href="https://marineinfo.org/id/dataset/5975" class="external-link uri">https://marineinfo.org/id/dataset/5975</a></td>
-<td align="left">Jellyfish sightings along the Italian coastline from
-2009 to 2017</td>
-<td align="left">2011-08</td>
-<td align="left">CSJN2060</td>
-<td align="left">EPSG:4326</td>
-<td align="left">en</td>
-<td align="left">2019-08-28 14:11:55</td>
-<td align="left">POINT (12.89825 45.60495)</td>
-</tr>
-<tr class="odd">
-<td align="left">Occurrence</td>
-<td align="left">474909_<a href="urn:lsid:marinespecies.org:taxname:985" class="uri">urn:lsid:marinespecies.org:taxname:985</a>
-</td>
-<td align="left">Fauna Benthonica</td>
-<td align="left"><a href="https://marineinfo.org/id/dataset/596" class="external-link uri">https://marineinfo.org/id/dataset/596</a></td>
-<td align="left">Fauna Bentonica</td>
-<td align="left">NA</td>
-<td align="left">fb74_45.197_32.5_9816</td>
-<td align="left">EPSG:4326</td>
-<td align="left">en</td>
-<td align="left">2021-07-06 10:44:36</td>
-<td align="left">POINT (13.239 45.197)</td>
-</tr>
-<tr class="even">
-<td align="left">HumanObservation</td>
-<td align="left">RCMed-occurrence-17201</td>
-<td align="left">Reef Check Med - key Mediterranean marine species
-2001-2020</td>
-<td align="left"><a href="https://marineinfo.org/id/dataset/6454" class="external-link uri">https://marineinfo.org/id/dataset/6454</a></td>
-<td align="left">Reef Check Med - key Mediterranean marine species
-2001-2020</td>
-<td align="left">2011-10-02</td>
-<td align="left">RCMed-survey-2232</td>
-<td align="left">EPSG:4326</td>
-<td align="left">en</td>
-<td align="left">2021-03-17 13:34:06</td>
-<td align="left">POINT (12.48941 45.23041)</td>
-</tr>
-<tr class="odd">
-<td align="left">HumanObservation</td>
-<td align="left">RCMed-occurrence-15787</td>
-<td align="left">Reef Check Med - key Mediterranean marine species
-2001-2020</td>
-<td align="left"><a href="https://marineinfo.org/id/dataset/6454" class="external-link uri">https://marineinfo.org/id/dataset/6454</a></td>
-<td align="left">Reef Check Med - key Mediterranean marine species
-2001-2020</td>
-<td align="left">2007-08-07</td>
-<td align="left">RCMed-survey-1921</td>
-<td align="left">EPSG:4326</td>
-<td align="left">en</td>
-<td align="left">2021-03-17 13:34:06</td>
-<td align="left">POINT (12.42125 45.20315)</td>
-</tr>
-<tr class="even">
-<td align="left">Occurrence</td>
-<td align="left">32892</td>
-<td align="left">La fauna bentonica</td>
-<td align="left"><a href="https://marineinfo.org/id/dataset/481" class="external-link uri">https://marineinfo.org/id/dataset/481</a></td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">2005-09-22 00:00:00</td>
-<td align="left">POINT (12.41 45.38)</td>
-</tr>
-<tr class="odd">
-<td align="left">Occurrence</td>
-<td align="left">Venice_1905_Present_Sea_127427</td>
-<td align="left">Historical landings from the Venice (Italy) fish market
-between 1905 and 1927</td>
-<td align="left"><a href="https://marineinfo.org/id/dataset/5605" class="external-link uri">https://marineinfo.org/id/dataset/5605</a></td>
-<td align="left">Historical landings from the Venice (Italy) fish market
-between 1905 and 1927</td>
-<td align="left">1905</td>
-<td align="left">Venice_1905</td>
-<td align="left">EPSG:4326</td>
-<td align="left">en</td>
-<td align="left">2020-05-05 12:37:31</td>
-<td align="left">POINT (12.9377 45.0629)</td>
-</tr>
-<tr class="even">
-<td align="left">HumanObservation</td>
-<td align="left">OGS/ISPRA_PIPETA_2_trawl_survey_1988_1991_1546</td>
-<td align="left">PIPETA_2_trawl_survey_1988_1991</td>
-<td align="left"><a href="https://marineinfo.org/id/dataset/5435" class="external-link uri">https://marineinfo.org/id/dataset/5435</a></td>
-<td align="left">NA</td>
-<td align="left">1988-10-17/1988-10-17</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">2017-04-13 11:28:27</td>
-<td align="left">POINT (13.08 45.09)</td>
-</tr>
-<tr class="odd">
-<td align="left">Occurrence</td>
-<td align="left">0000000000000000270311-nodc.ogs.trieste.it</td>
-<td align="left">Microzooplankton North Adriatic-ALPEADRIA</td>
-<td align="left"><a href="https://marineinfo.org/id/dataset/4469" class="external-link uri">https://marineinfo.org/id/dataset/4469</a></td>
-<td align="left">NA</td>
-<td align="left">1993-10-20</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">2015-02-18 13:32:21</td>
-<td align="left">POINT (13.19617 45.436)</td>
-</tr>
-<tr class="even">
-<td align="left">Occurrence</td>
-<td align="left">Venice_1980_Present_107032</td>
-<td align="left">Historical landings for the lagoon of Venice (Italy)
-between 1945 and 2001</td>
-<td align="left"><a href="https://marineinfo.org/id/dataset/5609" class="external-link uri">https://marineinfo.org/id/dataset/5609</a></td>
-<td align="left">Historical landings for the lagoon of Venice (Italy)
-between 1945 and 2001</td>
-<td align="left">1980</td>
-<td align="left">Venice_1980</td>
-<td align="left">EPSG:4326</td>
-<td align="left">en</td>
-<td align="left">2020-05-05 12:37:31</td>
-<td align="left">POINT (12.3774 45.3867)</td>
-</tr>
-<tr class="odd">
-<td align="left">Occurrence</td>
-<td align="left">Venice_1905_Present_Sea_126983</td>
-<td align="left">Historical landings from the Venice (Italy) fish market
-between 1905 and 1927</td>
-<td align="left"><a href="https://marineinfo.org/id/dataset/5605" class="external-link uri">https://marineinfo.org/id/dataset/5605</a></td>
-<td align="left">Historical landings from the Venice (Italy) fish market
-between 1905 and 1927</td>
-<td align="left">1905</td>
-<td align="left">Venice_1905</td>
-<td align="left">EPSG:4326</td>
-<td align="left">en</td>
-<td align="left">2020-05-05 12:37:31</td>
-<td align="left">POINT (12.9377 45.0629)</td>
-</tr>
-<tr class="even">
-<td align="left">Occurrence</td>
-<td align="left">Venice_1922_Present_Sea_126426</td>
-<td align="left">Historical landings from the Venice (Italy) fish market
-between 1905 and 1927</td>
-<td align="left"><a href="https://marineinfo.org/id/dataset/5605" class="external-link uri">https://marineinfo.org/id/dataset/5605</a></td>
-<td align="left">Historical landings from the Venice (Italy) fish market
-between 1905 and 1927</td>
-<td align="left">1922</td>
-<td align="left">Venice_1922</td>
-<td align="left">EPSG:4326</td>
-<td align="left">en</td>
-<td align="left">2020-05-05 12:37:31</td>
-<td align="left">POINT (12.9377 45.0629)</td>
-</tr>
-<tr class="odd">
-<td align="left">HumanObservation</td>
-<td align="left">OGS/ISPRA_PIPETA_2_trawl_survey_1988_1991_1513</td>
-<td align="left">PIPETA_2_trawl_survey_1988_1991</td>
-<td align="left"><a href="https://marineinfo.org/id/dataset/5435" class="external-link uri">https://marineinfo.org/id/dataset/5435</a></td>
-<td align="left">NA</td>
-<td align="left">1988-10-17/1988-10-17</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">2017-04-13 11:28:27</td>
-<td align="left">POINT (13.08 45.09)</td>
-</tr>
-<tr class="even">
-<td align="left">Occurrence</td>
-<td align="left">BYC_PTM_06-17_Adr_2006_70_Myliobatis_aquila</td>
-<td align="left">Monitored bycatch of Mustelus mustelus, Squalus
-acanthias, Myliobatis aquila, Pteroplatytrygon violacea and Caretta
-caretta in mid-water pair trawl in the northern Adriatic Sea, from
-2006-2017</td>
-<td align="left"><a href="https://marineinfo.org/id/dataset/6460" class="external-link uri">https://marineinfo.org/id/dataset/6460</a></td>
-<td align="left">Monitored bycatch of Mustelus mustelus, Squalus
-acanthias, Myliobatis aquila, Pteroplatytrygon violacea and Caretta
-caretta in mid-water pair trawl in the northern Adriatic Sea, from
-2006-2017</td>
-<td align="left">2006</td>
-<td align="left">BYC_PTM_06-17_Adr_2006_70</td>
-<td align="left">EPSG:4326</td>
-<td align="left">en</td>
-<td align="left">2020-11-18 09:40:12</td>
-<td align="left">POINT (12.85519 45.33256)</td>
-</tr>
-<tr class="odd">
-<td align="left">Occurrence</td>
-<td align="left">BYC_PTM_06-17_Adr_2013_104_Myliobatis_aquila</td>
-<td align="left">Monitored bycatch of Mustelus mustelus, Squalus
-acanthias, Myliobatis aquila, Pteroplatytrygon violacea and Caretta
-caretta in mid-water pair trawl in the northern Adriatic Sea, from
-2006-2017</td>
-<td align="left"><a href="https://marineinfo.org/id/dataset/6460" class="external-link uri">https://marineinfo.org/id/dataset/6460</a></td>
-<td align="left">Monitored bycatch of Mustelus mustelus, Squalus
-acanthias, Myliobatis aquila, Pteroplatytrygon violacea and Caretta
-caretta in mid-water pair trawl in the northern Adriatic Sea, from
-2006-2017</td>
-<td align="left">2013</td>
-<td align="left">BYC_PTM_06-17_Adr_2013_104</td>
-<td align="left">EPSG:4326</td>
-<td align="left">en</td>
-<td align="left">2020-11-18 09:40:12</td>
-<td align="left">POINT (12.85519 45.08056)</td>
-</tr>
-<tr class="even">
-<td align="left">Occurrence</td>
-<td align="left">Venice_1985_Present_juvenile_126975</td>
-<td align="left">Historical landings for the lagoon of Venice (Italy)
-between 1945 and 2001</td>
-<td align="left"><a href="https://marineinfo.org/id/dataset/5609" class="external-link uri">https://marineinfo.org/id/dataset/5609</a></td>
-<td align="left">Historical landings for the lagoon of Venice (Italy)
-between 1945 and 2001</td>
-<td align="left">1985</td>
-<td align="left">Venice_1985</td>
-<td align="left">EPSG:4326</td>
-<td align="left">en</td>
-<td align="left">2020-05-05 12:37:31</td>
-<td align="left">POINT (12.3774 45.3867)</td>
-</tr>
-<tr class="odd">
-<td align="left">Occurrence</td>
-<td align="left">Venice_1972_Present_107552</td>
-<td align="left">Historical landings for the lagoon of Venice (Italy)
-between 1945 and 2001</td>
-<td align="left"><a href="https://marineinfo.org/id/dataset/5609" class="external-link uri">https://marineinfo.org/id/dataset/5609</a></td>
-<td align="left">Historical landings for the lagoon of Venice (Italy)
-between 1945 and 2001</td>
-<td align="left">1972</td>
-<td align="left">Venice_1972</td>
-<td align="left">EPSG:4326</td>
-<td align="left">en</td>
-<td align="left">2020-05-05 12:37:31</td>
-<td align="left">POINT (12.3774 45.3867)</td>
-</tr>
-<tr class="even">
-<td align="left">Occurrence</td>
-<td align="left">BYC_PTM_06-17_Adr_2013_115_Caretta_caretta</td>
-<td align="left">Monitored bycatch of Mustelus mustelus, Squalus
-acanthias, Myliobatis aquila, Pteroplatytrygon violacea and Caretta
-caretta in mid-water pair trawl in the northern Adriatic Sea, from
-2006-2017</td>
-<td align="left"><a href="https://marineinfo.org/id/dataset/6460" class="external-link uri">https://marineinfo.org/id/dataset/6460</a></td>
-<td align="left">Monitored bycatch of Mustelus mustelus, Squalus
-acanthias, Myliobatis aquila, Pteroplatytrygon violacea and Caretta
-caretta in mid-water pair trawl in the northern Adriatic Sea, from
-2006-2017</td>
-<td align="left">2013</td>
-<td align="left">BYC_PTM_06-17_Adr_2013_115</td>
-<td align="left">EPSG:4326</td>
-<td align="left">en</td>
-<td align="left">2020-11-18 09:40:12</td>
-<td align="left">POINT (13.02319 44.99656)</td>
-</tr>
-</tbody>
-</table>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="co"># iNat table</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>  <span class="fu">head</span>(resGOV<span class="sc">$</span>inat[<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)], <span class="dv">10</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">"The first 10 occurrence records of iNaturalist on the selected eLTER site."</span></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>)</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a><span class="co"># OBIS table</span></span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>  <span class="fu">head</span>(resGOV<span class="sc">$</span>obis[<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)], <span class="dv">10</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">"The first 10 occurrence records of OBIS on the selected eLTER site."</span></span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code><span><span class="co">## Error in parse(text = input): &lt;text&gt;:4:3: unexpected symbol</span></span>
+<span><span class="co">## 3:   head(resGOV$inat[c(1:10)], 10)</span></span>
+<span><span class="co">## 4:   caption</span></span>
+<span><span class="co">##      ^</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="how-to-trasform-external-service-data-schemas-into-elter-data-reporting-template">How to trasform external service data schemas into eLTER
@@ -815,32 +150,31 @@ template.</p>
 River Catchment site</a>, where the external data service to be queried
 are GBIF and iNaturalist.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">saldurid</span> <span class="op">&lt;-</span> <span class="st">"https://deims.org/0ba2af64-d550-4cad-b778-a207e1b81776"</span></span>
+<code class="sourceCode R"><span><span class="va">saldurid</span> <span class="op">&lt;-</span> <span class="st">"https://deims.org/97ff6180-e5d1-45f2-a559-8a7872eb26b1"</span></span>
 <span></span>
 <span><span class="va">resSaldur</span> <span class="op">&lt;-</span> <span class="fu">ReLTER</span><span class="fu">::</span><span class="fu"><a href="../reference/get_site_speciesOccurrences.html">get_site_speciesOccurrences</a></span><span class="op">(</span></span>
 <span>  deimsid <span class="op">=</span> <span class="va">saldurid</span>,</span>
 <span>  list_DS <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"gbif"</span>, <span class="st">"inat"</span><span class="op">)</span>,</span>
 <span>  show_map <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  limit <span class="op">=</span> <span class="fl">50</span>,</span>
+<span>  limit <span class="op">=</span> <span class="fl">20</span>,</span>
 <span>  exclude_inat_from_gbif <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># GBIF</span></span>
 <span><span class="va">tblSaldur_gbif</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="va">resSaldur</span><span class="op">$</span><span class="va">gbif</span><span class="op">)</span></span>
-<span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">tblSaldur_gbif</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">outGbif</span> <span class="op">&lt;-</span> <span class="va">tblSaldur_gbif</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>    <span class="fu">ReLTER</span><span class="fu">::</span><span class="fu"><a href="../reference/map_occ_gbif2elter.html">map_occ_gbif2elter</a></span><span class="op">(</span>deimsid <span class="op">=</span> <span class="va">saldurid</span><span class="op">)</span></span>
 <span>  <span class="fu">ReLTER</span><span class="fu">::</span><span class="fu"><a href="../reference/save_occ_eLTER_reporting_Archive.html">save_occ_eLTER_reporting_Archive</a></span><span class="op">(</span><span class="va">outGbif</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] "/var/folders/vw/kyy3hxz91gn537ck001rvlsh0000gn/T//RtmpcHKUaX/biodiv_occurrence_site_0ba2af64-d550-4cad-b778-a207e1b81776_gbif.zip"</span></span></code></pre>
+<pre><code><span><span class="co">## [1] "/tmp/RtmpsutGAg/biodiv_occurrence_site_97ff6180-e5d1-45f2-a559-8a7872eb26b1_gbif.zip"</span></span></code></pre>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># iNaturalist</span></span>
 <span><span class="va">tblSaldur_inat</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="va">resSaldur</span><span class="op">$</span><span class="va">inat</span><span class="op">)</span></span>
 <span><span class="va">outInat</span> <span class="op">&lt;-</span> <span class="va">tblSaldur_inat</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu">ReLTER</span><span class="fu">::</span><span class="fu"><a href="../reference/map_occ_inat2elter.html">map_occ_inat2elter</a></span><span class="op">(</span>deimsid <span class="op">=</span> <span class="va">saldurid</span><span class="op">)</span></span>
 <span><span class="fu">ReLTER</span><span class="fu">::</span><span class="fu"><a href="../reference/save_occ_eLTER_reporting_Archive.html">save_occ_eLTER_reporting_Archive</a></span><span class="op">(</span><span class="va">outInat</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] "/var/folders/vw/kyy3hxz91gn537ck001rvlsh0000gn/T//RtmpcHKUaX/biodiv_occurrence_site_0ba2af64-d550-4cad-b778-a207e1b81776_inat.zip"</span></span></code></pre>
+<pre><code><span><span class="co">## [1] "/tmp/RtmpsutGAg/biodiv_occurrence_site_97ff6180-e5d1-45f2-a559-8a7872eb26b1_inat.zip"</span></span></code></pre>
 <p>The eLTER useful archive created are:</p>
 <ul>
 <li><p>biodiv_occurrence_site_97ff6180-e5d1-45f2-a559-8a7872eb26b1_gbif.zip</p></li>
@@ -850,14 +184,14 @@ are GBIF and iNaturalist.</p>
 <div class="section level3">
 <h3 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
 <div id="ref-Peterseil2021" class="csl-entry">
 Peterseil, Johannes, and Sarah Geiger. 2020. <span>“Field Specification
 for Data Reporting.”</span> <a href="https://doi.org/10.5281/ZENODO.6373409" class="external-link">https://doi.org/10.5281/ZENODO.6373409</a>.
 </div>
 </div>
 </div>
-  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
 </div>
 
@@ -927,9 +261,9 @@ for Data Reporting.”</span> <a href="https://doi.org/10.5281/ZENODO.6373409" c
     </footer>
 </div>
 
-  
 
-  
+
+
 
   </body>
 </html>

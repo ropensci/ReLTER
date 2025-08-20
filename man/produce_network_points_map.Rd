@@ -126,7 +126,7 @@ map_LTERGermanSites <- map_LTERGermanSites +
 
 }
 \references{
-\insertRef{httr2}{ReLTER}
+\insertRef{httr2R}{ReLTER}
 
 \insertRef{jsonliteR}{ReLTER}
 
@@ -159,6 +159,8 @@ map_LTERGermanSites <- map_LTERGermanSites +
 \insertRef{geodataR}{ReLTER}
 }
 \seealso{
+\code{\link[geodata:gadm]{geodata::gadm()}}
+
 \code{\link[geodata:gadm]{geodata::gadm()}}
 }
 \author{

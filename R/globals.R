@@ -16,6 +16,7 @@ utils::globalVariables(
 )
 
 #' Package settings that can be changed by the user
+#' @description `r lifecycle::badge("stable")`
 #' @family package_customizable_settings
 #' @export
 package_settings <- (function() {
@@ -26,6 +27,7 @@ package_settings <- (function() {
 })()
 
 #' Set DEIMS-SDR API base URL
+#' @description `r lifecycle::badge("stable")`
 #' @param url A `character`. Set the base URL to DEIMS-SDR.
 #' @param force A `boolean`. Default FALSE.
 #' @export
@@ -64,6 +66,7 @@ set_deims_base_url <- function(url = "https://deims.org/", force = FALSE) {
 }
 
 #' Get DEIMS-SDR base URL
+#' @description `r lifecycle::badge("stable")`
 #' @return DEIMS-SDR base URL
 #' @family package_customizable_settings
 #' @export

@@ -1,14 +1,13 @@
-pandoc: 3.1.1
-pkgdown: 2.0.7
+pandoc: 3.7.0.1
+pkgdown: 2.1.3
 pkgdown_sha: ~
 articles:
+  multi_sites_contacts: multi_sites_contacts.html
+  multi_sites_information: multi_sites_information.html
   occurrences_into_site: occurrences_into_site.html
   rocker_ReLTER: rocker_ReLTER.html
-  site_information: site_information.html
-  sites_contacts: sites_contacts.html
-  sites_information: sites_information.html
-last_built: 2023-12-21T16:39Z
+  single_site_information: single_site_information.html
+last_built: 2025-08-20T08:22Z
 urls:
   reference: https://docs.ropensci.org/ReLTER/reference
   article: https://docs.ropensci.org/ReLTER/articles
-

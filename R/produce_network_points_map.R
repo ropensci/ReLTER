@@ -28,8 +28,9 @@
 #' @importFrom tibble as_tibble
 #' @importFrom stringr str_replace
 #' @importFrom ggplot2 ggplot geom_sf coord_sf theme_minimal labs
+#' @seealso [geodata::gadm()]
 #' @references
-#'   \insertRef{httr2}{ReLTER}
+#'   \insertRef{httr2R}{ReLTER}
 #'   
 #'   \insertRef{jsonliteR}{ReLTER}
 #'

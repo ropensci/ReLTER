@@ -5,7 +5,6 @@ ReLTER
 <!-- badges: start -->
 <!-- other badges https://github.com/GuangchuangYu/badger -->
 
-[![](https://badges.ropensci.org/485_status.svg)](https://github.com/ropensci/software-review/issues/485)
 [![](https://img.shields.io/badge/doi-10.5281/zenodo.5576813-yellow.svg)](https://doi.org/10.5281/zenodo.5576813)
 [![r-universe](https://ropensci.r-universe.dev/badges/ReLTER)](https://ropengov.r-universe.dev/)
 [![License:
@@ -183,8 +182,11 @@ page](https://docs.ropensci.org/ReLTER/authors).
 ## :thumbsup: Acknowledgements
 
 This work has been partially funded from the European Union’s Horizon
-2020 research and innovation programme under the [H2020 eLTER-Plus
-Project](https://elter-ri.eu/elter-plus) grant agreement No 871128.
+2020 research and innovation programme under the [**H2020 eLTER-Plus
+project**](https://elter-ri.eu/elter-plus) Grant Agreement No. 871128
+(DOI: [10.3030/871128](https://doi.org/10.3030/871128)) and
+[**eLTER EnRich project**](https://elter-ri.eu/elter-enrich) Grant
+Agreement No. 101131751 (DOI: [10.3030/101131751](https://doi.org/10.3030/101131751))
 
 Thanks to the reviewers and the editor ([more about
 authors](https://docs.ropensci.org/ReLTER/authors.html)) for their work.
