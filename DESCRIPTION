@@ -65,7 +65,8 @@ Imports:
     tibble,
     stringr,
     terra,
-    xml2
+    xml2,
+    Rdpack
 Suggests:
     rbibutils,
     markdown,
@@ -90,8 +91,6 @@ Remotes:
     XML
 VignetteBuilder: 
     knitr
-RdMacros: 
-    Rdpack
 Config/testthat/edition: 3
 Encoding: UTF-8
 Language: en-GB
