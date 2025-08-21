@@ -166,21 +166,21 @@ produce_network_points_map <- function(networkDEIMSID, countryCode) {
           )
         print(mapOfSites)
       } else {
-          message("\n----\nThe map of country cannot be created.
+        message("\n----\nThe map of country cannot be created.
   Please check again the Country code.
   Compare the code provided with the list of code in
   https://en.wikipedia.org/wiki/ISO_3166\n----\n")
-        print(mapOfSites)
-        }
-      } else {
-        message("\n----\nThe maps cannot be created because coordinates,
+        # print(mapOfSites)
+      }
+    } else {
+      message("\n----\nThe maps cannot be created because coordinates,
   provided in DEIMS-SDR, have invalid geometry.
   Please check the content and refers this error to DEIMS-SDR contact person
   of the network, citing the Network.iD.\n----\n")
-      }
-    } else {
-      message("\n----\nThe requested page could not be found.
-  Please check again the Network.iD\n----\n")
-      mapOfSites <- NULL
     }
+  } else {
+    message("\n----\nThe requested page could not be found.
+  Please check again the Network.iD\n----\n")
+    mapOfSites <- NULL
+  }
 }
