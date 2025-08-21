@@ -67,6 +67,7 @@ Imports:
     terra,
     xml2
 Suggests:
+    rbibutils,
     markdown,
     cowplot,
     geodata,
