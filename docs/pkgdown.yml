@@ -7,7 +7,7 @@ articles:
   occurrences_into_site: occurrences_into_site.html
   rocker_ReLTER: rocker_ReLTER.html
   single_site_information: single_site_information.html
-last_built: 2025-08-21T11:10Z
+last_built: 2025-08-21T13:22Z
 urls:
   reference: https://docs.ropensci.org/ReLTER/reference
   article: https://docs.ropensci.org/ReLTER/articles
