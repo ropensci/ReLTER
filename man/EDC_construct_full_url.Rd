@@ -14,8 +14,8 @@ EDC_construct_full_url(edc_row, dataset_year, dataset_month)
 \item{dataset_month}{\code{string} Chosen month}
 }
 \description{
-Construct full URL,
-including replacing year and month where required.
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
+Construct full URL, including replacing year and month where required.
 }
 \author{
 Micha Silver, phD (2020) \email{silverm@post.bgu.ac.il}

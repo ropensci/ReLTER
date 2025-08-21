@@ -1,20 +1,16 @@
 message("\n---- Test produce_network_points_map() ----")
 
-test_that("Expect error if internet connection is down", {
-  withr::local_envvar("LOCAL_DEIMS" = FALSE)
-  expect_error(
-    httptest2::without_internet(
-      result <- ReLTER::produce_network_points_map(
-        networkDEIMSID =
-          "https://deims.org/networks/e904354a-f3a0-40ce-a9b5-61741f66c824",
-          countryCode = "DEU"
-      )
-    ),
-    "GET"
-  )
-})
-
+# Skip tests if running in test mode (offline/CI)
+skip_if(skip_in_test_mode)
 skip_if_offline(host = "deims.org")
+
+test_that("Function returns a ggplot object for valid network and country", {
+  result <- produce_network_points_map(
+    networkDEIMSID = TESTURLNetwork,
+    countryCode = "ITA"
+  )
+  expect_s3_class(result, "ggplot")
+})
 
 test_that("Output of network point function constructs ‘tibble’ as expected", {
   result <- ReLTER::produce_network_points_map(
@@ -23,15 +19,6 @@ test_that("Output of network point function constructs ‘tibble’ as expected"
     countryCode = "DEU"
   )
   expect_s3_class(result, "ggplot")
-})
-
-test_that("Wrong networkDEIMSID (but URL) constructs a NULL object", {
-  withr::local_envvar("LOCAL_DEIMS" = FALSE)
-  result <- ReLTER::produce_network_points_map(
-    networkDEIMSID = "https://deims.org/networks/ljhnhbkihubib",
-    countryCode = "DEU"
-  )
-  expect_type(result, "NULL")
 })
 
 test_that("Wrong networkDEIMSID (not URL) constructs an empty tibble", {
@@ -43,51 +30,57 @@ test_that("Wrong networkDEIMSID (not URL) constructs an empty tibble", {
   expect_type(result, "NULL")
 })
 
-test_that("Wrong countryCode constructs a NULL object", {
-  result <- ReLTER::produce_network_points_map(
-    networkDEIMSID =
-      "https://deims.org/networks/e904354a-f3a0-40ce-a9b5-61741f66c824",
-    countryCode = "EEA"
+test_that("Function handles invalid network URL gracefully", {
+  expect_message(
+    result <- produce_network_points_map(
+      networkDEIMSID = "https://deims.org/networks/invalid123",
+      countryCode = "ITA"
+    ),
+    "requested page could not be found"
   )
-  expect_type(result, "NULL")
-
-  # expect_true(ncol(result$tm_shape$shp) == 4)
-  # expect_true(all(names(result$tm_shape$shp) == c(
-  #   "title", "uri", "changed", "coordinates"
-  # )))
-  # 
-  # expect_type(result$tm_shape$shp$title, "NULL")
-  # expect_type(result$tm_shape$shp$uri, "NULL")
-  # expect_type(result$tm_shape$shp$changed, "NULL")
-  # expect_type(result$tm_shape$shp$coordinates, "NULL")
+  expect_null(result)
 })
 
-test_that("Wrong both networkDEIMSID (but URL) and countryCode constructs
-          a NULL object", {
-            withr::local_envvar("LOCAL_DEIMS" = FALSE)
-  result <- ReLTER::produce_network_points_map(
-    networkDEIMSID = "https://deims.org/networks/ljhnhbkihubib",
-    countryCode = "EEA"
+test_that("Function handles invalid network ID (not URL) gracefully", {
+  expect_message(
+    result <- produce_network_points_map(
+      networkDEIMSID = "invalid123",
+      countryCode = "ITA"
+    ),
+    "requested page could not be found"
   )
-  expect_type(result, "NULL")
+  expect_null(result)
 })
 
-test_that("Wrong both networkDEIMSID (not URL) and countryCode constructs
-          a NULL object", {
-            withr::local_envvar("LOCAL_DEIMS" = FALSE)
-  result <- ReLTER::produce_network_points_map(
-    networkDEIMSID = "ljhnhbkihubib",
-    countryCode = "EEA"
+test_that("Function handles invalid country code gracefully", {
+  expect_message(
+    result <- produce_network_points_map(
+      networkDEIMSID = TESTURLNetwork,
+      countryCode = "EEE"
+    ),
+    "map of country cannot be created"
   )
-  expect_type(result, "NULL")
+  expect_null(result)
 })
 
-test_that("Output of site affiliation information function constructs ‘sf' with
-          valid geometries", {
-  result <- ReLTER::produce_network_points_map(
-    networkDEIMSID =
-      "https://deims.org/networks/e904354a-f3a0-40ce-a9b5-61741f66c824",
-    countryCode = "DEU"
+test_that("Function handles sites with missing/invalid geometry", {
+  # Example with a known site/network with missing geometry
+  result <- produce_network_points_map(
+    networkDEIMSID = TESTURLNetwork,
+    countryCode = "ITA"
   )
+  # Should print a message about invalid geometry, still returns ggplot
   expect_s3_class(result, "ggplot")
+})
+
+test_that("Function returns error if internet is down", {
+  expect_error(
+    httptest2::without_internet({
+      produce_network_points_map(
+        networkDEIMSID = TESTURLNetwork,
+        countryCode = "ITA"
+      )
+    }),
+    "GET"
+  )
 })

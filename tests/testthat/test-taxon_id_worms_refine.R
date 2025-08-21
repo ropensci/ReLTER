@@ -1,5 +1,7 @@
 message("\n---- Test taxon_id_worms_refine() ----")
 
+skip_if_offline(host = "deims.org")
+
 test_that("Output of taxon worms function constructs 'tibble' as expected
 with choiceNumber NULL", {
   # input_table <- tibble::tibble(

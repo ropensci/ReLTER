@@ -1,5 +1,6 @@
-#' https://docs.google.com/spreadsheets/d/1wTiwb_5uM_XGsrSWUx9h2t4maSSFg7mpggq2nIydWco
+#' eLTER Data Reporting Format (\href{https://doi.org/10.5281/zenodo.6373410}{DRF})
 #'
+#' @description `r lifecycle::badge("experimental")`
 #' `eLTER_data_reporting_format` data is a nested `list` describing the field
 #' specifications used in the eLTER data reporting process.
 #' It includes two versions of the format: version 1.3 (used in eLTER-Plus) and version 2.0 

@@ -57,7 +57,7 @@ produce_site_observedProperties_waffle <- function(deimsid) {
     deimsid = deimsid,
     categories = "observedProperties"
   )
-  paramsDeims <- tibble::as_tibble(site$data$observedProperties[[1]])
+  paramsDeims <- tibble::as_tibble(site$observedProperties[[1]])
   if (length(paramsDeims) != 0) {
     params <- tibble::as_tibble(paramsDeims)
     params$parameterGroups <- paste0(
@@ -96,7 +96,7 @@ produce_site_observedProperties_waffle <- function(deimsid) {
       obsPropWaffle,
       title = paste0(
         "Observed properties measured in the ",
-        site$data$title,
+        site$title.x,
         " grouped by type"
       ),
       rows = 8,
@@ -108,8 +108,8 @@ produce_site_observedProperties_waffle <- function(deimsid) {
       paste0(
         sum(params$n),
         " observed properties measured in the ",
-        site$data$title, "site\n(DEIMS ID: ",
-        site$data$uri, ")"
+        site$title.x, "site\n(DEIMS ID: ",
+        site$uri, ")"
       )
     ) + ggplot2::theme(
         plot.title = ggplot2::element_text(

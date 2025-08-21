@@ -10,15 +10,15 @@
 #' 'Infrastructure', 'observedProperties', 'RelateRes'.
 #' Multiple values can be indicated.
 #' A site's boundary is always returned.
+#' @param show_map A `boolean`. When TRUE a `leaflet` map is plotted as side
+#' effect. Default FALSE.
+#' @param with_locations A `boolean`. When TRUE, and only `show_map` is TRUE,
+#' all site related locations are showed in the plotted map.
+#' Default FALSE.
 #' @inheritParams get_site_boundaries
-#' @return The output of the function is a `list` with two elements:
-#' \itemize{
-#' \item \code{map} A Leaflet map with the location if requested with
-#' `show_map`.
-#' \item \code{data} A `data.frame` with the information about the location.
-#' \item \code{locations} A `data.frame` with the information about the
-#' locations, if requested with `with_locations`.
-#' }
+#' @return The output of the function is a `sf` with the information about
+#' the site.
+#' If the boundary is missing from DEIMS-SDR a `tibble` is returned.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @author Paolo Tagliolato, phD \email{tagliolato.p@@irea.cnr.it}
 #' @importFrom dplyr as_tibble left_join
@@ -42,7 +42,7 @@
 #'   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
 #'   categories = c("EnvCharacts", "Affiliations"),
 #'   show_map = TRUE,
-#'   with_locations = TRUE
+#'   with_locations = FALSE
 #' )
 #' site
 #' 
@@ -53,12 +53,15 @@ get_site_info <- function(
     show_map = FALSE,
     with_locations = FALSE
   ) {
+  if (show_map == FALSE) {
+    with_locations = FALSE
+  }
   qo <- queries_jq_deims[[get_deims_API_version()]]$site_info
   jj <- get_id(deimsid, qo$path)
   res <- list(
-    map = NULL,
-    data = NULL,
-    locations = NULL
+    # map = NULL,
+    data = NULL#,
+    # locations = NULL
   )
   if (is.na(attr(jj, "status"))) {
     invisible(
@@ -216,22 +219,24 @@ get_site_info <- function(
         )
       }
     }
-    if (show_map) {
-      bound <- get_site_boundaries(
-        deimsid = deimsid,
-        show_map = TRUE,
-        with_locations = with_locations
-      )
+    bound <- get_site_boundaries(
+      deimsid = deimsid,
+      show_map = show_map,
+      with_locations = with_locations
+    )
+    if (!is.null(bound) && inherits(bound$data, "sf")) {
       siteInfo <- siteInfo %>%
         dplyr::left_join(
           bound$data,
           by = c("uri" = "uri")
         ) %>%
-         sf::st_as_sf(sf_column_name = "geometry")
-      res$map <- bound$map
-      res$locations <- bound$locations
+        sf::st_as_sf(sf_column_name = "geometry")
+    } else {
+      message("\n----\nThe requested DEIMS-SDR site doesn't cointain
+geographic boundary information.
+A simple tibble is returned and no map is showed.\n----\n")
     }
-    res$data <- siteInfo
+    res <- siteInfo
   } else {
     message("\n----\nThe requested page could not be found.
             Please check the DEIMS ID\n----\n")

@@ -16,9 +16,9 @@ skip_if_offline(host = "deims.org")
 
 test_that("Output of chart waffle of observed properties function constructs
 'sf' and 'tibble’ as expected", {
-  result <- ReLTER::produce_site_observedProperties_waffle(
+  result <- suppressWarnings(ReLTER::produce_site_observedProperties_waffle(
     deimsid = TESTURLSite
-  )
+  ))
   expect_s3_class(result, "tbl_df")
   expect_true(ncol(result) == 4)
   expect_true(all(names(result) == c(

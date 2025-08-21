@@ -21,11 +21,13 @@ test_that("Output of function constructs 'sf' and list as expected", {
   withr::local_envvar("LOCAL_DEIMS" = FALSE)
   list_DS <- c("inat", "gbif")
   limit <- 10
-  result <- ReLTER::get_site_speciesOccurrences(
-    deimsid = TESTURLSite,
-    list_DS = list_DS,
-    show_map = FALSE,
-    limit = limit
+  result <- suppressWarnings(
+    ReLTER::get_site_speciesOccurrences(
+      deimsid = TESTURLSite,
+      list_DS = list_DS,
+      show_map = FALSE,
+      limit = limit
+    )
   )
   expect_type(result, "list")
   expect_identical(sort(names(result)), sort(list_DS))

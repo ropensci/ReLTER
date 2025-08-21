@@ -1,37 +1,45 @@
----
-output: html_document
----
-# ReLTER 2.3.0 Release Notes
+# ReLTER 3.0.0
 
-Version 2.3.0 released on 30/07/2025
+released on 20/08/2025
 
 ## Changes
 
-* Two functions were deprecated: `get_site_MODIS` and `get_site_ODS`
-* These were replaced by a new function `get_site_EcoDataCube`.
-* Dependency on the older `raster` package was removed, and `terra` used instead.
-* Some improvements to vignettes and documentation.
-* Some rarely used packages removed, to reduce number of dependencies (i.e. `purrr`)
-* All map plots use `leaflet` (requires `leaflet` >= 2.1.1)
+* Four functions were deprecated: `get_site_MODIS`, `get_site_ODS`, `get_ilter_*`, `get_network_*`, `get_sos_*`, and `produce_zenodo_record`;  
+* These were replaced by a new function `get_site_EcoDataCube`;  
+* Dependency on the older `raster` package was removed, and `terra` was used instead;  
+* Vignettes and documentation were improved;  
+* Rarely used packages were removed to reduce the number of dependencies (e.g., `purrr`);  
+* All map plots were standardized to use `leaflet` (requires `leaflet` >= 2.1.1);  
+* Several functions were revised to make them more readable and concise (e.g., `produce_network_points_map` and `produce_site_map`);  
+* Dependencies were analyzed across all functions, and their number was reduced accordingly. For this purpose, a summary table was created (see Google Spreadsheet *packages_vs_functions*) showing the overall number of packages and their usage by function;  
+* Packages used only a few times (≤ 2) were removed, favoring base functions or functions already widely used in the package;  
+* Installation requirements were revised by evaluating which packages should not be mandatory at install time. This was achieved by:  
+- `@seealso` tags were used (e.g., `@seealso[tidyr::nest()]`) instead of `@importFrom` to indicate usage without forcing package loading;  
+- Packages were moved from the *Imports* to the *Suggests* section in the DESCRIPTION file;  
+- Package availability was checked dynamically with `requireNamespace("<package_name>", quietly = TRUE)`;  
+- Direct calls were replaced with wrappers to avoid package loading, e.g., `unnest_fx <- getNamespace("tidyr", "unnest")` and then `unnest_fx(cols = c(id))`.
+* Cheatsheets were created to provide users with quick references to the main functionalities of the package.
 
+--------------------------------------------------------------------------------
 
-# ReLTER 2.2.0 Release Notes
+# ReLTER 2.2.0
 
-v2.2.0 was released on 29/11/2023
+released on 29/11/2023
 
 ## Changes
 
 * new function get_location_info, get_site_boundaries, get_sites_interactive,
-  get_sites_within_3d_bounding_box, get_sites_within_radius, plot_agg_map, and 
-  plot_timeseries
+get_sites_within_3d_bounding_box, get_sites_within_radius, plot_agg_map, and 
+plot_timeseries
 * replaced httr package with httr2
 * replaced RCurl package with httr2
 * removed rgeos dependancies
 
 ________________________________________________________________________________
-# ReLTER 2.1.2 Release Notes
 
-v2.1.2 was released on 30/01/2023
+# ReLTER 2.1.2
+
+released on 30/01/2023
 
 ## Changes
 
@@ -39,9 +47,9 @@ v2.1.2 was released on 30/01/2023
 
 ________________________________________________________________________________
 
-# ReLTER 2.1.1 Release Notes
+# ReLTER 2.1.1
 
-v2.1.1 was released on 30/01/2023
+released on 30/01/2023
 
 ## Minor changes
 
@@ -49,26 +57,24 @@ v2.1.1 was released on 30/01/2023
 
 ________________________________________________________________________________
 
+# ReLTER 2.1.0
 
-# ReLTER 2.1.0 Release Notes
-
-v2.1.0 was released on 25/01/2023
+released on 25/01/2023
 
 ## Changes
 
 * inserted new function for acquire either Land Surface Temperature (LST)
-  or Vegetation Index (NDVI) both cropped to an eLTER site boundary;
+or Vegetation Index (NDVI) both cropped to an eLTER site boundary;
 * outputs enrichment of certain functions with unit of measurement (UOM)
-  and labeling with semantic terms (e.g.
-  \href{https://dwc.tdwg.org/terms/}{Darwin Core} in the taxon_id_*.R
-  or \href{http://vocab.nerc.ac.uk}{NERC} in the get_sos_*.R functions).
+and labeling with semantic terms (e.g.
+                                  \href{https://dwc.tdwg.org/terms/}{Darwin Core} in the taxon_id_*.R
+                                  or \href{http://vocab.nerc.ac.uk}{NERC} in the get_sos_*.R functions).
 
 ________________________________________________________________________________
 
+# ReLTER 2.0.1
 
-# ReLTER 2.0.1 Release Notes
-
-v2.0.1 was released on 24/01/2023
+released on 24/01/2023
 
 ## Changes
 
@@ -80,47 +86,45 @@ v2.0.1 was released on 24/01/2023
 
 ________________________________________________________________________________
 
+# ReLTER 2.0.0
 
-# ReLTER 2.0.0 Release Notes
-
-v2.0.0 was released on 30/09/2022
+released on 30/09/2022
 
 ## Changes
 
 * inserted new functions for set an environment for variables of the package,
-  for setting and for get the DEIMS-SDR base URL;
+for setting and for get the DEIMS-SDR base URL;
 * inserted a new function for get version of DEIMS-SDR API based on the
-  DEIMS-SDR base URL;
+DEIMS-SDR base URL;
 * added an object (queries_jq) containing all the JQ queries (as a list);
 * added the new JQ queries accordingly with the structure of the new DEIMS-SDR
-  API version;
+API version;
 * deleted the JQ queries call into the get_site_info(), get_activity_info(),
-  and get_dataset_info() and substitute with a variable;
+and get_dataset_info() and substitute with a variable;
 * changed the name of the functions containing "parameters" with "observed
   properties";
 * added for some functions the life cycle badge;
 * acquisition to species occurrences from GBIF, iNaturalist and OBIS;
 * harmonisation to the output of species occurrences in eLTER Data Reporting
-  Format (v3.1);
+Format (v3.1);
 * creation the archive (zip) with files following the eLTER Data Reporting
-  Format (v3.1);
+Format (v3.1);
 * composition of file naming convention following the eLTER Data Reporting
-  Format (v3.1);
+Format (v3.1);
 * composition of the object containing the eLTER Data Reporting Format
-  (v3.1) tables;
+(v3.1) tables;
 * interaction with Sensor Observations Services (SOS - v2.0) for acquire
-  procedure list, procedure info, feature of interest info, observed property
-  info, and observations;
+procedure list, procedure info, feature of interest info, observed property
+info, and observations;
 * interaction to the Zenodo repository in order to upload record or download
-  dataset record;
+dataset record;
 * substituted the SPARQL package with httr2.
 
 ________________________________________________________________________________
 
+# ReLTER 1.1.0
 
-# ReLTER 1.1.0 Release Notes
-
-v1.1.0 was released on 15/04/2022
+released on 15/04/2022
 
 ## Major changes
 
@@ -135,9 +139,9 @@ v1.1.0 was released on 15/04/2022
 
 ________________________________________________________________________________
 
-# ReLTER 1.0.0 Release Notes
+# ReLTER 1.0.0
 
-v1.0.0 was released on 15/11/2021
+released on 15/11/2021
 
 ## Major changes
 
@@ -155,9 +159,9 @@ v1.0.0 was released on 15/11/2021
 
 ________________________________________________________________________________
 
-# ReLTER 0.2.0 Release Notes
+# ReLTER 0.2.0
 
-v0.2.0 was released on 18/10/2021
+released on 18/10/2021
 
 ## Major changes
 
@@ -174,9 +178,9 @@ After the first minor release big improvements are been done:
 
 ________________________________________________________________________________
 
-# ReLTER 0.1.1 Release Notes
+# ReLTER 0.1.1
 
-v0.1.1 was released on 28/01/2021
+released on 28/01/2021
 
 ## Major changes
 
@@ -198,14 +202,14 @@ After the first test some improvements are been done:
 
 ________________________________________________________________________________
 
-# ReLTER 0.1.0 Release Notes
+# ReLTER 0.1.0
 
-v0.1.0 was released on 28/01/2019
+released on 28/01/2019
 
 ## Major changes
 
 Beta release of ReLTER package!
-
+  
 * Some functions are released within this version of package:
 1. getSiteAffiliations
 2. getSiteBoundaries

@@ -269,7 +269,7 @@ reporting_save_archive <- function(
 }
 
 #' Compose an eLTER Data Reporting Format object
-#' @description `r lifecycle::badge("deprecated")`
+#' @description `r lifecycle::badge("experimental")`
 #' Given several tables, creates an eLTER data reporting format
 #' object
 #' @author Paolo Tagliolato, phD \email{tagliolato.p@@irea.cnr.it}
