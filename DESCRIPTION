@@ -65,8 +65,7 @@ Imports:
     tibble,
     stringr,
     terra,
-    xml2,
-    Rdpack
+    xml2
 Suggests:
     rbibutils,
     markdown,

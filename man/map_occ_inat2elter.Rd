@@ -33,11 +33,6 @@ of eLTER reporting format
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 }
-\references{
-\insertRef{tibbleR}{ReLTER}
-
-\insertRef{dtplyrR}{ReLTER}
-}
 \author{
 Paolo Tagliolato, phD \email{tagliolato.p@irea.cnr.it}
 

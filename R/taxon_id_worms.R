@@ -33,10 +33,6 @@
 #' @author Paolo Tagliolato, phD (2021) \email{tagliolato.p@@irea.cnr.it}
 #' @importFrom dplyr filter
 #' @seealso [worrms::wm_records_names()]
-#' @references
-#'   \insertRef{dplyrR}{ReLTER}
-#'   
-#'   \insertRef{worrmsR}{ReLTER}
 #' @export
 #' @examples
 #' phytoplankton <- tibble::tibble(

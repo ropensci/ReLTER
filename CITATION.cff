@@ -406,18 +406,6 @@ references:
     year: '2025'
     doi: 10.32614/CRAN.package.qrcode
   - type: software
-    title: Rdpack
-    abstract: 'Rdpack: Update and Manipulate Rd Documentation Objects'
-    notes: Imports
-    url: https://geobosh.github.io/Rdpack/
-    repository: https://CRAN.R-project.org/package=Rdpack
-    authors:
-    - family-names: Boshnakov
-      given-names: Georgi N.
-      email: georgi.boshnakov@manchester.ac.uk
-    year: '2025'
-    doi: 10.32614/CRAN.package.Rdpack
-  - type: software
     title: sf
     abstract: 'sf: Simple Features for R'
     notes: Imports

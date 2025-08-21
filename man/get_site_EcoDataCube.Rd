@@ -103,11 +103,6 @@ kalkalpen_LST_day <- get_site_EcoDataCube(
 )
 }
 }
-\references{
-\insertRef{dplyrR}{ReLTER}
-
-\insertRef{terraR}{ReLTER}
-}
 \author{
 Micha Silver, phD (2020) \email{silverm@post.bgu.ac.il}
 

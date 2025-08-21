@@ -52,17 +52,6 @@ site <- get_site_info(
 site
 
 }
-\references{
-\insertRef{dplyrR}{ReLTER}
-
-\insertRef{lubridateR}{ReLTER}
-
-\insertRef{unitsR}{ReLTER}
-
-\insertRef{utilsR}{ReLTER}
-
-\insertRef{sfR}{ReLTER}
-}
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
 

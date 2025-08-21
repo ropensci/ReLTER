@@ -517,18 +517,6 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=qrcode"
     },
-    "17": {
-      "@type": "SoftwareApplication",
-      "identifier": "Rdpack",
-      "name": "Rdpack",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=Rdpack"
-    },
     "18": {
       "@type": "SoftwareApplication",
       "identifier": "sf",

@@ -16,16 +16,6 @@
 #' @importFrom ggplot2 theme ggtitle element_text
 #' @seealso [waffle::waffle()]
 #' @seealso [RColorBrewer::brewer.pal()]
-#' @references
-#'   \insertRef{tibbleR}{ReLTER}
-#'
-#'   \insertRef{dplyrR}{ReLTER}
-#'   
-#'   \insertRef{ggplot2R}{ReLTER}
-#'
-#'   \insertRef{waffleR}{ReLTER}
-#'   
-#'   \insertRef{RColorBrewerR}{ReLTER}
 #' @export
 #' @examples
 #' \dontrun{

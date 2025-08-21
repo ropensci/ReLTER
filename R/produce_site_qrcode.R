@@ -9,8 +9,6 @@
 #' @return The QR code as a logical matrix with "qr_code" class.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom qrcode qr_code
-#' @references
-#'   \insertRef{qrcodeR}{ReLTER}
 #' @export
 #' @examples
 #' qrcode <- produce_site_qrcode(

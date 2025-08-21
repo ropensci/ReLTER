@@ -64,6 +64,8 @@
       <img src="../logo.png" class="logo" alt=""><h1>Run ReLTER in a Docker container</h1>
                         <h4 data-toc-skip class="author">Paolo
 Tagliolato</h4>
+                        <h4 data-toc-skip class="author">Alessandro
+Oggioni</h4>
             
       
       <small class="dont-index">Source: <a href="https://github.com/ropensci/ReLTER/blob/HEAD/vignettes/rocker_ReLTER.Rmd" class="external-link"><code>vignettes/rocker_ReLTER.Rmd</code></a></small>
@@ -75,47 +77,58 @@ Tagliolato</h4>
 <div class="section level2">
 <h2 id="rocker_relter">rocker_ReLTER<a class="anchor" aria-label="anchor" href="#rocker_relter"></a>
 </h2>
-<p>docker image for ReLTER package (<a href="https://github.com/ropensci/ReLTER" class="external-link uri">https://github.com/ropensci/ReLTER</a>)</p>
+<p>Docker image for the ReLTER package.</p>
+<p>This image allows you to run RStudio with ReLTER preinstalled,
+directly through Docker.</p>
 <div class="section level3">
 <h3 id="about">About<a class="anchor" aria-label="anchor" href="#about"></a>
 </h3>
-<p>Run RStudio with preinstalled ReLTER package through Docker.</p>
+<p>The rocker_ReLTER image extends a standard rocker-based RStudio
+server image by installing the ReLTER package.</p>
+<p>It provides a reproducible environment for research and development,
+ensuring that dependencies and system libraries are already
+configured.</p>
 </div>
 <div class="section level3">
 <h3 id="install-a-different-branch-of-relter-package">Install a different branch of ReLTER package<a class="anchor" aria-label="anchor" href="#install-a-different-branch-of-relter-package"></a>
 </h3>
-<p>Edit the addReLTER.sh script and modify the last line, using the name
-of your preferred branch as the ref= parameter value:</p>
-<pre><code>R -e "devtools::install_github('https://github.com/ropensci/ReLTER',ref = '&lt;branchName&gt;',dependencies = FALSE)"</code></pre>
+<p>To install a different branch of the package, edit the dockerfile and
+modify the line 57, replacing <branchname> with the branch you need:</branchname></p>
+<pre><code>R -e "devtools::install_github('https://github.com/ropensci/ReLTER', ref = '&lt;branchName&gt;', dependencies = FALSE)"</code></pre>
 </div>
 <div class="section level3">
 <h3 id="build-the-image">Build the image<a class="anchor" aria-label="anchor" href="#build-the-image"></a>
 </h3>
-<pre><code>docker build . -t rocker_relter</code></pre>
+<pre><code>docker build -t rocker_relter .</code></pre>
 </div>
 <div class="section level3">
 <h3 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h3>
-<p>Run locally on port 8080 (change port as you like). You can change
-“yourpasswordW with the password you prefer.</p>
+<p>Run locally on port 8080 (you may choose any port you prefer).
+Replace yourpassword with your preferred password:</p>
 <pre><code>docker run -d -e PASSWORD=yourpassword -p 8080:8787 rocker_relter</code></pre>
-<p>Open browser at localhost:8080 and login with</p>
-<pre><code><span><span class="va">user</span><span class="op">:</span> <span class="va">rstudio</span></span>
-<span><span class="va">password</span><span class="op">:</span> <span class="va">youpassword</span></span></code></pre>
+<p>Then open your browser at <a href="http://localhost:8080" class="external-link uri">http://localhost:8080</a> and log in with: • user: rstudio •
+password: yourpassword</p>
 </div>
 <div class="section level3">
-<h3 id="preserve-your-work-use-a-docker-volume">Preserve your work (use a docker volume)<a class="anchor" aria-label="anchor" href="#preserve-your-work-use-a-docker-volume"></a>
+<h3 id="preserve-your-work-using-a-docker-volume">Preserve your work (using a Docker volume)<a class="anchor" aria-label="anchor" href="#preserve-your-work-using-a-docker-volume"></a>
 </h3>
-<p>When you stop a docker container, the files created within it are
-lost. In order to preserve your work across different runs, link a local
-volume (in this example, the current working directory, $(pwd)) to the
+<p>By default, files created inside the container are lost when the
+container is stopped. To preserve your work, map a local directory (for
+example the current one $(pwd)) to the RStudio home directory inside the
 container:</p>
 <pre><code>docker run -d -v $(pwd):/home/rstudio -e PASSWORD=yourpassword -p 8080:8787 rocker_relter</code></pre>
+<p>This way, any files you create will remain available on your host
+machine.</p>
 </div>
 <div class="section level3">
-<h3 id="precompiled-image-on-docker-hub">Precompiled image on docker hub<a class="anchor" aria-label="anchor" href="#precompiled-image-on-docker-hub"></a>
+<h3 id="precompiled-image-on-docker-hub">Precompiled image on Docker Hub<a class="anchor" aria-label="anchor" href="#precompiled-image-on-docker-hub"></a>
 </h3>
-<p>You can also use the precompiled image from docker hub:</p>
+<p>Please remember that this image is created with the previous version
+of the ReLTER package, so it may not be up to date with the latest
+changes.</p>
+<p>Instead of building the image locally, you can use the precompiled
+one available on Docker Hub:</p>
 <pre><code>docker pull ptagliolato/rocker_relter
 docker run -d -e PASSWORD=yourpassword -p 8080:8787 ptagliolato/rocker_relter</code></pre>
 </div>

@@ -22,10 +22,6 @@
 #' @return filename (without extension) following naming convention
 #' @importFrom stringr str_replace_all
 #' @importFrom dplyr pull
-#' @references
-#'   \insertRef{stringrR}{ReLTER}
-#' 
-#'   \insertRef{dplyrR}{ReLTER}
 #' @seealso Peterseil, Geiger et al. (2020)
 #' Field Specification for data reporting. Technical Document.
 #' TechDoc.01. EU Horizon 2020 eLTER PLUS Project, Grant agreement No. 871128

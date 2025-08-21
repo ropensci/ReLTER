@@ -36,20 +36,6 @@
 #' @seealso [spocc::obis_search()]
 #' @seealso [spocc::occ()]
 #' @seealso [RColorBrewer::brewer.pal()]
-#' @references
-#'   \insertRef{leafletR}{ReLTER}
-#'   
-#'   \insertRef{tibbleR}{ReLTER}
-#'   
-#'   \insertRef{dplyrR}{ReLTER}
-#'   
-#'   \insertRef{sfR}{ReLTER}
-#'   
-#'   \insertRef{lubridateR}{ReLTER}
-#'   
-#'   \insertRef{spoccR}{ReLTER}
-#'   
-#'   \insertRef{RColorBrewerR}{ReLTER}
 #' @export
 #' @examples
 #' \dontrun{

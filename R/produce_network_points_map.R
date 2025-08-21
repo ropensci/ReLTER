@@ -29,22 +29,6 @@
 #' @importFrom stringr str_replace
 #' @importFrom ggplot2 ggplot geom_sf coord_sf theme_minimal labs
 #' @seealso [geodata::gadm()]
-#' @references
-#'   \insertRef{httr2R}{ReLTER}
-#'   
-#'   \insertRef{jsonliteR}{ReLTER}
-#'
-#'   \insertRef{dplyrR}{ReLTER}
-#'
-#'   \insertRef{sfR}{ReLTER}
-#'
-#'   \insertRef{tibbleR}{ReLTER}
-#'   
-#'   \insertRef{stringrR}{ReLTER}
-#'   
-#'   \insertRef{ggplot2R}{ReLTER}
-#'   
-#'   \insertRef{geodataR}{ReLTER}
 #' @export
 #' @examples
 #' \dontrun{
@@ -192,22 +176,6 @@ produce_network_points_map <- function(networkDEIMSID, countryCode) {
 }
 
 #' @seealso [geodata::gadm()]
-#' @references
-#'   \insertRef{httr2R}{ReLTER}
-#'   
-#'   \insertRef{jsonliteR}{ReLTER}
-#'
-#'   \insertRef{dplyrR}{ReLTER}
-#'
-#'   \insertRef{sfR}{ReLTER}
-#'
-#'   \insertRef{tibbleR}{ReLTER}
-#'   
-#'   \insertRef{stringrR}{ReLTER}
-#'   
-#'   \insertRef{ggplot2R}{ReLTER}
-#'   
-#'   \insertRef{geodataR}{ReLTER}
 #' @export
 #' @examples
 #' \dontrun{

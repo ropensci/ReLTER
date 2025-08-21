@@ -7,10 +7,6 @@
 #' @importFrom httr2 request req_headers req_retry
 #' @importFrom httr2 req_perform resp_check_status resp_body_string
 #' @importFrom dplyr as_tibble pull
-#' @references
-#'  \insertRef{httr2R}{ReLTER}
-#'  
-#'  \insertRef{dplyrR}{ReLTER}
 #' @export
 get_deims_API_version <- function(deims_url = get_deims_base_url()) {
   if (!endsWith(deims_url, "/")) {
