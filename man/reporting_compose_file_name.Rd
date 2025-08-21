@@ -67,11 +67,6 @@ filename <- reporting_compose_file_name(
 }
 
 }
-\references{
-\insertRef{stringrR}{ReLTER}
-
-\insertRef{dplyrR}{ReLTER}
-}
 \seealso{
 Peterseil, Geiger et al. (2020)
 Field Specification for data reporting. Technical Document.

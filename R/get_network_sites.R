@@ -21,18 +21,6 @@
 #' @importFrom httr2 request req_method req_headers req_retry
 #' @importFrom httr2 req_perform resp_check_status resp_body_string
 #' @importFrom lubridate as_datetime
-#' @references
-#'   \insertRef{jsonliteR}{ReLTER}
-#'   
-#'   \insertRef{sfR}{ReLTER}
-#'
-#'   \insertRef{dplyrR}{ReLTER}
-#'   
-#'   \insertRef{leafletR}{ReLTER}
-#'
-#'   \insertRef{httr2R}{ReLTER}
-#'   
-#'   \insertRef{lubridateR}{ReLTER}
 #' @export
 #' @examples
 #' \dontrun{

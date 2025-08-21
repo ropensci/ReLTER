@@ -30,15 +30,6 @@ location (e.g.
 \url{https://deims.org/location/12b38f3f-7e72-425a-80c7-7cad35ce4c7b})
 provided in \href{https://deims.org/}{DEIMS-SDR catalogue}.
 }
-\references{
-\insertRef{utilsR}{ReLTER}
-
-\insertRef{dplyrR}{ReLTER}
-
-\insertRef{lubridateR}{ReLTER}
-
-\insertRef{unitsR}{ReLTER}
-}
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
 

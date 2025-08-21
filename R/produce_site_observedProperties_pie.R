@@ -22,16 +22,6 @@
 #' @importFrom ggplot2 scale_y_continuous scale_color_manual labs
 #' @seealso [ggforce::geom_arc_bar()]
 #' @seealso [RColorBrewer::brewer.pal()]
-#' @references
-#'   \insertRef{tibbleR}{ReLTER}
-#'
-#'   \insertRef{dplyrR}{ReLTER}
-#'   
-#'   \insertRef{ggplot2R}{ReLTER}
-#'
-#'   \insertRef{ggforceR}{ReLTER}
-#'
-#'   \insertRef{RColorBrewerR}{ReLTER}
 #' @export
 #' @examples
 #' \dontrun{

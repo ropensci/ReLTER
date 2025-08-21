@@ -29,18 +29,6 @@
 #' @seealso [cowplot::ggdraw()]
 #' @seealso [cowplot::draw_plot()]
 #' @seealso [geodata::gadm()]
-#' @references
-#'   \insertRef{sfR}{ReLTER}
-#'
-#'   \insertRef{tibbleR}{ReLTER}
-#'   
-#'   \insertRef{ggplot2R}{ReLTER}
-#'   
-#'   \insertRef{ggspatialR}{ReLTER}
-#'   
-#'   \insertRef{cowplotR}{ReLTER}
-#'   
-#'   \insertRef{geodataR}{ReLTER}
 #' @export
 #' @examples
 #' \dontrun{

@@ -26,16 +26,6 @@
 #' @importFrom units set_units
 #' @importFrom utils capture.output
 #' @importFrom sf st_as_sf
-#' @references
-#'   \insertRef{dplyrR}{ReLTER}
-#'   
-#'   \insertRef{lubridateR}{ReLTER}
-#'
-#'   \insertRef{unitsR}{ReLTER}
-#'
-#'   \insertRef{utilsR}{ReLTER}
-#'
-#'   \insertRef{sfR}{ReLTER}
 #' @export
 #' @examples
 #' site <- get_site_info(

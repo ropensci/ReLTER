@@ -40,17 +40,6 @@ pie <- produce_site_observedProperties_pie(
 }
 
 }
-\references{
-\insertRef{tibbleR}{ReLTER}
-
-\insertRef{dplyrR}{ReLTER}
-
-\insertRef{ggplot2R}{ReLTER}
-
-\insertRef{ggforceR}{ReLTER}
-
-\insertRef{RColorBrewerR}{ReLTER}
-}
 \seealso{
 \code{\link[ggforce:geom_arc_bar]{ggforce::geom_arc_bar()}}
 

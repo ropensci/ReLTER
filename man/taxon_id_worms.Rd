@@ -67,11 +67,6 @@ table
 attributes(table)$uri
 
 }
-\references{
-\insertRef{dplyrR}{ReLTER}
-
-\insertRef{worrmsR}{ReLTER}
-}
 \seealso{
 \code{\link[worrms:wm_records_names]{worrms::wm_records_names()}}
 }

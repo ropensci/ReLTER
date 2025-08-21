@@ -45,15 +45,6 @@ activities <- get_activity_info(
 activities
 
 }
-\references{
-\insertRef{dplyrR}{ReLTER}
-
-\insertRef{lubridateR}{ReLTER}
-
-\insertRef{sfR}{ReLTER}
-
-\insertRef{leafletR}{ReLTER}
-}
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
 }

@@ -35,21 +35,6 @@ record
 }
 
 }
-\references{
-\insertRef{tibbleR}{ReLTER}
-
-\insertRef{stringrR}{ReLTER}
-
-\insertRef{lubridateR}{ReLTER}
-
-\insertRef{dplyrR}{ReLTER}
-
-\insertRef{unitsR}{ReLTER}
-
-\insertRef{blondel_2025}{ReLTER}
-
-\insertRef{tidyrR}{ReLTER}
-}
 \seealso{
 \code{\link[zen4R:ZenodoManager]{zen4R::ZenodoManager()}}
 
