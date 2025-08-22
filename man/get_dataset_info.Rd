@@ -16,14 +16,18 @@ The DEIMS ID of dataset is the URL for the dataset page.}
 is shown. Default FALSE.}
 }
 \value{
-The output of the function is a \code{tibble} with main features
-of the site and the related resources collected by site.
+The output of the function is a \code{list} with two elements:
+\itemize{
+\item \code{map} A Leaflet map with the dataset location, if requested with
+\code{show_map}.
+\item \code{data} A \code{data.frame} with the information about the dataset.
+}
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 This function obtains the information about of an eLTER
 dataset (e.g.
-\url{https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845})
+\url{https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef})
 provided in \href{https://deims.org/}{DEIMS-SDR catalogue}.
 }
 \section{The function output}{
@@ -40,15 +44,6 @@ tDataset <- get_dataset_info(
 )
 tDataset
 
-}
-\references{
-\insertRef{dplyrR}{ReLTER}
-
-\insertRef{utilsR}{ReLTER}
-
-\insertRef{sfR}{ReLTER}
-
-\insertRef{leafletR}{ReLTER}
 }
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}

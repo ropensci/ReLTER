@@ -12,5 +12,5 @@ set_deims_base_url(url = "https://deims.org/", force = FALSE)
 \item{force}{A \code{boolean}. Default FALSE.}
 }
 \description{
-Set DEIMS-SDR API base URL
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 }

@@ -1,11 +1,9 @@
 message("\n---- Test get_dataset_info() ----")
 
-library(testthat)
-
 test_that("Expect error if internet connection is down", {
-  Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
-  testthat::expect_error(
-    httptest::without_internet(
+  withr::local_envvar("LOCAL_DEIMS" = FALSE)
+  expect_error(
+    httptest2::without_internet(
       result <- ReLTER::get_dataset_info(
         datasetid =
           "https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef"
@@ -13,44 +11,39 @@ test_that("Expect error if internet connection is down", {
     ),
     "GET"
   )
-  Sys.setenv("LOCAL_DEIMS" = test_mode) # restore test mode
 })
 
 skip_if_offline(host = "deims.org")
 
 test_that("Output of dataset function constructs ‘tibble’ as expected", {
-  result <- ReLTER::get_dataset_info(
+  result_list <- ReLTER::get_dataset_info(
     datasetid =
       "https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef",
     show_map = FALSE
   )
+  result <- result_list$data
   expect_s3_class(result, "sf")
   expect_s3_class(result, "tbl_df")
-  expect_true(ncol(result) == 34)
+  expect_true(ncol(result) == 41)
   expect_true(all(names(result) == c(
-    "title", "abstract", "keywords", "uri", "type",
-    "dateRange.from", "dateRange.to", "relatedSite", "contacts.corresponding",
-    "contacts.creator", "contacts.metadataProvider", "observationParameters",
-    "observationSpecies", "dataPolicy", "doi", "onlineLocation",
-    "legal.accessUse", "legal.rights", "legal.legalAct", "legal.citation",
-    "method.instrumentation", "method.qualityAssurance", "method.methodUrl",
-    "method.methodDescription", "method.samplingTimeUnit.label",
-    "method.samplingTimeUnit.uri", "method.spatialDesign.label",
-    "method.spatialDesign.uri", "method.spatialScale.label",
-    "method.spatialScale.uri", "method.temporalResolution.label",
-    "method.temporalResolution.uri", "boundaries", "boundariesDescription"
+    "title", "abstract", "keywords", "uri",
+    "type", "created", "changed", "dateRange.from",
+    "dateRange.to", "relatedSite", "contacts.corresponding", "contacts.creator",
+    "contacts.metadataProvider", "observationParameters", "observationSpecies", "dataPolicy",
+    "doi", "onlineDistribution.dataPolicyUrl", "onlineDistribution.doi",
+    "onlineDistribution.onlineLocation", "legal.accessUse", "legal.rights", "legal.legalAct",
+    "legal.citation", "method.instrumentation", "method.qualityAssurance", "method.methodUrl",
+    "method.methodDescription", "method.samplingTimeUnit.label", "method.samplingTimeUnit.uri",
+    "method.spatialDesign.label", "method.spatialDesign.uri", "method.spatialScale.label",
+    "method.spatialScale.uri", "method.temporalResolution.label", "method.temporalResolution.uri",
+    "boundaries", "boundariesDescription", "elevation.min", "elevation.max",
+    "elevation.unit"
   )))
-
   expect_type(result$title, "character")
   expect_type(result$abstract, "character")
   expect_type(result$keywords, "list")
   expect_type(result$uri, "character")
   expect_type(result$type, "character")
-  expect_type(result$dateRange.from, "character")
-  expect_type(
-    result$dateRange.to,
-    "logical"
-  ) # se fosse valorizzato sarebbe "character"
   expect_type(result$relatedSite, "list")
   expect_type(result$contacts.corresponding, "list")
   expect_type(result$contacts.creator, "list")
@@ -62,7 +55,7 @@ test_that("Output of dataset function constructs ‘tibble’ as expected", {
   expect_type(result$observationSpecies, "list")
   expect_type(result$dataPolicy, "list")
   expect_type(result$doi, "character")
-  expect_type(result$onlineLocation, "list")
+  expect_type(result$onlineDistribution.onlineLocation, "list")
   expect_type(result$legal.accessUse, "list")
   expect_type(
     result$legal.rights,
@@ -115,42 +108,44 @@ test_that("Output of dataset function constructs ‘tibble’ as expected", {
 })
 
 test_that("Wrong input (but URL) constructs a NULL object", {
-  Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
-  result <- ReLTER::get_dataset_info(
+  withr::local_envvar("LOCAL_DEIMS" = FALSE)
+  result_list <- ReLTER::get_dataset_info(
     datasetid = "https://deims.org/dataset/ljhnhbkihubib",
     show_map = FALSE
   )
+  result <- result_list$data
   expect_type(result, "NULL")
-  Sys.setenv("LOCAL_DEIMS" = test_mode) # restore test mode
 })
 
 test_that("Wrong input (not URL) constructs an empty tibble", {
-  Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
-  result <- ReLTER::get_dataset_info(
+  withr::local_envvar("LOCAL_DEIMS" = FALSE)
+  result_list <- ReLTER::get_dataset_info(
     datasetid = "ljhnhbkihubib",
     show_map = FALSE
   )
+  result <- result_list$data
   expect_type(result, "NULL")
-  Sys.setenv("LOCAL_DEIMS" = test_mode) # restore test mode
 })
 
 test_that("Output of get dataset information function constructs 'sf' with
           valid geometries", {
-  result <- ReLTER::get_dataset_info(
+  result_list <- ReLTER::get_dataset_info(
     datasetid =
       "https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef",
     show_map = FALSE
   )
+  result <- result_list$data
   result_valid <- sf::st_is_valid(result)
   expect_true(any(result_valid))
 })
 
 test_that("Verify that 'observationParameters' is NULL", {
-  result <- ReLTER::get_dataset_info(
+  result_list <- ReLTER::get_dataset_info(
     datasetid =
       "https://deims.org/dataset/3cd76d66-cadc-4d10-9fa7-75fe8d60663c",
     show_map = FALSE
   )
+  result <- result_list$data
   expect_equal(
     result$observationParameters[[1]]$parametersLabel,
     NA
@@ -162,11 +157,12 @@ test_that("Verify that 'observationParameters' is NULL", {
 })
 
 test_that("Verify that 'observationSpecies' is NULL", {
-  result <- ReLTER::get_dataset_info(
+  result_list <- ReLTER::get_dataset_info(
     datasetid =
       "https://deims.org/dataset/3cd76d66-cadc-4d10-9fa7-75fe8d60663c",
     show_map = FALSE
   )
+  result <- result_list$data
   expect_type(
     result$observationSpecies[[1]]$parametersLabel,
     "NULL"
@@ -175,4 +171,46 @@ test_that("Verify that 'observationSpecies' is NULL", {
     any(result$observationSpecies[[1]]$speciesUri),
     NA
   )
+})
+
+test_that("Date and datetime fields are coerced correctly", {
+  result_list <- ReLTER::get_dataset_info(
+    datasetid =
+      "https://deims.org/dataset/3cd76d66-cadc-4d10-9fa7-75fe8d60663c",
+    show_map = FALSE
+  )
+  result <- result_list$data
+  
+  expect_true(inherits(result$created, "POSIXct") || all(is.na(result$created)))
+  expect_true(inherits(result$changed, "POSIXct") || all(is.na(result$changed)))
+  expect_true(inherits(result$dateRange.from, "Date") || all(is.na(result$dateRange.from)))
+  expect_true(inherits(result$dateRange.to, "Date") || all(is.na(result$dateRange.to)))
+})
+
+test_that("Elevation is coerced to units of meters", {
+  result_list <- ReLTER::get_dataset_info(
+    datasetid =
+      "https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef",
+    show_map = FALSE
+  )
+  result <- result_list$data
+  
+  expect_s3_class(result$elevation.min, "units")
+  expect_equal(units::deparse_unit(result$elevation.min), "m")
+  expect_s3_class(result$elevation.max, "units")
+  expect_equal(units::deparse_unit(result$elevation.max), "m")
+})
+
+test_that("Elevation is coerced to units of meters", {
+  result_list <- ReLTER::get_dataset_info(
+    datasetid =
+      "https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef",
+    show_map = FALSE
+  )
+  result <- result_list$data
+  
+  expect_s3_class(result$elevation.min, "units")
+  expect_equal(units::deparse_unit(result$elevation.min), "m")
+  expect_s3_class(result$elevation.max, "units")
+  expect_equal(units::deparse_unit(result$elevation.max), "m")
 })

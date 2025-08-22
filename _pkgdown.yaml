@@ -1,37 +1,33 @@
 title: ReLTER
 url: https://docs.ropensci.org/ReLTER/
+lang: en
 template:
+  package: rotemplate
   bootstrap: 5
   params:
     mathjax: true
+  opengraph:
+    image:
+      src: https://raw.githubusercontent.com/ropensci/ReLTER/main/man/figures/logo.png
+      alt: "ReLTER logo"
   includes:
     in_header: |
       <script defer data-domain="docs.ropensci.org/relter" src="https://plausible.io/js/plausible.js"></script>
-
 reference:
   - title: All functions
     contents:
     - get_site_info
-    - get_sensor_info
     - get_activity_info
     - get_dataset_info
-    - get_site_ODS
+    - get_location_info
+    - get_sensor_info
+    - get_site_EcoDataCube
+    - EDC_construct_full_url
     - get_site_speciesOccurrences
-    - get_site_MODIS
-    - get_network_envcharacts
-    - get_network_observedProperties
-    - get_network_research_topics
-    - get_network_related_resources
+    - get_sites_interactive
+    - get_sites_within_3d_bounding_box
+    - get_sites_within_radius
     - get_network_sites
-    - get_ilter_envcharacts
-    - get_ilter_generalinfo
-    - get_ilter_observedProperties
-    - get_ilter_research_topics
-    - get_sos_foi
-    - get_sos_obs
-    - get_sos_procedure_info
-    - get_sos_procedurelist
-    - get_sensor_observed_properties
     - get_zenodo_data
     - get_deims_API_version
     - get_deims_base_url
@@ -42,56 +38,37 @@ reference:
     - produce_site_qrcode
     - produce_site_observedProperties_pie
     - produce_site_observedProperties_waffle
-    - produce_zenodo_record
-    - produce_zenodo_record_from_elter_reporting
-    - elter_write_rdata
     - taxon_id_pesi
     - taxon_id_worms
     - map_occ_gbif2elter
     - map_occ_inat2elter
     - map_occ_obis2elter
     - save_occ_eLTER_reporting_Archive
-    - reporting_compose_file_name
+    - eLTER_data_reporting_format
     - reporting_produce_data_object_v1.3
+    - reporting_produce_data_object_v2.0
     - reporting_save_archive
 navbar:
   structure:
-    left: [
-      # intro,
-      reference,
-      articles,
-      # tutorials,
-      news
-    ]
-    right: [
-      # search,
-      github
-    ]
-  # type: inverse
-  # left: []
-  # right:
-    # - icon: fa-home fa-lg
-    #   href: index.html
-    # - text: "Reference"
-    #   icon: fa-file-code
-    #   href: reference/index.html
-    #- text: "Articles"
-    #  icon: fa-book
-    #  menu:
-      #-  text: "Installation"
-      #   href: articles/installation.html
-      #-  text: "Run in a Docker container"
-      #   href: articles/docker.html
-      #-  text: "Using sen2r() from the GUI"
-      #   href: articles/sen2r_gui.html
-      #-  text: "Using sen2r() from the command line"
-      #   href: articles/sen2r_cmd.html
-      #-  text: "Output file structure"
-      #   href: articles/outstructure.html
-    # - text: "Changelog"
-    #   icon: fa-newspaper
-    #   href: news/index.html
-    # - icon: fa-user
-    #   href: https://www.cnr.it/people/alessandro.oggioni
-    # - icon: fa-github fa-lg
-    #   href: https://github.com/ropensci/ReLTER/
+    left: [reference, articles, news]
+    right: [github, zenodo]
+  components:
+    zenodo:
+      text: Zenodo
+      href: https://doi.org/10.5281/zenodo.5576813
+    github:
+      icon: fa-github
+      aria-label: GitHub repository
+      href: https://github.com/ropensci/ReLTER
+authors:
+  Alessandro Oggioni:
+    href: https://orcid.org/0000-0002-7997-219X
+  Micha Silver:
+    href: https://orcid.org/0000-0002-1128-1325
+  Luigi Ranghetti:
+    href: https://orcid.org/0000-0001-6207-5188
+  Paolo Tagliolato:
+    href: https://orcid.org/0000-0002-0261-313X
+footer:
+  structure:
+    right: [built_with]

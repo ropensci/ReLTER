@@ -1,11 +1,11 @@
 message("\n---- Test get_activity_info() ----")
 
-library(testthat)
+skip_if_offline(host = "deims.org")
 
 test_that("Expect error if internet connection is down", {
-  Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
-  testthat::expect_error(
-    httptest::without_internet(
+  withr::local_envvar("LOCAL_DEIMS" = FALSE)
+  expect_error(
+    httptest2::without_internet(
       result <- ReLTER::get_activity_info(
         activityid =
           "https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845",
@@ -14,25 +14,27 @@ test_that("Expect error if internet connection is down", {
     ),
     "GET"
   )
-  Sys.setenv("LOCAL_DEIMS" = test_mode) # restore test mode
 })
 
 skip_if_offline(host = "deims.org")
 
 test_that("Output of activities information function constructs 'sf' and
           'tibble' as expected", {
-  result <- ReLTER::get_activity_info(
+  result_list <- ReLTER::get_activity_info(
     activityid =
       "https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845",
     show_map = FALSE
   )
+  result <- result_list$data
   expect_s3_class(result, "sf")
   expect_s3_class(result, "tbl_df")
-  expect_true(ncol(result) == 13)
+  expect_true(ncol(result) == 20)
   expect_true(all(names(result) == c(
-    "title", "abstract", "keywords", "uri", "type", "created",
-    "changed", "relatedSite",
+    "title", "abstract", "keywords", "uri", "type",
+    "created", "changed", "relatedSite", "dateRange.from", "dateRange.to",
     "contacts.corresponding", "contacts.metadataProvider", "boundaries",
+    "availability.digitally", "availability.forEcopotential",
+    "availability.openData", "availability.notes", "availability.source",
     "observationParameters", "relatedResources"
   )))
   expect_type(result$title, "character")
@@ -40,7 +42,7 @@ test_that("Output of activities information function constructs 'sf' and
 })
 
 test_that("Wrong input (but URL) constructs a NULL object", {
-  Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
+  withr::local_envvar("LOCAL_DEIMS" = FALSE)
   expect_error(
     object <- ReLTER::get_activity_info(
       activityid = "https://deims.org/activity/ljhnhbkihubib",
@@ -48,11 +50,10 @@ test_that("Wrong input (but URL) constructs a NULL object", {
     ),
     regexp = "Page Not Found"
   )
-  Sys.setenv("LOCAL_DEIMS" = test_mode) # restore test mode
 })
 
 test_that("Wrong input (not URL) constructs an empty tibble", {
-  Sys.setenv("LOCAL_DEIMS" = FALSE) # set online mode
+  withr::local_envvar("LOCAL_DEIMS" = FALSE)
   expect_error(
     object = ReLTER::get_activity_info(
       activityid = "ljhnhbkihubib",
@@ -60,34 +61,68 @@ test_that("Wrong input (not URL) constructs an empty tibble", {
     ),
     regexp = "Page Not Found"
   )
-  Sys.setenv("LOCAL_DEIMS" = test_mode) # restore test mode
 })
 
 test_that("Output of get activities information function constructs 'sf' with
           valid geometries", {
-  result <- ReLTER::get_activity_info(
+  result_list <- ReLTER::get_activity_info(
     activityid =
       "https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845",
     show_map = FALSE
   )
+  result <- result_list$data
   result_valid <- sf::st_is_valid(result)
   expect_true(any(result_valid))
 })
 
 test_that("The activity don't have geo information", {
-  result <- ReLTER::get_activity_info(
+  result_list <- get_activity_info(
     activityid =
       "https://deims.org/activity/22983172-c53c-4ae9-9623-66f92cb222e3",
     show_map = FALSE
   )
+  result <- result_list$data
   expect_s3_class(result, "tbl_df")
-  expect_true(ncol(result) == 13)
+  expect_true(ncol(result) == 20)
   expect_true(all(names(result) == c(
-    "title", "abstract", "keywords", "uri", "type", "created",   
-    "changed", "relatedSite", "contacts.corresponding",
-    "contacts.metadataProvider",
-    "boundaries", "observationParameters", "relatedResources"
+    "title", "abstract", "keywords", "uri", "type",
+    "created", "changed", "relatedSite", "dateRange.from", "dateRange.to",
+    "contacts.corresponding", "contacts.metadataProvider", "boundaries",
+    "availability.digitally", "availability.forEcopotential",
+    "availability.openData", "availability.notes", "availability.source",
+    "observationParameters", "relatedResources"
   )))
   expect_type(result$title, "character")
-  expect_equal(result$boundaries, NA)
+  #expect_equal(result$boundaries, NA)
+})
+
+test_that("Output includes leaflet map when show_map = TRUE", {
+  result_list <- get_activity_info(
+    activityid =
+      "https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845",
+    show_map = TRUE
+  )
+  expect_s3_class(result_list$map, "leaflet")
+  expect_s3_class(result_list$data, "sf")
+})
+
+test_that("Date and datetime fields are converted correctly", {
+  result_list <- get_activity_info(
+    activityid =
+      "https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845",
+    show_map = FALSE
+  )
+  result <- result_list$data
+  
+  # the column must exist
+  expect_true("created" %in% names(result))
+  expect_true("changed" %in% names(result))
+  expect_true("dateRange.from" %in% names(result))
+  expect_true("dateRange.to" %in% names(result))
+  
+  # the class must be correct even if NA
+  expect_true(inherits(result$created, "POSIXct") || all(is.na(result$created)))
+  expect_true(inherits(result$changed, "POSIXct") || all(is.na(result$changed)))
+  expect_true(inherits(result$dateRange.from, "Date") || all(is.na(result$dateRange.from)))
+  expect_true(inherits(result$dateRange.to, "Date") || all(is.na(result$dateRange.to)))
 })

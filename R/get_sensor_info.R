@@ -10,16 +10,21 @@
 #' The DEIMS.iD of sensor is the URL for the sensor page.
 #' @param show_map A `boolean`. If TRUE a Leaflet map with occurrences
 #' is shown. Default FALSE.
-#' @return The output of the function is a `tibble` with main features of
-#' the activities in a site, and a `leaflet` map plot.
+#' @return The output of the function is a `list` with two elements:
+#' \itemize{
+#' \item \code{map} A Leaflet map with the sensor location, if requested with
+#' `show_map`.
+#' \item \code{data} A `data.frame` with the information about the sensor.
+#' }
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom dplyr as_tibble
-#' @importFrom utils capture.output
+#' @importFrom lubridate as_datetime
 #' @importFrom sf st_as_sf st_is_valid
 #' @importFrom leaflet leaflet addTiles addMarkers
+#' @importFrom utils capture.output
 #' @export
 #' @examples
-#' # only table of sensor information
+#' # print the map of the sensor
 #' sensor_B3 <- get_sensor_info(
 #'   sensorid =
 #'     "https://deims.org/sensors/3845475c-4aec-4dd7-83b4-0ab6ba95db35",
@@ -27,7 +32,7 @@
 #' )
 #' sensor_B3
 #' 
-#' # print the map of the sensor
+#' # only table of sensor information
 #' Licor <- get_sensor_info(
 #'   sensorid =
 #'     "https://deims.org/sensors/4a7ad644-f2e7-4224-965b-ec5ef5365655",
@@ -47,7 +52,7 @@
 #'
 ### function get_sensor_info
 get_sensor_info <- function(sensorid, show_map = FALSE) {
-  qo <- queries_jq[[get_deims_API_version()]]$sensor_info
+  qo <- queries_jq_deims[[get_deims_API_version()]]$sensor_info
   jj <- get_id(sensorid, qo$path)
   if (is.na(attr(jj, "status"))) {
     invisible(
@@ -55,11 +60,16 @@ get_sensor_info <- function(sensorid, show_map = FALSE) {
         sensor <- dplyr::as_tibble(do_Q(qo$query, jj))
       )
     )
+    # harmonization of date and time
+    sensor$created <- lubridate::as_datetime(sensor$created)
+    sensor$changed <- lubridate::as_datetime(sensor$changed)
     if (!is.null(sensor)) {
       if (is.na(sensor$geography)) {
         message("\n---- This sensor don't contains geo info. ----\n") # nocov
-        geoSensor <- sensor
-        map <- NULL
+        return(list(
+          map = NULL,
+          data = sensor
+        ))
       } else {
         geoSensor <- sf::st_as_sf(
           sensor,
@@ -91,17 +101,24 @@ contact person in charge of the sensor, citing the Sensor.iD.\n----\n")
         }
       }
     } else {
-      geoSensor <- NULL
-      map <- NULL
+      return(list(
+        map = NULL,
+        data = NULL
+      ))
     }
   } else {
     stop("\n----\nPage Not Found. The requested page could not be found. Please
 check again the Sensor.iD\n----\n")
   }
   if (show_map == TRUE) {
-    print(map)
-    geoSensor
+    return(list(
+      map = map,
+      data = geoSensor
+    ))
   } else {
-    geoSensor
+    return(list(
+      map = NULL,
+      data = geoSensor
+    ))
   }
 }

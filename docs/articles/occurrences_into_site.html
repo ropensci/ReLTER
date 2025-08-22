@@ -5,75 +5,54 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="ReLTER">
 <title>How to retrieve occurrence records by exploiting the {`ReLTER`} get_site_speciesOccurrences() function • ReLTER</title>
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<!-- rOpenSci favicons --><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/apple-touch-icon.png">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="How to retrieve occurrence records by exploiting the {`ReLTER`} get_site_speciesOccurrences() function">
-<meta property="og:description" content="ReLTER">
-<meta property="og:image" content="https://docs.ropensci.org/ReLTER/logo.png">
-<!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]--><!-- Mathjax --><script type="text/javascript" id="MathJax-script" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-mml-chtml.min.js">
-</script><!-- Matomo --><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css">
-<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script><script src="https://ropensci.org/scripts/matomo.js"></script><noscript><p><img src="https://ropensci.matomo.cloud/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt=""></p></noscript>
-<!-- End Matomo Code --><script defer data-domain="docs.ropensci.org/relter" src="https://plausible.io/js/plausible.js"></script>
+<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="How to retrieve occurrence records by exploiting the {`ReLTER`} get_site_speciesOccurrences() function">
+<script defer data-domain="docs.ropensci.org/relter" src="https://plausible.io/js/plausible.js"></script>
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
-    
 
-    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
+
+    <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="light" aria-label="Site navigation"><div class="container">
     <a href="https://ropensci.org" class="external-link"><img src="https://ropensci.org/img/icon_short_white.svg" id="hexlogo" alt="rOpenSci"></a>
     <a class="navbar-brand me-2" href="../index.html">ReLTER</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.1.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.0.0</small>
 
-    
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
-<li class="nav-item">
-  <a class="nav-link" href="../reference/index.html">Reference</a>
-</li>
+<li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="active nav-item dropdown">
-  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
-  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/occurrences_into_site.html">How to retrieve occurrence records by exploiting the {`ReLTER`} get_site_speciesOccurrences() function</a>
-    <a class="dropdown-item" href="../articles/rocker_ReLTER.html">Run ReLTER in a Docker container</a>
-    <a class="dropdown-item" href="../articles/site_information.html">How to get the info of a (one) LTER Site by knowing the DEIMS.ID</a>
-    <a class="dropdown-item" href="../articles/sites_contacts.html">How to get the list of contacts from list of DEIMS ID within csv file</a>
-    <a class="dropdown-item" href="../articles/sites_information.html">How to get the info of many than one LTER Sites</a>
-  </div>
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
+<li><a class="dropdown-item" href="../articles/multi_sites_contacts.html">Obtain list of contacts from several DEIMS ID's (in csv file)</a></li>
+    <li><a class="dropdown-item" href="../articles/multi_sites_information.html">Obtaining information about many LTER Sites</a></li>
+    <li><a class="dropdown-item" href="../articles/occurrences_into_site.html">How to retrieve occurrence records by exploiting the {`ReLTER`} get_site_speciesOccurrences() function</a></li>
+    <li><a class="dropdown-item" href="../articles/rocker_ReLTER.html">Run ReLTER in a Docker container</a></li>
+    <li><a class="dropdown-item" href="../articles/single_site_information.html">Obtain information about one LTER Site using the DEIMS ID</a></li>
+  </ul>
 </li>
-<li class="nav-item">
-  <a class="nav-link" href="../news/index.html">Changelog</a>
-</li>
+<li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul>
-<form class="form-inline my-2 my-lg-0" role="search">
-        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off">
-</form>
-
-      <ul class="navbar-nav">
-<li class="nav-item">
-  <a class="external-link nav-link" href="https://github.com/ropensci/ReLTER/" aria-label="github">
-    <span class="fab fa fab fa-github fa-lg"></span>
-     
-  </a>
-</li>
+<ul class="navbar-nav">
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/ropensci/ReLTER" aria-label="GitHub repository"><span class="fa fa-github"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://doi.org/10.5281/zenodo.5576813">Zenodo</a></li>
       </ul>
 </div>
 
-    
+
   </div>
 </nav><div class="container template-article">
 
@@ -81,7 +60,7 @@
 
 
 <div class="row">
-  <main id="main"><div class="page-header">
+  <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>How to retrieve occurrence records by exploiting the {`ReLTER`} get_site_speciesOccurrences() function</h1>
                         <h4 data-toc-skip class="author">Alessandro
 Oggioni, Paolo Tagliolato, Martina Zilioli</h4>
@@ -124,630 +103,32 @@ species presence record) to be extracted</p></li>
 <p>The output are two type: a map and a table(s), for each external data
 service selected.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># DEIMS.iD of eLTER site Gulf Of Venice (GOV)</span>
-<span class="va">GOVid</span> <span class="op">&lt;-</span> <span class="st">"https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd"</span>
-
-<span class="co"># Compose the function with choosen parameters</span>
-<span class="va">resGOV</span> <span class="op">&lt;-</span> <span class="fu">ReLTER</span><span class="fu">::</span><span class="fu"><a href="../reference/get_site_speciesOccurrences.html">get_site_speciesOccurrences</a></span><span class="op">(</span>
-  deimsid <span class="op">=</span> <span class="va">GOVid</span>,
-  list_DS <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"gbif"</span>, <span class="st">"inat"</span>, <span class="st">"obis"</span><span class="op">)</span>,
-  show_map <span class="op">=</span> <span class="cn">TRUE</span>,
-  limit <span class="op">=</span> <span class="fl">20</span>
-<span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># DEIMS.iD of eLTER site Gulf Of Venice (GOV)</span></span>
+<span><span class="va">GOVid</span> <span class="op">&lt;-</span> <span class="st">"https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd"</span></span>
+<span></span>
+<span><span class="co"># Compose the function with choosen parameters</span></span>
+<span><span class="va">resGOV</span> <span class="op">&lt;-</span> <span class="fu">ReLTER</span><span class="fu">::</span><span class="fu"><a href="../reference/get_site_speciesOccurrences.html">get_site_speciesOccurrences</a></span><span class="op">(</span></span>
+<span>  deimsid <span class="op">=</span> <span class="va">GOVid</span>,</span>
+<span>  list_DS <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"gbif"</span>, <span class="st">"inat"</span>, <span class="st">"obis"</span><span class="op">)</span>,</span>
+<span>  show_map <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  limit <span class="op">=</span> <span class="fl">20</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <iframe src="./other/occurrences_into_site_map.html" height="405" width="720" style="border: 1px solid #464646;">
 </iframe>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># iNat table</span>
-<span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span>
-  <span class="va">resGOV</span><span class="op">$</span><span class="va">inat</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span><span class="op">]</span>,
-  caption <span class="op">=</span> <span class="st">"The first 10 occurrence records of iNaturalist on the selected eLTER site."</span>
-<span class="op">)</span></code></pre></div>
-<table style="width:100%;" class="table">
-<caption>The first 10 occurrence records of iNaturalist on the selected
-eLTER site.</caption>
-<colgroup>
-<col width="0%">
-<col width="0%">
-<col width="0%">
-<col width="94%">
-<col width="0%">
-<col width="0%">
-<col width="0%">
-<col width="0%">
-<col width="0%">
-<col width="0%">
-<col width="0%">
-</colgroup>
-<thead><tr class="header">
-<th align="left">quality_grade</th>
-<th align="left">time_observed_at</th>
-<th align="left">taxon_geoprivacy</th>
-<th align="left">annotations</th>
-<th align="left">uuid</th>
-<th align="right">id</th>
-<th align="right">cached_votes_total</th>
-<th align="left">identifications_most_agree</th>
-<th align="left">species_guess</th>
-<th align="left">identifications_most_disagree</th>
-<th align="left">geometry</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="left">research</td>
-<td align="left">2023-01-26T15:57:42+01:00</td>
-<td align="left">open</td>
-<td align="left">NULL</td>
-<td align="left">f78e6891-0d2e-49d3-b094-6f0f9803dea0</td>
-<td align="right">147401571</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">Garzetta</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.32297 45.42598)</td>
-</tr>
-<tr class="even">
-<td align="left">research</td>
-<td align="left">2023-01-22T11:45:00+01:00</td>
-<td align="left">open</td>
-<td align="left">NULL</td>
-<td align="left">28849588-9470-40d0-aa50-2c7baa546ace</td>
-<td align="right">147399210</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">Black-crowned Night-Heron</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.33927 44.97993)</td>
-</tr>
-<tr class="odd">
-<td align="left">needs_id</td>
-<td align="left">2023-01-22T15:25:31+01:00</td>
-<td align="left">NA</td>
-<td align="left">NULL</td>
-<td align="left">e9903445-2d69-4ca1-af21-2b3b76484fd0</td>
-<td align="right">147370680</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">Common Sow-thistle</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.34571 45.44041)</td>
-</tr>
-<tr class="even">
-<td align="left">needs_id</td>
-<td align="left">2023-01-22T16:00:17+01:00</td>
-<td align="left">NA</td>
-<td align="left">NULL</td>
-<td align="left">8aabd079-9dc2-4a1b-aec2-abb007af8de4</td>
-<td align="right">147370605</td>
-<td align="right">0</td>
-<td align="left">FALSE</td>
-<td align="left">Japanischer Beerentang</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.34552 45.44033)</td>
-</tr>
-<tr class="odd">
-<td align="left">needs_id</td>
-<td align="left">2023-01-22T15:21:34+01:00</td>
-<td align="left">NA</td>
-<td align="left">NULL</td>
-<td align="left">619b68af-d448-4da9-ab30-d9b3e59a8262</td>
-<td align="right">147370498</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">Laitues de mer</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.34326 45.44163)</td>
-</tr>
-<tr class="even">
-<td align="left">needs_id</td>
-<td align="left">2023-01-22T16:41:44+01:00</td>
-<td align="left">NA</td>
-<td align="left">NULL</td>
-<td align="left">f8f52241-1307-4ddf-8015-01ec3646313d</td>
-<td align="right">147370343</td>
-<td align="right">0</td>
-<td align="left">FALSE</td>
-<td align="left">NA</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.3476 45.43323)</td>
-</tr>
-<tr class="odd">
-<td align="left">needs_id</td>
-<td align="left">2023-01-22T16:41:35+01:00</td>
-<td align="left">NA</td>
-<td align="left">NULL</td>
-<td align="left">c722150d-c304-49ad-9d04-ff3db163c96a</td>
-<td align="right">147370269</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">Wakame</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.34236 45.4337)</td>
-</tr>
-<tr class="even">
-<td align="left">research</td>
-<td align="left">2019-09-01T18:54:00+02:00</td>
-<td align="left">open</td>
-<td align="left">NULL</td>
-<td align="left">32f63e89-939f-42fa-bb16-1bea49a5408b</td>
-<td align="right">147339662</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">Yellow-legged Gull</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.34002 45.43335)</td>
-</tr>
-<tr class="odd">
-<td align="left">research</td>
-<td align="left">2019-09-01T18:55:00+02:00</td>
-<td align="left">open</td>
-<td align="left">NULL</td>
-<td align="left">cae316c7-94c2-485c-9a85-237e52cd18ce</td>
-<td align="right">147339660</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">Yellow-legged Gull</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.34002 45.43335)</td>
-</tr>
-<tr class="even">
-<td align="left">research</td>
-<td align="left">2019-09-01T14:12:00+02:00</td>
-<td align="left">open</td>
-<td align="left">NULL</td>
-<td align="left">5add7880-a5a5-4c83-9f4e-48166143efae</td>
-<td align="right">147339586</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">Yellow-legged Gull</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.34044 45.43327)</td>
-</tr>
-<tr class="odd">
-<td align="left">research</td>
-<td align="left">2023-01-24T12:06:36+01:00</td>
-<td align="left">open</td>
-<td align="left">5666872 , 5666872 , 1|2 , 22|24 , 1 , 22 ,
-2c27160c-dbe3-43f2-a81f-b901f04a42d6 ,
-4b2f6119-8054-4422-a64b-d4c0b0f35a39 , 0 , 0 , 2 , 24 , 5666872 ,
-5666872 , alessandro802 , alessandro802 , FALSE , FALSE , FALSE , FALSE
-, 2022-05-12T15:31:33+00:00 , 2022-05-12T15:31:33+00:00 , alessandro802
-, alessandro802 , alessandro802 , alessandro802 , Alessandro ,
-Alessandro , Alessandro , Alessandro , NA , NA , <a href="https://static.inaturalist.org/attachments/users/icons/5666872/thumb.jpeg?1673363590" class="external-link uri">https://static.inaturalist.org/attachments/users/icons/5666872/thumb.jpeg?1673363590</a>
-, <a href="https://static.inaturalist.org/attachments/users/icons/5666872/thumb.jpeg?1673363590" class="external-link uri">https://static.inaturalist.org/attachments/users/icons/5666872/thumb.jpeg?1673363590</a>
-, 328 , 328 , 296 , 296 , 0 , 0 , 624 , 624 , 229 , 229 , 328 , 328 , NA
-, NA , <a href="https://static.inaturalist.org/attachments/users/icons/5666872/medium.jpeg?1673363590" class="external-link uri">https://static.inaturalist.org/attachments/users/icons/5666872/medium.jpeg?1673363590</a>,
-<a href="https://static.inaturalist.org/attachments/users/icons/5666872/medium.jpeg?1673363590" class="external-link uri">https://static.inaturalist.org/attachments/users/icons/5666872/medium.jpeg?1673363590</a>
-</td>
-<td align="left">b2788453-e308-422c-b69d-8b143fb52089</td>
-<td align="right">147283228</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">Red Admiral</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.64574 45.50629)</td>
-</tr>
-<tr class="even">
-<td align="left">research</td>
-<td align="left">2023-01-24T16:00:00+01:00</td>
-<td align="left">open</td>
-<td align="left">NULL</td>
-<td align="left">36043fc5-8177-4dff-b1fe-4d16fa4dde81</td>
-<td align="right">147279791</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">Capriolo</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.9187 45.61604)</td>
-</tr>
-<tr class="odd">
-<td align="left">needs_id</td>
-<td align="left">2023-01-24T16:19:54+01:00</td>
-<td align="left">open</td>
-<td align="left">NULL</td>
-<td align="left">94aec762-d332-48b6-9077-c326a14c85a1</td>
-<td align="right">147269225</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">Gabbiano reale mediterraneo</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.33558 45.43798)</td>
-</tr>
-<tr class="even">
-<td align="left">research</td>
-<td align="left">2023-01-24T16:21:08+01:00</td>
-<td align="left">open</td>
-<td align="left">NULL</td>
-<td align="left">6718b861-5f0f-419e-b170-5f1526e65cc0</td>
-<td align="right">147269027</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">Geelpootmeeuw</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.3357 45.43815)</td>
-</tr>
-<tr class="odd">
-<td align="left">research</td>
-<td align="left">2023-01-22T16:04:00+01:00</td>
-<td align="left">open</td>
-<td align="left">NULL</td>
-<td align="left">9c6f0a3f-7aab-4e76-927a-cc48dda760cd</td>
-<td align="right">147204127</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">Pied Avocet</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.41794 45.0308)</td>
-</tr>
-<tr class="even">
-<td align="left">research</td>
-<td align="left">2023-01-22T12:35:00+01:00</td>
-<td align="left">NA</td>
-<td align="left">2922988 , 17|18 , 17 ,
-edb85cf7-e574-4636-ac3c-54beb3be0e0e , 0 , 18 , 2922988 , dario124 ,
-FALSE , FALSE , 2020-05-07T19:07:12+00:00 , dario124 , dario124 , Dario
-Michieletto , Dario Michieletto , NA , <a href="https://static.inaturalist.org/attachments/users/icons/2922988/thumb.jpeg?1588878432" class="external-link uri">https://static.inaturalist.org/attachments/users/icons/2922988/thumb.jpeg?1588878432</a>
-, 105 , 1008 , 0 , 1113 , 53 , 105 , NA , <a href="https://static.inaturalist.org/attachments/users/icons/2922988/medium.jpeg?1588878432" class="external-link uri">https://static.inaturalist.org/attachments/users/icons/2922988/medium.jpeg?1588878432</a>
-</td>
-<td align="left">2860796b-569e-4e57-a2fd-fdf9bdd44dcf</td>
-<td align="right">147204126</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">Saltimpalo</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.38132 44.99527)</td>
-</tr>
-<tr class="odd">
-<td align="left">research</td>
-<td align="left">2023-01-22T16:16:00+01:00</td>
-<td align="left">open</td>
-<td align="left">NULL</td>
-<td align="left">b8a9bc55-59b6-4608-85d7-a2942db256ff</td>
-<td align="right">147204125</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">Volpoca</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.39728 45.03556)</td>
-</tr>
-<tr class="even">
-<td align="left">research</td>
-<td align="left">2023-01-22T16:10:00+01:00</td>
-<td align="left">open</td>
-<td align="left">NULL</td>
-<td align="left">f4daeaa4-c8f7-49d6-a32a-150d0fce759b</td>
-<td align="right">147204124</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">Piro piro piccolo</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.4191 45.03021)</td>
-</tr>
-<tr class="odd">
-<td align="left">research</td>
-<td align="left">2023-01-22T16:20:00+01:00</td>
-<td align="left">open</td>
-<td align="left">NULL</td>
-<td align="left">6b46ced2-2ca8-453f-b272-cb09cd48cdf3</td>
-<td align="right">147204123</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">Pivieressa</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.41794 45.0308)</td>
-</tr>
-<tr class="even">
-<td align="left">research</td>
-<td align="left">2012-11-17T07:35:00+01:00</td>
-<td align="left">open</td>
-<td align="left">NULL</td>
-<td align="left">ec809142-b0d3-4787-8abf-1b4c8d91cab6</td>
-<td align="right">147186739</td>
-<td align="right">0</td>
-<td align="left">TRUE</td>
-<td align="left">Gaivota-de-patas-amarelas</td>
-<td align="left">FALSE</td>
-<td align="left">POINT (12.33358 45.4307)</td>
-</tr>
-</tbody>
-</table>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># OBIS table</span>
-<span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span>
-  <span class="va">resGOV</span><span class="op">$</span><span class="va">obis</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span><span class="op">]</span>,
-  caption <span class="op">=</span> <span class="st">"The first 10 occurrence records of OBIS on the selected eLTER site."</span>
-<span class="op">)</span></code></pre></div>
-<table class="table">
-<caption>The first 10 occurrence records of OBIS on the selected eLTER
-site.</caption>
-<colgroup>
-<col width="8%">
-<col width="5%">
-<col width="25%">
-<col width="2%">
-<col width="13%">
-<col width="4%">
-<col width="7%">
-<col width="4%">
-<col width="5%">
-<col width="6%">
-<col width="15%">
-</colgroup>
-<thead><tr class="header">
-<th align="left">infraphylum</th>
-<th align="right">date_year</th>
-<th align="left">scientificNameID</th>
-<th align="left">year</th>
-<th align="left">scientificName</th>
-<th align="left">dropped</th>
-<th align="right">gigaclassid</th>
-<th align="right">aphiaID</th>
-<th align="left">language</th>
-<th align="right">subclassid</th>
-<th align="left">geometry</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="left">Gnathostomata</td>
-<td align="right">1978</td>
-<td align="left"><a href="urn:lsid:marinespecies.org:taxname:126977" class="uri">urn:lsid:marinespecies.org:taxname:126977</a></td>
-<td align="left">1978</td>
-<td align="left">Chelon labrosus</td>
-<td align="left">FALSE</td>
-<td align="right">10194</td>
-<td align="right">126977</td>
-<td align="left">en</td>
-<td align="right">293496</td>
-<td align="left">POINT (12.3774 45.3867)</td>
-</tr>
-<tr class="even">
-<td align="left">Gnathostomata</td>
-<td align="right">2011</td>
-<td align="left"><a href="urn:lsid:marinespecies.org:taxname:126285" class="uri">urn:lsid:marinespecies.org:taxname:126285</a></td>
-<td align="left">2011</td>
-<td align="left">Conger conger</td>
-<td align="left">FALSE</td>
-<td align="right">10194</td>
-<td align="right">126285</td>
-<td align="left">en</td>
-<td align="right">293496</td>
-<td align="left">POINT (12.45888 45.18583)</td>
-</tr>
-<tr class="odd">
-<td align="left">NA</td>
-<td align="right">2003</td>
-<td align="left"><a href="urn:lsid:marinespecies.org:taxname:101055" class="uri">urn:lsid:marinespecies.org:taxname:101055</a></td>
-<td align="left">2003</td>
-<td align="left">Parazoanthus axinellae</td>
-<td align="left">FALSE</td>
-<td align="right">NA</td>
-<td align="right">101055</td>
-<td align="left">en</td>
-<td align="right">1340</td>
-<td align="left">POINT (12.42125 45.20315)</td>
-</tr>
-<tr class="even">
-<td align="left">Gnathostomata</td>
-<td align="right">1925</td>
-<td align="left"><a href="urn:lsid:marinespecies.org:taxname:151523" class="uri">urn:lsid:marinespecies.org:taxname:151523</a></td>
-<td align="left">1925</td>
-<td align="left">Sparus aurata</td>
-<td align="left">FALSE</td>
-<td align="right">10194</td>
-<td align="right">151523</td>
-<td align="left">en</td>
-<td align="right">293496</td>
-<td align="left">POINT (12.9377 45.0629)</td>
-</tr>
-<tr class="odd">
-<td align="left">Gnathostomata</td>
-<td align="right">NA</td>
-<td align="left"><a href="urn:lsid:marinespecies.org:taxname:126968" class="uri">urn:lsid:marinespecies.org:taxname:126968</a></td>
-<td align="left">NA</td>
-<td align="left">Labrus viridis</td>
-<td align="left">FALSE</td>
-<td align="right">10194</td>
-<td align="right">126968</td>
-<td align="left">NA</td>
-<td align="right">293496</td>
-<td align="left">POINT (12.33195 45.4414)</td>
-</tr>
-<tr class="even">
-<td align="left">NA</td>
-<td align="right">NA</td>
-<td align="left"><a href="urn:lsid:marinespecies.org:taxname:130294" class="uri">urn:lsid:marinespecies.org:taxname:130294</a></td>
-<td align="left">NA</td>
-<td align="left">Euclymene oerstedii</td>
-<td align="left">FALSE</td>
-<td align="right">NA</td>
-<td align="right">130294</td>
-<td align="left">NA</td>
-<td align="right">754175</td>
-<td align="left">POINT (12.34 45.16)</td>
-</tr>
-<tr class="odd">
-<td align="left">NA</td>
-<td align="right">NA</td>
-<td align="left"><a href="urn:lsid:marinespecies.org:taxname:124405" class="uri">urn:lsid:marinespecies.org:taxname:124405</a></td>
-<td align="left">NA</td>
-<td align="left">Ova canalifera</td>
-<td align="left">FALSE</td>
-<td align="right">NA</td>
-<td align="right">569394</td>
-<td align="left">NA</td>
-<td align="right">149854</td>
-<td align="left">POINT (12.35 45.3)</td>
-</tr>
-<tr class="even">
-<td align="left">Gnathostomata</td>
-<td align="right">1922</td>
-<td align="left"><a href="urn:lsid:marinespecies.org:taxname:125570" class="uri">urn:lsid:marinespecies.org:taxname:125570</a></td>
-<td align="left">1922</td>
-<td align="left">Trachinidae</td>
-<td align="left">FALSE</td>
-<td align="right">10194</td>
-<td align="right">125570</td>
-<td align="left">en</td>
-<td align="right">293496</td>
-<td align="left">POINT (12.9377 45.0629)</td>
-</tr>
-<tr class="odd">
-<td align="left">NA</td>
-<td align="right">1934</td>
-<td align="left"><a href="urn:lsid:marinespecies.org:taxname:124670" class="uri">urn:lsid:marinespecies.org:taxname:124670</a></td>
-<td align="left">1934</td>
-<td align="left">Thyone fusus</td>
-<td align="left">FALSE</td>
-<td align="right">NA</td>
-<td align="right">124670</td>
-<td align="left">en</td>
-<td align="right">1393249</td>
-<td align="left">POINT (13.171 45.468)</td>
-</tr>
-<tr class="even">
-<td align="left">Gnathostomata</td>
-<td align="right">1988</td>
-<td align="left"><a href="urn:lsid:marinespecies.org:taxname:127060" class="uri">urn:lsid:marinespecies.org:taxname:127060</a></td>
-<td align="left">1988</td>
-<td align="left">Pagellus erythrinus</td>
-<td align="left">FALSE</td>
-<td align="right">10194</td>
-<td align="right">127060</td>
-<td align="left">NA</td>
-<td align="right">293496</td>
-<td align="left">POINT (12.88 45.33)</td>
-</tr>
-<tr class="odd">
-<td align="left">NA</td>
-<td align="right">2008</td>
-<td align="left"><a href="urn:lsid:marinespecies.org:taxname:149126" class="uri">urn:lsid:marinespecies.org:taxname:149126</a></td>
-<td align="left">2008</td>
-<td align="left">Chaetoceros decipiens</td>
-<td align="left">FALSE</td>
-<td align="right">NA</td>
-<td align="right">149126</td>
-<td align="left">NA</td>
-<td align="right">148971</td>
-<td align="left">POINT (12.9203 45.401)</td>
-</tr>
-<tr class="even">
-<td align="left">NA</td>
-<td align="right">1990</td>
-<td align="left"><a href="urn:lsid:marinespecies.org:taxname:149045" class="uri">urn:lsid:marinespecies.org:taxname:149045</a></td>
-<td align="left">1990</td>
-<td align="left">Nitzschia</td>
-<td align="left">FALSE</td>
-<td align="right">NA</td>
-<td align="right">149045</td>
-<td align="left">NA</td>
-<td align="right">148902</td>
-<td align="left">POINT (13.19617 45.436)</td>
-</tr>
-<tr class="odd">
-<td align="left">NA</td>
-<td align="right">2006</td>
-<td align="left"><a href="urn:lsid:marinespecies.org:taxname:131774" class="uri">urn:lsid:marinespecies.org:taxname:131774</a></td>
-<td align="left">2006</td>
-<td align="left">Axinella</td>
-<td align="left">FALSE</td>
-<td align="right">NA</td>
-<td align="right">131774</td>
-<td align="left">en</td>
-<td align="right">607950</td>
-<td align="left">POINT (12.48941 45.23041)</td>
-</tr>
-<tr class="even">
-<td align="left">NA</td>
-<td align="right">1988</td>
-<td align="left"><a href="urn:lsid:marinespecies.org:taxname:107239" class="uri">urn:lsid:marinespecies.org:taxname:107239</a></td>
-<td align="left">1988</td>
-<td align="left">Pagurus prideaux</td>
-<td align="left">FALSE</td>
-<td align="right">NA</td>
-<td align="right">107239</td>
-<td align="left">NA</td>
-<td align="right">1086</td>
-<td align="left">POINT (12.6 45.31)</td>
-</tr>
-<tr class="odd">
-<td align="left">Gnathostomata</td>
-<td align="right">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">Blennius ocellaris</td>
-<td align="left">FALSE</td>
-<td align="right">10194</td>
-<td align="right">126761</td>
-<td align="left">en</td>
-<td align="right">293496</td>
-<td align="left">POINT (12.33195 45.4414)</td>
-</tr>
-<tr class="even">
-<td align="left">Gnathostomata</td>
-<td align="right">1927</td>
-<td align="left"><a href="urn:lsid:marinespecies.org:taxname:127021" class="uri">urn:lsid:marinespecies.org:taxname:127021</a></td>
-<td align="left">1927</td>
-<td align="left">Sarda sarda</td>
-<td align="left">FALSE</td>
-<td align="right">10194</td>
-<td align="right">127021</td>
-<td align="left">en</td>
-<td align="right">293496</td>
-<td align="left">POINT (12.9377 45.0629)</td>
-</tr>
-<tr class="odd">
-<td align="left">NA</td>
-<td align="right">2008</td>
-<td align="left"><a href="urn:lsid:marinespecies.org:taxname:213" class="uri">urn:lsid:marinespecies.org:taxname:213</a></td>
-<td align="left">2008</td>
-<td align="left">Pectinidae</td>
-<td align="left">FALSE</td>
-<td align="right">NA</td>
-<td align="right">213</td>
-<td align="left">en</td>
-<td align="right">1424948</td>
-<td align="left">POINT (12.40591 45.20458)</td>
-</tr>
-<tr class="even">
-<td align="left">NA</td>
-<td align="right">1988</td>
-<td align="left"><a href="urn:lsid:marinespecies.org:taxname:137111" class="uri">urn:lsid:marinespecies.org:taxname:137111</a></td>
-<td align="left">NA</td>
-<td align="left">Tursiops truncatus</td>
-<td align="left">FALSE</td>
-<td align="right">NA</td>
-<td align="right">137111</td>
-<td align="left">NA</td>
-<td align="right">380416</td>
-<td align="left">POINT (13.25167 45.58333)</td>
-</tr>
-<tr class="odd">
-<td align="left">NA</td>
-<td align="right">1988</td>
-<td align="left"><a href="urn:lsid:marinespecies.org:taxname:137111" class="uri">urn:lsid:marinespecies.org:taxname:137111</a></td>
-<td align="left">NA</td>
-<td align="left">Tursiops truncatus</td>
-<td align="left">FALSE</td>
-<td align="right">NA</td>
-<td align="right">137111</td>
-<td align="left">NA</td>
-<td align="right">380416</td>
-<td align="left">POINT (13.035 45.13333)</td>
-</tr>
-<tr class="even">
-<td align="left">Gnathostomata</td>
-<td align="right">2012</td>
-<td align="left"><a href="urn:lsid:marinespecies.org:taxname:105923" class="uri">urn:lsid:marinespecies.org:taxname:105923</a></td>
-<td align="left">2012</td>
-<td align="left">Squalus acanthias</td>
-<td align="left">FALSE</td>
-<td align="right">NA</td>
-<td align="right">105923</td>
-<td align="left">en</td>
-<td align="right">368407</td>
-<td align="left">POINT (12.77119 45.33256)</td>
-</tr>
-</tbody>
-</table>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="co"># iNat table</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>  <span class="fu">head</span>(resGOV<span class="sc">$</span>inat[<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)], <span class="dv">10</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">"The first 10 occurrence records of iNaturalist on the selected eLTER site."</span></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>)</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a><span class="co"># OBIS table</span></span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>  <span class="fu">head</span>(resGOV<span class="sc">$</span>obis[<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)], <span class="dv">10</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">"The first 10 occurrence records of OBIS on the selected eLTER site."</span></span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code><span><span class="co">## Error in parse(text = input): &lt;text&gt;:4:3: unexpected symbol</span></span>
+<span><span class="co">## 3:   head(resGOV$inat[c(1:10)], 10)</span></span>
+<span><span class="co">## 4:   caption</span></span>
+<span><span class="co">##      ^</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="how-to-trasform-external-service-data-schemas-into-elter-data-reporting-template">How to trasform external service data schemas into eLTER
@@ -756,7 +137,7 @@ data-reporting template?<a class="anchor" aria-label="anchor" href="#how-to-tras
 <p>The structure of species occurrence records reflects the exporting
 schema of the original data publisher. Fields mapping among the three
 data source schemas (i.e., GBIF, iNaturalist, OBIS) and the eLTER
-data-reporting template (<span class="citation">Peterseil J.
+data-reporting template (<span class="citation">Peterseil and Geiger
 (2020)</span>) was carried out so as to design functions to structure
 fetched data in three simplified output data formats. These output data
 formats result i) harmonised to eLTER data-reporting
@@ -769,31 +150,31 @@ template.</p>
 River Catchment site</a>, where the external data service to be queried
 are GBIF and iNaturalist.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">saldurid</span> <span class="op">&lt;-</span> <span class="st">"https://deims.org/97ff6180-e5d1-45f2-a559-8a7872eb26b1"</span>
-
-<span class="va">resSaldur</span> <span class="op">&lt;-</span> <span class="fu">ReLTER</span><span class="fu">::</span><span class="fu"><a href="../reference/get_site_speciesOccurrences.html">get_site_speciesOccurrences</a></span><span class="op">(</span>
-  deimsid <span class="op">=</span> <span class="va">saldurid</span>,
-  list_DS <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"gbif"</span>, <span class="st">"inat"</span><span class="op">)</span>,
-  show_map <span class="op">=</span> <span class="cn">FALSE</span>,
-  limit <span class="op">=</span> <span class="fl">20</span>,
-  exclude_inat_from_gbif <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span>
-
-<span class="co"># GBIF</span>
-<span class="va">tblSaldur_gbif</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="va">resSaldur</span><span class="op">$</span><span class="va">gbif</span><span class="op">)</span>
-<span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">tblSaldur_gbif</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span>
-  <span class="va">outGbif</span> <span class="op">&lt;-</span> <span class="va">tblSaldur_gbif</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
-    <span class="fu">ReLTER</span><span class="fu">::</span><span class="fu"><a href="../reference/map_occ_gbif2elter.html">map_occ_gbif2elter</a></span><span class="op">(</span>deimsid <span class="op">=</span> <span class="va">saldurid</span><span class="op">)</span>
-  <span class="fu">ReLTER</span><span class="fu">::</span><span class="fu"><a href="../reference/save_occ_eLTER_reporting_Archive.html">save_occ_eLTER_reporting_Archive</a></span><span class="op">(</span><span class="va">outGbif</span><span class="op">)</span>
-<span class="op">}</span></code></pre></div>
-<pre><code><span class="co">## [1] "/var/folders/p1/110rx8q101z0wn0bwh4njrcw0000gn/T//RtmpRXszXS/biodiv_occurrence_site_97ff6180-e5d1-45f2-a559-8a7872eb26b1_gbif.zip"</span></code></pre>
+<code class="sourceCode R"><span><span class="va">saldurid</span> <span class="op">&lt;-</span> <span class="st">"https://deims.org/97ff6180-e5d1-45f2-a559-8a7872eb26b1"</span></span>
+<span></span>
+<span><span class="va">resSaldur</span> <span class="op">&lt;-</span> <span class="fu">ReLTER</span><span class="fu">::</span><span class="fu"><a href="../reference/get_site_speciesOccurrences.html">get_site_speciesOccurrences</a></span><span class="op">(</span></span>
+<span>  deimsid <span class="op">=</span> <span class="va">saldurid</span>,</span>
+<span>  list_DS <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"gbif"</span>, <span class="st">"inat"</span><span class="op">)</span>,</span>
+<span>  show_map <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  limit <span class="op">=</span> <span class="fl">20</span>,</span>
+<span>  exclude_inat_from_gbif <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># GBIF</span></span>
+<span><span class="va">tblSaldur_gbif</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="va">resSaldur</span><span class="op">$</span><span class="va">gbif</span><span class="op">)</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">tblSaldur_gbif</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">outGbif</span> <span class="op">&lt;-</span> <span class="va">tblSaldur_gbif</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu">ReLTER</span><span class="fu">::</span><span class="fu"><a href="../reference/map_occ_gbif2elter.html">map_occ_gbif2elter</a></span><span class="op">(</span>deimsid <span class="op">=</span> <span class="va">saldurid</span><span class="op">)</span></span>
+<span>  <span class="fu">ReLTER</span><span class="fu">::</span><span class="fu"><a href="../reference/save_occ_eLTER_reporting_Archive.html">save_occ_eLTER_reporting_Archive</a></span><span class="op">(</span><span class="va">outGbif</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] "/tmp/RtmpsutGAg/biodiv_occurrence_site_97ff6180-e5d1-45f2-a559-8a7872eb26b1_gbif.zip"</span></span></code></pre>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># iNaturalist</span>
-<span class="va">tblSaldur_inat</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="va">resSaldur</span><span class="op">$</span><span class="va">inat</span><span class="op">)</span>
-<span class="va">outInat</span> <span class="op">&lt;-</span> <span class="va">tblSaldur_inat</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
-  <span class="fu">ReLTER</span><span class="fu">::</span><span class="fu"><a href="../reference/map_occ_inat2elter.html">map_occ_inat2elter</a></span><span class="op">(</span>deimsid <span class="op">=</span> <span class="va">saldurid</span><span class="op">)</span>
-<span class="fu">ReLTER</span><span class="fu">::</span><span class="fu"><a href="../reference/save_occ_eLTER_reporting_Archive.html">save_occ_eLTER_reporting_Archive</a></span><span class="op">(</span><span class="va">outInat</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## [1] "/var/folders/p1/110rx8q101z0wn0bwh4njrcw0000gn/T//RtmpRXszXS/biodiv_occurrence_site_97ff6180-e5d1-45f2-a559-8a7872eb26b1_inat.zip"</span></code></pre>
+<code class="sourceCode R"><span><span class="co"># iNaturalist</span></span>
+<span><span class="va">tblSaldur_inat</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="va">resSaldur</span><span class="op">$</span><span class="va">inat</span><span class="op">)</span></span>
+<span><span class="va">outInat</span> <span class="op">&lt;-</span> <span class="va">tblSaldur_inat</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">ReLTER</span><span class="fu">::</span><span class="fu"><a href="../reference/map_occ_inat2elter.html">map_occ_inat2elter</a></span><span class="op">(</span>deimsid <span class="op">=</span> <span class="va">saldurid</span><span class="op">)</span></span>
+<span><span class="fu">ReLTER</span><span class="fu">::</span><span class="fu"><a href="../reference/save_occ_eLTER_reporting_Archive.html">save_occ_eLTER_reporting_Archive</a></span><span class="op">(</span><span class="va">outInat</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] "/tmp/RtmpsutGAg/biodiv_occurrence_site_97ff6180-e5d1-45f2-a559-8a7872eb26b1_inat.zip"</span></span></code></pre>
 <p>The eLTER useful archive created are:</p>
 <ul>
 <li><p>biodiv_occurrence_site_97ff6180-e5d1-45f2-a559-8a7872eb26b1_gbif.zip</p></li>
@@ -803,14 +184,15 @@ are GBIF and iNaturalist.</p>
 <div class="section level3">
 <h3 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
 <div id="ref-Peterseil2021" class="csl-entry">
-Peterseil J., Geiger S. 2020. <span>“Field Specification for Data
-Reporting.”</span> <a href="https://www.lter-europe.net/projects/PLUS/eLTER_TechDoc_TemplateSpecification.pdf" class="external-link">https://www.lter-europe.net/projects/PLUS/eLTER_TechDoc_TemplateSpecification.pdf</a>.
+Peterseil, Johannes, and Sarah Geiger. 2020. <span>“Field Specification
+for Data Reporting.”</span> <a href="https://doi.org/10.5281/ZENODO.6373409" class="external-link">https://doi.org/10.5281/ZENODO.6373409</a>.
 </div>
 </div>
 </div>
-  </main>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 
@@ -825,7 +207,7 @@ Reporting.”</span> <a href="https://www.lter-europe.net/projects/PLUS/eLTER_Te
                     <div class="col-md-4 col-xs-6">
                         <a href="https://github.com/ropensci" target="_blank" class="external-link"><div class="icon fab fa-github"></div></a>
                         <a href="https://github.com/ropenscilabs" target="_blank" class="external-link"><div class="icon fa fa-flask"></div></a>
-                        <a href="https://twitter.com/ropensci" target="_blank" class="external-link"><div class="icon fab fa-twitter"></div></a>
+                        <a href="https://hachyderm.io/@ropensci" target="_blank" class="external-link"><div class="icon fab fa-mastodon"></div></a>
                         <a href="https://vimeo.com/ropensci" target="_blank" class="external-link"><div class="icon fab fa-vimeo"></div></a>
                     </div>
                 </div>
@@ -879,9 +261,9 @@ Reporting.”</span> <a href="https://www.lter-europe.net/projects/PLUS/eLTER_Te
     </footer>
 </div>
 
-  
 
-  
+
+
 
   </body>
 </html>

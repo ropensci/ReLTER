@@ -4,7 +4,7 @@
 \alias{get_id}
 \title{eLTER get_id function}
 \usage{
-get_id(deimsid, resource = "sites", test, ...)
+get_id(deimsid, resource = "sites", test = NULL, ...)
 }
 \arguments{
 \item{deimsid}{A \code{character}. It is the DEIMS ID of the site, activity or

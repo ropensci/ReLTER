@@ -10,7 +10,7 @@ get_deims_base_url()
 DEIMS-SDR base URL
 }
 \description{
-Get DEIMS-SDR base URL
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 }
 \seealso{
 Other package_customizable_settings: 

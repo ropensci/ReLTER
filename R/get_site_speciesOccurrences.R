@@ -29,11 +29,13 @@
 #' @importFrom leaflet layersControlOptions addLayersControl addLegend
 #' @importFrom leaflet addCircleMarkers addTiles addProviderTiles leaflet
 #' @importFrom leaflet colorFactor
-#' @importFrom RColorBrewer brewer.pal
 #' @importFrom tibble as_tibble
 #' @importFrom dplyr select mutate filter
-#' @importFrom spocc occ2df obis_search occ
 #' @importFrom sf st_as_text st_as_sfc st_bbox st_as_sf
+#' @importFrom lubridate as_datetime as_date
+#' @seealso [spocc::obis_search()]
+#' @seealso [spocc::occ()]
+#' @seealso [RColorBrewer::brewer.pal()]
 #' @export
 #' @examples
 #' \dontrun{
@@ -81,10 +83,23 @@ get_site_speciesOccurrences <- function(
   limit = 500,
   exclude_inat_from_gbif = TRUE
 ) {
+  # Check if required packages are installed
+  if (!requireNamespace("spocc", quietly = TRUE)) {
+    stop(
+      "\n----\nThe function 'get_site_speciesOccurrences()' requires the optional package 'spocc'.\n",
+      "Please install it with: install.packages(\"spocc\")\n----\n"
+    )
+  }
+  if (!requireNamespace("RColorBrewer", quietly = TRUE)) {
+    stop(
+      "\n----\nThe function 'get_site_speciesOccurrences()' requires the optional package 'RColorBrewer'.\n",
+      "Please install it with: install.packages(\"RColorBrewer\")\n----\n"
+    )
+  }
   # First check that site has a boundary ----
-  boundary <- ReLTER::get_site_info(
+  boundary <- get_site_info(
     deimsid,
-    category = "Boundaries"
+    show_map = TRUE
   )
   if (is.null(boundary) || !inherits(boundary, "sf")) {
     print("No boundary for requested DEIMS site.")
@@ -97,21 +112,24 @@ get_site_speciesOccurrences <- function(
         )
       )
     )
+    site_geom <- boundary$geometry
   }
 
   # download occurrence by SPOCC by provide data sources ----
   site_occ_spocc <- NULL
   site_occ_spocc_obis <- NULL
+  occ_fx <- getExportedValue("spocc", "occ")
   if (any(c("gbif", "inat") %in% list_DS)) {
-    site_occ_spocc <- spocc::occ(
+    site_occ_spocc <- occ_fx(
       from = list_DS,
       geometry = bbox_wkt,
       limit = limit,
       has_coords = TRUE
     )
   }
+  obis_search_fx <- getExportedValue("spocc", "obis_search")
   if ("obis" %in% list_DS) {
-    site_occ_spocc_obis <- spocc::obis_search(
+    site_occ_spocc_obis <- obis_search_fx(
       size = limit,
       geometry = bbox_wkt
     )
@@ -125,11 +143,51 @@ get_site_speciesOccurrences <- function(
   if (!is.null(site_occ_spocc) && is.null(site_occ_spocc$inat$meta$returned)) {
     list_DS_exclude <- c(list_DS_exclude, "inat")
   }
-  if (is.null(site_occ_spocc_obis) && is.null(site_occ_spocc_obis$results)) {
+  if (is.null(site_occ_spocc_obis) &&
+      is.null(site_occ_spocc_obis$results)) {
+    list_DS_exclude <- c(list_DS_exclude, "obis")
+  }
+  if (length(site_occ_spocc_obis$results) == 0) {
     list_DS_exclude <- c(list_DS_exclude, "obis")
   }
   list_DS <- list_DS[!(list_DS %in% list_DS_exclude)]
 
+  # harmonization of date and time GBIF
+  if ("gbif" %in% list_DS) {
+    if (!is.null(site_occ_spocc$gbif$data[[1]]$lastCrawled)) {
+      site_occ_spocc$gbif$data[[1]]$lastCrawled <- lubridate::as_datetime(site_occ_spocc$gbif$data[[1]]$lastCrawled)
+    }
+    if (!is.null(site_occ_spocc$gbif$data[[1]]$lastParsed)) {
+      site_occ_spocc$gbif$data[[1]]$lastParsed <- lubridate::as_datetime(site_occ_spocc$gbif$data[[1]]$lastParsed)
+    }
+    if (!is.null(site_occ_spocc$gbif$data[[1]]$dateIdentified)) {
+      site_occ_spocc$gbif$data[[1]]$dateIdentified <- lubridate::as_datetime(site_occ_spocc$gbif$data[[1]]$dateIdentified)
+    }
+    if (!is.null(site_occ_spocc$gbif$data[[1]]$eventDate)) {
+      site_occ_spocc$gbif$data[[1]]$eventDate <- lubridate::as_date(site_occ_spocc$gbif$data[[1]]$eventDate)
+    }
+    if (!is.null(site_occ_spocc$gbif$data[[1]]$modified)) {
+      site_occ_spocc$gbif$data[[1]]$modified <- lubridate::as_datetime(site_occ_spocc$gbif$data[[1]]$modified)
+    }
+  }
+  # harmonization of date and time iNat
+  if ("inat" %in% list_DS) {
+    if (!is.null(site_occ_spocc$inat$data[[1]]$time_observed_at)) {
+      site_occ_spocc$inat$data[[1]]$time_observed_at <- lubridate::as_datetime(site_occ_spocc$inat$data[[1]]$time_observed_at)
+    }
+    if (!is.null(site_occ_spocc$inat$data[[1]]$created_at)) {
+      site_occ_spocc$inat$data[[1]]$created_at <- lubridate::as_datetime(site_occ_spocc$inat$data[[1]]$created_at)
+    }
+    if (!is.null(site_occ_spocc$inat$data[[1]]$updated_at)) {
+      site_occ_spocc$inat$data[[1]]$updated_at <- lubridate::as_datetime(site_occ_spocc$inat$data[[1]]$updated_at)
+    }
+  }
+  # harmonization of date and time OBIS
+  if ("obis" %in% list_DS) {
+    if (!is.null(site_occ_spocc_obis$results$modified)) {
+      site_occ_spocc_obis$results$modified <- lubridate::as_datetime(site_occ_spocc_obis$results$modified)
+    }
+  }
   # combine results from occ calls to a single data.frame ----
   occ_df <- NULL
   if ("gbif" %in% list_DS) {
@@ -156,9 +214,7 @@ get_site_speciesOccurrences <- function(
   
     if (nrow(occ_df_gbif) > 0) {
       occ_df <- rbind(occ_df, occ_df_gbif)
-    } #else {
-      # list_DS <- list_DS[!(list_DS == "gbif")]
-    # }
+    }
   }
 
   if ("inat" %in% list_DS) {
@@ -171,11 +227,14 @@ get_site_speciesOccurrences <- function(
         prov,
         date = observed_on,
         key = id
+      ) %>%
+      dplyr::mutate(
+        date = as.character(date)
       )
     occ_df <- rbind(occ_df, occ_df_inat)
   }
 
-  if ("obis" %in% list_DS && !length(site_occ_spocc_obis$results)==0) {
+  if ("obis" %in% list_DS && !length(site_occ_spocc_obis$results) == 0) {
     occ_df_obis <- site_occ_spocc_obis$results %>%
       dplyr::mutate(
         prov = rep("obis", nrow(site_occ_spocc_obis$results))
@@ -197,14 +256,15 @@ get_site_speciesOccurrences <- function(
   }
 
   # print map ----
+  brewer.pal_fx <- getExportedValue("RColorBrewer", "brewer.pal")
   if (length(list_DS) < 3) {
-    my_palette <- RColorBrewer::brewer.pal(
+    my_palette <- brewer.pal_fx(
       3,
       "Set1"
     )
     my_palette <- my_palette[seq(from = 1, to = length(list_DS))]
   } else {
-    my_palette <- RColorBrewer::brewer.pal(
+    my_palette <- brewer.pal_fx(
       length(list_DS),
       "Set1"
     )

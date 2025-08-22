@@ -2,7 +2,7 @@
 #' @description `r lifecycle::badge("stable")`
 #' This function obtains the information about of an eLTER
 #' dataset (e.g.
-#' \url{https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845})
+#' \url{https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef})
 #' provided in \href{https://deims.org/}{DEIMS-SDR catalogue}.
 #' @param datasetid A `character`. It is the DEIMS ID of dataset make from
 #' DEIMS-SDR website. DEIMS ID information
@@ -10,22 +10,19 @@
 #' The DEIMS ID of dataset is the URL for the dataset page.
 #' @param show_map A `boolean`. If TRUE a Leaflet map with occurrences
 #' is shown. Default FALSE.
-#' @return The output of the function is a `tibble` with main features
-#' of the site and the related resources collected by site.
+#' @return The output of the function is a `list` with two elements:
+#' \itemize{
+#' \item \code{map} A Leaflet map with the dataset location, if requested with
+#' `show_map`.
+#' \item \code{data} A `data.frame` with the information about the dataset.
+#' }
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom dplyr as_tibble
+#' @importFrom lubridate as_datetime as_date
+#' @importFrom sf st_as_sf st_is_valid st_geometry_type
+#' @importFrom leaflet leaflet addTiles addMarkers addPolygons
+#' @importFrom units set_units
 #' @importFrom utils capture.output
-#' @importFrom sf st_as_sf st_is_valid
-#' @importFrom leaflet leaflet addTiles addPolygons
-#' @importFrom Rdpack reprompt
-#' @references
-#'   \insertRef{dplyrR}{ReLTER}
-#'
-#'   \insertRef{utilsR}{ReLTER}
-#'
-#'   \insertRef{sfR}{ReLTER}
-#'
-#'   \insertRef{leafletR}{ReLTER}
 #' @export
 #' @examples
 #' tDataset <- get_dataset_info(
@@ -41,7 +38,7 @@
 #'
 ### function get_dataset_info
 get_dataset_info <- function(datasetid, show_map = FALSE) {
-  qo <- queries_jq[[get_deims_API_version()]]$dataset_info
+  qo <- queries_jq_deims[[get_deims_API_version()]]$dataset_info
   jj <- get_id(datasetid, qo$path)
   if (is.na(attr(jj, "status"))) {
     invisible(
@@ -49,6 +46,14 @@ get_dataset_info <- function(datasetid, show_map = FALSE) {
         dataset <- dplyr::as_tibble(do_Q(qo$query, jj))
       )
     )
+    # harmonization of date and time
+    dataset$dateRange.from <- lubridate::as_date(dataset$dateRange.from)
+    dataset$dateRange.to <- lubridate::as_date(dataset$dateRange.to)
+    dataset$created <- lubridate::as_datetime(dataset$created)
+    dataset$changed <- lubridate::as_datetime(dataset$changed)
+    # elevation using units
+    dataset$elevation.min <- units::set_units(as.double(dataset$elevation.min), "m")
+    dataset$elevation.max <- units::set_units(as.double(dataset$elevation.max), "m")
     # fix the observationParameters columns name
     if (!is.na(dataset$observationParameters)) {
       colnames(dataset$observationParameters[[1]]) <- c(
@@ -107,24 +112,35 @@ get_dataset_info <- function(datasetid, show_map = FALSE) {
 dataset, provided in DEIMS-SDR, has an invalid geometry.
 Please check the content and refer this error to DEIMS-SDR support for this
 dataset, citing the Dataset.iD.\n----\n")
-          print(map)
-          geoDataset
+          return(list(
+            map = map,
+            data = geoDataset
+          ))
         }
       }
     } else {
-      geoDataset <- NULL
-      map <- NULL
+      return(list(
+        map = NULL,
+        data = NULL
+      ))
     }
   } else {
     message("\n----\nThe requested page could not be found.
 Please check again the Dataset.iD\n----\n")
-    geoDataset <- NULL
-    map <- NULL
+    return(list(
+      map = NULL,
+      data = NULL
+    ))
   }
   if (show_map == TRUE) {
-    print(map)
-    geoDataset
+    return(list(
+      map = map,
+      data = geoDataset
+    ))
   } else {
-    geoDataset
+    return(list(
+      map = NULL,
+      data = geoDataset
+    ))
   }
 }

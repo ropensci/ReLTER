@@ -12,17 +12,33 @@
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom utils capture.output
 #' @importFrom dplyr as_tibble
+#' @importFrom units set_units
 #' @keywords internal
 #'
 ### function get_site_general
 get_site_general <- function(deimsid) {
-  qo <- queries_jq[[get_deims_API_version()]]$site_general
+  qo <- queries_jq_deims[[get_deims_API_version()]]$site_general
   jj <- get_id(deimsid, qo$path)
   if (is.na(attr(jj, "status"))) {
     invisible(
       utils::capture.output(
         general <- dplyr::as_tibble(do_Q(qo$query, jj))
       )
+    )
+    # set country field as vector
+    general$country <- unlist(general$country)
+    # set the UOM of geoElev.avg, geoElev.min, and geoElev.max
+    general$geoElev.avg <- units::set_units(
+      x = general$geoElev.avg,
+      value = 'm'
+    )
+    general$geoElev.min <- units::set_units(
+      x = general$geoElev.min,
+      value = 'm'
+    )
+    general$geoElev.max <- units::set_units(
+      x = general$geoElev.max,
+      value = 'm'
     )
   } else {
     message("\n----\nThe requested page could not be found.

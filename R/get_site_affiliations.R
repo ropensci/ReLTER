@@ -9,15 +9,14 @@
 #' site and the affiliations information, such as: networks and projects in
 #' which the site is involved.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
-#' @importFrom jqr jq
-#' @importFrom jsonlite stream_in
-#' @importFrom dplyr as_tibble
+#' @importFrom dplyr as_tibble mutate
+#' @importFrom units set_units
 #' @importFrom utils capture.output
 #' @keywords internal
 #'
 ### function get_site_affiliations
 get_site_affiliations <- function(deimsid) {
-  qo <- queries_jq[[get_deims_API_version()]]$site_affiliations
+  qo <- queries_jq_deims[[get_deims_API_version()]]$site_affiliations
   jj <- get_id(deimsid, qo$path)
   if (is.na(attr(jj, "status"))) {
     invisible(
@@ -25,6 +24,30 @@ get_site_affiliations <- function(deimsid) {
         affiliations <- dplyr::as_tibble(do_Q(qo$query, jj))
       )
     )
+    # set country field as vector
+    affiliations$country <- unlist(affiliations$country)
+    # set the UOM of geoElev.avg, geoElev.min, and geoElev.max
+    affiliations$geoElev.avg <- units::set_units(
+      x = affiliations$geoElev.avg,
+      value = 'm'
+    )
+    affiliations$geoElev.min <- units::set_units(
+      x = affiliations$geoElev.min,
+      value = 'm'
+    )
+    affiliations$geoElev.max <- units::set_units(
+      x = affiliations$geoElev.max,
+      value = 'm'
+    )
+    # merge network.id.prefix with network.id.suffix
+    affiliations$networks[[1]] <- affiliations$networks[[1]] %>%
+      dplyr::mutate(
+        name = network$name,
+        uri = paste0(network$id$prefix,
+                     network$id$suffix),
+        .keep = "unused",
+        .after = 1
+      )
   } else {
     message("\n----\nThe requested page could not be found.
 Please check again the DEIMS ID\n----\n")

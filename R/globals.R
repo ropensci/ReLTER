@@ -16,6 +16,7 @@ utils::globalVariables(
 )
 
 #' Package settings that can be changed by the user
+#' @description `r lifecycle::badge("stable")`
 #' @family package_customizable_settings
 #' @export
 package_settings <- (function() {
@@ -26,15 +27,33 @@ package_settings <- (function() {
 })()
 
 #' Set DEIMS-SDR API base URL
+#' @description `r lifecycle::badge("stable")`
 #' @param url A `character`. Set the base URL to DEIMS-SDR.
 #' @param force A `boolean`. Default FALSE.
 #' @export
-#' @importFrom RCurl url.exists
+#' @importFrom httr2 request req_method req_headers
+#' @importFrom httr2 req_retry req_perform
 set_deims_base_url <- function(url = "https://deims.org/", force = FALSE) {
   if (!endsWith(url, "/")) {
     url <- paste0(url, "/")
   }
-  if (!RCurl::url.exists(url)) {
+  
+  check <- tryCatch(
+    {
+      export <- httr2::request(url) %>%
+        httr2::req_method("GET") %>%
+        httr2::req_headers(Accept = "application/html") %>%
+        httr2::req_retry(max_tries = 3, max_seconds = 120)
+      export <- httr2::req_method(export, "HEAD")
+      httr2::req_perform(export)
+      TRUE
+    },
+    error = function(e) {
+      FALSE
+    }
+  )
+
+  if (check == FALSE) {
     if (force) {
       warning("The URL ", url, " is not reachable, I set it because
               force TRUE is specified")
@@ -47,6 +66,7 @@ set_deims_base_url <- function(url = "https://deims.org/", force = FALSE) {
 }
 
 #' Get DEIMS-SDR base URL
+#' @description `r lifecycle::badge("stable")`
 #' @return DEIMS-SDR base URL
 #' @family package_customizable_settings
 #' @export

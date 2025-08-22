@@ -4,20 +4,31 @@
 \alias{get_site_boundaries}
 \title{eLTER get_site_boundaries function}
 \usage{
-get_site_boundaries(deimsid, show_map = FALSE)
+get_site_boundaries(deimsid, show_map = FALSE, with_locations = FALSE)
 }
 \arguments{
 \item{deimsid}{A \code{character}. The DEIMS ID of the site from
 DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here}.}
 
-\item{show_map}{A \code{boolean}. When TRUE the boundary will be plotted on a
-Leaflet map. Default FALSE.}
+\item{show_map}{A \code{boolean} or the string "return". When TRUE a \code{leflet}
+object (a map) is returned and plotted. Default FALSE.
+When the value is "return", the \code{leaflet} object is returned but not
+plotted.}
+
+\item{with_locations}{A \code{boolean}. When TRUE all site boundaries and
+related locations are returned (Sampling Location or Equipment Location).
+Default FALSE.}
 }
 \value{
-The output of the function is an \code{sf} object, the boundary of the
-site or NA if the boundary is missing from DEIMS-SDR. In addition, as
-\verb{html map} with boundaries of the site is plotted.
+The output of the function is a \code{list} with slots:
+\itemize{
+\item \code{data} An \code{sf} object with the the boundary of the
+site. If the boundary is missing from DEIMS-SDR, a \code{tibble}
+with the name and URI of the site.
+\item \code{locations} A \code{tibble} with the locations' details
+if \code{with_locations} is TRUE, otherwise NULL.
+}
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
@@ -26,9 +37,28 @@ and a view of the site boundaries on a leaflet map is shown.
 All the info are taken from the DEIMS-SDR sites API.
 If the boundary is missing, a warning message is printed in the R console.
 }
+\section{The function output}{
+
+\figure{get_site_boundaries_fig.png}{Map of "LTER Zöbelboden, Austria" 
+with locations}
+}
+
+\examples{
+\dontrun{
+# LTER Zöbelboden
+boundaries <- get_site_boundaries(
+  deimsid = "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6",
+  show_map = TRUE,
+  with_locations = TRUE
+)
+boundaries
+}
+}
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
 
 Micha Silver, phD (2021) \email{silverm@post.bgu.ac.il}
+
+Paolo Tagliolato, phD \email{tagliolato.p@irea.cnr.it}
 }
 \keyword{internal}

@@ -13,11 +13,13 @@ get_zenodo_data(doi, rdata_exist = TRUE)
 we are questioning? Default TRUE.}
 }
 \value{
-a file(s) containing in the Zenodo record.
+a file(s) containing in the Zenodo record and tibble contains some
+metadata of Zenodo record.
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
-The function returns the dataset, or file(s), deposited in Zenodo record.
+The function download the file(s) deposited in Zenodo record and returns
+a tibble with metadata.
 }
 \examples{
 \dontrun{
@@ -27,10 +29,18 @@ record <- get_zenodo_data(
   doi = "10.5281/zenodo.7041152", # test dataset
   rdata_exist = TRUE
 )
+record
 
 ## End (Not run)
 }
 
+}
+\seealso{
+\code{\link[zen4R:ZenodoManager]{zen4R::ZenodoManager()}}
+
+\code{\link[tidyr:unnest]{tidyr::unnest()}}
+
+\code{\link[tidyr:nest]{tidyr::nest()}}
 }
 \author{
 Alessandro Oggioni, phD \email{oggioni.a@irea.cnr.it}

@@ -15,35 +15,26 @@
 #' (package sf) of the network's sites.
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom jsonlite fromJSON
-#' @importFrom sf st_as_sf st_is_valid st_cast
+#' @importFrom sf st_as_sf st_is_valid st_cast st_sfc st_sf
 #' @importFrom dplyr select mutate as_tibble add_row
-#' @importFrom leaflet leaflet addTiles addMarkers
-#' @importFrom httr RETRY content
-#' @importFrom Rdpack reprompt
-#' @references
-#'   \insertRef{httrR}{ReLTER}
-#'
-#'   \insertRef{dplyrR}{ReLTER}
-#'
-#'   \insertRef{jsonliteR}{ReLTER}
-#'
-#'   \insertRef{sfR}{ReLTER}
-#'
-#'   \insertRef{leafletR}{ReLTER}
+#' @importFrom leaflet leaflet addTiles addMarkers markerClusterOptions
+#' @importFrom httr2 request req_method req_headers req_retry
+#' @importFrom httr2 req_perform resp_check_status resp_body_string
+#' @importFrom lubridate as_datetime
 #' @export
 #' @examples
 #' \dontrun{
 #' # The sites of LTER-Italy network
 #' listSites <- get_network_sites(
 #'   networkDEIMSID =
-#'   "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
+#'     "https://deims.org/network/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3"
 #' )
 #' listSites
 #'
 #' # The sites of LTER Europe network
 #' euSites <- get_network_sites(
 #'   networkDEIMSID =
-#'   "https://deims.org/networks/4742ffca-65ac-4aae-815f-83738500a1fc"
+#'     "https://deims.org/networks/4742ffca-65ac-4aae-815f-83738500a1fc"
 #' )
 #' euSites
 #' }
@@ -54,10 +45,17 @@ get_network_sites <- function(networkDEIMSID) {
   url <- paste0(deimsbaseurl,
                 "api/sites?network=",
                 sub("^.+/", "", networkDEIMSID))
-  export <- httr::RETRY("GET", url = url, times = 5)
+  
+  export <- httr2::request(base_url = url) %>%
+    httr2::req_method("GET") %>%
+    httr2::req_headers(Accept = "application/json") %>%
+    httr2::req_retry(max_tries = 3, max_seconds = 120) %>%
+    httr2::req_perform()
+  httr2::resp_check_status(export)
   lterNetworkSitesCoords <- jsonlite::fromJSON(
-    httr::content(export, as = "text", encoding = "UTF-8"))
-
+    httr2::resp_body_string(export) # already UTF-8 encoded
+  )
+  
   lterNetworkSitesCoords <- dplyr::as_tibble(lterNetworkSitesCoords)
   if (length(lterNetworkSitesCoords) != 0) {
     # check if some site has MULTIPOINTS instead POINT and convert it
@@ -79,7 +77,10 @@ get_network_sites <- function(networkDEIMSID) {
           wkt = "coordinates",
           crs = 4326
         )
-        points_site_sf <- sf::st_cast(x = multipoint_site_sf, to = "POINT") %>%
+        points_site_sf <- sf::st_cast(
+          x = multipoint_site_sf,
+          to = "POINT"
+        ) %>%
           dplyr::mutate(
             uri = paste0(
               id$prefix,
@@ -113,7 +114,10 @@ get_network_sites <- function(networkDEIMSID) {
     lSNPD_valid <- sf::st_is_valid(
       lterSitesNetworkPointDEIMS
     )
-
+    # harmonization of date and time
+    lterSitesNetworkPointDEIMS$changed <- lubridate::as_datetime(
+      lterSitesNetworkPointDEIMS$changed
+    )
     # checking MULTIPOINT geometry
     lSNPD_type <- sf::st_geometry_type(
       x = lterSitesNetworkPointDEIMS,
@@ -147,30 +151,37 @@ get_network_sites <- function(networkDEIMSID) {
         leaflet::addMarkers(
           clusterOptions = leaflet::markerClusterOptions(),
           popup = paste0(
-            "<b>Site name: </b>"
-            , lterSitesNetworkPointDEIMS$title
-            , "<br>"
-            , "<a href='"
-            , lterSitesNetworkPointDEIMS$uri
-            , "' target='_blank'>"
-            , "Click Here to View site landing page</a>"
+            "<b>Site name: </b>",
+            "<a href='",
+            lterSitesNetworkPointDEIMS$uri,
+            "' target='_blank'>",
+            lterSitesNetworkPointDEIMS$title,
+            "<br>"
           )
         )
-      print(map)
       message("\n----\nThe number of the sites on the map can be more than
 in the network, since some are represented in DEIMS-SDR by multiple points.
 (e.g. https://deims.org/18998d9a-7ff5-4e9d-a971-9694e0a4914d).\n----\n")
-      return(lterSitesNetworkPointDEIMS)
+      return(list(
+        map = map,
+        network_sites = lterSitesNetworkPointDEIMS
+      ))
     } else {
       message("\n----\nThe maps cannot be created because the coordinates,
 provided in DEIMS-SDR, have invalid geometry.
 Please check the content (returned by this function) and refer this error
 to DEIMS-SDR contact person of the network, citing the Network ID.\n----\n")
-      return(lterSitesNetworkPointDEIMS)
+      return(list(
+        map = NULL,
+        network_sites = lterSitesNetworkPointDEIMS
+      ))
     }
   } else {
     message("\n----\nThe requested page could not be found.
 Please check the Network ID\n----\n")
-    return(NULL)
+    return(list(
+      map = NULL,
+      network_sites = NULL
+    ))
   }
 }

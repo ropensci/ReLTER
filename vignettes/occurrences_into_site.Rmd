@@ -9,10 +9,7 @@ bibliography: ./references/occurrences_into_site_refs.bib
 author: "Alessandro Oggioni, Paolo Tagliolato, Martina Zilioli"
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-library(dplyr)
-```
+
 
 __ *get_site_speciesOccurrences()*, *map_occ_gbif2elter* and *save_occ_eLTER_reporting_Archive()* are delivered only with dev__withImprovements branch __
 
@@ -34,7 +31,8 @@ The parameters of the function are:
 
 The output are two type: a map and a table(s), for each external data service selected.
 
-```{r listInfo, warning=FALSE, message=FALSE}
+
+``` r
 # DEIMS.iD of eLTER site Gulf Of Venice (GOV)
 GOVid <- "https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd"
 
@@ -49,17 +47,25 @@ resGOV <- ReLTER::get_site_speciesOccurrences(
 
 <iframe src="./other/occurrences_into_site_map.html" height="405" width="720" style="border: 1px solid #464646;"></iframe>
 
-```{r occTables, warning=FALSE}
+
+``` r
 # iNat table
 knitr::kable(
-  resGOV$inat[c(1:10)],
+  head(resGOV$inat[c(1:10)], 10)
   caption = "The first 10 occurrence records of iNaturalist on the selected eLTER site."
 )
 # OBIS table
 knitr::kable(
-  resGOV$obis[c(1:10)],
+  head(resGOV$obis[c(1:10)], 10)
   caption = "The first 10 occurrence records of OBIS on the selected eLTER site."
 )
+```
+
+```
+## Error in parse(text = input): <text>:4:3: unexpected symbol
+## 3:   head(resGOV$inat[c(1:10)], 10)
+## 4:   caption
+##      ^
 ```
 
 ### How to trasform external service data schemas into eLTER data-reporting template?
@@ -71,7 +77,8 @@ Using 2 other R functions, developed for solve this issue, data from external da
 Below an example for the eLTER [Saldur River Catchment site](https://deims.org/97ff6180-e5d1-45f2-a559-8a7872eb26b1), where the external data service to be queried are GBIF and iNaturalist.
 
 
-```{r export, warning=FALSE}
+
+``` r
 saldurid <- "https://deims.org/97ff6180-e5d1-45f2-a559-8a7872eb26b1"
 
 resSaldur <- ReLTER::get_site_speciesOccurrences(
@@ -89,11 +96,22 @@ if (nrow(tblSaldur_gbif) > 0) {
     ReLTER::map_occ_gbif2elter(deimsid = saldurid)
   ReLTER::save_occ_eLTER_reporting_Archive(outGbif)
 }
+```
+
+```
+## [1] "/tmp/RtmpsutGAg/biodiv_occurrence_site_97ff6180-e5d1-45f2-a559-8a7872eb26b1_gbif.zip"
+```
+
+``` r
 # iNaturalist
 tblSaldur_inat <- tibble::as_tibble(resSaldur$inat)
 outInat <- tblSaldur_inat %>%
   ReLTER::map_occ_inat2elter(deimsid = saldurid)
 ReLTER::save_occ_eLTER_reporting_Archive(outInat)
+```
+
+```
+## [1] "/tmp/RtmpsutGAg/biodiv_occurrence_site_97ff6180-e5d1-45f2-a559-8a7872eb26b1_inat.zip"
 ```
 
 The eLTER useful archive created are:

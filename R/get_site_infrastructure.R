@@ -11,11 +11,12 @@
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom utils capture.output
 #' @importFrom dplyr as_tibble
+#' @importFrom units set_units
 #' @keywords internal
 #'
 ### function get_site_infrastructure
 get_site_infrastructure <- function(deimsid) {
-  qo <- queries_jq[[get_deims_API_version()]]$site_infrastructure
+  qo <- queries_jq_deims[[get_deims_API_version()]]$site_infrastructure
   jj <- get_id(deimsid, qo$path)
   if (is.na(attr(jj, "status"))) {
     invisible(
@@ -23,9 +24,24 @@ get_site_infrastructure <- function(deimsid) {
         infrastructure <- dplyr::as_tibble(do_Q(qo$query, jj))
       )
     )
-    colnames(infrastructure$generalInfo.collection[[1]]) <- c(
+    colnames(infrastructure$collection[[1]]) <- c(
       "collectionLabel",
       "collectionURI"
+    )
+    # set country field as vector
+    infrastructure$country <- unlist(infrastructure$country)
+    # set the UOM of geoElev.avg, geoElev.min, and geoElev.max
+    infrastructure$geoElev.avg <- units::set_units(
+      x = infrastructure$geoElev.avg,
+      value = 'm'
+    )
+    infrastructure$geoElev.min <- units::set_units(
+      x = infrastructure$geoElev.min,
+      value = 'm'
+    )
+    infrastructure$geoElev.max <- units::set_units(
+      x = infrastructure$geoElev.max,
+      value = 'm'
     )
   } else {
     message("\n----\nThe requested page could not be found.

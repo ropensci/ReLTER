@@ -4,28 +4,25 @@ ReLTER
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- badges: start -->
 <!-- other badges https://github.com/GuangchuangYu/badger -->
-<!-- DOI badge -->
 
 [![](https://img.shields.io/badge/doi-10.5281/zenodo.5576813-yellow.svg)](https://doi.org/10.5281/zenodo.5576813)
-[![](https://img.shields.io/badge/devel%20version-2.1.1-blue.svg)](https://github.com/ropensci/ReLTER)
-[![](https://img.shields.io/github/languages/code-size/ropensci/ReLTER.svg)](https://github.com/ropensci/ReLTER)
-[![](https://img.shields.io/github/last-commit/ropensci/ReLTER.svg)](https://github.com/ropensci/ReLTER/commits/main)
+[![r-universe](https://ropensci.r-universe.dev/badges/ReLTER)](https://ropengov.r-universe.dev/)
 [![License:
 GPL-3](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://cran.r-project.org/web/licenses/GPL-3)
+[![](https://img.shields.io/github/languages/code-size/ropensci/ReLTER.svg)](https://github.com/ropensci/ReLTER)
+[![](https://img.shields.io/github/last-commit/ropensci/ReLTER.svg)](https://github.com/ropensci/ReLTER/commits/main)
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![Lifecycle](https://lifecycle.r-lib.org/articles/figures/lifecycle-stable.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![R build
 status](https://github.com/rossellhayes/ipa/workflows/R-CMD-check/badge.svg)](https://github.com/rossellhayes/ipa/actions)
-[![r-universe](https://ropensci.r-universe.dev/badges/ReLTER)](https://ropengov.r-universe.dev/)
+[![](https://img.shields.io/badge/devel%20version-2.2.0-blue.svg)](https://github.com/ropensci/ReLTER)
 [![codecov](https://codecov.io/gh/ropensci/ReLTER/branch/dev/graph/badge.svg)](https://codecov.io/gh/ropensci/ReLTER)
-[![](https://badges.ropensci.org/485_status.svg)](https://github.com/ropensci/software-review/issues/485)
 <!-- CRAN badges -->
 <!-- [![](https://www.r-pkg.org/badges/version/ropensci/ReLTER?color=orange)](https://cran.r-project.org/package=ropensci/ReLTER) -->
-<!-- [![CRAN checks](https://cranchecks.info/badges/summary/ReLTER)](https://cran.r-project.org/web/checks/check_results_ReLTER.html) -->
+<!-- [![CRAN checks](https://badges.cranchecks.info/summary/ReLTER.svg)](https://cran.r-project.org/web/checks/check_results_ReLTER.html) -->
 <!-- [![](http://cranlogs.r-pkg.org/badges/last-month/badger?color=green)](https://cran.r-project.org/package=badger) -->
-<!-- [![Rdoc](https://www.rdocumentation.org/badges/version/ReLTER)](https://www.rdocumentation.org/packages/ReLTER) -->
 <!-- badges: end -->
 
 `{ReLTER}` is an R package that provides access to
@@ -74,20 +71,39 @@ tools.
 
 ## :notebook_with_decorative_cover: Citation
 
-To cite `{ReLTER}` please use: Alessandro Oggioni, Micha Silver, Luigi
-Ranghetti & Paolo Tagliolato. (2023). ReLTER: An Interface for the eLTER
-Community (v2.1). Zenodo. <https://doi.org/10.5281/zenodo.5576813>
+To cite `{ReLTER}` please use:
+
+Oggioni, A., Silver, M., Tagliolato, P., & Karnieli, A. (2025).
+ReLTER: An R interface for environmental observation in long term
+ecological research. Ecological Informatics, 85, 102915.
+<https://doi.org/10.1016/j.ecoinf.2024.102915>
+
+``` bibtex
+@article{OGGIONI2025102915,
+title = {ReLTER: An R interface for environmental observation in long term ecological research},
+journal = {Ecological Informatics},
+volume = {85},
+pages = {102915},
+year = {2025},
+issn = {1574-9541},
+doi = {https://doi.org/10.1016/j.ecoinf.2024.102915},
+url = {https://www.sciencedirect.com/science/article/pii/S1574954124004576},
+author = {Alessandro Oggioni and Micha Silver and Paolo Tagliolato and Arnon Karnieli}
+```
 
 or:
 
+Alessandro Oggioni, Micha Silver, Luigi Ranghetti & Paolo Tagliolato.
+(2025). ReLTER: An Interface for the eLTER Community (v3.0). Zenodo.
+<https://doi.org/10.5281/zenodo.5576813>
+
 ``` bibtex
-@software{alessandro_oggioni_2021_5576813,
+@software{alessandro_oggioni_2025_5576813,
   author       = {Alessandro Oggioni and Micha Silver and Luigi Ranghetti and Paolo Tagliolato},
   title        = {ReLTER: An Interface for the eLTER Community},
-  month        = jan,
-  year         = 2023,
+  year         = 2025,
   publisher    = {Zenodo},
-  version      = {v2.1},
+  version      = {v3.0},
   doi          = {10.5281/zenodo.5576813},
   url          = {https://doi.org/10.5281/zenodo.5576813}
 }
@@ -104,8 +120,8 @@ The manual of `{ReLTER}` package could be found
 
 ## :notebook_with_decorative_cover: Cheatsheet
 
-<a href="https://raw.githubusercontent.com/ropensci/ReLTER/8f0dace67f286c91bd551e987aa349df40bd58ba/man/cheatsheets/ReLTER_cheatSheet.pdf"><img src="https://raw.githubusercontent.com/ropensci/ReLTER/8f0dace67f286c91bd551e987aa349df40bd58ba/man/figures/ReLTER_cheatSheet_front.png" width="630" height="487" alt="ReLTER Cheatsheet" /></a>
-<a href="https://raw.githubusercontent.com/ropensci/ReLTER/8f0dace67f286c91bd551e987aa349df40bd58ba/man/cheatsheets/ReLTER_cheatSheet.pdf"><img src="https://raw.githubusercontent.com/ropensci/ReLTER/8f0dace67f286c91bd551e987aa349df40bd58ba/man/figures/ReLTER_cheatSheet_back.png" width="630" height="487" alt="ReLTER Cheatsheet" /></a>
+<a href="https://raw.githubusercontent.com/ropensci/ReLTER/main/man/cheatsheets/ReLTER_cheatSheet.pdf"><img src="https://raw.githubusercontent.com/ropensci/ReLTER/main/man/figures/ReLTER_cheatSheet_front.png" width="630" height="487" alt="ReLTER Cheatsheet" /></a>
+<a href="https://raw.githubusercontent.com/ropensci/ReLTER/main/man/cheatsheets/ReLTER_cheatSheet.pdf"><img src="https://raw.githubusercontent.com/ropensci/ReLTER/main/man/figures/ReLTER_cheatSheet_back.png" width="630" height="487" alt="ReLTER Cheatsheet" /></a>
 
 ## :arrow_double_down: Installation
 
@@ -166,8 +182,11 @@ page](https://docs.ropensci.org/ReLTER/authors).
 ## :thumbsup: Acknowledgements
 
 This work has been partially funded from the European Union’s Horizon
-2020 research and innovation programme under the [H2020 eLTER-Plus
-Project](https://elter-ri.eu/elter-plus) grant agreement No 871128.
+2020 research and innovation programme under the [**H2020 eLTER-Plus
+project**](https://elter-ri.eu/elter-plus) Grant Agreement No. 871128
+(DOI: [10.3030/871128](https://doi.org/10.3030/871128)) and
+[**eLTER EnRich project**](https://elter-ri.eu/elter-enrich) Grant
+Agreement No. 101131751 (DOI: [10.3030/101131751](https://doi.org/10.3030/101131751))
 
 Thanks to the reviewers and the editor ([more about
 authors](https://docs.ropensci.org/ReLTER/authors.html)) for their work.

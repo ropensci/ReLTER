@@ -67,10 +67,8 @@ table
 attributes(table)$uri
 
 }
-\references{
-\insertRef{worrmsR}{ReLTER}
-
-\insertRef{dplyrR}{ReLTER}
+\seealso{
+\code{\link[worrms:wm_records_names]{worrms::wm_records_names()}}
 }
 \author{
 Alessandro Oggioni, phD (2021) \email{oggioni.a@irea.cnr.it}

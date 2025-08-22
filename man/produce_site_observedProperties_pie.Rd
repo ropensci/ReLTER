@@ -37,20 +37,13 @@ eLTER site.
 pie <- produce_site_observedProperties_pie(
   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
 )
-pie
 }
 
 }
-\references{
-\insertRef{tibbleR}{ReLTER}
+\seealso{
+\code{\link[ggforce:geom_arc_bar]{ggforce::geom_arc_bar()}}
 
-\insertRef{dplyrR}{ReLTER}
-
-\insertRef{RColorBrewerR}{ReLTER}
-
-\insertRef{ggplot2R}{ReLTER}
-
-\insertRef{ggforceR}{ReLTER}
+\code{\link[RColorBrewer:ColorBrewer]{RColorBrewer::brewer.pal()}}
 }
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}

@@ -34,20 +34,13 @@ waffle chart}
 waffle <- produce_site_observedProperties_waffle(
   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
 )
-waffle
 }
 
 }
-\references{
-\insertRef{tibbleR}{ReLTER}
+\seealso{
+\code{\link[waffle:waffle]{waffle::waffle()}}
 
-\insertRef{dplyrR}{ReLTER}
-
-\insertRef{grDevicesR}{ReLTER}
-
-\insertRef{RColorBrewerR}{ReLTER}
-
-\insertRef{waffleR}{ReLTER}
+\code{\link[RColorBrewer:ColorBrewer]{RColorBrewer::brewer.pal()}}
 }
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}

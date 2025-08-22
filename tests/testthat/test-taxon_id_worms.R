@@ -1,6 +1,6 @@
 message("\n---- Test taxon_id_worms() ----")
 
-library(testthat)
+skip_if_offline(host = "deims.org")
 
 test_that("Output of taxon worms function constructs 'tibble' as expected", {
   input_table <- tibble::tibble(

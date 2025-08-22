@@ -1,6 +1,6 @@
 message("\n---- Test taxon_id_pesi() ----")
 
-library(testthat)
+skip_if_offline(host = "deims.org")
 
 test_that("Output of taxon pesi function constructs 'tibble' as expected", {
   table <- data.frame(

@@ -4,25 +4,37 @@
 \alias{get_site_info}
 \title{Obtain details about an eLTER site.}
 \usage{
-get_site_info(deimsid, category = NA)
+get_site_info(
+  deimsid,
+  categories = NA,
+  show_map = FALSE,
+  with_locations = FALSE
+)
 }
 \arguments{
-\item{deimsid}{A character. The DEIMS ID of the site from
+\item{deimsid}{A \code{character}. The DEIMS ID of the site from
 DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here}.}
 
-\item{category}{A \code{category}. This parameter selects which category
+\item{categories}{A \code{categories}. This parameter selects which categories
 or categories are retrieved and returned in the result.
 Possible value are:
-'Affiliations', 'Boundaries', 'Contacts', 'EnvCharacts', 'General',
+'Affiliations', 'Contacts', 'EnvCharacts', 'General',
 'Infrastructure', 'observedProperties', 'RelateRes'.
-Multiple values can be indicated.}
+Multiple values can be indicated.
+A site's boundary is always returned.}
+
+\item{show_map}{A \code{boolean}. When TRUE a \code{leaflet} map is plotted as side
+effect. Default FALSE.}
+
+\item{with_locations}{A \code{boolean}. When TRUE, and only \code{show_map} is TRUE,
+all site related locations are showed in the plotted map.
+Default FALSE.}
 }
 \value{
-The output of the function is a \code{tibble} with main features of the
-site and the selected information, such as: networks and projects in
-which the site is involved.
-If category 'Boundaries' is indicated an \code{sf} object is returned
+The output of the function is a \code{sf} with the information about
+the site.
+If the boundary is missing from DEIMS-SDR a \code{tibble} is returned.
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
@@ -33,26 +45,15 @@ through the DEIMS-SDR API.
 \examples{
 site <- get_site_info(
   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
-  category = "Boundaries"
+  categories = c("EnvCharacts", "Affiliations"),
+  show_map = TRUE,
+  with_locations = FALSE
 )
 site
 
-siteInfo <- get_site_info(
-  deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe",
-  category = c("EnvCharacts", "Affiliations")
-)
-siteInfo
-
-}
-\references{
-\insertRef{dplyrR}{ReLTER}
-
-\insertRef{utilsR}{ReLTER}
-
-\insertRef{sfR}{ReLTER}
-
-\insertRef{leafletR}{ReLTER}
 }
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
+
+Paolo Tagliolato, phD \email{tagliolato.p@irea.cnr.it}
 }

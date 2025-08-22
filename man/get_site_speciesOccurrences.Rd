@@ -87,6 +87,13 @@ occ_GoV_all
 }
 
 }
+\seealso{
+\code{\link[spocc:obis_search]{spocc::obis_search()}}
+
+\code{\link[spocc:occ]{spocc::occ()}}
+
+\code{\link[RColorBrewer:ColorBrewer]{RColorBrewer::brewer.pal()}}
+}
 \author{
 Alessandro Oggioni, PhD (2020) \email{oggioni.a@irea.cnr.it}
 

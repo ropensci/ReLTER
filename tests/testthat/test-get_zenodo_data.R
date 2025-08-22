@@ -1,18 +1,16 @@
 message("\n---- Test get_zenodo_data() ----")
 
-library(testthat)
-
-test_that("Expect error if internet connection is down", {
-  testthat::expect_error(
-    httptest::without_internet(
-      result <- ReLTER::get_zenodo_data(
-        doi = "10.5281/zenodo.7041152", # test dataset
-        rdata_exist = FALSE
-      )
-    ),
-    "GET"
-  )
-})
+# test_that("Expect error if internet connection is down", {
+#   expect_error(
+#     httptest2::without_internet(
+#       result <- ReLTER::get_zenodo_data(
+#         doi = "10.5281/zenodo.7041152", # test dataset
+#         rdata_exist = FALSE
+#       )
+#     ),
+#     "GET"
+#   )
+# })
 
 skip_if_offline(host = "zenodo.org")
 

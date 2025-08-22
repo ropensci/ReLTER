@@ -10,28 +10,23 @@
 #' The DEIMS.iD of activity is the URL for the activity page.
 #' @param show_map A `boolean`. If TRUE a Leaflet map with occurrences
 #' is shown. Default FALSE.
-#' @return The output of the function is a `tibble` with main features of
-#' the activities in a site, and a `leaflet` map plot.
+#' @return The output of the function is a `list` with two elements:
+#' \itemize{
+#' \item \code{map} A Leaflet map with the activity location, if requested with
+#' `show_map`.
+#' \item \code{data} A `data.frame` with the information about the activity.
+#' }
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom dplyr as_tibble
-#' @importFrom utils capture.output
-#' @importFrom sf st_as_sf st_is_valid
-#' @importFrom leaflet leaflet addTiles addPolygons
-#' @importFrom Rdpack reprompt
-#' @references
-#'   \insertRef{dplyrR}{ReLTER}
-#'
-#'   \insertRef{utilsR}{ReLTER}
-#'
-#'   \insertRef{sfR}{ReLTER}
-#'
-#'   \insertRef{leafletR}{ReLTER}
+#' @importFrom lubridate as_datetime as_date
+#' @importFrom sf st_as_sf st_is_valid st_geometry_type
+#' @importFrom leaflet leaflet addTiles addMarkers addPolygons
 #' @export
 #' @examples
 #' activities <- get_activity_info(
 #'   activityid =
-#'   "https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845",
-#'   show_map = FALSE
+#'     "https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845",
+#'   show_map = TRUE
 #' )
 #' activities
 #'
@@ -41,7 +36,7 @@
 #'
 ### function get_activity_info
 get_activity_info <- function(activityid, show_map = FALSE) {
-  qo <- queries_jq[[get_deims_API_version()]]$activity_info
+  qo <- queries_jq_deims[[get_deims_API_version()]]$activity_info
   jj <- get_id(activityid, qo$path)
   if (is.na(attr(jj, "status"))) {
     invisible(
@@ -49,6 +44,25 @@ get_activity_info <- function(activityid, show_map = FALSE) {
         activity <- dplyr::as_tibble(do_Q(qo$query, jj))
       )
     )
+    # harmonization of date and time
+    if (!is.na(activity$created)) {
+      activity$created <- lubridate::as_datetime(activity$created)
+    }
+    if (!is.na(activity$changed)) {
+      activity$changed <- lubridate::as_datetime(activity$changed)
+    }
+    if (!is.na(activity$relatedSite)) {
+      activity$relatedSite[[1]]$changed <- lubridate::as_datetime(activity$relatedSite[[1]]$changed)
+    }
+    if (!is.na(activity$relatedResources)) {
+      activity$relatedResources[[1]]$changed <- lubridate::as_datetime(activity$relatedResources[[1]]$changed)
+    }
+    if (!is.na(activity$dateRange.from)) {
+      activity$dateRange.from <- lubridate::as_date(activity$dateRange.from)
+    }
+    if (!is.na(activity$dateRange.to)) {
+      activity$dateRange.to <- lubridate::as_date(activity$dateRange.to)
+    }
     if (!is.null(activity)) {
       if (is.na(activity$boundaries)) {
         message("\n---- This activity don't contains geo info. ----\n") # nocov
@@ -81,17 +95,24 @@ contact person of the activity, citing the Activity.iD.\n----\n")
         }
       }
     } else {
-      geoActivity <- NULL
-      map <- NULL
+      return(list(
+        map = NULL,
+        data = NULL
+      ))
     }
   } else {
     stop("\n----\nPage Not Found. The requested page could not be found. Please
 check again the Activity.iD\n----\n")
   }
   if (show_map == TRUE) {
-    print(map)
-    geoActivity
+    return(list(
+      map = map,
+      data = geoActivity
+    ))
   } else {
-    geoActivity
+    return(list(
+      map = NULL,
+      data = geoActivity
+    ))
   }
 }

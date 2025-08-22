@@ -11,7 +11,7 @@ reporting_produce_data_object_v1.3(
   reference = NULL,
   event = NULL,
   sample = NULL,
-  licence = "",
+  license = "",
   deimsid = "",
   data_type = "measurement",
   filename = NULL
@@ -30,7 +30,7 @@ reporting_produce_data_object_v1.3(
 
 \item{sample}{A \code{tibble}}
 
-\item{licence}{A \code{character}}
+\item{license}{A \code{character}}
 
 \item{deimsid}{A character. The DEIMS ID of the site from
 DEIMS-SDR website. DEIMS ID information
@@ -74,7 +74,7 @@ filename <- reporting_compose_file_name(
 )
 
 data <- tibble::tribble(
-                                                ~`SITE_CODE`, ~`VARIABLE`,      ~`TIME`, ~`VALUE`,  ~`UNIT`,
+                                                   ~SITE_CODE,   ~VARIABLE,        ~TIME,   ~VALUE,    ~UNIT,
      "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6",      "TEMP", "2016-03-15",    "5.5",     "°C",
      "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6",      "PREC", "2016-03-03",   "10.2",     "mm",
      "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6",      "TEMP", "2016-02-15",    "2.5",     "°C",
