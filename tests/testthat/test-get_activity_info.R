@@ -95,3 +95,34 @@ test_that("The activity don't have geo information", {
   expect_type(result$title, "character")
   #expect_equal(result$boundaries, NA)
 })
+
+test_that("Output includes leaflet map when show_map = TRUE", {
+  result_list <- get_activity_info(
+    activityid =
+      "https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845",
+    show_map = TRUE
+  )
+  expect_s3_class(result_list$map, "leaflet")
+  expect_s3_class(result_list$data, "sf")
+})
+
+test_that("Date and datetime fields are converted correctly", {
+  result_list <- get_activity_info(
+    activityid =
+      "https://deims.org/activity/8786fc6d-5d70-495c-b901-42f480182845",
+    show_map = FALSE
+  )
+  result <- result_list$data
+  
+  # the column must exist
+  expect_true("created" %in% names(result))
+  expect_true("changed" %in% names(result))
+  expect_true("dateRange.from" %in% names(result))
+  expect_true("dateRange.to" %in% names(result))
+  
+  # the class must be correct even if NA
+  expect_true(inherits(result$created, "POSIXct") || all(is.na(result$created)))
+  expect_true(inherits(result$changed, "POSIXct") || all(is.na(result$changed)))
+  expect_true(inherits(result$dateRange.from, "Date") || all(is.na(result$dateRange.from)))
+  expect_true(inherits(result$dateRange.to, "Date") || all(is.na(result$dateRange.to)))
+})

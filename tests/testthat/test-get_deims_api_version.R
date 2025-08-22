@@ -1,3 +1,5 @@
+message("\n---- Test get_deims_API_version() ----")
+
 skip_if_offline(host = "deims.org")
 
 test_that("get_deims_api_version returns (a character value)", {

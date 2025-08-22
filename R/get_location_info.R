@@ -97,14 +97,6 @@ get_location_info <- function(locationid, show_map = FALSE) {
 #' @importFrom lubridate as_datetime
 #' @importFrom units set_units
 #' @importFrom sf st_as_text st_point st_polygon st_multipolygon st_as_sf
-#' @references
-#'   \insertRef{utilsR}{ReLTER}
-#'   
-#'   \insertRef{dplyrR}{ReLTER}
-#'   
-#'   \insertRef{lubridateR}{ReLTER}
-#'
-#'   \insertRef{unitsR}{ReLTER}
 #' @keywords internal
 #'
 ### function get_location_info_internal

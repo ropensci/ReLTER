@@ -22,16 +22,6 @@
 #' @importFrom ggplot2 scale_y_continuous scale_color_manual labs
 #' @seealso [ggforce::geom_arc_bar()]
 #' @seealso [RColorBrewer::brewer.pal()]
-#' @references
-#'   \insertRef{tibbleR}{ReLTER}
-#'
-#'   \insertRef{dplyrR}{ReLTER}
-#'   
-#'   \insertRef{ggplot2R}{ReLTER}
-#'
-#'   \insertRef{ggforceR}{ReLTER}
-#'
-#'   \insertRef{RColorBrewerR}{ReLTER}
 #' @export
 #' @examples
 #' \dontrun{
@@ -62,7 +52,7 @@ produce_site_observedProperties_pie <- function(deimsid) {
     deimsid = deimsid,
     categories = "observedProperties"
   )
-  paramsDeims <- tibble::as_tibble(site$data$observedProperties[[1]])
+  paramsDeims <- tibble::as_tibble(site$observedProperties[[1]])
   if (length(paramsDeims) != 0) {
     params <- tibble::as_tibble(paramsDeims)
     params$parameterGroups <- paste0(
@@ -134,8 +124,8 @@ produce_site_observedProperties_pie <- function(deimsid) {
         title =
           paste0(
             "Percentage of observed properties groups measured in the ",
-            site$data$title, "\n(",
-            site$data$uri, ")"
+            site$title.x, "\n(",
+            site$uri, ")"
           )
       ) +
       ggplot2::geom_text(

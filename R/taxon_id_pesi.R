@@ -65,12 +65,6 @@
 #' @author Alessandro Oggioni, phD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @importFrom dplyr bind_rows
 #' @seealso [taxize::eubon_search()]
-#' @references
-#'   \insertRef{dplyrR}{ReLTER}
-#'   
-#'   \insertRef{taxizeR1}{ReLTER}
-#'
-#'   \insertRef{taxizeR2}{ReLTER}
 #' @export
 #' @examples
 #' \dontrun{

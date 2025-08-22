@@ -96,13 +96,6 @@ attributes(output)$uri
 }
 
 }
-\references{
-\insertRef{dplyrR}{ReLTER}
-
-\insertRef{taxizeR1}{ReLTER}
-
-\insertRef{taxizeR2}{ReLTER}
-}
 \seealso{
 \code{\link[taxize:eubon_search]{taxize::eubon_search()}}
 }

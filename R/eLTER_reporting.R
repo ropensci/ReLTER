@@ -22,10 +22,6 @@
 #' @return filename (without extension) following naming convention
 #' @importFrom stringr str_replace_all
 #' @importFrom dplyr pull
-#' @references
-#'   \insertRef{stringrR}{ReLTER}
-#' 
-#'   \insertRef{dplyrR}{ReLTER}
 #' @seealso Peterseil, Geiger et al. (2020)
 #' Field Specification for data reporting. Technical Document.
 #' TechDoc.01. EU Horizon 2020 eLTER PLUS Project, Grant agreement No. 871128
@@ -269,7 +265,7 @@ reporting_save_archive <- function(
 }
 
 #' Compose an eLTER Data Reporting Format object
-#' @description `r lifecycle::badge("deprecated")`
+#' @description `r lifecycle::badge("experimental")`
 #' Given several tables, creates an eLTER data reporting format
 #' object
 #' @author Paolo Tagliolato, phD \email{tagliolato.p@@irea.cnr.it}

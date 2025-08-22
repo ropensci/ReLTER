@@ -45,19 +45,6 @@ tDataset <- get_dataset_info(
 tDataset
 
 }
-\references{
-\insertRef{dplyrR}{ReLTER}
-
-\insertRef{lubridateR}{ReLTER}
-
-\insertRef{sfR}{ReLTER}
-
-\insertRef{leafletR}{ReLTER}
-
-\insertRef{utilsR}{ReLTER}
-
-\insertRef{unitsR}{ReLTER}
-}
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
 }

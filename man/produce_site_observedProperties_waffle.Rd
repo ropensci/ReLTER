@@ -37,17 +37,6 @@ waffle <- produce_site_observedProperties_waffle(
 }
 
 }
-\references{
-\insertRef{tibbleR}{ReLTER}
-
-\insertRef{dplyrR}{ReLTER}
-
-\insertRef{ggplot2R}{ReLTER}
-
-\insertRef{waffleR}{ReLTER}
-
-\insertRef{RColorBrewerR}{ReLTER}
-}
 \seealso{
 \code{\link[waffle:waffle]{waffle::waffle()}}
 

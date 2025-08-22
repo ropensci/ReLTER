@@ -5,43 +5,72 @@ vignette: >
   %\VignetteIndexEntry{Run ReLTER in a Docker container}
   %\VignetteEngine{knitr::knitr}
   %\usepackage[UTF-8]{inputenc}
-author: "Paolo Tagliolato"
+author:
+  - "Paolo Tagliolato"
+  - "Alessandro Oggioni"
 ---
 
 # rocker_ReLTER
-docker image for ReLTER package (https://github.com/ropensci/ReLTER)
+
+Docker image for the ReLTER package.
+
+This image allows you to run RStudio with ReLTER preinstalled, directly through Docker.
 
 ## About
-Run RStudio with preinstalled ReLTER package through Docker.
+
+The rocker_ReLTER image extends a standard rocker-based RStudio server image by installing the ReLTER package.
+
+It provides a reproducible environment for research and development, ensuring that dependencies and system libraries are already configured.
+
 
 ## Install a different branch of ReLTER package
-Edit the addReLTER.sh script and modify the last line, using the name of your preferred branch as the ref= parameter value:
 
-    R -e "devtools::install_github('https://github.com/ropensci/ReLTER',ref = '<branchName>',dependencies = FALSE)"
-  
+To install a different branch of the package, edit the dockerfile and modify the line 57, replacing <branchName> with the branch you need:
+
+```
+R -e "devtools::install_github('https://github.com/ropensci/ReLTER', ref = '<branchName>', dependencies = FALSE)"
+```
+
+
 ## Build the image
 
-    docker build . -t rocker_relter
+```
+docker build -t rocker_relter .
+```
 
 ## Usage
-Run locally on port 8080 (change port as you like).
-You can change "yourpasswordW with the password you prefer.
 
-    docker run -d -e PASSWORD=yourpassword -p 8080:8787 rocker_relter
+Run locally on port 8080 (you may choose any port you prefer).
+Replace yourpassword with your preferred password:
 
-Open browser at localhost:8080 and login with
+```
+docker run -d -e PASSWORD=yourpassword -p 8080:8787 rocker_relter
+```
 
-    user: rstudio
-    password: youpassword
+Then open your browser at http://localhost:8080 and log in with:
+	•	user: rstudio
+	•	password: yourpassword
 
-## Preserve your work (use a docker volume)
-When you stop a docker container, the files created within it are lost. In order to preserve your work across 
-different runs, link a local volume (in this example, the current working directory, $(pwd)) to the container:
 
-    docker run -d -v $(pwd):/home/rstudio -e PASSWORD=yourpassword -p 8080:8787 rocker_relter
+## Preserve your work (using a Docker volume)
 
-## Precompiled image on docker hub
-You can also use the precompiled image from docker hub:
+By default, files created inside the container are lost when the container is stopped.
+To preserve your work, map a local directory (for example the current one $(pwd)) to the RStudio home directory inside the container:
 
-    docker pull ptagliolato/rocker_relter
-    docker run -d -e PASSWORD=yourpassword -p 8080:8787 ptagliolato/rocker_relter
+```
+docker run -d -v $(pwd):/home/rstudio -e PASSWORD=yourpassword -p 8080:8787 rocker_relter
+```
+
+This way, any files you create will remain available on your host machine.
+
+
+## Precompiled image on Docker Hub
+
+Please remember that this image is created with the previous version of the ReLTER package, so it may not be up to date with the latest changes.
+
+Instead of building the image locally, you can use the precompiled one available on Docker Hub:
+
+```
+docker pull ptagliolato/rocker_relter
+docker run -d -e PASSWORD=yourpassword -p 8080:8787 ptagliolato/rocker_relter
+```

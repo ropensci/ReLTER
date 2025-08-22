@@ -21,9 +21,6 @@ biodiv_occurrence_site_"deimsid_code"_"source".zip
 where "deimsid_code" is the uuid in the last part of the deimsid,
 and "source" is one of "gbif", "inat", "obis"
 }
-\references{
-\insertRef{utilsR}{ReLTER}
-}
 \author{
 Paolo Tagliolato, phD \email{tagliolato.p@irea.cnr.it}
 }

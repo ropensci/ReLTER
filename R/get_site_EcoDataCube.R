@@ -58,10 +58,6 @@
 #' @importFrom terra mask crop vect rast crs plot
 #' @importFrom leaflet addRasterImage
 #' @importFrom utils download.file read.csv
-#' @references
-#'   \insertRef{dplyrR}{ReLTER}
-#'
-#'   \insertRef{terraR}{ReLTER}
 #' @export
 #' @examples
 #' # Example of TERENO Harsleben
@@ -189,15 +185,15 @@ get_site_EcoDataCube <- function(deimsid, dataset = "",
   return(ds_site)
 }
 
+#' Construct full url for download
+#' @description `r lifecycle::badge("stable")`
+#' Construct full URL, including replacing year and month where required.
+#' @param edc_row `vector` one row for chosen dataset from edc_df.
+#' @param dataset_year `string` Chosen year
+#' @param dataset_month `string` Chosen month
+#' @author Micha Silver, phD (2020) \email{silverm@@post.bgu.ac.il}
+#'
 EDC_construct_full_url <- function(edc_row, dataset_year, dataset_month) {
-  #' Construct full url for download
-  #' @description Construct full URL,
-  #' including replacing year and month where required.
-  #' @param edc_row `vector` one row for chosen dataset from edc_df.
-  #' @param dataset_year `string` Chosen year
-  #' @param dataset_month `string` Chosen month
-  #' @author Micha Silver, phD (2020) \email{silverm@@post.bgu.ac.il}
-  #'
   # Replace {from} and {to} with dates, when needed...
   if (edc_row$date_required) {
     # Make sure month is two characters

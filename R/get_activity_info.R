@@ -21,14 +21,6 @@
 #' @importFrom lubridate as_datetime as_date
 #' @importFrom sf st_as_sf st_is_valid st_geometry_type
 #' @importFrom leaflet leaflet addTiles addMarkers addPolygons
-#' @references
-#'   \insertRef{dplyrR}{ReLTER}
-#'   
-#'   \insertRef{lubridateR}{ReLTER}
-#'
-#'   \insertRef{sfR}{ReLTER}
-#'
-#'   \insertRef{leafletR}{ReLTER}
 #' @export
 #' @examples
 #' activities <- get_activity_info(

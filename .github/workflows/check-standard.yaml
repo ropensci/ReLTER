@@ -1,35 +1,30 @@
-# Workflow derived from https://github.com/r-lib/actions/tree/master/examples
-# Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
+name: R-CMD-check
+
 on:
   push:
+    branches: [main, dev, dev-OggioniAle]
   pull_request:
-    branches: [main]
-
-name: R-CMD-check
+    branches: [main, dev, dev-OggioniAle]
 
 jobs:
   R-CMD-check:
     runs-on: ${{ matrix.config.os }}
-
     name: ${{ matrix.config.os }} (${{ matrix.config.r }})
 
     strategy:
       fail-fast: false
       matrix:
         config:
-          - {os: macOS-latest,   r: 'release', usgs_user: 'modistsp_ci_macos_release',   test_mode: 'FALSE'}
-          - {os: windows-latest, r: 'release', usgs_user: 'modistsp_ci_windows_release', test_mode: 'FALSE'}
-          - {os: ubuntu-latest,   r: 'devel',   usgs_user: 'modistsp_ci_ubuntu_release',  test_mode: 'FALSE', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          - {os: ubuntu-latest,   r: 'release', usgs_user: 'modistsp_ci_ubuntu_devel',    test_mode: 'FALSE', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          - {os: ubuntu-latest,   r: 'oldrel',  usgs_user: 'modistsp_ci_ubuntu_oldrel',   test_mode: 'FALSE', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: macos-latest,   r: 'release'}
+          - {os: windows-latest, r: 'release'}
+          - {os: ubuntu-latest,  r: 'devel'}
+          - {os: ubuntu-latest,  r: 'release'}
+          - {os: ubuntu-latest,  r: 'oldrel-1'}
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-      USGS_USER: ${{ matrix.config.usgs_user }}
-      USGS_PASSWORD: ${{ secrets.USGS_PASSWORD }}
-      R_KEEP_PKG_SOURCE: yes
-      LOCAL_DEIMS: ${{ matrix.config.test_mode }}
-      
+      LOCAL_DEIMS: false
+
     steps:
       - uses: actions/checkout@v3
 
@@ -38,61 +33,32 @@ jobs:
       - uses: r-lib/actions/setup-r@v2
         with:
           r-version: ${{ matrix.config.r }}
-          http-user-agent: ${{ matrix.config.http-user-agent }}
           use-public-rspm: true
+
+      # Extra system deps solo su Ubuntu (le stesse del Dockerfile)
+      - name: Install system dependencies
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y \
+            libcurl4-openssl-dev \
+            libssl-dev \
+            libxml2-dev \
+            libudunits2-dev \
+            libgdal-dev \
+            libgeos-dev \
+            libproj-dev \
+            libfontconfig1-dev \
+            libjq-dev \
+            libv8-dev \
+            libgit2-dev \
+            build-essential \
+            gfortran \
+            libglpk-dev
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::rcmdcheck
+          extra-packages: any::rcmdcheck,markdown,rbibutils
           needs: check
-
-      - name: Query dependencies
-        run: |
-          install.packages("remotes")
-          webshot::install_phantomjs()
-          saveRDS(remotes::dev_package_deps(dependencies = TRUE), "depends.Rds", version = 2)
-        shell: Rscript {0}
-        
-      - name: Install other dependencies
-        run: |
-          if (Sys.info()["sysname"]=="Darwin") {options("pkgType" = "binary")}
-          remotes::install_deps(dependencies = TRUE)
-          remotes::install_cran("rcmdcheck")
-        shell: Rscript {0}
-
-      - name: "Cache R packages"
-        if: runner.os != 'Windows'
-        uses: actions/cache@v4.2.3
-        with:
-          path: ${{ env.R_LIBS_USER }}
-          key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
-          restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
-
-      - name: "[Linux] Install system dependencies"
-        if: runner.os == 'Linux'
-        run: |
-          while read -r cmd
-          do
-            eval sudo $cmd
-          done < <(Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "20.04"))')
-          
-      - name: download system packages
-        if: runner.os == 'Linux'
-        run: |
-          sudo apt update
-          sudo apt-get install \
-            r-base-dev \
-            build-essential \
-            gdal-bin \
-            libgdal-dev \
-            libjq-dev \
-            libssl-dev \
-            libxml2-dev \
-            libprotobuf-dev \
-            protobuf-compiler \
-            libv8-dev \
-            libssl-dev \
-            libcairo2-dev \
-            libgit2-dev
 
       - uses: r-lib/actions/check-r-package@v2

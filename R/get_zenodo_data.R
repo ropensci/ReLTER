@@ -19,20 +19,6 @@
 #' @seealso [zen4R::ZenodoManager()]
 #' @seealso [tidyr::unnest()]
 #' @seealso [tidyr::nest()]
-#' @references
-#'   \insertRef{tibbleR}{ReLTER}
-#'   
-#'   \insertRef{stringrR}{ReLTER}
-#'   
-#'   \insertRef{lubridateR}{ReLTER}
-#'   
-#'   \insertRef{dplyrR}{ReLTER}
-#'   
-#'   \insertRef{unitsR}{ReLTER}
-#'   
-#'   \insertRef{blondel_2025}{ReLTER}
-#'   
-#'   \insertRef{tidyrR}{ReLTER}
 #' @export
 #' @examples
 #' \dontrun{

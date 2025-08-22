@@ -66,19 +66,6 @@ siteMap <- produce_site_map(
 }
 
 }
-\references{
-\insertRef{sfR}{ReLTER}
-
-\insertRef{tibbleR}{ReLTER}
-
-\insertRef{ggplot2R}{ReLTER}
-
-\insertRef{ggspatialR}{ReLTER}
-
-\insertRef{cowplotR}{ReLTER}
-
-\insertRef{geodataR}{ReLTER}
-}
 \seealso{
 \code{\link[ggspatial:annotation_map_tile]{ggspatial::annotation_map_tile()}}
 

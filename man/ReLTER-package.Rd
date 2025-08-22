@@ -13,7 +13,7 @@ ReLTER provides access to DEIMS-SDR (https://deims.org/), and allows interaction
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/ropensci/ReLTER}
+  \item \url{https://docs.ropensci.org/ReLTER}
   \item Report bugs at \url{https://github.com/ropensci/ReLTER/issues}
 }
 

@@ -36,20 +36,6 @@
 #' @seealso [spocc::obis_search()]
 #' @seealso [spocc::occ()]
 #' @seealso [RColorBrewer::brewer.pal()]
-#' @references
-#'   \insertRef{leafletR}{ReLTER}
-#'   
-#'   \insertRef{tibbleR}{ReLTER}
-#'   
-#'   \insertRef{dplyrR}{ReLTER}
-#'   
-#'   \insertRef{sfR}{ReLTER}
-#'   
-#'   \insertRef{lubridateR}{ReLTER}
-#'   
-#'   \insertRef{spoccR}{ReLTER}
-#'   
-#'   \insertRef{RColorBrewerR}{ReLTER}
 #' @export
 #' @examples
 #' \dontrun{
@@ -115,18 +101,18 @@ get_site_speciesOccurrences <- function(
     deimsid,
     show_map = TRUE
   )
-  if (is.null(boundary$data) || !inherits(boundary$data, "sf")) {
+  if (is.null(boundary) || !inherits(boundary, "sf")) {
     print("No boundary for requested DEIMS site.")
     return(NULL)
   } else {
     bbox_wkt <- sf::st_as_text(
       sf::st_as_sfc(
         sf::st_bbox(
-          boundary$data
+          boundary
         )
       )
     )
-    site_geom <- boundary$data$geometry
+    site_geom <- boundary$geometry
   }
 
   # download occurrence by SPOCC by provide data sources ----

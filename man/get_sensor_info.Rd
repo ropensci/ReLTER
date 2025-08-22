@@ -60,17 +60,6 @@ sensor_FP <- get_sensor_info(
 sensor_FP
 
 }
-\references{
-\insertRef{dplyrR}{ReLTER}
-
-\insertRef{lubridateR}{ReLTER}
-
-\insertRef{sfR}{ReLTER}
-
-\insertRef{leafletR}{ReLTER}
-
-\insertRef{utilsR}{ReLTER}
-}
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
 }

@@ -11,7 +11,7 @@ An object of class \code{environment} of length 1.
 package_settings
 }
 \description{
-Package settings that can be changed by the user
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 }
 \seealso{
 Other package_customizable_settings: 
