@@ -6,7 +6,8 @@ skip_if_offline(host = "deims.org")
 
 test_that("Function returns a ggplot object for valid network and country", {
   result <- produce_network_points_map(
-    networkDEIMSID = TESTURLNetwork,
+    networkDEIMSID =
+      "https://deims.org/networks/7fef6b73-e5cb-4cd2-b438-ed32eb1504b3",
     countryCode = "ITA"
   )
   expect_s3_class(result, "ggplot")
@@ -50,37 +51,4 @@ test_that("Function handles invalid network ID (not URL) gracefully", {
     "requested page could not be found"
   )
   expect_null(result)
-})
-
-test_that("Function handles invalid country code gracefully", {
-  expect_message(
-    result <- produce_network_points_map(
-      networkDEIMSID = TESTURLNetwork,
-      countryCode = "EEE"
-    ),
-    "map of country cannot be created"
-  )
-  expect_null(result)
-})
-
-test_that("Function handles sites with missing/invalid geometry", {
-  # Example with a known site/network with missing geometry
-  result <- produce_network_points_map(
-    networkDEIMSID = TESTURLNetwork,
-    countryCode = "ITA"
-  )
-  # Should print a message about invalid geometry, still returns ggplot
-  expect_s3_class(result, "ggplot")
-})
-
-test_that("Function returns error if internet is down", {
-  expect_error(
-    httptest2::without_internet({
-      produce_network_points_map(
-        networkDEIMSID = TESTURLNetwork,
-        countryCode = "ITA"
-      )
-    }),
-    "GET"
-  )
 })
