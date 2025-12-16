@@ -87,6 +87,7 @@ Suggests:
     worrms,
     zen4R
 Remotes:
+    waffle,
     XML
 VignetteBuilder: 
     knitr
