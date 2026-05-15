@@ -82,11 +82,11 @@ Suggests:
     tidyr,
     taxize (>= 0.9.97),
     testthat (>= 3.0.0),
-    waffle,
     withr,
     worrms,
     zen4R
 Remotes:
+    hrbrmstr/waffle,
     XML
 VignetteBuilder: 
     knitr
