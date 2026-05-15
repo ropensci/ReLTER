@@ -84,7 +84,7 @@ test_that("Site without geometry returns tibble and NULL map", {
   expected_cols <- c(
     "title", "uri", "country",
     "geoElev.avg", "geoElev.min", "geoElev.max",
-    "geoElev.unit", "created", "changed"
+    "geoElev.unit", "size", "created", "changed"
   )
   expect_true(all(expected_cols %in% names(result)))
 })
