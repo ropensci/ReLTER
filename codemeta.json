@@ -7,7 +7,7 @@
   "codeRepository": "https://github.com/ropensci/ReLTER",
   "issueTracker": "https://github.com/ropensci/ReLTER/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",

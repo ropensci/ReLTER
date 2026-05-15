@@ -1,3 +1,34 @@
+# ReLTER 3.0.1
+
+released on 15/05/2026
+
+## Bug fixes
+- Fixed `get_site_boundaries()`: resolved malformed WFS URL caused by full 
+  DEIMS ID URL being passed to CQL_FILTER instead of UUID only
+
+## New features
+- Added site size collection in `get_site_general()`
+
+## Improvements
+- Refactored all `get_site_*` functions (`get_site_general()`, 
+  `get_site_affiliations()`, `get_site_contact()`, `get_site_infrastructure()`,
+  `get_site_observedProperties()`, `get_site_related_resources()`, 
+  `get_site_envcharacts()`, `get_site_boundaries()`) with:
+  - Early return on invalid DEIMS ID instead of nested if/else
+  - `tryCatch` replacing `capture.output` for proper error handling
+  - Explicit materialisation of lazy `dtplyr_step` objects via `dplyr::collect()`
+  - Consistent `invisible(NULL)` on all failure paths
+  - Vectorised elevation unit assignment via `lapply` 
+- Introduced internal helper `.materialise_query()` to reduce boilerplate 
+  across `get_site_*` functions
+- Replaced `%>%` with base pipe `|>` throughout
+
+## Deprecations
+- Deprecated sensor functions
+- Deprecated dataset functions
+
+--------------------------------------------------------------------------------
+
 # ReLTER 3.0.0
 
 released on 20/08/2025
