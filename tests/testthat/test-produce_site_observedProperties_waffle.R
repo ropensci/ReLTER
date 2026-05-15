@@ -1,3 +1,5 @@
+skip_if_not_installed("waffle")
+
 message("\n---- Test produce_site_observedProperties_waffle() ----")
 
 test_that("Expect error if internet connection is down", {
@@ -15,7 +17,7 @@ test_that("Expect error if internet connection is down", {
 skip_if_offline(host = "deims.org")
 
 test_that("Output of chart waffle of observed properties function constructs
-'sf' and 'tibble’ as expected", {
+'sf' and 'tibble' as expected", {
   result <- suppressWarnings(ReLTER::produce_site_observedProperties_waffle(
     deimsid = TESTURLSite
   ))
