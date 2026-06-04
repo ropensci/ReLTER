@@ -2,97 +2,109 @@
 % Please edit documentation in R/get_site_speciesOccurrences.R
 \name{get_site_speciesOccurrences}
 \alias{get_site_speciesOccurrences}
-\title{Trims by eLTER site the species occurrence from different sources}
+\title{Retrieve species occurrences within an eLTER site boundary}
 \usage{
 get_site_speciesOccurrences(
   deimsid,
   list_DS,
-  show_map = FALSE,
+  show_map = TRUE,
   limit = 500,
   exclude_inat_from_gbif = TRUE
 )
 }
 \arguments{
-\item{deimsid}{A \code{character}. The DEIMS.iD of the site from
-DEIMS-SDR website. DEIMS.iD information
+\item{deimsid}{A \code{character}. The DEIMS ID of the site from
+DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here}.}
 
-\item{list_DS}{A \code{character}. Data source to get data from, any
-combination of gbif, inat and/or obis.}
+\item{list_DS}{A \code{character} vector. Data sources to query; any
+combination of \code{"gbif"}, \code{"inat"}, and/or \code{"obis"}.}
 
-\item{show_map}{A \code{boolean}. If TRUE a Leaflet map with occurrences
-is shown. Default FALSE.}
+\item{show_map}{A \code{boolean}. If \code{TRUE} the \code{leaflet} map is both printed
+and returned in the output list as \verb{$map}. If \code{FALSE} the map is not
+printed but is still built and returned in \verb{$map} for later use.
+Default \code{FALSE}.}
 
-\item{limit}{A \code{numeric}. Number of records to return. This is passed
-across all sources. Default: 500 for each source. BEWARE: if you have a
-lot of species to query for (e.g., n = 10), that's 10 * 500 = 5000, which
-can take a while to collect. So, when you first query, set the limit to
-something smallish so that you can get a result quickly, then do more as
-needed.}
+\item{limit}{A \code{numeric}. Maximum number of records to download per
+source. Default \code{500}. Note that when querying for many species the
+total number of records can be large and slow to download; start with
+a small value (e.g. \code{10}) to verify results before increasing.}
 
-\item{exclude_inat_from_gbif}{A \code{boolean}. If TRUE, when list_DS contains
-both "gbif" and "inat", filter out gbif records originating
-from iNaturalist (in order to avoid duplicates). Default TRUE.}
+\item{exclude_inat_from_gbif}{A \code{boolean}. If \code{TRUE}, and both
+\code{"gbif"} and \code{"inat"} are in \code{list_DS}, records originating from
+iNaturalist are removed from the GBIF results to avoid duplicates.
+Default \code{TRUE}.}
 }
 \value{
-The output of the function is a \code{list} of \code{sf} one for each of the
-repositories specified in the list_DS parameter.
+A \code{list} with one \code{sf} element per data source (named \code{gbif},
+\code{inat}, \code{obis}) containing only occurrences that fall within the site
+boundary, and a \code{map} element with a \code{leaflet} object. Each \code{sf}
+element contains the occurrence geometry and the following eLTER site
+metadata fields (prefixed with \code{eLTER_}): \code{title}, \code{uri}, \code{created},
+\code{changed}, \code{geoCoord}, \code{country}, \code{geoElev.avg}, \code{geoElev.min},
+\code{geoElev.max}, \code{biogeographicalRegion}, \code{biome}, \code{ecosystemType},
+\code{eunisHabitat}, \code{landforms}, \code{geoBonBiome}.
+If no occurrences are found within the boundary for a given source,
+that source is omitted from the list and an informative message is
+printed. Returns \code{invisible(NULL)} if the site has no boundary or if
+no occurrences are found for any source.
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
-This function acquires data from
-GBIF \url{https://www.gbif.org} (via \code{rgbif}),
+This function downloads species occurrence records from
+GBIF \url{https://www.gbif.org},
 iNaturalist \url{https://www.inaturalist.org/} and
-OBIS \url{https://obis.org/} and crops to an eLTER site
-boundary, which is obtained from the DEIMS-SDR sites API.
+OBIS \url{https://obis.org/} and intersects them with the boundary of
+an eLTER site retrieved from the DEIMS-SDR API
+\url{https://deims.org/}. Only occurrences falling within the site
+polygon are returned, enriched with eLTER site metadata.
 }
 \section{The function output}{
 
-\figure{get_site_speciesOccurrences_fig.png}{Map of first 100 occurrences
-acquired from iNaturalist and OBIS in the marine site Gulf of Venice}
+\figure{get_site_speciesOccurrences_fig.png}{Map of occurrences acquired
+from OBIS in the marine site Gulf of Venice}
 }
 
 \examples{
 \dontrun{
-# terrestrial site Saldur River Catchment
+# Terrestrial site: Saldur River Catchment (GBIF and iNaturalist)
 occ_SRC <- get_site_speciesOccurrences(
-  deimsid =
-    "https://deims.org/97ff6180-e5d1-45f2-a559-8a7872eb26b1",
+  deimsid = "https://deims.org/97ff6180-e5d1-45f2-a559-8a7872eb26b1",
   list_DS = c("gbif", "inat"),
-  show_map = FALSE,
-  limit = 10
+  show_map = TRUE,
+  limit = 50
 )
 occ_SRC
 
-# marine site Gulf of Venice only obis
+# Marine site: Gulf of Venice (OBIS only)
 occ_GoV <- get_site_speciesOccurrences(
-  deimsid =
-    "https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd",
+  deimsid = "https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd",
   list_DS = "obis",
   show_map = FALSE,
   limit = 10
 )
 occ_GoV
 
-# marine site Gulf of Venice, all repositories are invoked
-# gbif, inat and obis
+# Marine site: Gulf of Venice (all sources, with map)
 occ_GoV_all <- get_site_speciesOccurrences(
-  deimsid =
-    "https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd",
+  deimsid = "https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd",
   list_DS = c("gbif", "inat", "obis"),
   show_map = TRUE,
   limit = 10
 )
-occ_GoV_all
+occ_GoV_all$obis
+occ_GoV_all$map
 }
 
 }
 \seealso{
-\code{\link[spocc:obis_search]{spocc::obis_search()}}
-
 \code{\link[spocc:occ]{spocc::occ()}}
 
-\code{\link[RColorBrewer:ColorBrewer]{RColorBrewer::brewer.pal()}}
+\code{\link[spocc:obis_search]{spocc::obis_search()}}
+
+\code{\link[RColorBrewer:brewer.pal]{RColorBrewer::brewer.pal()}}
+
+\code{\link[=get_site_info]{get_site_info()}}
 }
 \author{
 Alessandro Oggioni, PhD (2020) \email{oggioni.a@irea.cnr.it}
