@@ -7,7 +7,7 @@
   "codeRepository": "https://github.com/ropensci/ReLTER",
   "issueTracker": "https://github.com/ropensci/ReLTER/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "3.0.1",
+  "version": "3.1.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -601,7 +601,7 @@
         }
       ],
       "name": "ReLTER: An Interface for the eLTER Community",
-      "description": "R package version v3.0"
+      "description": "R package version v3.1"
     }
   ]
 }

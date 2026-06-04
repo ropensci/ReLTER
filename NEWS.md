@@ -1,3 +1,50 @@
+# ReLTER 3.1.0
+
+released on 04/06/2026
+
+## Bug fixes
+- Fixed `produce_site_map()`: resolved deprecation warning caused by `size`
+  argument in `element_rect()`, replaced with `linewidth` (ggplot2 >= 3.4.0)
+- Fixed `produce_site_map()`: resolved crash when `get_site_info()` returns
+  a `tibble` instead of `sf` object (site with no boundary geometry)
+- Fixed `get_site_boundaries()`: resolved malformed WFS URL caused by full
+  DEIMS ID URL being passed to CQL_FILTER instead of UUID only
+- Fixed all `get_site_*` functions: resolved zero-row results caused by jq
+  queries iterating with `[]` on missing fields (e.g. `belongsTo`)
+- Fixed `get_site_envcharacts()`: resolved incorrect null check on
+  `precipitation.referencePeriod` that was overwriting existing values with NA
+- Fixed `produce_site_map()`: resolved double `theme()` call that was
+  overriding axis and grid settings
+
+## New features
+- `get_site_speciesOccurrences()`: occurrences are now intersected with the
+  site polygon boundary and enriched with eLTER site metadata fields
+  (prefixed `eLTER_`)
+- `get_site_speciesOccurrences()`: output now always includes a `$map`
+  `leaflet` object; printed only when `show_map = TRUE`
+- `get_site_boundaries()`: added informative message when a site has no
+  locations
+- `produce_site_observedProperties_waffle()`: waffle chart now built with
+  `ggplot2` only, removing dependency on unmaintained `waffle` package
+
+## Improvements
+- Refactored all `get_site_*` functions with consistent error handling,
+  early returns, and lazy `dtplyr_step` materialisation via `.materialise_query()`
+  internal helper
+- `get_site_info()`: categories joined via `category_map` list, removing
+  seven repeated `if/grepl` blocks
+- `get_site_info()`: now contains also information of size provided by DEIMS-SDR
+- `get_site_speciesOccurrences()`: datetime harmonisation refactored into
+  `.fix_datetime()` internal helper; source intersection refactored into
+  `.to_sf_and_intersect()` internal helper
+- Replaced `%>%` with base pipe `|>` throughout
+
+## Removed dependencies
+- `waffle` (hrbrmstr/waffle) removed from `Suggests` and `Remotes`;
+  `produce_site_observedProperties_waffle()` now uses `ggplot2` only
+
+--------------------------------------------------------------------------------
+
 # ReLTER 3.0.1
 
 released on 15/05/2026
