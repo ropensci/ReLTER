@@ -14,7 +14,7 @@
 #' @importFrom utils capture.output
 #' @keywords internal
 #'
-  ### function get_site_affiliations
+### function get_site_affiliations
 get_site_affiliations <- function(deimsid) {
   qo <- queries_jq_deims[[get_deims_API_version()]]$site_affiliations
   affiliations <- .materialise_query(qo, deimsid, "site_affiliations")
@@ -32,13 +32,15 @@ get_site_affiliations <- function(deimsid) {
   affiliations[elev_cols] <- lapply(affiliations[elev_cols], units::set_units, value = "m")
   
   # Merge network.id.prefix and network.id.suffix into uri
-  affiliations$networks[[1]] <- affiliations$networks[[1]] |>
-    dplyr::mutate(
-      name = network$name,
-      uri  = paste0(network$id$prefix, network$id$suffix),
-      .keep = "unused",
-      .after = 1
-    )
+  if (!is.null(affiliations$networks[[1]]) && nrow(affiliations$networks[[1]]) > 0L) {
+    affiliations$networks[[1]] <- affiliations$networks[[1]] |>
+      dplyr::mutate(
+        name = network$name,
+        uri  = paste0(network$id$prefix, network$id$suffix),
+        .keep = "unused",
+        .after = 1
+      )
+  }
   
   affiliations
 }
