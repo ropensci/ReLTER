@@ -43,7 +43,7 @@ pie <- produce_site_observedProperties_pie(
 \seealso{
 \code{\link[ggforce:geom_arc_bar]{ggforce::geom_arc_bar()}}
 
-\code{\link[RColorBrewer:ColorBrewer]{RColorBrewer::brewer.pal()}}
+\code{\link[RColorBrewer:brewer.pal]{RColorBrewer::brewer.pal()}}
 }
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}

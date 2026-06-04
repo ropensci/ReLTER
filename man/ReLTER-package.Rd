@@ -23,6 +23,7 @@ Useful links:
 
 Authors:
 \itemize{
+  \item Alessandro Oggioni \email{alessandro.oggioni@cnr.it} (\href{https://orcid.org/0000-0002-7997-219X}{ORCID}) [funder]
   \item Micha Silver \email{silverm@post.bgu.ac.il} (\href{https://orcid.org/0000-0002-1128-1325}{ORCID}) [contributor]
   \item Paolo Tagliolato \email{tagliolato.a@irea.cnr.it} (\href{https://orcid.org/0000-0002-0261-313X}{ORCID}) [contributor]
   \item Luigi Ranghetti \email{luigi@ranghetti.info} (\href{https://orcid.org/0000-0001-6207-5188}{ORCID}) [contributor]

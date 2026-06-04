@@ -10,7 +10,7 @@ produce_network_points_map(networkDEIMSID, countryCode)
 \item{networkDEIMSID}{A \code{character}. The DEIMS ID of the network
 from DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here} and Complete list of ILTER
-networks \href{https://deims.org/search?f\link{0}=result_type:network}{here}.}
+networks \href{https://deims.org/networks}{here}.}
 
 \item{countryCode}{A \code{character} following the ISO 3166-1 alpha-3 codes.
 This ISO convention consists of three-letter country codes as defined in
@@ -82,7 +82,7 @@ map_LTERGermanSites <- map_LTERGermanSites +
    ggspatial::annotation_north_arrow(
      location = "bl", # bottom right
      which_north = "true",
-     style = north_arrow_fancy_orienteering(),
+     style = ggspatial::north_arrow_fancy_orienteering(),
      height = ggplot2::unit(1, "cm"),
      width = ggplot2::unit(1, "cm")
    )

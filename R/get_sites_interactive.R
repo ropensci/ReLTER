@@ -6,7 +6,8 @@
 #' @return `tibble` with selected sites or 
 #' a `list` with selected bounding box (with slots `bbx` and `elevation_range`).
 #' @importFrom leaflet leaflet leafletOutput addCircles 
-#' addLayersControl clearImages clearShapes setView providers addProviderTiles addTiles 
+#' @importFrom leaflet addLayersControl clearImages clearShapes setView providers 
+#' @importFrom leaflet addProviderTiles addTiles 
 #' @author Paolo Tagliolato
 #' @seealso [shiny::runGadget]
 #' @seealso [leaflet.extras::addDrawToolbar()]
