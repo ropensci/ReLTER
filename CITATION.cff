@@ -781,20 +781,6 @@ references:
     doi: 10.32614/CRAN.package.testthat
     version: '>= 3.0.0'
   - type: software
-    title: waffle
-    abstract: 'waffle: Create Waffle Chart Visualizations'
-    notes: Suggests
-    repository: https://CRAN.R-project.org/package=waffle
-    authors:
-    - family-names: Rudis
-      given-names: Bob
-      email: bob@rud.is
-      orcid: https://orcid.org/0000-0001-5670-2640
-    - family-names: Gandy
-      given-names: Dave
-    year: '2025'
-    doi: 10.32614/CRAN.package.waffle
-  - type: software
     title: withr
     abstract: 'withr: Run Code ''With'' Temporarily Modified Global State'
     notes: Suggests
