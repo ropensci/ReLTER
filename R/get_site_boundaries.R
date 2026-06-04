@@ -57,12 +57,28 @@ get_site_boundaries <- function(
   deimsid_uuid <- basename(deimsid)
   
   # --- Fetch boundaries from geoserver ---
+  # https://deims.org/geoserver/deims/ows?
+  # service=WFS&version=2.0.0&request=GetFeature
+  # &TypeName=deims:deims_sites_boundaries
+  # &outputFormat=application%2Fjson
+  # &CQL_FILTER=deimsid%20LIKE%20%27%25
+  # deimsid_uuid
+  # %27
+  # url_geoserver <- paste0(
+  #   "https://deims.org/geoserver/deims/ows?",
+  #   "service=WFS&version=2.0.0&request=GetFeature",
+  #   "&TypeName=deims:deims_sites_boundaries",
+  #   "&outputFormat=application%2Fjson",
+  #   "&CQL_FILTER=deimsid='", deimsid_uuid, "'"  # UUID only, not the full URL
+  # )
   url_geoserver <- paste0(
     "https://deims.org/geoserver/deims/ows?",
     "service=WFS&version=2.0.0&request=GetFeature",
     "&TypeName=deims:deims_sites_boundaries",
     "&outputFormat=application%2Fjson",
-    "&CQL_FILTER=deimsid='", deimsid_uuid, "'"  # UUID only, not the full URL
+    "&CQL_FILTER=deimsid%20LIKE%20%27%25",
+    deimsid_uuid,
+    "%27"
   )
   
   # Download raw GeoJSON — suppressWarnings avoids "incomplete final line"
