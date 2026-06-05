@@ -74,7 +74,7 @@ produce_site_observedProperties_waffle <- function(deimsid) {
   groupsIsNa <- dplyr::filter(paramsDeims, is.na(parameterGroups))
   if (nrow(groupsIsNa) > 0L) {
     message(
-      "These observed properties are not included — please open a GitHub issue:\n",
+      "These observed properties are not included, please open a GitHub issue:\n",
       "I am using produce_site_observedProperties_waffle() and need to add:\n",
       paste(groupsIsNa$observedPropertiesLabel, collapse = "\n")
     )
