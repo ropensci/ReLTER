@@ -8,10 +8,6 @@
 #' @importFrom leaflet leaflet leafletOutput renderLeaflet addTiles addProviderTiles
 #' @importFrom leaflet providers setView addCircles addLayersControl
 #' @importFrom leaflet clearImages clearShapes leafletProxy
-#' @importFrom shiny NS tagList reactive reactiveValues observeEvent
-#' @importFrom shiny fluidPage sidebarLayout sidebarPanel mainPanel
-#' @importFrom shiny actionButton textOutput sliderInput renderText
-#' @importFrom shiny callModule runGadget stopApp req
 #' @author Paolo Tagliolato
 #' @seealso [shiny::runGadget]
 #' @seealso [leaflet.extras::addDrawToolbar()]
