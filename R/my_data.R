@@ -11,7 +11,8 @@
 #' \describe{
 #'   \item{version1.3}{Field names grouped by section as used in eLTER-Plus. Each section 
 #'   (e.g. DATA, METHOD, STATION) contains field names for core and extended data structures.}
-#'   \item{version2.0}{Updated field names grouped by section, reflecting refinements in naming conventions and structure.}
+#'   \item{version2.0}{Updated field names grouped by section, reflecting refinements in naming
+#'   conventions and structure.}
 #' }
 #'
 #' @source eLTER-Plus field specification document: 
