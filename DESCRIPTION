@@ -64,8 +64,7 @@ Imports:
     units,
     tibble,
     stringr,
-    terra,
-    xml2
+    terra
 Suggests:
     rbibutils,
     markdown,

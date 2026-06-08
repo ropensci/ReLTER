@@ -12,6 +12,12 @@ utils::globalVariables(c(
   "start",
   "perc",
   "prod_opt_list",
+  # shiny functions used conditionally (shiny in Suggests)
+  "reactive",
+  "observeEvent",
+  "req",
+  # dplyr tidyselect
+  "any_of",
   # eLTER_reporting_occ.R
   "ABS_POSITION",
   "acceptedScientificName",
