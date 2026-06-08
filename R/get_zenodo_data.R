@@ -1,5 +1,5 @@
 #' Obtain the data from a dataset deposited in Zenodo record.
-#' @description `r lifecycle::badge("experimental")`
+#' @description `r lifecycle::badge("deprecated")`
 #' The function download the file(s) deposited in Zenodo record and returns
 #' a tibble with metadata.
 #' @param doi A `character`. It is the DOI of the Zenodo record.

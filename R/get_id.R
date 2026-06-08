@@ -10,7 +10,6 @@
 #'  Used for testing purposes to avoid errors in case or HTTP error 500.
 #'  If missing, the content of the internal variable
 #' @param ... Arguments to be passed to `httr::RETRY()`.
-#' @param jj a character
 #' @return A character containing the json content, and an attribute `status`.
 #' @importFrom dtplyr lazy_dt
 #' @importFrom dplyr as_tibble

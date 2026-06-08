@@ -48,7 +48,7 @@ RUN install2.r --error --skipinstalled -n $NCPUS \
     leaflet.extras prettymapr RColorBrewer shiny spocc
 
 RUN install2.r --error --skipinstalled -n $NCPUS \
-    tidyr taxize testthat waffle withr worrms
+    tidyr taxize testthat withr worrms
     
 # Install remotes (needed to install zen4R from GitHub)
 RUN R -e "install.packages('remotes', repos='https://cloud.r-project.org/', dependencies = TRUE)"

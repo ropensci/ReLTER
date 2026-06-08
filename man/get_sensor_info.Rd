@@ -24,7 +24,7 @@ The output of the function is a \code{list} with two elements:
 }
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
 This function obtains the information about of an eLTER
 sensor (e.g.
 \url{https://deims.org/sensors/3845475c-4aec-4dd7-83b4-0ab6ba95db35})

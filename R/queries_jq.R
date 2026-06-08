@@ -337,22 +337,23 @@ queries_jq_deims <- list(
        title: .title,
        uri: "\\(.id.prefix)\\(.id.suffix)",
        geoCoord: .attributes.geographic.coordinates,
-       country: .attributes.geographic.country,
        geoElev: .attributes.geographic.elevation,
-       abstract: .attributes.general.abstract,
-       status: .attributes.general.status,
-       yearEstablished: .attributes.general.yearEstablished,
-       yearClosed: .attributes.general.yearClosed,
-       belongsTo: .attributes.general.relatedSites[] | select(.typeOfRelationship.label == "belongs to") | .listOfSites,
+       size: .attributes.geographic.size,
+       country: (.attributes.geographic.country // []),
+       abstract: (.attributes.general.abstract // ""),
+       status: (.attributes.general.status // ""),
+       yearEstablished: (.attributes.general.yearEstablished // -9999),
+       yearClosed: (.attributes.general.yearClosed // -9999),
+       belongsTo: (.attributes.general.relatedSites // [] | map(select(.typeOfRelationship.label == "belongs to")) | if length > 0 then .[0].listOfSites else [] end),
        # contains: .typeOfRelationship.label.["contains"] | select(. != null) | .listOfSites[],
        # contains: .attributes.general.relatedSites[] | if .typeOfRelationship.label != "contains" then "" elif .typeOfRelationship.label == "contains" then .listOfSites else "" end, #this work with https://jqplay.org/ but here an error return
        # contains: .attributes.general.relatedSites[*].[?(@.typeOfRelationship.label == "contents")].listOfSites[*], an error return if it is used this query tested here https://sumiya.page/jpath.html
        # contains: .attributes.general.relatedSites[] | select(.typeOfRelationship.label == "contains") | .listOfSites,
        # formsAClusterWith: .attributes.general.relatedSites[] | select(.typeOfRelationship.label == "forms a cluster with") | .listOfSites[],
-       siteType: .attributes.general.siteType,
-       protectionLevel: .attributes.general.protectionLevel,
-       landUse: .attributes.general.landUse,
-       images: .attributes.general.images
+       siteType: (.attributes.general.siteType // ""),
+       protectionLevel: (.attributes.general.protectionLevel // ""),
+       landUse: (.attributes.general.landUse // ""),
+       images: (.attributes.general.images // [])
       }'
     ),
     site_info = list(

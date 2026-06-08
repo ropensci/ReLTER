@@ -9,7 +9,7 @@
 #' @param networkDEIMSID A `character`. The DEIMS ID of the network from
 #' DEIMS-SDR website. DEIMS ID information
 #' \href{https://deims.org/docs/deimsid.html}{here} and Complete list of
-#' networks \href{https://deims.org/search?f[0]=result_type:network}{here}.
+#' networks \href{https://deims.org/networks}{here}.
 #' The DEIMS ID of network is the URL for the network page.
 #' @return The output of the function is a point vector of `sf` class
 #' (package sf) of the network's sites.

@@ -19,67 +19,61 @@
 ### function get_site_envcharacts
 get_site_envcharacts <- function(deimsid) {
   qo <- queries_jq_deims[[get_deims_API_version()]]$site_envCharacts
-  jj <- get_id(deimsid, qo$path)
-  if (is.na(attr(jj, "status"))) {
-    invisible(
-      utils::capture.output(
-        envCharacteristics <- dplyr::as_tibble(do_Q(qo$query, jj))
-      )
-    )
-    # set country field as vector
-    envCharacteristics$country <- unlist(envCharacteristics$country)
-    # set the UOM of geoElev.avg, geoElev.min, and geoElev.max
-    envCharacteristics$geoElev.avg <- units::set_units(
-      x = envCharacteristics$geoElev.avg,
-      value = 'm'
-    )
-    envCharacteristics$geoElev.min <- units::set_units(
-      x = envCharacteristics$geoElev.min,
-      value = 'm'
-    )
-    envCharacteristics$geoElev.max <- units::set_units(
-      x = envCharacteristics$geoElev.max,
-      value = 'm'
-    )
-    # set the UOM of airTemperature info
-    envCharacteristics$airTemperature.yearlyAverage <- units::set_units(
-      x = envCharacteristics$airTemperature.yearlyAverage,
-      value = 'degree_Celsius'
-    )
-    
-    # envCharacteristics$airTemperature.monthlyAverage <- units::set_units(
-    #   x = envCharacteristics$airTemperature.monthlyAverage[1],
-    #   value = "°C"
-    # )
-    # TODO find the solution to assign a units to the nested list column
-    if (is.null(envCharacteristics$airTemperature.referencePeriod)) {
-      envCharacteristics$airTemperature.referencePeriod <- NA
-      envCharacteristics$airTemperature.referencePeriod <- units::set_units(
-        x = envCharacteristics$airTemperature.referencePeriod,
-        value = 'degree_Celsius'
-      )
-    }
-    # set the UOM of precipitation info
-    envCharacteristics$precipitation.yearlyAverage <- units::set_units(
-      x = envCharacteristics$precipitation.yearlyAverage,
-      value = 'mm'
-    )
-    # envCharacteristics$precipitation.monthlyAverage <- units::set_units(
-    #   x = envCharacteristics$precipitation.monthlyAverage,
-    #   value = 'mm'
-    # )
-    # TODO find the solution to assign a units to the nested list column
-    if (!is.null(envCharacteristics$precipitation.referencePeriod)) {
-      envCharacteristics$precipitation.referencePeriod <- NA
-      envCharacteristics$precipitation.referencePeriod <- units::set_units(
-        x = envCharacteristics$precipitation.referencePeriod,
-        value = 'mm'
-      )
-    }
-  } else {
-    message("\n----\nThe requested page could not be found.
-Please check again the DEIMS ID\n----\n")
-    envCharacteristics <- NULL
+  envCharacteristics <- .materialise_query(qo, deimsid, "site_envCharacts")
+  
+  if (is.null(envCharacteristics) || nrow(envCharacteristics) == 0L) {
+    warning("No results returned for: ", deimsid)
+    return(invisible(NULL))
   }
+  
+  # Flatten country from list-column to vector
+  envCharacteristics$country <- unlist(envCharacteristics$country)
+  
+  # Set elevation units [m]
+  elev_cols <- c("geoElev.avg", "geoElev.min", "geoElev.max")
+  envCharacteristics[elev_cols] <- lapply(envCharacteristics[elev_cols], units::set_units, value = "m")
+  
+  # Set air temperature units [°C] — scalar column
+  envCharacteristics$airTemperature.yearlyAverage <- units::set_units(
+    envCharacteristics$airTemperature.yearlyAverage, "degree_Celsius"
+  )
+  
+  # Set air temperature units [°C] — nested list-column (TODO resolved)
+  envCharacteristics$airTemperature.monthlyAverage <- lapply(
+    envCharacteristics$airTemperature.monthlyAverage,
+    function(x) if (!is.null(x)) units::set_units(as.numeric(x), "degree_Celsius") else NA_real_
+  )
+  
+  # Set air temperature reference period — coerce to NA if missing
+  envCharacteristics$airTemperature.referencePeriod <- if (
+    is.null(envCharacteristics$airTemperature.referencePeriod) ||
+    all(is.na(envCharacteristics$airTemperature.referencePeriod))
+  ) {
+    units::set_units(NA_real_, "degree_Celsius")
+  } else {
+    units::set_units(envCharacteristics$airTemperature.referencePeriod, "degree_Celsius")
+  }
+  
+  # Set precipitation units [mm] — scalar column
+  envCharacteristics$precipitation.yearlyAverage <- units::set_units(
+    envCharacteristics$precipitation.yearlyAverage, "mm"
+  )
+  
+  # Set precipitation units [mm] — nested list-column (TODO resolved)
+  envCharacteristics$precipitation.monthlyAverage <- lapply(
+    envCharacteristics$precipitation.monthlyAverage,
+    function(x) if (!is.null(x)) units::set_units(as.numeric(x), "mm") else NA_real_
+  )
+  
+  # Set precipitation reference period — coerce to NA if missing
+  envCharacteristics$precipitation.referencePeriod <- if (
+    is.null(envCharacteristics$precipitation.referencePeriod) ||
+    all(is.na(envCharacteristics$precipitation.referencePeriod))
+  ) {
+    units::set_units(NA_real_, "mm")
+  } else {
+    units::set_units(envCharacteristics$precipitation.referencePeriod, "mm")
+  }
+  
   envCharacteristics
 }

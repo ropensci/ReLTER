@@ -17,32 +17,17 @@
 ### function get_site_contact
 get_site_contact <- function(deimsid) {
   qo <- queries_jq_deims[[get_deims_API_version()]]$site_contact
-  jj <- get_id(deimsid, qo$path)
-  if (is.na(attr(jj, "status"))) {
-    invisible(
-      utils::capture.output(
-        contact <- dplyr::as_tibble(do_Q(qo$query, jj))
-      )
-    )
-    # set country field as vector
-    contact$country <- unlist(contact$country)
-    # set the UOM of geoElev.avg, geoElev.min, and geoElev.max
-    contact$geoElev.avg <- units::set_units(
-      x = contact$geoElev.avg,
-      value = 'm'
-    )
-    contact$geoElev.min <- units::set_units(
-      x = contact$geoElev.min,
-      value = 'm'
-    )
-    contact$geoElev.max <- units::set_units(
-      x = contact$geoElev.max,
-      value = 'm'
-    )
-  } else {
-    message("\n----\nThe requested page could not be found.
-Please check again the DEIMS ID\n----\n")
-    contact <- NULL
+  qo <- queries_jq_deims[[get_deims_API_version()]]$site_contact
+  contact <- .materialise_query(qo, deimsid, "site_contact")
+  
+  if (is.null(contact) || nrow(contact) == 0L) {
+    warning("No results returned for: ", deimsid)
+    return(invisible(NULL))
   }
+  
+  contact$country <- unlist(contact$country)
+  elev_cols <- c("geoElev.avg", "geoElev.min", "geoElev.max")
+  contact[elev_cols] <- lapply(contact[elev_cols], units::set_units, value = "m")
+  
   contact
 }

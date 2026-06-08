@@ -2,26 +2,34 @@
 % Please edit documentation in R/produce_site_observedProperties_waffle.R
 \name{produce_site_observedProperties_waffle}
 \alias{produce_site_observedProperties_waffle}
-\title{Produce a waffle chart of the observed properties collected in a site LTER.}
+\title{Produce a waffle chart of the observed properties collected in an eLTER site}
 \usage{
 produce_site_observedProperties_waffle(deimsid)
 }
 \arguments{
-\item{deimsid}{A \code{character}. The DEIMS ID of site/network from:
+\item{deimsid}{A \code{character}. The DEIMS ID of the site from
 DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here}.}
 }
 \value{
-The output of the function is a waffle chart and a \code{tibble}. Each
-of the squares represents a observed properties measured into the selected
-eLTER site. The observed properties with the same color belong to the same
-group (e.g. biological, atmospheric, etc.).
+The function prints a waffle chart as a side effect and returns
+a \code{tibble} with four columns:
+\itemize{
+\item \code{parameterGroups} \code{character}. Name of the parameter group.
+\item \code{n} \code{integer}. Number of observed properties in the group.
+\item \code{freq} \code{double}. Relative frequency of the group.
+\item \code{label} \code{character}. Percentage label for the group.
+}
+Returns \code{invisible(NULL)} if the DEIMS ID is invalid or the site has no
+observed properties.
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
-Return a waffle chart of Environmental observed properties, as a
-stored in \href{https://deims.org/}{DEIMS-SDR catalogue}, of a single
-eLTER site.
+Returns a waffle chart of environmental observed properties, as stored in
+\href{https://deims.org/}{DEIMS-SDR catalogue}, for a single eLTER site.
+The chart is built with \pkg{ggplot2} and requires no additional packages.
+Each square represents one observed property; squares of the same colour
+belong to the same parameter group (e.g. biological, atmospheric, etc.).
 }
 \section{The function output}{
 
@@ -34,13 +42,14 @@ waffle chart}
 waffle <- produce_site_observedProperties_waffle(
   deimsid = "https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe"
 )
+waffle
 }
 
 }
 \seealso{
-\code{\link[waffle:waffle]{waffle::waffle()}}
+\code{\link[RColorBrewer:brewer.pal]{RColorBrewer::brewer.pal()}}
 
-\code{\link[RColorBrewer:ColorBrewer]{RColorBrewer::brewer.pal()}}
+\code{\link[=get_site_info]{get_site_info()}}
 }
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}

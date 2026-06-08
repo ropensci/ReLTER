@@ -17,36 +17,25 @@
 ### function get_site_infrastructure
 get_site_infrastructure <- function(deimsid) {
   qo <- queries_jq_deims[[get_deims_API_version()]]$site_infrastructure
-  jj <- get_id(deimsid, qo$path)
-  if (is.na(attr(jj, "status"))) {
-    invisible(
-      utils::capture.output(
-        infrastructure <- dplyr::as_tibble(do_Q(qo$query, jj))
-      )
-    )
-    colnames(infrastructure$collection[[1]]) <- c(
-      "collectionLabel",
-      "collectionURI"
-    )
-    # set country field as vector
-    infrastructure$country <- unlist(infrastructure$country)
-    # set the UOM of geoElev.avg, geoElev.min, and geoElev.max
-    infrastructure$geoElev.avg <- units::set_units(
-      x = infrastructure$geoElev.avg,
-      value = 'm'
-    )
-    infrastructure$geoElev.min <- units::set_units(
-      x = infrastructure$geoElev.min,
-      value = 'm'
-    )
-    infrastructure$geoElev.max <- units::set_units(
-      x = infrastructure$geoElev.max,
-      value = 'm'
-    )
-  } else {
-    message("\n----\nThe requested page could not be found.
-Please check again the DEIMS ID\n----\n")
-    infrastructure <- NULL
+  infrastructure <- .materialise_query(qo, deimsid, "site_infrastructure")
+  
+  if (is.null(infrastructure) || nrow(infrastructure) == 0L) {
+    warning("No results returned for: ", deimsid)
+    return(invisible(NULL))
   }
+  
+  # Rename collection columns for clarity
+  colnames(infrastructure$collection[[1]]) <- c(
+    "collectionLabel",
+    "collectionURI"
+  )
+  
+  # Flatten country from list-column to vector
+  infrastructure$country <- unlist(infrastructure$country)
+  
+  # Set elevation units [m]
+  elev_cols <- c("geoElev.avg", "geoElev.min", "geoElev.max")
+  infrastructure[elev_cols] <- lapply(infrastructure[elev_cols], units::set_units, value = "m")
+  
   infrastructure
 }

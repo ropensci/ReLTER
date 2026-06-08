@@ -5,8 +5,9 @@
 #' bounding box and ask for returning the contained sites or simply the bounding box.
 #' @return `tibble` with selected sites or 
 #' a `list` with selected bounding box (with slots `bbx` and `elevation_range`).
-#' @importFrom leaflet leaflet leafletOutput addCircles 
-#' addLayersControl clearImages clearShapes setView providers addProviderTiles addTiles 
+#' @importFrom leaflet leaflet leafletOutput renderLeaflet addTiles addProviderTiles
+#' @importFrom leaflet providers setView addCircles addLayersControl
+#' @importFrom leaflet clearImages clearShapes leafletProxy
 #' @author Paolo Tagliolato
 #' @seealso [shiny::runGadget]
 #' @seealso [leaflet.extras::addDrawToolbar()]
@@ -106,7 +107,7 @@ bbxSelector <- function(input, output, session, reactiveToClearTheMap) {
     
     crs_string<-reactive({
       bbox_dfl<-bbx_df()
-      sf::st_crs(sf:st_sfc(sf::st_point(as.numeric(bbox_dfl[1,])), 
+      sf::st_crs(sf::st_sfc(sf::st_point(as.numeric(bbox_dfl[1,])), 
                            sf::st_point(as.numeric(bbox_dfl[2,])), 
                            crs=4326))$proj4string
     })

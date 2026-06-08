@@ -8,7 +8,7 @@ message: 'To cite package "ReLTER" in publications use:'
 type: software
 license: GPL-3.0-or-later
 title: 'ReLTER: An Interface for the eLTER Community'
-version: 3.0.0
+version: 3.1.0
 abstract: 'ReLTER provides access to DEIMS-SDR (https://deims.org/), and allows interaction
   with data and software implemented by eLTER Research Infrastructure (RI) thus improving
   data sharing among European LTER projects. ReLTER uses the R language to access
@@ -83,7 +83,7 @@ preferred-citation:
       email: tagliolato.a@irea.cnr.it
       orcid: https://orcid.org/0000-0002-0261-313X
     year: '2025'
-    version: '3.0'
+    version: '3.1'
     doi: https://doi.org/10.5281/zenodo.5576813
     notes: R package version v3.0
     repository-code: https://github.com/ropensci/ReLTER
@@ -780,20 +780,6 @@ references:
     year: '2025'
     doi: 10.32614/CRAN.package.testthat
     version: '>= 3.0.0'
-  - type: software
-    title: waffle
-    abstract: 'waffle: Create Waffle Chart Visualizations'
-    notes: Suggests
-    repository: https://CRAN.R-project.org/package=waffle
-    authors:
-    - family-names: Rudis
-      given-names: Bob
-      email: bob@rud.is
-      orcid: https://orcid.org/0000-0001-5670-2640
-    - family-names: Gandy
-      given-names: Dave
-    year: '2025'
-    doi: 10.32614/CRAN.package.waffle
   - type: software
     title: withr
     abstract: 'withr: Run Code ''With'' Temporarily Modified Global State'

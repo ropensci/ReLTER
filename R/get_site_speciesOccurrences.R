@@ -1,402 +1,308 @@
-#' Trims by eLTER site the species occurrence from different sources
+#' Retrieve species occurrences within an eLTER site boundary
 #' @description `r lifecycle::badge("stable")`
-#' This function acquires data from
-#' GBIF \url{https://www.gbif.org} (via `rgbif`),
+#' This function downloads species occurrence records from
+#' GBIF \url{https://www.gbif.org},
 #' iNaturalist \url{https://www.inaturalist.org/} and
-#' OBIS \url{https://obis.org/} and crops to an eLTER site
-#' boundary, which is obtained from the DEIMS-SDR sites API.
-#' @param deimsid A `character`. The DEIMS.iD of the site from
-#' DEIMS-SDR website. DEIMS.iD information
+#' OBIS \url{https://obis.org/} and intersects them with the boundary of
+#' an eLTER site retrieved from the DEIMS-SDR API
+#' \url{https://deims.org/}. Only occurrences falling within the site
+#' polygon are returned, enriched with eLTER site metadata.
+#' @param deimsid A `character`. The DEIMS ID of the site from
+#' DEIMS-SDR website. DEIMS ID information
 #' \href{https://deims.org/docs/deimsid.html}{here}.
-#' @param list_DS A `character`. Data source to get data from, any
-#' combination of gbif, inat and/or obis.
-#' @param show_map A `boolean`. If TRUE a Leaflet map with occurrences
-#' is shown. Default FALSE.
-#' @param limit A `numeric`. Number of records to return. This is passed
-#' across all sources. Default: 500 for each source. BEWARE: if you have a
-#' lot of species to query for (e.g., n = 10), that's 10 * 500 = 5000, which
-#' can take a while to collect. So, when you first query, set the limit to
-#' something smallish so that you can get a result quickly, then do more as
-#' needed.
-#' @param exclude_inat_from_gbif A `boolean`. If TRUE, when list_DS contains
-#' both "gbif" and "inat", filter out gbif records originating
-#' from iNaturalist (in order to avoid duplicates). Default TRUE.
-#' @return The output of the function is a `list` of `sf` one for each of the
-#' repositories specified in the list_DS parameter.
+#' @param list_DS A `character` vector. Data sources to query; any
+#' combination of `"gbif"`, `"inat"`, and/or `"obis"`.
+#' @param show_map A `boolean`. If `TRUE` the `leaflet` map is both printed
+#' and returned in the output list as `$map`. If `FALSE` the map is not
+#' printed but is still built and returned in `$map` for later use.
+#' Default `FALSE`.
+#' @param limit A `numeric`. Maximum number of records to download per
+#' source. Default `500`. Note that when querying for many species the
+#' total number of records can be large and slow to download; start with
+#' a small value (e.g. `10`) to verify results before increasing.
+#' @param exclude_inat_from_gbif A `boolean`. If `TRUE`, and both
+#' `"gbif"` and `"inat"` are in `list_DS`, records originating from
+#' iNaturalist are removed from the GBIF results to avoid duplicates.
+#' Default `TRUE`.
+#' @return A `list` with one `sf` element per data source (named `gbif`,
+#' `inat`, `obis`) containing only occurrences that fall within the site
+#' boundary, and a `map` element with a `leaflet` object. Each `sf`
+#' element contains the occurrence geometry and the following eLTER site
+#' metadata fields (prefixed with `eLTER_`): `title`, `uri`, `created`,
+#' `changed`, `geoCoord`, `country`, `geoElev.avg`, `geoElev.min`,
+#' `geoElev.max`, `biogeographicalRegion`, `biome`, `ecosystemType`,
+#' `eunisHabitat`, `landforms`, `geoBonBiome`.
+#' If no occurrences are found within the boundary for a given source,
+#' that source is omitted from the list and an informative message is
+#' printed. Returns `invisible(NULL)` if the site has no boundary or if
+#' no occurrences are found for any source.
 #' @author Alessandro Oggioni, PhD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @author Paolo Tagliolato, PhD (2020) \email{tagliolato.p@@irea.cnr.it}
 #' @author Martina Zilioli \email{zilioli.m@@irea.cnr.it}
-#' @importFrom leaflet layersControlOptions addLayersControl addLegend
-#' @importFrom leaflet addCircleMarkers addTiles addProviderTiles leaflet
+#' @importFrom dplyr filter select rename_with all_of
+#' @importFrom leaflet leaflet addTiles addProviderTiles addCircleMarkers
+#' @importFrom leaflet addLegend addLayersControl layersControlOptions
 #' @importFrom leaflet colorFactor
-#' @importFrom tibble as_tibble
-#' @importFrom dplyr select mutate filter
-#' @importFrom sf st_as_text st_as_sfc st_bbox st_as_sf
 #' @importFrom lubridate as_datetime as_date
-#' @seealso [spocc::obis_search()]
+#' @importFrom sf st_as_text st_as_sfc st_bbox st_as_sf st_transform
+#' @importFrom sf st_intersection st_coordinates
 #' @seealso [spocc::occ()]
+#' @seealso [spocc::obis_search()]
 #' @seealso [RColorBrewer::brewer.pal()]
+#' @seealso [get_site_info()]
 #' @export
 #' @examples
 #' \dontrun{
-#' # terrestrial site Saldur River Catchment
+#' # Terrestrial site: Saldur River Catchment (GBIF and iNaturalist)
 #' occ_SRC <- get_site_speciesOccurrences(
-#'   deimsid =
-#'     "https://deims.org/97ff6180-e5d1-45f2-a559-8a7872eb26b1",
+#'   deimsid = "https://deims.org/97ff6180-e5d1-45f2-a559-8a7872eb26b1",
 #'   list_DS = c("gbif", "inat"),
-#'   show_map = FALSE,
-#'   limit = 10
+#'   show_map = TRUE,
+#'   limit = 50
 #' )
 #' occ_SRC
 #'
-#' # marine site Gulf of Venice only obis
+#' # Marine site: Gulf of Venice (OBIS only)
 #' occ_GoV <- get_site_speciesOccurrences(
-#'   deimsid =
-#'     "https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd",
+#'   deimsid = "https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd",
 #'   list_DS = "obis",
 #'   show_map = FALSE,
 #'   limit = 10
 #' )
 #' occ_GoV
 #'
-#' # marine site Gulf of Venice, all repositories are invoked
-#' # gbif, inat and obis
+#' # Marine site: Gulf of Venice (all sources, with map)
 #' occ_GoV_all <- get_site_speciesOccurrences(
-#'   deimsid =
-#'     "https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd",
+#'   deimsid = "https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd",
 #'   list_DS = c("gbif", "inat", "obis"),
 #'   show_map = TRUE,
 #'   limit = 10
 #' )
-#' occ_GoV_all
+#' occ_GoV_all$obis
+#' occ_GoV_all$map
 #' }
 #'
 #' @section The function output:
-#' \figure{get_site_speciesOccurrences_fig.png}{Map of first 100 occurrences
-#' acquired from iNaturalist and OBIS in the marine site Gulf of Venice}
+#' \figure{get_site_speciesOccurrences_fig.png}{Map of occurrences acquired
+#' from OBIS in the marine site Gulf of Venice}
 #'
 ### function get_site_speciesOccurrences
 get_site_speciesOccurrences <- function(
-  deimsid,
-  list_DS,
-  show_map = FALSE,
-  limit = 500,
-  exclude_inat_from_gbif = TRUE
-) {
-  # Check if required packages are installed
-  if (!requireNamespace("spocc", quietly = TRUE)) {
-    stop(
-      "\n----\nThe function 'get_site_speciesOccurrences()' requires the optional package 'spocc'.\n",
-      "Please install it with: install.packages(\"spocc\")\n----\n"
-    )
-  }
-  if (!requireNamespace("RColorBrewer", quietly = TRUE)) {
-    stop(
-      "\n----\nThe function 'get_site_speciesOccurrences()' requires the optional package 'RColorBrewer'.\n",
-      "Please install it with: install.packages(\"RColorBrewer\")\n----\n"
-    )
-  }
-  # First check that site has a boundary ----
-  boundary <- get_site_info(
     deimsid,
-    show_map = TRUE
-  )
-  if (is.null(boundary) || !inherits(boundary, "sf")) {
-    print("No boundary for requested DEIMS site.")
-    return(NULL)
-  } else {
-    bbox_wkt <- sf::st_as_text(
-      sf::st_as_sfc(
-        sf::st_bbox(
-          boundary
-        )
+    list_DS,
+    show_map = TRUE,
+    limit = 500,
+    exclude_inat_from_gbif = TRUE
+) {
+  # --- Check optional packages ---
+  for (pkg in c("spocc", "RColorBrewer")) {
+    if (!requireNamespace(pkg, quietly = TRUE)) {
+      stop(
+        "\n----\nThe function 'get_site_speciesOccurrences()' requires the optional package '", pkg, "'.\n",
+        "Please install it with: install.packages(\"", pkg, "\")\n----\n"
       )
-    )
-    site_geom <- boundary$geometry
+    }
   }
-
-  # download occurrence by SPOCC by provide data sources ----
+  
+  # --- Get site boundary ---
+  boundary <- get_site_info(
+    deimsid = deimsid,
+    categories = c("General", "EnvCharacts"),
+    show_map = FALSE
+  )
+  
+  if (is.null(boundary) || !inherits(boundary, "sf")) {
+    message("\n----\nNo boundary found for DEIMS ID: ", deimsid, "\n----\n")
+    return(invisible(NULL))
+  }
+  
+  bbox_wkt <- sf::st_as_text(sf::st_as_sfc(sf::st_bbox(boundary)))
+  
+  # --- Download occurrences ---
+  occ_fx <- getExportedValue("spocc", "occ")
+  obis_search_fx <- getExportedValue("spocc", "obis_search")
+  
   site_occ_spocc <- NULL
   site_occ_spocc_obis <- NULL
-  occ_fx <- getExportedValue("spocc", "occ")
+  
   if (any(c("gbif", "inat") %in% list_DS)) {
     site_occ_spocc <- occ_fx(
-      from = list_DS,
-      geometry = bbox_wkt,
-      limit = limit,
+      from       = list_DS[list_DS %in% c("gbif", "inat")],
+      geometry   = bbox_wkt,
+      limit      = limit,
       has_coords = TRUE
     )
   }
-  obis_search_fx <- getExportedValue("spocc", "obis_search")
+  
   if ("obis" %in% list_DS) {
     site_occ_spocc_obis <- obis_search_fx(
-      size = limit,
+      size     = limit,
       geometry = bbox_wkt
     )
   }
-
-  # find 0 record to dataset
-  list_DS_exclude <- NULL
-  if (!is.null(site_occ_spocc) && is.null(site_occ_spocc$gbif$meta$returned)) {
-    list_DS_exclude <- c(list_DS_exclude, "gbif")
-  }
-  if (!is.null(site_occ_spocc) && is.null(site_occ_spocc$inat$meta$returned)) {
-    list_DS_exclude <- c(list_DS_exclude, "inat")
-  }
-  if (is.null(site_occ_spocc_obis) &&
-      is.null(site_occ_spocc_obis$results)) {
-    list_DS_exclude <- c(list_DS_exclude, "obis")
-  }
-  if (length(site_occ_spocc_obis$results) == 0) {
-    list_DS_exclude <- c(list_DS_exclude, "obis")
-  }
-  list_DS <- list_DS[!(list_DS %in% list_DS_exclude)]
-
-  # harmonization of date and time GBIF
-  if ("gbif" %in% list_DS) {
-    if (!is.null(site_occ_spocc$gbif$data[[1]]$lastCrawled)) {
-      site_occ_spocc$gbif$data[[1]]$lastCrawled <- lubridate::as_datetime(site_occ_spocc$gbif$data[[1]]$lastCrawled)
-    }
-    if (!is.null(site_occ_spocc$gbif$data[[1]]$lastParsed)) {
-      site_occ_spocc$gbif$data[[1]]$lastParsed <- lubridate::as_datetime(site_occ_spocc$gbif$data[[1]]$lastParsed)
-    }
-    if (!is.null(site_occ_spocc$gbif$data[[1]]$dateIdentified)) {
-      site_occ_spocc$gbif$data[[1]]$dateIdentified <- lubridate::as_datetime(site_occ_spocc$gbif$data[[1]]$dateIdentified)
-    }
-    if (!is.null(site_occ_spocc$gbif$data[[1]]$eventDate)) {
-      site_occ_spocc$gbif$data[[1]]$eventDate <- lubridate::as_date(site_occ_spocc$gbif$data[[1]]$eventDate)
-    }
-    if (!is.null(site_occ_spocc$gbif$data[[1]]$modified)) {
-      site_occ_spocc$gbif$data[[1]]$modified <- lubridate::as_datetime(site_occ_spocc$gbif$data[[1]]$modified)
-    }
-  }
-  # harmonization of date and time iNat
-  if ("inat" %in% list_DS) {
-    if (!is.null(site_occ_spocc$inat$data[[1]]$time_observed_at)) {
-      site_occ_spocc$inat$data[[1]]$time_observed_at <- lubridate::as_datetime(site_occ_spocc$inat$data[[1]]$time_observed_at)
-    }
-    if (!is.null(site_occ_spocc$inat$data[[1]]$created_at)) {
-      site_occ_spocc$inat$data[[1]]$created_at <- lubridate::as_datetime(site_occ_spocc$inat$data[[1]]$created_at)
-    }
-    if (!is.null(site_occ_spocc$inat$data[[1]]$updated_at)) {
-      site_occ_spocc$inat$data[[1]]$updated_at <- lubridate::as_datetime(site_occ_spocc$inat$data[[1]]$updated_at)
-    }
-  }
-  # harmonization of date and time OBIS
-  if ("obis" %in% list_DS) {
-    if (!is.null(site_occ_spocc_obis$results$modified)) {
-      site_occ_spocc_obis$results$modified <- lubridate::as_datetime(site_occ_spocc_obis$results$modified)
-    }
-  }
-  # combine results from occ calls to a single data.frame ----
-  occ_df <- NULL
-  if ("gbif" %in% list_DS) {
-    occ_df_gbif <- site_occ_spocc$gbif$data[[1]] %>%
-      tibble::as_tibble() %>%
-      dplyr::mutate(institutionCode = NA)
-    if ("inat" %in% list_DS && exclude_inat_from_gbif) {
-      occ_df_gbif <- occ_df_gbif %>%
-        dplyr::filter(is.na(institutionCode)) %>%
-        dplyr::mutate(institutionCode = prov)
-    }
-    occ_df_gbif <- occ_df_gbif %>%
-      dplyr::select(
-        name,
-        longitude,
-        latitude,
-        prov,
-        date = eventDate,
-        key
-      ) %>%
-      dplyr::mutate(
-        date = as.character(date)
-      )
   
-    if (nrow(occ_df_gbif) > 0) {
-      occ_df <- rbind(occ_df, occ_df_gbif)
-    }
-  }
-
-  if ("inat" %in% list_DS) {
-    occ_df_inat <- site_occ_spocc$inat$data[[1]] %>%
-      tibble::as_tibble() %>%
-      dplyr::select(
-        name,
-        longitude,
-        latitude,
-        prov,
-        date = observed_on,
-        key = id
-      ) %>%
-      dplyr::mutate(
-        date = as.character(date)
-      )
-    occ_df <- rbind(occ_df, occ_df_inat)
-  }
-
-  if ("obis" %in% list_DS && !length(site_occ_spocc_obis$results) == 0) {
-    occ_df_obis <- site_occ_spocc_obis$results %>%
-      dplyr::mutate(
-        prov = rep("obis", nrow(site_occ_spocc_obis$results))
-      ) %>%
-      dplyr::select(
-        scientificName,
-        decimalLongitude,
-        decimalLatitude,
-        prov,
-        eventDate,
-        id
-      ) %>%
-      tibble::as_tibble()
-    names(occ_df_obis) <- c(
-      "name", "longitude", "latitude",
-      "prov", "date", "key"
-    )
-    occ_df <- rbind(occ_df, occ_df_obis)
-  }
-
-  # print map ----
-  brewer.pal_fx <- getExportedValue("RColorBrewer", "brewer.pal")
-  if (length(list_DS) < 3) {
-    my_palette <- brewer.pal_fx(
-      3,
-      "Set1"
-    )
-    my_palette <- my_palette[seq(from = 1, to = length(list_DS))]
-  } else {
-    my_palette <- brewer.pal_fx(
-      length(list_DS),
-      "Set1"
-    )
-  }
-  factpal <- leaflet::colorFactor(
-    my_palette,
-    levels = list_DS
-  )
-  if (show_map == TRUE) {
-    occ_map <- leaflet::leaflet(occ_df) %>%
-      leaflet::addProviderTiles(
-        provider = "CartoDB.PositronNoLabels",
-        group = "Basemap",
-        layerId = 123
-      ) %>%
-      leaflet::addTiles(
-        "http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png"
-      )
-
-    groups <- unique(occ_df$prov)
-    for (i in groups) {
-      data <- occ_df[occ_df$prov == i, ]
-      occ_map <- occ_map %>%
-        leaflet::addCircleMarkers(
-          data = data,
-          lat = ~as.double(latitude),
-          lng = ~as.double(longitude),
-          popup = ~name,
-          radius = 3,
-          weight = 2,
-          opacity = 0.5,
-          fill = TRUE,
-          fillOpacity = 0.2,
-          color = ~factpal(prov),
-          group = i
-        )
-    }
-    occ_map <- occ_map %>%
-      leaflet::addLegend(
-        position = "bottomright",
-        pal = factpal,
-        values = ~list_DS,
-        opacity = 1,
-        title = "SPOCC Occurrence"
-      ) %>%
-      leaflet::addLayersControl(
-        overlayGroups = groups,
-        options = leaflet::layersControlOptions(
-          collapsed = FALSE
-        )
-      )
-
-    print(occ_map)
-    # create tibble ----
-    occ_list <- vector(
-      mode = "list",
-      length = length(
-        unique(occ_df$prov)
-      )
-    )
-    names(occ_list) <- unique(occ_df$prov)
-    if ("gbif" %in% list_DS) {
-      occ_list$gbif <- site_occ_spocc$gbif$data[[1]] %>%
-        dplyr::mutate(institutionCode = NA)
-      occ_list$gbif <- occ_list$gbif %>%
-        dplyr::filter(is.na(institutionCode)) %>%
-        dplyr::mutate(institutionCode = prov)
-      if (nrow(occ_list$gbif) != 0) {
-        occ_list$gbif <- sf::st_as_sf(
-          occ_list$gbif,
-          coords = c("longitude", "latitude"),
-          crs = 4326
-        )
-      } else {
-        occ_list$gbif <- NULL
+  # --- Helper: harmonise datetime columns ---
+  .fix_datetime <- function(df, cols_datetime, cols_date = NULL) {
+    for (col in cols_datetime) {
+      if (!is.null(df[[col]])) {
+        df[[col]] <- lubridate::as_datetime(df[[col]])
       }
     }
-    if ("inat" %in% list_DS) {
-      occ_list$inat <- site_occ_spocc$inat$data[[1]]
-      occ_list$inat <- sf::st_as_sf(
-        occ_list$inat,
-        coords = c("longitude", "latitude"),
-        crs = 4326
-      )
+    for (col in cols_date) {
+      if (!is.null(df[[col]])) {
+        df[[col]] <- lubridate::as_date(df[[col]])
+      }
     }
-    if ("obis" %in% list_DS) {
-      occ_list$obis <- site_occ_spocc_obis$results
-      occ_list$obis <- sf::st_as_sf(
-        occ_list$obis,
-        coords = c("decimalLongitude", "decimalLatitude"),
-        crs = 4326
-      )
-    }
-    return(occ_list)
-  } else {
-    occ_map <- NULL
-    # create tibble ----
-    occ_list <- vector(
-      mode = "list",
-      length = length(
-        unique(occ_df$prov)
-      )
-    )
-    names(occ_list) <- unique(occ_df$prov)
-    if ("gbif" %in% list_DS) {
-      occ_list$gbif <- site_occ_spocc$gbif$data[[1]] %>%
-        dplyr::mutate(institutionCode = NA)
-      occ_list$gbif <- occ_list$gbif %>%
-        dplyr::filter(is.na(institutionCode)) %>%
-        dplyr::mutate(institutionCode = prov)
-      occ_list$gbif <- sf::st_as_sf(
-        occ_list$gbif,
-        coords = c("longitude", "latitude"),
-        crs = 4326
-      )
-    }
-    if ("inat" %in% list_DS) {
-      occ_list$inat <- site_occ_spocc$inat$data[[1]]
-      occ_list$inat <- sf::st_as_sf(
-        occ_list$inat,
-        coords = c("longitude", "latitude"),
-        crs = 4326
-      )
-    }
-    if ("obis" %in% list_DS) {
-      occ_list$obis <- site_occ_spocc_obis$results
-      occ_list$obis <- sf::st_as_sf(
-        occ_list$obis,
-        coords = c("decimalLongitude", "decimalLatitude"),
-        crs = 4326
-      )
-    }
-    return(occ_list)
+    df
   }
+  
+  if ("gbif" %in% list_DS && !is.null(site_occ_spocc$gbif$data[[1]])) {
+    site_occ_spocc$gbif$data[[1]] <- .fix_datetime(
+      site_occ_spocc$gbif$data[[1]],
+      cols_datetime = c("lastCrawled", "lastParsed", "dateIdentified", "modified"),
+      cols_date     = "eventDate"
+    )
+  }
+  
+  if ("inat" %in% list_DS && !is.null(site_occ_spocc$inat$data[[1]])) {
+    site_occ_spocc$inat$data[[1]] <- .fix_datetime(
+      site_occ_spocc$inat$data[[1]],
+      cols_datetime = c("time_observed_at", "created_at", "updated_at")
+    )
+  }
+  
+  if ("obis" %in% list_DS && !is.null(site_occ_spocc_obis$results)) {
+    site_occ_spocc_obis$results <- .fix_datetime(
+      site_occ_spocc_obis$results,
+      cols_datetime = "modified"
+    )
+  }
+  
+  # --- eLTER intersection fields ---
+  elter_fields <- c(
+    "title.x", "uri", "created", "changed", "geoCoord", "country",
+    "geoElev.avg", "geoElev.min", "geoElev.max",
+    "biogeographicalRegion", "biome", "ecosystemType",
+    "eunisHabitat", "landforms", "geoBonBiome"
+  )
+  
+  # --- Helper: convert to sf and intersect with site boundary ---
+  .to_sf_and_intersect <- function(df, lon_col, lat_col, source_name = "") {
+    no_occ_msg <- function() message(
+      "No occurrences found within the boundary of eLTER site '",
+      boundary$title.x, "' for: ", toupper(source_name)
+    )
+    
+    if (is.null(df) || nrow(df) == 0L) { no_occ_msg(); return(NULL) }
+    
+    df[[lon_col]] <- as.numeric(df[[lon_col]])
+    df[[lat_col]] <- as.numeric(df[[lat_col]])
+    df <- df[!is.na(df[[lon_col]]) & !is.na(df[[lat_col]]), ]
+    
+    if (nrow(df) == 0L) { no_occ_msg(); return(NULL) }
+    
+    sf_obj <- sf::st_as_sf(df, coords = c(lon_col, lat_col), crs = 4326)
+    boundary_4326 <- sf::st_transform(boundary, crs = 4326)
+    sf_obj <- suppressWarnings(sf::st_intersection(x = sf_obj, y = boundary_4326))
+    
+    if (nrow(sf_obj) == 0L) { no_occ_msg(); return(NULL) }
+    
+    keep <- intersect(elter_fields, names(sf_obj))
+    
+    sf_obj |>
+      dplyr::rename_with(
+        .fn   = ~ paste0("eLTER_", .x),
+        .cols = dplyr::all_of(keep)
+      )
+  }
+  
+  # --- Build output list ---
+  occ_list <- list(gbif = NULL, inat = NULL, obis = NULL)
+  
+  if ("gbif" %in% list_DS && !is.null(site_occ_spocc$gbif$data[[1]])) {
+    df_gbif <- site_occ_spocc$gbif$data[[1]]
+    if (exclude_inat_from_gbif && "inat" %in% list_DS) {
+      df_gbif <- dplyr::filter(df_gbif, institutionCode != "iNaturalist")
+    }
+    occ_list$gbif <- .to_sf_and_intersect(df_gbif, "longitude", "latitude", "gbif")
+  }
+  
+  if ("inat" %in% list_DS && !is.null(site_occ_spocc$inat$data[[1]])) {
+    occ_list$inat <- .to_sf_and_intersect(
+      site_occ_spocc$inat$data[[1]], "longitude", "latitude", "inat"
+    )
+  }
+  
+  if ("obis" %in% list_DS && !is.null(site_occ_spocc_obis$results) &&
+      nrow(site_occ_spocc_obis$results) > 0L) {
+    occ_list$obis <- .to_sf_and_intersect(
+      site_occ_spocc_obis$results, "decimalLongitude", "decimalLatitude", "obis"
+    )
+  }
+  
+  # Remove NULL slots (sources with no data)
+  occ_list <- Filter(Negate(is.null), occ_list)
+  
+  if (length(occ_list) == 0L) {
+    message("\n----\nNo occurrences found within the site boundary.\n----\n")
+    return(invisible(NULL))
+  }
+  
+  # --- Optional map ---
+  # --- Build map always, print only if show_map = TRUE ---
+  if (length(occ_list) > 0L) {
+    brewer.pal_fx <- getExportedValue("RColorBrewer", "brewer.pal")
+    n_sources     <- length(occ_list)
+    my_palette    <- brewer.pal_fx(max(3, n_sources), "Set1")[seq_len(n_sources)]
+    factpal       <- leaflet::colorFactor(my_palette, levels = names(occ_list))
+    
+    occ_map <- leaflet::leaflet() |>
+      leaflet::addProviderTiles("CartoDB.PositronNoLabels", group = "Basemap") |>
+      leaflet::addTiles("http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png")
+    
+    for (src in names(occ_list)) {
+      coords  <- sf::st_coordinates(occ_list[[src]])
+      df_plot <- as.data.frame(coords)
+      df_plot$name <- if ("eLTER_title.x" %in% names(occ_list[[src]])) {
+        occ_list[[src]]$eLTER_title.x
+      } else {
+        src
+      }
+      df_plot$prov <- src
+      
+      occ_map <- occ_map |>
+        leaflet::addCircleMarkers(
+          data        = df_plot,
+          lat         = ~Y,
+          lng         = ~X,
+          popup       = ~name,
+          radius      = 3,
+          weight      = 2,
+          opacity     = 0.5,
+          fill        = TRUE,
+          fillOpacity = 0.2,
+          color       = factpal(src),
+          group       = src
+        )
+    }
+    
+    occ_map <- occ_map |>
+      leaflet::addLegend(
+        position = "bottomright",
+        pal      = factpal,
+        values   = names(occ_list),
+        opacity  = 1,
+        title    = "Occurrence source"
+      ) |>
+      leaflet::addLayersControl(
+        overlayGroups = names(occ_list),
+        options       = leaflet::layersControlOptions(collapsed = FALSE)
+      )
+    
+    # Always attach map to output; print only if requested
+    occ_list$map <- occ_map
+    if (isTRUE(show_map)) print(occ_map)
+  }
+  
+  occ_list
 }

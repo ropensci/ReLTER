@@ -33,6 +33,7 @@ Project area" location}
 }
 
 \examples{
+\dontrun{
 # Sampling location multipolygon
 location <- get_location_info(
   locationid =
@@ -72,6 +73,7 @@ location <- get_location_info(
   show_map = TRUE
 )
 location
+}
 
 }
 \author{
