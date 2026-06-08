@@ -42,195 +42,74 @@ get_site_info <- function(
     categories = NA,
     show_map = FALSE,
     with_locations = FALSE
-  ) {
-  if (show_map == FALSE) {
-    with_locations = FALSE
+) {
+  if (isFALSE(show_map)) {
+    with_locations <- FALSE
   }
+  
   qo <- queries_jq_deims[[get_deims_API_version()]]$site_info
-  jj <- get_id(deimsid, qo$path)
-  res <- list(
-    # map = NULL,
-    data = NULL#,
-    # locations = NULL
-  )
-  if (is.na(attr(jj, "status"))) {
-    invisible(
-      utils::capture.output(
-        siteInfo <- dplyr::as_tibble(do_Q(qo$query, jj))
-      )
-    )
-    # set country field as vector
-    siteInfo$country <- unlist(siteInfo$country)
-    # add UOM to geoElev.avg, geoElev.min, and geoElev.max
-    siteInfo$geoElev.avg <- units::set_units(
-      x = siteInfo$geoElev.avg,
-      value = 'm'
-    )
-    siteInfo$geoElev.min <- units::set_units(
-      x = siteInfo$geoElev.min,
-      value = 'm'
-    )
-    siteInfo$geoElev.max <- units::set_units(
-      x = siteInfo$geoElev.max,
-      value = 'm'
-    )
-    # set created and changed fields as data and time
-    siteInfo$created <- lubridate::as_datetime(
-      siteInfo$created
-    )
-    siteInfo$changed <- lubridate::as_datetime(
-      siteInfo$changed
-    )
-    if (any(!is.na(categories))) {
-      # add 'Affiliations' info
-      if (any(grepl("Affiliations", categories))) {
-        siteAffil <- get_site_affiliations(deimsid = deimsid)
-        siteInfo <- dplyr::left_join(
-          siteInfo,
-          siteAffil,
-          by = c(
-            "title" = "title",
-            "uri" = "uri",
-            "geoCoord" = "geoCoord",
-            "country" = "country",
-            "geoElev.avg" = "geoElev.avg",
-            "geoElev.min" = "geoElev.min",
-            "geoElev.max" = "geoElev.max",
-            "geoElev.unit" = "geoElev.unit"
-          )
-        )
-      }
-      # add 'Contacts' info
-      if (any(grepl("Contacts", categories))) {
-        siteConta <- get_site_contact(deimsid = deimsid)
-        siteInfo <- dplyr::left_join(
-          siteInfo,
-          siteConta,
-          by = c(
-            "title" = "title",
-            "uri" = "uri",
-            "geoCoord" = "geoCoord",
-            "country" = "country",
-            "geoElev.avg" = "geoElev.avg",
-            "geoElev.min" = "geoElev.min",
-            "geoElev.max" = "geoElev.max",
-            "geoElev.unit" = "geoElev.unit"
-          )
-        )
-      }
-      # add 'EnvCharacts' info
-      if (any(grepl("EnvCharacts", categories))) {
-        siteEnvCh <- get_site_envcharacts(deimsid = deimsid)
-        siteInfo <- dplyr::left_join(
-          siteInfo,
-          siteEnvCh,
-          by = c(
-            "title" = "title",
-            "uri" = "uri",
-            "geoCoord" = "geoCoord",
-            "country" = "country",
-            "geoElev.avg" = "geoElev.avg",
-            "geoElev.min" = "geoElev.min",
-            "geoElev.max" = "geoElev.max",
-            "geoElev.unit" = "geoElev.unit"
-          )
-        )
-      }
-      # add 'General' info
-      if (any(grepl("General", categories))) {
-        siteGener <- get_site_general(deimsid = deimsid)
-        siteInfo <- dplyr::left_join(
-          siteInfo,
-          siteGener,
-          by = c(
-            "title" = "title",
-            "uri" = "uri",
-            "geoCoord" = "geoCoord",
-            "country" = "country",
-            "geoElev.avg" = "geoElev.avg",
-            "geoElev.min" = "geoElev.min",
-            "geoElev.max" = "geoElev.max",
-            "geoElev.unit" = "geoElev.unit"
-          )
-        )
-      }
-      # add 'Infrastructure' info
-      if (any(grepl("Infrastructure", categories))) {
-        siteInfra <- get_site_infrastructure(deimsid = deimsid)
-        siteInfo <- dplyr::left_join(
-          siteInfo,
-          siteInfra,
-          by = c(
-            "title" = "title",
-            "uri" = "uri",
-            "geoCoord" = "geoCoord",
-            "country" = "country",
-            "geoElev.avg" = "geoElev.avg",
-            "geoElev.min" = "geoElev.min",
-            "geoElev.max" = "geoElev.max",
-            "geoElev.unit" = "geoElev.unit"
-          )
-        )
-      }
-      # add 'Observed properties' info
-      if (any(grepl("observedProperties", categories))) {
-        siteParam <- get_site_observedProperties(deimsid = deimsid)
-        siteInfo <- dplyr::left_join(
-          siteInfo,
-          siteParam,
-          by = c(
-            "title" = "title",
-            "uri" = "uri",
-            "geoCoord" = "geoCoord",
-            "country" = "country",
-            "geoElev.avg" = "geoElev.avg",
-            "geoElev.min" = "geoElev.min",
-            "geoElev.max" = "geoElev.max",
-            "geoElev.unit" = "geoElev.unit"
-          )
-        )
-      }
-      # add 'RelateRes' info
-      if (any(grepl("RelateRes", categories))) {
-        siteRelat <- get_site_related_resources(deimsid = deimsid)
-        siteInfo <- dplyr::left_join(
-          siteInfo,
-          siteRelat,
-          by = c(
-            "title" = "title",
-            "uri" = "uri",
-            "geoCoord" = "geoCoord",
-            "country" = "country",
-            "geoElev.avg" = "geoElev.avg",
-            "geoElev.min" = "geoElev.min",
-            "geoElev.max" = "geoElev.max",
-            "geoElev.unit" = "geoElev.unit"
-          )
-        )
-      }
-    }
-    bound <- get_site_boundaries(
-      deimsid = deimsid,
-      show_map = show_map,
-      with_locations = with_locations
-    )
-    if (!is.null(bound) && inherits(bound$data, "sf")) {
-      siteInfo <- siteInfo %>%
-        dplyr::left_join(
-          bound$data,
-          by = c("uri" = "uri")
-        ) %>%
-        sf::st_as_sf(sf_column_name = "geometry")
-    } else {
-      message("\n----\nThe requested DEIMS-SDR site doesn't cointain
-geographic boundary information.
-A simple tibble is returned and no map is showed.\n----\n")
-    }
-    res <- siteInfo
-  } else {
-    message("\n----\nThe requested page could not be found.
-            Please check the DEIMS ID\n----\n")
+  siteInfo <- .materialise_query(qo, deimsid, "site_info")
+  
+  if (is.null(siteInfo) || nrow(siteInfo) == 0L) {
+    message("\n----\nThe requested page could not be found.",
+            "\nPlease check the DEIMS ID: ", deimsid, "\n----\n")
+    return(invisible(NULL))
   }
-  # Final result
-  return(res)
+  
+  # Flatten country from list-column to vector
+  siteInfo$country <- unlist(siteInfo$country)
+  
+  # Set elevation units [m]
+  elev_cols <- c("geoElev.avg", "geoElev.min", "geoElev.max")
+  siteInfo[elev_cols] <- lapply(siteInfo[elev_cols], units::set_units, value = "m")
+  
+  # Parse created and changed as datetime
+  siteInfo$created <- lubridate::as_datetime(siteInfo$created)
+  siteInfo$changed <- lubridate::as_datetime(siteInfo$changed)
+  
+  # --- Optional categories ---
+  category_map <- list(
+    Affiliations = function() get_site_affiliations(deimsid),
+    Contacts = function() get_site_contact(deimsid),
+    EnvCharacts = function() get_site_envcharacts(deimsid),
+    General = function() get_site_general(deimsid),
+    Infrastructure = function() get_site_infrastructure(deimsid),
+    observedProperties = function() get_site_observedProperties(deimsid),
+    RelateRes = function() get_site_related_resources(deimsid)
+  )
+  
+  join_keys <- c(
+    "title", "uri", "geoCoord", "country",
+    "geoElev.avg", "geoElev.min", "geoElev.max", "geoElev.unit"
+  )
+  
+  if (any(!is.na(categories))) {
+    for (cat in names(category_map)) {
+      if (any(grepl(cat, categories))) {
+        extra <- category_map[[cat]]()
+        if (!is.null(extra)) {
+          siteInfo <- dplyr::left_join(siteInfo, extra, by = join_keys)
+        }
+      }
+    }
+  }
+  
+  # --- Boundaries ---
+  bound <- get_site_boundaries(
+    deimsid = deimsid,
+    show_map = show_map,
+    with_locations = with_locations
+  )
+  
+  if (!is.null(bound) && inherits(bound$data, "sf")) {
+    siteInfo <- siteInfo |>
+      dplyr::left_join(bound$data, by = "uri") |>
+      sf::st_as_sf(sf_column_name = "geometry")
+  } else {
+    message("\n----\nThe requested DEIMS-SDR site doesn't contain",
+            "\ngeographic boundary information.",
+            "\nA simple tibble is returned and no map is shown.\n----\n")
+  }
+  
+  siteInfo
 }

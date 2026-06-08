@@ -247,29 +247,3 @@ Table: List of Observed Properties of site (partial)
 |available phosphorus                |http://vocabs.lter-europe.net/EnvThes/22061 |
 |bacillariophyceae abundance         |http://vocabs.lter-europe.net/EnvThes/10083 |
 |bacillariophyceae biomass           |http://vocabs.lter-europe.net/EnvThes/10120 |
-
-```r
-siteRelateRes <- ReLTER::get_site_info(deimsid = deimsid,
-  category = "RelateRes"
-)
-# resource(s) related to the site (e.g. datasets, activities)
-knitr::kable(
-  siteRelateRes$relatedResources[[1]],
-  caption = "List of funding agencies of site"
-)
-```
-
-
-
-Table: List of funding agencies of site
-
-|relatedResourcesTitle                                                   |relatedResourcesChanged |uri                                                            |
-|:-----------------------------------------------------------------------|:-----------------------|:--------------------------------------------------------------|
-|Atmospheric deposition in Pallanza, Lake Maggiore watershed, 1980-2018  |2023-01-20 14:58:00     |https://deims.org/dataset/0ce46362-0aab-482a-b1f0-a444a5dada39 |
-|Phytoplankton_Biomass_Lake Maggiore_Ghiffa_station-1984-2018            |2020-12-16 10:46:00     |https://deims.org/dataset/0ab8425a-d574-4575-8ba9-5275c607b0c5 |
-|Water chemistry of Lake Maggiore, Ghiffa station, 1988-2018             |2021-11-03 06:10:00     |https://deims.org/dataset/69564188-89de-4879-ad88-4aa97c1d005d |
-|Transparency (Secchi depth) of Lake Maggiore, Ghiffa station, 1988-2018 |2022-02-16 11:36:00     |https://deims.org/dataset/e538c743-2149-49e3-9025-14a04ea7c90d |
-|Chlorophyll a_Lake_Maggiore_Ghiffa_Station-1984-2018                    |2023-03-03 11:17:00     |https://deims.org/dataset/c857c8e2-48aa-4dcd-a7fb-e089bd4c5c4e |
-|Moldaenke FluoroProbe sensor                                            |2022-05-19 21:02:00     |https://deims.org/sensors/NA                                   |
-
-Finally if you want get info from multiple site, please visit [this page](./sites_information.html).

@@ -45,7 +45,7 @@ resGOV <- ReLTER::get_site_speciesOccurrences(
 )
 ```
 
-<iframe src="./other/occurrences_into_site_map.html" height="405" width="720" style="border: 1px solid #464646;"></iframe>
+<iframe src="./occurrences_into_site_map.html" height="405" width="720" style="border: 1px solid #464646;"></iframe>
 
 
 ``` r

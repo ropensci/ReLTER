@@ -9,6 +9,7 @@
 #' @importFrom dtplyr lazy_dt
 #' @importFrom magrittr %>%
 #' @keywords internal
+#' @rdname do_Q
 #'
 ### function do_q
 do_Q <- function(q, jj) {

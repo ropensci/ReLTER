@@ -16,6 +16,7 @@
 #' @author Paolo Tagliolato, phD \email{tagliolato.p@@irea.cnr.it}
 #' @export
 #' @examples
+#' \dontrun{
 #' # Sampling location multipolygon
 #' location <- get_location_info(
 #'   locationid =
@@ -55,6 +56,7 @@
 #'   show_map = TRUE
 #' )
 #' location
+#' }
 #'
 #' @section The function output:
 #' \figure{get_location_info_fig.png}{Map of "LTER Zöbelboden, Austria, 

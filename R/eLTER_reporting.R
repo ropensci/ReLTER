@@ -58,7 +58,6 @@ reporting_compose_file_name <- function(
   time_span,
   version = Sys.Date() %>% format("V%Y%m%d")
 ) {
-
   if (!is.null(deimsid)) {
     info <- get_site_info(deimsid)
     country_code <- isoCodes$Alpha_3[isoCodes$Name == info$data$country]
@@ -121,14 +120,19 @@ reporting_compose_file_name <- function(
 #' version <- "V20220907"
 #'
 #' data <- tibble::tribble(
-#'                                                    ~SITE_CODE,   ~VARIABLE,        ~TIME,   ~VALUE,    ~UNIT,
-#'      "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6",      "TEMP", "2016-03-15",    "5.5",     "°C",
-#'      "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6",      "PREC", "2016-03-03",   "10.2",     "mm",
-#'      "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6",      "TEMP", "2016-02-15",    "2.5",     "°C",
-#'      "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6",      "NH4N",    "2016-03",    "5.5",   "mg/l",
-#'      "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6",      "SO4S",    "2016-03",   "10.2",   "mg/l",
-#'      "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6",        "CA",    "2016-03",    "2.5",   "mg/l"
+#'   ~SITE_CODE,
+#'   ~VARIABLE,
+#'   ~TIME,
+#'   ~VALUE,
+#'   ~UNIT,
+#'   "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6", "TEMP", "2016-03-15", "5.5",  "\u00b0C",
+#'   "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6", "PREC", "2016-03-03", "10.2", "mm",
+#'   "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6", "TEMP", "2016-02-15", "2.5",  "\u00b0C",
+#'   "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6", "NH4N", "2016-03",    "5.5",  "mg/l",
+#'   "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6", "SO4S", "2016-03",    "10.2", "mg/l",
+#'   "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6", "CA",   "2016-03",    "2.5",  "mg/l"
 #' )
+#' 
 #' station <- dplyr::tribble(
 #'   ~SITE_CODE, ~STATION_CODE, ~STYPE, ~LAT,      ~LON,       ~ALTITUDE,
 #'   deimsid,    "IP2",         "AREA",  45.340805, 7.88887495, 265
@@ -320,14 +324,19 @@ reporting_save_archive <- function(
 #' )
 #'
 #' data <- tibble::tribble(
-#'                                                    ~SITE_CODE,   ~VARIABLE,        ~TIME,   ~VALUE,    ~UNIT,
-#'      "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6",      "TEMP", "2016-03-15",    "5.5",     "°C",
-#'      "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6",      "PREC", "2016-03-03",   "10.2",     "mm",
-#'      "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6",      "TEMP", "2016-02-15",    "2.5",     "°C",
-#'      "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6",      "NH4N",    "2016-03",    "5.5",   "mg/l",
-#'      "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6",      "SO4S",    "2016-03",   "10.2",   "mg/l",
-#'      "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6",        "CA",    "2016-03",    "2.5",   "mg/l"
+#'   ~SITE_CODE,
+#'   ~VARIABLE,
+#'   ~TIME,
+#'   ~VALUE,
+#'   ~UNIT,
+#'   "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6", "TEMP", "2016-03-15", "5.5",  "\u00b0C",
+#'   "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6", "PREC", "2016-03-03", "10.2", "mm",
+#'   "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6", "TEMP", "2016-02-15", "2.5",  "\u00b0C",
+#'   "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6", "NH4N", "2016-03",    "5.5",  "mg/l",
+#'   "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6", "SO4S", "2016-03",    "10.2", "mg/l",
+#'   "https://deims.org/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6", "CA",   "2016-03",    "2.5",  "mg/l"
 #' )
+#' 
 #' station <- dplyr::tribble(
 #'   ~SITE_CODE, ~STATION_CODE, ~STYPE, ~LAT,      ~LON,       ~ALTITUDE,
 #'   deimsid,    "IP2",         "AREA",  45.340805, 7.88887495, 265

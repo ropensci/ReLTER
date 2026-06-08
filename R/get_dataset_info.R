@@ -1,5 +1,5 @@
 #' Obtain the information about of an eLTER dataset.
-#' @description `r lifecycle::badge("stable")`
+#' @description `r lifecycle::badge("deprecated")`
 #' This function obtains the information about of an eLTER
 #' dataset (e.g.
 #' \url{https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef})

@@ -17,41 +17,30 @@
 ### function get_site_affiliations
 get_site_affiliations <- function(deimsid) {
   qo <- queries_jq_deims[[get_deims_API_version()]]$site_affiliations
-  jj <- get_id(deimsid, qo$path)
-  if (is.na(attr(jj, "status"))) {
-    invisible(
-      utils::capture.output(
-        affiliations <- dplyr::as_tibble(do_Q(qo$query, jj))
-      )
-    )
-    # set country field as vector
-    affiliations$country <- unlist(affiliations$country)
-    # set the UOM of geoElev.avg, geoElev.min, and geoElev.max
-    affiliations$geoElev.avg <- units::set_units(
-      x = affiliations$geoElev.avg,
-      value = 'm'
-    )
-    affiliations$geoElev.min <- units::set_units(
-      x = affiliations$geoElev.min,
-      value = 'm'
-    )
-    affiliations$geoElev.max <- units::set_units(
-      x = affiliations$geoElev.max,
-      value = 'm'
-    )
-    # merge network.id.prefix with network.id.suffix
-    affiliations$networks[[1]] <- affiliations$networks[[1]] %>%
+  affiliations <- .materialise_query(qo, deimsid, "site_affiliations")
+  
+  if (is.null(affiliations) || nrow(affiliations) == 0L) {
+    warning("No results returned for: ", deimsid)
+    return(invisible(NULL))
+  }
+  
+  # Flatten country from list-column to vector
+  affiliations$country <- unlist(affiliations$country)
+  
+  # Set elevation units [m]
+  elev_cols <- c("geoElev.avg", "geoElev.min", "geoElev.max")
+  affiliations[elev_cols] <- lapply(affiliations[elev_cols], units::set_units, value = "m")
+  
+  # Merge network.id.prefix and network.id.suffix into uri
+  if (!is.null(affiliations$networks[[1]]) && nrow(affiliations$networks[[1]]) > 0L) {
+    affiliations$networks[[1]] <- affiliations$networks[[1]] |>
       dplyr::mutate(
         name = network$name,
-        uri = paste0(network$id$prefix,
-                     network$id$suffix),
+        uri  = paste0(network$id$prefix, network$id$suffix),
         .keep = "unused",
         .after = 1
       )
-  } else {
-    message("\n----\nThe requested page could not be found.
-Please check again the DEIMS ID\n----\n")
-    affiliations <- NULL
   }
+  
   affiliations
 }

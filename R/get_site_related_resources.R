@@ -16,68 +16,44 @@
 ### function get_site_related_resources
 get_site_related_resources <- function(deimsid) {
   qo <- queries_jq_deims[[get_deims_API_version()]]$site_relatedResources
-  jj <- get_id(deimsid, qo$path)
-  if (is.na(attr(jj, "status"))) {
-    invisible(
-      utils::capture.output(
-        relatedResources <- dplyr::as_tibble(do_Q(qo$query, jj))
-      )
-    )
-    if (!is.na(relatedResources$relatedResources)) {
-      colnames(relatedResources$relatedResources[[1]]) <- c(
-        "relatedResourcesId",
-        "relatedResourcesTitle",
-        "relatedResourcesChanged"
-      )
-      relatedResources$relatedResources[[1]]$uri <- paste0(
-        relatedResources$relatedResources[[1]]$relatedResourcesId$prefix,
-        relatedResources$relatedResources[[1]]$relatedResourcesId$suffix
-      )
-      relatedResources$relatedResources[[1]] <-
-        relatedResources$relatedResources[[1]] %>%
-          dplyr::select(
-            "relatedResourcesTitle",
-            "relatedResourcesChanged",
-            "uri"
-          )
-      relatedResources$relatedResources[[1]]$relatedResourcesChanged <-
-        as.POSIXct(
-        relatedResources$relatedResources[[1]]$relatedResourcesChanged,
-        format = "%Y-%m-%dT%H:%M"
-      )
-      relatedResources
-    } else {
-      relatedResourcesId <- NA
-      relatedResourcesTitle <- NA
-      relatedResourcesChanged <- NA
-      relatedResources$relatedResources <- list(
-        data.frame(
-          relatedResourcesId,
-          relatedResourcesTitle,
-          relatedResourcesChanged
-        )
-      )
-      relatedResources
-    }
-    # set country field as vector
-    relatedResources$country <- unlist(relatedResources$country)
-    # set the UOM of geoElev.avg, geoElev.min, and geoElev.max
-    relatedResources$geoElev.avg <- units::set_units(
-      x = relatedResources$geoElev.avg,
-      value = 'm'
-    )
-    relatedResources$geoElev.min <- units::set_units(
-      x = relatedResources$geoElev.min,
-      value = 'm'
-    )
-    relatedResources$geoElev.max <- units::set_units(
-      x = relatedResources$geoElev.max,
-      value = 'm'
-    )
-    relatedResources
-  } else {
-    message("\n----\nThe requested page could not be found.
-Please check again the DEIMS ID\n----\n")
-    relatedResources <- NULL
+  relatedResources <- .materialise_query(qo, deimsid, "site_relatedResources")
+  
+  if (is.null(relatedResources) || nrow(relatedResources) == 0L) {
+    warning("No results returned for: ", deimsid)
+    return(invisible(NULL))
   }
+  
+  # Process or initialise relatedResources nested column
+  if (!is.na(relatedResources$relatedResources)) {
+    colnames(relatedResources$relatedResources[[1]]) <- c(
+      "relatedResourcesId",
+      "relatedResourcesTitle",
+      "relatedResourcesChanged"
+    )
+    
+    relatedResources$relatedResources[[1]] <- relatedResources$relatedResources[[1]] |>
+      dplyr::mutate(
+        uri = paste0(relatedResourcesId$prefix, relatedResourcesId$suffix),
+        relatedResourcesChanged = as.POSIXct(relatedResourcesChanged, format = "%Y-%m-%dT%H:%M")
+      ) |>
+      dplyr::select("relatedResourcesTitle", "relatedResourcesChanged", "uri")
+    
+  } else {
+    relatedResources$relatedResources <- list(
+      data.frame(
+        relatedResourcesId      = NA_character_,
+        relatedResourcesTitle   = NA_character_,
+        relatedResourcesChanged = as.POSIXct(NA)
+      )
+    )
+  }
+  
+  # Flatten country from list-column to vector
+  relatedResources$country <- unlist(relatedResources$country)
+  
+  # Set elevation units [m]
+  elev_cols <- c("geoElev.avg", "geoElev.min", "geoElev.max")
+  relatedResources[elev_cols] <- lapply(relatedResources[elev_cols], units::set_units, value = "m")
+  
+  relatedResources
 }

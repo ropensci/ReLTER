@@ -16,47 +16,34 @@
 ### function get_site_observedProperties
 get_site_observedProperties <- function(deimsid) {
   qo <- queries_jq_deims[[get_deims_API_version()]]$site_observedProperties
-  jj <- get_id(deimsid, qo$path)
-  if (is.na(attr(jj, "status"))) {
-    invisible(
-      utils::capture.output(
-        observedProperties <- dplyr::as_tibble(do_Q(qo$query, jj))
-      )
-    )
-    if (!is.na(observedProperties$observedProperties)) {
-      colnames(observedProperties$observedProperties[[1]]) <- c(
-        "observedPropertiesLabel",
-        "observedPropertiesUri"
-      )
-    } else {
-      observedPropertiesLabel <- NULL
-      observedPropertiesUri <- NULL
-      observedProperties$observedProperties <- list(
-        data.frame(
-          observedPropertiesLabel,
-          observedPropertiesUri
-        )
-      )
-    }
-    # set country field as vector
-    observedProperties$country <- unlist(observedProperties$country)
-    # set the UOM of geoElev.avg, geoElev.min, and geoElev.max
-    observedProperties$geoElev.avg <- units::set_units(
-      x = observedProperties$geoElev.avg,
-      value = 'm'
-    )
-    observedProperties$geoElev.min <- units::set_units(
-      x = observedProperties$geoElev.min,
-      value = 'm'
-    )
-    observedProperties$geoElev.max <- units::set_units(
-      x = observedProperties$geoElev.max,
-      value = 'm'
+  observedProperties <- .materialise_query(qo, deimsid, "site_observedProperties")
+  
+  if (is.null(observedProperties) || nrow(observedProperties) == 0L) {
+    warning("No results returned for: ", deimsid)
+    return(invisible(NULL))
+  }
+  
+  # Rename or initialise observedProperties nested column
+  if (!is.na(observedProperties$observedProperties)) {
+    colnames(observedProperties$observedProperties[[1]]) <- c(
+      "observedPropertiesLabel",
+      "observedPropertiesUri"
     )
   } else {
-    message("\n----\nThe requested page could not be found.
-Please check again the DEIMS ID\n----\n")
-    observedProperties <- NULL
+    observedProperties$observedProperties <- list(
+      data.frame(
+        observedPropertiesLabel = character(0),
+        observedPropertiesUri   = character(0)
+      )
+    )
   }
+  
+  # Flatten country from list-column to vector
+  observedProperties$country <- unlist(observedProperties$country)
+  
+  # Set elevation units [m]
+  elev_cols <- c("geoElev.avg", "geoElev.min", "geoElev.max")
+  observedProperties[elev_cols] <- lapply(observedProperties[elev_cols], units::set_units, value = "m")
+  
   observedProperties
 }

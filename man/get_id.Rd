@@ -20,8 +20,6 @@ Used for testing purposes to avoid errors in case or HTTP error 500.
 If missing, the content of the internal variable}
 
 \item{...}{Arguments to be passed to \code{httr::RETRY()}.}
-
-\item{jj}{a character}
 }
 \value{
 A character containing the json content, and an attribute \code{status}.

@@ -7,7 +7,7 @@
 #' @param networkDEIMSID A `character`. The DEIMS ID of the network
 #' from DEIMS-SDR website. DEIMS ID information
 #' \href{https://deims.org/docs/deimsid.html}{here} and Complete list of ILTER
-#' networks \href{https://deims.org/search?f[0]=result_type:network}{here}.
+#' networks \href{https://deims.org/networks}{here}.
 #' @param countryCode A `character` following the ISO 3166-1 alpha-3 codes.
 #' This ISO convention consists of three-letter country codes as defined in
 #' ISO 3166-1. The ISO 3166 standard published by the International
@@ -74,7 +74,7 @@
 #'    ggspatial::annotation_north_arrow(
 #'      location = "bl", # bottom right
 #'      which_north = "true",
-#'      style = north_arrow_fancy_orienteering(),
+#'      style = ggspatial::north_arrow_fancy_orienteering(),
 #'      height = ggplot2::unit(1, "cm"),
 #'      width = ggplot2::unit(1, "cm")
 #'    )
@@ -91,6 +91,12 @@ produce_network_points_map <- function(networkDEIMSID, countryCode) {
     stop(
       "\n----\nThe function 'produce_network_points_map()' requires the optional package 'geodata'.\n",
       "Please install it with: install.packages(\"geodata\")\n----\n"
+    )
+  }
+  if (!requireNamespace("ISOcodes", quietly = TRUE)) {
+    stop(
+      "\n----\nThe function 'produce_site_map()' requires the optional package 'ISOcodes'.\n",
+      "Please install it with: install.packages(\"ISOcodes\")\n----\n"
     )
   }
   deimsbaseurl <- get_deims_base_url()
@@ -127,7 +133,7 @@ produce_network_points_map <- function(networkDEIMSID, countryCode) {
     )
     gadm_fx <- getExportedValue("geodata", "gadm")
     if (any(networkSitesGeo_valid)) {
-      if (countryCode %in% isoCodes$Alpha_3 == TRUE) {
+      if (countryCode %in% ISOcodes::ISO_3166_1$Alpha_3 == TRUE) {
         try({
           country <- gadm_fx(country = countryCode, level = 0, path = tempdir())
         })

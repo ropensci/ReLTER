@@ -24,7 +24,7 @@ sites_tbl_sf <- get_sites_interactive()
 \seealso{
 \link[shiny:runGadget]{shiny::runGadget}
 
-\code{\link[leaflet.extras:draw]{leaflet.extras::addDrawToolbar()}}
+\code{\link[leaflet.extras:addDrawToolbar]{leaflet.extras::addDrawToolbar()}}
 }
 \author{
 Paolo Tagliolato

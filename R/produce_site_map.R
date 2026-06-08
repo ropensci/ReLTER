@@ -82,6 +82,12 @@ produce_site_map <- function(deimsid, scale_location = "bl", arrow_location = "t
       "Please install it with: install.packages(\"prettymapr\")\n----\n"
     )
   }
+  if (!requireNamespace("ISOcodes", quietly = TRUE)) {
+    stop(
+      "\n----\nThe function 'produce_site_map()' requires the optional package 'ISOcodes'.\n",
+      "Please install it with: install.packages(\"ISOcodes\")\n----\n"
+    )
+  }
   # Load required packages
   siteInfo <- get_site_info(
     deimsid = deimsid,
@@ -109,7 +115,7 @@ produce_site_map <- function(deimsid, scale_location = "bl", arrow_location = "t
     biomeColor$border[biomeColor$geoBonBiome == geoBonBiome]
   # Set the color and border color
   networkID <- tail(siteInfo$networks[[1]]$uri, 1)
-  countryCode <- isoCodes$Alpha_3[isoCodes$Name == siteInfo$country]
+  countryCode <- ISOcodes::ISO_3166_1$Alpha_3[ISOcodes::ISO_3166_1$Name == siteInfo$country]
   countryPlot <- produce_network_points_map(
     networkDEIMSID = networkID,
     countryCode = countryCode
@@ -118,12 +124,14 @@ produce_site_map <- function(deimsid, scale_location = "bl", arrow_location = "t
       panel.grid = ggplot2::element_blank(),
       axis.text = ggplot2::element_blank(),
       axis.ticks = ggplot2::element_blank(),
-      axis.title = ggplot2::element_blank()
+      axis.title = ggplot2::element_blank(),
+      panel.background = ggplot2::element_rect(
+        fill = "white",
+        color = "black",
+        linewidth = 1
+      )
     ) +
-    ggplot2::labs(title = NULL, subtitle = NULL) +
-    ggplot2::theme(
-      panel.background = ggplot2::element_rect(fill = "white", color = "black", size = 1)
-    )
+    ggplot2::labs(title = NULL, subtitle = NULL)
   # Add the point of the site
   gadm_fx <- getExportedValue("geodata", "gadm")
   point_sf <- sf::st_as_sfc(siteInfo$geoCoord, crs = 4326) 

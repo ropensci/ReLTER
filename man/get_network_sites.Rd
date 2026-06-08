@@ -10,7 +10,7 @@ get_network_sites(networkDEIMSID)
 \item{networkDEIMSID}{A \code{character}. The DEIMS ID of the network from
 DEIMS-SDR website. DEIMS ID information
 \href{https://deims.org/docs/deimsid.html}{here} and Complete list of
-networks \href{https://deims.org/search?f\link{0}=result_type:network}{here}.
+networks \href{https://deims.org/networks}{here}.
 The DEIMS ID of network is the URL for the network page.}
 }
 \value{

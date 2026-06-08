@@ -94,7 +94,7 @@ author = {Alessandro Oggioni and Micha Silver and Paolo Tagliolato and Arnon Kar
 or:
 
 Alessandro Oggioni, Micha Silver, Luigi Ranghetti & Paolo Tagliolato.
-(2025). ReLTER: An Interface for the eLTER Community (v3.0). Zenodo.
+(2025). ReLTER: An Interface for the eLTER Community (v3.1). Zenodo.
 <https://doi.org/10.5281/zenodo.5576813>
 
 ``` bibtex
@@ -103,7 +103,7 @@ Alessandro Oggioni, Micha Silver, Luigi Ranghetti & Paolo Tagliolato.
   title        = {ReLTER: An Interface for the eLTER Community},
   year         = 2025,
   publisher    = {Zenodo},
-  version      = {v3.0},
+  version      = {v3.1},
   doi          = {10.5281/zenodo.5576813},
   url          = {https://doi.org/10.5281/zenodo.5576813}
 }

@@ -1,19 +1,96 @@
-# removes false positives from the check
-utils::globalVariables(
-  c(
-    "freq",
-    "hjust",
-    "label",
-    "middle",
-    "n",
-    "parameterGroups",
-    "vjust",
-    "end",
-    "start",
-    "perc",
-    "prod_opt_list"
-  )
-)
+# Suppress R CMD check NOTEs for variables used in dplyr/tidyverse pipelines
+utils::globalVariables(c(
+  # already present
+  "freq",
+  "hjust",
+  "label",
+  "middle",
+  "n",
+  "parameterGroups",
+  "vjust",
+  "end",
+  "start",
+  "perc",
+  "prod_opt_list",
+  # shiny functions used conditionally (shiny in Suggests)
+  "reactive",
+  "observeEvent",
+  "req",
+  # dplyr tidyselect
+  "any_of",
+  # eLTER_reporting_occ.R
+  "ABS_POSITION",
+  "acceptedScientificName",
+  "aphiaID",
+  "AUTHOR_ID",
+  "CODE_URL",
+  "dataset_id",
+  "datasetKey",
+  "date_mid",
+  "eLTER_data_reporting_format",
+  "eventDate",
+  "eventTime",
+  "FIELD_NAME",
+  "FLAGQUA",
+  "geometry",
+  "id",
+  "individualCount",
+  "institutionCode",
+  "key",
+  "license_code",
+  "location",
+  "minimumDepthInMeters",
+  "name",
+  "prov",
+  "quality_grade",
+  "RECORD_ID",
+  "ref_CODE_URL",
+  "ref_NAME",
+  "scientificName",
+  "scientificNameID",
+  "SITE_CODE",
+  "taxon.id",
+  "taxonKey",
+  "TIME",
+  "time_observed_at",
+  "uri",
+  "user.id",
+  "VALUE",
+  "VARIABLE",
+  "TAXA",
+  # get_zenodo_data.R
+  "affiliation",
+  "filesize",
+  "orcid",
+  # get_sites_within_radius.R
+  "bbx",
+  # taxon_id_pesi.R
+  "accordingTo",
+  "authorship",
+  "canonicalName",
+  "checkStatus",
+  "LSID",
+  # taxon_id_worms.R
+  "matchType",
+  "status",
+  "valid_AphiaID",
+  "valid_authority",
+  "valid_name",
+  # get_location_info.R
+  "locationType",
+  "relatedSite.title",
+  # get_site_affiliations.R
+  "network",
+  # get_site_related_resources.R
+  "relatedResourcesChanged",
+  "relatedResourcesId",
+  # get_site_speciesOccurrences.R / eLTER_reporting_occ.R
+  "ORG_NAME",
+  # produce_site_observedProperties_waffle.R
+  "group",
+  "x",
+  "y"
+))
 
 #' Package settings that can be changed by the user
 #' @description `r lifecycle::badge("stable")`

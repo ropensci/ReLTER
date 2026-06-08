@@ -180,7 +180,3 @@ get_sites_within_3d_bounding_box<-function(bbox, elevation_range=NULL, show_map=
     features
   }
 }
-# get_sites_within_3d_bounding_box(bbx)
-# 
-# get_sites_within_3d_bounding_box(define_bbx(), elevation_range = c(100, 2000))
-# get_sites_within_radius(elevation_range = c(0,2000))
