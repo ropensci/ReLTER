@@ -36,6 +36,7 @@ provided in \href{https://deims.org/}{DEIMS-SDR catalogue}.
 }
 
 \examples{
+\dontrun{
 # print the map of the sensor
 sensor_B3 <- get_sensor_info(
   sensorid =
@@ -58,7 +59,7 @@ sensor_FP <- get_sensor_info(
   show_map = FALSE
 )
 sensor_FP
-
+}
 }
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
