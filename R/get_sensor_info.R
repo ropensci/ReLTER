@@ -24,6 +24,7 @@
 #' @importFrom utils capture.output
 #' @export
 #' @examples
+#' \dontrun{
 #' # print the map of the sensor
 #' sensor_B3 <- get_sensor_info(
 #'   sensorid =
@@ -46,7 +47,7 @@
 #'   show_map = FALSE
 #' )
 #' sensor_FP
-#'
+#' }
 #' @section The function output:
 #' \figure{get_sensor_info_fig.png}{Map of position of the "Climate Station B3" sensor}
 #'
