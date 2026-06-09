@@ -25,13 +25,14 @@
 #' @importFrom utils capture.output
 #' @export
 #' @examples
+#' \dontrun{
 #' tDataset <- get_dataset_info(
 #'   datasetid =
 #'   "https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef",
 #'   show_map = TRUE
 #' )
 #' tDataset
-#'
+#' }
 #' @section The function output:
 #' \figure{get_dataset_info_fig.png}{Map of "LTER Northern Adriatic Sea (Italy)
 #' marine data from 1965 to 2015" dataset}

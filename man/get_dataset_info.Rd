@@ -37,13 +37,14 @@ marine data from 1965 to 2015" dataset}
 }
 
 \examples{
+\dontrun{
 tDataset <- get_dataset_info(
   datasetid =
   "https://deims.org/dataset/38d604ef-decb-4d67-8ac3-cc843d10d3ef",
   show_map = TRUE
 )
 tDataset
-
+}
 }
 \author{
 Alessandro Oggioni, phD (2020) \email{oggioni.a@irea.cnr.it}
