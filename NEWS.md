@@ -1,3 +1,17 @@
+# ReLTER 3.1.1
+
+released on 11/06/2026
+
+## Bug fixes
+- Fixed message reporting for empty results within site boundary (now correctly uses `eLTER_title.x`).
+- Resolved edge cases where spatial intersection could drop key attributes.
+
+## New features
+- Extended eLTER metadata support: new fields include `geology`, `hydrology`, `soils`, `vegetation`, and `size.value`.
+- Cleaner post-intersection selection using original columns + `eLTER_*` fields.
+
+--------------------------------------------------------------------------------
+
 # ReLTER 3.1.0
 
 released on 04/06/2026
