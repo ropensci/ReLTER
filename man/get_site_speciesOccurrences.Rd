@@ -43,7 +43,8 @@ element contains the occurrence geometry and the following eLTER site
 metadata fields (prefixed with \code{eLTER_}): \code{title}, \code{uri}, \code{created},
 \code{changed}, \code{geoCoord}, \code{country}, \code{geoElev.avg}, \code{geoElev.min},
 \code{geoElev.max}, \code{biogeographicalRegion}, \code{biome}, \code{ecosystemType},
-\code{eunisHabitat}, \code{landforms}, \code{geoBonBiome}.
+\code{eunisHabitat}, \code{landforms}, \code{geoBonBiome}, \code{geology}, \code{hydrology},
+\code{soils}, \code{vegetation}, \code{size.value}.
 If no occurrences are found within the boundary for a given source,
 that source is omitted from the list and an informative message is
 printed. Returns \code{invisible(NULL)} if the site has no boundary or if
@@ -67,14 +68,25 @@ from OBIS in the marine site Gulf of Venice}
 
 \examples{
 \dontrun{
-# Terrestrial site: Saldur River Catchment (GBIF and iNaturalist)
+# Terrestrial site: Saldur River Catchment (GBIF and iNaturalist, excluding records sourced from iNaturalist)
 occ_SRC <- get_site_speciesOccurrences(
   deimsid = "https://deims.org/97ff6180-e5d1-45f2-a559-8a7872eb26b1",
   list_DS = c("gbif", "inat"),
   show_map = TRUE,
-  limit = 50
+  limit = 50,
+  exclude_inat_from_gbif = TRUE
 )
 occ_SRC
+
+# Terrestrial site: Gran Paradiso National Park (only GBIF considering, excluding records sourced from iNaturalist)
+occ_GPNP <- get_site_speciesOccurrences(
+  deimsid = "https://deims.org/15c3e841-8494-42d2-a44e-c49a0ff25946",
+  list_DS = "gbif",
+  show_map = TRUE,
+  limit = 50,
+  exclude_inat_from_gbif = TRUE
+)
+occ_GPNP
 
 # Marine site: Gulf of Venice (OBIS only)
 occ_GoV <- get_site_speciesOccurrences(
@@ -85,12 +97,13 @@ occ_GoV <- get_site_speciesOccurrences(
 )
 occ_GoV
 
-# Marine site: Gulf of Venice (all sources, with map)
+# Marine site: Gulf of Venice (all sources excluding records of GBIF sourced from iNaturalist)
 occ_GoV_all <- get_site_speciesOccurrences(
   deimsid = "https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd",
   list_DS = c("gbif", "inat", "obis"),
   show_map = TRUE,
-  limit = 10
+  limit = 10,
+  exclude_inat_from_gbif = TRUE
 )
 occ_GoV_all$obis
 occ_GoV_all$map

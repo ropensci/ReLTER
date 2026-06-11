@@ -1,6 +1,6 @@
 {
   "title": "ReLTER: An Interface for the eLTER Community (v3.1)",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "creators": [
     {
       "name": "Oggioni, Alessandro",
@@ -23,5 +23,5 @@
   "license": {
     "id": "GPL-3.0-or-later"
   },
-  "publication_date": "2025-08-20"
+  "publication_date": "2026-06-10"
 }
