@@ -31,7 +31,8 @@
 #' metadata fields (prefixed with `eLTER_`): `title`, `uri`, `created`,
 #' `changed`, `geoCoord`, `country`, `geoElev.avg`, `geoElev.min`,
 #' `geoElev.max`, `biogeographicalRegion`, `biome`, `ecosystemType`,
-#' `eunisHabitat`, `landforms`, `geoBonBiome`.
+#' `eunisHabitat`, `landforms`, `geoBonBiome`, `geology`, `hydrology`,
+#' `soils`, `vegetation`, `size.value`.
 #' If no occurrences are found within the boundary for a given source,
 #' that source is omitted from the list and an informative message is
 #' printed. Returns `invisible(NULL)` if the site has no boundary or if
@@ -53,14 +54,25 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' # Terrestrial site: Saldur River Catchment (GBIF and iNaturalist)
+#' # Terrestrial site: Saldur River Catchment (GBIF and iNaturalist, excluding records sourced from iNaturalist)
 #' occ_SRC <- get_site_speciesOccurrences(
 #'   deimsid = "https://deims.org/97ff6180-e5d1-45f2-a559-8a7872eb26b1",
 #'   list_DS = c("gbif", "inat"),
 #'   show_map = TRUE,
-#'   limit = 50
+#'   limit = 50,
+#'   exclude_inat_from_gbif = TRUE
 #' )
 #' occ_SRC
+#' 
+#' # Terrestrial site: Gran Paradiso National Park (only GBIF considering, excluding records sourced from iNaturalist)
+#' occ_GPNP <- get_site_speciesOccurrences(
+#'   deimsid = "https://deims.org/15c3e841-8494-42d2-a44e-c49a0ff25946",
+#'   list_DS = "gbif",
+#'   show_map = TRUE,
+#'   limit = 50,
+#'   exclude_inat_from_gbif = TRUE
+#' )
+#' occ_GPNP
 #'
 #' # Marine site: Gulf of Venice (OBIS only)
 #' occ_GoV <- get_site_speciesOccurrences(
@@ -71,12 +83,13 @@
 #' )
 #' occ_GoV
 #'
-#' # Marine site: Gulf of Venice (all sources, with map)
+#' # Marine site: Gulf of Venice (all sources excluding records of GBIF sourced from iNaturalist)
 #' occ_GoV_all <- get_site_speciesOccurrences(
 #'   deimsid = "https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd",
 #'   list_DS = c("gbif", "inat", "obis"),
 #'   show_map = TRUE,
-#'   limit = 10
+#'   limit = 10,
+#'   exclude_inat_from_gbif = TRUE
 #' )
 #' occ_GoV_all$obis
 #' occ_GoV_all$map
@@ -115,6 +128,23 @@ get_site_speciesOccurrences <- function(
     message("\n----\nNo boundary found for DEIMS ID: ", deimsid, "\n----\n")
     return(invisible(NULL))
   }
+  
+  # --- eLTER intersection fields ---
+  elter_fields <- c(
+    "title.x", "uri", "created", "changed", "geoCoord", "country",
+    "geoElev.avg", "geoElev.min", "geoElev.max",
+    "biogeographicalRegion", "biome", "ecosystemType",
+    "eunisHabitat", "landforms", "geoBonBiome",
+    "geology", "hydrology", "soils", "vegetation", "size.value"
+  )
+  
+  keep_boundary <- intersect(elter_fields, names(boundary))
+  boundary <- boundary |>
+    dplyr::select(dplyr::all_of(keep_boundary), geometry) |>
+    dplyr::rename_with(
+      .fn   = ~ paste0("eLTER_", .x),
+      .cols = dplyr::all_of(keep_boundary)
+    )
   
   bbox_wkt <- sf::st_as_text(sf::st_as_sfc(sf::st_bbox(boundary)))
   
@@ -178,19 +208,12 @@ get_site_speciesOccurrences <- function(
     )
   }
   
-  # --- eLTER intersection fields ---
-  elter_fields <- c(
-    "title.x", "uri", "created", "changed", "geoCoord", "country",
-    "geoElev.avg", "geoElev.min", "geoElev.max",
-    "biogeographicalRegion", "biome", "ecosystemType",
-    "eunisHabitat", "landforms", "geoBonBiome"
-  )
-  
   # --- Helper: convert to sf and intersect with site boundary ---
   .to_sf_and_intersect <- function(df, lon_col, lat_col, source_name = "") {
+    
     no_occ_msg <- function() message(
       "No occurrences found within the boundary of eLTER site '",
-      boundary$title.x, "' for: ", toupper(source_name)
+      boundary$eLTER_title.x, "' for: ", toupper(source_name)
     )
     
     if (is.null(df) || nrow(df) == 0L) { no_occ_msg(); return(NULL) }
@@ -201,18 +224,17 @@ get_site_speciesOccurrences <- function(
     
     if (nrow(df) == 0L) { no_occ_msg(); return(NULL) }
     
-    sf_obj <- sf::st_as_sf(df, coords = c(lon_col, lat_col), crs = 4326)
+    sf_obj        <- sf::st_as_sf(df, coords = c(lon_col, lat_col), crs = 4326)
+    original_cols <- setdiff(names(sf_obj), "geometry")
     boundary_4326 <- sf::st_transform(boundary, crs = 4326)
-    sf_obj <- suppressWarnings(sf::st_intersection(x = sf_obj, y = boundary_4326))
+    sf_obj        <- suppressWarnings(sf::st_intersection(x = sf_obj, y = boundary_4326))
     
     if (nrow(sf_obj) == 0L) { no_occ_msg(); return(NULL) }
     
-    keep <- intersect(elter_fields, names(sf_obj))
-    
     sf_obj |>
-      dplyr::rename_with(
-        .fn   = ~ paste0("eLTER_", .x),
-        .cols = dplyr::all_of(keep)
+      dplyr::select(
+        dplyr::any_of(original_cols),
+        dplyr::starts_with("eLTER_")
       )
   }
   
