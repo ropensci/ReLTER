@@ -5,7 +5,10 @@
 #' (iNaturalist)[https://www.inaturalist.org/] and
 #' (OBIS)[https://obis.org/] and intersects them with the boundary of
 #' an eLTER site retrieved from the (DEIMS-SDR API)[https://deims.org/]
-#' via the (spocc package)[https://docs.ropensci.org/spocc/] (SPecies OCCurrence data from across the web).
+#' via the (spocc package)[https://docs.ropensci.org/spocc/]
+#' (SPecies OCCurrence data from across the web),
+#' and intersects them with the boundary of
+#' an eLTER site retrieved from the [DEIMS-SDR API](https://deims.org/).
 #' Only occurrences falling within the site
 #' polygon are returned, enriched with eLTER site metadata.
 #' @param deimsid A `character`. The DEIMS ID of the site from
