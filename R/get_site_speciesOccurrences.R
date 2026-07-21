@@ -1,11 +1,12 @@
 #' Retrieve species occurrences within an eLTER site boundary
 #' @description `r lifecycle::badge("stable")`
 #' This function downloads species occurrence records from
-#' GBIF \url{https://www.gbif.org},
-#' iNaturalist \url{https://www.inaturalist.org/} and
-#' OBIS \url{https://obis.org/} and intersects them with the boundary of
-#' an eLTER site retrieved from the DEIMS-SDR API
-#' \url{https://deims.org/}. Only occurrences falling within the site
+#' (GBIF)[https://www.gbif.org],
+#' (iNaturalist)[https://www.inaturalist.org/] and
+#' (OBIS)[https://obis.org/] and intersects them with the boundary of
+#' an eLTER site retrieved from the (DEIMS-SDR API)[https://deims.org/]
+#' via the (spocc package)[https://docs.ropensci.org/spocc/] (SPecies OCCurrence data from across the web).
+#' Only occurrences falling within the site
 #' polygon are returned, enriched with eLTER site metadata.
 #' @param deimsid A `character`. The DEIMS ID of the site from
 #' DEIMS-SDR website. DEIMS ID information
