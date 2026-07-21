@@ -3,7 +3,9 @@ name: Publish Docker image on tag
 on:
   push:
     tags:
-      - "v*"
+      - "*"
+  release:
+    types: [created]
 
 jobs:
   build:
