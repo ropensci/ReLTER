@@ -7,7 +7,7 @@
     developers (https://github.com/ropensci/ReLTER).\n\n",
     "If you use this package, please cite as:\n\n",
     "Alessandro Oggioni, Micha Silver, Luigi Ranghetti & Paolo Tagliolato.
-    (2025) ReLTER: An Interface for the eLTER Community (v3.0). Zenodo.
+    (2026) ReLTER: An Interface for the eLTER Community (v3.1). Zenodo.
     https://doi.org/10.5281/zenodo.5576813\n\n",
     "Type 'citation(package = 'ReLTER')' on how to cite R packages in
     publications.\n\n",

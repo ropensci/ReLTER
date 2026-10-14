@@ -1,16 +1,26 @@
 #' Retrieve species occurrences within an eLTER site boundary
 #' @description `r lifecycle::badge("stable")`
 #' This function downloads species occurrence records from
-#' (GBIF)[https://www.gbif.org],
-#' (iNaturalist)[https://www.inaturalist.org/] and
-#' (OBIS)[https://obis.org/] and intersects them with the boundary of
-#' an eLTER site retrieved from the (DEIMS-SDR API)[https://deims.org/]
-#' via the (spocc package)[https://docs.ropensci.org/spocc/]
+#' [GBIF](https://www.gbif.org),
+#' [iNaturalist](https://www.inaturalist.org/) and
+#' [OBIS](https://obis.org/) via the
+#' [spocc](https://docs.ropensci.org/spocc/) package
 #' (SPecies OCCurrence data from across the web),
 #' and intersects them with the boundary of
 #' an eLTER site retrieved from the [DEIMS-SDR API](https://deims.org/).
 #' Only occurrences falling within the site
 #' polygon are returned, enriched with eLTER site metadata.
+#'
+#' iNaturalist observations are filtered to **research grade** only via the
+#' \code{quality} parameter of \code{rinat::get_inat_obs()}, which is the
+#' quality level required by \code{ReLTER.inatEnrich} enrichment functions.
+#' Note that the iNaturalist API has a hard limit of 10,000 observations per
+#' query. For sites with more than 10,000 research grade observations in the
+#' bounding box, consider using GBIF with the iNaturalist dataset key
+#' (\code{"50c9509d-22c7-4a22-a47d-8c48425ef4a7"}) as an alternative,
+#' which indexes all iNaturalist research grade observations and has no
+#' such limit (though with a synchronisation lag of a few days).
+#'
 #' @param deimsid A `character`. The DEIMS ID of the site from
 #' DEIMS-SDR website. DEIMS ID information
 #' \href{https://deims.org/docs/deimsid.html}{here}.
@@ -24,6 +34,7 @@
 #' source. Default `500`. Note that when querying for many species the
 #' total number of records can be large and slow to download; start with
 #' a small value (e.g. `10`) to verify results before increasing.
+#' For iNaturalist, the maximum allowed by the API is `10000`.
 #' @param exclude_inat_from_gbif A `boolean`. If `TRUE`, and both
 #' `"gbif"` and `"inat"` are in `list_DS`, records originating from
 #' iNaturalist are removed from the GBIF results to avoid duplicates.
@@ -41,11 +52,24 @@
 #' that source is omitted from the list and an informative message is
 #' printed. Returns `invisible(NULL)` if the site has no boundary or if
 #' no occurrences are found for any source.
+#' @note
+#' iNaturalist observations are downloaded as research grade only.
+#' This is consistent with the quality level required by the
+#' \code{ReLTER.inatEnrich} enrichment pipeline
+#' (\code{add_iucn_to_occ()}, \code{add_nativeness_to_occ()},
+#' \code{add_eunis_legal_to_occ()}).
+#'
+#' The iNaturalist API enforces a hard limit of 10,000 observations per
+#' query. Spatial filtering is performed on a bounding box (not the exact
+#' site polygon); the exact polygon intersection is applied afterwards
+#' via \code{sf::st_intersection()}, so the number of records returned
+#' may be slightly higher than those visible in the corresponding
+#' iNaturalist project for the site.
 #' @author Alessandro Oggioni, PhD (2020) \email{oggioni.a@@irea.cnr.it}
 #' @author Paolo Tagliolato, PhD (2020) \email{tagliolato.p@@irea.cnr.it}
 #' @author Martina Zilioli \email{zilioli.m@@irea.cnr.it}
 #' @importFrom dplyr filter select rename_with all_of
-#' @importFrom leaflet leaflet addTiles addProviderTiles addCircleMarkers
+#' @importFrom leaflet leaflet addTiles addCircleMarkers
 #' @importFrom leaflet addLegend addLayersControl layersControlOptions
 #' @importFrom leaflet colorFactor
 #' @importFrom lubridate as_datetime as_date
@@ -58,7 +82,8 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' # Terrestrial site: Saldur River Catchment (GBIF and iNaturalist, excluding records sourced from iNaturalist)
+#' # Terrestrial site: Saldur River Catchment (GBIF and iNaturalist,
+#' # excluding records sourced from iNaturalist in GBIF)
 #' occ_SRC <- get_site_speciesOccurrences(
 #'   deimsid = "https://deims.org/97ff6180-e5d1-45f2-a559-8a7872eb26b1",
 #'   list_DS = c("gbif", "inat"),
@@ -67,8 +92,9 @@
 #'   exclude_inat_from_gbif = TRUE
 #' )
 #' occ_SRC
-#' 
-#' # Terrestrial site: Gran Paradiso National Park (only GBIF considering, excluding records sourced from iNaturalist)
+#'
+#' # Terrestrial site: Gran Paradiso National Park (only GBIF,
+#' # excluding records sourced from iNaturalist)
 #' occ_GPNP <- get_site_speciesOccurrences(
 #'   deimsid = "https://deims.org/15c3e841-8494-42d2-a44e-c49a0ff25946",
 #'   list_DS = "gbif",
@@ -77,6 +103,16 @@
 #'   exclude_inat_from_gbif = TRUE
 #' )
 #' occ_GPNP
+#'
+#' # Terrestrial site: Tenuta di Castelporziano (iNaturalist only,
+#' # research grade, up to 10000 records -- the iNaturalist API hard limit)
+#' occ_CP <- get_site_speciesOccurrences(
+#'   deimsid = "https://deims.org/0d2269d3-5423-4939-a30d-077c8bc38b03",
+#'   list_DS = "inat",
+#'   show_map = TRUE,
+#'   limit = 10000
+#' )
+#' occ_CP$inat
 #'
 #' # Marine site: Gulf of Venice (OBIS only)
 #' occ_GoV <- get_site_speciesOccurrences(
@@ -87,7 +123,8 @@
 #' )
 #' occ_GoV
 #'
-#' # Marine site: Gulf of Venice (all sources excluding records of GBIF sourced from iNaturalist)
+#' # Marine site: Gulf of Venice (all sources excluding records of GBIF
+#' # sourced from iNaturalist)
 #' occ_GoV_all <- get_site_speciesOccurrences(
 #'   deimsid = "https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd",
 #'   list_DS = c("gbif", "inat", "obis"),
@@ -123,9 +160,9 @@ get_site_speciesOccurrences <- function(
   
   # --- Get site boundary ---
   boundary <- get_site_info(
-    deimsid = deimsid,
+    deimsid    = deimsid,
     categories = c("General", "EnvCharacts"),
-    show_map = FALSE
+    show_map   = FALSE
   )
   
   if (is.null(boundary) || !inherits(boundary, "sf")) {
@@ -153,18 +190,42 @@ get_site_speciesOccurrences <- function(
   bbox_wkt <- sf::st_as_text(sf::st_as_sfc(sf::st_bbox(boundary)))
   
   # --- Download occurrences ---
-  occ_fx <- getExportedValue("spocc", "occ")
+  occ_fx         <- getExportedValue("spocc", "occ")
   obis_search_fx <- getExportedValue("spocc", "obis_search")
   
-  site_occ_spocc <- NULL
+  site_occ_spocc      <- NULL
+  site_occ_spocc_inat <- NULL
   site_occ_spocc_obis <- NULL
   
-  if (any(c("gbif", "inat") %in% list_DS)) {
+  # download GBIF occurrences with standard spocc call
+  if ("gbif" %in% list_DS) {
     site_occ_spocc <- occ_fx(
-      from       = list_DS[list_DS %in% c("gbif", "inat")],
+      from       = "gbif",
       geometry   = bbox_wkt,
       limit      = limit,
       has_coords = TRUE
+    )
+  }
+  
+  # download iNaturalist research grade occurrences only
+  # note: the iNaturalist API has a hard limit of 10,000 observations per query
+  if ("inat" %in% list_DS) {
+    if (limit > 10000) {
+      message(
+        "\u26a0\ufe0f iNaturalist: the API enforces a hard limit of 10,000 observations. ",
+        "The requested limit (", limit, ") will be capped at 10,000."
+      )
+      limit_inat <- 10000
+    } else {
+      limit_inat <- limit
+    }
+    message("\u2139\ufe0f get_site_speciesOccurrences() filters iNaturalist to research grade observations only.")
+    site_occ_spocc_inat <- occ_fx(
+      from       = "inat",
+      geometry   = bbox_wkt,
+      limit      = limit_inat,
+      has_coords = TRUE,
+      inatopts   = list(quality = "research")
     )
   }
   
@@ -198,9 +259,9 @@ get_site_speciesOccurrences <- function(
     )
   }
   
-  if ("inat" %in% list_DS && !is.null(site_occ_spocc$inat$data[[1]])) {
-    site_occ_spocc$inat$data[[1]] <- .fix_datetime(
-      site_occ_spocc$inat$data[[1]],
+  if ("inat" %in% list_DS && !is.null(site_occ_spocc_inat$inat$data[[1]])) {
+    site_occ_spocc_inat$inat$data[[1]] <- .fix_datetime(
+      site_occ_spocc_inat$inat$data[[1]],
       cols_datetime = c("time_observed_at", "created_at", "updated_at")
     )
   }
@@ -253,9 +314,9 @@ get_site_speciesOccurrences <- function(
     occ_list$gbif <- .to_sf_and_intersect(df_gbif, "longitude", "latitude", "gbif")
   }
   
-  if ("inat" %in% list_DS && !is.null(site_occ_spocc$inat$data[[1]])) {
+  if ("inat" %in% list_DS && !is.null(site_occ_spocc_inat$inat$data[[1]])) {
     occ_list$inat <- .to_sf_and_intersect(
-      site_occ_spocc$inat$data[[1]], "longitude", "latitude", "inat"
+      site_occ_spocc_inat$inat$data[[1]], "longitude", "latitude", "inat"
     )
   }
   
@@ -274,7 +335,6 @@ get_site_speciesOccurrences <- function(
     return(invisible(NULL))
   }
   
-  # --- Optional map ---
   # --- Build map always, print only if show_map = TRUE ---
   if (length(occ_list) > 0L) {
     brewer.pal_fx <- getExportedValue("RColorBrewer", "brewer.pal")
@@ -283,8 +343,7 @@ get_site_speciesOccurrences <- function(
     factpal       <- leaflet::colorFactor(my_palette, levels = names(occ_list))
     
     occ_map <- leaflet::leaflet() |>
-      leaflet::addProviderTiles("CartoDB.PositronNoLabels", group = "Basemap") |>
-      leaflet::addTiles("http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png")
+      leaflet::addTiles(group = "Basemap")
     
     for (src in names(occ_list)) {
       coords  <- sf::st_coordinates(occ_list[[src]])
