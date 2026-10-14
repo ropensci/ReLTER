@@ -48,8 +48,9 @@ docker run -d -e PASSWORD=yourpassword -p 8080:8787 rocker_relter
 ```
 
 Then open your browser at http://localhost:8080 and log in with:
-	•	user: rstudio
-	•	password: yourpassword
+
+- user: rstudio
+- password: yourpassword
 
 
 ## Preserve your work (using a Docker volume)
@@ -71,6 +72,6 @@ Please remember that this image is created with the previous version of the ReLT
 Instead of building the image locally, you can use the precompiled one available on Docker Hub:
 
 ```
-docker pull ptagliolato/rocker_relter
-docker run -d -e PASSWORD=yourpassword -p 8080:8787 ptagliolato/rocker_relter
+docker pull oggioniale/relter
+docker run -d -e PASSWORD=yourpassword -p 8080:8787 oggioniale/relter
 ```
