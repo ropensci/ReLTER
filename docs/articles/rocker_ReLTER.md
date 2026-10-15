@@ -1,0 +1,62 @@
+# Run ReLTER in a Docker container
+
+## rocker_ReLTER
+
+Docker image for the ReLTER package.
+
+This image allows you to run RStudio with ReLTER preinstalled, directly
+through Docker.
+
+### About
+
+The rocker_ReLTER image extends a standard rocker-based RStudio server
+image by installing the ReLTER package.
+
+It provides a reproducible environment for research and development,
+ensuring that dependencies and system libraries are already configured.
+
+### Install a different branch of ReLTER package
+
+To install a different branch of the package, edit the dockerfile and
+modify the line 57, replacing with the branch you need:
+
+    R -e "devtools::install_github('https://github.com/ropensci/ReLTER', ref = '<branchName>', dependencies = FALSE)"
+
+### Build the image
+
+    docker build -t rocker_relter .
+
+### Usage
+
+Run locally on port 8080 (you may choose any port you prefer). Replace
+yourpassword with your preferred password:
+
+    docker run -d -e PASSWORD=yourpassword -p 8080:8787 rocker_relter
+
+Then open your browser at <http://localhost:8080> and log in with:
+
+- user: rstudio
+- password: yourpassword
+
+### Preserve your work (using a Docker volume)
+
+By default, files created inside the container are lost when the
+container is stopped. To preserve your work, map a local directory (for
+example the current one \$(pwd)) to the RStudio home directory inside
+the container:
+
+    docker run -d -v $(pwd):/home/rstudio -e PASSWORD=yourpassword -p 8080:8787 rocker_relter
+
+This way, any files you create will remain available on your host
+machine.
+
+### Precompiled image on Docker Hub
+
+Please remember that this image is created with the previous version of
+the ReLTER package, so it may not be up to date with the latest changes.
+
+Instead of building the image locally, you can use the precompiled one
+available on Docker Hub:
+
+    docker pull oggioniale/relter
+    docker run -d -e PASSWORD=yourpassword -p 8080:8787 oggioniale/relter

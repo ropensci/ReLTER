@@ -1,0 +1,232 @@
+# Obtain information about one LTER Site using the DEIMS ID
+
+For each LTER site the information is provided by the site manager in
+the DEIMS-SDR registry (see <https://deims.org>). The LTER site
+information is grouped into main sections, the most important ones are:
+
+- Affiliations,
+- Boundaries,
+- Contacts,
+- Environmental characteristics,
+- General,
+- Infrastructure,
+- Parameters,
+- Relate resources.
+
+For more details about the site data model please visit
+<https://deims.org/models/?id=site>.
+
+The
+[`get_site_info`](https://docs.ropensci.org/ReLTER/reference/get_site_info.html)
+function of {ReLTER} allows to download details about a specific site,
+through the DEIMS-SDR sites API and the DEIMS.ID
+(<https://deims.org/docs/deimsid.html>).
+
+## Get affiliation info of the LTER site:
+
+If the aim is to obtain the info about in which networks/RIs the site is
+listed, you can:
+
+``` r
+
+# For this example, the Lago Maggiore in Italy
+deimsid <- 'https://deims.org/f30007c4-8a6e-4f11-ab87-569db54638fe'
+siteAffiliations <- ReLTER::get_site_info(deimsid = deimsid,
+  category = 'Affiliations'
+)
+# network(s) where the site is involved in
+knitr::kable(
+  siteAffiliations$networks[[1]],
+  caption = "The list of the network(s) in which the site is listed"
+)
+```
+
+Table: The list of the network(s) in which the site is listed
+
+``` r
+
+# project(s) where the site is involved in
+knitr::kable(
+  siteAffiliations$projects[[1]],
+  caption = "The list of the project(s) in which the site is listed"
+)
+```
+
+Table: The list of the project(s) in which the site is listed
+
+## Get boundaries info of the LTER site:
+
+Get information about the geographic extent of the site:
+
+``` r
+
+library(leaflet)
+siteBoundaries <- ReLTER::get_site_info(deimsid = deimsid,
+  category = "Boundaries"
+)
+
+leaflet(data = sitesBoundaries) %>%
+  addPolygons() %>% 
+  addProviderTiles(provider = "CartoDB.PositronNoLabels",
+                   group = "Basemap", layerId = 123) %>%
+  addTiles("http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png")
+```
+
+    ## Error in structure(list(options = options), leafletData = data): object 'sitesBoundaries' not found
+
+## Get Contacts info of the LTER site:
+
+Get information about the contact person responsible for the site, the
+organisation operating the site and its monitoring programs, the
+reference to the organisation or the responsible national authority for
+funding and strategic decisions about the site , full name of the
+person(s) or organisation(s) who created the documentation for the site:
+
+``` r
+
+siteContact <- ReLTER::get_site_info(deimsid = deimsid,
+  category = "Contacts"
+)
+# site manager(s)
+knitr::kable(
+  siteContact$siteManager[[1]],
+  caption = "The list of the manager(s) of site"
+)
+```
+
+Table: The list of the manager(s) of site
+
+``` r
+
+# operating organisation of site
+knitr::kable(
+  siteContact$operatingOrganisation[[1]],
+  caption = "The list of the operating organization of the site"
+)
+```
+
+Table: The list of the operating organization of the site
+
+``` r
+
+# metadata provider(s) of site
+knitr::kable(
+  siteContact$metadataProvider[[1]],
+  caption = "The list of the metadata provider(s) of site"
+)
+```
+
+Table: The list of the metadata provider(s) of site
+
+``` r
+
+# funding agency(ies) of site
+knitr::kable(
+  siteContact$fundingAgency[[1]],
+  caption = "The list of the funding agency(ies) of site"
+)
+```
+
+Table: The list of the funding agency(ies) of site
+
+The same approach could be used for other category information.
+
+``` r
+
+siteGeneral <- ReLTER::get_site_info(deimsid = deimsid,
+  category = "General"
+)
+siteGeneral
+```
+
+    ## # A tibble: 1 × 24
+    ##   title            uri   geoCoord country geoElev.avg geoElev.min geoElev.max geoElev.unit
+    ##   <chr>            <chr> <chr>    <list>        <dbl>       <int>       <int> <chr>       
+    ## 1 Lago Maggiore -… http… POINT (… <chr>          194.         186        4633 msl         
+    ## # ℹ 16 more variables: generalInfo.abstract <chr>, generalInfo.citation <lgl>,
+    ## #   generalInfo.relatedIdentifiers <lgl>, generalInfo.status.label <chr>,
+    ## #   generalInfo.status.uri <chr>, generalInfo.yearEstablished <int>,
+    ## #   generalInfo.yearClosed <lgl>, generalInfo.hierarchy.parent <list>,
+    ## #   generalInfo.hierarchy.children <lgl>, generalInfo.relatedSites <list>,
+    ## #   generalInfo.siteName <chr>, generalInfo.shortName <chr>, generalInfo.siteType <chr>,
+    ## #   generalInfo.protectionLevel <lgl>, generalInfo.landUse <lgl>, …
+
+``` r
+
+siteInfrastructure <- ReLTER::get_site_info(deimsid = deimsid, 
+  category = "Infrastructure"
+)
+siteInfrastructure$collection[[1]]
+```
+
+    ## Warning: Unknown or uninitialised column: `collection`.
+
+    ## NULL
+
+``` r
+
+siteEnvCharacts <- ReLTER::get_site_info(deimsid = deimsid, 
+  category = "EnvCharacts"
+)
+siteEnvCharacts
+```
+
+    ## # A tibble: 1 × 26
+    ##   title            uri   geoCoord country geoElev.avg geoElev.min geoElev.max geoElev.unit
+    ##   <chr>            <chr> <chr>    <list>        <dbl>       <int>       <int> <chr>       
+    ## 1 Lago Maggiore -… http… POINT (… <chr>          194.         186        4633 msl         
+    ## # ℹ 18 more variables: envCharacteristics.airTemperature.yearlyAverage <dbl>,
+    ## #   envCharacteristics.airTemperature.monthlyAverage <lgl>,
+    ## #   envCharacteristics.airTemperature.unit <chr>,
+    ## #   envCharacteristics.airTemperature.referencePeriod <lgl>,
+    ## #   envCharacteristics.precipitation.yearlyAverage <int>,
+    ## #   envCharacteristics.precipitation.monthlyAverage <lgl>,
+    ## #   envCharacteristics.precipitation.unit <chr>, …
+
+By selecting the category Infrastructure you can obtain info as:
+
+- access type
+- data policy
+
+By selecting the category Infrastructure you can obtain info as:
+
+- air temperature (min, max and average)
+- precipitation (min, max and average)
+- biogeographical region
+- biome
+- ecosystem type
+- eunis habitat
+- geoBon biome
+- geology
+- hydrology
+- soil
+- vegetation
+
+## Get list of parameters or related resources declared to the LTER site:
+
+``` r
+
+siteObsProp <- ReLTER::get_site_info(deimsid = deimsid,
+  category = "observedProperties"
+)
+# parameter(s) collected in the site
+knitr::kable(
+  head(siteObsProp$observedProperties[[1]], 10),
+  caption = "List of Observed Properties of site (partial)"
+)
+```
+
+| observedPropertiesLabel | observedPropertiesUri |
+|:---|:---|
+| DNA sequence | <http://vocabs.lter-europe.net/EnvThes/21400> |
+| acid neutralising capacity | <http://vocabs.lter-europe.net/EnvThes/10310> |
+| acid neutralizing capacity of water | <http://vocabs.lter-europe.net/EnvThes/22029> |
+| air temperature | <http://vocabs.lter-europe.net/EnvThes/22035> |
+| algae species abundance | <http://vocabs.lter-europe.net/EnvThes/10338> |
+| ammonium content | <http://vocabs.lter-europe.net/EnvThes/10071> |
+| atmospheric parameter | <http://vocabs.lter-europe.net/EnvThes/20937> |
+| available phosphorus | <http://vocabs.lter-europe.net/EnvThes/22061> |
+| bacillariophyceae abundance | <http://vocabs.lter-europe.net/EnvThes/10083> |
+| bacillariophyceae biomass | <http://vocabs.lter-europe.net/EnvThes/10120> |
+
+List of Observed Properties of site (partial) {.table}
