@@ -1,0 +1,132 @@
+# How to retrieve occurrence records by exploiting the {\`ReLTER\`} get_site_speciesOccurrences() function
+
+\_\_ *get_site_speciesOccurrences()*, *map_occ_gbif2elter* and
+*save_occ_eLTER_reporting_Archive()* are delivered only with
+dev\_\_withImprovements branch \_\_
+
+Starting from the eLTER site id (DEIMS.iD), by ReLTER
+get_site_speciesOccurrences function, anyone can retrieve occurrence
+records from [GBIF](https://www.gbif.org) (via [`rgbif` R
+package](https://docs.ropensci.org/rgbif/)),
+[iNaturalist](https://www.inaturalist.org/) and
+[OBIS](https://obis.org/) carried out within the boundaries of the site.
+
+### What the output of the `ReLTER` get_site_speciesOccurrences() is?
+
+The user sets the parameters of the function and, through these choose,
+defines the output.
+
+The parameters of the function are:
+
+- user sets parameter ‘deimsid’ to select the area of interest from
+  which data are to be harvested (i.e., paste DEIMS.ID of the site of
+  interest; e.g., Gulf Of Venice - GOV
+  <https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd>)
+
+- user sets parameter ‘list_DS’ to select the external data service to
+  be queried (i.e., ‘gbif’ or ‘obis’ or ‘inaturalist’)
+
+- user sets parameter ‘show_map’ to get data in map format in addition
+  to tabular format (i.e., show_map = TRUE)
+
+- user sets parameter ‘limit’ to select the records number (i.e.,
+  species presence record) to be extracted
+
+The output are two type: a map and a table(s), for each external data
+service selected.
+
+``` r
+
+# DEIMS.iD of eLTER site Gulf Of Venice (GOV)
+GOVid <- "https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd"
+
+# Compose the function with choosen parameters
+resGOV <- ReLTER::get_site_speciesOccurrences(
+  deimsid = GOVid,
+  list_DS = c("gbif", "inat", "obis"),
+  show_map = TRUE,
+  limit = 20
+)
+```
+
+``` r
+# iNat table
+knitr::kable(
+  head(resGOV$inat[c(1:10)], 10)
+  caption = "The first 10 occurrence records of iNaturalist on the selected eLTER site."
+)
+# OBIS table
+knitr::kable(
+  head(resGOV$obis[c(1:10)], 10)
+  caption = "The first 10 occurrence records of OBIS on the selected eLTER site."
+)
+```
+
+    ## Error in parse(text = input): <text>:4:3: unexpected symbol
+    ## 3:   head(resGOV$inat[c(1:10)], 10)
+    ## 4:   caption
+    ##      ^
+
+### How to trasform external service data schemas into eLTER data-reporting template?
+
+The structure of species occurrence records reflects the exporting
+schema of the original data publisher. Fields mapping among the three
+data source schemas (i.e., GBIF, iNaturalist, OBIS) and the eLTER
+data-reporting template (Peterseil and Geiger (2020)) was carried out so
+as to design functions to structure fetched data in three simplified
+output data formats. These output data formats result i) harmonised to
+eLTER data-reporting requirements/template and ii) more readable since
+only essential attributes are maintained.
+
+Using 2 other R functions, developed for solve this issue, data from
+external data service can be exported into eLTER data-reporting
+template.
+
+Below an example for the eLTER [Saldur River Catchment
+site](https://deims.org/97ff6180-e5d1-45f2-a559-8a7872eb26b1), where the
+external data service to be queried are GBIF and iNaturalist.
+
+``` r
+
+saldurid <- "https://deims.org/97ff6180-e5d1-45f2-a559-8a7872eb26b1"
+
+resSaldur <- ReLTER::get_site_speciesOccurrences(
+  deimsid = saldurid,
+  list_DS = c("gbif", "inat"),
+  show_map = FALSE,
+  limit = 20,
+  exclude_inat_from_gbif = TRUE
+)
+
+# GBIF
+tblSaldur_gbif <- tibble::as_tibble(resSaldur$gbif)
+if (nrow(tblSaldur_gbif) > 0) {
+  outGbif <- tblSaldur_gbif %>%
+    ReLTER::map_occ_gbif2elter(deimsid = saldurid)
+  ReLTER::save_occ_eLTER_reporting_Archive(outGbif)
+}
+```
+
+    ## [1] "/tmp/RtmpsutGAg/biodiv_occurrence_site_97ff6180-e5d1-45f2-a559-8a7872eb26b1_gbif.zip"
+
+``` r
+
+# iNaturalist
+tblSaldur_inat <- tibble::as_tibble(resSaldur$inat)
+outInat <- tblSaldur_inat %>%
+  ReLTER::map_occ_inat2elter(deimsid = saldurid)
+ReLTER::save_occ_eLTER_reporting_Archive(outInat)
+```
+
+    ## [1] "/tmp/RtmpsutGAg/biodiv_occurrence_site_97ff6180-e5d1-45f2-a559-8a7872eb26b1_inat.zip"
+
+The eLTER useful archive created are:
+
+- biodiv_occurrence_site_97ff6180-e5d1-45f2-a559-8a7872eb26b1_gbif.zip
+
+- biodiv_occurrence_site_97ff6180-e5d1-45f2-a559-8a7872eb26b1_inat.zip
+
+### References
+
+Peterseil, Johannes, and Sarah Geiger. 2020. *Field Specification for
+Data Reporting*. <https://doi.org/10.5281/ZENODO.6373409>.

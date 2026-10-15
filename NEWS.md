@@ -1,3 +1,18 @@
+# ReLTER 3.1.2
+
+released on 15/10/2026
+
+iNaturalist research grade filtering
+
+get_site_speciesOccurrences() now filters iNaturalist occurrences to research grade only, which is the quality
+level required by the ReLTER.inatEnrich enrichment functions. The function also enforces the iNaturalist API
+hard limit of 10,000 observations per query, capping higher requests automatically with a warning.
+
+For sites with more than 10,000 research grade observations, consider using GBIF with the iNaturalist dataset
+key (50c9509d-22c7-4a22-a47d-8c48425ef4a7) as an alternative.
+
+--------------------------------------------------------------------------------
+
 # ReLTER 3.1.1
 
 released on 11/06/2026

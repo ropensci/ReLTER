@@ -6,6 +6,7 @@
 <url><loc>https://docs.ropensci.org/ReLTER/articles/multi_sites_contacts.html</loc></url>
 <url><loc>https://docs.ropensci.org/ReLTER/articles/multi_sites_information.html</loc></url>
 <url><loc>https://docs.ropensci.org/ReLTER/articles/occurrences_into_site.html</loc></url>
+<url><loc>https://docs.ropensci.org/ReLTER/articles/occurrences_into_site_map.html</loc></url>
 <url><loc>https://docs.ropensci.org/ReLTER/articles/rocker_ReLTER.html</loc></url>
 <url><loc>https://docs.ropensci.org/ReLTER/articles/single_site_information.html</loc></url>
 <url><loc>https://docs.ropensci.org/ReLTER/authors.html</loc></url>
@@ -15,6 +16,14 @@
 <url><loc>https://docs.ropensci.org/ReLTER/reference/ReLTER-package.html</loc></url>
 <url><loc>https://docs.ropensci.org/ReLTER/reference/do_Q.html</loc></url>
 <url><loc>https://docs.ropensci.org/ReLTER/reference/eLTER_data_reporting_format.html</loc></url>
+<url><loc>https://docs.ropensci.org/ReLTER/reference/get_Site_Affiliations.html</loc></url>
+<url><loc>https://docs.ropensci.org/ReLTER/reference/get_Site_Boundaries.html</loc></url>
+<url><loc>https://docs.ropensci.org/ReLTER/reference/get_Site_Contact.html</loc></url>
+<url><loc>https://docs.ropensci.org/ReLTER/reference/get_Site_EnvCharacts.html</loc></url>
+<url><loc>https://docs.ropensci.org/ReLTER/reference/get_Site_General.html</loc></url>
+<url><loc>https://docs.ropensci.org/ReLTER/reference/get_Site_Info.html</loc></url>
+<url><loc>https://docs.ropensci.org/ReLTER/reference/get_Site_Infrastructure.html</loc></url>
+<url><loc>https://docs.ropensci.org/ReLTER/reference/get_Site_Related_Resources.html</loc></url>
 <url><loc>https://docs.ropensci.org/ReLTER/reference/get_activity_info.html</loc></url>
 <url><loc>https://docs.ropensci.org/ReLTER/reference/get_dataset_info.html</loc></url>
 <url><loc>https://docs.ropensci.org/ReLTER/reference/get_deims_API_version.html</loc></url>
@@ -25,15 +34,7 @@
 <url><loc>https://docs.ropensci.org/ReLTER/reference/get_network_sites.html</loc></url>
 <url><loc>https://docs.ropensci.org/ReLTER/reference/get_sensor_info.html</loc></url>
 <url><loc>https://docs.ropensci.org/ReLTER/reference/get_site_EcoDataCube.html</loc></url>
-<url><loc>https://docs.ropensci.org/ReLTER/reference/get_site_affiliations.html</loc></url>
-<url><loc>https://docs.ropensci.org/ReLTER/reference/get_site_boundaries.html</loc></url>
-<url><loc>https://docs.ropensci.org/ReLTER/reference/get_site_contact.html</loc></url>
-<url><loc>https://docs.ropensci.org/ReLTER/reference/get_site_envcharacts.html</loc></url>
-<url><loc>https://docs.ropensci.org/ReLTER/reference/get_site_general.html</loc></url>
-<url><loc>https://docs.ropensci.org/ReLTER/reference/get_site_info.html</loc></url>
-<url><loc>https://docs.ropensci.org/ReLTER/reference/get_site_infrastructure.html</loc></url>
 <url><loc>https://docs.ropensci.org/ReLTER/reference/get_site_observedProperties.html</loc></url>
-<url><loc>https://docs.ropensci.org/ReLTER/reference/get_site_related_resources.html</loc></url>
 <url><loc>https://docs.ropensci.org/ReLTER/reference/get_site_speciesOccurrences.html</loc></url>
 <url><loc>https://docs.ropensci.org/ReLTER/reference/get_sites_interactive.html</loc></url>
 <url><loc>https://docs.ropensci.org/ReLTER/reference/get_sites_within_3d_bounding_box.html</loc></url>
@@ -57,8 +58,8 @@
 <url><loc>https://docs.ropensci.org/ReLTER/reference/reporting_save_archive.html</loc></url>
 <url><loc>https://docs.ropensci.org/ReLTER/reference/save_occ_eLTER_reporting_Archive.html</loc></url>
 <url><loc>https://docs.ropensci.org/ReLTER/reference/set_deims_base_url.html</loc></url>
-<url><loc>https://docs.ropensci.org/ReLTER/reference/taxon_id_pesi.html</loc></url>
-<url><loc>https://docs.ropensci.org/ReLTER/reference/taxon_id_worms.html</loc></url>
-<url><loc>https://docs.ropensci.org/ReLTER/reference/taxon_id_worms_refine.html</loc></url>
+<url><loc>https://docs.ropensci.org/ReLTER/reference/taxon_ID_Pesi.html</loc></url>
+<url><loc>https://docs.ropensci.org/ReLTER/reference/taxon_ID_Worms.html</loc></url>
+<url><loc>https://docs.ropensci.org/ReLTER/reference/taxon_ID_Worms_refine.html</loc></url>
 </urlset>
 
