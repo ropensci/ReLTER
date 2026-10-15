@@ -28,7 +28,8 @@ Default \code{FALSE}.}
 \item{limit}{A \code{numeric}. Maximum number of records to download per
 source. Default \code{500}. Note that when querying for many species the
 total number of records can be large and slow to download; start with
-a small value (e.g. \code{10}) to verify results before increasing.}
+a small value (e.g. \code{10}) to verify results before increasing.
+For iNaturalist, the maximum allowed by the API is \code{10000}.}
 
 \item{exclude_inat_from_gbif}{A \code{boolean}. If \code{TRUE}, and both
 \code{"gbif"} and \code{"inat"} are in \code{list_DS}, records originating from
@@ -53,12 +54,39 @@ no occurrences are found for any source.
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 This function downloads species occurrence records from
-GBIF \url{https://www.gbif.org},
-iNaturalist \url{https://www.inaturalist.org/} and
-OBIS \url{https://obis.org/} and intersects them with the boundary of
-an eLTER site retrieved from the DEIMS-SDR API
-\url{https://deims.org/}. Only occurrences falling within the site
+\href{https://www.gbif.org}{GBIF},
+\href{https://www.inaturalist.org/}{iNaturalist} and
+\href{https://obis.org/}{OBIS} via the
+\href{https://docs.ropensci.org/spocc/}{spocc} package
+(SPecies OCCurrence data from across the web),
+and intersects them with the boundary of
+an eLTER site retrieved from the \href{https://deims.org/}{DEIMS-SDR API}.
+Only occurrences falling within the site
 polygon are returned, enriched with eLTER site metadata.
+
+iNaturalist observations are filtered to \strong{research grade} only via the
+\code{quality} parameter of \code{rinat::get_inat_obs()}, which is the
+quality level required by \code{ReLTER.inatEnrich} enrichment functions.
+Note that the iNaturalist API has a hard limit of 10,000 observations per
+query. For sites with more than 10,000 research grade observations in the
+bounding box, consider using GBIF with the iNaturalist dataset key
+(\code{"50c9509d-22c7-4a22-a47d-8c48425ef4a7"}) as an alternative,
+which indexes all iNaturalist research grade observations and has no
+such limit (though with a synchronisation lag of a few days).
+}
+\note{
+iNaturalist observations are downloaded as research grade only.
+This is consistent with the quality level required by the
+\code{ReLTER.inatEnrich} enrichment pipeline
+(\code{add_iucn_to_occ()}, \code{add_nativeness_to_occ()},
+\code{add_eunis_legal_to_occ()}).
+
+The iNaturalist API enforces a hard limit of 10,000 observations per
+query. Spatial filtering is performed on a bounding box (not the exact
+site polygon); the exact polygon intersection is applied afterwards
+via \code{sf::st_intersection()}, so the number of records returned
+may be slightly higher than those visible in the corresponding
+iNaturalist project for the site.
 }
 \section{The function output}{
 
@@ -68,7 +96,8 @@ from OBIS in the marine site Gulf of Venice}
 
 \examples{
 \dontrun{
-# Terrestrial site: Saldur River Catchment (GBIF and iNaturalist, excluding records sourced from iNaturalist)
+# Terrestrial site: Saldur River Catchment (GBIF and iNaturalist,
+# excluding records sourced from iNaturalist in GBIF)
 occ_SRC <- get_site_speciesOccurrences(
   deimsid = "https://deims.org/97ff6180-e5d1-45f2-a559-8a7872eb26b1",
   list_DS = c("gbif", "inat"),
@@ -78,7 +107,8 @@ occ_SRC <- get_site_speciesOccurrences(
 )
 occ_SRC
 
-# Terrestrial site: Gran Paradiso National Park (only GBIF considering, excluding records sourced from iNaturalist)
+# Terrestrial site: Gran Paradiso National Park (only GBIF,
+# excluding records sourced from iNaturalist)
 occ_GPNP <- get_site_speciesOccurrences(
   deimsid = "https://deims.org/15c3e841-8494-42d2-a44e-c49a0ff25946",
   list_DS = "gbif",
@@ -87,6 +117,16 @@ occ_GPNP <- get_site_speciesOccurrences(
   exclude_inat_from_gbif = TRUE
 )
 occ_GPNP
+
+# Terrestrial site: Tenuta di Castelporziano (iNaturalist only,
+# research grade, up to 10000 records -- the iNaturalist API hard limit)
+occ_CP <- get_site_speciesOccurrences(
+  deimsid = "https://deims.org/0d2269d3-5423-4939-a30d-077c8bc38b03",
+  list_DS = "inat",
+  show_map = TRUE,
+  limit = 10000
+)
+occ_CP$inat
 
 # Marine site: Gulf of Venice (OBIS only)
 occ_GoV <- get_site_speciesOccurrences(
@@ -97,7 +137,8 @@ occ_GoV <- get_site_speciesOccurrences(
 )
 occ_GoV
 
-# Marine site: Gulf of Venice (all sources excluding records of GBIF sourced from iNaturalist)
+# Marine site: Gulf of Venice (all sources excluding records of GBIF
+# sourced from iNaturalist)
 occ_GoV_all <- get_site_speciesOccurrences(
   deimsid = "https://deims.org/758087d7-231f-4f07-bd7e-6922e0c283fd",
   list_DS = c("gbif", "inat", "obis"),
